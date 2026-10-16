@@ -1,0 +1,184 @@
+<!-- CATCUL CUSTOM CURSOR — paste this entire block before </body> on any page. -->
+<style id="catcul-cursor-styles">
+/* Native cursor remains until a real mouse is detected; touch is unaffected. */
+@media (any-hover: hover) and (any-pointer: fine) {
+  html.catcul-cursor-active, html.catcul-cursor-active * { cursor: none !important; }
+  html.catcul-cursor-active iframe { cursor: auto !important; }
+}
+#catcul-cursor {
+  --cc-ink: #293b20;
+  --cc-lime: #dcf783;
+  position: fixed; top: 0; left: 0; width: 0; height: 0;
+  z-index: 2147483647; pointer-events: none !important;
+  opacity: 0; visibility: hidden; contain: layout style;
+  transform: translate3d(-100px,-100px,0);
+}
+#catcul-cursor, #catcul-cursor * { pointer-events: none !important; user-select: none !important; }
+#catcul-cursor.cc-visible { opacity: 1; visibility: visible; }
+#catcul-cursor .cc-halo {
+  position: absolute; left: 0; top: 0; width: 30px; height: 30px;
+  transform: translate(-50%,-50%); border: 1px solid #8da765;
+  border-radius: 50%; background: #dcf7831f;
+  box-shadow: 0 0 0 1px #ffffff45;
+  transition: width .16s ease, height .16s ease, background .16s ease, opacity .12s ease, border-color .16s ease;
+}
+#catcul-cursor .cc-dot {
+  position: absolute; left: 0; top: 0; width: 8px; height: 8px;
+  transform: translate(-50%,-50%); background: var(--cc-ink);
+  border: 2px solid var(--cc-lime); border-radius: 50%;
+  box-shadow: 0 0 0 1px #293b2050;
+  transition: opacity .1s ease, width .13s ease, height .13s ease;
+}
+#catcul-cursor .cc-symbol {
+  position: absolute; left: 0; top: 0; transform: translate(-50%,-50%);
+  width: 17px; height: 17px; color: #354b21; opacity: 0;
+  transition: opacity .1s ease;
+}
+#catcul-cursor .cc-symbol svg { display: block; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#catcul-cursor .cc-caret {
+  position: absolute; left: 0; top: 0; transform: translate(-50%,-50%);
+  width: 2px; height: 18px; border-radius: 1px; background: #47612e;
+  box-shadow: 0 0 0 1px #f6ffeaba; opacity: 0;
+}
+#catcul-cursor .cc-caret:before, #catcul-cursor .cc-caret:after {
+  content: ''; position: absolute; width: 8px; height: 1.5px;
+  background: inherit; left: -3px; border-radius: 2px;
+}
+#catcul-cursor .cc-caret:before { top: 0; }
+#catcul-cursor .cc-caret:after { bottom: 0; }
+#catcul-cursor.cc-control .cc-halo { width: 39px; height: 39px; background: #dcf783c7; border-color: #91aa5e; }
+#catcul-cursor.cc-control .cc-dot, #catcul-cursor.cc-media .cc-dot, #catcul-cursor.cc-disabled .cc-dot { opacity: 0; }
+#catcul-cursor.cc-control .cc-arrow { opacity: 1; }
+#catcul-cursor.cc-media .cc-halo { width: 42px; height: 42px; background: #f6ffe8ed; }
+#catcul-cursor.cc-media .cc-plus { opacity: 1; }
+#catcul-cursor.cc-text .cc-halo, #catcul-cursor.cc-text .cc-dot { opacity: 0; }
+#catcul-cursor.cc-text .cc-caret { opacity: 1; }
+#catcul-cursor.cc-disabled .cc-halo { width: 27px; height: 27px; background: #f0f2e9d9; border-color: #a5ad99; }
+#catcul-cursor.cc-disabled .cc-stop { opacity: 1; color: #8f9983; }
+#catcul-cursor.cc-pressed:not(.cc-text) .cc-halo { width: 23px; height: 23px; background: #dcf783ed; }
+#catcul-cursor.cc-pressed .cc-dot { width: 5px; height: 5px; }
+body.dark #catcul-cursor .cc-halo { border-color: #bdd888; box-shadow: 0 0 0 1px #18211035; }
+body.dark #catcul-cursor .cc-caret { background: #dcf783; box-shadow: 0 0 0 1px #202a1dd9; }
+#catcul-cursor-toggle {
+  position: fixed; bottom: 12px; right: 12px; z-index: 2147483646;
+  display: none; align-items: center; justify-content: center;
+  width: 30px; height: 30px; padding: 0; margin: 0;
+  border: 1px solid #d6dfc6; border-radius: 10px;
+  background: #f8fbeeeb; color: #799252;
+  box-shadow: 0 2px 9px #273b1810; opacity: .72;
+}
+#catcul-cursor-toggle:hover, #catcul-cursor-toggle:focus-visible { opacity: 1; background: #e8f5c9; }
+#catcul-cursor-toggle:focus-visible { outline: 3px solid #91a953; outline-offset: 3px; }
+#catcul-cursor-toggle svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#catcul-cursor-toggle[aria-pressed="false"] { color: #8b9383; background: #f1f3ec; }
+body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-color: #4a5b35; }
+@media (any-hover: hover) and (any-pointer: fine) {
+  #catcul-cursor-toggle.cc-toggle-ready { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #catcul-cursor * { transition: none !important; }
+}
+@media (forced-colors: active) {
+  #catcul-cursor, #catcul-cursor-toggle { display: none !important; }
+  html.catcul-cursor-active, html.catcul-cursor-active * { cursor: revert !important; }
+}
+</style>
+<script id="catcul-cursor-script">
+(() => {
+  'use strict';
+  // Independent of Supabase and authentication. Safe to include once on each page.
+  if (document.getElementById('catcul-cursor')) return;
+  const root = document.documentElement;
+  const pointerMedia = matchMedia('(any-hover: hover) and (any-pointer: fine)');
+  const contrastMedia = matchMedia('(forced-colors: active)');
+  const storageKey = 'catcul.customCursor';
+  let enabled = true;
+  try { enabled = localStorage.getItem(storageKey) !== 'off'; } catch (_) {}
+  let visible = false, dragging = false, x = 0, y = 0, frame = 0;
+  const cursor = document.createElement('div');
+  cursor.id = 'catcul-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = '<span class="cc-halo"></span><span class="cc-dot"></span><span class="cc-symbol cc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="cc-symbol cc-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><span class="cc-symbol cc-stop"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m6.5 6.5 11 11"/></svg></span><span class="cc-caret"></span>';
+  const toggle = document.createElement('button');
+  toggle.type = 'button'; toggle.id = 'catcul-cursor-toggle';
+  toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 10-6 1-3 6L5 3Z"/><path d="m15 16 4 5"/></svg>';
+  document.body.append(cursor, toggle);
+  const supported = () => pointerMedia.matches && !contrastMedia.matches;
+  const allowed = () => supported() && enabled && !dragging;
+  function updateToggle() {
+    toggle.classList.toggle('cc-toggle-ready', supported());
+    toggle.setAttribute('aria-pressed', String(enabled));
+    const label = enabled ? 'Use the standard cursor' : 'Use the Catcul custom cursor';
+    toggle.title = label; toggle.setAttribute('aria-label', label);
+  }
+  function hide() {
+    visible = false;
+    root.classList.remove('catcul-cursor-active');
+    cursor.classList.remove('cc-visible', 'cc-pressed');
+  }
+  function stateFor(element) {
+    if (!(element instanceof Element)) return '';
+    if (element.closest('[disabled], [aria-disabled="true"], fieldset:disabled')) return 'cc-disabled';
+    const explicit = element.closest('[data-cursor]')?.getAttribute('data-cursor');
+    if (explicit === 'text') return 'cc-text';
+    if (explicit === 'zoom' || element.closest('[data-open-photo], .lightbox-image, img.photo')) return 'cc-media';
+    if (explicit === 'pointer') return 'cc-control';
+    const field = element.closest('input, textarea, [contenteditable="true"], [contenteditable=""], [role="textbox"]');
+    if (field && !field.matches('input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="range"],input[type="color"],input[type="file"],input[type="image"],input[type="hidden"]')) return 'cc-text';
+    if (element.closest('a[href], button, summary, select, label[for], input, audio, video, [role="button"], [role="link"], [role="tab"], [role="switch"], [data-action], [data-room], [data-filter], [data-react], [tabindex="0"]')) return 'cc-control';
+    return '';
+  }
+  function state(element) {
+    if (element instanceof Element && element.closest('iframe')) { hide(); return; }
+    const kind = stateFor(element);
+    ['cc-control', 'cc-text', 'cc-media', 'cc-disabled'].forEach(name => cursor.classList.toggle(name, name === kind));
+  }
+  function paint(event) {
+    if (event.pointerType && event.pointerType !== 'mouse') { hide(); return; }
+    if (!allowed()) { hide(); return; }
+    x = event.clientX; y = event.clientY;
+    if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) { hide(); return; }
+    // Track exactly, without a trailing animation that could obscure the click target.
+    cursor.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+    visible = true;
+    cursor.classList.add('cc-visible');
+    root.classList.add('catcul-cursor-active');
+    state(event.target);
+  }
+  document.addEventListener('pointermove', paint, {passive: true});
+  document.addEventListener('pointerover', paint, {passive: true});
+  document.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'mouse') { hide(); return; }
+    paint(event);
+    if (visible) cursor.classList.add('cc-pressed');
+  }, {passive: true});
+  document.addEventListener('pointerup', () => cursor.classList.remove('cc-pressed'), {passive: true});
+  document.addEventListener('pointercancel', hide, {passive: true});
+  document.documentElement.addEventListener('pointerleave', hide, {passive: true});
+  window.addEventListener('blur', hide);
+  window.addEventListener('pagehide', hide);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Tab') hide(); });
+  document.addEventListener('dragstart', () => { dragging = true; hide(); });
+  document.addEventListener('dragend', () => { dragging = false; });
+  window.addEventListener('scroll', () => {
+    if (!visible || frame) return;
+    frame = requestAnimationFrame(() => { frame = 0; if (visible) state(document.elementFromPoint(x, y)); });
+  }, {capture: true, passive: true});
+  toggle.addEventListener('click', event => {
+    enabled = !enabled;
+    try { localStorage.setItem(storageKey, enabled ? 'on' : 'off'); } catch (_) {}
+    updateToggle();
+    if (!enabled) hide();
+    else if (event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
+  });
+  function preferenceChanged() { updateToggle(); hide(); }
+  pointerMedia.addEventListener('change', preferenceChanged);
+  contrastMedia.addEventListener('change', preferenceChanged);
+  window.addEventListener('storage', event => {
+    if (event.key === storageKey || event.key === null) { enabled = event.newValue !== 'off'; updateToggle(); hide(); }
+  });
+  updateToggle();
+})();
+</script>
+<!-- END CATCUL CUSTOM CURSOR -->

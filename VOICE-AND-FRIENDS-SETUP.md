@@ -1,5 +1,7 @@
 # Catcul — activate friends, groups and voice calls
 
+> **School release — start with [SCHOOL-SETUP.md](SCHOOL-SETUP.md).** Run `catcul-school-upgrade.sql` last, after all earlier scripts. It adds strict Study Mode, custom 3–15 character usernames, courses/resources/homework, Gemini and community. It also changes signed-out chat routing to the landing page. Earlier instructions below describe the preceding features; the school guide takes precedence.
+
 **Character Studio update:** this bundle also includes customizable cat avatars. After the SQL steps below, run `catcul-avatar-upgrade.sql`; see `CHARACTER-STUDIO-SETUP.md`. If you rerun this social migration later, rerun the avatar migration afterward too.
 
 ## What is ready, and what is not
@@ -35,7 +37,7 @@ For a completely new project, run `catcul-setup.sql` **first**, then `catcul-soc
 
 The upgrade is transactional and rerunnable. It adds five tables: `friendships`, `best_friends`, `user_blocks`, `voice_calls`, and `call_participants`, with RLS enabled. It also extends profiles, rooms and membership records, and registers the new Realtime tables.
 
-Existing accounts get a unique generated username such as `cat_…`. Each person can change it in **Profile**. Usernames use 3–40 lowercase letters, numbers or underscores. Friend search shows usernames, display names and colors—not emails.
+In the school release, legacy generated handles must be replaced during onboarding. Users choose 3–15 letters, numbers or underscores; capitalization is preserved and uniqueness is case-insensitive. Friend search shows usernames, display names and colors—not emails.
 
 ## Step 2 — create your LiveKit Cloud project
 

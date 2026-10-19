@@ -1,0 +1,41 @@
+CATCUL — CUSTOM CURSOR UPDATE
+
+Added to all four supplied website pages:
+- index.html (the landing page in this local bundle)
+- signup.html
+- signin.html
+- catcul.html (the chat app in this local bundle)
+
+IMPORTANT: You said your live CHAT app is named index.html.
+This update does not rename or reorganize your website. Do not replace your
+live chat index.html with the landing-page index.html from this bundle.
+
+TO UPDATE YOUR EXISTING LIVE FILES WITHOUT CHANGING NAMES:
+1. Open catcul-cursor-snippet.txt and copy its entire contents.
+2. Open your existing HTML page in your editor.
+3. Paste the block just BEFORE the final </body> tag.
+4. Repeat for your landing, sign-up, sign-in and chat pages.
+5. Save and publish the changed HTML files. Refresh the live website.
+
+The snippet has everything included: styles, icons and JavaScript.
+No external asset, npm package, server or Supabase setting is needed.
+If updating this cursor later, replace the existing block from
+"CATCUL CUSTOM CURSOR" through "END CATCUL CUSTOM CURSOR" instead of
+pasting another copy.
+
+WHAT IT DOES:
+- Lime-green ring and a precise center dot on mouse devices.
+- Arrow-style hover feedback on links, buttons and controls.
+- Click feedback, text-field caret and photo zoom indicator.
+- Disabled-control feedback.
+- Clearly labelled bottom-right "Cursor: On / Off" button on every page.
+- In the updated chat page: Settings → Custom cursor switch.
+- Both controls stay synchronized; Off immediately restores the normal pointer.
+- The snippet adds the labelled button; use the updated chat page for the Settings switch.
+- Saves the preference on the browser, shared across pages on the same origin.
+- Leaves touch navigation alone; no mouse cursor is shown on touch-only devices.
+- Respects reduced-motion and high-contrast accessibility settings.
+- Does not block clicks, typing, selection or keyboard focus.
+
+No database migration or email/authentication setting was changed.
+The live website itself has not been edited or deployed by the assistant.

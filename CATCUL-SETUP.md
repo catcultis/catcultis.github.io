@@ -1,5 +1,7 @@
 # Catcul — authenticated Supabase setup
 
+> **School release — start with [SCHOOL-SETUP.md](SCHOOL-SETUP.md).** Run `catcul-school-upgrade.sql` last, after all earlier scripts. It adds strict Study Mode, custom 3–15 character usernames, courses/resources/homework, Gemini and community. It also changes signed-out chat routing to the landing page. Earlier instructions below describe the preceding features; the school guide takes precedence.
+
 ## Current release: Character Studio, friends, private/groups and LiveKit voice
 
 **Newest update: [CHARACTER-STUDIO-SETUP.md](CHARACTER-STUDIO-SETUP.md)** adds editable cat characters saved to user profiles. Run `catcul-avatar-upgrade.sql` after the social upgrade.
@@ -77,7 +79,7 @@ The app uses email/password sign-up and sign-in, email-confirmation redirects, a
 
 **Do not enter the example domain literally.** Use the address where you host the file.
 
-An account's profile is created by `ensure_profile()` after sign-in, so existing Auth accounts can use Catcul too. No trigger is installed on `auth.users`.
+An account's profile is created by `ensure_profile()` after sign-in, so existing Auth accounts can use Catcul too. The school upgrade adds a signup trigger on `auth.users` to atomically reserve the chosen username; follow the school guide before registering new accounts.
 
 ## 4. Check Storage and Realtime
 
@@ -168,7 +170,7 @@ For the separate-page update, local browser checks covered landing-page links, t
 
 ## Custom cursor update
 
-A self-contained Catcul cursor is embedded in all four supplied pages. It includes hover, click, text-field and media states, a standard-cursor toggle, and accessibility fallbacks. No Supabase changes are needed.
+A self-contained Catcul cursor is embedded in all four supplied pages. It includes hover, click, text-field and media states, a clearly labelled **Cursor: On / Off** button, and accessibility fallbacks. In chat, **Settings → Custom cursor** controls the same preference. Your choice is remembered in this browser across pages, tabs and reloads; no database change is needed. No Supabase changes are needed.
 
 **The old snippet is cursor-only; it does not add the new social/voice features.** If you renamed your live chat file to `index.html`, keep that name when applying only the cursor snippet. To avoid replacing it with this local bundle’s landing page, paste the entire contents of `catcul-cursor-snippet.txt` immediately before the closing `</body>` in each existing live HTML file. See `CURSOR-UPDATE.txt`. No live deployment was performed by the assistant.
 

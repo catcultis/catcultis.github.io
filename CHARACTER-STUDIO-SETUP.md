@@ -1,5 +1,7 @@
 # Catcul Character Studio
 
+> **School release — start with [SCHOOL-SETUP.md](SCHOOL-SETUP.md).** Run `catcul-school-upgrade.sql` last, after all earlier scripts. It adds strict Study Mode, custom 3–15 character usernames, courses/resources/homework, Gemini and community. It also changes signed-out chat routing to the landing page. Earlier instructions below describe the preceding features; the school guide takes precedence.
+
 An original rounded Catcul character that each person can customize and save. It uses the same general idea of a dress-up avatar, but the artwork and editor are original—not Wayground/Qbit assets.
 
 ## What people can customize

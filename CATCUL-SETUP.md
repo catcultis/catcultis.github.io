@@ -1,5 +1,7 @@
 # Catcul — authenticated Supabase setup
 
+> **Study board & groups refresh:** follow [STUDY-BOARD-UPDATE.md](STUDY-BOARD-UPDATE.md) for the latest interface and the additional `catcul-study-groups-upgrade.sql` migration.
+
 > **School release — start with [SCHOOL-SETUP.md](SCHOOL-SETUP.md).** Run `catcul-school-upgrade.sql` last, after all earlier scripts. It adds strict Study Mode, custom 3–15 character usernames, courses/resources/homework, Gemini and community. It also changes signed-out chat routing to the landing page. Earlier instructions below describe the preceding features; the school guide takes precedence.
 
 ## Current release: Character Studio, friends, private/groups and LiveKit voice

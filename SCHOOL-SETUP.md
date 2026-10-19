@@ -1,5 +1,7 @@
 # Catcul School — deployment and administrator guide
 
+> **Latest interface update:** see [STUDY-BOARD-UPDATE.md](STUDY-BOARD-UPDATE.md). The helper is now a notebook-style Study board in the central chat area. Install `catcul-study-groups-upgrade.sql` after the school migration for invite-only study groups.
+
 ## Delivery status
 
 The workspace now includes the school dashboard, custom usernames, course rooms, pinned resources, homework, Study Mode with a **server-verified password gate**, Gemini streaming integration, and a signed-in community chat.
@@ -31,7 +33,8 @@ For a new project or an incomplete earlier setup, run in order:
 2. catcul-social-upgrade.sql
 3. catcul-avatar-upgrade.sql
 4. catcul-school-upgrade.sql
-5. catcul-campus-config.sql (your confirmed school IP)
+5. catcul-study-groups-upgrade.sql
+6. catcul-campus-config.sql (your confirmed school IP)
 ```
 
 Do not rerun an older migration by itself after upgrading; rerun all subsequent migrations too. All four scripts are rerunnable for this release. Keep **`catcul`** in **Data API → Exposed schemas**.
@@ -142,7 +145,7 @@ Google's current guidance for new Gemini API projects recommends newer models su
 
 ### AI behavior and safeguards
 
-- The widget is visible only while Study Mode is ON.
+- The central Study board tab is available only while Study Mode is ON. It replaces the former sidebar widget.
 - The server checks the authenticated user's persisted Study Mode before requesting Gemini.
 - Only the question typed into the widget is sent—not the class conversation, student name, email or avatar. Requests are independent questions, not a stored multi-turn AI conversation.
 - The server fixes this system prompt; a client cannot replace it:
@@ -193,9 +196,9 @@ The course creator becomes its owner and can add/remove pinned HTTPS resource li
 
 ### Study Mode workspace
 
-- Left: course rooms, join/create controls, and Gemini Study Partner.
-- Center: the active course conversation.
-- Right: Pinned Resources and Homework Board; use the header's Pinned Resources button on smaller screens.
+- Left: courses and study groups, join/create controls, and conversation filters.
+- Center: Chat / Study board tabs. The board is a private Gemini-powered notebook-style helper, not a shared group document.
+- Right: Pinned Resources and Homework Board; use the header's Resources button on smaller screens.
 - The header changes to muted gray/blue. Social rooms, friends/best friends, community and casual modules are hidden. Incoming notification sounds are muted. Existing themes, character display and cursor controls remain available where appropriate.
 
 ### Campus community

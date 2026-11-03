@@ -1,3 +1,5 @@
+> **Latest update:** See [STUDENT-UPDATE.md](STUDENT-UPDATE.md) and [SOCIAL-CANVAS-UPDATE.md](SOCIAL-CANVAS-UPDATE.md) for the two new migrations, private owner setup, updated managed functions and installable-app assets. Run the new upgrades last.
+
 # Catcul — authenticated Supabase setup
 
 > **Study board & groups refresh:** follow [STUDY-BOARD-UPDATE.md](STUDY-BOARD-UPDATE.md) for the latest interface and the additional `catcul-study-groups-upgrade.sql` migration.

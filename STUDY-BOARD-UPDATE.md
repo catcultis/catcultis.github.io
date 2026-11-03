@@ -1,3 +1,5 @@
+> **Latest update:** See [STUDENT-UPDATE.md](STUDENT-UPDATE.md) and [SOCIAL-CANVAS-UPDATE.md](SOCIAL-CANVAS-UPDATE.md) for the two new migrations, private owner setup, updated managed functions and installable-app assets. Run the new upgrades last.
+
 # Catcul — Study board & study groups update
 
 > **Current release:** YouTube lesson search has been removed. Gemini, study groups and the school password gate remain. No YouTube key or migration is needed. If you deployed the previous YouTube-enabled Edge Function, redeploy the current `supabase/functions/catcul-school/index.ts` to remove its lesson-search action too. This update does not delete hosted tables or revoke stored secrets automatically.

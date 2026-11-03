@@ -1,3 +1,5 @@
+> **Latest update:** See [STUDENT-UPDATE.md](STUDENT-UPDATE.md) and [SOCIAL-CANVAS-UPDATE.md](SOCIAL-CANVAS-UPDATE.md) for the two new migrations, private owner setup, updated managed functions and installable-app assets. Run the new upgrades last.
+
 # Catcul School — deployment and administrator guide
 
 > **Latest interface update:** see [STUDY-BOARD-UPDATE.md](STUDY-BOARD-UPDATE.md). The helper is now a notebook-style Study board in the central chat area. Install `catcul-study-groups-upgrade.sql` after the school migration for invite-only study groups.

@@ -8,7 +8,7 @@ Never embed service-role/secret keys.
 -->
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f8f3">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content"><meta name="theme-color" content="#f7f8f3">
 <meta name="description" content="Catcul — a little space for your favorite people. Live chat, photos and voice notes powered by Supabase Realtime.">
 <title>Catcul — Stay close.</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2215%22%20fill%3D%22%23dcf783%22%2F%3E%3Cpath%20d%3D%22M12%2020%2010%208l12%208h4l12-8-2%2012c7%2014-1%2021-12%2021S5%2034%2012%2020Z%22%20fill%3D%22none%22%20stroke%3D%22%2320261e%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3C%2Fsvg%3E">
@@ -752,6 +752,35 @@ body{--workspace-chrome:0px;background:#e8ece7;--accent:#d9f78a;--bubble:#fff}.a
 body>#catcul-cursor-toggle{bottom:90px;right:16px}body.notes-open>#catcul-cursor-toggle{bottom:12px}
 @media(max-width:650px){body>#catcul-cursor-toggle{bottom:80px;right:12px}}
 .chat-head #chat-status{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.memory-disclosure>summary:focus-visible{outline:2px solid #9cb381;outline-offset:-3px;border-radius:6px}.dark .sidebar .tabs button{color:#b4c0ac}.dark .sidebar .tabs button.active{color:#d9f78a}
+/* The navigation must never stretch the grid beyond the visible window. */
+html,body{height:100%;overflow:hidden}
+.app,.app.details-hidden{height:min(100dvh,var(--chat-viewport-height,100dvh));grid-template-rows:minmax(0,1fr);min-height:0}
+.app>.rail,.app>.sidebar,.app>.chat,.app>.student-view{min-height:0;max-height:100%}
+.app>.rail{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+.rail>.brand,.rail-nav,.rail-bottom{flex-shrink:0}
+.chat{height:100%;overflow:hidden}
+.timeline{flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden}
+.compose-area{flex:0 0 auto;margin-top:auto;z-index:2}
+#room-moments{flex:0 1 auto;min-height:0;max-height:min(210px,32dvh);overflow:auto}
+#file-staging{max-height:min(120px,18dvh);overflow:auto}
+#reply-bar{max-height:70px;overflow:auto}
+#message-input{max-height:min(116px,20dvh);overflow-y:auto}
+.app>.student-view{height:100%}
+@media(max-height:560px){
+ .rail{gap:14px;padding-top:14px;padding-bottom:12px}.rail-nav{gap:6px;padding-top:4px}.rail-bottom{gap:7px;padding-top:12px}
+ .chat-head{height:60px;min-height:60px;padding-top:9px;padding-bottom:9px}
+ .compose-area{padding-top:8px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+ .typing:empty{display:none}.timeline{padding-top:12px;padding-bottom:12px}
+ .memory-disclosure>summary{padding-top:9px;padding-bottom:9px}
+ .memory-disclosure .memory-strip{max-height:90px}
+ .connection-banner{padding-top:6px;padding-bottom:6px}
+}
+@media(max-width:650px){
+ .app,.app.details-hidden{height:min(100dvh,var(--chat-viewport-height,100dvh))}
+ .sidebar,.app>.student-view{height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - 64px)}
+ .chat{top:var(--chat-viewport-top,0px);bottom:auto;height:min(100dvh,var(--chat-viewport-height,100dvh));max-height:none!important}
+ .rail{overflow:visible}
+}
 
 </style>
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#d7ed9b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
@@ -1657,6 +1686,10 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-social-extra="i
 /* Conversation-first navigation. All actions use the existing authenticated app. */
 function showWorkspaceMenu(){openModal(`${modalTitle('chat','Your workspace','Everything else, out of the way.')}<div class="chat-menu-grid"><button data-action="notes">${icon('pencil')}<span>Quick notes<small>Alt+N · no password</small></span></button><button data-action="new-room">${icon('chat')}<span>New chat</span></button><button data-action="new-study-group">${icon('people')}<span>New study group</span></button><button data-action="new-course">${icon('book')}<span>Create a course</span></button><button data-action="join-study-group">${icon('link')}<span>Join with invite</span></button><button data-action="community">${icon('people')}<span>Campus community</span></button><button data-action="profile">${icon('cat')}<span>My profile</span></button><button data-action="calls">${icon('phone')}<span>Call history</span></button><button data-action="theme">${icon('moon')}<span>Light / dark theme</span></button><button data-action="settings">${icon('settings')}<span>Settings</span></button><button data-action="signout">${icon('logout')}<span>Sign out</span></button></div>`);}
 function showChatTools(){openModal(`${modalTitle('more','Chat tools','For this conversation, and your people.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="search-chat">${icon('search')}<span>Search chat</span></button><button data-action="open-academic">${icon('book')}<span>Resources & homework</span></button><button data-action="details">${icon('info')}<span>Room details</span></button><button data-action="invite">${icon('link')}<span>Invite someone</span></button><button data-social-extra="plans">${icon('check')}<span>Shared plans</span></button><button data-social-extra="poll">${icon('people')}<span>Create a poll</span></button><button data-action="gallery">${icon('photo')}<span>Shared photos</span></button><button data-social-extra="camera">${icon('photo')}<span>Camera</span></button><button data-social-extra="nearby">${icon('people')}<span>Nearby students</span></button><button data-social-extra="vibe">${icon('smile')}<span>Room vibe</span></button><button data-social-extra="bedroom">${icon('cat')}<span>My digital room</span></button><button data-social-extra="spark">${icon('spark')}<span>Send a Spark</span></button><button data-social-extra="install">${icon('bell')}<span>App & alerts</span></button><button data-action="workspace-menu">${icon('settings')}<span>Workspace menu</span></button></div>`);$('.chat-tools-menu').addEventListener('click',e=>{if(e.target.closest('button'))closeModal();});}
+
+// Follow the visible viewport when mobile browser chrome / keyboards resize it.
+// Do not reflow the app during pinch zoom: keep normal browser magnification.
+(()=>{let frame=0;const sync=()=>{frame=0;const viewport=window.visualViewport,root=document.documentElement;if(viewport&&Math.abs(viewport.scale-1)<.02){root.style.setProperty('--chat-viewport-height',Math.round(viewport.height)+'px');root.style.setProperty('--chat-viewport-top',Math.round(viewport.offsetTop)+'px');}else{root.style.removeProperty('--chat-viewport-height');root.style.removeProperty('--chat-viewport-top');}};const schedule=()=>{if(!frame)frame=requestAnimationFrame(sync);};window.addEventListener('resize',schedule,{passive:true});window.visualViewport?.addEventListener('resize',schedule,{passive:true});window.visualViewport?.addEventListener('scroll',schedule,{passive:true});sync();})();
 
 
 const actions={'workspace-menu':showWorkspaceMenu,'chat-tools':showChatTools,'new-study-group':showStudyGroupCreate,'join-study-group':showStudyGroupJoin,'view-chat':()=>showChatView(true),'notes':openNotes,'new-course':showCourseCreate,'join-course':()=>showNewRoom('join'),'community':openCommunity,'open-academic':openAcademic,'pin-resource':()=>showAcademicAdd('resource'),'add-homework':()=>showAcademicAdd('homework'),

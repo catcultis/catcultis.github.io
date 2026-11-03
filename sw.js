@@ -1,5 +1,5 @@
 /* Cache only public application files. Never cache Supabase/API/private content. */
-const CACHE='catcul-shell-v9';
+const CACHE='catcul-shell-v10';
 const FILES=['./','./catcul.html','./signin.html','./signup.html','./manifest.json','./icons/catcul-192.png','./icons/catcul-512.png'];
 const urls=FILES.map(path=>new URL(path,self.registration.scope).href);
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(urls)));});

@@ -1,3 +1,5 @@
+> **Typing-bar fix:** the chat now stays within the visible window. The left navigation scrolls independently instead of stretching the chat, and the message composer stays at the bottom. Browser viewport resizing is handled, including reduced visible height. Upload the updated `catcul.html` (or your deployed chat filename) and `sw.js`, then reload/reopen the site. No new SQL or function deployment is needed.
+
 # Catcul — conversation-first layout
 
 This is the latest visual update. It uses a WhatsApp-style messenger structure while keeping Catcul’s identity, green palette, dark theme and existing authenticated features. No WhatsApp integration or assets are used.
@@ -24,7 +26,7 @@ Replace the public files on your existing static host:
 
 The workspace filenames have not changed. If you map `catcul.html` to your deployed `index.html`, retain your existing mapping and verify the links as usual.
 
-Reload your tabs or fully close and reopen the installed app. The service-worker cache is now `catcul-shell-v9`.
+Reload your tabs or fully close and reopen the installed app. The service-worker cache is now `catcul-shell-v10`.
 
 **This layout-only refresh needs no new SQL or Edge Function deployment if the preceding Notes/open-workspace update is already installed.** If you have not finished that earlier update, follow `OPEN-WORKSPACE-UPDATE.md` to remove the old server-side locks. Its SQL migration must still run last. Do not repeat owner provisioning.
 

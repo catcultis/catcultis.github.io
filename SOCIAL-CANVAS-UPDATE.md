@@ -1,3 +1,5 @@
+> **Current release:** [OPEN-WORKSPACE-UPDATE.md](OPEN-WORKSPACE-UPDATE.md) takes precedence. Apply its final migration after this one.
+
 # Catcul: shared plans, nearby discovery and installable app
 
 ## What is included
@@ -6,16 +8,16 @@
 - **Interactive map:** open the map explicitly, then tap to place a pin. Leaflet is bundled locally. Tiles are requested from OpenStreetMap only after opening the map; the provider receives your IP and the viewed area. Attribution is retained, with no tile prefetch/offline caching. Map rendering needs internet access and provider availability.
 - **Nearby within 500 m:** explicit location permission or manually entered coordinates. Search coordinates stay in current page memory and are not stored in Catcul tables. Use Forget search location to clear them. Nearby posts advertise a deliberately supplied public venue—not the author's live position. Posts expire within 24 hours; creation is limited to ten per account per day. Authors can remove posts; students can report them and the owner can moderate them.
 - **Student discovery, not identity verification:** any signed-in student account can search. Catcul does not verify campus identity. Coordinates can be searched manually, so a 500 m search is not a security boundary. Do not publish home addresses or private contact details. Walk-together posts do not guarantee safety or monitor a trip. Meet publicly, verify who you are meeting and use local emergency services when needed.
-- **Digital bedrooms:** five palettes and up to six manually curated music, watching, gaming or thought cards with optional HTTPS links. Visible to friends/roommates outside Study Mode, not an automatically aggregated feed. Other platforms open separately; no external accounts are connected.
+- **Digital bedrooms:** five palettes and up to six manually curated music, watching, gaming or thought cards with optional HTTPS links. Visible to friends/roommates outside not an automatically aggregated feed. Other platforms open separately; no external accounts are connected.
 - **Co-presence:** current-room activity indicators for listening, gallery and planning, alongside existing typing indicators. Activity sharing is optional under Vibe. Activity is ephemeral, self-reported and never a real-world location or proof of identity. Hidden/background rooms do not deliberately advertise active viewing.
-- **Memory Lane:** an automatically assembled in-browser reel from up to twelve recent photos, voice notes and short messages in that room, or a year-ago selection. No diary content, outside source material or AI upload. Tap Play reel for an automatic slideshow; voice notes require a separate play gesture. This is not an exported MP4 or a newly generated image collage. Removed messages are excluded when the reel reloads.
+- **Memory Lane:** a collapsed-by-default dropdown, loaded when opened, with an automatically assembled in-browser reel from up to twelve recent photos, voice notes and short messages in that room, or a year-ago selection. No diary content, outside source material or AI upload. Tap Play reel for an automatic slideshow; voice notes require a separate play gesture. This is not an exported MP4 or a newly generated image collage. Removed messages are excluded when the reel reloads.
 - **React Live:** emoji reactions saved against the current whole-second playback position of a voice note. Tap a reaction marker to jump to that time. Up to thirty timestamp reactions per user/note; voice recordings can now last up to sixty seconds.
 - **Spark:** a silent, rate-limited “I’m around” signal that fades after ten minutes. It does not send sound or push notifications.
 - **Temporary room vibes:** studying, music, tired, happy or quiet backgrounds/badges expire after eight hours. They do not overwrite the saved character design.
 - **Catch-up marker:** uses saved last-read time. If the exact boundary is outside the loaded history, the UI says that older context is above rather than inventing a precise stopping point. Skip to latest clears the marker.
 - **Installable app:** manifest, original Catcul home-screen icons, standalone display and a small service worker. Only public application files are cached; Supabase responses, messages, diary entries and private media are not cached by the worker.
 
-Study Mode still locks social rooms. Nearby, bedrooms, Sparks, moods and Memory Lane are unavailable while it is locked. Shared checklists, polls and events can be used in permitted study/course rooms. Diary remains private and available. There are no teacher roles, payment features, money tracking, buying/selling tools or YouTube integration.
+All of these features are available without a mode lock. Normal account, membership, block and suspension checks remain. Diary is private and available. There are no teacher roles, money features or YouTube integration.
 
 ## Files to publish
 
@@ -29,7 +31,7 @@ Keep your existing filename convention if you deploy the chat as your `index.htm
 
 Do **not** upload the owner-bootstrap SQL, setup/key generator, migrations or private secrets to your public site. `PUSH-KEYS.html` is an optional local setup utility, not a production page. Supabase functions are deployed through Supabase, not through GitHub Pages.
 
-Run the two new SQL migrations and owner bootstrap in the order in **STUDENT-UPDATE.md**. Redeploy school/calls; deploy catcul-admin. School, admin, calls and push use managed Supabase Edge Functions—no user-managed Node/Python production service.
+Use the migration order in **OPEN-WORKSPACE-UPDATE.md**; run the final retirement migration last. Do not repeat the existing owner bootstrap. Redeploy school/calls; deploy catcul-admin. School, admin, calls and push use managed Supabase Edge Functions—no user-managed Node/Python production service.
 
 ## Enable native Web Push (additional setup)
 
@@ -55,7 +57,7 @@ Installing the icon alone does **not** deliver messages in the background.
 
 ### Push privacy and delivery behavior
 
-- The server derives recipients from current room membership, not caller-supplied IDs. It excludes the sender, suspended accounts, blocked pairs, muted rooms and social-room recipients locked in Study Mode. Academic room notifications are allowed in Study Mode.
+- The server derives recipients from current room membership, not caller-supplied IDs. It excludes the sender, suspended accounts, blocked pairs, muted rooms. Retired mode settings do not filter recipients.
 - Push contains a generic new-message alert, never a diary entry or message body. Tapping it opens a room only after the normal signed-in workspace authorization.
 - Subscriptions are service-only records. At most ten devices per account. Expired provider subscriptions are removed when the provider rejects them. Successful sends are deduplicated by message/subscription.
 - Signing out unsubscribes the browser and clears displayed Catcul notifications where supported. Failed server-record cleanup may leave an inert record until the provider rejects it later.
@@ -64,4 +66,4 @@ Installing the icon alone does **not** deliver messages in the background.
 
 ## Checks performed locally
 
-SQL migrations were installed/reapplied on isolated PostgreSQL; security tests cover diary ownership, owner access, suspensions with old JWTs, reported-only moderation, private plans, votes, nearby radius/expiry and Study Mode. Browser tests use isolated fixtures; provider tests stub Auth, LiveKit and Web Push. No real push was sent, no real payment system was connected, and no hosted deployment was performed by the assistant.
+SQL migrations were installed/reapplied on isolated PostgreSQL; security tests cover diary ownership, owner access, suspensions with old JWTs, reported-only moderation, private plans, votes, nearby radius/expiry and lock retirement. Browser tests use isolated fixtures; provider tests stub Auth, LiveKit and Web Push. No real push was sent, no real payment system was connected, and no hosted deployment was performed by the assistant.

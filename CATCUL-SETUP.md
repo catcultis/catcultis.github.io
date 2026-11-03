@@ -1,18 +1,15 @@
-> **Latest update:** See [STUDENT-UPDATE.md](STUDENT-UPDATE.md) and [SOCIAL-CANVAS-UPDATE.md](SOCIAL-CANVAS-UPDATE.md) for the two new migrations, private owner setup, updated managed functions and installable-app assets. Run the new upgrades last.
+> **Start here for the current release:** [OPEN-WORKSPACE-UPDATE.md](OPEN-WORKSPACE-UPDATE.md). It has the authoritative migration/deployment order. Mode locks, passcodes, campus detection and AI boards are retired; older SQL filenames are dependency history only.
+
 
 # Catcul — authenticated Supabase setup
 
-> **Study board & groups refresh:** follow [STUDY-BOARD-UPDATE.md](STUDY-BOARD-UPDATE.md) for the latest interface and the additional `catcul-study-groups-upgrade.sql` migration.
 
-> **School release — start with [SCHOOL-SETUP.md](SCHOOL-SETUP.md).** Run `catcul-school-upgrade.sql` last, after all earlier scripts. It adds strict Study Mode, custom 3–15 character usernames, courses/resources/homework, Gemini and community. It also changes signed-out chat routing to the landing page. Earlier instructions below describe the preceding features; the school guide takes precedence.
 
 ## Current release: Character Studio, friends, private/groups and LiveKit voice
 
-**Newest update: [CHARACTER-STUDIO-SETUP.md](CHARACTER-STUDIO-SETUP.md)** adds editable cat characters saved to user profiles. Run `catcul-avatar-upgrade.sql` after the social upgrade.
 
 Use [VOICE-AND-FRIENDS-SETUP.md](VOICE-AND-FRIENDS-SETUP.md) for friends/calls and dashboard-only LiveKit setup.
 
-You reported completing the original SQL installation and exposing the `catcul` schema. This release **does require a new migration**: `catcul-social-upgrade.sql`. Run it after the original setup. It preserves existing messages and turns old rooms into groups. The assistant has not applied SQL or changed your external project settings.
 
 The supplied chat page adds username-based friends, private best-friend pins, friend-only direct messages, groups, owner controls and real LiveKit voice integration. Calls and owner member-removal use the included managed `catcul-calls` Supabase Edge Function. They are not deployed just by uploading the HTML. Live two-account audio verification remains your final setup step.
 
@@ -25,7 +22,6 @@ Your project is configured in `signup.html`, `signin.html`, and `catcul.html`:
 Never put a service-role/secret key or LiveKit API secret into HTML, browser storage, frontend configuration, a public repository, or chat. If you expose a privileged key, rotate it in its provider dashboard.
 
 The website now has **four separate HTML pages**: `index.html` (landing), `signup.html`, `signin.html`, and `catcul.html` (chat). Each page includes its own styles, icons and any scripts it needs. Keep the four files together on one HTTPS website. **No user-run Node.js/Python server or frontend build process is required.** Calling uses a managed Supabase Edge Function and LiveKit Cloud; deploy/configure them through their dashboards. The SQL file is a database installation, not a server to run.
-
 ## 1. Install the schema and policies
 
 1. Open the correct Supabase project.
@@ -33,7 +29,7 @@ The website now has **four separate HTML pages**: `index.html` (landing), `signu
 3. Paste the entire contents of **`catcul-setup.sql`**.
 4. Run it as the project administrator.
 5. The original script shows **eight tables**, each with `rls_enabled = true`.
-6. Then run **`catcul-social-upgrade.sql`**. It adds five RLS-protected tables and updates helpers/policies. If the original setup is already installed, run just the upgrade. Then run **`catcul-avatar-upgrade.sql`** for Character Studio. Do not rerun older migrations alone after upgrading; rerun subsequent migrations in order.
+6. Then run **`catcul-social-upgrade.sql`**. It adds five RLS-protected tables and updates helpers/policies. If the original setup is already installed, run just the upgrade. Then follow the remaining migration order in **OPEN-WORKSPACE-UPDATE.md**, finishing with the open-workspace migration. Do not rerun older migrations alone after upgrading; rerun subsequent migrations in order.
 
 The script is transactional and rerunnable for this version. It does not drop existing application tables or remove unrelated policies. It reserves the `catcul` schema, `catcul-media` bucket, `catcul:` Realtime topic prefix, and `catcul_*` policy names for this application. If your project already uses those names for something else, review and rename them before running it.
 

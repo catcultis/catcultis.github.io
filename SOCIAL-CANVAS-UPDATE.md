@@ -1,3 +1,5 @@
+> **Latest layout:** [MESSENGER-LAYOUT-UPDATE.md](MESSENGER-LAYOUT-UPDATE.md). The campus masthead is gone; tools use compact navigation and menus. No additional SQL is needed for this layout refresh if the open-workspace update is already installed.
+
 > **Current release:** [OPEN-WORKSPACE-UPDATE.md](OPEN-WORKSPACE-UPDATE.md) takes precedence. Apply its final migration after this one.
 
 # Catcul: shared plans, nearby discovery and installable app

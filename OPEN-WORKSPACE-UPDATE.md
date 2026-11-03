@@ -1,3 +1,5 @@
+> **Latest layout:** [MESSENGER-LAYOUT-UPDATE.md](MESSENGER-LAYOUT-UPDATE.md). The campus masthead is gone; tools use compact navigation and menus. No additional SQL is needed for this layout refresh if the open-workspace update is already installed.
+
 # Catcul — more space, simple Notes, no Study Mode
 
 **Start here. This guide supersedes older instructions about study boards, passcodes and campus networks.** The files have been updated locally; no hosted database, Edge Function, secret or website deployment was changed automatically.
@@ -5,7 +7,7 @@
 ## What changed
 
 - A roomier chat layout, larger spacing and controls, and more space for conversations. Resources and room details now open in a drawer rather than permanently squeezing the chat.
-- **Memory Lane is a dropdown**, collapsed by default. Open it to load this room’s memories; choose This week / A year ago, or play the existing reel.
+- **Memory Lane is a dropdown**, collapsed by default. It is not shown in Campus Community. In other rooms, open it to load this room’s memories; choose This week / A year ago, or play the existing reel.
 - **Notes** instantly opens a plain editable notebook. Press **Alt+N** to switch, or use the Notes button. **Escape / Back** returns to the same workspace. No password in either direction.
 - No Study Mode toggle, Gemini board, campus detection, passcode modal, social restriction, or owner school-lock settings. Courses, study groups and resources remain available alongside friends, chats, calls and the social tools.
 - Normal account sign-in, private room membership, suspension, admin authorization and private synced Diary are still enforced.

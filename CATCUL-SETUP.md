@@ -1,3 +1,5 @@
+> **Latest layout:** [MESSENGER-LAYOUT-UPDATE.md](MESSENGER-LAYOUT-UPDATE.md). The campus masthead is gone; tools use compact navigation and menus. No additional SQL is needed for this layout refresh if the open-workspace update is already installed.
+
 > **Start here for the current release:** [OPEN-WORKSPACE-UPDATE.md](OPEN-WORKSPACE-UPDATE.md). It has the authoritative migration/deployment order. Mode locks, passcodes, campus detection and AI boards are retired; older SQL filenames are dependency history only.
 
 

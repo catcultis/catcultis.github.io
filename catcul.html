@@ -782,6 +782,132 @@ html,body{height:100%;overflow:hidden}
  .rail{overflow:visible}
 }
 
+/* Catcul Chat Tools — pins, archive, editing, files, voice gestures, unread nav, wallpapers. */
+.room .pin-badge{color:#8a9a7a}.room .pin-badge svg{width:13px;height:13px;vertical-align:-2px}
+.room.muted-row .time::after{content:'🔕';font-size:9px;margin-left:5px}
+.room .unread.manual{background:#84b465;min-width:10px;width:10px;height:10px;padding:0;right:18px}
+.tabs [data-filter="archived"]{margin-left:auto}
+.chat[data-wallpaper="plain"] .timeline{background-image:none}
+.chat[data-wallpaper="mint"] .timeline{background-image:none;background-color:#e3f0e4}
+.chat[data-wallpaper="sand"] .timeline{background-image:none;background-color:#f4ecdc}
+.chat[data-wallpaper="rose"] .timeline{background-image:none;background-color:#f5e8e4}
+.chat[data-wallpaper="sky"] .timeline{background-image:none;background-color:#e4eef4}
+.chat[data-wallpaper="night"] .timeline{background-image:none;background-color:#232c26}
+.dark .chat[data-wallpaper="night"] .timeline{background-color:#101813}
+/* Edited chip + file cards */
+.edited-tag{font-size:9px;color:var(--muted);font-style:italic;margin-left:6px}
+.file-card{display:flex;align-items:center;gap:11px;min-width:190px;max-width:300px;padding:4px 0}
+.file-card .file-ico{width:40px;height:40px;border-radius:11px;background:var(--accent);color:var(--dark);display:grid;place-items:center;flex-shrink:0}
+.file-card .file-ico svg{width:20px;height:20px}
+.file-card h4{font-size:13px;font-weight:600;word-break:break-word;margin-bottom:3px}
+.file-card p{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.file-card .file-open{margin-left:auto;width:34px;height:34px;border-radius:50%;background:var(--dark);color:var(--accent);display:grid;place-items:center;flex-shrink:0}
+.file-card .file-open svg{width:16px;height:16px}
+.message .bubble .audio-wrap{display:flex;align-items:center;gap:6px}
+.rate-btn{font-size:9px;font-weight:700;border:1px solid var(--line);border-radius:20px;padding:3px 7px;color:var(--muted);flex-shrink:0}
+.message.mine .rate-btn{border-color:#0002;color:#556b3f}
+/* Staging */
+.file-staging .audio{width:100%;max-width:280px;height:34px}
+.file-staging img{max-height:74px;border-radius:10px}
+.file-staging{gap:12px}
+/* Editing banner */
+.edit-bar{display:flex;align-items:center;gap:10px;background:var(--soft);border-left:3px solid #a9c46b;border-radius:10px;padding:9px 12px;margin-bottom:8px;font-size:12px}
+.edit-bar .grow p{color:var(--muted);font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:330px}
+/* Unread navigation */
+.unread-jump{position:absolute;left:50%;transform:translateX(-50%);bottom:96px;z-index:6;background:var(--panel);border:1px solid var(--line);box-shadow:0 6px 18px #283a2022;border-radius:22px;padding:8px 14px;font-size:11px;font-weight:650;color:var(--green);display:flex;align-items:center;gap:7px}
+.unread-jump svg{width:13px;height:13px}
+.scroll-bottom{position:absolute;right:22px;bottom:96px;z-index:6;width:36px;height:36px;border-radius:50%;background:var(--panel);border:1px solid var(--line);box-shadow:0 4px 12px #283a2018;display:grid;place-items:center;color:var(--muted)}
+.scroll-bottom.has-new{color:var(--green)}
+.scroll-bottom .cnt{position:absolute;top:-6px;right:-4px;background:#84b465;color:#fff;border-radius:10px;font-size:9px;min-width:16px;height:16px;line-height:16px;text-align:center;padding:0 4px}
+.message.flash .bubble{animation:msgflash 1.6s ease}
+@keyframes msgflash{0%,40%{background:#f0e6b8}100%{}}
+.dark .message.flash .bubble{animation:msgflashd 1.6s ease}
+@keyframes msgflashd{0%,40%{background:#4a5a33}100%{}}
+/* Pinned banner */
+.pin-banner{display:flex;align-items:center;gap:10px;padding:7px 26px;background:#f7f9f1;border-bottom:1px solid var(--line);font-size:11px;cursor:pointer;flex-shrink:0}
+.pin-banner .bar{width:3px;align-self:stretch;border-radius:2px;background:#9cb381;flex-shrink:0}
+.pin-banner strong{font-size:10px;color:var(--green)}
+.pin-banner p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}
+.pin-banner .icon-btn{width:26px;height:26px;margin-left:auto}
+.dark .pin-banner{background:#222e24}
+/* WhatsApp-style recording */
+.composer{position:relative}
+#mic-button{position:relative;z-index:6}
+.recording{position:absolute;left:12px;right:52px;bottom:14px;z-index:5;background:var(--panel);border-radius:28px;display:flex;align-items:center;gap:12px;padding:12px 18px;box-shadow:0 6px 22px #2636181f;font-size:13px}
+.recording .record-dot{width:11px;height:11px;border-radius:50%;background:#d34f3e;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.recording .slide-hint{margin-left:auto;color:var(--muted);font-size:11px;display:flex;align-items:center;gap:4px;transition:opacity .2s}
+.recording.cancel-zone .slide-hint{color:#d34f3e;font-weight:700}
+.recording.locked .slide-hint{display:none}
+.recording .lock-cta{display:none;margin-left:auto;color:var(--muted)}
+.recording.locked .lock-cta{display:flex;align-items:center;gap:6px;font-size:11px}
+#mic-button.record-live{background:#d34f3e;color:#fff;border-radius:50%}
+/* File/doc attach menu */
+.attach-menu{position:absolute;left:26px;bottom:88px;z-index:7;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px #26361826;padding:10px;display:flex;flex-direction:column;gap:4px;min-width:220px}
+.attach-menu button{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:11px;font-size:12px;text-align:left}
+.attach-menu button:hover{background:var(--soft)}
+.attach-menu svg{width:19px;height:19px}
+.attach-menu .att-ico{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.attach-menu .att-photo{background:#e8f3d8;color:#5c7a3a}.attach-menu .att-doc{background:#e2ecf5;color:#3f5c75}.attach-menu .att-cam{background:#f3e4da;color:#8a5c40}
+/* Search dialog */
+.search-scope{display:flex;gap:7px;margin:14px 0 8px}
+.search-scope button{font-size:11px;padding:7px 12px;border-radius:20px;background:var(--soft);color:var(--muted)}
+.search-scope button.active{background:var(--dark);color:#fff}
+.search-filters{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+.search-filters button{font-size:10px;padding:6px 11px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.search-filters button.active{background:#e0f0d1;color:#345b30;border-color:#c9dfb4}
+.search-jump-date{display:flex;gap:8px;margin-bottom:12px;align-items:center}
+.search-jump-date input{flex:1;font-size:11px;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:var(--soft)}
+.search-jump-date button{font-size:11px;padding:8px 12px;border-radius:10px;background:var(--accent);font-weight:600}
+.search-results .result{width:100%;text-align:left;padding:12px 13px;border-radius:12px;margin-bottom:6px;background:var(--soft)}
+.search-results .result:hover{background:var(--line)}
+.search-results .result p{font-size:11px;color:var(--muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.search-results .result .room-tag{font-size:9px;color:var(--green);font-weight:700}
+mark{background:#f0e6b8;border-radius:3px;padding:0 1px}
+/* Wallpaper picker */
+.wallpaper-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}
+.wallpaper-grid button{height:64px;border-radius:14px;border:2px solid transparent;position:relative;display:grid;place-items:end start;padding:8px;font-size:9px;font-weight:700;color:#5c6b52}
+.wallpaper-grid button.active{border-color:#84a462}
+.wp-default{background:#f0f2e9}.wp-plain{background:#fff}.wp-mint{background:#e3f0e4}.wp-sand{background:#f4ecdc}.wp-rose{background:#f5e8e4}.wp-sky{background:#e4eef4}.wp-night{background:#232c26;color:#c9d4c3}
+/* Notify dialog */
+.notify-opts label{display:flex;align-items:center;gap:11px;padding:13px 13px;border:1px solid var(--line);border-radius:13px;margin-bottom:8px;font-size:12px;cursor:pointer}
+.notify-opts input{accent-color:#84a462}
+.mute-durs{display:flex;gap:7px;margin-top:8px}
+.mute-durs button{flex:1;font-size:10px;padding:8px 4px;border-radius:9px;background:var(--soft);border:1px solid var(--line)}
+.mute-durs button.active{background:var(--dark);color:#fff}
+/* Group settings */
+.gs-section{margin-top:20px}
+.gs-section h4{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.toggle-row{display:flex;align-items:center;gap:11px;padding:11px 2px;border-bottom:1px solid var(--line);font-size:12px}
+.toggle-row .grow p{font-size:10px;color:var(--muted);margin-top:3px}
+.toggle-row input{accent-color:#84a462;width:19px;height:19px}
+.gs-section select,.gs-section input[type="datetime-local"],.gs-section input[type="number"]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--soft);font-size:12px;margin-top:5px}
+.danger-link{color:#ac6750!important}
+/* Pending banners */
+.pending-banner{display:flex;align-items:center;gap:9px;background:#fff5dc;color:#8a6c25;font-size:11px;padding:9px 24px;border-bottom:1px solid #eadfbe;flex-shrink:0}
+.pending-banner button{text-decoration:underline;font-weight:650;font-size:11px}
+.archived-banner{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--soft);color:var(--muted);font-size:11px;padding:12px 24px;flex-shrink:0}
+/* Approval queue + files list */
+.pending-item,.file-row{display:flex;gap:11px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:13px;margin-bottom:9px}
+.pending-item .bubble{padding:10px 13px;font-size:12px}
+.pending-item .row{justify-content:flex-end;margin-top:9px}
+.file-row{align-items:center}
+.file-row .file-ico{width:34px;height:34px;border-radius:10px;font-size:8px;font-weight:800;background:var(--accent);color:var(--dark);display:grid;place-items:center;flex-shrink:0}
+.file-row h4{font-size:12px;font-weight:600;margin-bottom:3px;word-break:break-all}
+.file-row p{font-size:10px;color:var(--muted)}
+.file-row .row{margin-left:auto;flex-shrink:0}
+/* Mentions */
+.mention{color:#4f7a35;font-weight:650;background:#e7f1d9;border-radius:4px;padding:0 2px}
+.message.mine .mention{color:#38571f;background:#cfe5ae}
+@media(max-width:650px){
+ .unread-jump{bottom:86px;padding:7px 12px;font-size:10px}
+ .scroll-bottom{right:12px;bottom:86px}
+ .edit-bar .grow p{max-width:200px}
+ .attach-menu{left:10px;bottom:76px}
+ .pin-banner{padding-left:16px;padding-right:16px}
+ .pending-banner{padding-left:16px}
+}
+
 </style>
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#d7ed9b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body>
@@ -815,7 +941,7 @@ html,body{height:100%;overflow:hidden}
 <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 13a9 9 0 0 1-10-10 9 9 0 1 0 10 10Z"/></symbol>
 <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/></symbol>
 <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></symbol>
-<symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M9 4h6l1 8 3 3v1h-6v6l-1 2-1-2v-6H5v-1l3-3z"/></symbol><symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9M9 13h6"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v6h6"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
 <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C6 2 1 10 5 17s17 4 15-14ZM4 21 15 10"/></symbol>
 <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M3 15v6h18v-6"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.5v3a1.5 1.5 0 0 1-1.7 1.5A18.8 18.8 0 0 1 3 4.7 1.5 1.5 0 0 1 4.5 3h3l1.4 5-2 1.6a14 14 0 0 0 7.5 7.5l1.6-2 5 1.4Z"/></symbol>
@@ -1165,7 +1291,7 @@ async function loadRooms(){if(!user)return;const epoch=bootVersion;let spaceResu
 function scheduleRooms(){clearTimeout(roomRefreshTimer);roomRefreshTimer=setTimeout(()=>loadRooms().catch(fail),600);}
 async function loadPeople(id){const epoch=bootVersion;const links=unwrap(await db.from('room_members').select('user_id,role').eq('room_id',id).is('removed_at',null).limit(100));const ids=links.map(x=>x.user_id);if(!ids.length)return;const people=unwrap(await db.from('profiles').select('*').in('id',ids));if(epoch!==bootVersion)return;people.forEach(p=>{peopleCache[p.id]=dbPerson(p);if(p.id===profile.id)profile=peopleCache[p.id];});roomPeople[id]=links.map(x=>({...peopleCache[x.user_id],role:x.role})).filter(x=>x.id);if(id===active)renderPresence();refreshAvatarSurfaces();}
 async function hydrateRows(rows,id){if(!rows.length)return[];const epoch=bootVersion;const unknown=[...new Set(rows.map(m=>m.sender_id))].filter(x=>!peopleCache[x]);if(unknown.length){const people=unwrap(await db.from('profiles').select('*').in('id',unknown));if(epoch!==bootVersion)return[];people.forEach(p=>peopleCache[p.id]=dbPerson(p));}const aids=[...new Set(rows.map(m=>m.attachment_id).filter(Boolean))];let attachments=[];if(aids.length){attachments=unwrap(await db.from('attachments').select('*').in('id',aids));await Promise.all(attachments.map(async a=>{let cached=mediaCache[a.id];if(!cached||cached.expires<Date.now()){const res=await client.storage.from(MEDIA_BUCKET).createSignedUrl(a.object_path,3600);if(epoch===bootVersion)mediaCache[a.id]={...a,url:res.data?.signedUrl||null,expires:Date.now()+3300000};}}));}
-if(epoch!==bootVersion)return[];return rows.map(row=>{const old=roomHistory(id).find(m=>m.id===row.id);const parent=roomHistory(id).find(m=>m.id===row.reply_to)||rows.find(m=>m.id===row.reply_to);return{id:row.id,roomId:id,sender:peopleCache[row.sender_id]||{id:row.sender_id,name:'Former member',color:colors[0]},time:Date.parse(row.created_at),createdAt:row.created_at,kind:row.kind,text:row.body||'',attachmentId:row.attachment_id,data:row.deleted_at?null:mediaCache[row.attachment_id]?.url||null,reply:row.reply_to?{id:row.reply_to,name:parent?.sender?.name||peopleCache[parent?.sender_id]?.name||'Earlier message',text:parent?.deleted||parent?.deleted_at?'Message removed':parent?.text||parent?.body||'Reply to an earlier message'}:null,deleted:!!row.deleted_at,reactions:row.deleted_at?{}:old?.reactions||{},receivedBy:old?.receivedBy||[],readBy:old?.readBy||[],status:'sent'};});}
+if(epoch!==bootVersion)return[];return rows.map(row=>{const old=roomHistory(id).find(m=>m.id===row.id);const parent=roomHistory(id).find(m=>m.id===row.reply_to)||rows.find(m=>m.id===row.reply_to);return{id:row.id,roomId:id,sender:peopleCache[row.sender_id]||{id:row.sender_id,name:'Former member',color:colors[0]},time:Date.parse(row.created_at),createdAt:row.created_at,kind:row.kind,text:row.body||'',attachmentId:row.attachment_id,data:row.deleted_at?null:mediaCache[row.attachment_id]?.url||null,reply:row.reply_to?{id:row.reply_to,name:parent?.sender?.name||peopleCache[parent?.sender_id]?.name||'Earlier message',text:parent?.deleted||parent?.deleted_at?'Message removed':parent?.text||parent?.body||'Reply to an earlier message'}:null,deleted:!!row.deleted_at,reactions:row.deleted_at?{}:old?.reactions||{},receivedBy:old?.receivedBy||[],readBy:old?.readBy||[],edited:!!row.edited_at&&!row.deleted_at,editedAt:!row.deleted_at?row.edited_at||null:null,approved:row.approved!==false,status:'sent'};});}
 async function loadHistory(id,older=false,background=false){if(!setupReady||!id)return;const wasAtBottom=id===active&&atBottom();const initialIds=new Set(roomHistory(id).map(m=>m.id));const epoch=bootVersion,version=loadEpoch[id]=(loadEpoch[id]||0)+1;let q=db.from('messages').select('*').eq('room_id',id).order('created_at',{ascending:false}).order('id',{ascending:false}).limit(PAGE_SIZE);if(older&&cursors[id]){const c=cursors[id];q=q.or(`created_at.lt.${c.created_at},and(created_at.eq.${c.created_at},id.lt.${c.id})`);}const rows=unwrap(await q);if(epoch!==bootVersion||loadEpoch[id]!==version)return;if(states[id]!=='SUBSCRIBED'&&rooms.find(r=>r.id===id)?.can_send!==false){states[id]='POLLING';if(id===active)updateConnection();}const hydrated=await hydrateRows(rows,id);if(epoch!==bootVersion||loadEpoch[id]!==version)return;const known=older||background?roomHistory(id):roomHistory(id).filter(m=>m.status==='sending'||m.status==='failed'||!initialIds.has(m.id));const merged=new Map(known.map(m=>[m.id,m]));hydrated.forEach(m=>merged.set(m.id,m));histories[id]=[...merged.values()].sort((a,b)=>a.time-b.time||a.id.localeCompare(b.id));if(!background){hasMore[id]=rows.length===PAGE_SIZE;if(rows.length)cursors[id]=rows.at(-1);}const ids=rows.map(m=>m.id);if(ids.length){const [rr,rc]=await Promise.all([db.from('message_reactions').select('*').in('message_id',ids),db.from('message_receipts').select('*').in('message_id',ids)]);if(epoch!==bootVersion||loadEpoch[id]!==version)return;unwrap(rr).forEach(r=>applyReaction(id,r,false));unwrap(rc).forEach(r=>applyReceipt(id,r,false));}if(id===active){const e=$('#timeline'),height=e.scrollHeight,top=e.scrollTop;renderTimeline(!older&&(!background||wasAtBottom));if(background&&!wasAtBottom)e.scrollTop=top;if(older)requestAnimationFrame(()=>e.scrollTop=top+e.scrollHeight-height);}renderRooms();await acknowledge(id,false);markRead(id);}
 async function loadOlder(){if(loadingOlder||!active||!hasMore[active])return;loadingOlder=true;const id=active;try{await loadHistory(id,true);}catch(e){fail(e);}finally{loadingOlder=false;const b=$('[data-action="older"]');if(b)b.disabled=false;}}
 async function setActive(id,mobile=true){if(!rooms.some(r=>r.id===id))return;if(workspaceMode!=='chat'&&mobile){await switchWorkspace('chat');if(workspaceMode!=='chat')return;}if(photoEditor&&active!==id)closeModal();const changing=active!==id;if(changing){if($('.memory-player'))closeModal();closePlans();$('#room-moments').replaceChildren();sendTyping(false);if(mediaRecorder?.state==='recording')stopRecording(true);reply=null;attachment=null;$('#message-input').value='';$('#reply-bar').classList.add('hidden');$('#file-staging').classList.add('hidden');}rememberCatchup(id);if(active&&active!==id)channels[active]?.untrack().catch(console.warn);active=id;if(mobile)$('#app').classList.add('mobile-chat');$('#chat-title').textContent=currentRoom().name;$('#detail-title').textContent=currentRoom().name;$('#detail-description').textContent=currentRoom().kind==='direct'?'A private space. Just the two of you.':'Saved conversations. Just for your group.';syncRoomChrome();renderRooms();renderTimeline();renderMute();updateConnection();$('#emoji-picker').classList.add('hidden');try{await loadPeople(id);await loadHistory(id);}catch(e){fail(e);}trackPresence(id);markRead(id);loadAcademic().catch(fail);initRoomExtras().catch(console.warn);}
@@ -1191,7 +1317,7 @@ async function trackPresence(id){if(!isReady(id)||!channels[id]||states[id]!=='S
 async function broadcast(id,event,payload){if(!user||!setupReady)return false;if(event==='delete'){try{unwrap(await db.rpc('remove_message',{p_message_id:payload.id}));return true;}catch(e){fail(e);return false;}}if(event!=='typing'||!isReady(id)||states[id]!=='SUBSCRIBED')return false;try{return await channels[id].send({type:'broadcast',event:'typing',payload:{sender:{id:profile.id},active:!!payload.active}})==='ok';}catch{return false;}}
 function sendTyping(on){if(!active)return;const now=Date.now();if(on&&now-lastTyping<1400)return;if(on)lastTyping=now;broadcast(active,'typing',{active:on});}
 async function receiveRow(id,row,isInsert){if(!user||!rooms.some(r=>r.id===id))return;const epoch=bootVersion;const hydrated=await hydrateRows([row],id);if(epoch!==bootVersion||!hydrated.length)return;const m=hydrated[0],list=roomHistory(id),existing=list.findIndex(x=>x.id===m.id);const fresh=existing===-1;if(!fresh)list[existing]=m;else list.push(m);list.sort((a,b)=>a.time-b.time||a.id.localeCompare(b.id));if(id===active){delete typing[id]?.[m.sender.id];renderTyping();if(fresh&&isInsert)appendMessage(m);else replaceMessage(m);}if(fresh&&isInsert&&m.sender.id!==profile.id){if(!viewing(id)||!atBottom()){const r=rooms.find(r=>r.id===id);r.unread++;notifyMessage(id,m);}await acknowledge(id,false);markRead(id);}renderRooms();}
-async function sendMessage(){if(!isReady())return toast('Wait for your room to reconnect before sending.',true);if(mediaRecorder?.state==='recording')return;const input=$('#message-input'),text=input.value.trim();if(!text&&!attachment)return;const id=active,m={id:uid(),roomId:id,sender:{...profile},kind:attachment?.kind||'text',text,data:attachment?.data||null,uploadData:attachment?.data||null,time:Date.now(),reply:reply?{id:reply.id,name:reply.sender.name,text:preview(reply).slice(0,100)}:null,reactions:{},receivedBy:[],readBy:[],status:'sending'};roomHistory(id).push(m);input.value='';input.style.height='36px';attachment=null;reply=null;$('#file-staging').classList.add('hidden');$('#reply-bar').classList.add('hidden');$('#emoji-picker').classList.add('hidden');sendTyping(false);updateSend();appendMessage(m);renderRooms();await transmit(id,m);input.focus();}
+async function sendMessage(){if(!isReady())return toast('Wait for your room to reconnect before sending.',true);if(mediaRecorder?.state==='recording')return;const input=$('#message-input'),text=input.value.trim();if(!text&&!attachment)return;const id=active,m={id:uid(),roomId:id,sender:{...profile},kind:attachment?.kind||'text',text,data:attachment?.data||null,uploadData:attachment?.data||null,fileName:attachment?.fileName||null,mime:attachment?.mime||null,size:attachment?.size||0,time:Date.now(),reply:reply?{id:reply.id,name:reply.sender.name,text:preview(reply).slice(0,100)}:null,reactions:{},receivedBy:[],readBy:[],status:'sending'};roomHistory(id).push(m);input.value='';input.style.height='36px';attachment=null;reply=null;$('#file-staging').classList.add('hidden');$('#reply-bar').classList.add('hidden');$('#emoji-picker').classList.add('hidden');sendTyping(false);updateSend();appendMessage(m);renderRooms();await transmit(id,m);input.focus();}
 async function uploadForMessage(id,m){if(!user||profile.id!==m.sender.id)throw Error('Account changed. Please sign in again.');if(m.attachmentId)return m.attachmentId;const blob=await(await fetch(m.uploadData)).blob();const mime=blob.type.split(';')[0];const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','audio/webm':'webm','audio/ogg':'ogg','audio/mp4':'m4a','audio/mpeg':'mp3','audio/wav':'wav'}[mime];if(!ext)throw Error('Unsupported media type.');const aid=m.uploadId||(m.uploadId=uid()),path=id+'/'+profile.id+'/'+aid+'.'+ext;
 if(!m.objectUploaded){const up=await client.storage.from(MEDIA_BUCKET).upload(path,blob,{contentType:mime,upsert:false,cacheControl:'3600'});if(up.error&&!['409','Duplicate'].includes(String(up.error.statusCode))&&!/already exists|duplicate/i.test(up.error.message))throw up.error;m.objectUploaded=true;}
 if(!user||profile.id!==m.sender.id)throw Error('Account changed while uploading.');const ar=await db.from('attachments').insert({id:aid,room_id:id,object_path:path,mime_type:mime,byte_size:blob.size}).select().single();if(ar.error&&ar.error.code!=='23505')throw ar.error;m.attachmentId=aid;return aid;}
@@ -1685,11 +1811,668 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-social-extra="i
 
 /* Conversation-first navigation. All actions use the existing authenticated app. */
 function showWorkspaceMenu(){openModal(`${modalTitle('chat','Your workspace','Everything else, out of the way.')}<div class="chat-menu-grid"><button data-action="notes">${icon('pencil')}<span>Quick notes<small>Alt+N · no password</small></span></button><button data-action="new-room">${icon('chat')}<span>New chat</span></button><button data-action="new-study-group">${icon('people')}<span>New study group</span></button><button data-action="new-course">${icon('book')}<span>Create a course</span></button><button data-action="join-study-group">${icon('link')}<span>Join with invite</span></button><button data-action="community">${icon('people')}<span>Campus community</span></button><button data-action="profile">${icon('cat')}<span>My profile</span></button><button data-action="calls">${icon('phone')}<span>Call history</span></button><button data-action="theme">${icon('moon')}<span>Light / dark theme</span></button><button data-action="settings">${icon('settings')}<span>Settings</span></button><button data-action="signout">${icon('logout')}<span>Sign out</span></button></div>`);}
-function showChatTools(){openModal(`${modalTitle('more','Chat tools','For this conversation, and your people.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="search-chat">${icon('search')}<span>Search chat</span></button><button data-action="open-academic">${icon('book')}<span>Resources & homework</span></button><button data-action="details">${icon('info')}<span>Room details</span></button><button data-action="invite">${icon('link')}<span>Invite someone</span></button><button data-social-extra="plans">${icon('check')}<span>Shared plans</span></button><button data-social-extra="poll">${icon('people')}<span>Create a poll</span></button><button data-action="gallery">${icon('photo')}<span>Shared photos</span></button><button data-social-extra="camera">${icon('photo')}<span>Camera</span></button><button data-social-extra="nearby">${icon('people')}<span>Nearby students</span></button><button data-social-extra="vibe">${icon('smile')}<span>Room vibe</span></button><button data-social-extra="bedroom">${icon('cat')}<span>My digital room</span></button><button data-social-extra="spark">${icon('spark')}<span>Send a Spark</span></button><button data-social-extra="install">${icon('bell')}<span>App & alerts</span></button><button data-action="workspace-menu">${icon('settings')}<span>Workspace menu</span></button></div>`);$('.chat-tools-menu').addEventListener('click',e=>{if(e.target.closest('button'))closeModal();});}
+function showChatTools(){openModal(`${modalTitle('more','Chat tools','For this conversation, and your people.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="search-chat">${icon('search')}<span>Search chat</span></button><button data-action="open-academic">${icon('book')}<span>Resources & homework</span></button><button data-action="details">${icon('info')}<span>Room details</span></button><button data-action="invite">${icon('link')}<span>Invite someone</span></button><button data-social-extra="plans">${icon('check')}<span>Shared plans</span></button><button data-social-extra="poll">${icon('people')}<span>Create a poll</span></button><button data-action="gallery">${icon('photo')}<span>Shared photos</span></button><button data-social-extra="camera">${icon('photo')}<span>Camera</span></button><button data-social-extra="nearby">${icon('people')}<span>Nearby students</span></button><button data-social-extra="vibe">${icon('smile')}<span>Room vibe</span></button><button data-social-extra="bedroom">${icon('cat')}<span>My digital room</span></button><button data-social-extra="spark">${icon('spark')}<span>Send a Spark</span></button><button data-social-extra="install">${icon('bell')}<span>App & alerts</span></button><button data-action="room-menu">${icon('more')}<span>Chat options<small>Pin, archive, notifications, wallpaper…</small></span></button><button data-action="workspace-menu">${icon('settings')}<span>Workspace menu</span></button></div>`);$('.chat-tools-menu').addEventListener('click',e=>{if(e.target.closest('button'))closeModal();});}
 
 // Follow the visible viewport when mobile browser chrome / keyboards resize it.
 // Do not reflow the app during pinch zoom: keep normal browser magnification.
 (()=>{let frame=0;const sync=()=>{frame=0;const viewport=window.visualViewport,root=document.documentElement;if(viewport&&Math.abs(viewport.scale-1)<.02){root.style.setProperty('--chat-viewport-height',Math.round(viewport.height)+'px');root.style.setProperty('--chat-viewport-top',Math.round(viewport.offsetTop)+'px');}else{root.style.removeProperty('--chat-viewport-height');root.style.removeProperty('--chat-viewport-top');}};const schedule=()=>{if(!frame)frame=requestAnimationFrame(sync);};window.addEventListener('resize',schedule,{passive:true});window.visualViewport?.addEventListener('resize',schedule,{passive:true});window.visualViewport?.addEventListener('scroll',schedule,{passive:true});sync();})();
+
+
+'use strict';
+/* Catcul Chat Tools — per-user pins/archive/unread/notification prefs, message editing,
+   document sharing, pinned messages, lifecycle controls, unread navigation, WhatsApp-style
+   voice gestures, wallpapers and richer search. Console-safe wrappers over the base app. */
+const mpRateSteps=[1,1.25,1.5,2];
+let roomDrafts=new Map(), roomPrefsLoaded=false, unreadJumpEl=null, scrollBottomEl=null, pinBannerEl=null;
+let editingMessage=null, roomSettingsCache={}, pendingCounts={}, joinRequestCounts={};
+const FILE_MIMES={'application/pdf':'pdf','application/msword':'doc','application/vnd.openxmlformats-officedocument.wordprocessingml.document':'docx','application/vnd.ms-powerpoint':'ppt','application/vnd.openxmlformats-officedocument.presentationml.presentation':'pptx','application/vnd.ms-excel':'xls','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':'xlsx','text/plain':'txt','text/csv':'csv','application/zip':'zip','application/x-zip-compressed':'zip'};
+const FILE_EXT={...FILE_MIMES};
+const isFileMime=m=>m in FILE_MIMES;
+const fmtSize=n=>n>=1048576?(n/1048576).toFixed(1)+' MB':n>=1024?Math.ceil(n/1024)+' KB':(n||0)+' B';
+const roomPref=id=>rooms.find(r=>r.id===id)||{};
+const prefMuted=r=>!!r&&(r.muted||r.notifyMode==='muted'||(r.mutedUntil&&r.mutedUntil>Date.now()));
+
+/* ---------- Preferences merge ---------- */
+async function loadChatPreferences(all=false){
+  if(!user)return;
+  try{
+    const rows=unwrap(await db.from('room_chat_preferences').select('*'))||[];
+    roomPrefsLoaded=true;
+    const map=new Map(rows.map(p=>[p.room_id,p]));
+    rooms.forEach(r=>{const p=map.get(r.id)||{};r.pinnedAt=p.pinned_at||null;r.archivedAt=p.archived_at||null;r.markedUnread=!!p.unread_mark;r.notifyMode=p.notify_mode||'all';r.mutedUntil=p.muted_until?Date.parse(p.muted_until):null;r.showPreviews=p.show_previews!==false;r.customLabel=p.custom_label||null;r.wallpaper=p.wallpaper||null;});
+  }catch(e){/* migration not applied yet; chat works without prefs */}
+}
+const __mpBaseLoadRooms=loadRooms;
+loadRooms=async function(){
+  if(!roomPrefsLoaded)await loadChatPreferences();
+  await __mpBaseLoadRooms();
+  let dirty=false;
+  rooms.forEach(r=>{if(r.pinnedAt===undefined)dirty=true;});
+  if(dirty)await loadChatPreferences(true);
+  renderRooms();
+};
+
+/* ---------- Room list rendering (pins first, archived hidden) ---------- */
+renderRooms=function(){
+  const query=($('#room-search')?.value||'').toLowerCase();
+  const archived=rooms.filter(r=>r.archivedAt);
+  let tabsEl=$('.sidebar .tabs');
+  if(tabsEl){
+    let archBtn=tabsEl.querySelector('[data-filter="archived"]');
+    if(archived.length&&!archBtn){archBtn=document.createElement('button');archBtn.dataset.filter='archived';archBtn.textContent='Archived';tabsEl.appendChild(archBtn);}
+    if(!archived.length&&archBtn){archBtn.remove();if(filter==='archived')filter='all';}
+  }
+  const base=r=>(filter!=='courses'||(r.purpose==='course'&&!r.is_study_group))&&(filter!=='study-groups'||r.is_study_group)&&(filter!=='unread'||r.unread>0||r.markedUnread)&&(filter!=='private'||r.kind==='direct')&&(filter!=='groups'||(r.kind==='group'&&r.purpose!=='course'))&&r.name.toLowerCase().includes(query);
+  let list=rooms.filter(r=>filter==='archived'?r.archivedAt&&r.name.toLowerCase().includes(query):base(r)&&!r.archivedAt);
+  if(filter!=='archived')list=[...list.filter(r=>r.pinnedAt).sort((a,b)=>Date.parse(b.pinnedAt)-Date.parse(a.pinnedAt)),...list.filter(r=>!r.pinnedAt)];
+  $('#rooms').innerHTML=list.map(r=>{
+    const last=roomHistory(r.id).at(-1)||r.last;
+    const label=r.customLabel||last?(r.customLabel||''):'';
+    const previewText=r.customLabel&&last?preview(last):r.customLabel?'':null;
+    const badges=(r.pinnedAt&&filter!=='archived'?'<span class="pin-badge" title="Pinned chat">'+icon('pin')+'</span>':'')+(prefMuted(r)&&filter!=='archived'?'<span class="pin-badge" title="Notifications muted">🔕</span>':'');
+    const unreadDot=r.markedUnread?'<span class="unread manual" title="Marked unread"></span>':(r.unread?'<span class="unread">'+(r.unread>99?'99+':r.unread)+'</span>':'');
+    return '<button class="room '+(r.id===active?'selected':'')+(prefMuted(r)?' muted-row':'')+'" data-room="'+esc(r.id)+'" aria-label="Open '+esc(r.name)+'" '+(r.id===active?'aria-current="true"':'')+'><span class="room-avatar">'+(r.kind==='direct'?avatar({id:r.peer_id,name:r.name,color:r.peer_color}):icon(r.purpose==='course'&&!r.is_study_group?'book':'people'))+'</span><span class="grow"><h3>'+esc(r.name)+(r.kind==='direct'&&isBest(r.peer_id)?'<span class="friend-star">★</span>':'')+' '+badges+'</h3><span class="preview" style="display:block">'+esc(last?(last.sender.id===profile.id?'You: ':'')+preview(last):(r.customLabel?r.customLabel+' · ':'')+(r.purpose==='course'?(r.is_study_group?'Study group':r.course_code||'Course')+' · '+(r.is_study_group?(r.course_code||'Invite-only'):'Resources & homework'):r.purpose==='community'?'Everyone signed in. One shared space.':r.kind==='direct'?'A private hello. Just for you.':'Your group. Your kind of people.'))+'</span></span><span class="time">'+(last?esc(formatTime(last.time)):'')+'</span>'+unreadDot+'</button>';}).join('')||'<div class="empty-small">'+(filter==='archived'?'No archived chats.':filter==='unread'?'All caught up. Nice.':filter==='private'?'Add a friend to start a private conversation.':filter==='groups'?'Create a group or join with an invitation.':filter==='study-groups'?'No study groups yet. Create one and bring your classmates.':filter==='courses'?'No courses yet. Create a course or join with an invite.':'A little quiet here. Create a study group or join with an invite.')+'</div>';
+  if($('#space-total'))$('#space-total').textContent=list.length;
+  const community=$('[data-action="community"]');
+  if(community){const selected=rooms.some(r=>r.id===active&&r.purpose==='community');community.classList.toggle('selected',selected);if(selected)community.setAttribute('aria-current','true');else community.removeAttribute('aria-current');}
+  $('#all-count').textContent=rooms.filter(r=>!r.archivedAt).length;
+  $('#unread-count').textContent=rooms.filter(r=>!r.archivedAt&&(r.unread>0||r.markedUnread)).length;
+  $$('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
+};
+
+/* ---------- Drafts (current tab only) ---------- */
+document.addEventListener('input',e=>{if(e.target.id==='message-input'&&!editingMessage){const v=e.target.value;if(v.trim())roomDrafts.set(active,v);else roomDrafts.delete(active);}});
+
+const __mpBaseSetActive=setActive;
+setActive=async function(id,mobile=true){
+  if(editingMessage)cancelEdit();
+  if(active&&active!==id){const v=$('#message-input').value;v.trim()?roomDrafts.set(active,v):roomDrafts.delete(active);}
+  await __mpBaseSetActive(id,mobile);
+  const input=$('#message-input'),draft=roomDrafts.get(id)||'';
+  if(input.value!==draft){input.value=draft;input.dispatchEvent(new Event('input'));}
+  input.focus();
+  syncChatChrome(id);
+};
+const __mpBaseSendMessage=sendMessage;
+sendMessage=async function(){
+  if(editingMessage){await submitEdit();return;}
+  const id=active;await __mpBaseSendMessage();roomDrafts.delete(id);
+};
+
+/* ---------- Chat chrome: wallpaper, banners, pins, unread jump ---------- */
+function ensureChatChrome(){
+  const chat=$('.chat');if(!chat)return;
+  if(!pinBannerEl){pinBannerEl=document.createElement('div');pinBannerEl.id='pin-banner';chat.insertBefore(pinBannerEl,$('#timeline'));}
+  if(!unreadJumpEl){unreadJumpEl=document.createElement('button');unreadJumpEl.className='unread-jump hidden';unreadJumpEl.innerHTML=icon('down')+'<span></span>';unreadJumpEl.onclick=jumpToUnread;chat.appendChild(unreadJumpEl);}
+  if(!scrollBottomEl){scrollBottomEl=document.createElement('button');scrollBottomEl.className='scroll-bottom hidden';scrollBottomEl.setAttribute('aria-label','Scroll to latest');scrollBottomEl.innerHTML=icon('down')+'<span class="cnt hidden"></span>';scrollBottomEl.onclick=()=>{$('#timeline').scrollTo({top:$('#timeline').scrollHeight,behavior:'smooth'});};chat.appendChild(scrollBottomEl);}
+}
+function syncChatChrome(id){
+  ensureChatChrome();
+  const r=roomPref(id),chat=$('.chat');
+  chat.dataset.wallpaper=r.wallpaper||'';
+  loadRoomModeration(id);
+  loadPinnedMessages(id);
+  updateUnreadNav();
+}
+async function loadRoomModeration(id){
+  const r=roomPref(id);removeChatBanner();
+  if(r.kind==='direct')return;
+  try{
+    const s=unwrap(await db.rpc('room_settings',{p_room_id:id}));
+    roomSettingsCache[id]=s||{};
+    if(s?.archived){addChatBanner('archived-banner','This room is archived. It is read-only.');$('#message-input').disabled=true;$('#message-input').placeholder='Archived room';$('#send-button').disabled=true;$('#mic-button').disabled=true;}
+    else{$('#message-input').disabled=false;$('#mic-button').disabled=false;$('#message-input').placeholder='Say something nice…';}
+    if((r.role==='owner'||r.role==='admin')){
+      const [pend,joins]=await Promise.all([db.rpc('list_pending_messages',{p_room_id:id}),db.from('room_join_requests').select('id',{head:true,count:'exact'}).eq('room_id',id).eq('status','pending')]);
+      const pc=(pend.data||[]).length,jc=joins.count||0;
+      if(!pend.error&&pc>0)addChatBanner('pending-banner',`${pc} message${pc>1?'s':''} waiting for approval. <button type="button" data-mp="review-pending">Review</button>`);
+      if(!joins.error&&jc>0)addChatBanner('pending-banner',`${jc} join request${jc>1?'s':''}. <button type="button" data-mp="review-joins">Review</button>`);
+      pendingCounts[id]=pc;joinRequestCounts[id]=jc;
+    }
+  }catch(e){/* chat tools migration not applied yet */}
+  updateSend();
+}
+function addChatBanner(cls,html){const b=document.createElement('div');b.className=cls;b.dataset.chatBanner='1';b.innerHTML=html;const tl=$('#timeline');tl.before(b);}
+function removeChatBanner(){$$('[data-chat-banner]').forEach(b=>b.remove());}
+
+/* ---------- Unread navigation & scroll-to-latest ---------- */
+function firstUnreadMessage(){
+  const r=roomPref(active);
+  const baseTs=r.last_read_at?Date.parse(r.last_read_at):0;
+  return roomHistory(active).find(m=>m.status==='sent'&&m.time>baseTs&&m.sender.id!==profile.id);
+}
+function updateUnreadNav(){
+  if(!unreadJumpEl||!scrollBottomEl)return;
+  const tl=$('#timeline');if(!tl||!active){unreadJumpEl.classList.add('hidden');scrollBottomEl.classList.add('hidden');return;}
+  const r=roomPref(active),unread=(r.unread||0)+(r.markedUnread?1:0);
+  const fu=firstUnreadMessage();
+  unreadJumpEl.classList.toggle('hidden',!(unread>0&&fu));
+  unreadJumpEl.querySelector('span').textContent=r.unread>99?'99+ new messages':r.unread>1?r.unread+' new messages':'New message';
+  const awayFromBottom=tl.scrollHeight-tl.scrollTop-tl.clientHeight>260;
+  scrollBottomEl.classList.toggle('hidden',!awayFromBottom);
+  const below=roomHistory(active).filter(m=>m.status==='sent').length?roomHistory(active).length:0;
+  scrollBottomEl.classList.toggle('has-new',!!r.unread);
+  scrollBottomEl.querySelector('.cnt').classList.toggle('hidden',!r.unread);
+  if(r.unread)scrollBottomEl.querySelector('.cnt').textContent=r.unread>99?'99+':r.unread;
+}
+async function jumpToUnread(){
+  const fu=firstUnreadMessage();if(!fu)return;
+  await ensureMessageLoaded(fu.id);
+  const el=document.getElementById('m-'+fu.id);
+  el?.scrollIntoView({behavior:'smooth',block:'center'});el?.classList.add('flash');setTimeout(()=>el?.classList.remove('flash'),2200);
+}
+async function ensureMessageLoaded(mid,guard=0){
+  if(guard>40)return false;
+  if(roomHistory(active).some(m=>m.id===mid))return true;
+  if(!hasMore[active])return false;
+  await loadOlder();
+  return ensureMessageLoaded(mid,guard+1);
+}
+document.addEventListener('scroll',e=>{if(e.target?.id==='timeline')updateUnreadNav();},true);
+const __mpBaseRenderTimeline=renderTimeline;
+renderTimeline=function(scroll=true){__mpBaseRenderTimeline(scroll);requestAnimationFrame(updateUnreadNav);};
+
+/* ---------- Message rendering: edited chip, file card, playback speed, mentions ---------- */
+const __mpBaseMessageHTML=messageHTML;
+messageHTML=function(m){
+  let html=__mpBaseMessageHTML(m);
+  if(m.deleted)return html;
+  const mc=(typeof mediaCache!=='undefined'?mediaCache:{});
+  if(m.kind==='file'){
+    const meta=mc[m.attachmentId]||{};const name=meta.file_name||m.fileName||'Document';const size=meta.byte_size||0;const ext=(name.split('.').pop()||'file').slice(0,5);
+    const card=`<div class="file-card"><span class="file-ico">${icon('doc')}</span><div class="grow"><h4>${esc(name)}</h4><p>${esc(ext)} · ${fmtSize(size)}</p></div>${m.data?`<a class="file-open" href="${esc(m.data)}" target="_blank" rel="noopener" download="${esc(name)}" aria-label="Open ${esc(name)}">${icon('download')}</a>`:''}</div>`;
+    html=html.replace(/<span class="muted small">Voice note · unavailable — try reconnecting<\/span>/,card);
+  }
+  if(m.kind==='audio'&&m.data){
+    html=html.replace(/(<audio[^>]*><\/audio>)/,'$1<button class="rate-btn" data-rate data-audio="'+esc(m.id)+'" title="Playback speed">1×</button>');
+  }
+  if(m.edited)html=html.replace('</time></div><div class="bubble','</time><span class="edited-tag" title="Edited '+esc(new Date(m.editedAt||m.time).toLocaleString())+'">edited</span></div><div class="bubble');
+  if(m.text&&!m.deleted){
+    const people=roomPeople[active]||[];
+    const names=[...new Set(people.map(p=>(p.name||'').split(' ')[0]).filter(n=>n&&n.length>=2))];
+    if(names.length){
+      const start=html.indexOf('<div class="body-text">'),end=html.indexOf('</div>',start);
+      if(start>-1&&end>start){
+        let body=html.slice(start,end);
+        for(const n of names.slice(0,20)){const re=new RegExp('@'+n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','gi');body=body.replace(re,x=>`<span class="mention">${x}</span>`);}
+        html=html.slice(0,start)+body+html.slice(end);
+      }
+    }
+  }
+  const mine=m.sender.id===profile.id,canEdit=mine&&['text','file'].includes(m.kind)&&m.status==='sent'&&Date.now()-m.time<86400000;
+  if(canEdit)html=html.replace('<button data-reply=',`<button data-edit="${esc(m.id)}" title="Edit message" aria-label="Edit message">${icon('pencil')}</button><button data-reply=`);
+  const mod=['owner','admin'].includes(roomPref(m.roomId||active).role);
+  if(mod&&m.status==='sent'&&!m.deleted)html=html.replace('<button data-reply=',`<button data-pin-msg="${esc(m.id)}" title="Pin message" aria-label="Pin message">${icon('pin')}</button><button data-reply=`);
+  if(mine&&m.edited)html=html.replace('<button data-reply=',`<button data-edit-history="${esc(m.id)}" title="Edit history" aria-label="Edit history">History</button><button data-reply=`);
+  return html;
+};
+
+/* ---------- Editing ---------- */
+function startEdit(mid){
+  const m=roomHistory().find(x=>x.id===mid);if(!m||m.deleted)return;
+  editingMessage=m;reply=null;$('#reply-bar').classList.add('hidden');
+  let bar=$('#edit-bar');
+  if(!bar){bar=document.createElement('div');bar.id='edit-bar';bar.className='edit-bar hidden';$('#reply-bar').after(bar);}
+  bar.innerHTML=`<div class="grow"><strong>Editing message</strong><p>${esc(preview(m))}</p></div><button class="icon-btn" data-mp="cancel-edit" aria-label="Cancel editing">${icon('close')}</button>`;
+  bar.classList.remove('hidden');
+  const input=$('#message-input');input.value=m.text;input.dispatchEvent(new Event('input'));input.focus();input.setSelectionRange(input.value.length,input.value.length);
+  $('#send-button').title='Save changes';$('#send-button').setAttribute('aria-label','Save changes');updateSend();
+}
+function cancelEdit(){
+  editingMessage=null;const bar=$('#edit-bar');if(bar)bar.classList.add('hidden');
+  const input=$('#message-input');input.value=roomDrafts.get(active)||'';input.dispatchEvent(new Event('input'));
+  $('#send-button').title='Send message';$('#send-button').setAttribute('aria-label','Send message');updateSend();
+}
+async function submitEdit(){
+  const m=editingMessage,text=$('#message-input').value.trim();if(!m||!text)return;
+  try{
+    const editedAt=unwrap(await db.rpc('edit_message',{p_message_id:m.id,p_body:text}));
+    const live=roomHistory(m.roomId||active).find(x=>x.id===m.id);if(live){live.text=text;live.edited=true;live.editedAt=editedAt;if((m.roomId||active)===active)replaceMessage(live);renderRooms();}
+    toast('Message edited.');
+  }catch(e){toast('Could not edit: '+errorText(e),true);}
+  cancelEdit();$('#message-input').focus();
+}
+async function showEditHistory(mid){
+  try{
+    const rows=unwrap(await db.from('message_edits').select('*').eq('message_id',mid).order('edited_at',{ascending:false}).limit(5));
+    openModal(`${modalTitle('chat','Edit history','Only earlier versions you can see. Like a receipt, not a rewind button.')}<div class="search-results">${(rows||[]).map(r=>`<div class="result"><div class="row between"><strong>${new Date(r.edited_at).toLocaleString()}</strong></div><p style="white-space:normal"><s>${esc(r.old_body)}</s><br>→ ${esc(r.new_body)}</p></div>`).join('')||'<div class="empty-small">No earlier versions visible to you.</div>'}</div>`);
+  }catch(e){fail(e);}
+}
+
+/* ---------- Document sharing ---------- */
+function openAttachMenu(){
+  $('.attach-menu')?.remove();
+  const menu=document.createElement('div');menu.className='attach-menu';
+  menu.innerHTML=`<button data-mp="attach-photo"><span class="att-ico att-photo">${icon('photo')}</span><span>Photo<small class="muted" style="display:block;font-size:9px">With filters & stickers</small></span></button><button data-mp="attach-doc"><span class="att-ico att-doc">${icon('doc')}</span><span>Document<small class="muted" style="display:block;font-size:9px">PDF, DOC, PPT, XLS, TXT, CSV, ZIP · up to 25 MB</small></span></button><button data-mp="camera"><span class="att-ico att-cam">${icon('camera')}</span><span>Camera</span></button>`;
+  $('.compose-area').appendChild(menu);
+  setTimeout(()=>document.addEventListener('click',function close(e){if(!menu.contains(e.target)){menu.remove();document.removeEventListener('click',close);}}),0);
+}
+function chooseDocument(){
+  const input=document.createElement('input');input.type='file';input.accept='.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.csv,.zip';
+  input.onchange=()=>{const f=input.files[0];if(!f)return;
+    const mime=(f.type||'').toLowerCase();
+    if(!isFileMime(mime))return toast('That file type is not supported. Try PDF, DOC, PPT, XLS, TXT, CSV or ZIP.',true);
+    if(f.size>26214400)return toast('Documents up to 25 MB are supported.',true);
+    const fr=new FileReader();fr.onload=()=>{attachment={kind:'file',data:fr.result,fileName:f.name.slice(-200),mime,size:f.size};renderAttachment();updateSend();};fr.readAsDataURL(f);
+  };input.click();
+}
+showAttach=function(){if(!active)return showNewConversation();openAttachMenu();};
+const __mpBaseUpload=uploadForMessage;
+uploadForMessage=async function(id,m){
+  if(m.kind!=='file')return __mpBaseUpload(id,m);
+  if(!user||profile.id!==m.sender.id)throw Error('Account changed. Please sign in again.');
+  if(m.attachmentId)return m.attachmentId;
+  const blob=await(await fetch(m.uploadData)).blob();const mime=(m.mime||blob.type.split(';')[0]).toLowerCase();
+  const ext=FILE_MIMES[mime];if(!ext)throw Error('Unsupported document type.');
+  if(blob.size>26214400)throw Error('Documents are limited to 25 MB.');
+  const aid=m.uploadId||(m.uploadId=uid()),path=id+'/'+profile.id+'/'+aid+'.'+ext;
+  if(!m.objectUploaded){
+    const up=await client.storage.from(MEDIA_BUCKET).upload(path,blob,{contentType:mime,upsert:false,cacheControl:'3600'});
+    if(up.error&&!['409','Duplicate'].includes(String(up.error.statusCode))&&!/already exists|duplicate/i.test(up.error.message))throw up.error;
+    m.objectUploaded=true;
+  }
+  const ar=await db.from('attachments').insert({id:aid,room_id:id,object_path:path,mime_type:mime,byte_size:blob.size,file_name:(m.fileName||'Document').slice(0,200)}).select().single();
+  if(ar.error&&ar.error.code!=='23505')throw ar.error;
+  m.attachmentId=aid;return aid;
+};
+const __mpBaseRenderAttachment=renderAttachment;
+renderAttachment=function(){
+  if(!attachment||attachment.kind!=='file'){__mpBaseRenderAttachment();
+    if(attachment?.kind==='audio'){const st=$('#file-staging');if(st&&!st.querySelector('audio')){const a=document.createElement('audio');a.controls=true;a.preload='metadata';a.src=attachment.data;st.insertBefore(a,st.children[1]||null);}}
+    return;}
+  $('#file-staging').innerHTML=`<span class="file-ico" style="width:40px;height:40px;border-radius:11px;background:var(--accent);color:var(--dark);display:grid;place-items:center">${icon('doc')}</span><div class="grow"><h4>${esc(attachment.fileName)}</h4><p>${(attachment.fileName.split('.').pop()||'file').toUpperCase()} · ${fmtSize(attachment.size)} — add a caption, then send.</p></div><button class="icon-btn" data-action="cancel-attachment" aria-label="Remove attachment">${icon('close')}</button>`;
+  $('#file-staging').classList.remove('hidden');
+};
+
+/* ---------- Room menu extras ---------- */
+document.addEventListener('click',async e=>{
+  const mp=e.target.closest('[data-mp]');if(!mp)return;
+  e.preventDefault();e.stopPropagation();
+  const key=mp.dataset.mp;try{
+    if(key==='attach-photo'){$('#photo-input').click();}
+    else if(key==='attach-doc'){chooseDocument();}
+    else if(key==='camera'){$('#camera-input').click();}
+    else if(key==='cancel-edit'){cancelEdit();}
+    else if(key==='pin-chat'){await togglePrefRpc('set_room_pin',!roomPref(active).pinnedAt);}
+    else if(key==='archive-chat'){await togglePrefRpc('set_room_archive',!roomPref(active).archivedAt);if(roomPref(active).archivedAt)filter='all';}
+    else if(key==='mark-unread'){const r=roomPref(active);await toggleUnreadMark(!r.markedUnread);}
+    else if(key==='notifications'){showNotifyDialog();}
+    else if(key==='wallpaper'){showWallpaperDialog();}
+    else if(key==='files'){showFilesDialog();}
+    else if(key==='pinned'){showPinnedDialog();}
+    else if(key==='group-settings'){showGroupSettings();}
+    else if(key==='review-pending'){showPendingQueue();}
+    else if(key==='review-joins'){showJoinRequests();}
+  }catch(err){fail(err);}
+},true);
+async function togglePrefRpc(rpc,on){
+  const id=active;
+  try{
+    if(rpc==='set_room_pin')unwrap(await db.rpc('set_room_pin',{p_room_id:id,p_pinned:on}));
+    else unwrap(await db.rpc('set_room_archive',{p_room_id:id,p_archived:on}));
+  }catch(e){toast(errorText(e),true);return;}
+  roomPrefsLoaded=false;closeModal();await loadRooms();toast(on?(rpc==='set_room_pin'?'Chat pinned.':'Chat archived.'):(rpc==='set_room_pin'?'Chat unpinned.':'Chat unarchived.'));
+}
+async function toggleUnreadMark(on){
+  try{unwrap(await db.rpc('set_room_unread_mark',{p_room_id:active,p_marked:on}));}
+  catch(e){toast(errorText(e),true);return;}
+  const r=roomPref(active);r.markedUnread=on;roomPrefsLoaded=false;closeModal();renderRooms();
+  toast(on?'Marked as unread.':'Marked as read.');
+}
+const __mpShowRoomMenu=showRoomMenu;
+showRoomMenu=function(){
+  __mpShowRoomMenu();
+  const r=currentRoom();if(!r||!active)return;
+  const sheet=$('.modal');
+  if(!sheet)return;
+  const direct=r.kind==='direct',owner=r.role==='owner',group=r.kind==='group';
+  const extra=document.createElement('div');extra.className='mp-menu-extra';
+  extra.innerHTML=`<hr style="border:0;border-top:1px solid var(--line);margin:14px 0">
+  <button class="btn secondary full" data-mp="pin-chat">${icon('pin')}${r.pinnedAt?'Unpin chat':'Pin chat'}</button>
+  <button class="btn secondary full" data-mp="mark-unread">${icon('chat')}${r.markedUnread?'Mark as read':'Mark as unread'}</button>
+  <button class="btn secondary full" data-mp="archive-chat">${icon('archive')}${r.archivedAt?'Unarchive chat':'Archive chat'}</button>
+  <button class="btn secondary full" data-mp="notifications">${icon('bell')}Notifications${r.notifyMode&&r.notifyMode!=='all'?' · '+(r.notifyMode==='muted'?'Muted':'Mentions'):''}</button>
+  <button class="btn secondary full" data-mp="wallpaper">${icon('photo')}Wallpaper & label</button>
+  <button class="btn secondary full" data-mp="files">${icon('doc')}Files & documents</button>
+  ${!direct?`<button class="btn secondary full" data-mp="pinned">${icon('pin')}Pinned messages</button>`:''}
+  ${group&&owner?`<button class="btn secondary full" data-mp="group-settings">${icon('settings')}Group settings & lifecycle</button>`:''}`;
+  const note=sheet.querySelector('.note');note?note.before(extra):sheet.appendChild(extra);
+};
+
+/* ---------- Notification preferences ---------- */
+function showNotifyDialog(){
+  const r=roomPref(active);const mutedUntil=r.mutedUntil&&r.mutedUntil>Date.now()?r.mutedUntil:null;
+  openModal(`${modalTitle('bell','Notifications for this chat','Mentions (@your name) can still reach you, if you choose.')}
+  <div class="notify-opts" id="notify-opts">
+    <label><input type="radio" name="nm" value="all" ${(!r.notifyMode||r.notifyMode==='all')?'checked':''}> All messages</label>
+    <label><input type="radio" name="nm" value="mentions" ${r.notifyMode==='mentions'?'checked':''}> Mentions only</label>
+    <label><input type="radio" name="nm" value="muted" ${r.notifyMode==='muted'?'checked':''}> Muted</label>
+  </div>
+  <div id="mute-durs" class="mute-durs ${r.notifyMode==='muted'?'':'hidden'}">
+    <button data-mute="1">1 hour</button><button data-mute="8">8 hours</button><button data-mute="168">1 week</button><button data-mute="0" class="${r.notifyMode==='muted'&&!mutedUntil?'active':''}">Always</button>
+  </div>
+  <div class="toggle-row"><div class="grow"><strong>Show message previews</strong><p>When off, alerts say “New message” without the text.</p></div><input type="checkbox" id="notify-preview" ${r.showPreviews===false?'':'checked'}></div>
+  <button class="btn full" data-mp-save="notify">Save notification settings</button>`);
+  $('#notify-opts').onchange=()=>{$('#mute-durs').classList.toggle('hidden',$('[name=nm]:checked').value!=='muted');};
+  let dur=r.notifyMode==='muted'?(mutedUntil?Math.round((mutedUntil-Date.now())/3600000):0):0;
+  $$('#mute-durs [data-mute]').forEach(b=>b.onclick=()=>{dur=+b.dataset.mute;$$('#mute-durs [data-mute]').forEach(x=>x.classList.toggle('active',x===b));});
+  $('[data-mp-save="notify"]').onclick=()=>socialTask($('[data-mp-save="notify"]'),async()=>{
+    const mode=$('[name=nm]:checked').value;
+    const until=mode==='muted'&&dur>0?new Date(Date.now()+dur*3600000).toISOString():null;
+    unwrap(await db.rpc('set_room_notifications',{p_room_id:active,p_mode:mode,p_muted_until:until,p_show_previews:$('#notify-preview').checked}));
+    roomPrefsLoaded=false;closeModal();await loadRooms();toast('Notification settings saved.');
+  });
+}
+
+/* ---------- Wallpaper & label ---------- */
+function showWallpaperDialog(){
+  const r=roomPref(active);
+  openModal(`${modalTitle('photo','Make this chat yours','Only you see this wallpaper and label.')}
+  <label class="eyebrow" for="chat-label">Chat label</label>
+  <input class="field" id="chat-label" maxlength="80" placeholder="A private note about this chat" value="${esc(r.customLabel||'')}">
+  <div class="wallpaper-grid">${['default','plain','mint','sand','rose','sky','night'].map(w=>`<button type="button" class="wp-${w} ${(!r.wallpaper&&w==='default')||r.wallpaper===w?'active':''}" data-wall="${w}">${w[0].toUpperCase()+w.slice(1)}</button>`).join('')}</div>
+  <div class="row" style="margin-top:18px;gap:9px"><button class="btn secondary grow" data-mp-reset="wall">Reset</button><button class="btn grow" data-mp-save="wall">Save</button></div>`);
+  let wall=r.wallpaper||'default';
+  $$('[data-wall]').forEach(b=>b.onclick=()=>{wall=b.dataset.wall;$$('[data-wall]').forEach(x=>x.classList.toggle('active',x===b));});
+  $('[data-mp-reset="wall"]').onclick=()=>{wall='default';$('#chat-label').value='';};
+  $('[data-mp-save="wall"]').onclick=()=>socialTask($('[data-mp-save="wall"]'),async()=>{
+    unwrap(await db.rpc('set_room_personalization',{p_room_id:active,p_wallpaper:wall==='default'?null:wall,p_label:$('#chat-label').value.trim()||null}));
+    roomPrefsLoaded=false;closeModal();await loadRooms();syncChatChrome(active);toast('Chat look saved.');
+  });
+}
+
+/* ---------- Files & pinned messages ---------- */
+async function showFilesDialog(){
+  closeModal();openModal(`${modalTitle('doc','Files & documents','Shared in this conversation.')}<div class="search-results" id="files-list"><div class="empty-small">Loading…</div></div>`);
+  try{
+    const rows=unwrap(await db.from('attachments').select('*').eq('room_id',active).is('deleted_at',null).order('created_at',{ascending:false}).limit(50))||[];
+    const files=rows.filter(a=>isFileMime(a.mime_type));
+    if(!files.length){$('#files-list').innerHTML='<div class="empty-small">No documents shared yet. Attach one with the + button.</div>';return;}
+    $('#files-list').innerHTML=files.map(a=>`<div class="file-row"><span class="file-ico">${esc((a.file_name||'file').split('.').pop().slice(0,4).toUpperCase())}</span><div class="grow"><h4>${esc(a.file_name||'Document')}</h4><p>${fmtSize(a.byte_size)} · ${new Date(a.created_at).toLocaleDateString()}</p></div><div class="row"><button class="icon-btn" data-file-dl="${esc(a.id)}" data-path="${esc(a.object_path)}" aria-label="Download">${icon('download')}</button></div></div>`).join('');
+  }catch(e){$('#files-list').innerHTML=`<div class="error-text">${esc(errorText(e))}</div>`;}
+}
+document.addEventListener('click',async e=>{
+  const dl=e.target.closest('[data-file-dl]');if(!dl)return;e.preventDefault();
+  try{const res=await client.storage.from(MEDIA_BUCKET).createSignedUrl(dl.dataset.path,300);if(res.data?.signedUrl)window.open(res.data.signedUrl,'_blank','noopener');else throw res.error||Error('unavailable');}catch(err){toast('Could not open file.',true);}
+});
+async function loadPinnedMessages(id){
+  const banner=pinBannerEl;if(!banner)return;
+  if(roomPref(id).kind==='direct'){banner.classList.add('hidden');return;}
+  try{
+    const pins=unwrap(await db.from('pinned_messages').select('*').eq('room_id',id).order('pinned_at',{ascending:false}).limit(3))||[];
+    roomPins[id]=pins.map(p=>p.message_id);
+    if(!pins.length){banner.classList.add('hidden');return;}
+    const mid=pins[0].message_id,m=roomHistory(id).find(x=>x.id===mid);
+    banner.className='pin-banner';banner.dataset.pinIndex='0';
+    banner.innerHTML=`<span class="bar"></span><div class="grow"><strong>Pinned</strong><p>${m?esc(preview(m).slice(0,90)):'Pinned message — tap to open'}</p></div>${pins.length>1?`<span class="muted small">${pins.length}</span>`:''}`;
+    banner.onclick=async()=>{const idx=(+banner.dataset.pinIndex+1)%pins.length;banner.dataset.pinIndex=String(idx);const mm=pins[idx].message_id;await ensureMessageLoaded(mm);const el=document.getElementById('m-'+mm);el?.scrollIntoView({behavior:'smooth',block:'center'});el?.classList.add('flash');setTimeout(()=>el?.classList.remove('flash'),2200);};
+  }catch(e){banner.classList.add('hidden');}
+}
+let roomPins={};
+async function togglePinMessage(mid){
+  const id=active,pinned=(roomPins[id]||[]).includes(mid);
+  try{unwrap(await db.rpc('pin_message',{p_room_id:id,p_message_id:mid,p_pinned:!pinned}));toast(pinned?'Message unpinned.':'Message pinned to the top.');loadPinnedMessages(id);renderTimeline(false);}
+  catch(e){toast(errorText(e),true);}
+}
+async function showPinnedDialog(){
+  closeModal();openModal(`${modalTitle('pin','Pinned messages','Owners and admins keep up to 3 here.')}<div class="search-results" id="pinned-list"><div class="empty-small">Loading…</div></div>`);
+  try{
+    const pins=unwrap(await db.from('pinned_messages').select('*').eq('room_id',active).order('pinned_at',{ascending:false}))||[];
+    if(!pins.length){$('#pinned-list').innerHTML='<div class="empty-small">Nothing pinned yet. Hover a message to pin it.</div>';return;}
+    await Promise.all(pins.map(p=>ensureMessageLoaded(p.message_id).catch(()=>{})));
+    $('#pinned-list').innerHTML=pins.map(p=>{const m=roomHistory(active).find(x=>x.id===p.message_id);return `<div class="result row"><button class="grow" style="text-align:left" data-jump="${esc(p.message_id)}"><p style="white-space:normal">${m?esc(preview(m).slice(0,140)):'Message not available'}</p></button>${['owner','admin'].includes(roomPref(active).role)?`<button class="icon-btn" data-unpin="${esc(p.message_id)}" aria-label="Unpin">${icon('close')}</button>`:''}</div>`;}).join('');
+    $$('#pinned-list [data-unpin]').forEach(b=>b.onclick=()=>togglePinMessage(b.dataset.unpin).then(()=>showPinnedDialog()));
+  }catch(e){$('#pinned-list').innerHTML=`<div class="error-text">${esc(errorText(e))}</div>`;}
+}
+
+/* ---------- Group settings & lifecycle ---------- */
+async function showGroupSettings(){
+  closeModal();const r=roomPref(active);
+  let s=roomSettingsCache[active]||{};
+  openModal(`${modalTitle('settings','Group settings','Owner-only controls for '+esc(r.name)+'.')}<div id="gs-body"><div class="empty-small">Loading…</div></div>`);
+  try{s=unwrap(await db.rpc('room_settings',{p_room_id:active}));roomSettingsCache[active]=s;}catch(e){$('#gs-body').innerHTML=`<div class="error-text">${esc(errorText(e))}</div>`;return;}
+  const members=(roomPeople[active]||[]).filter(p=>p.id!==profile.id);
+  $('#gs-body').innerHTML=`
+  <div class="gs-section"><h4>Posting & media</h4>
+    <div class="toggle-row"><div class="grow"><strong>Admins only can post</strong><p>Members can read, but not send.</p></div><input type="checkbox" id="gs-admins" ${s.posting_mode==='admins'?'checked':''}></div>
+    <div class="toggle-row"><div class="grow"><strong>Allow photos & voice notes</strong></div><input type="checkbox" id="gs-media" ${s.allow_media!==false?'checked':''}></div>
+    <div class="toggle-row"><div class="grow"><strong>Allow documents</strong></div><input type="checkbox" id="gs-files" ${s.allow_files!==false?'checked':''}></div>
+  </div>
+  <div class="gs-section"><h4>Moderation</h4>
+    <div class="toggle-row"><div class="grow"><strong>Approve new messages</strong><p>Members' messages stay hidden until you or an admin approves them.</p></div><input type="checkbox" id="gs-approval" ${s.require_message_approval?'checked':''}></div>
+    <div class="toggle-row"><div class="grow"><strong>Approve joins</strong><p>People with an invite link must be accepted first.</p></div><input type="checkbox" id="gs-join" ${s.join_approval?'checked':''}></div>
+  </div>
+  <div class="gs-section"><h4>Lifecycle</h4>
+    <label class="eyebrow">Auto-archive on</label><input type="datetime-local" id="gs-auto" value="${s.auto_archive_at?new Date(s.auto_archive_at).toISOString().slice(0,16):''}">
+    <label class="eyebrow" style="margin-top:12px;display:block">Keep messages for</label>
+    <select id="gs-retention"><option value="">Forever</option>${[7,30,90,180].map(d=>`<option value="${d}" ${s.message_retention_days===d?'selected':''}>${d} days</option>`).join('')}</select>
+  </div>
+  <button class="btn full" data-mp-save="settings" style="margin-top:18px">Save group settings</button>
+  <div class="gs-section"><h4>Ownership</h4>
+    <select id="gs-new-owner"><option value="">Transfer ownership to…</option>${members.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('')}</select>
+    <button class="btn secondary full danger-link" data-mp-do="transfer" style="margin-top:8px">Transfer ownership</button>
+  </div>
+  <div class="gs-section"><h4>Danger zone</h4>
+    <select id="gs-merge">${rooms.filter(x=>x.id!==active&&x.kind==='group'&&x.role==='owner'&&x.purpose!=='course'&&!x.archivedAt).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')||'<option value="">No other group you own</option>'}</select>
+    <button class="btn secondary full danger-link" data-mp-do="merge" style="margin-top:8px">Merge this group's members into the selected room and archive this one</button>
+    <button class="btn secondary full danger-link" data-mp-do="archive" style="margin-top:8px">${s.archived?'Room is archived':'Archive this room now'}</button>
+  </div>`;
+  $('[data-mp-save="settings"]').onclick=()=>socialTask($('[data-mp-save="settings"]'),async()=>{
+    unwrap(await db.rpc('set_group_controls',{p_room_id:active,
+      p_posting_mode:$('#gs-admins').checked?'admins':'everyone',p_allow_media:$('#gs-media').checked,p_allow_files:$('#gs-files').checked,
+      p_require_approval:$('#gs-approval').checked,p_join_approval:$('#gs-join').checked,
+      p_auto_archive_at:$('#gs-auto').value?new Date($('#gs-auto').value).toISOString():null,
+      p_retention_days:$('#gs-retention').value?+$('#gs-retention').value:null}));
+    closeModal();toast('Group settings saved.');loadRoomModeration(active);
+  });
+  $$('[data-mp-do]').forEach(b=>b.onclick=()=>{
+    const what=b.dataset.mpDo;
+    if(what==='transfer'&&!$('#gs-new-owner').value)return toast('Pick a member first.',true);
+    if(what==='merge'&&!$('#gs-merge').value)return toast('Pick a destination room first.',true);
+    const msgs={transfer:'This cannot be undone. The new owner takes over immediately.',merge:'Members move to the destination room and this room becomes read-only.',archive:'The room becomes read-only for everyone.'};
+    openModal(`${modalTitle('info','Are you sure?',msgs[what])}<button class="btn full" id="gs-confirm">Yes, continue</button><button class="btn secondary full" data-action="close-modal">Cancel</button>`);
+    $('#gs-confirm').onclick=()=>socialTask($('#gs-confirm'),async()=>{
+      if(what==='transfer')unwrap(await db.rpc('transfer_room_ownership',{p_room_id:active,p_new_owner:$('#gs-new-owner').value}));
+      else if(what==='merge'){const moved=unwrap(await db.rpc('merge_rooms',{p_source:active,p_target:$('#gs-merge').value}));toast(`Merged. ${moved} member(s) moved.`);}
+      else unwrap(await db.rpc('archive_room',{p_room_id:active}));
+      closeModal();await loadRooms();if(rooms.length)await setActive(rooms[0].id);
+    });
+  });
+}
+
+/* ---------- Join & message approval queues ---------- */
+async function showPendingQueue(){
+  closeModal();openModal(`${modalTitle('check','Messages waiting for approval','Members don’t see these until you approve.')}<div id="pending-list" class="search-results"><div class="empty-small">Loading…</div></div>`);
+  try{
+    const rows=unwrap(await db.rpc('list_pending_messages',{p_room_id:active}))||[];
+    if(!rows.length){$('#pending-list').innerHTML='<div class="empty-small">All clear. Nothing is waiting.</div>';return;}
+    const hydrated=await hydrateRows(rows,active);
+    $('#pending-list').innerHTML=hydrated.map(m=>`<div class="pending-item"><div class="grow" style="min-width:0"><div class="row between"><strong>${esc(m.sender.name)}</strong><time class="muted small">${formatTime(m.time)}</time></div><div class="bubble"><div class="body-text">${esc(m.text||'['+m.kind+']')}</div></div><div class="row"><button class="btn secondary" data-approve="1" data-mid="${esc(m.id)}">Approve</button><button class="btn secondary danger-link" data-approve="0" data-mid="${esc(m.id)}">Reject</button></div></div></div>`).join('');
+    $$('#pending-list [data-approve]').forEach(b=>b.onclick=()=>socialTask(b,async()=>{unwrap(await db.rpc('approve_message',{p_message_id:b.dataset.mid,p_approve:b.dataset.approve==='1'}));toast(b.dataset.approve==='1'?'Approved. Everyone can see it now.':'Rejected and removed.');showPendingQueue();loadHistory(active,false,true);}));
+  }catch(e){$('#pending-list').innerHTML=`<div class="error-text">${esc(errorText(e))}</div>`;}
+}
+async function showJoinRequests(){
+  closeModal();openModal(`${modalTitle('people','Join requests','Approve to let them into '+esc(currentRoom().name)+'.')}<div id="join-list" class="search-results"><div class="empty-small">Loading…</div></div>`);
+  try{
+    const rows=unwrap(await db.from('room_join_requests').select('*').eq('room_id',active).eq('status','pending').order('created_at',{ascending:true}).limit(30))||[];
+    if(!rows.length){$('#join-list').innerHTML='<div class="empty-small">No pending requests.</div>';return;}
+    const people=unwrap(await db.from('profiles').select('*').in('id',rows.map(r=>r.user_id)));
+    const name=id=>{const p=people.find(x=>x.id===id);return p?(p.display_name||p.username||'Student'):'Student';};
+    $('#join-list').innerHTML=rows.map(r=>`<div class="pending-item"><div class="grow"><strong>${esc(name(r.user_id))}</strong><p class="muted small">Requested ${new Date(r.created_at).toLocaleString()}</p><div class="row"><button class="btn secondary" data-join="1" data-uid="${esc(r.user_id)}">Approve</button><button class="btn secondary danger-link" data-join="0" data-uid="${esc(r.user_id)}">Deny</button></div></div></div>`).join('');
+    $$('#join-list [data-join]').forEach(b=>b.onclick=()=>socialTask(b,async()=>{unwrap(await db.rpc('respond_join_request',{p_room_id:active,p_user_id:b.dataset.uid,p_approve:b.dataset.join==='1'}));toast(b.dataset.join==='1'?'Approved — they’re in.':'Request denied.');showJoinRequests();}));
+  }catch(e){$('#join-list').innerHTML=`<div class="error-text">${esc(errorText(e))}</div>`;}
+}
+
+/* ---------- Richer search ---------- */
+showSearch=function(){
+  const inRoom=!!active;const roomId=active;
+  openModal(`${modalTitle('search','Search','Find messages, links and files in one place.')}
+  <div class="searchbox">${icon('search')}<input id="chat-search" placeholder="A word, a link, a file name…" type="search" aria-label="Search"></div>
+  <div class="search-scope" id="search-scope">
+    <button data-scope="room" class="active" ${inRoom?'':'disabled'}>This chat</button><button data-scope="all">All chats</button>
+  </div>
+  <div class="search-filters" id="search-filters">
+    <button data-kind="all" class="active">All</button><button data-kind="links">Links</button><button data-kind="files">Documents</button><button data-kind="mentions">Mentions of me</button>
+  </div>
+  <div class="search-jump-date"><input type="date" id="jump-date" aria-label="Jump to date"><button type="button" id="jump-date-go">Jump to day</button></div>
+  <div id="search-results" class="search-results"><div class="empty-small">Type to search saved messages.</div></div>`);
+  let scope=inRoom?'room':'all',kind='all',timer,epoch=0;
+  $('#search-scope').onclick=e=>{const b=e.target.closest('[data-scope]');if(!b||b.disabled)return;scope=b.dataset.scope;$$('#search-scope [data-scope]').forEach(x=>x.classList.toggle('active',x===b));$('#chat-search').dispatchEvent(new Event('input'));};
+  $('#search-filters').onclick=e=>{const b=e.target.closest('[data-kind]');if(!b)return;kind=b.dataset.kind;$$('#search-filters [data-kind]').forEach(x=>x.classList.toggle('active',x===b));$('#chat-search').dispatchEvent(new Event('input'));};
+  $('#jump-date-go').onclick=async()=>{
+    const day=$('#jump-date').value;if(!day||!roomId)return;
+    try{
+      const from=new Date(day+'T00:00:00'),to=new Date(from.getTime()+86400000);
+      const rows=unwrap(await db.from('messages').select('id').eq('room_id',roomId).gte('created_at',from.toISOString()).lt('created_at',to.toISOString()).order('created_at',{ascending:true}).limit(1));
+      if(!rows?.length)return toast('No messages on that day.',true);
+      closeModal();showChatView();$('#app').classList.add('mobile-chat');await ensureMessageLoaded(rows[0].id);
+      const el=document.getElementById('m-'+rows[0].id);el?.scrollIntoView({behavior:'smooth',block:'center'});el?.classList.add('flash');setTimeout(()=>el?.classList.remove('flash'),2200);
+    }catch(e){fail(e);}
+  };
+  $('#chat-search').oninput=()=>{clearTimeout(timer);const q=$('#chat-search').value.trim(),myEpoch=++epoch;
+    if(q.length<2&&kind!=='files'){$('#search-results').innerHTML='<div class="empty-small">Type to search saved messages.</div>';return;}
+    timer=setTimeout(async()=>{try{
+      if(kind==='files'){
+        let fq=db.from('attachments').select('*').is('deleted_at',null).order('created_at',{ascending:false}).limit(30);
+        if(scope==='room'&&roomId)fq=fq.eq('room_id',roomId);
+        const rows=(unwrap(await fq)||[]).filter(a=>isFileMime(a.mime_type)&&(!q||(a.file_name||'').toLowerCase().includes(q.toLowerCase())));
+        if(myEpoch!==epoch)return;
+        $('#search-results').innerHTML=rows.map(a=>`<div class="file-row"><span class="file-ico">${esc((a.file_name||'file').split('.').pop().slice(0,4).toUpperCase())}</span><div class="grow"><h4>${esc(a.file_name||'Document')}</h4><p>${fmtSize(a.byte_size)} · ${new Date(a.created_at).toLocaleDateString()}</p></div><div class="row"><button class="icon-btn" data-file-dl="${esc(a.id)}" data-path="${esc(a.object_path)}" aria-label="Download">${icon('download')}</button></div></div>`).join('')||'<div class="empty-small">No matching documents.</div>';
+        return;
+      }
+      const pattern=q.replace(/[\\%_]/g,'\\$&');
+      let mq=db.from('messages').select('*').is('deleted_at',null).eq('approved',true).order('created_at',{ascending:false}).limit(40);
+      if(scope==='room'&&roomId)mq=mq.eq('room_id',roomId);
+      if(kind==='links')mq=mq.like('body','%http%');
+      else if(kind==='mentions')mq=mq.ilike('body','%@'+((profile.name||'').split(' ')[0]||'~none~')+'%').neq('sender_id',profile.id);
+      else mq=mq.ilike('body','%'+pattern+'%');
+      const data=unwrap(await mq)||[];
+      if(myEpoch!==epoch)return;
+      const byRoom={};for(const r of data){byRoom[r.room_id]=byRoom[r.room_id]||[];byRoom[r.room_id].push(r);}
+      const html=[];for(const [rid,rows] of Object.entries(byRoom)){
+        const ms=await hydrateRows(rows,rid);const room=rooms.find(r=>r.id===rid);
+        for(const m of ms){const rx=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+          html.push(`<button class="result" data-find="${esc(m.id)}" data-in-room="${esc(rid)}"><div class="row between"><span><span class="room-tag">${esc(room?.name||'Chat')}</span> <strong>${esc(m.sender.name)}</strong></span><time class="muted small">${formatTime(m.time)}</time></div><p>${q?esc(m.text||preview(m)).replace(rx,'<mark>$1</mark>'):esc(preview(m))}</p></button>`);}
+      }
+      $('#search-results').innerHTML=html.join('')||'<div class="empty-small">No matching saved messages.</div>';
+      $$('#search-results [data-find]').forEach(b=>b.onclick=async()=>{
+        const mid=b.dataset.find,rid=b.dataset.inRoom;closeModal();
+        if(rid!==active){showChatView();await setActive(rid);}
+        await ensureMessageLoaded(mid);
+        const el=document.getElementById('m-'+mid);el?.scrollIntoView({behavior:'smooth',block:'center'});el?.classList.add('flash');setTimeout(()=>el?.classList.remove('flash'),2200);
+      });
+    }catch(e){if($('#search-results'))$('#search-results').innerHTML=`<div class="error-text">${esc(errorText(e))}</div>`;}},300);};
+};
+
+/* ---------- WhatsApp-style voice gestures: hold to record, slide left to cancel, slide up to lock ---------- */
+(function voiceGestures(){
+  let hold=null,lastMicDown=0;
+  document.addEventListener('pointerdown',e=>{
+    const mic=e.target.closest('#mic-button');if(!mic)return;
+    if(mediaRecorder?.state==='recording')return; // this is a stop-tap; let the click through
+    lastMicDown=Date.now();
+    hold={x:e.clientX,y:e.clientY,cancel:false,locked:false,moved:false,started:Date.now()};
+    startRecording();
+  },true);
+  document.addEventListener('pointermove',e=>{
+    if(!hold)return;
+    const dx=hold.x-e.clientX,dy=hold.y-e.clientY;
+    if(Math.abs(dx)>8||Math.abs(dy)>8)hold.moved=true;
+    hold.cancel=dx>70&&!hold.locked;
+    const rec=$('#recording'),hint=rec?.querySelector('.slide-hint');
+    if(dy>60&&!hold.locked){hold.locked=true;rec?.classList.add('locked');
+      if(rec&&!rec.querySelector('.lock-cta')){const l=document.createElement('span');l.className='lock-cta';l.innerHTML=icon('stop')+'Tap the mic to finish';rec.appendChild(l);}}
+    if(hint){hint.style.opacity=Math.max(0,1-dx/90);rec.classList.toggle('cancel-zone',hold.cancel);}
+  },true);
+  document.addEventListener('pointerup',()=>{
+    if(!hold)return;const h=hold;hold=null;
+    if(mediaRecorder?.state!=='recording')return;
+    if(h.cancel){stopRecording(true);return;}
+    if(h.locked)return;
+    if(Date.now()-h.started<600&&!h.moved){$('#recording')?.classList.add('locked');return;} // quick tap → stays on until next tap
+    stopRecording(false);
+  },true);
+  document.addEventListener('click',e=>{
+    const mic=e.target.closest('#mic-button');if(!mic)return;
+    e.preventDefault();e.stopPropagation(); // replaces the legacy click-to-toggle action
+    if(Date.now()-lastMicDown<350)return;   // ignore the click that completes a hold gesture
+    if(mediaRecorder?.state==='recording')stopRecording(false);
+    else startRecording();
+  },true);
+})();
+const __mpResetRec=resetRecordingUI;
+resetRecordingUI=function(){
+  __mpResetRec();
+  const rec=$('#recording');
+  rec?.classList.remove('locked','cancel-zone');
+  rec?.querySelector('.lock-cta')?.remove();
+  const hint=rec?.querySelector('.slide-hint');if(hint)hint.style.opacity='';
+  if(rec&&!rec.querySelector('.slide-hint')){const h=document.createElement('span');h.className='slide-hint';h.innerHTML='‹ slide to cancel';rec.insertBefore(h,rec.querySelector('button'));}
+  $('#mic-button').classList.remove('record-live');
+};
+document.addEventListener('pointerdown',e=>{if(e.target.closest('#mic-button'))$('#mic-button')?.classList.add('record-live');},true);
+document.addEventListener('pointerup',()=>{if(mediaRecorder?.state!=='recording')$('#mic-button')?.classList.remove('record-live');},true);
+
+/* ---------- Preview label + notification gating ---------- */
+const __mpPreview=preview;
+preview=function(m){if(m?.kind==='file'){const mc=(typeof mediaCache!=='undefined'?mediaCache:{});return '📄 '+(mc[m.attachmentId]?.file_name||'Document');}return __mpPreview(m);};
+const __mpNotify=notifyMessage;
+notifyMessage=function(id,m){
+  const r=roomPref(id);
+  if(prefMuted(r))return;
+  if(r.notifyMode==='mentions'){
+    const first=((profile.name||'').split(' ')[0]||'').toLowerCase();
+    if(!first||!(m.text||'').toLowerCase().includes('@'+first))return;
+  }
+  __mpNotify(id,m);
+};
+
+/* ---------- Playback speed ---------- */
+document.addEventListener('click',e=>{
+  const rate=e.target.closest('[data-rate]');if(!rate)return;e.preventDefault();
+  const audio=rate.previousElementSibling;if(!audio||audio.tagName!=='AUDIO')return;
+  const next=mpRateSteps[(mpRateSteps.indexOf(audio.playbackRate)+1)%mpRateSteps.length]||1.25;
+  audio.playbackRate=next;rate.textContent=next+'×';
+});
+document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')$$('audio').forEach(a=>{if(a!==e.target)a.pause();});},true);
+
+/* ---------- Joins with owner approval ---------- */
+const __mpJoinByToken=joinByToken;
+joinByToken=async function(token){
+  let result=null,missing=false;
+  try{result=unwrap(await db.rpc('request_join_room',{p_token:token}));}catch(e){if(['PGRST202','42883'].includes(e.code))missing=true;else throw e;}
+  if(missing)return __mpJoinByToken(token);
+  const status=result?.status,roomId=result?.room_id;
+  if(status==='pending'){toast('Request sent. The group owner will let you in.');return null;}
+  if(roomId){await loadRooms();await setActive(roomId);}
+  toast(status==='member'?'You’re already in that room.':'You’re in. Make yourself at home.');
+  return rooms.find(r=>r.id===roomId)||null;
+};
+
+/* ---------- Admin toggle: edit-history visibility ---------- */
+document.addEventListener('change',async e=>{
+  const t=e.target.closest('[data-chat-admin-set]');if(!t)return;
+  try{unwrap(await db.rpc('set_chat_admin_setting',{p_key:t.dataset.chatAdminSet,p_enabled:t.checked}));toast('Setting saved.');}catch(err){t.checked=!t.checked;toast(errorText(err),true);}
+});
+async function injectAdminEditToggle(){
+  if(!studentAdmin)return;
+  try{
+    const r=await db.rpc('get_chat_admin_settings');if(r.error)return;
+    const modal=$('.modal');if(!modal||modal.querySelector('[data-chat-admin-set]'))return;
+    const div=document.createElement('div');div.className='toggle-row';
+    div.innerHTML=`<div class="grow"><strong>Admins can view message edit history</strong><p>When off, only the writer can see earlier versions of their messages.</p></div><input type="checkbox" data-chat-admin-set="admin_can_read_edit_history" ${r.data?.admin_can_read_edit_history?'checked':''}>`;
+    modal.appendChild(div);
+  }catch{}
+}
+const __mpShowSettings=showSettings;
+showSettings=function(){__mpShowSettings();setTimeout(injectAdminEditToggle,80);};
+
+/* ---------- Edit / pin message delegation ---------- */
+document.addEventListener('click',e=>{
+  const edit=e.target.closest('[data-edit]');if(edit){e.preventDefault();startEdit(edit.dataset.edit);return;}
+  const hist=e.target.closest('[data-edit-history]');if(hist){e.preventDefault();showEditHistory(hist.dataset.editHistory);return;}
+  const pin=e.target.closest('[data-pin-msg]');if(pin){e.preventDefault();togglePinMessage(pin.dataset.pinMsg);}
+});
 
 
 const actions={'workspace-menu':showWorkspaceMenu,'chat-tools':showChatTools,'new-study-group':showStudyGroupCreate,'join-study-group':showStudyGroupJoin,'view-chat':()=>showChatView(true),'notes':openNotes,'new-course':showCourseCreate,'join-course':()=>showNewRoom('join'),'community':openCommunity,'open-academic':openAcademic,'pin-resource':()=>showAcademicAdd('resource'),'add-homework':()=>showAcademicAdd('homework'),

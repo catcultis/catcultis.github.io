@@ -1,3 +1,5 @@
+> **Newer additions:** `MESSENGER-TOOLS-UPDATE.md` adds pins, archive, message editing, documents, notification controls, group lifecycle and voice-note gestures. Install `catcul-chat-tools-upgrade.sql` after this one and redeploy `catcul-push`.
+
 > **Latest layout:** [MESSENGER-LAYOUT-UPDATE.md](MESSENGER-LAYOUT-UPDATE.md). The campus masthead is gone; tools use compact navigation and menus. No additional SQL is needed for this layout refresh if the open-workspace update is already installed.
 
 # Catcul — more space, simple Notes, no Study Mode

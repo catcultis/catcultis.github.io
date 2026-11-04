@@ -1,3 +1,5 @@
+> **Newer additions:** `MESSENGER-TOOLS-UPDATE.md` adds pins, archive, message editing, documents, notification controls, group lifecycle and voice-note gestures. Install `catcul-chat-tools-upgrade.sql` after this one and redeploy `catcul-push`.
+
 > **Typing-bar fix:** the chat now stays within the visible window. The left navigation scrolls independently instead of stretching the chat, and the message composer stays at the bottom. Browser viewport resizing is handled, including reduced visible height. Upload the updated `catcul.html` (or your deployed chat filename) and `sw.js`, then reload/reopen the site. No new SQL or function deployment is needed.
 
 # Catcul — conversation-first layout

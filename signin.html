@@ -1,15 +1,268 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><meta name="description" content="Make yourself at home on Catcul. Sign in or create an account to start real conversations with your favorite people."><title>Sign in to Catcul — Good to have you back.</title><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2215%22%20fill%3D%22%23dcf783%22%2F%3E%3Cpath%20d%3D%22M12%2020%2010%208l12%208h4l12-8-2%2012c7%2014-1%2021-12%2021S5%2034%2012%2020Z%22%20fill%3D%22none%22%20stroke%3D%22%2320261e%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3C%2Fsvg%3E">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Catcul</title>
+<meta name="description" content="Sign in to your Catcul workspace to access direct messages, study rooms, and voice or video calls.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2215%22%20fill%3D%22%231f3a2a%22%2F%3E%3Cpath%20d%3D%22M12%2020%2010%208l12%208h4l12-8-2%2012c7%2014-1%2021-12%2021S5%2034%2012%2020Z%22%20fill%3D%22none%22%20stroke%3D%22%23f6f8f3%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6f1;--panel:#fff;--soft:#f6f7f4;--text:#25301f;--muted:#8a9381;--line:#e5eadc;--accent:#dcf783;--accent-hover:#d0ed6f;--dark:#253020;color-scheme:light}*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{border:0;cursor:pointer;color:inherit;background:none}a{color:inherit;text-decoration:none}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #a4b76c;outline-offset:4px}input{outline:none;color:var(--text)}input:focus{border-color:#9cb76b!important;box-shadow:0 0 0 3px #b8d18316}h1,h2,h3,p{margin:0}svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.hidden{display:none!important}.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.brand{height:40px;width:40px;border-radius:14px;background:var(--dark);color:var(--accent);display:grid;place-items:center}.brand svg{height:29px;width:29px;stroke-width:1.5}.wordmark{font-size:29px;font-weight:750;letter-spacing:-1.4px}.dot{width:5px;height:5px;border-radius:50%;background:#829d4d;display:inline-block}.eyebrow{font-size:9px;font-weight:650;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}.pill-label{display:inline-flex;border:1px solid var(--line);border-radius:7px;padding:6px 9px;font-size:9px;color:var(--muted)}.icon-btn{width:35px;height:35px;display:grid;place-items:center;border-radius:11px}.icon-btn:hover{background:var(--soft)}.icon-btn svg{width:19px;height:19px}.field{display:block;width:100%;padding:13px 14px;border:1px solid var(--line);background:var(--soft);border-radius:11px;font-size:12px}.field::placeholder{color:#a0a891}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;background:var(--accent);border-radius:11px;font-size:12px;font-weight:650;transition:background .15s,transform .15s}.btn:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn.secondary{background:var(--soft);border:1px solid var(--line)}.btn svg{width:16px;height:16px}.full{width:100%}.subtle-link{font-size:10px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}.dark{--bg:#151813;--panel:#1d211b;--soft:#252b22;--text:#e9eddf;--muted:#949d88;--line:#30382b;--dark:#11170c;color-scheme:dark}.dark .btn:not(.secondary){color:#2c3d1e}
+:root{
+ --bg:#f4f4ef;
+ --surface:#ffffff;
+ --surface-soft:#f8f9f5;
+ --ink:#152019;
+ --muted:#56655a;
+ --border:#d7dfd3;
+ --border-strong:#b8c4b2;
+ --brand:#1f3a2a;
+ --brand-hover:#294b37;
+ --brand-ink:#f6f8f3;
+ --sage:#dce7d5;
+ --danger:#b8382c;
+ --danger-bg:#fdf0ee;
+ --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+ --serif:'Fraunces',Georgia,serif;
+}
+body.dark{
+ --bg:#111714;
+ --surface:#1a241e;
+ --surface-soft:#202c25;
+ --ink:#eef2ec;
+ --muted:#9fb0a3;
+ --border:#2b3a30;
+ --border-strong:#3d5044;
+ --brand:#cfe29c;
+ --brand-hover:#dceba8;
+ --brand-ink:#142318;
+ --sage:#25352b;
+ --danger:#f28f85;
+ --danger-bg:#331c1a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+ background:var(--bg);
+ color:var(--ink);
+ font-family:var(--sans);
+ line-height:1.5;
+ -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+.hidden{display:none!important}
 
-.auth-screen{position:fixed;inset:0;z-index:80;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;overflow:auto}.auth-card{display:grid;grid-template-columns:1fr 1fr;width:min(980px,100%);min-height:650px;border-radius:28px;border:1px solid var(--line);overflow:hidden;background:var(--panel);box-shadow:0 20px 100px #2a39100a;flex-shrink:0}.auth-story{background:#e0f39b;color:#293a20;padding:37px 42px;display:flex;flex-direction:column;position:relative;overflow:hidden}.auth-story .wordmark{font-size:30px;letter-spacing:-1.4px}.auth-story .brand{height:40px;width:40px;background:#293a20;color:#e0f39b}.auth-story .eyebrow{color:#7e9554;font-size:9px}.auth-story-main{padding-top:58px}.auth-story h1{font-size:44px;letter-spacing:-2.1px;line-height:1.12;font-weight:650;margin:16px 0 20px}.auth-story-main>p{font-size:12px;line-height:1.9;max-width:285px;color:#6d804e}.auth-illustration{height:140px;position:relative;margin-top:25px}.auth-cat{width:119px;height:105px;border:3px solid #f8ffe4;border-radius:28px;background:#d3eb8a;transform:rotate(-9deg);display:grid;place-items:center;position:absolute;right:55px;top:0;box-shadow:0 9px 30px #60763110}.auth-cat svg{width:65px;height:65px;stroke-width:1.1}.auth-chat-bubble{position:absolute;right:0;top:70px;background:#fcfff3;border-radius:13px;padding:14px 18px;box-shadow:0 5px 16px #60763109;transform:rotate(5deg);font-size:12px;font-weight:600}.auth-chat-bubble span{margin-left:12px;color:#8f9c65;font-size:18px}.auth-spark{position:absolute;top:0;left:50px;font-size:32px;color:#82964e}.auth-story-foot{font-size:10px;display:flex;align-items:center;gap:8px;color:#7b8e51;margin-top:auto;padding-top:15px}.auth-story-foot .dot{background:#809b47}.auth-form-side{padding:32px 45px 29px;display:flex;flex-direction:column}.auth-form-top{margin-bottom:54px}.auth-form-top .pill-label{font-size:9px;background:var(--soft);padding:7px 9px;letter-spacing:.3px}.auth-form-main h2{font-size:30px;letter-spacing:-1.3px;line-height:1.2;max-width:280px}.auth-form-main>p{color:var(--muted);font-size:12px;line-height:1.8;margin:12px 0 25px}.auth-form-main label{display:block;font-size:11px;font-weight:600;margin:17px 0 8px}.auth-form-main input{padding:13px 14px;font-size:12px}.auth-form-main .btn{margin-top:23px;padding:14px;font-size:12px}.auth-form-main #auth-forgot{font-size:10px;color:#82965d;padding:0;margin-top:9px}.auth-switch{text-align:center!important;font-size:11px!important;color:var(--muted)!important;margin-top:22px!important}.auth-switch button{font-size:11px;font-weight:650;color:var(--text);padding:0 0 0 4px}.auth-help{border-top:1px solid var(--line);padding-top:16px;margin-top:auto}.auth-help p{font-size:9px;color:var(--muted);line-height:1.8;margin-bottom:9px}.auth-help .subtle-link{font-size:9px}.auth-error{background:var(--soft);border-left:2px solid #a7b97e;border-radius:8px;font-size:11px;color:var(--text);line-height:1.7;padding:12px;margin-top:15px;overflow-wrap:anywhere}.auth-footer{font-size:9px;color:#a0a891;letter-spacing:.5px;margin-top:22px}.boot-overlay{position:fixed;inset:0;background:var(--bg);z-index:79;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px}.boot-overlay .brand{height:65px;width:65px;border-radius:22px}.boot-overlay p{font-size:12px;color:var(--muted)}.dark .auth-card{box-shadow:none}.dark .auth-story{background:#d5ea92}.dark .auth-story .wordmark{color:#293a20}.dark .auth-cat{color:#293a20}.auth-screen .brand svg{width:30px;height:30px}
-@media(max-width:760px){.auth-screen{padding:18px;justify-content:flex-start}.auth-card{grid-template-columns:1fr;max-width:440px;min-height:0;margin:auto}.auth-story{padding:22px 27px;min-height:0}.auth-story .brand{height:32px;width:32px;border-radius:11px}.auth-story .brand svg{width:24px;height:24px}.auth-story .wordmark{font-size:27px}.auth-story-main{padding-top:24px}.auth-story-main .eyebrow,.auth-story-main>p,.auth-illustration,.auth-story-foot{display:none}.auth-story h1{font-size:27px;letter-spacing:-1px;line-height:1.15;margin:0 0 2px}.auth-story h1 br{display:none}.auth-story h1 br:after{content:' '}.auth-story h1{max-width:310px}.auth-form-side{padding:23px 28px}.auth-form-top{display:none}.auth-form-main h2{font-size:27px;max-width:300px}.auth-form-main>p{margin-bottom:20px;font-size:11px}.auth-help{padding-top:13px;margin-top:12px}.auth-footer{margin:18px auto 0;font-size:8px}.auth-form-main input{font-size:16px}.auth-form-main label{font-size:11px}.auth-screen .auth-card{flex-shrink:0}}
+.auth-shell{
+ min-height:100vh;
+ display:grid;
+ grid-template-columns:minmax(360px,.94fr) minmax(380px,1.06fr);
+}
+.auth-story{
+ position:relative;
+ overflow:hidden;
+ padding:clamp(28px,4.5vw,56px);
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ gap:32px;
+ background:#15241b;
+ color:#f5f7f2;
+}
+.auth-story-photo{
+ position:absolute;inset:0;
+ width:100%;height:100%;
+ object-fit:cover;object-position:center;
+ z-index:0;
+}
+.auth-story-scrim{
+ position:absolute;inset:0;z-index:1;
+ background:linear-gradient(180deg,rgba(15,25,19,.66) 0%,rgba(12,21,16,.82) 55%,rgba(10,18,13,.92) 100%);
+}
+.auth-top,.story-body,.story-foot{position:relative;z-index:2}
 
-.auth-screen{position:relative;inset:auto;min-height:calc(100dvh - 84px);padding:22px 28px 30px;overflow:visible}.site-nav{height:78px;max-width:1170px;margin:auto;padding:0 30px;display:flex;justify-content:space-between;align-items:center}.home-link{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:7px}.home-link svg{height:15px;width:15px}.top-switch{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:9px}.top-switch a{font-weight:600;color:var(--text);padding:9px 13px;border:1px solid var(--line);border-radius:9px}.auth-card{min-height:650px}.auth-form-top{margin-bottom:35px}.auth-form-main h2{max-width:315px;font-size:30px}.auth-form-main>p{margin-bottom:22px}.auth-story-main{padding-top:65px}.password-wrap{position:relative}.password-wrap input{padding-right:46px}.show-password{position:absolute;right:6px;top:5px;height:34px;width:34px;display:grid;place-items:center;color:#9aa58b;border-radius:8px}.show-password svg{height:17px;width:17px}.show-password:hover{background:var(--line)}.password-note{font-size:9px;line-height:1.7;color:var(--muted);margin-top:6px}.auth-switch a{font-size:11px;font-weight:650;color:var(--text);padding-left:4px}.auth-notice{font-size:10px;color:var(--muted);line-height:1.8;margin-top:15px}.help-details{font-size:10px;color:var(--muted);margin-top:10px;line-height:1.8}.help-details summary{cursor:pointer;list-style:none;text-decoration:underline;text-underline-offset:3px}.help-details summary::-webkit-details-marker{display:none}.help-details p{padding-top:8px;font-size:10px}.help-details code{font-size:10px}.success-icon{height:52px;width:52px;border-radius:17px;background:var(--accent);color:#566b34;display:grid;place-items:center;margin-bottom:23px}.success-icon svg{height:26px;width:26px}.auth-success p{color:var(--muted);font-size:12px;line-height:1.85;margin-top:13px}.auth-success .btn{margin-top:22px}.auth-success .resend{font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;margin-top:18px;padding:4px 0}.auth-error.success{border-left-color:#97b55b;background:#f0f6e5;color:#65784a}.dark .auth-error.success{background:#2c3822;color:#b8cd92}.invite-notice{background:#eff5df;color:#7d905c;border:1px solid #e2ebd0;border-radius:9px;padding:9px 12px;font-size:10px;line-height:1.7;margin-bottom:19px}.dark .invite-notice{background:#303c22;border-color:#40512d;color:#b2c58f}.auth-footer{display:flex;gap:7px;align-items:center}.auth-footer svg{height:11px;width:11px}.auth-help{margin-top:25px}.signup-page .auth-card{min-height:720px}.signup-page .auth-form-top{margin-bottom:24px}.signup-page .auth-form-main>p{margin-top:10px;margin-bottom:15px}.signup-page .auth-form-main label{margin-top:13px}.signup-page .auth-story-main{padding-top:85px}.signup-page .auth-form-main .btn{margin-top:20px}.signup-page .auth-switch{margin:16px 0 0!important}.signup-page .auth-help{margin-top:20px}.signup-page .auth-illustration{margin-top:45px}
-@media(max-width:760px){.site-nav{height:66px;padding:0 22px}.home-link{font-size:10px}.top-switch{font-size:10px;gap:7px}.top-switch a{font-size:10px;padding:8px 10px}.auth-screen{padding:7px 18px 23px;min-height:calc(100dvh - 66px)}.auth-card,.signup-page .auth-card{min-height:0;margin:0 auto}.auth-story-main,.signup-page .auth-story-main{display:none}.auth-story{padding:21px 26px}.auth-form-top{display:flex;margin-bottom:22px}.auth-form-top .pill-label{padding:6px 8px;font-size:8px}.auth-form-side{padding:23px 27px}.auth-form-main h2{font-size:27px;max-width:300px}.auth-form-main input{font-size:16px}.auth-help{margin-top:18px}.signup-page .auth-form-top{margin-bottom:18px}.auth-form-main label{font-size:11px}.auth-footer{justify-content:center;flex-wrap:wrap;margin-top:20px;text-align:center}.auth-success .btn{font-size:12px}.auth-story .brand{width:32px;height:32px}.auth-story .wordmark{font-size:27px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#d7ed9b"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head><body class="signin-page">
+.auth-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{
+ display:inline-flex;align-items:center;gap:11px;
+ text-decoration:none;font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:#f6f8f3;
+}
+.brand-mark{
+ width:38px;height:38px;border-radius:10px;
+ display:grid;place-items:center;
+ background:rgba(246,248,243,.14);
+ border:1px solid rgba(246,248,243,.24);
+ backdrop-filter:blur(8px);
+ color:#f6f8f3;
+}
+.brand-mark svg{width:22px;height:22px}
+.theme-toggle{
+ width:38px;height:38px;border-radius:10px;
+ border:1px solid rgba(246,248,243,.24);
+ background:rgba(246,248,243,.1);
+ backdrop-filter:blur(8px);
+ color:#f6f8f3;cursor:pointer;font-size:.98rem;
+}
+.theme-toggle:hover{background:rgba(246,248,243,.2)}
+
+.story-eyebrow{
+ display:inline-block;
+ padding:5px 12px;border-radius:999px;
+ background:rgba(220,231,213,.16);
+ border:1px solid rgba(220,231,213,.28);
+ color:#e3eedb;
+ font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+ margin-bottom:18px;
+}
+.story-body h1{
+ font-family:var(--serif);
+ font-size:clamp(2rem,3.4vw,3.05rem);
+ line-height:1.1;font-weight:600;letter-spacing:-.025em;
+ max-width:16ch;color:#f7f9f4;
+}
+.story-body p{
+ margin-top:14px;max-width:44ch;
+ color:rgba(240,244,237,.84);font-size:.98rem;
+}
+.story-highlights{
+ list-style:none;margin-top:26px;
+ display:grid;gap:10px;
+ font-size:.88rem;color:rgba(244,247,241,.92);
+}
+.story-highlights li{
+ display:flex;align-items:center;gap:10px;
+ padding:9px 13px;border-radius:10px;
+ background:rgba(246,248,243,.08);
+ border:1px solid rgba(246,248,243,.14);
+ backdrop-filter:blur(6px);
+ max-width:400px;
+}
+.story-highlights i{color:#cfe29c;font-size:1.05rem}
+
+.story-foot{
+ display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+ font-size:.82rem;color:rgba(240,244,237,.78);
+}
+.story-foot a{color:#f7f9f4;font-weight:600;text-decoration:none}
+.story-foot a:hover{text-decoration:underline}
+.story-credit{font-size:.75rem;color:rgba(240,244,237,.68)}
+.story-credit a{font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+/* Right Form Pane */
+.auth-form-pane{
+ display:grid;place-items:center;
+ padding:clamp(22px,4vw,52px);
+}
+.auth-card{
+ width:min(450px,100%);
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:clamp(26px,3.6vw,38px);
+ box-shadow:0 16px 42px rgba(18,30,22,.07);
+}
+.auth-card h2{
+ font-family:var(--serif);
+ font-size:clamp(1.65rem,2.5vw,2.1rem);
+ line-height:1.15;font-weight:600;letter-spacing:-.02em;
+}
+.intro{color:var(--muted);margin:8px 0 22px;font-size:.93rem}
+
+.notice,.auth-message{
+ padding:11px 13px;border-radius:10px;
+ border:1px solid var(--border);
+ background:var(--surface-soft);
+ font-size:.87rem;margin-bottom:15px;
+}
+.auth-message{
+ border-color:color-mix(in srgb,var(--danger) 35%,var(--border));
+ background:var(--danger-bg);color:var(--danger);
+}
+.auth-message.success{
+ border-color:var(--border-strong);
+ background:var(--sage);color:var(--ink);
+}
+
+form{display:grid;gap:15px}
+label{display:block;font-size:.84rem;font-weight:600;margin-bottom:6px}
+.label-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.field{
+ width:100%;height:44px;padding:0 13px;
+ border-radius:10px;border:1px solid var(--border);
+ background:var(--surface-soft);color:var(--ink);
+ font-size:.93rem;
+ transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease;
+}
+.field:focus{
+ outline:none;
+ background:var(--surface);
+ border-color:var(--brand);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 16%,transparent);
+}
+.username-input{position:relative}
+.username-input span{
+ position:absolute;left:13px;top:50%;transform:translateY(-50%);
+ color:var(--muted);font-weight:600;pointer-events:none;
+}
+.username-input .field{padding-left:29px}
+
+.password-field{position:relative}
+.password-field .field{padding-right:44px}
+.peek{
+ position:absolute;right:5px;top:5px;width:34px;height:34px;
+ border-radius:8px;border:0;background:transparent;
+ color:var(--muted);cursor:pointer;
+}
+.peek:hover{background:var(--sage);color:var(--ink)}
+
+.field-note{color:var(--muted);font-size:.78rem;margin-top:5px}
+.text-link{color:var(--muted);font-size:.82rem;font-weight:600;text-decoration:none}
+.text-link:hover{color:var(--ink);text-decoration:underline}
+
+.submit{
+ margin-top:4px;height:46px;padding:0 18px;
+ border-radius:10px;border:1px solid transparent;
+ background:var(--brand);color:var(--brand-ink);
+ font-weight:600;font-size:.94rem;cursor:pointer;
+ transition:background-color .16s ease,transform .12s ease;
+}
+.submit:hover{background:var(--brand-hover)}
+.submit:active{transform:translateY(1px)}
+.submit:disabled{opacity:.6;cursor:wait;transform:none}
+
+.secondary-btn{
+ min-height:42px;padding:9px 14px;border-radius:10px;
+ border:1px solid var(--border);background:transparent;
+ font-weight:600;font-size:.88rem;cursor:pointer;
+}
+.secondary-btn:hover{background:var(--surface-soft);border-color:var(--border-strong)}
+.secondary-btn:disabled{opacity:.55;cursor:not-allowed}
+
+.switch{margin-top:20px;color:var(--muted);font-size:.89rem;text-align:center}
+.switch a{color:var(--ink);font-weight:700;text-decoration:none}
+.switch a:hover{text-decoration:underline}
+
+.success-view{display:grid;gap:14px}
+.mail-badge{
+ width:44px;height:44px;border-radius:11px;
+ display:grid;place-items:center;
+ background:var(--sage);color:var(--ink);
+ font-weight:700;font-size:1.15rem;
+}
+.success-actions{display:grid;gap:10px;margin-top:4px}
+.link-btn{display:grid;place-items:center;text-decoration:none}
+code{font-size:.84em;background:var(--surface-soft);padding:2px 5px;border-radius:5px}
+
+@media (max-width:900px){
+ .auth-shell{grid-template-columns:1fr}
+ .auth-story{min-height:280px;padding:24px}
+ .story-highlights{display:none}
+}
+
+</style>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://images.unsplash.com" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f4f4ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<body class="signin-page">
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
 <symbol id="i-cat" viewBox="0 0 40 40"><path d="M9 15 7 5l11 7h4L33 5l-2 10c3 3 4 6 4 10 0 8-6 12-15 12S5 33 5 25c0-4 1-7 4-10Z"/><path d="M13 23h.1M27 23h.1" stroke-width="4"/><path d="m18 28 2 2 2-2m-2 2v3M7 27l-5-1m5 5-4 2m30-6 5-1m-5 5 4 2"/></symbol>
 <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a9 9 0 0 1-9 9c-1.6 0-3.2-.4-4.5-1.1L3 21l1.6-4.5A9 9 0 1 1 21 11.5Z"/><path d="M8 11h8m-8 4h5"/></symbol>
@@ -44,8 +297,97 @@
 <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C6 2 1 10 5 17s17 4 15-14ZM4 21 15 10"/></symbol>
 <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M3 15v6h18v-6"/></symbol>
 </defs></svg>
-<nav class="site-nav" aria-label="Account navigation"><a class="home-link" href="index.html" data-route="index.html"><svg><use href="#i-back"/></svg>Back to home</a><div class="top-switch"><span>New around here?</span><a href="signup.html" data-route="signup.html">Create an account</a></div></nav>
-<main class="auth-screen" id="auth-screen"><div class="auth-card"><aside class="auth-story"><a class="row" href="index.html" data-route="index.html" aria-label="Catcul home"><span class="brand"><svg><use href="#i-cat"/></svg></span><span class="wordmark">catcul.</span></a><div class="auth-story-main"><span class="eyebrow">Less noise. More us.</span><h1>Your people. <br>Your moments. <br>Your little space.</h1><p>The late-night catch-ups. The photos that don’t need a filter. The “made it home?” messages.</p><div class="auth-illustration" aria-hidden="true"><div class="auth-cat"><svg><use href="#i-cat"/></svg></div><span class="auth-chat-bubble">oh, hey you. <span>♡</span></span><span class="auth-spark">✧</span></div></div><div class="auth-story-foot"><span class="dot"></span>A little less scrolling. A lot more talking.</div></aside><section class="auth-form-side"><div class="row between auth-form-top"><span class="pill-label">A familiar space. A fresh hello.</span><button class="icon-btn" id="theme-button" aria-label="Toggle dark mode"><svg><use href="#i-moon"/></svg></button></div><div class="invite-notice hidden" id="invite-notice">Someone saved you a space. Sign in or create an account to accept your room invitation.</div><div class="auth-form-main" id="form-view"><h2 id="auth-heading">Good to have you back.</h2><p id="auth-intro">Your conversations are right where you left them. Come on in.</p><form id="auth-form"><div id="name-wrap" class="hidden"><label for="name">What should we call you?</label><input class="field" id="name" autocomplete="nickname" maxlength="28" placeholder="Your name" ></div><div id="username-wrap" class="hidden"><label for="username">Choose Username</label><input class="field" id="username" placeholder="e.g., alex_smith" minlength="3" maxlength="15" pattern="[A-Za-z0-9_]{3,15}" autocomplete="username" autocapitalize="none" spellcheck="false"><p class="note">3–15 letters, numbers or underscores. No automatic prefix.</p></div><div id="email-wrap"><label for="email">Email address</label><input class="field" id="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></div><div id="password-wrap"><div class="row between"><label for="password">Password</label><a href="signin.html?mode=reset" id="forgot-link" class="" style="font-size:10px;color:#81965b;margin-top:11px">Forgot password?</a></div><div class="password-wrap"><input class="field" id="password" type="password" autocomplete="current-password" minlength="1" maxlength="128" placeholder="Your password" required><button class="show-password" type="button" data-password="password" aria-label="Show password" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><p class="password-note hidden" id="password-note">Make it yours. At least 10 characters.</p></div><div id="confirm-wrap" class="hidden"><label for="confirm-password">Confirm password</label><div class="password-wrap"><input class="field" id="confirm-password" type="password" autocomplete="new-password" placeholder="One more time" maxlength="128" ><button class="show-password" type="button" data-password="confirm-password" aria-label="Show password confirmation" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div><p id="auth-message" class="auth-error hidden" role="status" aria-live="polite"></p><button id="resend-inline" class="subtle-link hidden" type="button" style="margin-top:12px">Resend confirmation email</button><button type="submit" class="btn full" id="submit-button">Sign in <svg><use href="#i-arrow"/></svg></button></form><p class="auth-switch" id="auth-switch">New around here? <a href="signup.html" data-route="signup.html">Create an account</a></p></div><div class="auth-form-main auth-success hidden" id="success-view"><div class="success-icon"><svg><use href="#i-check"/></svg></div><h2 id="success-heading">A little hello in your inbox.</h2><p id="success-copy"></p><a class="btn full" href="signin.html" id="success-link" data-route="signin.html">Back to sign in <svg><use href="#i-arrow"/></svg></a><button class="resend" id="resend-button" type="button">Resend confirmation email</button><p id="success-status" role="status" aria-live="polite" style="font-size:10px"></p></div><div class="auth-help"><p>Members-only rooms. Saved conversations. A space for your people.</p><details class="help-details"><summary>Need a little help?</summary><p>Confirm your email before signing in. Check your spam folder if the message hasn’t arrived. Email links work best on your hosted HTTPS website, in the browser where you requested them.</p><p id="local-note" class="hidden">You’re opening a local HTML file. For reliable shared sign-in and email redirects, upload all four HTML pages to the same HTTPS website.</p><p>If the chat reports a database setup problem, your project administrator needs to install <code>catcul-setup.sql</code> and expose the <code>catcul</code> schema. Never enter secret API keys here.</p></details></div></section></div><p class="auth-footer"><svg><use href="#i-leaf"/></svg>catcul · a small space for real connections</p></main>
+<main class="auth-shell">
+ <section class="auth-story" aria-label="About Catcul">
+  <img class="auth-story-photo" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&amp;fit=crop&amp;w=1400&amp;q=82" alt="Sunlit architectural study library" loading="eager">
+  <div class="auth-story-scrim" aria-hidden="true"></div>
+  <div class="auth-top">
+   <a class="brand" data-route="index.html" href="index.html">
+    <span class="brand-mark" aria-hidden="true">
+     <svg viewBox="0 0 32 32" fill="none">
+      <path d="M7 13L9.5 5.5L14.5 10.5H17.5L22.5 5.5L25 13C26.3 15 26.8 17.5 26 20.2C24.9 23.8 21 26 16 26C11 26 7.1 23.8 6 20.2C5.2 17.5 5.7 15 7 13Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+      <circle cx="12.5" cy="16.5" r="1.4" fill="currentColor"/>
+      <circle cx="19.5" cy="16.5" r="1.4" fill="currentColor"/>
+      <path d="M14.3 19.8Q16 21.2 17.7 19.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+     </svg>
+    </span>
+    Catcul
+   </a>
+   <button class="theme-toggle" id="theme-button" type="button" aria-label="Switch color theme" title="Switch light or dark mode">◐</button>
+  </div>
+  <div class="story-body">
+   <span class="story-eyebrow">Welcome Back</span>
+   <h1>Pick up your conversations right where you left off.</h1>
+   <p>Sign in with your account email to access your rooms, study boards, private diary, and live calls.</p>
+   <ul class="story-highlights" aria-label="Workspace highlights">
+    <li><i class="ri-chat-check-line" aria-hidden="true"></i> Private DMs, study groups &amp; course channels</li>
+    <li><i class="ri-vidicon-line" aria-hidden="true"></i> LiveKit voice &amp; HD video calls in browser</li>
+    <li><i class="ri-camera-lens-line" aria-hidden="true"></i> DeepAR 3D face lenses &amp; Unsplash themes</li>
+   </ul>
+  </div>
+  <p class="story-foot">
+   <span><a data-route="index.html" href="index.html">← Back to home</a></span>
+   <span class="story-credit">Photo by <a href="https://unsplash.com/@itfeelslikefilm?utm_source=catcul&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Janko Ferlič</a> on <a href="https://unsplash.com/?utm_source=catcul&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a></span>
+  </p>
+ </section>
+ <section class="auth-form-pane">
+  <div class="auth-card">
+   <div id="invite-notice" class="notice hidden">An invite is waiting for you. Sign in or create an account to open it.</div>
+   <div id="local-note" class="notice hidden">You’re opening this file directly. Password reset links work best when Catcul is hosted on <code>https://</code> or <code>localhost</code>.</div>
+   <div id="form-view">
+    <h2 id="auth-heading">Sign in to Catcul.</h2>
+    <p class="intro" id="auth-intro">Enter your account email and password to open your workspace.</p>
+    <div id="auth-message" class="auth-message hidden" role="status" aria-live="polite"></div>
+    <form id="auth-form" novalidate>
+     <div id="name-wrap" class="hidden">
+      <label for="name">Your name</label>
+      <input class="field" id="name" name="name" autocomplete="name" maxlength="40" placeholder="Alex Rivera" >
+     </div>
+     <div id="username-wrap" class="hidden">
+      <label for="username">Username</label>
+      <div class="username-input"><span aria-hidden="true">@</span><input class="field" id="username" name="username" autocomplete="username" minlength="3" maxlength="15" pattern="[A-Za-z0-9_]{3,15}" placeholder="alex_rivera" aria-describedby="username-note" ></div>
+      <p class="field-note" id="username-note">3–15 letters, numbers, or underscores. Friends use this handle to find you.</p>
+     </div>
+     <div id="email-wrap">
+      <label for="email">Email address</label>
+      <input class="field" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+     </div>
+     <div id="password-wrap">
+      <div class="label-row">
+       <label for="password">Password</label>
+       <a class="text-link " id="forgot-link" href="signin.html?mode=reset">Forgot password?</a>
+      </div>
+      <div class="password-field">
+       <input class="field" id="password" name="password" type="password" autocomplete="current-password" minlength="1" placeholder="Your password" required>
+       <button class="peek" type="button" data-password="password" aria-label="Show password" aria-pressed="false">👁</button>
+      </div>
+      <p class="field-note hidden" id="password-note">Use at least 10 characters.</p>
+     </div>
+     <div id="confirm-wrap" class="hidden">
+      <label for="confirm-password">Confirm password</label>
+      <div class="password-field">
+       <input class="field" id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="10" placeholder="Repeat your password" >
+       <button class="peek" type="button" data-password="confirm-password" aria-label="Show password" aria-pressed="false">👁</button>
+      </div>
+     </div>
+     <button class="submit" id="submit-button" type="submit">Sign in →</button>
+     <button class="secondary-btn hidden" id="resend-inline" type="button">Resend confirmation email</button>
+    </form>
+    <p class="switch" id="auth-switch">Need an account? <a data-route="signup.html" href="signup.html">Create an account</a></p>
+   </div>
+   <div id="success-view" class="success-view hidden" aria-live="polite">
+    <div class="mail-badge" aria-hidden="true">✓</div>
+    <h2 id="success-heading">Check your inbox.</h2>
+    <p class="intro" id="success-copy"></p>
+    <div class="success-actions">
+     <a class="submit link-btn" id="success-link" data-route="signin.html" href="signin.html">Continue to sign in</a>
+     <button class="secondary-btn hidden" id="resend-button" type="button">Resend confirmation email</button>
+    </div>
+    <p class="field-note" id="success-status"></p>
+   </div>
+  </div>
+ </section>
+</main>
 <script>
 /* Bundled official @supabase/supabase-js 2.117.3
 MIT License
@@ -91,7 +433,16 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const setSession=session=>{isAuthenticated=Boolean(session?.user);document.documentElement.dataset.authenticated=String(isAuthenticated);};
   window.CatculRouter=Object.freeze({setSession,workspace(session){setSession(session);if(!isAuthenticated)location.replace(landingURL());},landing(){setSession(null);location.replace(landingURL());}});
   if(document.body.dataset.catculView!=='landing')return;
-  const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'pkce'}});
+  const qs=new URLSearchParams(location.search),hs=new URLSearchParams(location.hash.slice(1));
+  if(qs.get('mode')==='recovery'||qs.get('type')==='recovery'||hs.get('type')==='recovery'){
+    const u=new URL('signin.html',location.href);
+    qs.set('mode','recovery');
+    u.search=qs.toString();
+    u.hash=location.hash;
+    location.replace(u.href);
+    return;
+  }
+  const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}});
   let routed=false;
   const resolve=session=>{setSession(session);if(isAuthenticated&&!routed){routed=true;document.body.setAttribute('inert','');const u=new URL('catcul.html',location.href);u.search=location.search;location.replace(u.href);}};
   client.auth.getSession().then(({data,error})=>{if(!error)resolve(data.session);}).catch(()=>{});
@@ -109,7 +460,8 @@ const validInvite=v=>typeof v==='string'&&/^[0-9a-f]{64}$/.test(v);
 let invite=params.get('invite')||hashParams.get('invite')||'';
 try{if(validInvite(invite))sessionStorage.setItem('catcul.pendingInvite',invite);else invite=sessionStorage.getItem('catcul.pendingInvite')||'';}catch{}
 if(!validInvite(invite))invite='';
-let mode=PAGE_TYPE==='signup'?'signup':['reset','recovery'].includes(params.get('mode'))?params.get('mode'):'signin';
+const isRecoveryLink=params.get('mode')==='recovery'||params.get('type')==='recovery'||hashParams.get('type')==='recovery';
+let mode=PAGE_TYPE==='signup'?'signup':isRecoveryLink?'recovery':params.get('mode')==='reset'?'reset':'signin';
 let client=null,navigating=false,recoverySession=null,confirmationEmail='',resendUntil=0,resendTimer,ready=false;
 const callbackError=params.get('error_description')||hashParams.get('error_description');
 let settings={};try{settings=JSON.parse(localStorage.getItem('catcul.settings'))||{};}catch{}
@@ -120,9 +472,14 @@ function wireLinks(){document.querySelectorAll('[data-route]').forEach(a=>a.href
 wireLinks();if(invite)$('#invite-notice').classList.remove('hidden');if(location.protocol==='file:')$('#local-note').classList.remove('hidden');
 function message(text,success=false){const el=$('#auth-message');el.textContent=text;el.classList.remove('hidden');el.classList.toggle('success',success);}
 function check(result){if(result.error)throw result.error;return result.data;}
-function callbackURL(recover=false){if(location.protocol!=='https:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1')return undefined;const u=new URL('signin.html',location.href);u.hash='';u.search=recover?'?mode=recovery':'';return u.href;}
+function callbackURL(recover=false){
+  if(location.protocol==='https:'){
+    const u=new URL('signin.html',location.href);u.hash='';u.search=recover?'?mode=recovery':'';return u.href;
+  }
+  return recover?'https://catcultis.github.io/signin.html?mode=recovery':'https://catcultis.github.io/signin.html';
+}
 function goChat(){if(navigating)return;navigating=true;$('#submit-button').disabled=true;$('#submit-button').textContent='Opening your conversations…';const u=new URL('catcul.html',location.href);u.search='';u.hash=invite?'invite='+invite:'';location.replace(u.href);}
-function showMode(next){mode=next;const signup=mode==='signup',reset=mode==='reset',recovery=mode==='recovery';$('#form-view').classList.remove('hidden');$('#success-view').classList.add('hidden');$('#auth-heading').textContent=signup?'Your people are waiting.':reset?'A fresh start.':recovery?'A new password. Same you.':'Good to have you back.';$('#auth-intro').textContent=signup?'Make an account. Find your people. Keep the little moments.':reset?'We’ll send a reset link to your inbox. A little help finding your way back.':recovery?'Choose a strong new password to get back to your conversations.':'Your conversations are right where you left them. Come on in.';$('#name-wrap').classList.toggle('hidden',!signup);$('#name').required=signup;$('#username-wrap').classList.toggle('hidden',!signup);$('#username').required=signup;$('#email-wrap').classList.toggle('hidden',recovery);$('#email').required=!recovery;$('#password-wrap').classList.toggle('hidden',reset);$('#password').required=!reset;$('#password').minLength=signup||recovery?10:1;$('#password').autocomplete=signup||recovery?'new-password':'current-password';$('#password').placeholder=signup||recovery?'At least 10 characters':'Your password';$('#confirm-wrap').classList.toggle('hidden',!signup&&!recovery);$('#confirm-password').required=signup||recovery;$('#password-note').classList.toggle('hidden',!signup&&!recovery);$('#forgot-link').classList.toggle('hidden',signup||reset||recovery);$('#resend-inline').classList.add('hidden');$('#submit-button').textContent=signup?'Make yourself at home →':reset?'Send reset link →':recovery?'Save new password →':'Sign in →';$('#auth-switch').innerHTML=signup?'Already here? <a href="'+route('signin.html')+'">Sign in</a>':reset||recovery?'<a href="'+route('signin.html')+'">Back to sign in</a>':'New around here? <a href="'+route('signup.html')+'">Create an account</a>';$('#auth-message').classList.add('hidden');validateConfirmation();}
+function showMode(next){mode=next;const signup=mode==='signup',reset=mode==='reset',recovery=mode==='recovery';$('#form-view').classList.remove('hidden');$('#success-view').classList.add('hidden');$('#auth-heading').textContent=signup?'Create your Catcul account.':reset?'Reset your password.':recovery?'Choose a new password.':'Sign in to Catcul.';$('#auth-intro').textContent=signup?'Pick a display name and @username to join rooms, calls, and study channels.':reset?'Enter your account email address and we’ll send you a password reset link.':recovery?'Choose a new password (at least 10 characters) to sign straight back in.':'Enter your account email and password to open your workspace.';$('#name-wrap').classList.toggle('hidden',!signup);$('#name').required=signup;$('#username-wrap').classList.toggle('hidden',!signup);$('#username').required=signup;$('#email-wrap').classList.toggle('hidden',recovery);$('#email').required=!recovery;$('#password-wrap').classList.toggle('hidden',reset);$('#password').required=!reset;$('#password').minLength=signup||recovery?10:1;$('#password').autocomplete=signup||recovery?'new-password':'current-password';$('#password').placeholder=signup||recovery?'At least 10 characters':'Your password';$('#confirm-wrap').classList.toggle('hidden',!signup&&!recovery);$('#confirm-password').required=signup||recovery;$('#password-note').classList.toggle('hidden',!signup&&!recovery);$('#forgot-link').classList.toggle('hidden',signup||reset||recovery);$('#resend-inline').classList.add('hidden');$('#submit-button').textContent=signup?'Create account →':reset?'Send reset link →':recovery?'Save new password →':'Sign in →';$('#auth-switch').innerHTML=signup?'Already have an account? <a href="'+route('signin.html')+'">Sign in</a>':reset||recovery?'<a href="'+route('signin.html')+'">Back to sign in</a>':'Need an account? <a href="'+route('signup.html')+'">Create an account</a>';$('#auth-message').classList.add('hidden');validateConfirmation();}
 function validateConfirmation(){const needs=mode==='signup'||mode==='recovery';$('#confirm-password').setCustomValidity(needs&&$('#confirm-password').value&&$('#password').value!==$('#confirm-password').value?'Those passwords don’t match yet.':'');}
 $('#password').addEventListener('input',validateConfirmation);$('#confirm-password').addEventListener('input',validateConfirmation);
 document.querySelectorAll('[data-password]').forEach(button=>button.onclick=()=>{const input=document.getElementById(button.dataset.password);const show=input.type==='password';input.type=show?'text':'password';button.setAttribute('aria-pressed',String(show));button.setAttribute('aria-label',show?'Hide password':'Show password');});
@@ -130,19 +487,19 @@ function successView(title,text,canResend=false){$('#form-view').classList.add('
 function cooldown(){resendUntil=Date.now()+60000;clearInterval(resendTimer);function tick(){const remaining=Math.max(0,Math.ceil((resendUntil-Date.now())/1000));for(const id of['#resend-button','#resend-inline']){$(id).disabled=remaining>0;$(id).textContent=remaining?'Resend available in '+remaining+'s':'Resend confirmation email';}if(!remaining)clearInterval(resendTimer);}tick();resendTimer=setInterval(tick,1000);}
 async function resend(){if(!client||Date.now()<resendUntil)return;const email=confirmationEmail||$('#email').value.trim();if(!email){message('Enter your email address first.');$('#email').focus();return;}try{check(await client.auth.resend({type:'signup',email,options:{...(callbackURL()?{emailRedirectTo:callbackURL()}: {})}}));const text='If confirmation is needed for this account, a new email is on its way. Check your inbox and spam folder.';$('#success-status').textContent=text;message(text,true);cooldown();}catch(e){const text=e.message||'Couldn’t resend right now. Try again later.';$('#success-status').textContent=text;message(text);}}
 $('#resend-button').onclick=resend;$('#resend-inline').onclick=resend;
-$('#auth-form').addEventListener('submit',async e=>{e.preventDefault();if(navigating)return;validateConfirmation();if(!$('#auth-form').reportValidity())return;if(!client||!ready){message('Still connecting. Please try again in a moment.');return;}const button=$('#submit-button'),label=button.textContent;button.disabled=true;button.textContent='One moment…';$('#auth-message').classList.add('hidden');$('#resend-inline').classList.add('hidden');try{const email=$('#email').value.trim(),password=$('#password').value;
-if(mode==='signup'){const name=$('#name').value.trim();if(!name)throw Error('Please enter a name.');const username=$('#username').value;if(!/^[A-Za-z0-9_]{3,15}$/.test(username))throw Error('Username must be 3–15 letters, numbers or underscores.');if(!check(await client.schema('catcul').rpc('username_available',{p_username:username})))throw Error('Username already in use.');const signupResult=await client.auth.signUp({email,password,options:{data:{display_name:name,username},...(callbackURL()?{emailRedirectTo:callbackURL()}: {})}});if(signupResult.error){const available=await client.schema('catcul').rpc('username_available',{p_username:username});if(available.data===false)throw Error('Username already in use.');throw signupResult.error;}const data=check(signupResult);if(data.session){goChat();}else{confirmationEmail=email;successView('A little hello in your inbox.','If your account needs confirmation, you’ll receive an email at '+email+'. Open the link to confirm, then sign in. Already have an account? You can sign in instead.',true);cooldown();}}
-else if(mode==='reset'){check(await client.auth.resetPasswordForEmail(email,{...(callbackURL(true)?{redirectTo:callbackURL(true)}: {})}));successView('Check your inbox.','If an account exists for '+email+', a password reset link is on its way. Open it in this browser to choose a new password.');}
-else if(mode==='recovery'){if(!recoverySession)throw Error('Open the latest reset link from your email first. If it has expired, request a new one.');check(await client.auth.updateUser({password}));mode='signin';recoverySession=null;goChat();}
+$('#auth-form').addEventListener('submit',async e=>{e.preventDefault();if(navigating)return;validateConfirmation();const rawEmail=$('#email').value.trim();if(mode!=='recovery'&&rawEmail&&(!rawEmail.includes('@')||rawEmail.startsWith('@'))){message('Enter the email address for your account (for example name@outlook.com), not your @username.');$('#email').focus();return;}if(!$('#auth-form').reportValidity())return;if(!client||!ready){message('Still connecting. Please try again in a moment.');return;}const button=$('#submit-button'),label=button.textContent;button.disabled=true;button.textContent='One moment…';$('#auth-message').classList.add('hidden');$('#resend-inline').classList.add('hidden');try{const email=rawEmail,password=$('#password').value;
+if(mode==='signup'){const name=$('#name').value.trim();if(!name)throw Error('Please enter a name.');const username=$('#username').value;if(!/^[A-Za-z0-9_]{3,15}$/.test(username))throw Error('Username must be 3–15 letters, numbers or underscores.');if(!check(await client.schema('catcul').rpc('username_available',{p_username:username})))throw Error('Username already in use.');const signupResult=await client.auth.signUp({email,password,options:{data:{display_name:name,username},...(callbackURL()?{emailRedirectTo:callbackURL()}: {})}});if(signupResult.error){const available=await client.schema('catcul').rpc('username_available',{p_username:username});if(available.data===false)throw Error('Username already in use.');throw signupResult.error;}const data=check(signupResult);if(data.session){goChat();}else{confirmationEmail=email;successView('Confirm your email address.','If your account needs confirmation, you’ll receive an email at '+email+'. Open the link to confirm, then sign in. Already have an account? You can sign in instead.',true);cooldown();}}
+else if(mode==='reset'){check(await client.auth.resetPasswordForEmail(email,{redirectTo:callbackURL(true)}));successView('Check your inbox.','If an account exists for '+email+', a password reset link is on its way (check Spam/Junk too). Open the link in any browser to choose your new password.');}
+else if(mode==='recovery'){if(!recoverySession){const cur=await client.auth.getSession();recoverySession=cur?.data?.session||null;}if(!recoverySession)throw Error('Open the latest reset link from your email first. If it has expired, request a new one.');check(await client.auth.updateUser({password}));mode='signin';recoverySession=null;goChat();}
 else{const data=check(await client.auth.signInWithPassword({email,password}));if(!data.session)throw Error('No sign-in session was returned. Please try again.');goChat();}}
 catch(e){message(e.message||'We couldn’t connect. Check your internet connection and try again.');if(e.code==='email_not_confirmed'||/email not confirmed/i.test(e.message||'')){confirmationEmail=$('#email').value.trim();$('#resend-inline').classList.remove('hidden');}}
 finally{if(!navigating){button.disabled=false;button.textContent=label;}$('#password').value='';$('#confirm-password').value='';validateConfirmation();}});
 showMode(mode);
-async function init(){try{if(!window.supabase)throw Error('The Supabase client could not load. Download or host all the website files.');client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'pkce'}});client.auth.onAuthStateChange((event,s)=>{window.CatculRouter?.setSession(s);if(event==='PASSWORD_RECOVERY'){recoverySession=s;showMode('recovery');return;}if(event==='SIGNED_OUT')recoverySession=null;if((event==='SIGNED_IN'||event==='INITIAL_SESSION')&&s){setTimeout(()=>{if(mode==='recovery'){recoverySession=s;}else if(mode!=='reset'&&!callbackError)goChat();},0);}});const data=check(await client.auth.getSession());ready=true;if(callbackError){message(callbackError);return;}if(mode==='recovery'){recoverySession=data.session;if(!data.session)message('This reset link has expired or isn’t complete. Use “Back to sign in” and request a new link.');}else if(data.session&&mode!=='reset')goChat();}
+async function init(){try{if(!window.supabase)throw Error('The Supabase client could not load. Download or host all the website files.');client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit'}});client.auth.onAuthStateChange((event,s)=>{window.CatculRouter?.setSession(s);if(event==='PASSWORD_RECOVERY'){recoverySession=s;showMode('recovery');return;}if(event==='SIGNED_OUT')recoverySession=null;if((event==='SIGNED_IN'||event==='INITIAL_SESSION')&&s){setTimeout(()=>{if(mode==='recovery'){recoverySession=s;}else if(mode!=='reset'&&!callbackError)goChat();},0);}});const tokenHash=params.get('token_hash'),code=params.get('code');if(tokenHash&&(params.get('type')==='recovery'||mode==='recovery')){const v=await client.auth.verifyOtp({token_hash:tokenHash,type:'recovery'});if(!v.error&&v.data?.session){recoverySession=v.data.session;showMode('recovery');}}else if(code&&mode==='recovery'){const ex=await client.auth.exchangeCodeForSession(code);if(!ex.error&&ex.data?.session){recoverySession=ex.data.session;showMode('recovery');}}const data=check(await client.auth.getSession());ready=true;if(callbackError){message(callbackError);return;}if(mode==='recovery'){recoverySession=recoverySession||data.session;if(!recoverySession)message('This reset link has expired or was already opened. Click “Back to sign in” → “Forgot password?” to send a fresh link.');}else if(data.session&&mode!=='reset')goChat();}
 catch(e){ready=!!client;message(e.message||'Could not connect to Supabase. Open the actual HTML website, not the embedded preview.');}}
 init();
-
 </script>
+
 <!-- CATCUL CUSTOM CURSOR — paste this entire block before </body> on any page. -->
 <style id="catcul-cursor-styles">
 /* Native cursor remains until a real mouse is detected; touch is unaffected. */
@@ -151,8 +508,8 @@ init();
   html.catcul-cursor-active iframe { cursor: auto !important; }
 }
 #catcul-cursor {
-  --cc-ink: #293b20;
-  --cc-lime: #dcf783;
+  --cc-ink: #1f3a2a;
+  --cc-lime: #cfe3a0;
   position: fixed; top: 0; left: 0; width: 0; height: 0;
   z-index: 2147483647; pointer-events: none !important;
   opacity: 0; visibility: hidden; contain: layout style;
@@ -344,4 +701,5 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
 
 <script>/* Public shell installer. All pages keep API requests outside the service worker cache. */
 (()=>{let prompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();prompt=e;});window.CatculInstall=async()=>{if(prompt){await prompt.prompt();await prompt.userChoice;prompt=null;return true;}return false;};if('serviceWorker' in navigator&&window.isSecureContext)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('Catcul offline shell:',e.name)));})();
-</script></body></html>
+</script></body>
+</html>

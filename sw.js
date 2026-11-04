@@ -1,6 +1,6 @@
 /* Cache only public application files. Never cache Supabase/API/private content.
    Cloudflare Pages & GitHub Pages compatible (handles clean-URL 308 redirects safely). */
-const CACHE='catcul-shell-v13';
+const CACHE='catcul-shell-v16';
 const FILES=['./','./catcul.html','./signin.html','./signup.html','./manifest.json','./icons/catcul-192.png','./icons/catcul-512.png'];
 const ALIASES={'./catcul':'./catcul.html','./signin':'./signin.html','./signup':'./signup.html','./index.html':'./','./index':'./'};
 const urls=FILES.map(path=>new URL(path,self.registration.scope).href);

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Catcul</title>
+<meta name="description" content="Terms of Service governing student accounts, messaging, calls, community conduct, and paid memberships on Catcul.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2215%22%20fill%3D%22%23dcf783%22%2F%3E%3Cpath%20d%3D%22M12%2020%2010%208l12%208h4l12-8-2%2012c7%2014-1%2021-12%2021S5%2034%2012%2020Z%22%20fill%3D%22none%22%20stroke%3D%22%2320261e%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#f4f4ef;--bg-alt:#eceee7;--surface:#ffffff;--surface-muted:#f8f9f5;
+ --ink:#152019;--ink-soft:#46554b;--ink-muted:#6b796e;
+ --brand:#1f3a2a;--brand-hover:#294b37;--brand-ink:#f6f8f3;
+ --sage:#dce7d5;--sage-strong:#c7d9bc;--accent-text:#1f3a2a;
+ --border:#d8dfd4;--border-strong:#bfc9ba;
+ --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+ --serif:'Fraunces',Georgia,serif;
+}
+body.dark{
+ --bg:#111714;--bg-alt:#17201b;--surface:#1a241e;--surface-muted:#202c25;
+ --ink:#eef2ec;--ink-soft:#b8c4ba;--ink-muted:#859488;
+ --brand:#cfe29c;--brand-hover:#dceba8;--brand-ink:#142318;
+ --sage:#25352b;--sage-strong:#314638;--accent-text:#d5e8a6;
+ --border:#2a382f;--border-strong:#394b3f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.container{width:min(1040px,calc(100% - 40px));margin:0 auto}
+.site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:1.12rem}
+.brand-mark{width:34px;height:34px;border-radius:9px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center}
+.brand-mark svg{width:20px;height:20px}
+.subnav{display:flex;align-items:center;gap:18px}
+.subnav a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--ink-soft);padding:6px 10px;border-radius:8px}
+.subnav a.active{background:var(--sage);color:var(--accent-text);font-weight:650}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 15px;border-radius:10px;font:600 .86rem var(--sans);text-decoration:none;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--ink)}
+.btn.primary{background:var(--brand);color:var(--brand-ink);border-color:transparent}
+.icon-toggle{width:38px;height:38px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;font-size:.95rem}
+.doc-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.eyebrow{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--sage);color:var(--accent-text);font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+.doc-hero h1{font-family:var(--serif);font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.12;letter-spacing:-.025em;margin-bottom:12px}
+.doc-hero p{color:var(--ink-soft);max-width:680px;font-size:1.02rem}
+.doc-meta{margin-top:14px;font-size:.82rem;color:var(--ink-muted)}
+.doc-body{padding:42px 0 72px;display:grid;gap:22px}
+.doc-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px}
+.doc-card h2{font-family:var(--serif);font-size:1.38rem;margin-bottom:10px;font-weight:600}
+.doc-card h3{font-size:1.02rem;font-weight:700;margin:16px 0 6px}
+.doc-card p{color:var(--ink-soft);font-size:.95rem;margin-bottom:10px}
+.doc-card p:last-child{margin-bottom:0}
+.doc-card ul,.doc-card ol{padding-left:20px;color:var(--ink-soft);font-size:.94rem;display:grid;gap:7px;margin-top:6px}
+.doc-card code{padding:2px 6px;border-radius:6px;background:var(--surface-muted);border:1px solid var(--border);font-size:.86em}
+.help-search{display:flex;gap:10px;margin-bottom:8px}
+.help-search input{width:100%;height:46px;padding:0 16px;border-radius:12px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font:500 .95rem var(--sans)}
+.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.site-footer{padding:26px 0 40px;border-top:1px solid var(--border);color:var(--ink-muted);font-size:.84rem}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:var(--ink-soft)}
+@media(max-width:760px){.faq-grid{grid-template-columns:1fr}.subnav{display:none}.doc-card{padding:20px}}
+</style>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f4f4ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<body>
+<header class="site-header">
+ <div class="container nav-inner">
+  <a href="index.html" class="brand" aria-label="Catcul home">
+   <span class="brand-mark" aria-hidden="true">
+    <svg viewBox="0 0 32 32" fill="none">
+     <path d="M7 13L9.5 5.5L14.5 10.5H17.5L22.5 5.5L25 13C26.3 15 26.8 17.5 26 20.2C24.9 23.8 21 26 16 26C11 26 7.1 23.8 6 20.2C5.2 17.5 5.7 15 7 13Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+     <circle cx="12.5" cy="16.5" r="1.4" fill="currentColor"/><circle cx="19.5" cy="16.5" r="1.4" fill="currentColor"/>
+     <path d="M14.3 19.8Q16 21.2 17.7 19.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+   </span>
+   <span>Catcul</span>
+  </a>
+  <nav class="subnav" aria-label="Support navigation">
+   <a href="help.html" class="">Help Centre</a>
+   <a href="terms.html" class="active">Terms</a>
+   <a href="privacy.html" class="">Privacy</a>
+  </nav>
+  <div class="nav-actions">
+   <button class="icon-toggle" id="theme-button" type="button" aria-label="Toggle color theme">◐</button>
+   <button class="btn" type="button" data-open-download>Download App</button>
+   <a class="btn primary" href="catcul.html">Open Catcul</a>
+  </div>
+ </div>
+</header>
+
+<main class="container">
+ <section class="doc-hero">
+  <span class="eyebrow">Legal · Terms of Service</span>
+  <h1>Terms of Service</h1>
+  <p>Plain-language rules for using Catcul with your friends, classmates, and study groups.</p>
+  <div class="doc-meta">Effective Date: November 4, 2026</div>
+ </section>
+ <section class="doc-body">
+  
+      <article class="doc-card">
+        <h2>1. Who Catcul is for</h2>
+        <p>Catcul is a student-only communication space built for classmates, friends, and peer study groups. Instructor-managed grading accounts are not offered. By creating an account, you confirm that you are at least 13 years old (or the minimum digital-consent age in your country) and that you will keep one personal account per email address.</p>
+      </article>
+      <article class="doc-card">
+        <h2>2. Your account &amp; @username</h2>
+        <p>You are responsible for keeping your password confidential and for activity under your account. Choose an accurate display name and a respectful <code>@username</code>; impersonating another student, campus organization, or staff member is not permitted.</p>
+      </article>
+      <article class="doc-card">
+        <h2>3. Acceptable conduct</h2>
+        <p>We want Catcul to feel calm and welcoming. When using direct messages, group chats, Campus Community, Spotlight, Stories, or voice and video calls, you agree not to:</p>
+        <ul>
+          <li>Harass, threaten, dox, or bully other students, or share private photos/recordings of anyone without their consent.</li>
+          <li>Post unlawful, hateful, sexually explicit, or malicious content, malware, or automated spam.</li>
+          <li>Attempt to probe, overload, scrape, or bypass room permissions or another person’s account.</li>
+        </ul>
+        <p>Workspace moderators may remove reported public content or suspend accounts that violate these rules.</p>
+      </article>
+      <article class="doc-card">
+        <h2>4. Your content</h2>
+        <p>You keep ownership of the messages, files, photos, voice notes, Diary entries, and Spotlight posts you create. By sending or posting content in a room or public feed, you grant Catcul permission only to store, transmit, and display that content to the audience you selected (for example, members of that room, or signed-in students for Campus Spotlight).</p>
+      </article>
+      <article class="doc-card">
+        <h2>5. Paid memberships &amp; billing</h2>
+        <p>Core Catcul features are free. Optional paid tiers (<strong>Catcul+</strong>, <strong>Catcul++</strong>, and <strong>Catcul Premium</strong>) unlock cumulative features such as HD video calls, 3D camera lenses, live wallpaper search, Stories, and Spotlight posting.</p>
+        <ul>
+          <li>Checkout, tax calculation, invoicing, and renewals are processed securely by our authorized Merchant of Record, <strong>Paddle</strong>.</li>
+          <li>Subscriptions renew automatically on a monthly or annual cycle until canceled. You can cancel anytime from <em>Plans &amp; Perks → Manage billing</em>, and your perks remain active through the end of your paid billing period.</li>
+          <li>Refund requests are handled in accordance with applicable consumer protection law and Paddle’s buyer terms.</li>
+        </ul>
+      </article>
+      <article class="doc-card">
+        <h2>6. Availability &amp; changes</h2>
+        <p>Catcul is provided on an “as available” basis. While we work hard to keep messages, calls, and notifications fast and reliable, occasional maintenance or network interruptions can happen. To the fullest extent permitted by law, Catcul’s liability for any claim arising out of the service is limited to the amount you paid for Catcul memberships in the twelve (12) months preceding the claim.</p>
+      </article>
+ </section>
+</main>
+
+<footer class="site-footer">
+ <div class="container footer-inner">
+  <span>© 2026 Catcul · Student Messenger</span>
+  <div class="footer-links">
+   <a href="index.html">Home</a>
+   <a href="#" data-open-download>Download App</a>
+   <a href="help.html">Help Centre</a>
+   <a href="terms.html">Terms of Service</a>
+   <a href="privacy.html">Privacy Policy</a>
+   <a href="signin.html">Sign in</a>
+  </div>
+ </div>
+</footer>
+<script>
+(()=>{
+ const themeBtn=document.getElementById('theme-button');
+ let settings={};try{settings=JSON.parse(localStorage.getItem('catcul.settings'))||{};}catch{}
+ function setDark(on){
+  settings.dark=Boolean(on);
+  document.body.classList.toggle('dark',settings.dark);
+  if(themeBtn)themeBtn.textContent=settings.dark?'☀':'◐';
+  try{localStorage.setItem('catcul.settings',JSON.stringify(settings));}catch{}
+ }
+ setDark(Boolean(settings.dark));
+ themeBtn?.addEventListener('click',()=>setDark(!document.body.classList.contains('dark')));
+
+ const q=document.getElementById('help-filter');
+ if(q){
+  q.addEventListener('input',()=>{
+   const term=q.value.trim().toLowerCase();
+   document.querySelectorAll('[data-help-item]').forEach(el=>{
+    el.style.display=!term||el.textContent.toLowerCase().includes(term)?'':'none';
+   });
+  });
+ }
+})();
+</script>
+
+<!-- CATCUL CUSTOM CURSOR — paste this entire block before </body> on any page. -->
+<style id="catcul-cursor-styles">
+/* Native cursor remains until a real mouse is detected; touch is unaffected. */
+@media (any-hover: hover) and (any-pointer: fine) {
+  html.catcul-cursor-active, html.catcul-cursor-active * { cursor: none !important; }
+  html.catcul-cursor-active iframe { cursor: auto !important; }
+}
+#catcul-cursor {
+  --cc-ink: #1f3a2a;
+  --cc-lime: #cfe3a0;
+  position: fixed; top: 0; left: 0; width: 0; height: 0;
+  z-index: 2147483647; pointer-events: none !important;
+  opacity: 0; visibility: hidden; contain: layout style;
+  transform: translate3d(-100px,-100px,0);
+}
+#catcul-cursor, #catcul-cursor * { pointer-events: none !important; user-select: none !important; }
+#catcul-cursor.cc-visible { opacity: 1; visibility: visible; }
+#catcul-cursor .cc-halo {
+  position: absolute; left: 0; top: 0; width: 30px; height: 30px;
+  transform: translate(-50%,-50%); border: 1px solid #8da765;
+  border-radius: 50%; background: #dcf7831f;
+  box-shadow: 0 0 0 1px #ffffff45;
+  transition: width .16s ease, height .16s ease, background .16s ease, opacity .12s ease, border-color .16s ease;
+}
+#catcul-cursor .cc-dot {
+  position: absolute; left: 0; top: 0; width: 8px; height: 8px;
+  transform: translate(-50%,-50%); background: var(--cc-ink);
+  border: 2px solid var(--cc-lime); border-radius: 50%;
+  box-shadow: 0 0 0 1px #293b2050;
+  transition: opacity .1s ease, width .13s ease, height .13s ease;
+}
+#catcul-cursor .cc-symbol {
+  position: absolute; left: 0; top: 0; transform: translate(-50%,-50%);
+  width: 17px; height: 17px; color: #354b21; opacity: 0;
+  transition: opacity .1s ease;
+}
+#catcul-cursor .cc-symbol svg { display: block; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#catcul-cursor .cc-caret {
+  position: absolute; left: 0; top: 0; transform: translate(-50%,-50%);
+  width: 2px; height: 18px; border-radius: 1px; background: #47612e;
+  box-shadow: 0 0 0 1px #f6ffeaba; opacity: 0;
+}
+#catcul-cursor .cc-caret:before, #catcul-cursor .cc-caret:after {
+  content: ''; position: absolute; width: 8px; height: 1.5px;
+  background: inherit; left: -3px; border-radius: 2px;
+}
+#catcul-cursor .cc-caret:before { top: 0; }
+#catcul-cursor .cc-caret:after { bottom: 0; }
+#catcul-cursor.cc-control .cc-halo { width: 39px; height: 39px; background: #dcf783c7; border-color: #91aa5e; }
+#catcul-cursor.cc-control .cc-dot, #catcul-cursor.cc-media .cc-dot, #catcul-cursor.cc-disabled .cc-dot { opacity: 0; }
+#catcul-cursor.cc-control .cc-arrow { opacity: 1; }
+#catcul-cursor.cc-media .cc-halo { width: 42px; height: 42px; background: #f6ffe8ed; }
+#catcul-cursor.cc-media .cc-plus { opacity: 1; }
+#catcul-cursor.cc-text .cc-halo, #catcul-cursor.cc-text .cc-dot { opacity: 0; }
+#catcul-cursor.cc-text .cc-caret { opacity: 1; }
+#catcul-cursor.cc-disabled .cc-halo { width: 27px; height: 27px; background: #f0f2e9d9; border-color: #a5ad99; }
+#catcul-cursor.cc-disabled .cc-stop { opacity: 1; color: #8f9983; }
+#catcul-cursor.cc-pressed:not(.cc-text) .cc-halo { width: 23px; height: 23px; background: #dcf783ed; }
+#catcul-cursor.cc-pressed .cc-dot { width: 5px; height: 5px; }
+body.dark #catcul-cursor .cc-halo { border-color: #bdd888; box-shadow: 0 0 0 1px #18211035; }
+body.dark #catcul-cursor .cc-caret { background: #dcf783; box-shadow: 0 0 0 1px #202a1dd9; }
+#catcul-cursor-toggle {
+  position: fixed; bottom: 12px; right: 12px; z-index: 2147483646;
+  display: none; align-items: center; justify-content: center;
+  width: auto; min-width: 106px; height: 32px; padding: 0 10px; margin: 0; gap: 7px; font: 500 11px/1.2 system-ui, sans-serif; white-space: nowrap;
+  border: 1px solid #d6dfc6; border-radius: 10px;
+  background: #f8fbeeeb; color: #799252;
+  box-shadow: 0 2px 9px #273b1810; opacity: .94;
+}
+#catcul-cursor-toggle:hover, #catcul-cursor-toggle:focus-visible { opacity: 1; background: #e8f5c9; }
+#catcul-cursor-toggle:focus-visible { outline: 3px solid #91a953; outline-offset: 3px; }
+#catcul-cursor-toggle svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#catcul-cursor-toggle[aria-pressed="false"] { color: #8b9383; background: #f1f3ec; }
+body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-color: #4a5b35; }
+@media (any-hover: hover) and (any-pointer: fine) {
+  #catcul-cursor-toggle.cc-toggle-ready { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #catcul-cursor * { transition: none !important; }
+}
+@media (forced-colors: active) {
+  #catcul-cursor, #catcul-cursor-toggle { display: none !important; }
+  html.catcul-cursor-active, html.catcul-cursor-active * { cursor: revert !important; }
+}
+</style>
+<script id="catcul-cursor-script">
+(() => {
+  'use strict';
+  // Custom pointer controller. Safe to include once on each page.
+  if (document.getElementById('catcul-cursor')) return;
+  const root = document.documentElement;
+  const pointerMedia = matchMedia('(any-hover: hover) and (any-pointer: fine)');
+  const contrastMedia = matchMedia('(forced-colors: active)');
+  const storageKey = 'catcul.customCursor';
+  let enabled = true;
+  try { enabled = localStorage.getItem(storageKey) !== 'off'; } catch (_) {}
+  let visible = false, dragging = false, x = 0, y = 0, frame = 0;
+  const cursor = document.createElement('div');
+  cursor.id = 'catcul-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = '<span class="cc-halo"></span><span class="cc-dot"></span><span class="cc-symbol cc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="cc-symbol cc-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><span class="cc-symbol cc-stop"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m6.5 6.5 11 11"/></svg></span><span class="cc-caret"></span>';
+  const toggle = document.createElement('button');
+  toggle.type = 'button'; toggle.id = 'catcul-cursor-toggle';
+  toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 10-6 1-3 6L5 3Z"/><path d="m15 16 4 5"/></svg><span class="cc-toggle-label"></span>';
+  document.body.append(cursor, toggle);
+  const supported = () => pointerMedia.matches && !contrastMedia.matches;
+  const allowed = () => supported() && enabled && !dragging;
+  function updateToggle() {
+    toggle.classList.toggle('cc-toggle-ready', supported());
+    toggle.setAttribute('aria-pressed', String(enabled));
+    const label = enabled ? 'Use the standard cursor' : 'Use the Catcul custom cursor';
+    toggle.title = label; toggle.setAttribute('aria-label', label);
+    toggle.querySelector('.cc-toggle-label').textContent = 'Cursor: ' + (enabled ? 'On' : 'Off');
+    document.querySelectorAll('[data-custom-cursor-toggle]').forEach(button => {
+      button.classList.toggle('on', enabled);
+      button.setAttribute('aria-checked', String(enabled));
+    });
+  }
+  function hide() {
+    visible = false;
+    root.classList.remove('catcul-cursor-active');
+    cursor.classList.remove('cc-visible', 'cc-pressed');
+  }
+  function stateFor(element) {
+    if (!(element instanceof Element)) return '';
+    if (element.closest('[disabled], [aria-disabled="true"], fieldset:disabled')) return 'cc-disabled';
+    const explicit = element.closest('[data-cursor]')?.getAttribute('data-cursor');
+    if (explicit === 'text') return 'cc-text';
+    if (explicit === 'zoom' || element.closest('[data-open-photo], .lightbox-image, img.photo')) return 'cc-media';
+    if (explicit === 'pointer') return 'cc-control';
+    const field = element.closest('input, textarea, [contenteditable="true"], [contenteditable=""], [role="textbox"]');
+    if (field && !field.matches('input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="range"],input[type="color"],input[type="file"],input[type="image"],input[type="hidden"]')) return 'cc-text';
+    if (element.closest('a[href], button, summary, select, label[for], input, audio, video, [role="button"], [role="link"], [role="tab"], [role="switch"], [data-action], [data-room], [data-filter], [data-react], [tabindex="0"]')) return 'cc-control';
+    return '';
+  }
+  function state(element) {
+    if (element instanceof Element && element.closest('iframe')) { hide(); return; }
+    const kind = stateFor(element);
+    ['cc-control', 'cc-text', 'cc-media', 'cc-disabled'].forEach(name => cursor.classList.toggle(name, name === kind));
+  }
+  function paint(event) {
+    if (event.pointerType && event.pointerType !== 'mouse') { hide(); return; }
+    if (!allowed()) { hide(); return; }
+    x = event.clientX; y = event.clientY;
+    if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) { hide(); return; }
+    // Track exactly, without a trailing animation that could obscure the click target.
+    cursor.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+    visible = true;
+    cursor.classList.add('cc-visible');
+    root.classList.add('catcul-cursor-active');
+    state(event.target);
+  }
+  document.addEventListener('pointermove', paint, {passive: true});
+  document.addEventListener('pointerover', event => {
+    if (!visible || (event.pointerType && event.pointerType !== 'mouse')) return;
+    if (!allowed()) { hide(); return; }
+    state(event.target);
+  }, {passive: true});
+  document.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'mouse') { hide(); return; }
+    paint(event);
+    if (visible) cursor.classList.add('cc-pressed');
+  }, {passive: true});
+  document.addEventListener('pointerup', () => cursor.classList.remove('cc-pressed'), {passive: true});
+  document.addEventListener('pointercancel', hide, {passive: true});
+  document.documentElement.addEventListener('pointerleave', hide, {passive: true});
+  window.addEventListener('blur', hide);
+  window.addEventListener('pagehide', hide);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Tab') hide(); });
+  document.addEventListener('dragstart', () => { dragging = true; hide(); });
+  document.addEventListener('dragend', () => { dragging = false; });
+  window.addEventListener('scroll', () => {
+    if (!visible || frame) return;
+    frame = requestAnimationFrame(() => { frame = 0; if (visible) state(document.elementFromPoint(x, y)); });
+  }, {capture: true, passive: true});
+  function setEnabled(next) {
+    enabled = Boolean(next);
+    try { localStorage.setItem(storageKey, enabled ? 'on' : 'off'); } catch (_) {}
+    updateToggle();
+    hide();
+  }
+  // Shared by the chat Settings switch and the button on all four pages.
+  window.CatculCursor = Object.freeze({isEnabled: () => enabled, isSupported: supported, setEnabled});
+  toggle.addEventListener('click', event => {
+    setEnabled(!enabled);
+    if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
+  });
+  document.addEventListener('click', event => {
+    if (event.target instanceof Element && event.target.closest('[data-custom-cursor-toggle]')) setEnabled(!enabled);
+  });
+  function preferenceChanged() { updateToggle(); hide(); }
+  pointerMedia.addEventListener('change', preferenceChanged);
+  contrastMedia.addEventListener('change', preferenceChanged);
+  window.addEventListener('storage', event => {
+    if (event.key === storageKey || event.key === null) { enabled = event.newValue !== 'off'; updateToggle(); hide(); }
+  });
+  updateToggle();
+})();
+
+</script>
+<!-- END CATCUL CUSTOM CURSOR -->
+
+<script>/* Catcul Desktop & Phone App Installer + Offline Shell Registration + Pure-JS QR Generator. */
+(() => {
+  'use strict';
+  let deferredPrompt = null;
+  const isStandalone = () =>
+    window.matchMedia?.('(display-mode: standalone)').matches ||
+    window.matchMedia?.('(display-mode: window-controls-overlay)').matches ||
+    window.navigator.standalone === true;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.documentElement.dataset.catculInstallReady = 'true';
+  });
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    document.documentElement.dataset.catculInstalled = 'true';
+  });
+
+  window.CatculInstall = async () => {
+    if (deferredPrompt) {
+      await deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice.catch(() => ({ outcome: 'dismissed' }));
+      deferredPrompt = null;
+      return choice?.outcome === 'accepted';
+    }
+    return false;
+  };
+
+  /* Compact ISO/IEC 18004 QR Code (Byte mode, ECC-L, versions 1..6, up to 134 bytes) -> crisp SVG */
+  const GF_EXP = new Uint8Array(512), GF_LOG = new Uint8Array(256);
+  (() => {
+    let x = 1;
+    for (let i = 0; i < 255; i++) {
+      GF_EXP[i] = x; GF_LOG[x] = i;
+      x <<= 1; if (x & 256) x ^= 0x11d;
+    }
+    for (let i = 255; i < 512; i++) GF_EXP[i] = GF_EXP[i - 255];
+  })();
+  const gfMul = (a, b) => (a && b ? GF_EXP[GF_LOG[a] + GF_LOG[b]] : 0);
+  function rsEncode(data, ecLen) {
+    let gen = [1];
+    for (let i = 0; i < ecLen; i++) {
+      const next = new Array(gen.length + 1).fill(0);
+      for (let j = 0; j < gen.length; j++) {
+        next[j] ^= gen[j];
+        next[j + 1] ^= gfMul(gen[j], GF_EXP[i]);
+      }
+      gen = next;
+    }
+    const rem = new Uint8Array(ecLen);
+    for (const byte of data) {
+      const factor = byte ^ rem[0];
+      rem.copyWithin(0, 1);
+      rem[ecLen - 1] = 0;
+      for (let j = 0; j < ecLen; j++) rem[j] ^= gfMul(gen[j + 1], factor);
+    }
+    return rem;
+  }
+  const V_CAPS = [
+    null,
+    { total: 19, ec: 7, blocks: 1, align: [] },
+    { total: 34, ec: 10, blocks: 1, align: [6, 18] },
+    { total: 55, ec: 15, blocks: 1, align: [6, 22] },
+    { total: 80, ec: 20, blocks: 1, align: [6, 26] },
+    { total: 108, ec: 26, blocks: 1, align: [6, 30] },
+    { total: 136, ec: 18, blocks: 2, align: [6, 34] }
+  ];
+  function makeQrSvg(text, sizePx = 148) {
+    const bytes = new TextEncoder().encode(text);
+    let ver = 1;
+    while (ver <= 6 && bytes.length + 2 > V_CAPS[ver].total) ver++;
+    if (ver > 6) return '';
+    const spec = V_CAPS[ver], dim = ver * 4 + 17;
+    const bits = [];
+    const pushBits = (val, n) => { for (let i = n - 1; i >= 0; i--) bits.push((val >> i) & 1); };
+    pushBits(0b0100, 4);
+    pushBits(bytes.length, 8);
+    for (const b of bytes) pushBits(b, 8);
+    const maxBits = spec.total * 8;
+    for (let i = 0; i < 4 && bits.length < maxBits; i++) bits.push(0);
+    while (bits.length % 8) bits.push(0);
+    const dataWords = new Uint8Array(spec.total);
+    for (let i = 0; i < bits.length / 8; i++) {
+      let v = 0;
+      for (let b = 0; b < 8; b++) v = (v << 1) | bits[i * 8 + b];
+      dataWords[i] = v;
+    }
+    for (let i = bits.length / 8, p = 0; i < spec.total; i++, p ^= 1) dataWords[i] = p ? 0x11 : 0xec;
+
+    let finalBytes;
+    if (spec.blocks === 1) {
+      const ec = rsEncode(dataWords, spec.ec);
+      finalBytes = new Uint8Array(dataWords.length + ec.length);
+      finalBytes.set(dataWords, 0); finalBytes.set(ec, dataWords.length);
+    } else {
+      const half = spec.total / 2;
+      const b1 = dataWords.slice(0, half), b2 = dataWords.slice(half);
+      const e1 = rsEncode(b1, spec.ec), e2 = rsEncode(b2, spec.ec);
+      finalBytes = new Uint8Array(spec.total + spec.ec * 2);
+      let k = 0;
+      for (let i = 0; i < half; i++) { finalBytes[k++] = b1[i]; finalBytes[k++] = b2[i]; }
+      for (let i = 0; i < spec.ec; i++) { finalBytes[k++] = e1[i]; finalBytes[k++] = e2[i]; }
+    }
+
+    const mat = Array.from({ length: dim }, () => new Int8Array(dim).fill(-1));
+    const isFunc = Array.from({ length: dim }, () => new Uint8Array(dim));
+    const setMod = (r, c, v) => { if (r >= 0 && r < dim && c >= 0 && c < dim) { mat[r][c] = v ? 1 : 0; isFunc[r][c] = 1; } };
+    const finder = (r0, c0) => {
+      for (let dr = -1; dr <= 7; dr++) for (let dc = -1; dc <= 7; dc++) {
+        const inOuter = dr >= 0 && dr <= 6 && dc >= 0 && dc <= 6;
+        const onRing = dr === 0 || dr === 6 || dc === 0 || dc === 6;
+        const inCore = dr >= 2 && dr <= 4 && dc >= 2 && dc <= 4;
+        setMod(r0 + dr, c0 + dc, inOuter && (onRing || inCore));
+      }
+    };
+    finder(0, 0); finder(0, dim - 7); finder(dim - 7, 0);
+    for (let i = 8; i < dim - 8; i++) { setMod(6, i, i % 2 === 0); setMod(i, 6, i % 2 === 0); }
+    for (const ar of spec.align) for (const ac of spec.align) {
+      if (isFunc[ar][ac]) continue;
+      for (let dr = -2; dr <= 2; dr++) for (let dc = -2; dc <= 2; dc++) {
+        setMod(ar + dr, ac + dc, Math.max(Math.abs(dr), Math.abs(dc)) !== 1);
+      }
+    }
+    for (let i = 0; i < 9; i++) { if (i !== 6) { isFunc[8][i] = 1; isFunc[i][8] = 1; } }
+    for (let i = 0; i < 8; i++) { isFunc[8][dim - 1 - i] = 1; isFunc[dim - 1 - i][8] = 1; }
+    setMod(dim - 8, 8, 1);
+
+    let bitIdx = 0, up = true;
+    for (let col = dim - 1; col >= 1; col -= 2) {
+      if (col === 6) col--;
+      for (let step = 0; step < dim; step++) {
+        const r = up ? dim - 1 - step : step;
+        for (let dc = 0; dc < 2; dc++) {
+          const c = col - dc;
+          if (isFunc[r][c]) continue;
+          const bit = bitIdx < finalBytes.length * 8 ? ((finalBytes[bitIdx >> 3] >> (7 - (bitIdx & 7))) & 1) : 0;
+          bitIdx++;
+          mat[r][c] = bit ^ ((r + c) % 2 === 0 ? 1 : 0);
+        }
+      }
+      up = !up;
+    }
+    // Format string for ECC L (01) + Mask 0 (000) -> 0x77c4
+    const fmt = 0x77c4;
+    const fBits = Array.from({ length: 15 }, (_, i) => (fmt >> i) & 1);
+    for (let i = 0; i <= 5; i++) mat[8][i] = fBits[14 - i];
+    mat[8][7] = fBits[8]; mat[8][8] = fBits[7]; mat[7][8] = fBits[6];
+    for (let i = 9; i < 15; i++) mat[14 - i][8] = fBits[14 - i];
+    for (let i = 0; i < 8; i++) mat[8][dim - 1 - i] = fBits[i];
+    for (let i = 8; i < 15; i++) mat[dim - 15 + i][8] = fBits[i];
+
+    let path = '';
+    for (let r = 0; r < dim; r++) for (let c = 0; c < dim; c++) {
+      if (mat[r][c] === 1) path += `M${c + 2},${r + 2}h1v1h-1z`;
+    }
+    const vb = dim + 4;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${vb} ${vb}" width="${sizePx}" height="${sizePx}" shape-rendering="crispEdges" role="img" aria-label="QR code to install Catcul on your phone"><rect width="${vb}" height="${vb}" rx="2" fill="#ffffff"/><path d="${path}" fill="#17251c"/></svg>`;
+  }
+
+  function injectDownloadStyles() {
+    if (document.getElementById('catcul-dl-styles')) return;
+    const st = document.createElement('style');
+    st.id = 'catcul-dl-styles';
+    st.textContent = `
+      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(14,21,16,.54);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
+      @keyframes catculDlFade{from{opacity:0}to{opacity:1}}
+      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#fbfcfa;color:#17241b;border:1px solid rgba(24,38,29,.12);border-radius:22px;padding:26px;box-shadow:0 24px 64px rgba(10,18,13,.24);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
+      body.dark .catcul-dl-dialog{background:#1b251e;color:#edf2ea;border-color:rgba(255,255,255,.1)}
+      .catcul-dl-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(24,38,29,.12);background:transparent;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
+      .catcul-dl-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4a6b46;margin-bottom:6px;display:block}
+      body.dark .catcul-dl-eyebrow{color:#cbe192}
+      .catcul-dl-dialog h2{font-size:23px;font-weight:750;letter-spacing:-.03em;margin:0 0 6px}
+      .catcul-dl-sub{font-size:13.5px;color:#5b695b;margin:0 0 20px;line-height:1.55}
+      body.dark .catcul-dl-sub{color:#9eb09e}
+      .catcul-dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+      .catcul-dl-card{border:1px solid rgba(24,38,29,.11);border-radius:16px;padding:18px;background:#f3f6f0;display:flex;flex-direction:column;gap:10px}
+      body.dark .catcul-dl-card{background:#222f26;border-color:rgba(255,255,255,.09)}
+      .catcul-dl-card h3{font-size:15.5px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px}
+      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#556355;margin:0}
+      body.dark .catcul-dl-card p{color:#a7b6a6}
+      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#39483b}
+      body.dark .catcul-dl-steps{color:#cdd8cc}
+      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:12px;border:0;background:#1f3a2a;color:#f6f8f3;font-size:13px;font-weight:650;cursor:pointer;text-decoration:none;margin-top:auto}
+      .catcul-dl-btn:hover{background:#294b37}
+      body.dark .catcul-dl-btn{background:#cbe192;color:#142318}
+      .catcul-dl-btn.secondary{background:#e5ece0;color:#1a2b1f}
+      body.dark .catcul-dl-btn.secondary{background:#2c3c31;color:#edf2ea}
+      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.72);padding:10px;border-radius:12px;border:1px solid rgba(24,38,29,.08)}
+      body.dark .catcul-dl-qr-row{background:rgba(15,21,17,.45);border-color:rgba(255,255,255,.08)}
+      .catcul-dl-qr-row svg{flex-shrink:0;border-radius:8px;width:96px;height:96px}
+      @media(max-width:620px){.catcul-dl-grid{grid-template-columns:1fr}.catcul-dl-backdrop{align-items:flex-end;padding:0}.catcul-dl-dialog{border-radius:22px 22px 0 0;padding:22px 18px max(22px,env(safe-area-inset-bottom))}}
+    `;
+    document.head.appendChild(st);
+  }
+
+  function openDownloadModal() {
+    injectDownloadStyles();
+    document.getElementById('catcul-dl-backdrop')?.remove();
+    const shareUrl = (() => {
+      try {
+        const u = new URL('index.html', location.href);
+        return u.href.replace(/\/index\.html$/, '/');
+      } catch { return location.href; }
+    })();
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isMac = /Macintosh|Mac OS X/.test(ua) && !isIOS;
+    const qrSvg = makeQrSvg(shareUrl, 96);
+    const installed = isStandalone();
+    const canOneClick = Boolean(deferredPrompt);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'catcul-dl-backdrop';
+    wrap.id = 'catcul-dl-backdrop';
+    wrap.innerHTML = `
+      <section class="catcul-dl-dialog" role="dialog" aria-modal="true" aria-label="Download Catcul for Desktop and Phone">
+        <button type="button" class="catcul-dl-close" id="catcul-dl-close" aria-label="Close">×</button>
+        <span class="catcul-dl-eyebrow">Desktop &amp; Phone App</span>
+        <h2>Get Catcul on your laptop &amp; phone</h2>
+        <p class="catcul-dl-sub">Install Catcul directly from your browser — opens in its own window, stays signed in, rings for incoming calls, and lets you reply straight from notifications.</p>
+        <div class="catcul-dl-grid">
+          <div class="catcul-dl-card">
+            <h3>💻 Desktop App <small style="font-weight:500;opacity:.7">${isMac ? 'macOS' : 'Windows · Mac · Linux'}</small></h3>
+            <p>Dock or taskbar icon, standalone window, Alt+N quick notes switch, and laptop call + inline reply notifications.</p>
+            ${installed
+              ? `<div style="padding:10px 12px;border-radius:10px;background:rgba(74,107,70,.14);font-size:12px;font-weight:600">✓ Installed on this device</div>`
+              : canOneClick
+                ? `<p style="font-size:12px">Ready for one-click install on this browser:</p>`
+                : `<ol class="catcul-dl-steps">
+                    <li>In <strong>Chrome</strong> or <strong>Edge</strong>, click the <strong>Install app (⊕)</strong> icon on the right side of the address bar.</li>
+                    ${isMac ? `<li>In <strong>Safari on Mac</strong>, choose <strong>File → Add to Dock…</strong></li>` : `<li>Pin Catcul to your taskbar for instant access and call alerts.</li>`}
+                  </ol>`}
+            <button type="button" class="catcul-dl-btn" id="catcul-dl-desktop-btn">${installed ? 'Already installed ✓' : canOneClick ? 'Install Desktop App now' : 'Install on this computer'}</button>
+          </div>
+          <div class="catcul-dl-card">
+            <h3>📱 Phone App <small style="font-weight:500;opacity:.7">iPhone &amp; Android</small></h3>
+            <p>Full-screen mobile chat, bottom tab bar, front/rear 3D camera lenses, and home-screen push alerts.</p>
+            ${qrSvg ? `<div class="catcul-dl-qr-row">${qrSvg}<div><strong style="font-size:12px;display:block;margin-bottom:3px">Scan with your phone camera</strong><span style="font-size:11px;opacity:.78;display:block;line-height:1.45">Opens Catcul on your phone so you can add it to your Home Screen in seconds.</span></div></div>` : ''}
+            <ol class="catcul-dl-steps">
+              <li><strong>iPhone / iPad (Safari):</strong> tap <strong>Share (↑)</strong> → <strong>Add to Home Screen</strong>.</li>
+              <li><strong>Android (Chrome):</strong> tap <strong>Install app</strong> when prompted (or <strong>⋮ → Add to Home screen</strong>).</li>
+            </ol>
+            <div style="display:flex;gap:8px;margin-top:auto">
+              ${canOneClick ? `<button type="button" class="catcul-dl-btn" style="flex:1" id="catcul-dl-phone-btn">Install App</button>` : ''}
+              <button type="button" class="catcul-dl-btn secondary" style="flex:1" id="catcul-dl-copy-btn">Copy phone link</button>
+            </div>
+          </div>
+        </div>
+      </section>`;
+    document.body.appendChild(wrap);
+
+    const close = () => wrap.remove();
+    wrap.querySelector('#catcul-dl-close').onclick = close;
+    wrap.onclick = (ev) => { if (ev.target === wrap) close(); };
+    const deskBtn = wrap.querySelector('#catcul-dl-desktop-btn');
+    if (deskBtn) {
+      deskBtn.onclick = async () => {
+        if (installed) { close(); return; }
+        const ok = await window.CatculInstall();
+        if (ok) close();
+        else deskBtn.textContent = isMac ? 'Use address bar ⊕ or Safari → File → Add to Dock' : 'Click the ⊕ Install icon in your browser address bar';
+      };
+    }
+    const phoneBtn = wrap.querySelector('#catcul-dl-phone-btn');
+    if (phoneBtn) {
+      phoneBtn.onclick = async () => {
+        const ok = await window.CatculInstall();
+        if (ok) close();
+      };
+    }
+    const copyBtn = wrap.querySelector('#catcul-dl-copy-btn');
+    if (copyBtn) {
+      copyBtn.onclick = async () => {
+        try { await navigator.clipboard.writeText(shareUrl); copyBtn.textContent = 'Link copied ✓'; }
+        catch { copyBtn.textContent = shareUrl; }
+      };
+    }
+  }
+
+  window.CatculOpenDownloadModal = openDownloadModal;
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-open-download]');
+    if (!trigger) return;
+    e.preventDefault();
+    openDownloadModal();
+  });
+
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch((e) => console.warn('Catcul offline shell:', e.name));
+    });
+  }
+})();
+</script></body>
+</html>

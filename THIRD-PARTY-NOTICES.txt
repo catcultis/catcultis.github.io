@@ -242,3 +242,17 @@ OpenStreetMap map data © OpenStreetMap contributors (ODbL). Tiles are remote, l
 https://www.openstreetmap.org/copyright
 
 Web Push managed function uses npm:web-push 3.6.7 (MIT), resolved by Supabase/Deno at deployment. The website does not bundle this server package.
+
+cdnjs (Cloudflare CDN) remote assets — loaded in live browsers, with graceful fallback offline:
+- Remix Icon 4.6.0 (https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css) — Apache License 2.0, Copyright (c) Remix Design (https://remixicon.com)
+- Compressor.js 1.4.0 (https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.4.0/compressor.min.js) — MIT License, Copyright (c) Chen Fengyuan
+- Cropper.js 1.6.2 (https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css, cropper.min.js) — MIT License, Copyright (c) Chen Fengyuan
+- Three.js 0.187.0 (https://cdnjs.cloudflare.com/ajax/libs/three.js/0.187.0/three.module.min.js) — MIT License, Copyright (c) 2010-2026 Three.js authors
+
+MediaPipe Tasks Vision 0.10.18 (https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18) & MediaPipe Face Landmarker / Selfie Segmenter Models (local /models/)
+Loaded on-demand in the 3D AR Face Camera, providing keyless 478-point 3D face mesh tracking and neural selfie background segmentation. Licensed under the Apache License, Version 2.0, Copyright The MediaPipe Authors (https://github.com/google-ai-edge/mediapipe).
+
+Wallhaven Anime Wallpaper Gallery (https://wallhaven.cc)
+Optional 4K SFW anime wallpapers selected by users in the Themes & Wallpapers gallery load on-demand from w.wallhaven.cc with direct links back to the Wallhaven listing.
+
+

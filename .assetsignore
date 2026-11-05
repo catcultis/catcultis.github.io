@@ -1,0 +1,12 @@
+# Cloudflare Pages & Workers Static Assets ignore list
+# Prevents SQL migrations, setup docs, Edge Functions, and scratch folders from being deployed publicly
+.work
+.agents
+.mcp.json
+*.sql
+*.md
+*.zip
+CURSOR-UPDATE.txt
+catcul-cursor-snippet.txt
+PUSH-KEYS.html
+supabase

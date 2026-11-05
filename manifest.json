@@ -1,23 +1,39 @@
 {
-  "id": "./",
-  "name": "Catcul — Your people, your space",
+  "name": "Catcul — Student Messenger",
   "short_name": "Catcul",
-  "description": "Student chat, shared plans, private diary and study spaces.",
-  "lang": "en",
-  "start_url": "./",
+  "description": "Fast, private conversations, study groups, voice & video calls, and campus plans for students.",
+  "start_url": "./catcul.html",
   "scope": "./",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
-  "background_color": "#f7f9f2",
-  "theme_color": "#d7ed9b",
-  "categories": ["social", "education", "productivity"],
+  "orientation": "any",
+  "background_color": "#eceee8",
+  "theme_color": "#1f3a2a",
+  "categories": ["social", "education", "communication"],
   "icons": [
-    {"src":"icons/catcul-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icons/catcul-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icons/catcul-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/catcul-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ],
   "shortcuts": [
-    {"name":"Open chat","url":"./catcul.html"},
-    {"name":"My diary","url":"./catcul.html?mode=diary"}
-  ],
-  "prefer_related_applications": false
+    {
+      "name": "Messages",
+      "short_name": "Chats",
+      "url": "./catcul.html"
+    },
+    {
+      "name": "Personal Diary",
+      "short_name": "Diary",
+      "url": "./catcul.html?mode=diary"
+    }
+  ]
 }

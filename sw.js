@@ -39,7 +39,7 @@ self.addEventListener('fetch', event => {
           caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
         }
         return res;
-      }).catch(() => caches.match(req).then(r => r || caches.match('./catcul.html')))
+      }).catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./catcul.html')))
     );
     return;
   }

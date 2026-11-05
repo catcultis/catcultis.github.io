@@ -478,7 +478,7 @@ body.dark .step-num{color:#d7f472}
  .hero-stage{flex-direction:column}
 }
 </style>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f4f4ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body data-catcul-view="landing">
 <header class="site-header">
  <div class="container nav-inner">
@@ -493,7 +493,7 @@ body.dark .step-num{color:#d7f472}
    <a href="#details">The little details</a>
   </nav>
   <div class="nav-actions">
-   <button type="button" class="pill-control hide-sm" id="cursor-pill" data-toggle-cursor title="Toggle custom cursor">Cursor: <strong id="cursor-state">On</strong></button>
+   <button type="button" class="pill-control hide-sm" id="cursor-pill" data-toggle-cursor data-custom-cursor-toggle title="Toggle custom cursor">Cursor: <strong id="cursor-state">On</strong></button>
    <button type="button" class="pill-control icon-only" id="theme-button" aria-label="Toggle dark mode" title="Toggle light/dark theme">◐</button>
    <button type="button" class="pill-control" data-open-download title="Install Catcul on Desktop or Phone">↓ App</button>
    <a href="signin.html" class="nav-signin">Sign in</a>
@@ -824,6 +824,7 @@ body.dark .step-num{color:#d7f472}
  let settings={};try{settings=JSON.parse(localStorage.getItem('catcul.settings'))||{};}catch{}
  function setDark(on){
   settings.dark=Boolean(on);
+  document.documentElement.classList.toggle('dark',settings.dark);
   document.body.classList.toggle('dark',settings.dark);
   if(themeBtn)themeBtn.textContent=settings.dark?'☀':'◐';
   try{localStorage.setItem('catcul.settings',JSON.stringify(settings));}catch{}
@@ -863,7 +864,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const landingURL=()=>{const u=new URL('index.html',location.href);const invite=new URLSearchParams(location.search).get('invite');if(invite)u.searchParams.set('invite',invite);return u.href;};
   const setSession=session=>{isAuthenticated=Boolean(session?.user);document.documentElement.dataset.authenticated=String(isAuthenticated);};
   const isRecoveryUrl=loc=>{try{const qs=new URLSearchParams(loc.search),hs=new URLSearchParams((loc.hash||'').slice(1));return qs.get('mode')==='recovery'||qs.get('type')==='recovery'||hs.get('type')==='recovery';}catch{return false;}};
-  window.CatculRouter=Object.freeze({setSession,isRecoveryUrl,workspace(session){setSession(session);if(!isAuthenticated)location.replace(landingURL());},landing(){setSession(null);location.replace(landingURL());}});
+  window.CatculRouter=Object.freeze({
+    setSession,
+    isRecoveryUrl,
+    workspace(session){
+      setSession(session);
+      if(isAuthenticated){try{sessionStorage.removeItem('catcul.authBounce');}catch{}}
+      else location.replace(landingURL());
+    },
+    landing(){
+      setSession(null);
+      location.replace(landingURL());
+    }
+  });
   if(document.body.dataset.catculView!=='landing')return;
   if(isRecoveryUrl(location)){
     const qs=new URLSearchParams(location.search);
@@ -877,8 +890,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   if(!window.supabase)return;
   const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}});
   let routed=false;
+  const bouncedRecently=()=>{
+    try{
+      const prev=Number(sessionStorage.getItem('catcul.authBounce')||0);
+      return prev>0&&(Date.now()-prev)<3500;
+    }catch{return false;}
+  };
   const goWorkspace=session=>{
-    if(routed||!session?.user||!session?.access_token)return;
+    if(routed||!session?.user||!session?.access_token||bouncedRecently())return;
+    try{sessionStorage.setItem('catcul.authBounce',String(Date.now()));}catch{}
     setSession(session);
     routed=true;
     document.body.setAttribute('inert','');
@@ -888,14 +908,20 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   };
   const verifyAndResolve=async session=>{
     if(!session?.user||routed){setSession(null);return;}
+    let activeSession=session;
     const expMs=Number(session.expires_at||0)*1000;
     if(expMs&&expMs<=Date.now()+5000){
       const refreshed=await client.auth.refreshSession().catch(()=>({data:{session:null}}));
       if(!refreshed?.data?.session?.user){await client.auth.signOut({scope:'local'}).catch(()=>{});setSession(null);return;}
-      goWorkspace(refreshed.data.session);
+      activeSession=refreshed.data.session;
+    }
+    const check=await client.auth.getUser(activeSession.access_token).catch(()=>null);
+    if(check?.error&&(check.error.status===401||check.error.status===403||/invalid|expired|jwt|session_not_found|user_not_found/i.test(check.error.message||''))){
+      await client.auth.signOut({scope:'local'}).catch(()=>{});
+      setSession(null);
       return;
     }
-    goWorkspace(session);
+    goWorkspace(activeSession);
   };
   client.auth.getSession().then(({data,error})=>{if(!error&&data?.session)verifyAndResolve(data.session);}).catch(()=>{});
   client.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session)verifyAndResolve(session);});
@@ -1015,6 +1041,8 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     const label = enabled ? 'Use the standard cursor' : 'Use the Catcul custom cursor';
     toggle.title = label; toggle.setAttribute('aria-label', label);
     toggle.querySelector('.cc-toggle-label').textContent = 'Cursor: ' + (enabled ? 'On' : 'Off');
+    const navState = document.getElementById('cursor-state');
+    if (navState) navState.textContent = enabled ? 'On' : 'Off';
     document.querySelectorAll('[data-custom-cursor-toggle]').forEach(button => {
       button.classList.toggle('on', enabled);
       button.setAttribute('aria-checked', String(enabled));
@@ -1091,7 +1119,11 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
   });
   document.addEventListener('click', event => {
-    if (event.target instanceof Element && event.target.closest('[data-custom-cursor-toggle]')) setEnabled(!enabled);
+    const btn = event.target instanceof Element ? event.target.closest('[data-custom-cursor-toggle]') : null;
+    if (btn) {
+      setEnabled(!enabled);
+      if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: btn});
+    }
   });
   function preferenceChanged() { updateToggle(); hide(); }
   pointerMedia.addEventListener('change', preferenceChanged);
@@ -1270,31 +1302,32 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     const st = document.createElement('style');
     st.id = 'catcul-dl-styles';
     st.textContent = `
-      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(14,21,16,.54);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
+      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(24,33,22,.46);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
       @keyframes catculDlFade{from{opacity:0}to{opacity:1}}
-      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#fbfcfa;color:#17241b;border:1px solid rgba(24,38,29,.12);border-radius:22px;padding:26px;box-shadow:0 24px 64px rgba(10,18,13,.24);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
-      body.dark .catcul-dl-dialog{background:#1b251e;color:#edf2ea;border-color:rgba(255,255,255,.1)}
-      .catcul-dl-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(24,38,29,.12);background:transparent;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
-      .catcul-dl-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4a6b46;margin-bottom:6px;display:block}
-      body.dark .catcul-dl-eyebrow{color:#cbe192}
-      .catcul-dl-dialog h2{font-size:23px;font-weight:750;letter-spacing:-.03em;margin:0 0 6px}
-      .catcul-dl-sub{font-size:13.5px;color:#5b695b;margin:0 0 20px;line-height:1.55}
-      body.dark .catcul-dl-sub{color:#9eb09e}
+      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#ffffff;color:#1e281d;border:1px solid #e3e8dc;border-radius:28px;padding:28px;box-shadow:0 28px 70px rgba(24,34,22,.18);font-family:'Plus Jakarta Sans',Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
+      body.dark .catcul-dl-dialog,html.dark .catcul-dl-dialog{background:#1a2019;color:#eef2ea;border-color:#2c362a}
+      .catcul-dl-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid #e3e8dc;background:#f7f8f3;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
+      body.dark .catcul-dl-close,html.dark .catcul-dl-close{background:#232c22;border-color:#344032}
+      .catcul-dl-eyebrow{display:inline-flex;padding:4px 11px;border-radius:999px;background:#e4f0ce;font-size:10.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#354e27;margin-bottom:10px}
+      body.dark .catcul-dl-eyebrow,html.dark .catcul-dl-eyebrow{background:#263421;color:#d7f472}
+      .catcul-dl-dialog h2{font-size:24px;font-weight:800;letter-spacing:-.03em;margin:0 0 6px}
+      .catcul-dl-sub{font-size:13.5px;color:#5a6657;margin:0 0 20px;line-height:1.58}
+      body.dark .catcul-dl-sub,html.dark .catcul-dl-sub{color:#a3b0a0}
       .catcul-dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-      .catcul-dl-card{border:1px solid rgba(24,38,29,.11);border-radius:16px;padding:18px;background:#f3f6f0;display:flex;flex-direction:column;gap:10px}
-      body.dark .catcul-dl-card{background:#222f26;border-color:rgba(255,255,255,.09)}
-      .catcul-dl-card h3{font-size:15.5px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px}
-      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#556355;margin:0}
-      body.dark .catcul-dl-card p{color:#a7b6a6}
-      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#39483b}
-      body.dark .catcul-dl-steps{color:#cdd8cc}
-      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:12px;border:0;background:#1f3a2a;color:#f6f8f3;font-size:13px;font-weight:650;cursor:pointer;text-decoration:none;margin-top:auto}
-      .catcul-dl-btn:hover{background:#294b37}
-      body.dark .catcul-dl-btn{background:#cbe192;color:#142318}
-      .catcul-dl-btn.secondary{background:#e5ece0;color:#1a2b1f}
-      body.dark .catcul-dl-btn.secondary{background:#2c3c31;color:#edf2ea}
-      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.72);padding:10px;border-radius:12px;border:1px solid rgba(24,38,29,.08)}
-      body.dark .catcul-dl-qr-row{background:rgba(15,21,17,.45);border-color:rgba(255,255,255,.08)}
+      .catcul-dl-card{border:1px solid #e3e8dc;border-radius:20px;padding:18px;background:#f7f8f3;display:flex;flex-direction:column;gap:10px}
+      body.dark .catcul-dl-card,html.dark .catcul-dl-card{background:#222a20;border-color:#313d2f}
+      .catcul-dl-card h3{font-size:15.5px;font-weight:750;margin:0;display:flex;align-items:center;gap:8px}
+      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#586456;margin:0}
+      body.dark .catcul-dl-card p,html.dark .catcul-dl-card p{color:#a8b5a5}
+      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#394637}
+      body.dark .catcul-dl-steps,html.dark .catcul-dl-steps{color:#ced8cb}
+      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;border:1px solid rgba(30,42,27,.06);background:#d7f472;color:#1c261a;font-size:13px;font-weight:750;cursor:pointer;text-decoration:none;margin-top:auto;transition:transform .14s ease,background-color .14s ease}
+      .catcul-dl-btn:hover{background:#cdf059;transform:translateY(-1px)}
+      body.dark .catcul-dl-btn,html.dark .catcul-dl-btn{background:#d7f472;color:#172115}
+      .catcul-dl-btn.secondary{background:#ffffff;color:#1e281d;border:1px solid #dfe5d8}
+      body.dark .catcul-dl-btn.secondary,html.dark .catcul-dl-btn.secondary{background:#2b3629;color:#eef2ea;border-color:#3b4838}
+      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:#ffffff;padding:10px;border-radius:14px;border:1px solid #e3e8dc}
+      body.dark .catcul-dl-qr-row,html.dark .catcul-dl-qr-row{background:#181e17;border-color:#2e392c}
       .catcul-dl-qr-row svg{flex-shrink:0;border-radius:8px;width:96px;height:96px}
       @media(max-width:620px){.catcul-dl-grid{grid-template-columns:1fr}.catcul-dl-backdrop{align-items:flex-end;padding:0}.catcul-dl-dialog{border-radius:22px 22px 0 0;padding:22px 18px max(22px,env(safe-area-inset-bottom))}}
     `;

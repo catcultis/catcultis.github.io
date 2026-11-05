@@ -3,42 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Account — Catcul</title>
-<meta name="description" content="Create your student account on Catcul to join private chats, voice and video calls, and study groups.">
+<title>Join Catcul — Make yourself at home.</title>
+<meta name="description" content="Create your Catcul account to join private chats, voice and video calls, and study groups.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2215%22%20fill%3D%22%23dcf783%22%2F%3E%3Cpath%20d%3D%22M12%2020%2010%208l12%208h4l12-8-2%2012c7%2014-1%2021-12%2021S5%2034%2012%2020Z%22%20fill%3D%22none%22%20stroke%3D%22%2320261e%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#f4f4ef;
+ --bg:#f7f8f3;
  --surface:#ffffff;
- --surface-soft:#f8f9f5;
- --ink:#152019;
- --muted:#56655a;
- --border:#d7dfd3;
- --border-strong:#b8c4b2;
- --brand:#1f3a2a;
- --brand-hover:#294b37;
- --brand-ink:#f6f8f3;
- --sage:#dce7d5;
+ --surface-soft:#f3f5ee;
+ --ink:#1e281d;
+ --ink-soft:#566254;
+ --muted:#748071;
+ --border:#e3e8dc;
+ --border-strong:#cad3c0;
+ --lime:#d7f472;
+ --lime-hover:#cdf059;
+ --lime-ink:#1c261a;
+ --story-bg:linear-gradient(165deg,#e0f886 0%,#d5f26f 100%);
+ --story-ink:#1f2c1d;
+ --story-soft:#445939;
+ --sage:#e4f0ce;
  --danger:#b8382c;
  --danger-bg:#fdf0ee;
- --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
- --serif:'Fraunces',Georgia,serif;
+ --sans:'Plus Jakarta Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 body.dark{
- --bg:#111714;
- --surface:#1a241e;
- --surface-soft:#202c25;
- --ink:#eef2ec;
- --muted:#9fb0a3;
- --border:#2b3a30;
- --border-strong:#3d5044;
- --brand:#cfe29c;
- --brand-hover:#dceba8;
- --brand-ink:#142318;
- --sage:#25352b;
+ --bg:#131712;
+ --surface:#1a2019;
+ --surface-soft:#222a20;
+ --ink:#eef2ea;
+ --ink-soft:#b4bfb1;
+ --muted:#889485;
+ --border:#2b3529;
+ --border-strong:#3c4939;
+ --lime:#d7f472;
+ --lime-hover:#e2f88c;
+ --lime-ink:#172115;
+ --story-bg:linear-gradient(165deg,#22301e 0%,#192417 100%);
+ --story-ink:#f1f6ec;
+ --story-soft:#b8caa8;
+ --sage:#273522;
  --danger:#f28f85;
  --danger-bg:#331c1a;
 }
@@ -50,130 +57,193 @@ body{
  font-family:var(--sans);
  line-height:1.5;
  -webkit-font-smoothing:antialiased;
+ transition:background-color .2s ease,color .2s ease;
 }
 a{color:inherit}
 button,input{font:inherit;color:inherit}
 .hidden{display:none!important}
 
-.auth-shell{
- min-height:100vh;
- display:grid;
- grid-template-columns:minmax(360px,.94fr) minmax(380px,1.06fr);
+.auth-page{
+ min-height:100dvh;
+ display:flex;
+ flex-direction:column;
+ padding:22px clamp(16px,3.5vw,44px) 28px;
 }
-.auth-story{
- position:relative;
+
+/* ---------- Top Bar ---------- */
+.auth-topbar{
+ width:min(1160px,100%);
+ margin:0 auto;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ flex-wrap:wrap;
+ font-size:.84rem;
+ color:var(--muted);
+}
+.back-home{
+ display:inline-flex;align-items:center;gap:7px;
+ text-decoration:none;font-weight:600;color:var(--ink-soft);
+ padding:7px 12px;border-radius:999px;
+ transition:background-color .15s ease,color .15s ease;
+}
+.back-home:hover{background:var(--surface);color:var(--ink)}
+.topbar-right{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.top-prompt{color:var(--muted);font-size:.82rem}
+.top-pill{
+ display:inline-flex;align-items:center;justify-content:center;
+ height:34px;padding:0 14px;border-radius:999px;
+ border:1px solid var(--border);background:var(--surface);
+ color:var(--ink);font-size:.81rem;font-weight:700;
+ text-decoration:none;cursor:pointer;
+ transition:border-color .15s ease,transform .12s ease;
+}
+.top-pill:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+
+/* ---------- Centered Rounded Split Card ---------- */
+.auth-stage{
+ flex:1;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ padding:22px 0 8px;
+}
+.auth-card{
+ width:min(960px,100%);
+ display:grid;
+ grid-template-columns:minmax(320px,.94fr) minmax(360px,1.06fr);
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:30px;
  overflow:hidden;
- padding:clamp(28px,4.5vw,56px);
+ box-shadow:0 26px 70px rgba(30,42,27,.07);
+}
+body.dark .auth-card{box-shadow:0 26px 70px rgba(0,0,0,.38)}
+
+/* Left Lime Story Side */
+.auth-story{
+ background:var(--story-bg);
+ color:var(--story-ink);
+ padding:clamp(30px,4vw,46px);
  display:flex;
  flex-direction:column;
  justify-content:space-between;
- gap:32px;
- background:#15241b;
- color:#f5f7f2;
+ gap:28px;
+ position:relative;
+ overflow:hidden;
 }
-.auth-story-photo{
- position:absolute;inset:0;
- width:100%;height:100%;
- object-fit:cover;object-position:center;
- z-index:0;
-}
-.auth-story-scrim{
- position:absolute;inset:0;z-index:1;
- background:linear-gradient(180deg,rgba(15,25,19,.66) 0%,rgba(12,21,16,.82) 55%,rgba(10,18,13,.92) 100%);
-}
-.auth-top,.story-body,.story-foot{position:relative;z-index:2}
+body.dark .auth-story{border-right:1px solid var(--border)}
 
-.auth-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{
+.story-brand{
  display:inline-flex;align-items:center;gap:11px;
- text-decoration:none;font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:#f6f8f3;
+ text-decoration:none;color:var(--story-ink);
 }
-.brand-mark{
- width:38px;height:38px;border-radius:10px;
- display:grid;place-items:center;
- background:rgba(246,248,243,.14);
- border:1px solid rgba(246,248,243,.24);
- backdrop-filter:blur(8px);
- color:#f6f8f3;
+.story-mark{
+ width:40px;height:40px;border-radius:13px;
+ background:#212e1e;color:#e3fa8c;
+ display:grid;place-items:center;flex-shrink:0;
 }
-.brand-mark svg{width:22px;height:22px}
-.theme-toggle{
- width:38px;height:38px;border-radius:10px;
- border:1px solid rgba(246,248,243,.24);
- background:rgba(246,248,243,.1);
- backdrop-filter:blur(8px);
- color:#f6f8f3;cursor:pointer;font-size:.98rem;
-}
-.theme-toggle:hover{background:rgba(246,248,243,.2)}
+body.dark .story-mark{background:#d7f472;color:#1b2619}
+.story-mark svg{width:23px;height:23px}
+.story-wordmark{font-weight:800;font-size:1.3rem;letter-spacing:-.035em}
 
 .story-eyebrow{
- display:inline-block;
- padding:5px 12px;border-radius:999px;
- background:rgba(220,231,213,.16);
- border:1px solid rgba(220,231,213,.28);
- color:#e3eedb;
- font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
- margin-bottom:18px;
+ display:block;
+ font-size:.69rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+ color:var(--story-soft);margin-bottom:14px;
 }
 .story-body h1{
- font-family:var(--serif);
- font-size:clamp(2rem,3.4vw,3.05rem);
- line-height:1.1;font-weight:600;letter-spacing:-.025em;
- max-width:16ch;color:#f7f9f4;
+ font-size:clamp(2rem,3.2vw,2.75rem);
+ line-height:1.06;font-weight:800;letter-spacing:-.035em;
+ color:var(--story-ink);
 }
 .story-body p{
- margin-top:14px;max-width:44ch;
- color:rgba(240,244,237,.84);font-size:.98rem;
+ margin-top:16px;max-width:34ch;
+ font-size:.93rem;line-height:1.6;color:var(--story-soft);
 }
-.story-highlights{
- list-style:none;margin-top:26px;
- display:grid;gap:10px;
- font-size:.88rem;color:rgba(244,247,241,.92);
+
+.story-doodle{
+ position:relative;
+ height:136px;
+ margin-top:18px;
 }
-.story-highlights li{
- display:flex;align-items:center;gap:10px;
- padding:9px 13px;border-radius:10px;
- background:rgba(246,248,243,.08);
- border:1px solid rgba(246,248,243,.14);
- backdrop-filter:blur(6px);
- max-width:400px;
+.doodle-spark{
+ position:absolute;left:36px;top:16px;
+ font-size:1.35rem;color:var(--story-soft);opacity:.72;
 }
-.story-highlights i{color:#cfe29c;font-size:1.05rem}
+.doodle-cat-box{
+ position:absolute;right:54px;top:6px;
+ width:96px;height:96px;border-radius:24px;
+ border:2.5px solid rgba(255,255,255,.78);
+ background:rgba(255,255,255,.26);
+ display:grid;place-items:center;
+ transform:rotate(-8deg);
+ color:var(--story-ink);
+}
+body.dark .doodle-cat-box{
+ border-color:rgba(215,244,114,.32);
+ background:rgba(215,244,114,.09);
+}
+.doodle-cat-box svg{width:54px;height:54px}
+.doodle-bubble{
+ position:absolute;right:8px;bottom:8px;
+ padding:10px 16px;border-radius:16px;
+ background:#ffffff;color:#1e281d;
+ font-size:.84rem;font-weight:750;
+ box-shadow:0 12px 26px rgba(30,42,27,.11);
+ transform:rotate(3deg);
+ display:inline-flex;align-items:center;gap:8px;
+}
+.doodle-bubble span{color:#6f8659;font-weight:600}
 
 .story-foot{
- display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
- font-size:.82rem;color:rgba(240,244,237,.78);
+ display:flex;align-items:center;gap:8px;
+ font-size:.78rem;font-weight:600;color:var(--story-soft);
 }
-.story-foot a{color:#f7f9f4;font-weight:600;text-decoration:none}
-.story-foot a:hover{text-decoration:underline}
-.story-credit{font-size:.75rem;color:rgba(240,244,237,.68)}
-.story-credit a{font-weight:500;text-decoration:underline;text-underline-offset:2px}
+.story-dot{
+ width:6px;height:6px;border-radius:50%;background:#5c7a38;flex-shrink:0;
+}
+body.dark .story-dot{background:#d7f472}
 
-/* Right Form Pane */
+/* Right Form Side */
 .auth-form-pane{
+ padding:clamp(28px,3.8vw,44px);
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ gap:18px;
+}
+.pane-top{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.page-pill{
+ display:inline-flex;align-items:center;
+ padding:5px 12px;border-radius:999px;
+ background:var(--surface-soft);border:1px solid var(--border);
+ font-size:.73rem;font-weight:600;color:var(--ink-soft);
+}
+.theme-toggle{
+ width:34px;height:34px;border-radius:50%;
+ border:1px solid var(--border);background:var(--surface);
+ color:var(--ink-soft);cursor:pointer;font-size:.92rem;
  display:grid;place-items:center;
- padding:clamp(22px,4vw,52px);
+ transition:background-color .15s ease,color .15s ease;
 }
-.auth-card{
- width:min(450px,100%);
- background:var(--surface);
- border:1px solid var(--border);
- border-radius:18px;
- padding:clamp(26px,3.6vw,38px);
- box-shadow:0 16px 42px rgba(18,30,22,.07);
-}
+.theme-toggle:hover{background:var(--surface-soft);color:var(--ink)}
+
 .auth-card h2{
- font-family:var(--serif);
- font-size:clamp(1.65rem,2.5vw,2.1rem);
- line-height:1.15;font-weight:600;letter-spacing:-.02em;
+ font-size:clamp(1.55rem,2.3vw,1.95rem);
+ line-height:1.14;font-weight:800;letter-spacing:-.03em;
 }
-.intro{color:var(--muted);margin:8px 0 22px;font-size:.93rem}
+.intro{color:var(--muted);margin:7px 0 20px;font-size:.89rem}
 
 .notice,.auth-message{
- padding:11px 13px;border-radius:10px;
+ padding:11px 14px;border-radius:14px;
  border:1px solid var(--border);
  background:var(--surface-soft);
- font-size:.87rem;margin-bottom:15px;
+ font-size:.84rem;margin-bottom:14px;
 }
 .auth-message{
  border-color:color-mix(in srgb,var(--danger) 35%,var(--border));
@@ -184,100 +254,102 @@ button,input{font:inherit;color:inherit}
  background:var(--sage);color:var(--ink);
 }
 
-form{display:grid;gap:15px}
-label{display:block;font-size:.84rem;font-weight:600;margin-bottom:6px}
+form{display:grid;gap:14px}
+label{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
 .label-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .field{
- width:100%;height:44px;padding:0 13px;
- border-radius:10px;border:1px solid var(--border);
+ width:100%;height:45px;padding:0 15px;
+ border-radius:13px;border:1px solid var(--border);
  background:var(--surface-soft);color:var(--ink);
- font-size:.93rem;
+ font-size:.9rem;
  transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease;
 }
+.field::placeholder{color:var(--muted);opacity:.78}
 .field:focus{
  outline:none;
  background:var(--surface);
- border-color:var(--brand);
- box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 16%,transparent);
+ border-color:#9fc44c;
+ box-shadow:0 0 0 3px rgba(215,244,114,.35);
 }
 .username-input{position:relative}
 .username-input span{
- position:absolute;left:13px;top:50%;transform:translateY(-50%);
- color:var(--muted);font-weight:600;pointer-events:none;
+ position:absolute;left:14px;top:50%;transform:translateY(-50%);
+ color:var(--muted);font-weight:700;pointer-events:none;
 }
-.username-input .field{padding-left:29px}
+.username-input .field{padding-left:30px}
 
 .password-field{position:relative}
 .password-field .field{padding-right:44px}
 .peek{
- position:absolute;right:5px;top:5px;width:34px;height:34px;
- border-radius:8px;border:0;background:transparent;
+ position:absolute;right:6px;top:5.5px;width:34px;height:34px;
+ border-radius:10px;border:0;background:transparent;
  color:var(--muted);cursor:pointer;
 }
 .peek:hover{background:var(--sage);color:var(--ink)}
 
-.field-note{color:var(--muted);font-size:.78rem;margin-top:5px}
-.text-link{color:var(--muted);font-size:.82rem;font-weight:600;text-decoration:none}
-.text-link:hover{color:var(--ink);text-decoration:underline}
+.field-note{color:var(--muted);font-size:.75rem;margin-top:5px}
+.text-link{color:#5a7538;font-size:.79rem;font-weight:700;text-decoration:none}
+body.dark .text-link{color:#cfe97c}
+.text-link:hover{text-decoration:underline}
 
 .submit{
- margin-top:4px;height:46px;padding:0 18px;
- border-radius:10px;border:1px solid transparent;
- background:var(--brand);color:var(--brand-ink);
- font-weight:600;font-size:.94rem;cursor:pointer;
+ margin-top:4px;height:46px;padding:0 20px;
+ border-radius:14px;border:1px solid rgba(30,42,27,.06);
+ background:var(--lime);color:var(--lime-ink);
+ font-weight:750;font-size:.9rem;cursor:pointer;
  transition:background-color .16s ease,transform .12s ease;
 }
-.submit:hover{background:var(--brand-hover)}
-.submit:active{transform:translateY(1px)}
+.submit:hover{background:var(--lime-hover);transform:translateY(-1px)}
+.submit:active{transform:translateY(0)}
 .submit:disabled{opacity:.6;cursor:wait;transform:none}
 
 .secondary-btn{
- min-height:42px;padding:9px 14px;border-radius:10px;
+ min-height:42px;padding:9px 14px;border-radius:13px;
  border:1px solid var(--border);background:transparent;
- font-weight:600;font-size:.88rem;cursor:pointer;
+ font-weight:650;font-size:.84rem;cursor:pointer;color:var(--ink-soft);
 }
-.secondary-btn:hover{background:var(--surface-soft);border-color:var(--border-strong)}
+.secondary-btn:hover{background:var(--surface-soft);border-color:var(--border-strong);color:var(--ink)}
 .secondary-btn:disabled{opacity:.55;cursor:not-allowed}
 
-.switch{margin-top:20px;color:var(--muted);font-size:.89rem;text-align:center}
-.switch a{color:var(--ink);font-weight:700;text-decoration:none}
+.switch{margin-top:16px;color:var(--muted);font-size:.84rem;text-align:center}
+.switch a{color:var(--ink);font-weight:750;text-decoration:none}
 .switch a:hover{text-decoration:underline}
 
 .success-view{display:grid;gap:14px}
 .mail-badge{
- width:44px;height:44px;border-radius:11px;
+ width:44px;height:44px;border-radius:14px;
  display:grid;place-items:center;
  background:var(--sage);color:var(--ink);
  font-weight:700;font-size:1.15rem;
 }
-.success-actions{display:grid;gap:10px;margin-top:4px}
+.success-actions{display:grid;gap:9px;margin-top:4px}
 .link-btn{display:grid;place-items:center;text-decoration:none}
-code{font-size:.84em;background:var(--surface-soft);padding:2px 5px;border-radius:5px}
+code{font-size:.84em;background:var(--surface-soft);padding:2px 5px;border-radius:6px}
 
 /* ---------- 3-Step Recovery Stepper, Code/Link Verification & Strength Meter ---------- */
 .recovery-stepper{
  list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
- margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);
+ padding-bottom:14px;border-bottom:1px solid var(--border);
 }
 .recovery-stepper li{
  display:flex;align-items:center;gap:7px;
- font-size:.76rem;font-weight:600;color:var(--muted);
+ font-size:.74rem;font-weight:650;color:var(--muted);
 }
 .recovery-stepper li span{
  width:22px;height:22px;border-radius:50%;
  border:1px solid var(--border);background:var(--surface-soft);
- display:grid;place-items:center;font-size:.71rem;font-weight:700;flex-shrink:0;
+ display:grid;place-items:center;font-size:.7rem;font-weight:750;flex-shrink:0;
 }
 .recovery-stepper li.active{color:var(--ink)}
 .recovery-stepper li.active span{
- background:var(--brand);color:var(--brand-ink);border-color:var(--brand);
+ background:var(--lime);color:var(--lime-ink);border-color:transparent;
 }
 .recovery-stepper li.done{color:var(--ink)}
 .recovery-stepper li.done span{
  background:var(--sage);color:var(--ink);border-color:var(--border-strong);
 }
 
-.strength-meter{margin-top:8px}
+.strength-meter{margin-top:7px}
 .strength-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:5px}
 .strength-bars i{
  height:4px;border-radius:99px;background:var(--border);
@@ -285,38 +357,54 @@ code{font-size:.84em;background:var(--surface-soft);padding:2px 5px;border-radiu
 }
 .strength-meter[data-score="1"] .strength-bars i:nth-child(1){background:#d96b43}
 .strength-meter[data-score="2"] .strength-bars i:nth-child(-n+2){background:#d8a33a}
-.strength-meter[data-score="3"] .strength-bars i:nth-child(-n+3){background:#6da043}
-.strength-meter[data-score="4"] .strength-bars i{background:#2d7d46}
-.field-note.ok{color:#2d7d46;font-weight:600}
-body.dark .field-note.ok{color:#b9e286}
+.strength-meter[data-score="3"] .strength-bars i:nth-child(-n+3){background:#7cb342}
+.strength-meter[data-score="4"] .strength-bars i{background:#4d8b31}
+.field-note.ok{color:#3c7623;font-weight:650}
+body.dark .field-note.ok{color:#c9ef7b}
 
 .recovery-verify-box{
- padding:14px;border-radius:12px;
+ padding:14px;border-radius:16px;
  background:var(--surface-soft);border:1px solid var(--border);
  display:grid;gap:8px;
 }
 .recovery-code-row{display:flex;gap:8px}
-.recovery-code-row .field{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem;letter-spacing:.03em}
-.recovery-code-row .submit{margin-top:0;height:44px;padding:0 16px;flex-shrink:0}
-.inbox-shortcuts{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
+.recovery-code-row .field{flex:1;background:var(--surface);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;letter-spacing:.03em}
+.recovery-code-row .submit{margin-top:0;height:45px;padding:0 16px;flex-shrink:0}
+.inbox-shortcuts{display:flex;gap:7px;flex-wrap:wrap;margin-top:3px}
 .inbox-shortcuts a{
- padding:5px 10px;border-radius:999px;
+ padding:5px 11px;border-radius:999px;
  border:1px solid var(--border);background:var(--surface);
- font-size:.75rem;font-weight:600;text-decoration:none;color:var(--muted);
- transition:border-color .15s ease,color .15s ease;
+ font-size:.74rem;font-weight:650;text-decoration:none;color:var(--ink-soft);
+ transition:border-color .15s ease,background-color .15s ease;
 }
 .inbox-shortcuts a:hover,.inbox-shortcuts a.preferred{
- border-color:var(--brand);color:var(--ink);background:var(--sage);
+ border-color:#a5ca52;color:var(--ink);background:var(--sage);
 }
 
-@media (max-width:900px){
- .auth-shell{grid-template-columns:1fr}
- .auth-story{min-height:280px;padding:24px}
- .story-highlights{display:none}
+/* ---------- Card Footer & Stage Caption ---------- */
+.pane-foot{
+ padding-top:16px;border-top:1px solid var(--border);
+ font-size:.75rem;color:var(--muted);
+ display:grid;gap:5px;
+}
+.pane-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pane-links a{color:var(--ink-soft);font-weight:650;text-decoration:underline;text-underline-offset:2px}
+.pane-links a:hover{color:var(--ink)}
+
+.stage-caption{
+ margin-top:18px;
+ font-size:.75rem;color:var(--muted);text-align:center;
+}
+
+@media (max-width:860px){
+ .auth-card{grid-template-columns:1fr;border-radius:24px}
+ .auth-story{padding:26px}
+ .story-doodle{display:none}
+ .top-prompt{display:none}
 }
 
 </style>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f4f4ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body class="signup-page">
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
 <symbol id="i-cat" viewBox="0 0 40 40"><path d="M9 15 7 5l11 7h4L33 5l-2 10c3 3 4 6 4 10 0 8-6 12-15 12S5 33 5 25c0-4 1-7 4-10Z"/><path d="M13 23h.1M27 23h.1" stroke-width="4"/><path d="m18 28 2 2 2-2m-2 2v3M7 27l-5-1m5 5-4 2m30-6 5-1m-5 5 4 2"/></symbol>
@@ -352,131 +440,165 @@ body.dark .field-note.ok{color:#b9e286}
 <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C6 2 1 10 5 17s17 4 15-14ZM4 21 15 10"/></symbol>
 <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M3 15v6h18v-6"/></symbol>
 </defs></svg>
-<main class="auth-shell">
- <section class="auth-story" aria-label="About Catcul">
-  <img class="auth-story-photo" src="./wallpapers/anime-shinkai-sky.jpg" alt="Starry comet sky over a lantern-lit mountain shrine" loading="eager">
-  <div class="auth-story-scrim" aria-hidden="true"></div>
-  <div class="auth-top">
-   <a class="brand" data-route="index.html" href="index.html">
-    <span class="brand-mark" aria-hidden="true">
-     <svg viewBox="0 0 32 32" fill="none">
-      <path d="M7 13L9.5 5.5L14.5 10.5H17.5L22.5 5.5L25 13C26.3 15 26.8 17.5 26 20.2C24.9 23.8 21 26 16 26C11 26 7.1 23.8 6 20.2C5.2 17.5 5.7 15 7 13Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
-      <circle cx="12.5" cy="16.5" r="1.4" fill="currentColor"/>
-      <circle cx="19.5" cy="16.5" r="1.4" fill="currentColor"/>
-      <path d="M14.3 19.8Q16 21.2 17.7 19.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-     </svg>
-    </span>
-    Catcul
-   </a>
-   <div style="display:flex;gap:8px;align-items:center">
-    <button class="theme-toggle" type="button" data-open-download title="Download Desktop &amp; Phone App" aria-label="Download Desktop and Phone App" style="width:auto;padding:0 11px;font-size:12px;font-weight:600">↓ App</button>
-    <button class="theme-toggle" id="theme-button" type="button" aria-label="Switch color theme" title="Switch light or dark mode">◐</button>
-   </div>
+<div class="auth-page">
+ <header class="auth-topbar">
+  <a class="back-home" data-route="index.html" href="index.html">
+   <span aria-hidden="true">‹</span> Back to home
+  </a>
+  <div class="topbar-right">
+   <span class="top-prompt">Already part of the gang?</span>
+   <a class="top-pill" data-route="signin.html" href="signin.html">Sign in</a>
+   <button class="top-pill" type="button" data-open-download title="Download Desktop &amp; Phone App">↓ App</button>
   </div>
-  <div class="story-body">
-   <span class="story-eyebrow">Student Messenger</span>
-   <h1>Set up your space in under a minute.</h1>
-   <p>Direct messages, course rooms, voice & HD video calls with laptop alerts, and full-screen 4K anime wallpapers — synced across phone and desktop.</p>
-   <ul class="story-highlights" aria-label="Workspace highlights">
-    <li><i class="ri-chat-check-line" aria-hidden="true"></i> Private DMs, study groups &amp; course channels</li>
-    <li><i class="ri-phone-line" aria-hidden="true"></i> Voice &amp; HD video calls with laptop notifications</li>
-    <li><i class="ri-sparkling-2-line" aria-hidden="true"></i> 3D camera lenses &amp; full-screen 4K anime themes</li>
-   </ul>
-  </div>
-  <p class="story-foot">
-   <span><a data-route="index.html" href="index.html">← Home</a> · <a href="help.html">Help</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></span>
-   <span class="story-credit">Shinkai Starfall · Catcul Studio Anime</span>
-  </p>
- </section>
- <section class="auth-form-pane">
+ </header>
+
+ <main class="auth-stage">
   <div class="auth-card">
-   <div id="invite-notice" class="notice hidden">An invite is waiting for you. Sign in or create an account to open it.</div>
-   <div id="local-note" class="notice hidden">You’re opening this file directly. Password reset links work best when Catcul is hosted on <code>https://</code> or <code>localhost</code>.</div>
+   <aside class="auth-story" aria-label="About Catcul">
+    <a class="story-brand" data-route="index.html" href="index.html">
+     <span class="story-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+       <path d="M7 13L9.5 5.5L14.5 10.5H17.5L22.5 5.5L25 13C26.3 15 26.8 17.5 26 20.2C24.9 23.8 21 26 16 26C11 26 7.1 23.8 6 20.2C5.2 17.5 5.7 15 7 13Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+       <circle cx="12.5" cy="16.5" r="1.4" fill="currentColor"/>
+       <circle cx="19.5" cy="16.5" r="1.4" fill="currentColor"/>
+       <path d="M14.3 19.8Q16 21.2 17.7 19.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+     </span>
+     <span class="story-wordmark">catcul.</span>
+    </a>
 
-   <ol id="recovery-stepper" class="recovery-stepper hidden" aria-label="Password recovery progress">
-    <li data-rec-step="1" class="active"><span>1</span>Account</li>
-    <li data-rec-step="2"><span>2</span>Code or Link</li>
-    <li data-rec-step="3"><span>3</span>New Password</li>
-   </ol>
+    <div class="story-body">
+     <span class="story-eyebrow">LESS NOISE. MORE US.</span>
+     <h1>Your people.<br>Your moments.<br>Your little space.</h1>
+     <p>The late-night catch-ups. The photos that don’t need a filter. The “made it home?” messages.</p>
 
-   <div id="form-view">
-    <h2 id="auth-heading">Create your Catcul account.</h2>
-    <p class="intro" id="auth-intro">Pick a display name and @username so friends and classmates can find you.</p>
-    <div id="auth-message" class="auth-message hidden" role="status" aria-live="polite"></div>
-    <form id="auth-form" novalidate>
-     <div id="name-wrap" class="">
-      <label for="name">Your name</label>
-      <input class="field" id="name" name="name" autocomplete="name" maxlength="40" placeholder="Alex Rivera" required>
-     </div>
-     <div id="username-wrap" class="">
-      <label for="username">Username</label>
-      <div class="username-input"><span aria-hidden="true">@</span><input class="field" id="username" name="username" autocomplete="username" minlength="3" maxlength="15" pattern="[A-Za-z0-9_]{3,15}" placeholder="alex_rivera" aria-describedby="username-note" required></div>
-      <p class="field-note" id="username-note">3–15 letters, numbers, or underscores. Friends use this handle to find you.</p>
-     </div>
-     <div id="email-wrap">
-      <label for="email" id="email-label">Email address</label>
-      <input class="field" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-      <p class="field-note hidden" id="reset-email-hint">Don’t remember which email you used? Enter your <strong>@username</strong> first to see a masked hint.</p>
-     </div>
-     <div id="password-wrap">
-      <div class="label-row">
-       <label for="password" id="password-label">Password</label>
-       <a class="text-link hidden" id="forgot-link" href="signin.html?mode=reset">Forgot password?</a>
+     <div class="story-doodle" aria-hidden="true">
+      <span class="doodle-spark">✧</span>
+      <div class="doodle-cat-box">
+       <svg viewBox="0 0 32 32" fill="none">
+        <path d="M7 13L9.5 5.5L14.5 10.5H17.5L22.5 5.5L25 13C26.3 15 26.8 17.5 26 20.2C24.9 23.8 21 26 16 26C11 26 7.1 23.8 6 20.2C5.2 17.5 5.7 15 7 13Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+        <circle cx="12.5" cy="16.5" r="1.5" fill="currentColor"/>
+        <circle cx="19.5" cy="16.5" r="1.5" fill="currentColor"/>
+        <path d="M14.3 19.8Q16 21.2 17.7 19.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+       </svg>
       </div>
-      <div class="password-field">
-       <input class="field" id="password" name="password" type="password" autocomplete="new-password" minlength="10" placeholder="At least 10 characters" required>
-       <button class="peek" type="button" data-password="password" aria-label="Show password" aria-pressed="false">👁</button>
-      </div>
-      <div id="password-strength-wrap" class="strength-meter " aria-live="polite">
-       <div class="strength-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-       <p class="field-note" id="password-note">Use at least 10 characters.</p>
-      </div>
-     </div>
-     <div id="confirm-wrap" class="">
-      <label for="confirm-password">Confirm password</label>
-      <div class="password-field">
-       <input class="field" id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="10" placeholder="Repeat your password" required>
-       <button class="peek" type="button" data-password="confirm-password" aria-label="Show password" aria-pressed="false">👁</button>
-      </div>
-      <p class="field-note hidden" id="confirm-match-note"></p>
-     </div>
-     <button class="submit" id="submit-button" type="submit">Create account →</button>
-     <button class="secondary-btn hidden" id="resend-inline" type="button">Resend confirmation email</button>
-    </form>
-    <p class="switch" id="auth-switch">Already have an account? <a data-route="signin.html" href="signin.html">Sign in</a></p>
-   </div>
-
-   <div id="success-view" class="success-view hidden" aria-live="polite">
-    <div class="mail-badge" aria-hidden="true">✉</div>
-    <h2 id="success-heading">Check your inbox.</h2>
-    <p class="intro" id="success-copy"></p>
-
-    <div id="recovery-verify-box" class="recovery-verify-box hidden">
-     <label for="recovery-code-input">Enter 6–8 digit recovery code — or paste the reset link</label>
-     <div class="recovery-code-row">
-      <input class="field" id="recovery-code-input" autocomplete="one-time-code" inputmode="text" placeholder="e.g. 482910 or https://…/verify?token=…">
-      <button class="submit" id="verify-code-btn" type="button">Verify →</button>
-     </div>
-     <p class="field-note">Opened the email on your phone? Tap the reset button there, <em>or</em> enter the code / paste the email’s link above to finish right here.</p>
-     <div class="inbox-shortcuts" id="inbox-shortcuts">
-      <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" rel="noopener noreferrer" data-mail-host="gmail">Gmail ↗</a>
-      <a href="https://outlook.live.com/mail/0/inbox" target="_blank" rel="noopener noreferrer" data-mail-host="outlook">Outlook ↗</a>
-      <a href="https://www.icloud.com/mail" target="_blank" rel="noopener noreferrer" data-mail-host="icloud">iCloud Mail ↗</a>
+      <div class="doodle-bubble">oh, hey you. <span>♡</span></div>
      </div>
     </div>
 
-    <div id="recovery-verify-msg" class="auth-message hidden" role="status"></div>
-
-    <div class="success-actions">
-     <button class="secondary-btn hidden" id="resend-button" type="button">Resend email</button>
-     <button class="secondary-btn hidden" id="change-reset-email" type="button">← Try a different email</button>
-     <a class="submit link-btn" id="success-link" data-route="signin.html" href="signin.html">Back to sign in</a>
+    <div class="story-foot">
+     <span class="story-dot" aria-hidden="true"></span>
+     <span>A little less scrolling. A lot more talking.</span>
     </div>
-    <p class="field-note" id="success-status"></p>
-   </div>
+   </aside>
+
+   <section class="auth-form-pane">
+    <div class="pane-top">
+     <span class="page-pill" id="page-pill">Your little space starts here</span>
+     <button class="theme-toggle" id="theme-button" type="button" aria-label="Switch color theme" title="Switch light or dark mode">☾</button>
+    </div>
+
+    <div id="invite-notice" class="notice hidden">An invite is waiting for you. Sign in or create an account to open it.</div>
+    <div id="local-note" class="notice hidden">You’re opening this file directly. Password reset links work best when Catcul is hosted on <code>https://</code> or <code>localhost</code>.</div>
+
+    <ol id="recovery-stepper" class="recovery-stepper hidden" aria-label="Password recovery progress">
+     <li data-rec-step="1" class="active"><span>1</span>Account</li>
+     <li data-rec-step="2"><span>2</span>Code or Link</li>
+     <li data-rec-step="3"><span>3</span>New Password</li>
+    </ol>
+
+    <div id="form-view">
+     <h2 id="auth-heading">Your people are waiting.</h2>
+     <p class="intro" id="auth-intro">Make an account. Find your people. Keep the little moments.</p>
+     <div id="auth-message" class="auth-message hidden" role="status" aria-live="polite"></div>
+
+     <form id="auth-form" novalidate>
+      <div id="name-wrap" class="">
+       <label for="name">What should we call you?</label>
+       <input class="field" id="name" name="name" autocomplete="name" maxlength="40" placeholder="Your name" required>
+      </div>
+      <div id="username-wrap" class="">
+       <label for="username">Username</label>
+       <div class="username-input"><span aria-hidden="true">@</span><input class="field" id="username" name="username" autocomplete="username" minlength="3" maxlength="15" pattern="[A-Za-z0-9_]{3,15}" placeholder="alex_rivera" aria-describedby="username-note" required></div>
+       <p class="field-note" id="username-note">3–15 letters, numbers, or underscores. Friends use this handle to find you.</p>
+      </div>
+      <div id="email-wrap">
+       <label for="email" id="email-label">Email address</label>
+       <input class="field" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+       <p class="field-note hidden" id="reset-email-hint">Don’t remember which email you used? Enter your <strong>@username</strong> first to see a masked hint.</p>
+      </div>
+      <div id="password-wrap">
+       <div class="label-row">
+        <label for="password" id="password-label">Password</label>
+        <a class="text-link hidden" id="forgot-link" href="signin.html?mode=reset">Forgot password?</a>
+       </div>
+       <div class="password-field">
+        <input class="field" id="password" name="password" type="password" autocomplete="new-password" minlength="10" placeholder="At least 10 characters" required>
+        <button class="peek" type="button" data-password="password" aria-label="Show password" aria-pressed="false">👁</button>
+       </div>
+       <div id="password-strength-wrap" class="strength-meter " aria-live="polite">
+        <div class="strength-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <p class="field-note" id="password-note">Make it yours. At least 10 characters.</p>
+       </div>
+      </div>
+      <div id="confirm-wrap" class="">
+       <label for="confirm-password">Confirm password</label>
+       <div class="password-field">
+        <input class="field" id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="10" placeholder="One more time" required>
+        <button class="peek" type="button" data-password="confirm-password" aria-label="Show password" aria-pressed="false">👁</button>
+       </div>
+       <p class="field-note hidden" id="confirm-match-note"></p>
+      </div>
+      <button class="submit" id="submit-button" type="submit">Make yourself at home →</button>
+      <button class="secondary-btn hidden" id="resend-inline" type="button">Resend confirmation email</button>
+     </form>
+     <p class="switch" id="auth-switch">Already here? <a data-route="signin.html" href="signin.html">Sign in</a></p>
+    </div>
+
+    <div id="success-view" class="success-view hidden" aria-live="polite">
+     <div class="mail-badge" aria-hidden="true">✉</div>
+     <h2 id="success-heading">Check your inbox.</h2>
+     <p class="intro" id="success-copy"></p>
+
+     <div id="recovery-verify-box" class="recovery-verify-box hidden">
+      <label for="recovery-code-input">Enter 6–8 digit recovery code — or paste the reset link</label>
+      <div class="recovery-code-row">
+       <input class="field" id="recovery-code-input" autocomplete="one-time-code" inputmode="text" placeholder="e.g. 482910 or https://…/verify?token=…">
+       <button class="submit" id="verify-code-btn" type="button">Verify →</button>
+      </div>
+      <p class="field-note">Opened the email on your phone? Tap the reset button there, <em>or</em> enter the code / paste the email’s link above to finish right here.</p>
+      <div class="inbox-shortcuts" id="inbox-shortcuts">
+       <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" rel="noopener noreferrer" data-mail-host="gmail">Gmail ↗</a>
+       <a href="https://outlook.live.com/mail/0/inbox" target="_blank" rel="noopener noreferrer" data-mail-host="outlook">Outlook ↗</a>
+       <a href="https://www.icloud.com/mail" target="_blank" rel="noopener noreferrer" data-mail-host="icloud">iCloud Mail ↗</a>
+      </div>
+     </div>
+
+     <div id="recovery-verify-msg" class="auth-message hidden" role="status"></div>
+
+     <div class="success-actions">
+      <button class="secondary-btn hidden" id="resend-button" type="button">Resend email</button>
+      <button class="secondary-btn hidden" id="change-reset-email" type="button">← Try a different email</button>
+      <a class="submit link-btn" id="success-link" data-route="signin.html" href="signin.html">Continue to sign in →</a>
+     </div>
+     <p class="field-note" id="success-status"></p>
+    </div>
+
+    <footer class="pane-foot">
+     <p>Members-only rooms. Saved conversations. A space for your people.</p>
+     <div class="pane-links">
+      <a href="help.html">Need a little help?</a>
+      <span aria-hidden="true">·</span>
+      <a href="terms.html">Terms</a>
+      <span aria-hidden="true">·</span>
+      <a href="privacy.html">Privacy</a>
+     </div>
+    </footer>
+   </section>
   </div>
- </section>
-</main>
+  <p class="stage-caption">catcul · a small space for real connections</p>
+ </main>
+</div>
 <script>
 /* Catcul Realtime Client Runtime */
 var supabase=(function(e){function t(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(e!=null&&typeof Object.getOwnPropertySymbols==`function`)for(var i=0,r=Object.getOwnPropertySymbols(e);i<r.length;i++)t.indexOf(r[i])<0&&Object.prototype.propertyIsEnumerable.call(e,r[i])&&(n[r[i]]=e[r[i]]);return n}function n(e,t,n,r){function i(e){return e instanceof n?e:new n(function(t){t(e)})}return new(n||=Promise)(function(n,a){function o(e){try{c(r.next(e))}catch(e){a(e)}}function s(e){try{c(r.throw(e))}catch(e){a(e)}}function c(e){e.done?n(e.value):i(e.value).then(o,s)}c((r=r.apply(e,t||[])).next())})}let r=e=>e?(...t)=>e(...t):(...e)=>fetch(...e);var i=class extends Error{constructor(e,t=`FunctionsError`,n){super(e),this.name=t,this.context=n}toJSON(){return{name:this.name,message:this.message,context:this.context}}},a=class extends i{constructor(e){super(`Failed to send a request to the Edge Function`,`FunctionsFetchError`,e)}},o=class extends i{constructor(e){super(`Relay Error invoking the Edge Function`,`FunctionsRelayError`,e)}},s=class extends i{constructor(e){super(`Edge Function returned a non-2xx status code`,`FunctionsHttpError`,e)}},c;(function(e){e.Any=`any`,e.ApNortheast1=`ap-northeast-1`,e.ApNortheast2=`ap-northeast-2`,e.ApSouth1=`ap-south-1`,e.ApSoutheast1=`ap-southeast-1`,e.ApSoutheast2=`ap-southeast-2`,e.CaCentral1=`ca-central-1`,e.EuCentral1=`eu-central-1`,e.EuWest1=`eu-west-1`,e.EuWest2=`eu-west-2`,e.EuWest3=`eu-west-3`,e.SaEast1=`sa-east-1`,e.UsEast1=`us-east-1`,e.UsWest1=`us-west-1`,e.UsWest2=`us-west-2`})(c||={});var l=class{constructor(e,{headers:t={},customFetch:n,region:i=c.Any}={}){this.url=e,this.headers=t,this.region=i,this.fetch=r(n)}setAuth(e){this.headers.Authorization=`Bearer ${e}`}invoke(e){return n(this,arguments,void 0,function*(e,t={}){var n;let r,i,c;try{let{headers:n,method:l,body:u,signal:d,timeout:f}=t,p={},{region:m}=t;m||=this.region;let h=new URL(`${this.url}/${e}`);m&&m!==`any`&&(p[`x-region`]=m,h.searchParams.set(`forceFunctionRegion`,m));let g,ee=!!n&&Object.keys(n).some(e=>e.toLowerCase()===`content-type`);u&&!ee?typeof Blob<`u`&&u instanceof Blob||u instanceof ArrayBuffer?(p[`Content-Type`]=u.type||`application/octet-stream`,g=u):typeof u==`string`?(p[`Content-Type`]=`text/plain`,g=u):typeof FormData<`u`&&u instanceof FormData?g=u:(p[`Content-Type`]=`application/json`,g=JSON.stringify(u)):g=u&&typeof u!=`string`&&!(typeof Blob<`u`&&u instanceof Blob)&&!(u instanceof ArrayBuffer)&&!(typeof FormData<`u`&&u instanceof FormData)?JSON.stringify(u):u;let te=d;f&&(i=new AbortController,r=setTimeout(()=>i.abort(),f),d?(te=i.signal,c=()=>i.abort(),d.addEventListener(`abort`,c)):te=i.signal);let _=yield this.fetch(h.toString(),{method:l||`POST`,headers:Object.assign(Object.assign(Object.assign({},p),this.headers),n),body:g,signal:te}).catch(e=>{throw new a(e)}),ne=_.headers.get(`x-relay-error`);if(ne&&ne===`true`)throw new o(_);if(!_.ok)throw new s(_);let re=(_.headers.get(`Content-Type`)??`text/plain`).split(`;`)[0].trim().toLowerCase(),ie;return ie=re===`application/json`?yield _.json():re===`application/octet-stream`||re===`application/pdf`?yield _.blob():re===`text/event-stream`?_:re===`multipart/form-data`?yield _.formData():yield _.text(),{data:ie,error:null,response:_}}catch(e){return{data:null,error:e,response:e instanceof s||e instanceof o?e.context:void 0}}finally{r&&clearTimeout(r),c&&((n=t.signal)==null||n.removeEventListener(`abort`,c))}})}},u=class extends Error{constructor(e){super(e.message),this.name=`PostgrestError`,this.details=e.details,this.hint=e.hint,this.code=e.code}toJSON(){return{name:this.name,message:this.message,details:this.details,hint:this.hint,code:this.code}}};let d=e=>Math.min(1e3*2**e,3e4),f=[520,503],p=[`GET`,`HEAD`,`OPTIONS`];function m(e){"@babel/helpers - typeof";return m=typeof Symbol==`function`&&typeof Symbol.iterator==`symbol`?function(e){return typeof e}:function(e){return e&&typeof Symbol==`function`&&e.constructor===Symbol&&e!==Symbol.prototype?`symbol`:typeof e},m(e)}function h(e,t){if(m(e)!=`object`||!e)return e;var n=e[Symbol.toPrimitive];if(n!==void 0){var r=n.call(e,t||`default`);if(m(r)!=`object`)return r;throw TypeError(`@@toPrimitive must return a primitive value.`)}return(t===`string`?String:Number)(e)}function g(e){var t=h(e,`string`);return m(t)==`symbol`?t:t+``}function ee(e,t,n){return(t=g(t))in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function te(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),n.push.apply(n,r)}return n}function _(e){for(var t=1;t<arguments.length;t++){var n=arguments[t]==null?{}:arguments[t];t%2?te(Object(n),!0).forEach(function(t){ee(e,t,n[t])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):te(Object(n)).forEach(function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))})}return e}function ne(e,t){return new Promise(n=>{if(t?.aborted){n();return}let r=setTimeout(()=>{t?.removeEventListener(`abort`,i),n()},e);function i(){clearTimeout(r),n()}t?.addEventListener(`abort`,i)})}function re(e,t,n,r){return!(!r||n>=3||!p.includes(e)||!f.includes(t))}async function ie(e,t,n,r){let i=0;for(;;){let a=_({},n.headers);i>0&&(a[`X-Retry-Count`]=String(i));let o;try{o=await e(t,{method:n.method,headers:a,body:n.body,signal:n.signal})}catch(e){if(e?.name===`AbortError`||e?.code===`ABORT_ERR`||e?.name===`TimeoutError`&&n.signal?.aborted||!p.includes(n.method))throw e;if(r&&i<3){let e=d(i);i++,await ne(e,n.signal);continue}throw e}if(re(n.method,o.status,i,r)){let e=o.headers?.get(`Retry-After`)??null,t=e===null?d(i):Math.max(0,parseInt(e,10)||0)*1e3;await o.text(),i++,await ne(t,n.signal);continue}return o}}var ae=class{constructor(e){this.shouldThrowOnError=!1,this.retryEnabled=!0,this.method=e.method,this.url=e.url,this.headers=new Headers(e.headers),this.schema=e.schema,this.body=e.body,this.shouldThrowOnError=e.shouldThrowOnError??!1,this.signal=e.signal,this.isMaybeSingle=e.isMaybeSingle??!1,this.shouldStripNulls=e.shouldStripNulls??!1,this.urlLengthLimit=e.urlLengthLimit??8e3,this.retryEnabled=e.retry??!0,e.fetch?this.fetch=e.fetch:this.fetch=fetch}throwOnError(){return this.shouldThrowOnError=!0,this}stripNulls(){if(this.headers.get(`Accept`)===`text/csv`)throw Error(`stripNulls() cannot be used with csv()`);return this.shouldStripNulls=!0,this}setHeader(e,t){return this.headers=new Headers(this.headers),this.headers.set(e,t),this}retry(e){return this.retryEnabled=e,this}then(e,t){var n=this;if(this.schema===void 0||([`GET`,`HEAD`].includes(this.method)?this.headers.set(`Accept-Profile`,this.schema):this.headers.set(`Content-Profile`,this.schema)),this.method!==`GET`&&this.method!==`HEAD`&&this.headers.set(`Content-Type`,`application/json`),this.shouldStripNulls){let e=this.headers.get(`Accept`);e===`application/vnd.pgrst.object+json`?this.headers.set(`Accept`,`application/vnd.pgrst.object+json;nulls=stripped`):(!e||e===`application/json`)&&this.headers.set(`Accept`,`application/vnd.pgrst.array+json;nulls=stripped`)}let r=this.fetch,i=(async()=>{let e={};n.headers.forEach((t,n)=>{e[n]=t});let t=await ie(r,n.url.toString(),{method:n.method,headers:e,body:JSON.stringify(n.body,(e,t)=>typeof t==`bigint`?t.toString():t),signal:n.signal},n.retryEnabled);return await n.processResponse(t)})();return this.shouldThrowOnError||(i=i.catch(e=>{let t=``,n=``,r=``,i=e?.cause;if(i){let n=i?.message??``,r=i?.code??``;t=`${e?.name??`FetchError`}: ${e?.message}`,t+=`\n\nCaused by: ${i?.name??`Error`}: ${n}`,r&&(t+=` (${r})`),i?.stack&&(t+=`\n${i.stack}`)}else t=e?.stack??``;let a=this.url.toString().length;return e?.name===`AbortError`||e?.code===`ABORT_ERR`?(r=``,n=`Request was aborted (timeout or manual cancellation)`,a>this.urlLengthLimit&&(n+=`. Note: Your request URL is ${a} characters, which may exceed server limits. If selecting many fields, consider using views. If filtering with large arrays (e.g., .in('id', [many IDs])), consider using an RPC function to pass values server-side.`)):(i?.name===`HeadersOverflowError`||i?.code===`UND_ERR_HEADERS_OVERFLOW`)&&(r=``,n=`HTTP headers exceeded server limits (typically 16KB)`,a>this.urlLengthLimit&&(n+=`. Your request URL is ${a} characters. If selecting many fields, consider using views. If filtering with large arrays (e.g., .in('id', [200+ IDs])), consider using an RPC function instead.`)),{success:!1,error:{message:`${e?.name??`FetchError`}: ${e?.message}`,details:t,hint:n,code:r},data:null,count:null,status:0,statusText:``}})),i.then(e,t)}async processResponse(e){var t=this;let n=null,r=null,i=null,a=e.status,o=e.statusText;if(e.ok){if(t.method!==`HEAD`){let i=await e.text();if(i!==``)if(t.headers.get(`Accept`)===`text/csv`)r=i;else if(t.headers.get(`Accept`)&&t.headers.get(`Accept`)?.includes(`application/vnd.pgrst.plan+text`))r=i;else try{r=JSON.parse(i)}catch{if(n={message:i},r=null,t.shouldThrowOnError)throw new u({message:i,details:``,hint:``,code:``})}}let s=t.headers.get(`Prefer`)?.match(/count=(exact|planned|estimated)/),c=e.headers.get(`content-range`)?.split(`/`);if(s&&c&&c.length>1&&(i=parseInt(c[1])),t.isMaybeSingle&&Array.isArray(r))if(r.length>1){if(n={code:`PGRST116`,details:`Results contain ${r.length} rows, application/vnd.pgrst.object+json requires 1 row`,hint:null,message:`JSON object requested, multiple (or no) rows returned`},r=null,i=null,a=406,o=`Not Acceptable`,t.shouldThrowOnError)throw new u(_(_({},n),{},{hint:n.hint??``}))}else r=r.length===1?r[0]:null}else{let i=await e.text();try{n=JSON.parse(i),Array.isArray(n)&&e.status===404&&(r=[],n=null,a=200,o=`OK`)}catch{e.status===404&&i===``?(a=204,o=`No Content`):n={message:i}}if(n&&t.shouldThrowOnError)throw new u(n)}return{success:n===null,error:n,data:r,count:i,status:a,statusText:o}}returns(){return this}overrideTypes(){return this}},oe=class extends ae{throwOnError(){return super.throwOnError()}select(e){let t=!1,n=(e??`*`).split(``).map(e=>/\s/.test(e)&&!t?``:(e===`"`&&(t=!t),e)).join(``);return this.url.searchParams.set(`select`,n),this.headers.append(`Prefer`,`return=representation`),this}order(e,{ascending:t=!0,nullsFirst:n,foreignTable:r,referencedTable:i=r}={}){let a=i?`${i}.order`:`order`,o=this.url.searchParams.get(a);return this.url.searchParams.set(a,`${o?`${o},`:``}${e}.${t?`asc`:`desc`}${n===void 0?``:n?`.nullsfirst`:`.nullslast`}`),this}limit(e,{foreignTable:t,referencedTable:n=t}={}){let r=n===void 0?`limit`:`${n}.limit`;return this.url.searchParams.set(r,`${e}`),this}range(e,t,{foreignTable:n,referencedTable:r=n}={}){let i=r===void 0?`offset`:`${r}.offset`,a=r===void 0?`limit`:`${r}.limit`;return this.url.searchParams.set(i,`${e}`),this.url.searchParams.set(a,`${t-e+1}`),this}abortSignal(e){return this.signal=e,this}single(){return this.headers.set(`Accept`,`application/vnd.pgrst.object+json`),this}maybeSingle(){return this.isMaybeSingle=!0,this}csv(){return this.headers.set(`Accept`,`text/csv`),this}geojson(){return this.headers.set(`Accept`,`application/geo+json`),this}explain({analyze:e=!1,verbose:t=!1,settings:n=!1,buffers:r=!1,wal:i=!1,format:a=`text`}={}){let o=[e?`analyze`:null,t?`verbose`:null,n?`settings`:null,r?`buffers`:null,i?`wal`:null].filter(Boolean).join(`|`),s=this.headers.get(`Accept`)??`application/json`;return this.headers.set(`Accept`,`application/vnd.pgrst.plan+${a}; for="${s}"; options=${o};`),this}rollback(){return this.headers.append(`Prefer`,`tx=rollback`),this}returns(){return this}maxAffected(e){return this.headers.append(`Prefer`,`handling=strict`),this.headers.append(`Prefer`,`max-affected=${e}`),this}};let se=RegExp(`[,()]`);var ce=class extends oe{throwOnError(){return super.throwOnError()}eq(e,t){return this.url.searchParams.append(e,`eq.${t}`),this}neq(e,t){return this.url.searchParams.append(e,`neq.${t}`),this}gt(e,t){return this.url.searchParams.append(e,`gt.${t}`),this}gte(e,t){return this.url.searchParams.append(e,`gte.${t}`),this}lt(e,t){return this.url.searchParams.append(e,`lt.${t}`),this}lte(e,t){return this.url.searchParams.append(e,`lte.${t}`),this}like(e,t){return this.url.searchParams.append(e,`like.${t}`),this}likeAllOf(e,t){return this.url.searchParams.append(e,`like(all).{${t.join(`,`)}}`),this}likeAnyOf(e,t){return this.url.searchParams.append(e,`like(any).{${t.join(`,`)}}`),this}ilike(e,t){return this.url.searchParams.append(e,`ilike.${t}`),this}ilikeAllOf(e,t){return this.url.searchParams.append(e,`ilike(all).{${t.join(`,`)}}`),this}ilikeAnyOf(e,t){return this.url.searchParams.append(e,`ilike(any).{${t.join(`,`)}}`),this}regexMatch(e,t){return this.url.searchParams.append(e,`match.${t}`),this}regexIMatch(e,t){return this.url.searchParams.append(e,`imatch.${t}`),this}is(e,t){return this.url.searchParams.append(e,`is.${t}`),this}isDistinct(e,t){return this.url.searchParams.append(e,`isdistinct.${t}`),this}in(e,t){let n=Array.from(new Set(t)).map(e=>typeof e==`string`&&se.test(e)?`"${e}"`:`${e}`).join(`,`);return this.url.searchParams.append(e,`in.(${n})`),this}notIn(e,t){let n=Array.from(new Set(t)).map(e=>typeof e==`string`&&se.test(e)?`"${e}"`:`${e}`).join(`,`);return this.url.searchParams.append(e,`not.in.(${n})`),this}contains(e,t){return typeof t==`string`?this.url.searchParams.append(e,`cs.${t}`):Array.isArray(t)?this.url.searchParams.append(e,`cs.{${t.join(`,`)}}`):this.url.searchParams.append(e,`cs.${JSON.stringify(t)}`),this}containedBy(e,t){return typeof t==`string`?this.url.searchParams.append(e,`cd.${t}`):Array.isArray(t)?this.url.searchParams.append(e,`cd.{${t.join(`,`)}}`):this.url.searchParams.append(e,`cd.${JSON.stringify(t)}`),this}rangeGt(e,t){return this.url.searchParams.append(e,`sr.${t}`),this}rangeGte(e,t){return this.url.searchParams.append(e,`nxl.${t}`),this}rangeLt(e,t){return this.url.searchParams.append(e,`sl.${t}`),this}rangeLte(e,t){return this.url.searchParams.append(e,`nxr.${t}`),this}rangeAdjacent(e,t){return this.url.searchParams.append(e,`adj.${t}`),this}overlaps(e,t){return typeof t==`string`?this.url.searchParams.append(e,`ov.${t}`):this.url.searchParams.append(e,`ov.{${t.join(`,`)}}`),this}textSearch(e,t,{config:n,type:r}={}){let i=``;r===`plain`?i=`pl`:r===`phrase`?i=`ph`:r===`websearch`&&(i=`w`);let a=n===void 0?``:`(${n})`;return this.url.searchParams.append(e,`${i}fts${a}.${t}`),this}match(e){return Object.entries(e).filter(([e,t])=>t!==void 0).forEach(([e,t])=>{this.url.searchParams.append(e,`eq.${t}`)}),this}not(e,t,n){return this.url.searchParams.append(e,`not.${t}.${n}`),this}or(e,{foreignTable:t,referencedTable:n=t}={}){let r=n?`${n}.or`:`or`;return this.url.searchParams.append(r,`(${e})`),this}filter(e,t,n){return this.url.searchParams.append(e,`${t}.${n}`),this}},le=class{constructor(e,{headers:t={},schema:n,fetch:r,urlLengthLimit:i=8e3,retry:a}){this.url=e,this.headers=new Headers(t),this.schema=n,this.fetch=r,this.urlLengthLimit=i,this.retry=a}cloneRequestState(){return{url:new URL(this.url.toString()),headers:new Headers(this.headers)}}select(e,t){let{head:n=!1,count:r}=t??{},i=n?`HEAD`:`GET`,a=!1,o=(e??`*`).split(``).map(e=>/\s/.test(e)&&!a?``:(e===`"`&&(a=!a),e)).join(``),{url:s,headers:c}=this.cloneRequestState();return s.searchParams.set(`select`,o),r&&c.append(`Prefer`,`count=${r}`),new ce({method:i,url:s,headers:c,schema:this.schema,fetch:this.fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}insert(e,{count:t,defaultToNull:n=!0}={}){let{url:r,headers:i}=this.cloneRequestState();if(t&&i.append(`Prefer`,`count=${t}`),n||i.append(`Prefer`,`missing=default`),Array.isArray(e)){let t=e.reduce((e,t)=>e.concat(Object.keys(t)),[]);if(t.length>0){let e=[...new Set(t)].map(e=>`"${e}"`);r.searchParams.set(`columns`,e.join(`,`))}}return new ce({method:`POST`,url:r,headers:i,schema:this.schema,body:e,fetch:this.fetch??fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}upsert(e,{onConflict:t,ignoreDuplicates:n=!1,count:r,defaultToNull:i=!0}={}){let{url:a,headers:o}=this.cloneRequestState();if(o.append(`Prefer`,`resolution=${n?`ignore`:`merge`}-duplicates`),t!==void 0&&a.searchParams.set(`on_conflict`,t),r&&o.append(`Prefer`,`count=${r}`),i||o.append(`Prefer`,`missing=default`),Array.isArray(e)){let t=e.reduce((e,t)=>e.concat(Object.keys(t)),[]);if(t.length>0){let e=[...new Set(t)].map(e=>`"${e}"`);a.searchParams.set(`columns`,e.join(`,`))}}return new ce({method:`POST`,url:a,headers:o,schema:this.schema,body:e,fetch:this.fetch??fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}update(e,{count:t}={}){let{url:n,headers:r}=this.cloneRequestState();return t&&r.append(`Prefer`,`count=${t}`),new ce({method:`PATCH`,url:n,headers:r,schema:this.schema,body:e,fetch:this.fetch??fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}delete({count:e}={}){let{url:t,headers:n}=this.cloneRequestState();return e&&n.append(`Prefer`,`count=${e}`),new ce({method:`DELETE`,url:t,headers:n,schema:this.schema,fetch:this.fetch??fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}};function ue(e,t){try{let t=JSON.parse(e);if(t&&typeof t==`object`&&!Array.isArray(t))return new u({message:String(t.message??e),details:t.details??``,hint:t.hint??``,code:t.code??``})}catch{}return new u({message:e||t,details:``,hint:``,code:``})}function de(e,t,n){let r=e;return{success:!1,error:new u({message:`${r?.name??`FetchError`}: ${r?.message}`,details:``,hint:``,code:``}),data:null,count:null,status:t,statusText:n}}var fe=class e{constructor(e,{headers:t={},schema:n,fetch:r,timeout:i,urlLengthLimit:a=8e3,retry:o}={}){this.url=e,this.headers=new Headers(t),this.schemaName=n,this.urlLengthLimit=a;let s=r??globalThis.fetch;i!==void 0&&i>0?this.fetch=(e,t)=>{let n=new AbortController,r=setTimeout(()=>n.abort(),i),a=t?.signal;if(a){if(a.aborted)return clearTimeout(r),s(e,t);let i=()=>{clearTimeout(r),n.abort()};return a.addEventListener(`abort`,i,{once:!0}),s(e,_(_({},t),{},{signal:n.signal})).finally(()=>{clearTimeout(r),a.removeEventListener(`abort`,i)})}return s(e,_(_({},t),{},{signal:n.signal})).finally(()=>clearTimeout(r))}:this.fetch=s,this.retry=o}from(e){if(!e||typeof e!=`string`||e.trim()===``)throw Error(`Invalid relation name: relation must be a non-empty string.`);return new le(new URL(`${this.url}/${e}`),{headers:new Headers(this.headers),schema:this.schemaName,fetch:this.fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}schema(t){return new e(this.url,{headers:this.headers,schema:t,fetch:this.fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}async getOpenApiSpec(){var e=this;let t=new Headers(e.headers);t.set(`Accept`,`application/openapi+json`),e.schemaName&&t.set(`Accept-Profile`,e.schemaName);let n={};t.forEach((e,t)=>{n[t]=e});let r=e.fetch??globalThis.fetch,i;try{i=await ie(r,`${e.url}/`,{method:`GET`,headers:n},e.retry??!0)}catch(e){return de(e,0,``)}let a;try{a=await i.text()}catch(e){return de(e,i.status,i.statusText)}if(i.ok)try{return{success:!0,error:null,data:JSON.parse(a),count:null,status:i.status,statusText:i.statusText}}catch{}return{success:!1,error:ue(a,i.statusText),data:null,count:null,status:i.status,statusText:i.statusText}}rpc(e,t={},{head:n=!1,get:r=!1,count:i}={}){let a,o=new URL(`${this.url}/rpc/${e}`),s,c=e=>typeof e==`object`&&!!e&&(!Array.isArray(e)||e.some(c)),l=n&&Object.values(t).some(c);l?(a=`POST`,s=t):n||r?(a=n?`HEAD`:`GET`,Object.entries(t).filter(([e,t])=>t!==void 0).map(([e,t])=>[e,Array.isArray(t)?`{${t.join(`,`)}}`:`${t}`]).forEach(([e,t])=>{o.searchParams.append(e,t)})):(a=`POST`,s=t);let u=new Headers(this.headers);return l?u.set(`Prefer`,i?`count=${i},return=minimal`:`return=minimal`):i&&u.set(`Prefer`,`count=${i}`),new ce({method:a,url:o,headers:u,schema:this.schemaName,body:s,fetch:this.fetch??fetch,urlLengthLimit:this.urlLengthLimit,retry:this.retry})}},pe=class{constructor(){}static detectEnvironment(){if(typeof WebSocket<`u`)return{type:`native`,wsConstructor:WebSocket};let e=globalThis;if(typeof globalThis<`u`&&e.WebSocket!==void 0)return{type:`native`,wsConstructor:e.WebSocket};let t=typeof global<`u`?global:void 0;if(t&&t.WebSocket!==void 0)return{type:`native`,wsConstructor:t.WebSocket};if(typeof globalThis<`u`&&e.WebSocketPair!==void 0&&globalThis.WebSocket===void 0)return{type:`cloudflare`,error:`Cloudflare Workers detected. WebSocket clients are not supported in Cloudflare Workers.`,workaround:`Use Cloudflare Workers WebSocket API for server-side WebSocket handling, or deploy to a different runtime.`};if(typeof globalThis<`u`&&e.EdgeRuntime||typeof navigator<`u`&&navigator.userAgent?.includes(`Vercel-Edge`))return{type:`unsupported`,error:`Edge runtime detected (Vercel Edge/Netlify Edge). WebSockets are not supported in edge functions.`,workaround:`Use serverless functions or a different deployment target for WebSocket functionality.`};let n=globalThis.process;if(n){let e=n.versions;if(e&&e.node)return{type:`unsupported`,error:`Node.js detected but native WebSocket not found.`,workaround:`Ensure you are running Node.js 22+ or provide a WebSocket implementation via the transport option.`}}return{type:`unsupported`,error:`Unknown JavaScript runtime without WebSocket support.`,workaround:`Ensure you're running in a supported environment (browser, Node.js, Deno) or provide a custom WebSocket implementation.`}}static getWebSocketConstructor(){let e=this.detectEnvironment();if(e.wsConstructor)return e.wsConstructor;let t=e.error||`WebSocket not supported in this environment.`;throw e.workaround&&(t+=`\n\nSuggested solution: ${e.workaround}`),Error(t)}static isWebSocketSupported(){try{return this.detectEnvironment().type===`native`}catch{return!1}}};let v={closed:`closed`,errored:`errored`,joined:`joined`,joining:`joining`,leaving:`leaving`},me={close:`phx_close`,error:`phx_error`,join:`phx_join`,reply:`phx_reply`,leave:`phx_leave`,access_token:`access_token`},he={connecting:`connecting`,open:`open`,closing:`closing`,closed:`closed`};var ge=class{constructor(e){this.HEADER_LENGTH=1,this.USER_BROADCAST_PUSH_META_LENGTH=6,this.KINDS={userBroadcastPush:3,userBroadcast:4},this.BINARY_ENCODING=0,this.JSON_ENCODING=1,this.BROADCAST_EVENT=`broadcast`,this.allowedMetadataKeys=[],this.allowedMetadataKeys=e??[]}encode(e,t){if(e.event===this.BROADCAST_EVENT&&!(e.payload instanceof ArrayBuffer)&&typeof e.payload.event==`string`)return t(this._binaryEncodeUserBroadcastPush(e));let n=[e.join_ref,e.ref,e.topic,e.event,e.payload];return t(JSON.stringify(n))}_binaryEncodeUserBroadcastPush(e){return this._isArrayBuffer(e.payload?.payload)?this._encodeBinaryUserBroadcastPush(e):this._encodeJsonUserBroadcastPush(e)}_encodeBinaryUserBroadcastPush(e){let t=e.payload?.payload??new ArrayBuffer(0);return this._encodeUserBroadcastPush(e,this.BINARY_ENCODING,t)}_encodeJsonUserBroadcastPush(e){let t=e.payload?.payload??{},n=new TextEncoder().encode(JSON.stringify(t)).buffer;return this._encodeUserBroadcastPush(e,this.JSON_ENCODING,n)}_encodeUserBroadcastPush(e,t,n){let r=new TextEncoder,i=r.encode(e.topic),a=r.encode(e.ref??``),o=r.encode(e.join_ref??``),s=r.encode(e.payload.event),c=this.allowedMetadataKeys?this._pick(e.payload,this.allowedMetadataKeys):{},l=r.encode(Object.keys(c).length===0?``:JSON.stringify(c));if(o.length>255)throw Error(`joinRef length ${o.length} exceeds maximum of 255`);if(a.length>255)throw Error(`ref length ${a.length} exceeds maximum of 255`);if(i.length>255)throw Error(`topic length ${i.length} exceeds maximum of 255`);if(s.length>255)throw Error(`userEvent length ${s.length} exceeds maximum of 255`);if(l.length>255)throw Error(`metadata length ${l.length} exceeds maximum of 255`);let u=this.USER_BROADCAST_PUSH_META_LENGTH+o.length+a.length+i.length+s.length+l.length,d=new ArrayBuffer(this.HEADER_LENGTH+u),f=new DataView(d),p=new Uint8Array(d),m=0;f.setUint8(m++,this.KINDS.userBroadcastPush),f.setUint8(m++,o.length),f.setUint8(m++,a.length),f.setUint8(m++,i.length),f.setUint8(m++,s.length),f.setUint8(m++,l.length),f.setUint8(m++,t),p.set(o,m),m+=o.length,p.set(a,m),m+=a.length,p.set(i,m),m+=i.length,p.set(s,m),m+=s.length,p.set(l,m),m+=l.length;var h=new Uint8Array(d.byteLength+n.byteLength);return h.set(new Uint8Array(d),0),h.set(new Uint8Array(n),d.byteLength),h.buffer}decode(e,t){if(this._isArrayBuffer(e))return t(this._binaryDecode(e));if(typeof e==`string`){let[n,r,i,a,o]=JSON.parse(e);return t({join_ref:n,ref:r,topic:i,event:a,payload:o})}return t({})}_binaryDecode(e){let t=new DataView(e),n=t.getUint8(0),r=new TextDecoder;switch(n){case this.KINDS.userBroadcast:return this._decodeUserBroadcast(e,t,r)}}_decodeUserBroadcast(e,t,n){let r=t.getUint8(1),i=t.getUint8(2),a=t.getUint8(3),o=t.getUint8(4),s=this.HEADER_LENGTH+4,c=n.decode(e.slice(s,s+r));s+=r;let l=n.decode(e.slice(s,s+i));s+=i;let u=n.decode(e.slice(s,s+a));s+=a;let d=e.slice(s,e.byteLength),f=o===this.JSON_ENCODING?JSON.parse(n.decode(d)):d,p={type:this.BROADCAST_EVENT,event:l,payload:f};return a>0&&(p.meta=JSON.parse(u)),{join_ref:null,ref:null,topic:c,event:this.BROADCAST_EVENT,payload:p}}_isArrayBuffer(e){return e instanceof ArrayBuffer||e?.constructor?.name===`ArrayBuffer`}_pick(e,t){return!e||typeof e!=`object`?{}:Object.fromEntries(Object.entries(e).filter(([e])=>t.includes(e)))}},y;(function(e){e.abstime=`abstime`,e.bool=`bool`,e.date=`date`,e.daterange=`daterange`,e.float4=`float4`,e.float8=`float8`,e.int2=`int2`,e.int4=`int4`,e.int4range=`int4range`,e.int8=`int8`,e.int8range=`int8range`,e.json=`json`,e.jsonb=`jsonb`,e.money=`money`,e.numeric=`numeric`,e.oid=`oid`,e.reltime=`reltime`,e.text=`text`,e.time=`time`,e.timestamp=`timestamp`,e.timestamptz=`timestamptz`,e.timetz=`timetz`,e.tsrange=`tsrange`,e.tstzrange=`tstzrange`})(y||={});let _e=(e,t,n={})=>{let r=n.skipTypes??[];return t?Object.keys(t).reduce((n,i)=>(n[i]=ve(i,e,t,r),n),{}):{}},ve=(e,t,n,r)=>{let i=t.find(t=>t.name===e)?.type,a=n[e];return i&&!r.includes(i)?ye(i,a):be(a)},ye=(e,t)=>{if(e.charAt(0)===`_`)return we(t,e.slice(1,e.length));switch(e){case y.bool:return xe(t);case y.float4:case y.float8:case y.int2:case y.int4:case y.int8:case y.numeric:case y.oid:return Se(t);case y.json:case y.jsonb:return Ce(t);case y.timestamp:return Te(t);case y.abstime:case y.date:case y.daterange:case y.int4range:case y.int8range:case y.money:case y.reltime:case y.text:case y.time:case y.timestamptz:case y.timetz:case y.tsrange:case y.tstzrange:return be(t);default:return be(t)}},be=e=>e,xe=e=>{switch(e){case`t`:return!0;case`f`:return!1;default:return e}},Se=e=>{if(typeof e==`string`){let t=parseFloat(e);if(!Number.isNaN(t))return t}return e},Ce=e=>{if(typeof e==`string`)try{return JSON.parse(e)}catch{return e}return e},we=(e,t)=>{if(typeof e!=`string`)return e;let n=e.length-1,r=e[n];if(e[0]===`{`&&r===`}`){let r,i=e.slice(1,n);try{r=JSON.parse(`[`+i+`]`)}catch{r=i?i.split(`,`):[]}return r.map(e=>ye(t,e))}return e},Te=e=>typeof e==`string`?e.replace(` `,`T`):e,Ee=e=>{let t=new URL(e);return t.protocol=t.protocol.replace(/^ws/i,`http`),t.pathname=t.pathname.replace(/\/+$/,``).replace(/\/socket\/websocket$/i,``).replace(/\/socket$/i,``).replace(/\/websocket$/i,``),t.pathname===``||t.pathname===`/`?t.pathname=`/api/broadcast`:t.pathname+=`/api/broadcast`,t.href};var b=e=>typeof e==`function`?e:function(){return e},De=typeof self<`u`?self:null,Oe=typeof window<`u`?window:null,x=De||Oe||globalThis,ke=`2.0.0`,Ae=1e4,je=1e3,Me=100,S={connecting:0,open:1,closing:2,closed:3},C={closed:`closed`,errored:`errored`,joined:`joined`,joining:`joining`,leaving:`leaving`},w={close:`phx_close`,error:`phx_error`,join:`phx_join`,reply:`phx_reply`,leave:`phx_leave`},Ne={longpoll:`longpoll`,websocket:`websocket`},Pe={complete:4},Fe=`base64url.bearer.phx.`,Ie=class{constructor(e,t,n,r){this.channel=e,this.event=t,this.payload=n||function(){return{}},this.receivedResp=null,this.timeout=r,this.timeoutTimer=null,this.recHooks=[],this.sent=!1,this.ref=void 0}resend(e){this.timeout=e,this.reset(),this.send()}send(){this.hasReceived(`timeout`)||(this.startTimeout(),this.sent=!0,this.channel.socket.push({topic:this.channel.topic,event:this.event,payload:this.payload(),ref:this.ref,join_ref:this.channel.joinRef()}))}receive(e,t){return this.hasReceived(e)&&t(this.receivedResp.response),this.recHooks.push({status:e,callback:t}),this}reset(){this.cancelRefEvent(),this.ref=null,this.refEvent=null,this.receivedResp=null,this.sent=!1}destroy(){this.cancelRefEvent(),this.cancelTimeout()}matchReceive({status:e,response:t,_ref:n}){this.recHooks.filter(t=>t.status===e).forEach(e=>e.callback(t))}cancelRefEvent(){this.refEvent&&this.channel.off(this.refEvent)}cancelTimeout(){clearTimeout(this.timeoutTimer),this.timeoutTimer=null}startTimeout(){this.timeoutTimer&&this.cancelTimeout(),this.ref=this.channel.socket.makeRef(),this.refEvent=this.channel.replyEventName(this.ref),this.channel.on(this.refEvent,e=>{this.cancelRefEvent(),this.cancelTimeout(),this.receivedResp=e,this.matchReceive(e)}),this.timeoutTimer=setTimeout(()=>{this.trigger(`timeout`,{})},this.timeout)}hasReceived(e){return this.receivedResp&&this.receivedResp.status===e}trigger(e,t){this.channel.trigger(this.refEvent,{status:e,response:t})}},Le=class{constructor(e,t){this.callback=e,this.timerCalc=t,this.timer=void 0,this.tries=0}reset(){this.tries=0,clearTimeout(this.timer)}scheduleTimeout(){clearTimeout(this.timer),this.timer=setTimeout(()=>{this.tries+=1,this.callback()},this.timerCalc(this.tries+1))}},Re=class{constructor(e,t,n){this.state=C.closed,this.topic=e,this.params=b(t||{}),this.socket=n,this.bindings=[],this.bindingRef=0,this.timeout=this.socket.timeout,this.joinedOnce=!1,this.joinPush=new Ie(this,w.join,this.params,this.timeout),this.pushBuffer=[],this.stateChangeRefs=[],this.rejoinTimer=new Le(()=>{this.socket.isConnected()&&this.rejoin()},this.socket.rejoinAfterMs),this.stateChangeRefs.push(this.socket.onError(()=>this.rejoinTimer.reset())),this.stateChangeRefs.push(this.socket.onOpen(()=>{this.rejoinTimer.reset(),this.isErrored()&&this.rejoin()})),this.joinPush.receive(`ok`,()=>{this.state=C.joined,this.rejoinTimer.reset(),this.pushBuffer.forEach(e=>e.send()),this.pushBuffer=[]}),this.joinPush.receive(`error`,e=>{this.state=C.errored,this.socket.hasLogger()&&this.socket.log(`channel`,`error ${this.topic}`,e),this.socket.isConnected()&&this.rejoinTimer.scheduleTimeout()}),this.onClose(()=>{this.rejoinTimer.reset(),this.socket.hasLogger()&&this.socket.log(`channel`,`close ${this.topic}`),this.state=C.closed,this.socket.remove(this)}),this.onError(e=>{this.socket.hasLogger()&&this.socket.log(`channel`,`error ${this.topic}`,e),this.isJoining()&&this.joinPush.reset(),this.state=C.errored,this.socket.isConnected()&&this.rejoinTimer.scheduleTimeout()}),this.joinPush.receive(`timeout`,()=>{this.socket.hasLogger()&&this.socket.log(`channel`,`timeout ${this.topic}`,this.joinPush.timeout),new Ie(this,w.leave,b({}),this.timeout).send(),this.state=C.errored,this.joinPush.reset(),this.socket.isConnected()&&this.rejoinTimer.scheduleTimeout()}),this.on(w.reply,(e,t)=>{this.trigger(this.replyEventName(t),e)})}join(e=this.timeout){if(this.joinedOnce)throw Error(`tried to join multiple times. 'join' can only be called a single time per channel instance`);return this.timeout=e,this.joinedOnce=!0,this.rejoin(),this.joinPush}teardown(){this.pushBuffer.forEach(e=>e.destroy()),this.pushBuffer=[],this.rejoinTimer.reset(),this.joinPush.destroy(),this.state=C.closed,this.bindings=[]}onClose(e){this.on(w.close,e)}onError(e){return this.on(w.error,t=>e(t))}on(e,t){let n=this.bindingRef++;return this.bindings.push({event:e,ref:n,callback:t}),n}off(e,t){this.bindings=this.bindings.filter(n=>!(n.event===e&&(t===void 0||t===n.ref)))}canPush(){return this.socket.isConnected()&&this.isJoined()}push(e,t,n=this.timeout){if(t||={},!this.joinedOnce)throw Error(`tried to push '${e}' to '${this.topic}' before joining. Use channel.join() before pushing events`);let r=new Ie(this,e,function(){return t},n);return this.canPush()?r.send():(r.startTimeout(),this.pushBuffer.push(r)),r}leave(e=this.timeout){this.rejoinTimer.reset(),this.joinPush.cancelTimeout(),this.state=C.leaving;let t=()=>{this.socket.hasLogger()&&this.socket.log(`channel`,`leave ${this.topic}`),this.trigger(w.close,`leave`)},n=new Ie(this,w.leave,b({}),e);return n.receive(`ok`,()=>t()).receive(`timeout`,()=>t()),n.send(),this.canPush()||n.trigger(`ok`,{}),n}onMessage(e,t,n){return t}filterBindings(e,t,n){return!0}isMember(e,t,n,r){return this.topic===e?r&&r!==this.joinRef()?(this.socket.hasLogger()&&this.socket.log(`channel`,`dropping outdated message`,{topic:e,event:t,payload:n,joinRef:r}),!1):!0:!1}joinRef(){return this.joinPush.ref}rejoin(e=this.timeout){this.isLeaving()||(this.socket.leaveOpenTopic(this.topic),this.state=C.joining,this.joinPush.resend(e))}trigger(e,t,n,r){let i=this.onMessage(e,t,n,r);if(t&&!i)throw Error(`channel onMessage callbacks must return the payload, modified or unmodified`);let a=this.bindings.filter(r=>r.event===e&&this.filterBindings(r,t,n));for(let e=0;e<a.length;e++)a[e].callback(i,n,r||this.joinRef())}replyEventName(e){return`chan_reply_${e}`}isClosed(){return this.state===C.closed}isErrored(){return this.state===C.errored}isJoined(){return this.state===C.joined}isJoining(){return this.state===C.joining}isLeaving(){return this.state===C.leaving}},ze=class{static request(e,t,n,r,i,a,o){if(x.XDomainRequest){let n=new x.XDomainRequest;return this.xdomainRequest(n,e,t,r,i,a,o)}else if(x.XMLHttpRequest){let s=new x.XMLHttpRequest;return this.xhrRequest(s,e,t,n,r,i,a,o)}else if(x.fetch&&x.AbortController)return this.fetchRequest(e,t,n,r,i,a,o);else throw Error(`No suitable XMLHttpRequest implementation found`)}static fetchRequest(e,t,n,r,i,a,o){let s={method:e,headers:n,body:r},c=null;return i&&(c=new AbortController,setTimeout(()=>c.abort(),i),s.signal=c.signal),x.fetch(t,s).then(e=>e.text()).then(e=>this.parseJSON(e)).then(e=>o&&o(e)).catch(e=>{e.name===`AbortError`&&a?a():o&&o(null)}),c}static xdomainRequest(e,t,n,r,i,a,o){return e.timeout=i,e.open(t,n),e.onload=()=>{let t=this.parseJSON(e.responseText);o&&o(t)},a&&(e.ontimeout=a),e.onprogress=()=>{},e.send(r),e}static xhrRequest(e,t,n,r,i,a,o,s){e.open(t,n,!0),e.timeout=a;for(let[t,n]of Object.entries(r))e.setRequestHeader(t,n);return e.onerror=()=>s&&s(null),e.onreadystatechange=()=>{e.readyState===Pe.complete&&s&&s(this.parseJSON(e.responseText))},o&&(e.ontimeout=o),e.send(i),e}static parseJSON(e){if(!e||e===``)return null;try{return JSON.parse(e)}catch{return console&&console.log(`failed to parse JSON response`,e),null}}static serialize(e,t){let n=[];for(var r in e){if(!Object.prototype.hasOwnProperty.call(e,r))continue;let i=t?`${t}[${r}]`:r,a=e[r];typeof a==`object`?n.push(this.serialize(a,i)):n.push(encodeURIComponent(i)+`=`+encodeURIComponent(a))}return n.join(`&`)}static appendParams(e,t){return Object.keys(t).length===0?e:`${e}${e.match(/\?/)?`&`:`?`}${this.serialize(t)}`}},Be=e=>{let t=``,n=new Uint8Array(e),r=n.byteLength;for(let e=0;e<r;e++)t+=String.fromCharCode(n[e]);return btoa(t)},Ve=class{constructor(e,t){t&&t.length===2&&t[1].startsWith(Fe)&&(this.authToken=atob(t[1].slice(Fe.length))),this.endPoint=null,this.token=null,this.skipHeartbeat=!0,this.reqs=new Set,this.awaitingBatchAck=!1,this.currentBatch=null,this.currentBatchTimer=null,this.batchBuffer=[],this.onopen=function(){},this.onerror=function(){},this.onmessage=function(){},this.onclose=function(){},this.pollEndpoint=this.normalizeEndpoint(e),this.readyState=S.connecting,setTimeout(()=>this.poll(),0)}normalizeEndpoint(e){return e.replace(`ws://`,`http://`).replace(`wss://`,`https://`).replace(RegExp(`(.*)/`+Ne.websocket),`$1/`+Ne.longpoll)}endpointURL(){return ze.appendParams(this.pollEndpoint,{token:this.token})}closeAndRetry(e,t,n){this.close(e,t,n),this.readyState=S.connecting}ontimeout(){this.onerror(`timeout`),this.closeAndRetry(1005,`timeout`,!1)}isActive(){return this.readyState===S.open||this.readyState===S.connecting}poll(){let e={Accept:`application/json`};this.authToken&&(e[`X-Phoenix-AuthToken`]=this.authToken),this.ajax(`GET`,e,null,()=>this.ontimeout(),e=>{if(e){var{status:t,token:n,messages:r}=e;if(t===410&&this.token!==null){this.onerror(410),this.closeAndRetry(3410,`session_gone`,!1);return}this.token=n}else t=0;switch(t){case 200:r.forEach(e=>{setTimeout(()=>this.onmessage({data:e}),0)}),this.poll();break;case 204:this.poll();break;case 410:this.readyState=S.open,this.onopen({}),this.poll();break;case 403:this.onerror(403),this.close(1008,`forbidden`,!1);break;case 0:case 500:this.onerror(500),this.closeAndRetry(1011,`internal server error`,500);break;default:throw Error(`unhandled poll status ${t}`)}})}send(e){typeof e!=`string`&&(e=Be(e)),this.currentBatch?this.currentBatch.push(e):this.awaitingBatchAck?this.batchBuffer.push(e):(this.currentBatch=[e],this.currentBatchTimer=setTimeout(()=>{this.batchSend(this.currentBatch),this.currentBatch=null},0))}batchSend(e,t=0){this.awaitingBatchAck=!0;let n=t+Me,r=e.slice(t,n);this.ajax(`POST`,{"Content-Type":`application/x-ndjson`},r.join(`
@@ -499,7 +621,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const landingURL=()=>{const u=new URL('index.html',location.href);const invite=new URLSearchParams(location.search).get('invite');if(invite)u.searchParams.set('invite',invite);return u.href;};
   const setSession=session=>{isAuthenticated=Boolean(session?.user);document.documentElement.dataset.authenticated=String(isAuthenticated);};
   const isRecoveryUrl=loc=>{try{const qs=new URLSearchParams(loc.search),hs=new URLSearchParams((loc.hash||'').slice(1));return qs.get('mode')==='recovery'||qs.get('type')==='recovery'||hs.get('type')==='recovery';}catch{return false;}};
-  window.CatculRouter=Object.freeze({setSession,isRecoveryUrl,workspace(session){setSession(session);if(!isAuthenticated)location.replace(landingURL());},landing(){setSession(null);location.replace(landingURL());}});
+  window.CatculRouter=Object.freeze({
+    setSession,
+    isRecoveryUrl,
+    workspace(session){
+      setSession(session);
+      if(isAuthenticated){try{sessionStorage.removeItem('catcul.authBounce');}catch{}}
+      else location.replace(landingURL());
+    },
+    landing(){
+      setSession(null);
+      location.replace(landingURL());
+    }
+  });
   if(document.body.dataset.catculView!=='landing')return;
   if(isRecoveryUrl(location)){
     const qs=new URLSearchParams(location.search);
@@ -513,8 +647,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   if(!window.supabase)return;
   const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}});
   let routed=false;
+  const bouncedRecently=()=>{
+    try{
+      const prev=Number(sessionStorage.getItem('catcul.authBounce')||0);
+      return prev>0&&(Date.now()-prev)<3500;
+    }catch{return false;}
+  };
   const goWorkspace=session=>{
-    if(routed||!session?.user||!session?.access_token)return;
+    if(routed||!session?.user||!session?.access_token||bouncedRecently())return;
+    try{sessionStorage.setItem('catcul.authBounce',String(Date.now()));}catch{}
     setSession(session);
     routed=true;
     document.body.setAttribute('inert','');
@@ -524,14 +665,20 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   };
   const verifyAndResolve=async session=>{
     if(!session?.user||routed){setSession(null);return;}
+    let activeSession=session;
     const expMs=Number(session.expires_at||0)*1000;
     if(expMs&&expMs<=Date.now()+5000){
       const refreshed=await client.auth.refreshSession().catch(()=>({data:{session:null}}));
       if(!refreshed?.data?.session?.user){await client.auth.signOut({scope:'local'}).catch(()=>{});setSession(null);return;}
-      goWorkspace(refreshed.data.session);
+      activeSession=refreshed.data.session;
+    }
+    const check=await client.auth.getUser(activeSession.access_token).catch(()=>null);
+    if(check?.error&&(check.error.status===401||check.error.status===403||/invalid|expired|jwt|session_not_found|user_not_found/i.test(check.error.message||''))){
+      await client.auth.signOut({scope:'local'}).catch(()=>{});
+      setSession(null);
       return;
     }
-    goWorkspace(session);
+    goWorkspace(activeSession);
   };
   client.auth.getSession().then(({data,error})=>{if(!error&&data?.session)verifyAndResolve(data.session);}).catch(()=>{});
   client.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session)verifyAndResolve(session);});
@@ -560,8 +707,10 @@ function writeStore(key, value) {
 
 let settings = readStore('settings', { dark: false });
 function applyTheme() {
-  document.body.classList.toggle('dark', Boolean(settings.dark));
-  if ($('#theme-button')) $('#theme-button').textContent = settings.dark ? '☀' : '◐';
+  const isDark = Boolean(settings.dark);
+  document.documentElement.classList.toggle('dark', isDark);
+  document.body.classList.toggle('dark', isDark);
+  if ($('#theme-button')) $('#theme-button').textContent = isDark ? '☀' : '☾';
 }
 applyTheme();
 $('#theme-button')?.addEventListener('click', () => {
@@ -799,6 +948,7 @@ function setMode(next) {
   updatePasswordStrength();
 
   if (isReset) {
+    if ($('#page-pill')) $('#page-pill').textContent = 'Account recovery';
     $('#auth-heading').textContent = 'Reset your password.';
     $('#auth-intro').textContent = 'Enter your email address to get a recovery code & reset link — or type your @username if you need a reminder of which email you used.';
     $('#submit-button').textContent = 'Send recovery code & link →';
@@ -809,17 +959,19 @@ function setMode(next) {
       setMode('signin');
     });
   } else if (isRecovery) {
+    if ($('#page-pill')) $('#page-pill').textContent = 'Almost back in';
     $('#auth-heading').textContent = 'Choose a new password.';
     $('#auth-intro').textContent = 'Pick a strong password of 10+ characters — you’ll be signed straight into Catcul.';
     $('#submit-button').textContent = 'Save new password →';
     $('#auth-switch').innerHTML = '<a href="signin.html">Cancel and return to sign in</a>';
     setTimeout(() => $('#password')?.focus(), 40);
   } else if (isSignin) {
-    $('#auth-heading').textContent = 'Sign in to Catcul.';
-    $('#auth-intro').textContent = 'Enter your email and password to open your conversations.';
+    if ($('#page-pill')) $('#page-pill').textContent = 'A familiar space. A fresh hello.';
+    $('#auth-heading').textContent = 'Good to have you back.';
+    $('#auth-intro').textContent = 'Your conversations are right where you left them. Come on in.';
     $('#submit-button').textContent = 'Sign in →';
     const upHref = invite ? `signup.html?invite=${encodeURIComponent(invite)}` : 'signup.html';
-    $('#auth-switch').innerHTML = `Need an account? <a href="${upHref}">Create an account</a>`;
+    $('#auth-switch').innerHTML = `New around here? <a href="${upHref}">Create an account</a>`;
   }
 }
 
@@ -1034,13 +1186,40 @@ $('#resend-inline')?.addEventListener('click', () => {
   resendPendingEmail($('#resend-inline'), null);
 });
 
+let authSubmitting = false;
+let authRedirected = false;
+let verifyingSession = false;
+function safeRedirectApp() {
+  if (authRedirected) return;
+  authRedirected = true;
+  try { sessionStorage.removeItem('catcul.authBounce'); } catch {}
+  location.replace(appUrl());
+}
+async function verifyAndRedirect(session) {
+  if (authRedirected || verifyingSession || !session?.access_token) return;
+  verifyingSession = true;
+  try {
+    const check = await client.auth.getUser(session.access_token).catch(() => null);
+    if (check?.error && (check.error.status === 401 || check.error.status === 403 || /invalid|expired|jwt|session_not_found|user_not_found/i.test(check.error.message || ''))) {
+      await client.auth.signOut({ scope: 'local' }).catch(() => {});
+      try { Object.keys(localStorage).filter((k) => k.startsWith('sb-') && k.endsWith('-auth-token')).forEach((k) => localStorage.removeItem(k)); } catch {}
+      return;
+    }
+    await ensureProfile(session.user).catch(() => {});
+    safeRedirectApp();
+  } finally {
+    verifyingSession = false;
+  }
+}
+
 client.auth.onAuthStateChange((event, session) => {
   if (event === 'PASSWORD_RECOVERY') {
     setMode('recovery');
     return;
   }
+  if (authSubmitting || authRedirected) return;
   if (event === 'SIGNED_IN' && session && mode !== 'recovery' && params.get('mode') !== 'recovery' && hashParams.get('type') !== 'recovery') {
-    ensureProfile(session.user).catch(() => {}).finally(() => location.replace(appUrl()));
+    verifyAndRedirect(session);
   }
 });
 
@@ -1095,8 +1274,7 @@ client.auth.onAuthStateChange((event, session) => {
       return;
     }
     if (mode !== 'reset') {
-      await ensureProfile(data.session.user).catch(() => {});
-      location.replace(appUrl());
+      await verifyAndRedirect(data.session);
     }
   } else if (isRecoveryUrl) {
     setMode('reset');
@@ -1153,6 +1331,7 @@ $('#auth-form').addEventListener('submit', async (e) => {
   const previousLabel = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'Just a moment…';
+  authSubmitting = true;
 
   try {
     if (mode === 'signup') {
@@ -1174,7 +1353,7 @@ $('#auth-form').addEventListener('submit', async (e) => {
       if (error) throw error;
       if (data.session) {
         await ensureProfile(data.session.user, name, username);
-        location.replace(appUrl());
+        safeRedirectApp();
         return;
       }
       pendingEmail = email;
@@ -1193,7 +1372,7 @@ $('#auth-form').addEventListener('submit', async (e) => {
         throw error;
       }
       await ensureProfile(data.user);
-      location.replace(appUrl());
+      safeRedirectApp();
       return;
     }
 
@@ -1219,14 +1398,17 @@ $('#auth-form').addEventListener('submit', async (e) => {
       }
       const { error } = await client.auth.updateUser({ password });
       if (error) throw error;
-      location.replace(appUrl());
+      safeRedirectApp();
       return;
     }
   } catch (err) {
     showMessage(cleanMessage(err));
   } finally {
-    btn.disabled = false;
-    btn.textContent = previousLabel;
+    authSubmitting = false;
+    if (!authRedirected) {
+      btn.disabled = false;
+      btn.textContent = previousLabel;
+    }
   }
 });
 </script>
@@ -1344,6 +1526,8 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     const label = enabled ? 'Use the standard cursor' : 'Use the Catcul custom cursor';
     toggle.title = label; toggle.setAttribute('aria-label', label);
     toggle.querySelector('.cc-toggle-label').textContent = 'Cursor: ' + (enabled ? 'On' : 'Off');
+    const navState = document.getElementById('cursor-state');
+    if (navState) navState.textContent = enabled ? 'On' : 'Off';
     document.querySelectorAll('[data-custom-cursor-toggle]').forEach(button => {
       button.classList.toggle('on', enabled);
       button.setAttribute('aria-checked', String(enabled));
@@ -1420,7 +1604,11 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
   });
   document.addEventListener('click', event => {
-    if (event.target instanceof Element && event.target.closest('[data-custom-cursor-toggle]')) setEnabled(!enabled);
+    const btn = event.target instanceof Element ? event.target.closest('[data-custom-cursor-toggle]') : null;
+    if (btn) {
+      setEnabled(!enabled);
+      if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: btn});
+    }
   });
   function preferenceChanged() { updateToggle(); hide(); }
   pointerMedia.addEventListener('change', preferenceChanged);
@@ -1599,31 +1787,32 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     const st = document.createElement('style');
     st.id = 'catcul-dl-styles';
     st.textContent = `
-      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(14,21,16,.54);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
+      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(24,33,22,.46);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
       @keyframes catculDlFade{from{opacity:0}to{opacity:1}}
-      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#fbfcfa;color:#17241b;border:1px solid rgba(24,38,29,.12);border-radius:22px;padding:26px;box-shadow:0 24px 64px rgba(10,18,13,.24);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
-      body.dark .catcul-dl-dialog{background:#1b251e;color:#edf2ea;border-color:rgba(255,255,255,.1)}
-      .catcul-dl-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(24,38,29,.12);background:transparent;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
-      .catcul-dl-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4a6b46;margin-bottom:6px;display:block}
-      body.dark .catcul-dl-eyebrow{color:#cbe192}
-      .catcul-dl-dialog h2{font-size:23px;font-weight:750;letter-spacing:-.03em;margin:0 0 6px}
-      .catcul-dl-sub{font-size:13.5px;color:#5b695b;margin:0 0 20px;line-height:1.55}
-      body.dark .catcul-dl-sub{color:#9eb09e}
+      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#ffffff;color:#1e281d;border:1px solid #e3e8dc;border-radius:28px;padding:28px;box-shadow:0 28px 70px rgba(24,34,22,.18);font-family:'Plus Jakarta Sans',Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
+      body.dark .catcul-dl-dialog,html.dark .catcul-dl-dialog{background:#1a2019;color:#eef2ea;border-color:#2c362a}
+      .catcul-dl-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid #e3e8dc;background:#f7f8f3;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
+      body.dark .catcul-dl-close,html.dark .catcul-dl-close{background:#232c22;border-color:#344032}
+      .catcul-dl-eyebrow{display:inline-flex;padding:4px 11px;border-radius:999px;background:#e4f0ce;font-size:10.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#354e27;margin-bottom:10px}
+      body.dark .catcul-dl-eyebrow,html.dark .catcul-dl-eyebrow{background:#263421;color:#d7f472}
+      .catcul-dl-dialog h2{font-size:24px;font-weight:800;letter-spacing:-.03em;margin:0 0 6px}
+      .catcul-dl-sub{font-size:13.5px;color:#5a6657;margin:0 0 20px;line-height:1.58}
+      body.dark .catcul-dl-sub,html.dark .catcul-dl-sub{color:#a3b0a0}
       .catcul-dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-      .catcul-dl-card{border:1px solid rgba(24,38,29,.11);border-radius:16px;padding:18px;background:#f3f6f0;display:flex;flex-direction:column;gap:10px}
-      body.dark .catcul-dl-card{background:#222f26;border-color:rgba(255,255,255,.09)}
-      .catcul-dl-card h3{font-size:15.5px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px}
-      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#556355;margin:0}
-      body.dark .catcul-dl-card p{color:#a7b6a6}
-      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#39483b}
-      body.dark .catcul-dl-steps{color:#cdd8cc}
-      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:12px;border:0;background:#1f3a2a;color:#f6f8f3;font-size:13px;font-weight:650;cursor:pointer;text-decoration:none;margin-top:auto}
-      .catcul-dl-btn:hover{background:#294b37}
-      body.dark .catcul-dl-btn{background:#cbe192;color:#142318}
-      .catcul-dl-btn.secondary{background:#e5ece0;color:#1a2b1f}
-      body.dark .catcul-dl-btn.secondary{background:#2c3c31;color:#edf2ea}
-      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.72);padding:10px;border-radius:12px;border:1px solid rgba(24,38,29,.08)}
-      body.dark .catcul-dl-qr-row{background:rgba(15,21,17,.45);border-color:rgba(255,255,255,.08)}
+      .catcul-dl-card{border:1px solid #e3e8dc;border-radius:20px;padding:18px;background:#f7f8f3;display:flex;flex-direction:column;gap:10px}
+      body.dark .catcul-dl-card,html.dark .catcul-dl-card{background:#222a20;border-color:#313d2f}
+      .catcul-dl-card h3{font-size:15.5px;font-weight:750;margin:0;display:flex;align-items:center;gap:8px}
+      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#586456;margin:0}
+      body.dark .catcul-dl-card p,html.dark .catcul-dl-card p{color:#a8b5a5}
+      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#394637}
+      body.dark .catcul-dl-steps,html.dark .catcul-dl-steps{color:#ced8cb}
+      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;border:1px solid rgba(30,42,27,.06);background:#d7f472;color:#1c261a;font-size:13px;font-weight:750;cursor:pointer;text-decoration:none;margin-top:auto;transition:transform .14s ease,background-color .14s ease}
+      .catcul-dl-btn:hover{background:#cdf059;transform:translateY(-1px)}
+      body.dark .catcul-dl-btn,html.dark .catcul-dl-btn{background:#d7f472;color:#172115}
+      .catcul-dl-btn.secondary{background:#ffffff;color:#1e281d;border:1px solid #dfe5d8}
+      body.dark .catcul-dl-btn.secondary,html.dark .catcul-dl-btn.secondary{background:#2b3629;color:#eef2ea;border-color:#3b4838}
+      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:#ffffff;padding:10px;border-radius:14px;border:1px solid #e3e8dc}
+      body.dark .catcul-dl-qr-row,html.dark .catcul-dl-qr-row{background:#181e17;border-color:#2e392c}
       .catcul-dl-qr-row svg{flex-shrink:0;border-radius:8px;width:96px;height:96px}
       @media(max-width:620px){.catcul-dl-grid{grid-template-columns:1fr}.catcul-dl-backdrop{align-items:flex-end;padding:0}.catcul-dl-dialog{border-radius:22px 22px 0 0;padding:22px 18px max(22px,env(safe-area-inset-bottom))}}
     `;

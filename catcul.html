@@ -1142,145 +1142,225 @@ i[class^="ri-"],i[class*=" ri-"]{font-style:normal;line-height:1;vertical-align:
 .webhook-box code{display:block;padding:8px 10px;border-radius:9px;background:var(--panel);border:1px solid var(--line);margin-top:6px;font-size:11px;word-break:break-all}
 
 /* =====================================================================
-   Full-Screen Edge-to-Edge Crisp 4K Anime Wallpaper Engine (Zero Blur!)
-   Covers 100% of .app (.rail + .sidebar + .chat + .timeline + .compose-area)
+   Default Catcul Classic Theme (#f7f8f3 Warm Cream + #e4f0ce Sage + #d7f472 Lime)
+   + Full-Screen Edge-to-Edge Crisp 4K Anime Wallpaper Engine (Zero Blur!)
    ===================================================================== */
 :root{
-  --catcul-photo-bg:url("./wallpapers/anime-ghibli-meadow.jpg");
+  --bg:#f7f8f3;
+  --panel:#ffffff;
+  --soft:#eef2e8;
+  --line:#e2e8dc;
+  --text:#1e281d;
+  --muted:#60705d;
+  --accent:#d7f472;
+  --dark:#1e281d;
+  --bubble:#ffffff;
+  --catcul-photo-bg:none;
   --catcul-screen-scrim:linear-gradient(180deg,rgba(10,15,20,.08),rgba(10,15,20,.18));
 }
-html.dark{
-  --catcul-photo-bg:url("./wallpapers/anime-shinkai-sky.jpg");
+html.dark,
+body.dark{
+  --bg:#131712;
+  --panel:#1b211a;
+  --soft:#222920;
+  --line:#2c3629;
+  --text:#f2f6ee;
+  --muted:#9ead99;
+  --accent:#d7f472;
+  --dark:#1b2318;
+  --bubble:#1f271e;
   --catcul-screen-scrim:linear-gradient(180deg,rgba(8,12,20,.12),rgba(8,12,20,.24));
 }
 
-/* Full-screen crisp wallpaper across the entire #app viewport */
-html:not([data-photo-backdrop="off"]) .app{
+.app{
   max-width:none!important;
   width:100%!important;
+}
+
+/* Classic Catcul Default Theme ('meadow') — matches index/signin/signup/help/terms/privacy */
+html:not([data-anime-canvas="1"]):not(.dark) .rail{
+  background:#f2f5ec;
+  border-right:1px solid #e2e8dc;
+}
+html:not([data-anime-canvas="1"]):not(.dark) .sidebar,
+html:not([data-anime-canvas="1"]):not(.dark) .details{
+  background:#ffffff;
+  border-color:#e2e8dc;
+}
+html:not([data-anime-canvas="1"]):not(.dark) .chat{
+  background:#f7f8f3;
+}
+html:not([data-anime-canvas="1"]):not(.dark) :is(.chat:not([data-wallpaper]),.chat[data-wallpaper=""]) .timeline{
+  background-color:#f7f8f3;
+  background-image:radial-gradient(circle at 18% 12%,rgba(228,240,206,.55),transparent 42%),radial-gradient(circle at 84% 86%,rgba(215,244,114,.22),transparent 40%);
+}
+html:not([data-anime-canvas="1"]):not(.dark) .message.mine .bubble{
+  background:#dcf783;
+  color:#1c261b;
+  border:1px solid rgba(154,190,62,.34);
+}
+html:not([data-anime-canvas="1"]):not(.dark) .rail .nav-btn.active,
+html:not([data-anime-canvas="1"]):not(.dark) .sidebar .tabs button.active{
+  background:#d7f472;
+  color:#1c261b;
+}
+html:not([data-anime-canvas="1"]):not(.dark) .composer .send{
+  background:#d7f472;
+  color:#1c261b;
+}
+html.dark:not([data-anime-canvas="1"]) .rail{
+  background:#151a14;
+  border-right:1px solid #293326;
+}
+html.dark:not([data-anime-canvas="1"]) .sidebar,
+html.dark:not([data-anime-canvas="1"]) .details{
+  background:#1b211a;
+  border-color:#293326;
+}
+html.dark:not([data-anime-canvas="1"]) .chat{
+  background:#131712;
+}
+html.dark:not([data-anime-canvas="1"]) :is(.chat:not([data-wallpaper]),.chat[data-wallpaper=""]) .timeline{
+  background-color:#131712;
+  background-image:radial-gradient(circle at 20% 14%,rgba(215,244,114,.06),transparent 42%);
+}
+html.dark:not([data-anime-canvas="1"]) .message.mine .bubble{
+  background:#2a381d;
+  color:#eff7e6;
+  border:1px solid rgba(215,244,114,.28);
+}
+html.dark:not([data-anime-canvas="1"]) .rail .nav-btn.active,
+html.dark:not([data-anime-canvas="1"]) .sidebar .tabs button.active,
+html.dark:not([data-anime-canvas="1"]) .composer .send{
+  background:#d7f472;
+  color:#182116;
+}
+
+/* Full-screen crisp wallpaper across the entire #app viewport when an anime theme or wallpaper is equipped */
+html[data-anime-canvas="1"] .app{
   background-image:var(--catcul-custom-scrim,var(--catcul-screen-scrim)),var(--catcul-custom-photo,var(--catcul-photo-bg))!important;
   background-size:cover!important;
   background-position:center center!important;
   background-repeat:no-repeat!important;
 }
-html[data-photo-backdrop="subtle"] .app{
+html[data-anime-canvas="1"][data-photo-backdrop="subtle"] .app{
   --catcul-custom-scrim:linear-gradient(180deg,rgba(10,14,22,.34),rgba(10,14,22,.46));
 }
 
 /* Make the entire conversation column & typing bar transparent so the 4K anime wallpaper is 100% unblurred & edge-to-edge */
-html:not([data-photo-backdrop="off"]) .chat{
+html[data-anime-canvas="1"] .chat{
   background:transparent!important;
 }
-html:not([data-photo-backdrop="off"]):not([data-room-solid-wall="1"]) .timeline{
+html[data-anime-canvas="1"]:not([data-room-solid-wall="1"]) .timeline{
   background:transparent!important;
   background-image:none!important;
 }
-html:not([data-photo-backdrop="off"]) .compose-area{
+html[data-anime-canvas="1"] .compose-area{
   background:transparent!important;
   border-top:0!important;
 }
 
 /* Sleek translucent glass chrome across rail, sidebar, chat header & details so wallpaper spans the whole screen */
-html:not([data-photo-backdrop="off"]):not(.dark) .rail{
+html[data-anime-canvas="1"]:not(.dark) .rail{
   background:rgba(248,251,246,.56)!important;
   border-right:1px solid rgba(255,255,255,.42)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .sidebar,
-html:not([data-photo-backdrop="off"]):not(.dark) .details{
+html[data-anime-canvas="1"]:not(.dark) .sidebar,
+html[data-anime-canvas="1"]:not(.dark) .details{
   background:rgba(250,252,248,.60)!important;
   border-color:rgba(255,255,255,.44)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .self{
+html[data-anime-canvas="1"]:not(.dark) .self{
   background:rgba(250,252,248,.52)!important;
   border-top:1px solid rgba(255,255,255,.42)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .chat-head{
+html[data-anime-canvas="1"]:not(.dark) .chat-head{
   background:rgba(250,252,249,.62)!important;
   border-bottom:1px solid rgba(255,255,255,.44)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .memory-disclosure{
+html[data-anime-canvas="1"]:not(.dark) .memory-disclosure{
   background:rgba(250,252,249,.56)!important;
   border-bottom:1px solid rgba(255,255,255,.38)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .room.selected,
-html:not([data-photo-backdrop="off"]):not(.dark) .room:hover{
+html[data-anime-canvas="1"]:not(.dark) .room.selected,
+html[data-anime-canvas="1"]:not(.dark) .room:hover{
   background:rgba(255,255,255,.72)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .searchbox,
-html:not([data-photo-backdrop="off"]):not(.dark) .sidebar .tabs button:not(.active){
+html[data-anime-canvas="1"]:not(.dark) .searchbox,
+html[data-anime-canvas="1"]:not(.dark) .sidebar .tabs button:not(.active){
   background:rgba(255,255,255,.66)!important;
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .composer{
+html[data-anime-canvas="1"]:not(.dark) .composer{
   background:rgba(255,255,255,.92)!important;
   border:1px solid rgba(255,255,255,.75)!important;
   box-shadow:0 8px 26px rgba(12,20,15,.18)!important;
 }
 
 /* Dark-mode crystal smoked glass chrome (zero wallpaper blur, full anime color glow) */
-html.dark:not([data-photo-backdrop="off"]) .rail{
+html.dark[data-anime-canvas="1"] .rail{
   background:rgba(10,14,22,.56)!important;
   border-right:1px solid rgba(255,255,255,.11)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .sidebar,
-html.dark:not([data-photo-backdrop="off"]) .details{
+html.dark[data-anime-canvas="1"] .sidebar,
+html.dark[data-anime-canvas="1"] .details{
   background:rgba(12,17,26,.58)!important;
   border-color:rgba(255,255,255,.11)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .self{
+html.dark[data-anime-canvas="1"] .self{
   background:rgba(10,14,22,.50)!important;
   border-top:1px solid rgba(255,255,255,.10)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .chat-head{
+html.dark[data-anime-canvas="1"] .chat-head{
   background:rgba(12,17,26,.58)!important;
   border-bottom:1px solid rgba(255,255,255,.11)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .memory-disclosure{
+html.dark[data-anime-canvas="1"] .memory-disclosure{
   background:rgba(12,17,26,.52)!important;
   border-bottom:1px solid rgba(255,255,255,.09)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .room.selected,
-html.dark:not([data-photo-backdrop="off"]) .room:hover{
+html.dark[data-anime-canvas="1"] .room.selected,
+html.dark[data-anime-canvas="1"] .room:hover{
   background:rgba(255,255,255,.12)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .searchbox,
-html.dark:not([data-photo-backdrop="off"]) .sidebar .tabs button:not(.active){
+html.dark[data-anime-canvas="1"] .searchbox,
+html.dark[data-anime-canvas="1"] .sidebar .tabs button:not(.active){
   background:rgba(15,21,32,.66)!important;
 }
-html.dark:not([data-photo-backdrop="off"]) .composer{
+html.dark[data-anime-canvas="1"] .composer{
   background:rgba(15,20,30,.90)!important;
   border:1px solid rgba(255,255,255,.16)!important;
   box-shadow:0 10px 30px rgba(0,0,0,.38)!important;
 }
 
 /* Crisp readable bubbles & day separators over vibrant 4K anime art */
-html:not([data-photo-backdrop="off"]) .message .bubble{
+html[data-anime-canvas="1"] .message .bubble{
   box-shadow:0 4px 16px rgba(8,12,18,.18);
 }
-html:not([data-photo-backdrop="off"]):not(.dark) .message:not(.mine) .bubble{
+html[data-anime-canvas="1"]:not(.dark) .message:not(.mine) .bubble{
   background:rgba(255,255,255,.94);
   border:1px solid rgba(255,255,255,.8);
 }
-html.dark:not([data-photo-backdrop="off"]) .message:not(.mine) .bubble{
+html.dark[data-anime-canvas="1"] .message:not(.mine) .bubble{
   background:rgba(18,24,34,.90);
   border:1px solid rgba(255,255,255,.12);
 }
-html:not([data-photo-backdrop="off"]) .message .meta,
-html:not([data-photo-backdrop="off"]) .timeline .empty-chat,
-html:not([data-photo-backdrop="off"]) .day-sep span{
+html[data-anime-canvas="1"] .message .meta,
+html[data-anime-canvas="1"] .timeline .empty-chat,
+html[data-anime-canvas="1"] .day-sep span{
   text-shadow:0 1px 3px rgba(0,0,0,.32);
 }
-html:not([data-photo-backdrop="off"]) .day-sep span,
-html:not([data-photo-backdrop="off"]) #older-wrap button{
+html[data-anime-canvas="1"] .day-sep span,
+html[data-anime-canvas="1"] #older-wrap button{
   background:rgba(15,21,30,.72)!important;
   color:#f5f7fa!important;
   border:1px solid rgba(255,255,255,.16)!important;
   text-shadow:none;
 }
 
-/* ---------- 10 Studio Anime Theme Palettes & Wallpapers ---------- */
-/* Free Theme 1: Ghibli Meadow (meadow) */
+/* ---------- 10 Studio Theme Palettes & Wallpapers ---------- */
+/* Free Theme 1: Catcul Classic (Default — warm cream + sage + bright lime) */
 html[data-catcul-theme="meadow"]{
-  --catcul-photo-bg:url("./wallpapers/anime-ghibli-meadow.jpg");
+  --catcul-photo-bg:none;
 }
 
 /* Free Theme 2: Shinkai Starfall (midnight, Dark) */
@@ -1358,8 +1438,8 @@ html[data-catcul-theme="aurora-velvet"] .sidebar .tabs button.active{background:
 html[data-catcul-theme="aurora-velvet"] .message.mine .bubble{background:rgba(48,32,88,.92);color:#f5efff;border:1px solid rgba(164,120,255,.42)}
 html[data-catcul-theme="aurora-velvet"] .composer .send{background:#a478ff;color:#140b29}
 
-html:not([data-photo-backdrop="off"]):not([data-room-solid-wall="1"]) .empty-chat,
-html:not([data-photo-backdrop="off"]):not([data-room-solid-wall="1"]) .timeline .empty{
+html[data-anime-canvas="1"]:not([data-room-solid-wall="1"]) .empty-chat,
+html[data-anime-canvas="1"]:not([data-room-solid-wall="1"]) .timeline .empty{
   background:rgba(14,18,26,.62)!important;
   backdrop-filter:blur(12px) saturate(135%);
   -webkit-backdrop-filter:blur(12px) saturate(135%);
@@ -1371,8 +1451,8 @@ html:not([data-photo-backdrop="off"]):not([data-room-solid-wall="1"]) .timeline 
   color:#f5f7fb!important;
   box-shadow:0 18px 44px rgba(0,0,0,.32);
 }
-html:not([data-photo-backdrop="off"]):not([data-room-solid-wall="1"]) .empty-chat p,
-html:not([data-photo-backdrop="off"]):not([data-room-solid-wall="1"]) .timeline .empty p{
+html[data-anime-canvas="1"]:not([data-room-solid-wall="1"]) .empty-chat p,
+html[data-anime-canvas="1"]:not([data-room-solid-wall="1"]) .timeline .empty p{
   color:rgba(240,244,252,.88)!important;
 }
 
@@ -1395,7 +1475,7 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
 .chat[data-wallpaper="starlight-stickers"] .timeline{background-color:#151827;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23aadfd3' stroke-opacity='.14' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M56 36a18 18 0 1 0 18 24 14 14 0 1 1-18-24Z'/%3E%3Cpath d='M138 56l6-14 10 9h14l10-9 6 14a22 22 0 1 1-46 0Z'/%3E%3C/g%3E%3C/svg%3E")}
 
 </style>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f4f4ef"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
 <symbol id="i-cat" viewBox="0 0 40 40"><path d="M9 15 7 5l11 7h4L33 5l-2 10c3 3 4 6 4 10 0 8-6 12-15 12S5 33 5 25c0-4 1-7 4-10Z"/><path d="M13 23h.1M27 23h.1" stroke-width="4"/><path d="m18 28 2 2 2-2m-2 2v3M7 27l-5-1m5 5-4 2m30-6 5-1m-5 5 4 2"/></symbol>
@@ -1549,7 +1629,19 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   const landingURL=()=>{const u=new URL('index.html',location.href);const invite=new URLSearchParams(location.search).get('invite');if(invite)u.searchParams.set('invite',invite);return u.href;};
   const setSession=session=>{isAuthenticated=Boolean(session?.user);document.documentElement.dataset.authenticated=String(isAuthenticated);};
   const isRecoveryUrl=loc=>{try{const qs=new URLSearchParams(loc.search),hs=new URLSearchParams((loc.hash||'').slice(1));return qs.get('mode')==='recovery'||qs.get('type')==='recovery'||hs.get('type')==='recovery';}catch{return false;}};
-  window.CatculRouter=Object.freeze({setSession,isRecoveryUrl,workspace(session){setSession(session);if(!isAuthenticated)location.replace(landingURL());},landing(){setSession(null);location.replace(landingURL());}});
+  window.CatculRouter=Object.freeze({
+    setSession,
+    isRecoveryUrl,
+    workspace(session){
+      setSession(session);
+      if(isAuthenticated){try{sessionStorage.removeItem('catcul.authBounce');}catch{}}
+      else location.replace(landingURL());
+    },
+    landing(){
+      setSession(null);
+      location.replace(landingURL());
+    }
+  });
   if(document.body.dataset.catculView!=='landing')return;
   if(isRecoveryUrl(location)){
     const qs=new URLSearchParams(location.search);
@@ -1563,8 +1655,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   if(!window.supabase)return;
   const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}});
   let routed=false;
+  const bouncedRecently=()=>{
+    try{
+      const prev=Number(sessionStorage.getItem('catcul.authBounce')||0);
+      return prev>0&&(Date.now()-prev)<3500;
+    }catch{return false;}
+  };
   const goWorkspace=session=>{
-    if(routed||!session?.user||!session?.access_token)return;
+    if(routed||!session?.user||!session?.access_token||bouncedRecently())return;
+    try{sessionStorage.setItem('catcul.authBounce',String(Date.now()));}catch{}
     setSession(session);
     routed=true;
     document.body.setAttribute('inert','');
@@ -1574,14 +1673,20 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   };
   const verifyAndResolve=async session=>{
     if(!session?.user||routed){setSession(null);return;}
+    let activeSession=session;
     const expMs=Number(session.expires_at||0)*1000;
     if(expMs&&expMs<=Date.now()+5000){
       const refreshed=await client.auth.refreshSession().catch(()=>({data:{session:null}}));
       if(!refreshed?.data?.session?.user){await client.auth.signOut({scope:'local'}).catch(()=>{});setSession(null);return;}
-      goWorkspace(refreshed.data.session);
+      activeSession=refreshed.data.session;
+    }
+    const check=await client.auth.getUser(activeSession.access_token).catch(()=>null);
+    if(check?.error&&(check.error.status===401||check.error.status===403||/invalid|expired|jwt|session_not_found|user_not_found/i.test(check.error.message||''))){
+      await client.auth.signOut({scope:'local'}).catch(()=>{});
+      setSession(null);
       return;
     }
-    goWorkspace(session);
+    goWorkspace(activeSession);
   };
   client.auth.getSession().then(({data,error})=>{if(!error&&data?.session)verifyAndResolve(data.session);}).catch(()=>{});
   client.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session)verifyAndResolve(session);});
@@ -1626,7 +1731,7 @@ async function busy(button,fn){if(button?.disabled)return;const text=button?.tex
 function formError(e){const el=$('#auth-error');if(el){el.textContent=errorText(e);el.classList.remove('hidden');}else fail(e);}
 let authRedirecting=false;
 function showAuth(mode='signin'){if(authRedirecting)return;if(mode==='signin'){authRedirecting=true;window.CatculRouter.landing();return;}recoveryMode=mode==='recovery';authRedirecting=true;$('#app').setAttribute('inert','');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Taking you to sign in…';const url=new URL(mode==='signup'?'signup.html':'signin.html',location.href);const keepHash=mode==='recovery'&&location.hash.includes('type=recovery')?location.hash:'';url.search='';url.hash='';if(pendingInvite)url.searchParams.set('invite',pendingInvite);if(mode==='reset'||mode==='recovery')url.searchParams.set('mode',mode);location.replace(url.href+keepHash);}
-async function clearAccount(){disableDevicePush(false).catch(console.warn);bootVersion++;cleanupExtras();cleanupStudent();cleanupSchool();cleanupSocial();await disconnectVoice();booting=false;bootedUser='';setupReady=false;user=null;session=null;if(mediaRecorder?.state==='recording')stopRecording(true);for(const ch of Object.values(channels))client?.removeChannel(ch);for(const obj of[histories,channels,states,members,typing,peopleCache,mediaCache,roomPeople,hasMore,cursors])for(const k of Object.keys(obj))delete obj[k];rooms=[];active='';reply=null;attachment=null;seenReceipts.clear();readLocks.clear();sendLocks.clear();profile={id:'',name:'Your profile',color:colors[0]};$('#message-input').value='';$('#file-staging').classList.add('hidden');$('#reply-bar').classList.add('hidden');closeModal();renderProfile();renderRooms();renderTimeline();updateConnection();showAuth();}
+async function clearAccount(){disableDevicePush(false).catch(console.warn);bootVersion++;cleanupExtras();cleanupStudent();cleanupSchool();cleanupSocial();await disconnectVoice();await client?.auth?.signOut({scope:'local'}).catch(()=>{});try{Object.keys(localStorage).filter(k=>k.startsWith('sb-')&&k.endsWith('-auth-token')).forEach(k=>localStorage.removeItem(k));}catch{}booting=false;bootedUser='';setupReady=false;user=null;session=null;if(mediaRecorder?.state==='recording')stopRecording(true);for(const ch of Object.values(channels))client?.removeChannel(ch);for(const obj of[histories,channels,states,members,typing,peopleCache,mediaCache,roomPeople,hasMore,cursors])for(const k of Object.keys(obj))delete obj[k];rooms=[];active='';reply=null;attachment=null;seenReceipts.clear();readLocks.clear();sendLocks.clear();profile={id:'',name:'Your profile',color:colors[0]};$('#message-input').value='';$('#file-staging').classList.add('hidden');$('#reply-bar').classList.add('hidden');closeModal();renderProfile();renderRooms();renderTimeline();updateConnection();showAuth();}
 async function sendBackgroundReply(roomId,text,replyToId=''){const body=String(text||'').trim().slice(0,2000);if(!user||!setupReady||!validRoomId(roomId)||!body)return false;const msgId=uid();const res=await db.from('messages').insert({id:msgId,room_id:roomId,body,kind:'text',reply_to:validRoomId(replyToId)?replyToId:null}).select().single();const row=unwrap(res);await receiveRow(roomId,row,false);toast('Reply sent.');return true;}
 async function handleSwNotificationPayload(payload){if(!payload||!user||!setupReady)return;const {kind,roomId,callId,messageId,text}=payload;if(kind==='inline-reply'&&roomId&&text){if(callId&&validRoomId(callId))declineVoiceCall(callId).catch(()=>{});await sendBackgroundReply(roomId,text,messageId).catch(fail);return;}if(kind==='decline-call'&&validRoomId(callId)){await declineVoiceCall(callId).catch(fail);return;}if(kind==='answer-call'&&validRoomId(callId)){if(validRoomId(roomId)&&rooms.some(r=>r.id===roomId)){showChatView();await setActive(roomId);}await refreshCalls();await acceptVoiceCall(callId,false).catch(fail);return;}if(kind==='open-reply'&&validRoomId(roomId)){if(rooms.some(r=>r.id===roomId)){showChatView();await setActive(roomId);if(validRoomId(messageId))setReply(messageId);$('#message-input')?.focus();}}}
 if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('message',ev=>{if(ev.data?.type==='CATCUL_SW_ACTION')handleSwNotificationPayload(ev.data).catch(console.warn);});}
@@ -1643,8 +1748,8 @@ async function loadHistory(id,older=false,background=false){if(!setupReady||!id)
 async function loadOlder(){if(loadingOlder||!active||!hasMore[active])return;loadingOlder=true;const id=active;try{await loadHistory(id,true);}catch(e){fail(e);}finally{loadingOlder=false;const b=$('[data-action="older"]');if(b)b.disabled=false;}}
 async function setActive(id,mobile=true){if(!rooms.some(r=>r.id===id))return;if(workspaceMode!=='chat'&&mobile){await switchWorkspace('chat');if(workspaceMode!=='chat')return;}if(photoEditor&&active!==id)closeModal();const changing=active!==id;if(changing){if($('.memory-player'))closeModal();closePlans();$('#room-moments').replaceChildren();sendTyping(false);if(mediaRecorder?.state==='recording')stopRecording(true);reply=null;attachment=null;$('#message-input').value='';$('#reply-bar').classList.add('hidden');$('#file-staging').classList.add('hidden');}rememberCatchup(id);if(active&&active!==id)channels[active]?.untrack().catch(console.warn);active=id;if(mobile)$('#app').classList.add('mobile-chat');$('#chat-title').textContent=currentRoom().name;$('#detail-title').textContent=currentRoom().name;$('#detail-description').textContent=currentRoom().kind==='direct'?'A private space. Just the two of you.':'Saved conversations. Just for your group.';syncRoomChrome();renderRooms();renderTimeline();renderMute();updateConnection();$('#emoji-picker').classList.add('hidden');try{await loadPeople(id);await loadHistory(id);}catch(e){fail(e);}trackPresence(id);markRead(id);loadAcademic().catch(fail);initRoomExtras().catch(console.warn);}
 function setEmptyRoom(){active='';$('#chat-title').textContent='Your shared space';$('#detail-title').textContent='Room for your people';$('#detail-description').textContent='Create a room, then bring someone along.';renderRooms();renderTimeline();renderPresence();updateConnection();renderCallBanner();$('#community-notice')?.classList.add('hidden');loadAcademic().catch(console.warn);}
-function renderPresence(){const all=onlinePeople();$('#people-count').textContent=all.length;$('#people').innerHTML=all.map(personHTML).join('');$('#people-note').textContent=!active?'Create your first room to get started.':currentRoom().can_send===false?'Saved history · friendship inactive':states[active]==='POLLING'?'Live presence is unavailable on this connection.':!isReady()?'Connecting to your room…':all.length<=1?'Just you right now. Your friends can catch up later.':'';$('#chat-status').textContent=!active?'Your conversations are saved here':currentRoom().can_send===false?'Saved private history · friends-only messaging':states[active]==='POLLING'?(currentRoom().purpose==='community'?'Campus-wide conversation':'Polling updates · members only'):isReady()?`${all.length} online · ${currentRoom().purpose==='community'?'campus community':'members only'}`:'Reconnecting to your room…';$('#chat-dot').style.background=isReady()?'#8eaf61':'#b6baad';renderTyping();}
-function updateConnection(){const ready=isReady(),readOnly=active&&currentRoom().can_send===false;$('#live-tag').classList.toggle('connected',ready);$('#live-label').textContent=readOnly?'READ ONLY':ready?(states[active]==='POLLING'?'SYNC':'LIVE'):!user?'SIGN IN':!setupReady?'SETUP':!active?'READY':states[active]==='CONNECTING'?'CONNECTING':'OFFLINE';const banner=$('#connection-banner');if(readOnly){banner.classList.remove('hidden');banner.innerHTML=icon('info')+'<span>Your history is saved. New private messages and calls require an accepted friendship. <button data-action="friends">Friends</button></span>';}else if(active&&states[active]==='POLLING'){banner.classList.remove('hidden');banner.innerHTML=icon('info')+'<span>Realtime unavailable. Saved messages refresh every 15 seconds. Secure messaging still works. <button data-action="reconnect">Retry realtime</button></span>';}else if(ready||!active){banner.classList.add('hidden');}else{banner.classList.remove('hidden');banner.innerHTML=states[active]==='CONNECTING'?icon('info')+'Connecting to your members-only room…':icon('info')+'<span>Realtime is disconnected. Saved messages are safe. <button data-action="reconnect">Retry</button> · <button data-action="connection-help">Help</button></span>';}renderPresence();updateSend();renderCallBanner();}
+function renderPresence(){const all=onlinePeople();$('#people-count').textContent=all.length;const peopleEl=$('#people'),nextPeopleHtml=all.map(personHTML).join('');if(peopleEl&&peopleEl._rawHtml!==nextPeopleHtml){peopleEl._rawHtml=nextPeopleHtml;peopleEl.innerHTML=nextPeopleHtml;}$('#people-note').textContent=!active?'Create your first room to get started.':currentRoom().can_send===false?'Saved history · friendship inactive':states[active]==='POLLING'?'Live presence is unavailable on this connection.':!isReady()?'Connecting to your room…':all.length<=1?'Just you right now. Your friends can catch up later.':'';$('#chat-status').textContent=!active?'Your conversations are saved here':currentRoom().can_send===false?'Saved private history · friends-only messaging':states[active]==='POLLING'?(currentRoom().purpose==='community'?'Campus-wide conversation':'Polling updates · members only'):isReady()?`${all.length} online · ${currentRoom().purpose==='community'?'campus community':'members only'}`:'Reconnecting to your room…';$('#chat-dot').style.background=isReady()?'#8eaf61':'#b6baad';renderTyping();}
+function updateConnection(){const ready=isReady(),readOnly=active&&currentRoom().can_send===false;$('#live-tag').classList.toggle('connected',ready);$('#live-label').textContent=readOnly?'READ ONLY':ready?(states[active]==='POLLING'?'SYNC':'LIVE'):!user?'SIGN IN':!setupReady?'SETUP':!active?'READY':states[active]==='CONNECTING'?'CONNECTING':'OFFLINE';const banner=$('#connection-banner');let bannerHidden=false,bannerHtml='';if(readOnly){bannerHtml=icon('info')+'<span>Your history is saved. New private messages and calls require an accepted friendship. <button data-action="friends">Friends</button></span>';}else if(active&&states[active]==='POLLING'){bannerHtml=icon('info')+'<span>Realtime unavailable. Saved messages refresh every 15 seconds. Secure messaging still works. <button data-action="reconnect">Retry realtime</button></span>';}else if(ready||!active){bannerHidden=true;}else{bannerHtml=states[active]==='CONNECTING'?icon('info')+'Connecting to your members-only room…':icon('info')+'<span>Realtime is disconnected. Saved messages are safe. <button data-action="reconnect">Retry</button> · <button data-action="connection-help">Help</button></span>';}if(banner){banner.classList.toggle('hidden',bannerHidden);if(!bannerHidden&&banner._rawHtml!==bannerHtml){banner._rawHtml=bannerHtml;banner.innerHTML=bannerHtml;}}renderPresence();updateSend();renderCallBanner();}
 function subscribeRoom(id){if(!client||channels[id]||!setupReady)return;states[id]='CONNECTING';members[id]={};const ch=client.channel('catcul:'+id,{config:{private:true,broadcast:{ack:true,self:false},presence:{key:profile.id}}});channels[id]=ch;
 ch.on('postgres_changes',{event:'INSERT',schema:DATABASE_SCHEMA,table:'messages',filter:'room_id=eq.'+id},p=>receiveRow(id,p.new,true).catch(fail))
 .on('postgres_changes',{event:'UPDATE',schema:DATABASE_SCHEMA,table:'messages',filter:'room_id=eq.'+id},p=>receiveRow(id,p.new,false).catch(fail))
@@ -1659,7 +1764,7 @@ ch.on('postgres_changes',{event:'INSERT',schema:DATABASE_SCHEMA,table:'messages'
 .on('postgres_changes',{event:'UPDATE',schema:DATABASE_SCHEMA,table:'room_members',filter:'room_id=eq.'+id},()=>{scheduleRooms();loadPeople(id).catch(console.warn);})
 .on('broadcast',{event:'typing'},({payload})=>{const p=cleanPerson(payload?.sender);if(!p||p.id===profile.id)return;typing[id]??={};if(payload.active)typing[id][p.id]={name:p.name,until:Date.now()+4000};else delete typing[id][p.id];if(id===active)renderTyping();})
 .on('presence',{event:'sync'},async()=>{try{await loadPeople(id);const map={};for(const entries of Object.values(ch.presenceState()))for(const raw of entries){const p=cleanPerson(raw);if(p&&roomPeople[id]?.some(x=>x.id===p.id))map[p.id]={...p,activity:['listening','gallery','planning','typing'].includes(raw.activity)?raw.activity:'here'};}members[id]=map;if(active===id)renderPresence();}catch(e){console.warn('Presence refresh:',e);}})
-.subscribe(async status=>{if(channels[id]!==ch)return;states[id]=['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)&&user&&setupReady&&navigator.onLine?'POLLING':status;if(status==='SUBSCRIBED'){await trackPresence(id);if(active===id)loadHistory(id).catch(fail);}else if(['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)){members[id]={};}if(active===id)updateConnection();});if(active===id)updateConnection();}
+.subscribe(async status=>{if(channels[id]!==ch)return;states[id]=['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)&&user&&setupReady&&navigator.onLine?'POLLING':status;if(status==='SUBSCRIBED'){await trackPresence(id);if(active===id)loadHistory(id,false,roomHistory(id).length>0).catch(fail);}else if(['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)){members[id]={};}if(active===id)updateConnection();});if(active===id)updateConnection();}
 async function trackPresence(id){if(!isReady(id)||!channels[id]||states[id]!=='SUBSCRIBED')return;try{if(notesOpen||id!==active||workspaceMode!=='chat'||document.hidden){await channels[id].untrack();return;}await channels[id].track({id:profile.id,online_at:new Date().toISOString(),activity:settings.shareActivity&&!document.hidden&&id===active&&workspaceMode==='chat'?activity:'here'});}catch{}}
 async function broadcast(id,event,payload){if(!user||!setupReady)return false;if(event==='delete'){try{unwrap(await db.rpc('remove_message',{p_message_id:payload.id}));return true;}catch(e){fail(e);return false;}}if(event!=='typing'||!isReady(id)||states[id]!=='SUBSCRIBED')return false;try{return await channels[id].send({type:'broadcast',event:'typing',payload:{sender:{id:profile.id},active:!!payload.active}})==='ok';}catch{return false;}}
 function sendTyping(on){if(!active)return;const now=Date.now();if(on&&now-lastTyping<1400)return;if(on)lastTyping=now;broadcast(active,'typing',{active:on});}
@@ -1697,9 +1802,10 @@ const outfit={none:'',hoodie:`<path d="M66 156Q120 170 174 156L176 177Q169 196 1
 const accessory={none:'',glasses:`<g fill="none" stroke="${ink}" stroke-width="4"><rect x="79" y="100" width="33" height="26" rx="10"/><rect x="128" y="100" width="33" height="26" rx="10"/><path d="M112 110H128M79 109H70M161 109H170"/></g>`,bow:`<path d="M143 69Q128 49 127 64V83Q133 93 146 76Q163 95 165 81V62Q161 49 147 68Z" fill="${accent}"/><circle cx="146" cy="72" r="6" fill="#fff2cc"/>`,headphones:`<path d="M62 116V102C62 48 178 48 178 102V116" fill="none" stroke="${accent}" stroke-width="9"/><rect x="52" y="104" width="18" height="33" rx="8" fill="${accent}"/><rect x="170" y="104" width="18" height="33" rx="8" fill="${accent}"/>`,crown:`<path d="M95 65L89 40L108 50L120 31L132 50L151 40L145 65Z" fill="#f0c962" stroke="#c1a044" stroke-width="2"/><circle cx="120" cy="55" r="4" fill="${accent}"/>`}[a.accessory];
 return `<svg class="cat-character" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="123" cy="212" rx="66" ry="9" fill="${ink}" opacity=".09"/>${tail}${ears}<ellipse cx="91" cy="198" rx="18" ry="14" fill="${fur}"/><ellipse cx="149" cy="198" rx="18" ry="14" fill="${fur}"/><path d="${path}" fill="${fur}" stroke="${ink}" stroke-opacity=".12" stroke-width="3"/>${marks}<path d="M59 151Q44 166 57 176M181 151Q196 166 183 176" fill="none" stroke="${fur}" stroke-width="13" stroke-linecap="round"/>${outfit}${cheeks}${eyes}<path d="M116 126Q120 123 124 126L120 131Z" fill="${ink}"/>${mouth}${whiskers}${accessory}<path d="M84 199V203M91 200V204M148 200V204M155 199V203" stroke="${ink}" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/></svg>`;}
 let avatarDraft=null,avatarSaved=null,avatarTab='body',avatarSaving=false,avatarUndo=[];
+function catSig(a){return `${a.shape}|${a.fur}|${a.accent}|${a.background}|${a.pattern}|${a.eyes}|${a.mouth}|${a.cheeks}|${a.ears}|${a.tail}|${a.outfit}|${a.accessory}|${a.whiskers}`;}
 function catPerson(p){return p?.id===profile.id?profile:peopleCache[p?.id]||p||{};}
-function avatar(p,cls=''){const person=catPerson(p),a=cleanAvatar(person.avatar,person);return `<span class="mini-avatar cat-avatar ${esc(cls)}" data-cat-person="${esc(person.id||'')}" style="background:${a.background}">${catSVG(a)}</span>`;}
-function refreshAvatarSurfaces(){for(const el of $$('[data-cat-person]')){const p=catPerson({id:el.dataset.catPerson});if(!p?.name)continue;const a=cleanAvatar(p.avatar,p);el.style.background=a.background;el.innerHTML=catSVG(a);}renderProfile();if(active)syncRoomChrome();if(voice.phase!=='idle')updateVoicePeople();}
+function avatar(p,cls=''){const person=catPerson(p),a=cleanAvatar(person.avatar,person);return `<span class="mini-avatar cat-avatar ${esc(cls)}" data-cat-person="${esc(person.id||'')}" data-cat-sig="${esc(catSig(a))}" style="background:${a.background}">${catSVG(a)}</span>`;}
+function refreshAvatarSurfaces(){for(const el of $$('[data-cat-person]')){const p=catPerson({id:el.dataset.catPerson});if(!p?.name)continue;const a=cleanAvatar(p.avatar,p),sig=catSig(a);if(el.dataset.catSig!==sig){el.dataset.catSig=sig;el.style.background=a.background;el.innerHTML=catSVG(a);}}renderProfile();if(active)syncRoomChrome();if(voice.phase!=='idle')updateVoicePeople();}
 function showAvatarEditor(){if(!user||!setupReady)return showConnectionHelp();avatarSaved=cleanAvatar(profile.avatar,profile);avatarDraft={...avatarSaved};avatarTab='body';avatarUndo=[];avatarSaving=false;openModal(`<div class="cat-editor-top"><span class="eyebrow">CATCUL CHARACTER STUDIO</span><span class="cat-studio-tag">Made by you</span></div><div class="cat-editor-intro"><h2>A little you.<br> A lot of cat.</h2><p>Mix, match, and make yourself at home.</p></div><div class="cat-editor-grid"><section class="cat-preview-column" aria-label="Character preview"><div class="cat-preview-stage" id="cat-preview-stage"><span class="cat-stage-spark one">✧</span><span class="cat-stage-spark two">✦</span><div id="cat-preview" role="img" aria-label="Your customized Catcul character"></div><span class="cat-stage-caption">one of a kind. just like you.</span></div><div class="cat-preview-tools"><button class="btn secondary" id="cat-randomize">${icon('spark')}Surprise me</button><button class="icon-btn" id="cat-undo" aria-label="Undo last change" title="Undo last change">${icon('back')}</button><button class="subtle-link" id="cat-reset">Reset</button></div><div class="cat-identity-sample"><div id="cat-avatar-sample"></div><div><strong>${esc(profile.name)}</strong><small>Your look, wherever you chat.</small></div><span class="cat-sample-dot"></span></div></section><section class="cat-controls-column"><div class="cat-tabs" role="tablist" aria-label="Character categories">${CAT_TABS.map(([id,name,symbol])=>`<button role="tab" id="cat-tab-${id}" data-cat-tab="${id}" aria-controls="cat-options">${icon(symbol)}${name}</button>`).join('')}</div><div id="cat-options" class="cat-options" role="tabpanel"></div><p class="cat-editor-note">Everything here is yours to mix. No coins. No unlocks.</p></section></div><div class="cat-editor-footer"><div><span id="cat-save-state" aria-live="polite">Your saved look</span><small id="cat-save-error" role="alert"></small></div><button class="btn secondary" data-action="close-modal">Cancel</button><button class="btn" id="cat-save">Save my character ${icon('check')}</button></div>`,true);$('.modal').classList.add('avatar-editor');paintAvatarEditor();$('#cat-randomize').onclick=()=>{if(avatarSaving)return;rememberAvatar();for(const [k,list]of Object.entries(CAT_OPTIONS))avatarDraft[k]=list[Math.floor(Math.random()*list.length)];avatarDraft.fur=CAT_PALETTE[Math.floor(Math.random()*CAT_PALETTE.length)];avatarDraft.accent=CAT_PALETTE[Math.floor(Math.random()*CAT_PALETTE.length)];paintAvatarEditor();};$('#cat-undo').onclick=()=>{if(avatarSaving||!avatarUndo.length)return;avatarDraft=avatarUndo.pop();paintAvatarEditor();};$('#cat-reset').onclick=()=>{if(avatarSaving)return;rememberAvatar();avatarDraft={...avatarSaved};paintAvatarEditor();};$('#cat-save').onclick=saveCharacter;}
 function rememberAvatar(){avatarUndo.push({...avatarDraft});if(avatarUndo.length>40)avatarUndo.shift();}
 function catChoiceGroup(field,title){return `<fieldset class="cat-choice-group"><legend>${title}</legend><div class="cat-choice-grid">${CAT_OPTIONS[field].map(value=>`<button type="button" class="cat-choice ${avatarDraft[field]===value?'selected':''}" data-cat-field="${field}" data-cat-value="${value}" aria-pressed="${avatarDraft[field]===value}" ${avatarSaving?'disabled':''}><span>${catSVG({...avatarDraft,[field]:value})}</span><small>${CAT_LABELS[value]||value}</small>${avatarDraft[field]===value?'<b aria-hidden="true">✓</b>':''}</button>`).join('')}</div></fieldset>`;}
@@ -1727,7 +1833,7 @@ function formatTime(t){return new Date(t).toLocaleTimeString([],{hour:'2-digit',
 
 function preview(m){if(!m)return 'A fresh start. Say hello.';if(m.deleted)return 'Message removed';return m.kind==='photo'?'📷 Photo':m.kind==='audio'?'🎙 Voice note':m.text||'';}
 
-function renderProfile(){for(const e of $$('.my-avatar')){const a=cleanAvatar(profile.avatar,profile);e.innerHTML=catSVG(a);e.style.background=a.background;}$('#my-name').textContent=profile.name;}
+function renderProfile(){for(const e of $$('.my-avatar')){const a=cleanAvatar(profile.avatar,profile),sig=catSig(a);if(e.dataset.catSig!==sig){e.dataset.catSig=sig;e.innerHTML=catSVG(a);e.style.background=a.background;}}if($('#my-name').textContent!==profile.name)$('#my-name').textContent=profile.name;}
 
 function renderRooms(){const query=$('#room-search').value.toLowerCase();const list=rooms.filter(r=>(filter!=='courses'||(r.purpose==='course'&&!r.is_study_group))&&(filter!=='study-groups'||r.is_study_group)&&(filter!=='unread'||r.unread>0)&&(filter!=='private'||r.kind==='direct')&&(filter!=='groups'||(r.kind==='group'&&r.purpose!=='course'))&&r.name.toLowerCase().includes(query));$('#rooms').innerHTML=list.map(r=>{const last=roomHistory(r.id).at(-1)||r.last;return '<button class="room '+(r.id===active?'selected':'')+'" data-room="'+esc(r.id)+'" aria-label="Open '+esc(r.name)+'" '+(r.id===active?'aria-current="true"':'')+'><span class="room-avatar">'+(r.kind==='direct'?avatar({id:r.peer_id,name:r.name,color:r.peer_color}):icon(r.purpose==='course'&&!r.is_study_group?'book':'people'))+'</span><span class="grow"><h3>'+esc(r.name)+(r.kind==='direct'&&isBest(r.peer_id)?'<span class="friend-star">★</span>':'')+'</h3><span class="preview" style="display:block">'+esc(last?(last.sender.id===profile.id?'You: ':'')+preview(last):r.purpose==='course'?(r.is_study_group?'Study group':r.course_code||'Course')+' · '+(r.is_study_group?(r.course_code||'Invite-only'):'Resources & homework'):r.purpose==='community'?'Everyone signed in. One shared space.':r.kind==='direct'?'A private hello. Just for you.':'Your group. Your kind of people.')+'</span></span><span class="time">'+(last?esc(formatTime(last.time)):'')+'</span>'+(r.unread?'<span class="unread">'+(r.unread>99?'99+':r.unread)+'</span>':'')+'</button>';}).join('')||'<div class="empty-small">'+(filter==='unread'?'All caught up. Nice.':filter==='private'?'Add a friend to start a private conversation.':filter==='groups'?'Create a group or join with an invitation.':filter==='study-groups'?'No study groups yet. Create one and bring your classmates.':filter==='courses'?'No courses yet. Create a course or join with an invite.':'A little quiet here. Create a study group or join with an invite.')+'</div>';if($('#space-total'))$('#space-total').textContent=list.length;const community=$('[data-action="community"]');if(community){const selected=rooms.some(r=>r.id===active&&r.purpose==='community');community.classList.toggle('selected',selected);if(selected)community.setAttribute('aria-current','true');else community.removeAttribute('aria-current');}$('#all-count').textContent=rooms.length;$('#unread-count').textContent=rooms.filter(r=>r.unread>0).length;$$('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));}
 
@@ -1739,11 +1845,11 @@ const react=Object.entries(m.reactions||{}).filter(([e,ids])=>emojis.includes(e)
 let status='';if(mine&&!m.deleted){let s=m.status==='failed'?'Unconfirmed':m.status==='sending'?'Sending…':m.readBy?.length?'Seen':m.receivedBy?.length?'Delivered':'Sent';status=`<div class="message-status ${m.status==='failed'?'failed':''}" data-status="${esc(m.id)}">${m.status==='failed'?`<button data-retry="${esc(m.id)}">Retry</button> · `:icon(m.readBy?.length?'checks':'check')}${s}</div>`;}
 return `<article class="message ${mine?'mine':''}" id="m-${esc(m.id)}" data-message-id="${esc(m.id)}">${avatar(m.sender)}<div class="message-body"><div class="message-head"><span>${mine?'You':esc(m.sender.name)}</span><time datetime="${new Date(m.time).toISOString()}">${formatTime(m.time)}</time></div><div class="bubble ${m.deleted?'deleted':m.kind!=='text'?'media':''}">${content}</div>${react?`<div class="reactions">${react}</div>`:''}${status}${m.deleted?'':`<div class="message-actions"><button data-react="🤍" data-mid="${esc(m.id)}" title="React with a heart">🤍</button><button data-react="😂" data-mid="${esc(m.id)}" title="React with a laugh">😂</button><button data-reply="${esc(m.id)}" title="Reply" aria-label="Reply">${icon('reply')}</button>${m.status==='sent'?`<button data-report-message="${esc(m.id)}" title="Report message" aria-label="Report message">Report</button>`:''}${mine?`<button data-delete="${esc(m.id)}" title="Remove message" aria-label="Remove message">${icon('trash')}</button>`:''}</div>`}</div></article>`;}
 
-function renderTimeline(scroll=true){const e=$('#timeline');const old=e.scrollTop;const history=roomHistory();let html=hasMore[active]?'<div style="text-align:center;margin:4px 0 20px"><button class="btn secondary" data-action="older" '+(loadingOlder?'disabled':'')+'>Load earlier messages</button></div>':'';let lastDate='';for(const m of history){let d=new Date(m.time).toLocaleDateString([],{month:'short',day:'numeric',year:'numeric'});if(d!==lastDate){html+=`<div class="date-line">${new Date(m.time).toDateString()===new Date().toDateString()?'TODAY':esc(d)}</div>`;lastDate=d;}html+=messageHTML(m);}e.innerHTML=html||welcomeHTML();if(scroll)requestAnimationFrame(()=>scrollBottom(false));else e.scrollTop=old;renderMedia();}
+function renderTimeline(scroll=true){const e=$('#timeline');const old=e.scrollTop;const history=roomHistory();let html=hasMore[active]?'<div style="text-align:center;margin:4px 0 20px"><button class="btn secondary" data-action="older" '+(loadingOlder?'disabled':'')+'>Load earlier messages</button></div>':'';let lastDate='';for(const m of history){let d=new Date(m.time).toLocaleDateString([],{month:'short',day:'numeric',year:'numeric'});if(d!==lastDate){html+=`<div class="date-line">${new Date(m.time).toDateString()===new Date().toDateString()?'TODAY':esc(d)}</div>`;lastDate=d;}html+=messageHTML(m);}const finalHtml=html||welcomeHTML();if(e._rawHtml!==finalHtml||!e.childNodes.length){e._rawHtml=finalHtml;e.innerHTML=finalHtml;}if(scroll)requestAnimationFrame(()=>scrollBottom(false));else e.scrollTop=old;renderMedia();}
 
-function replaceMessage(m){const e=document.getElementById('m-'+m.id);if(e){const top=$('#timeline').scrollTop;e.outerHTML=messageHTML(m);$('#timeline').scrollTop=top;}renderMedia();}
+function replaceMessage(m){const e=document.getElementById('m-'+m.id);if(e){const tl=$('#timeline'),top=tl.scrollTop;e.outerHTML=messageHTML(m);tl._rawHtml=null;tl.scrollTop=top;}renderMedia();}
 
-function appendMessage(m){const e=$('#timeline');const scroll=atBottom()||m.sender.id===profile.id;const list=roomHistory();if(list.length<2||!$('.message',e)){renderTimeline(scroll);}else{const prev=list[list.length-2];if(new Date(prev.time).toDateString()!==new Date(m.time).toDateString())e.insertAdjacentHTML('beforeend',`<div class="date-line">${new Date(m.time).toDateString()===new Date().toDateString()?'TODAY':esc(new Date(m.time).toLocaleDateString())}</div>`);e.insertAdjacentHTML('beforeend',messageHTML(m));if(scroll)scrollBottom(false);renderMedia();}$('#scroll-down').classList.toggle('hidden',scroll);}
+function appendMessage(m){const e=$('#timeline');const scroll=atBottom()||m.sender.id===profile.id;const list=roomHistory();if(list.length<2||!$('.message',e)){renderTimeline(scroll);}else{const prev=list[list.length-2];if(new Date(prev.time).toDateString()!==new Date(m.time).toDateString())e.insertAdjacentHTML('beforeend',`<div class="date-line">${new Date(m.time).toDateString()===new Date().toDateString()?'TODAY':esc(new Date(m.time).toLocaleDateString())}</div>`);e.insertAdjacentHTML('beforeend',messageHTML(m));e._rawHtml=null;if(scroll)scrollBottom(false);renderMedia();}$('#scroll-down').classList.toggle('hidden',scroll);}
 
 function scrollBottom(smooth=true){const e=$('#timeline');e.scrollTo({top:e.scrollHeight,behavior:smooth?'smooth':'instant'});$('#scroll-down').classList.add('hidden');setTimeout(()=>markRead(active),150);}
 
@@ -1751,13 +1857,13 @@ function personHTML(p){return `<div class="row person">${avatar(p)}<div class="g
 
 function onlinePeople(id=active){return Object.values(members[id]||{});}
 
-function renderMedia(){const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);$('#shared-media').innerHTML=photos.length?`<div class="media-grid">${photos.slice(-6).map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open shared photo"><img src="${esc(m.data)}" alt="Shared photo"></button>`).join('')}</div>`:`<div class="media-empty">${icon('photo')}<p>Your little moments<br>will find a home here.</p></div>`;}
+function renderMedia(){const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);const mediaEl=$('#shared-media'),nextMediaHtml=photos.length?`<div class="media-grid">${photos.slice(-6).map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open shared photo"><img src="${esc(m.data)}" alt="Shared photo"></button>`).join('')}</div>`:`<div class="media-empty">${icon('photo')}<p>Your little moments<br>will find a home here.</p></div>`;if(mediaEl&&mediaEl._rawHtml!==nextMediaHtml){mediaEl._rawHtml=nextMediaHtml;mediaEl.innerHTML=nextMediaHtml;}}
 
 function updateSend(){$('#send-button').disabled=!isReady()||(!$('#message-input').value.trim()&&!attachment)||!!mediaRecorder&&mediaRecorder.state==='recording';}
 
-function renderMute(){$('#mute-icon').innerHTML=icon(currentRoom().muted?'bell-off':'bell');$('#mute-label').textContent=currentRoom().muted?'Unmute':'Mute';}
+function renderMute(){const muteEl=$('#mute-icon'),nextMute=icon(currentRoom().muted?'bell-off':'bell');if(muteEl&&muteEl._rawHtml!==nextMute){muteEl._rawHtml=nextMute;muteEl.innerHTML=nextMute;}$('#mute-label').textContent=currentRoom().muted?'Unmute':'Mute';}
 
-function renderTyping(){const names=Object.values(typing[active]||{}).filter(p=>p.until>Date.now()).map(p=>p.name);$('#typing').innerHTML=names.length?`<span class="typing-dots"><i></i><i></i><i></i></span>${esc(names.slice(0,2).join(' and '))}${names.length>2?' and others':''} ${names.length===1?'is':'are'} typing…`:'';}
+function renderTyping(){const names=Object.values(typing[active]||{}).filter(p=>p.until>Date.now()).map(p=>p.name);const typEl=$('#typing'),nextTyp=names.length?`<span class="typing-dots"><i></i><i></i><i></i></span>${esc(names.slice(0,2).join(' and '))}${names.length>2?' and others':''} ${names.length===1?'is':'are'} typing…`:'';if(typEl&&typEl._rawHtml!==nextTyp){typEl._rawHtml=nextTyp;typEl.innerHTML=nextTyp;}}
 
 function setReply(mid){const m=roomHistory().find(m=>m.id===mid);if(!m||m.deleted)return;reply=m;$('#reply-bar').innerHTML=`<div><strong>Replying to ${esc(m.sender.name)}</strong><p>${esc(preview(m))}</p></div><button class="icon-btn" data-action="cancel-reply" aria-label="Cancel reply">${icon('close')}</button>`;$('#reply-bar').classList.remove('hidden');$('#message-input').focus();}
 
@@ -1830,7 +1936,7 @@ function modalTitle(symbol,title,intro){return `<div class="modal-icon">${icon(s
 
 async function copyText(text){try{await navigator.clipboard.writeText(text);return true;}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';document.body.append(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch{}ta.remove();return ok;}}
 
-function applyTheme(){document.body.classList.toggle('dark',settings.dark);$('#theme-icon').innerHTML=icon(settings.dark?'sun':'moon');store('settings',settings);}
+function applyTheme(){const isDark=!!settings.dark;document.documentElement.classList.toggle('dark',isDark);document.body.classList.toggle('dark',isDark);$('#theme-icon').innerHTML=icon(isDark?'sun':'moon');store('settings',settings);}
 
 function showGallery(){publishActivity('gallery');const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);openModal(`${modalTitle('photo','The little moments.',esc(currentRoom().name)+' · saved photos in the loaded conversation')}<div class="media-modal-grid">${photos.map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open photo from ${esc(m.sender.name)}"><img src="${esc(m.data)}" alt="Photo from ${esc(m.sender.name)}"></button>`).join('')}</div>${photos.length?'':`<div class="media-empty" style="padding:35px">${icon('camera')}<p>No photos yet.<br>The ordinary moments are worth sharing, too.</p></div><button class="btn full" data-action="photo">${icon('photo')}Share a photo</button>`}`,true);}
 
@@ -1871,7 +1977,7 @@ function friendPerson(p){return{id:p.id,name:p.display_name||p.name||'Friend',co
 function isBest(id){return social.friends.some(p=>p.id===id&&p.best);}
 async function socialTask(button,fn){if(button?.disabled)return;button&&(button.disabled=true);try{return await fn();}catch(e){fail(e);}finally{if(button?.isConnected)button.disabled=false;}}
 async function loadSocial(){if(!user||!setupReady)return;const epoch=bootVersion;const data=unwrap(await db.rpc('social_state'));if(epoch!==bootVersion)return;social={friends:data.friends||[],incoming:data.incoming||[],outgoing:data.outgoing||[],blocked:data.blocked||[]};for(const p of [...social.friends,...social.incoming,...social.outgoing])peopleCache[p.id]=friendPerson(p);renderSocialBits();refreshAvatarSurfaces();if($('#friends-root')&&socialTab!=='find')paintFriendList();}
-function renderSocialBits(){const badge=$('#friend-request-count');if(badge){badge.textContent=social.incoming.length||'';badge.classList.toggle('hidden',!social.incoming.length);}const area=$('#best-friends-strip');if(area){const best=social.friends.filter(p=>p.best);area.innerHTML=`<div class="row between best-title"><span class="eyebrow">Your closest people</span><button class="subtle-link" data-action="best-friends">${best.length?'View all':'Pin a friend'}</button></div>${best.length?`<div class="best-row">${best.slice(0,5).map(p=>`<button class="best-person" data-social="chat" data-uid="${esc(p.id)}" title="Message ${esc(p.display_name)}">${avatar(friendPerson(p))}<span class="best-star">★</span><span class="best-name">${esc(p.display_name.split(' ')[0])}</span></button>`).join('')}</div>`:'<button class="best-empty" data-action="friends">'+icon('people')+'Good company starts with a friend.</button>'}`;}renderRooms();}
+function renderSocialBits(){const badge=$('#friend-request-count');if(badge){badge.textContent=social.incoming.length||'';badge.classList.toggle('hidden',!social.incoming.length);}const area=$('#best-friends-strip');if(area){const best=social.friends.filter(p=>p.best);const nextBestHtml=`<div class="row between best-title"><span class="eyebrow">Your closest people</span><button class="subtle-link" data-action="best-friends">${best.length?'View all':'Pin a friend'}</button></div>${best.length?`<div class="best-row">${best.slice(0,5).map(p=>`<button class="best-person" data-social="chat" data-uid="${esc(p.id)}" title="Message ${esc(p.display_name)}">${avatar(friendPerson(p))}<span class="best-star">★</span><span class="best-name">${esc(p.display_name.split(' ')[0])}</span></button>`).join('')}</div>`:'<button class="best-empty" data-action="friends">'+icon('people')+'Good company starts with a friend.</button>'}`;if(area._rawHtml!==nextBestHtml){area._rawHtml=nextBestHtml;area.innerHTML=nextBestHtml;}}renderRooms();}
 function scheduleSocial(){clearTimeout(socialRefreshTimer);socialRefreshTimer=setTimeout(async()=>{try{await loadSocial();await loadRooms();await refreshCalls();if(voice.call&&voice.meta?.kind==='direct'&&!rooms.find(r=>r.id===voice.call.room_id)?.can_send)await leaveVoiceCall(true);}catch(e){console.warn('Social refresh:',e);}},350);}
 function initSocial(){if(!user||!setupReady)return;cleanupSocial(false);const me=profile.id;socialChannel=client.channel('catcul:user:'+me,{config:{private:true}})
 .on('postgres_changes',{event:'UPDATE',schema:DATABASE_SCHEMA,table:'profiles'},event=>applyProfileCharacter(event.new))
@@ -1905,7 +2011,7 @@ async function showMembers(){if(!active)return showNewRoom();await loadPeople(ac
 async function kickMember(roomId,id){const p=peopleCache[id]||{name:'this member'};openModal(`${modalTitle('user-minus','Remove this member?',esc(p.name)+' will lose access to this group and be disconnected from its current call. All outstanding group invitations will also be revoked; create fresh links for anyone you still want to invite.')}<button class="btn full" id="confirm-kick">Remove member</button><button class="btn secondary full" data-action="close-modal">Cancel</button>`);$('#confirm-kick').onclick=()=>socialTask($('#confirm-kick'),async()=>{const result=await callApi('kick-member',{room_id:roomId,user_id:id});await loadPeople(roomId);if(result.media_cleanup_pending){toast('Chat access removed. Audio removal needs a retry.',true);$('#confirm-kick').textContent='Retry audio removal';return;}closeModal();toast('Member removed.');});}
 function renameGroup(){if(!active||currentRoom().kind!=='group'||currentRoom().role!=='owner')return;const id=active;openModal(`${modalTitle('chat','A name that feels like you.','Rename this group for everyone.')}<form id="rename-form"><label for="group-name">Group name</label><input class="field" id="group-name" value="${esc(currentRoom().name)}" maxlength="40" required><button class="btn full" type="submit">Save group name</button></form>`);$('#rename-form').onsubmit=e=>{e.preventDefault();const name=$('#group-name').value.trim();socialTask($('#rename-form button'),async()=>{unwrap(await db.rpc('rename_group',{p_room_id:id,p_name:name}));await loadRooms();await setActive(id);closeModal();toast('Group renamed.');});};}
 document.addEventListener('click',async e=>{const tab=e.target.closest('[data-social-tab]');if(tab){socialTab=tab.dataset.socialTab;socialBestOnly=false;paintFriendList();return;}const kick=e.target.closest('[data-kick]');if(kick){kickMember(kick.dataset.roomId,kick.dataset.kick).catch(fail);return;}const b=e.target.closest('[data-social]');if(!b)return;const id=b.dataset.uid,a=b.dataset.social;if(a==='best-filter'){socialBestOnly=!socialBestOnly;paintFriendList();return;}if(a==='more')return showFriendOptions(id);if(a==='remove'||a==='block')return confirmSocial(a,id);await socialTask(b,async()=>{if(a==='chat'){await openDirectChat(id);return;}if(a==='call'){const r=await openDirectChat(id);await startVoiceCall(r.id);return;}if(a==='request'){unwrap(await db.rpc('send_friend_request',{p_to:id}));toast('Friend request sent.');b.outerHTML='<span class="pill-label">Request sent</span>';}if(a==='accept'||a==='decline')unwrap(await db.rpc('respond_friend_request',{p_from:id,p_accept:a==='accept'}));if(a==='cancel')unwrap(await db.rpc('remove_friend',{p_other:id}));if(a==='best')unwrap(await db.rpc('set_best_friend',{p_friend:id,p_best:!isBest(id)}));if(a==='unblock')unwrap(await db.rpc('set_block',{p_other:id,p_block:false}));await loadSocial();await loadRooms();});});
-function syncRoomChrome(){if(!active)return;const r=currentRoom();$('#chat-title').textContent=r.name;$('#detail-title').textContent=r.name;$('#detail-description').textContent=r.purpose==='course'?(r.is_study_group?'An invite-only study group. Learn together.':'Course resources, homework and conversations.'):r.purpose==='community'?'Visible to every signed-in account.':r.kind==='direct'?'A private space. Just the two of you.':'A shared group for your kind of people.';const head=$('.chat-head .room-avatar');if(head)head.innerHTML=r.kind==='direct'?avatar({id:r.peer_id,name:r.name,color:r.peer_color}):icon('people');const big=$('.big-room');if(big)big.innerHTML=r.kind==='direct'?avatar({id:r.peer_id,name:r.name,color:r.peer_color}):icon('people');$$('.chat-head [data-action="invite"],.details [data-action="invite"]').forEach(el=>el.classList.toggle('hidden',r.kind==='direct'||r.purpose==='community'));const notice=$('#community-notice');if(notice)notice.classList.toggle('hidden',r.purpose!=='community');renderCallBanner();}
+function syncRoomChrome(){if(!active)return;const r=currentRoom();$('#chat-title').textContent=r.name;$('#detail-title').textContent=r.name;$('#detail-description').textContent=r.purpose==='course'?(r.is_study_group?'An invite-only study group. Learn together.':'Course resources, homework and conversations.'):r.purpose==='community'?'Visible to every signed-in account.':r.kind==='direct'?'A private space. Just the two of you.':'A shared group for your kind of people.';const head=$('.chat-head .room-avatar'),avHtml=r.kind==='direct'?avatar({id:r.peer_id,name:r.name,color:r.peer_color}):icon('people');if(head&&head._rawHtml!==avHtml){head._rawHtml=avHtml;head.innerHTML=avHtml;}const big=$('.big-room');if(big&&big._rawHtml!==avHtml){big._rawHtml=avHtml;big.innerHTML=avHtml;}$$('.chat-head [data-action="invite"],.details [data-action="invite"]').forEach(el=>el.classList.toggle('hidden',r.kind==='direct'||r.purpose==='community'));const notice=$('#community-notice');if(notice)notice.classList.toggle('hidden',r.purpose!=='community');renderCallBanner();}
 function showNewConversation(){if(!setupReady)return showConnectionHelp();openModal(`${modalTitle('chat','Who’s on your mind?','One person, your whole group, or a new shared space.')}<button class="new-conversation-choice" data-action="friends"><span>${icon('chat')}</span><span><h3>Private conversation</h3><p>Find a friend and start a chat, just the two of you.</p></span>${icon('arrow')}</button><button class="new-conversation-choice" data-action="new-group"><span>${icon('people')}</span><span><h3>Create a group</h3><p>Make a space for your favorite people.</p></span>${icon('arrow')}</button><button class="new-conversation-choice" data-action="new-study-group">${icon('book')}<span><h3>Study group</h3><p>A shared space for your classmates.</p></span>${icon('arrow')}</button><button class="new-conversation-choice" data-action="new-course">${icon('book')}<span><h3>Create a course</h3><p>Keep resources and homework together.</p></span>${icon('arrow')}</button><button class="new-conversation-choice" data-action="join-group"><span>${icon('link')}</span><span><h3>Join with an invitation</h3><p>Someone saved you a space? Come on in.</p></span>${icon('arrow')}</button>`);}
 
 
@@ -3255,7 +3361,7 @@ sendMessage=async function(){
 /* ---------- Chat chrome: wallpaper, banners, pins, unread jump ---------- */
 function ensureChatChrome(){
   const chat=$('.chat');if(!chat)return;
-  if(!pinBannerEl){pinBannerEl=document.createElement('div');pinBannerEl.id='pin-banner';chat.insertBefore(pinBannerEl,$('#timeline'));}
+  if(!pinBannerEl){pinBannerEl=document.createElement('div');pinBannerEl.id='pin-banner';pinBannerEl.className='hidden';chat.insertBefore(pinBannerEl,$('#timeline'));}
   if(!unreadJumpEl){unreadJumpEl=document.createElement('button');unreadJumpEl.className='unread-jump hidden';unreadJumpEl.innerHTML=icon('down')+'<span></span>';unreadJumpEl.onclick=jumpToUnread;chat.appendChild(unreadJumpEl);}
   if(!scrollBottomEl){scrollBottomEl=document.createElement('button');scrollBottomEl.className='scroll-bottom hidden';scrollBottomEl.setAttribute('aria-label','Scroll to latest');scrollBottomEl.innerHTML=icon('down')+'<span class="cnt hidden"></span>';scrollBottomEl.onclick=()=>{$('#timeline').scrollTo({top:$('#timeline').scrollHeight,behavior:'smooth'});};chat.appendChild(scrollBottomEl);}
 }
@@ -3267,26 +3373,40 @@ function syncChatChrome(id){
   loadPinnedMessages(id);
   updateUnreadNav();
 }
+function applyChatBanners(items){
+  const chat=$('.chat');if(!chat)return;
+  const sig=items.map(([c,h])=>c+'::'+h).join('||');
+  if(chat._modBannerSig===sig)return;
+  chat._modBannerSig=sig;
+  removeChatBanner();
+  for(const [cls,html] of items)addChatBanner(cls,html);
+}
 async function loadRoomModeration(id){
-  const r=roomPref(id);removeChatBanner();
-  if(r.kind==='direct')return;
+  const r=roomPref(id);
+  if(r.kind==='direct'){
+    if(id===active){applyChatBanners([]);$('#message-input').disabled=false;$('#mic-button').disabled=false;$('#message-input').placeholder='Write a message…';updateSend();}
+    return;
+  }
+  const banners=[];
   try{
     const s=unwrap(await db.rpc('room_settings',{p_room_id:id}));
+    if(id!==active)return;
     roomSettingsCache[id]=s||{};
-    if(s?.archived){addChatBanner('archived-banner','This room is archived. It is read-only.');$('#message-input').disabled=true;$('#message-input').placeholder='Archived room';$('#send-button').disabled=true;$('#mic-button').disabled=true;}
+    if(s?.archived){banners.push(['archived-banner','This room is archived. It is read-only.']);$('#message-input').disabled=true;$('#message-input').placeholder='Archived room';$('#send-button').disabled=true;$('#mic-button').disabled=true;}
     else{$('#message-input').disabled=false;$('#mic-button').disabled=false;$('#message-input').placeholder='Write a message…';}
     if((r.role==='owner'||r.role==='admin')){
       const [pend,joins]=await Promise.all([db.rpc('list_pending_messages',{p_room_id:id}),db.from('room_join_requests').select('id',{head:true,count:'exact'}).eq('room_id',id).eq('status','pending')]);
+      if(id!==active)return;
       const pc=(pend.data||[]).length,jc=joins.count||0;
-      if(!pend.error&&pc>0)addChatBanner('pending-banner',`${pc} message${pc>1?'s':''} waiting for approval. <button type="button" data-mp="review-pending">Review</button>`);
-      if(!joins.error&&jc>0)addChatBanner('pending-banner',`${jc} join request${jc>1?'s':''}. <button type="button" data-mp="review-joins">Review</button>`);
+      if(!pend.error&&pc>0)banners.push(['pending-banner',`${pc} message${pc>1?'s':''} waiting for approval. <button type="button" data-mp="review-pending">Review</button>`]);
+      if(!joins.error&&jc>0)banners.push(['pending-banner',`${jc} join request${jc>1?'s':''}. <button type="button" data-mp="review-joins">Review</button>`]);
       pendingCounts[id]=pc;joinRequestCounts[id]=jc;
     }
-  }catch(e){/* chat tools migration not applied yet */}
-  updateSend();
+  }catch(e){if(id!==active)return;/* chat tools migration not applied yet */}
+  if(id===active){applyChatBanners(banners);updateSend();}
 }
 function addChatBanner(cls,html){const b=document.createElement('div');b.className=cls;b.dataset.chatBanner='1';b.innerHTML=html;const tl=$('#timeline');tl.before(b);}
-function removeChatBanner(){$$('[data-chat-banner]').forEach(b=>b.remove());}
+function removeChatBanner(){const chat=$('.chat');if(chat)chat._modBannerSig='';$$('[data-chat-banner]').forEach(b=>b.remove());}
 
 /* ---------- Unread navigation & scroll-to-latest ---------- */
 function firstUnreadMessage(){
@@ -3550,16 +3670,18 @@ document.addEventListener('click',async e=>{
 });
 async function loadPinnedMessages(id){
   const banner=pinBannerEl;if(!banner)return;
-  if(roomPref(id).kind==='direct'){banner.classList.add('hidden');return;}
+  if(roomPref(id).kind==='direct'){banner.classList.add('hidden');banner._rawHtml='';return;}
   try{
     const pins=unwrap(await db.from('pinned_messages').select('*').eq('room_id',id).order('pinned_at',{ascending:false}).limit(3))||[];
+    if(id!==active)return;
     roomPins[id]=pins.map(p=>p.message_id);
-    if(!pins.length){banner.classList.add('hidden');return;}
+    if(!pins.length){banner.classList.add('hidden');banner._rawHtml='';return;}
     const mid=pins[0].message_id,m=roomHistory(id).find(x=>x.id===mid);
     banner.className='pin-banner';banner.dataset.pinIndex='0';
-    banner.innerHTML=`<span class="bar"></span><div class="grow"><strong>Pinned</strong><p>${m?esc(preview(m).slice(0,90)):'Pinned message — tap to open'}</p></div>${pins.length>1?`<span class="muted small">${pins.length}</span>`:''}`;
+    const nextPinHtml=`<span class="bar"></span><div class="grow"><strong>Pinned</strong><p>${m?esc(preview(m).slice(0,90)):'Pinned message — tap to open'}</p></div>${pins.length>1?`<span class="muted small">${pins.length}</span>`:''}`;
+    if(banner._rawHtml!==nextPinHtml){banner._rawHtml=nextPinHtml;banner.innerHTML=nextPinHtml;}
     banner.onclick=async()=>{const idx=(+banner.dataset.pinIndex+1)%pins.length;banner.dataset.pinIndex=String(idx);const mm=pins[idx].message_id;await ensureMessageLoaded(mm);const el=document.getElementById('m-'+mm);el?.scrollIntoView({behavior:'smooth',block:'center'});el?.classList.add('flash');setTimeout(()=>el?.classList.remove('flash'),2200);};
-  }catch(e){banner.classList.add('hidden');}
+  }catch(e){if(id===active){banner.classList.add('hidden');banner._rawHtml='';}}
 }
 let roomPins={};
 async function togglePinMessage(mid){
@@ -3955,7 +4077,7 @@ function loadThreeCdnjs() {
 
 /* ---------- 10 Full-Screen Generated Anime Themes + 28 Verified 4K Wallhaven Anime Wallpapers ---------- */
 const CATCUL_THEMES = [
-  { id: 'meadow', name: 'Ghibli Meadow', tier: 'free', dark: false, colors: ['#dfeecf', '#ffffff', '#1d3221'], photo: './wallpapers/anime-ghibli-meadow.jpg', source: 'Catcul Studio Anime', wallId: 'anime-ghibli-meadow', desc: 'Sunlit summer valley, wildflower hillside & crystal-clear studio clouds across your whole screen.' },
+  { id: 'meadow', name: 'Catcul Classic (Default)', tier: 'free', dark: false, colors: ['#f7f8f3', '#ffffff', '#d7f472'], photo: '', source: 'Catcul Signature Default', wallId: '', desc: 'Warm cream, soft sage & bright lime — the signature default theme shared across every Catcul page.' },
   { id: 'midnight', name: 'Shinkai Starfall', tier: 'free', dark: true, colors: ['#11192a', '#1d2840', '#79e2ff'], photo: './wallpapers/anime-shinkai-sky.jpg', source: 'Catcul Studio Anime', wallId: 'anime-shinkai-sky', desc: 'Twin comet trails over a lantern-lit mountain shrine & glowing night city valley.' },
   { id: 'matcha-cloud', name: 'Emerald Sanctuary', tier: 'plus', dark: false, colors: ['#dcecd8', '#f8fcf6', '#4c8b53'], photo: './wallpapers/anime-emerald-sanctuary.jpg', source: 'Catcul Studio Anime', wallId: 'anime-emerald-sanctuary', desc: 'Ancient sunlit bamboo grove, glowing emerald fireflies & a tranquil jade stone bridge.' },
   { id: 'ocean-glass', name: 'Spirit Lantern Shrine', tier: 'plus', dark: true, colors: ['#0e1824', '#182838', '#6ce4ff'], photo: './wallpapers/anime-cursed-shrine.jpg', source: 'Catcul Studio Anime', wallId: 'anime-cursed-shrine', desc: 'Midnight torii gate pathway lit by ethereal cyan spirit flames beneath a starry nebula.' },
@@ -4137,7 +4259,8 @@ Object.keys(settings).forEach((k) => {
 });
 
 function syncAnimeWallpaperPrefs() {
-  // Default to 'vivid' (100% crisp full-screen edge-to-edge wallpaper, zero blur)
+  // Default to 'vivid' whenever an anime theme or custom/room anime wallpaper is active;
+  // on the default 'meadow' theme with no anime wallpaper chosen, preserve Catcul's signature cream/sage/lime theme!
   const mode = settings.photoBackdrop === 'off' ? 'off' : (settings.photoBackdrop === 'subtle' ? 'subtle' : 'vivid');
   document.documentElement.dataset.photoBackdrop = mode;
   const customWall = typeof settings.customAnimeWall === 'string' ? settings.customAnimeWall : '';
@@ -4157,6 +4280,15 @@ function syncAnimeWallpaperPrefs() {
   } else {
     document.documentElement.style.removeProperty('--catcul-custom-photo');
   }
+
+  const activeThemeId = catculBilling.appTheme || document.documentElement.dataset.catculTheme || 'meadow';
+  const activeThemeObj = CATCUL_THEMES.find((t) => t.id === activeThemeId) || CATCUL_THEMES[0];
+  const hasAnimeBackdrop = mode !== 'off' && !isSolidOrStickerRoomWallpaper(roomW) && Boolean(chosenUrl || activeThemeObj.photo);
+  if (hasAnimeBackdrop) {
+    document.documentElement.dataset.animeCanvas = '1';
+  } else {
+    delete document.documentElement.dataset.animeCanvas;
+  }
 }
 
 function applyCatculAppTheme(themeId, persistLocal = true) {
@@ -4164,10 +4296,14 @@ function applyCatculAppTheme(themeId, persistLocal = true) {
   const allowed = hasCatculTier(found.tier) ? found : CATCUL_THEMES[0];
   catculBilling.appTheme = allowed.id;
   document.documentElement.dataset.catculTheme = allowed.id;
-  settings.dark = !!allowed.dark;
-  document.documentElement.classList.toggle('dark', !!allowed.dark);
+  if (allowed.id !== 'meadow') {
+    settings.dark = !!allowed.dark;
+  }
+  const isDark = !!settings.dark;
+  document.documentElement.classList.toggle('dark', isDark);
+  if (document.body) document.body.classList.toggle('dark', isDark);
   syncAnimeWallpaperPrefs();
-  if ($('#theme-icon')) $('#theme-icon').innerHTML = icon(allowed.dark ? 'sun' : 'moon');
+  if ($('#theme-icon')) $('#theme-icon').innerHTML = icon(isDark ? 'sun' : 'moon');
   if (persistLocal) store('settings', settings);
 }
 
@@ -4190,13 +4326,20 @@ if (__monPrevSyncChatChrome) {
 const __monBaseApplyTheme = applyTheme;
 applyTheme = function () {
   __monBaseApplyTheme();
-  // When user clicks quick light/dark toggle, keep custom theme if matching mode or toggle between meadow/midnight
+  const isDark = !!settings.dark;
+  document.documentElement.classList.toggle('dark', isDark);
+  if (document.body) document.body.classList.toggle('dark', isDark);
+  // Keep Catcul Classic ('meadow') in both light & dark mode; if an anime theme's dark flag mismatches, switch smoothly
   const cur = CATCUL_THEMES.find((t) => t.id === catculBilling.appTheme);
-  if (!cur || cur.dark !== !!settings.dark) {
-    const next = settings.dark ? 'midnight' : 'meadow';
+  if (!cur) {
+    catculBilling.appTheme = 'meadow';
+    document.documentElement.dataset.catculTheme = 'meadow';
+  } else if (cur.id !== 'meadow' && cur.dark !== isDark) {
+    const next = isDark ? 'midnight' : 'meadow';
     catculBilling.appTheme = next;
     document.documentElement.dataset.catculTheme = next;
   }
+  syncAnimeWallpaperPrefs();
 };
 
 /* ---------- Billing Edge Function Caller ---------- */
@@ -4570,19 +4713,22 @@ function showThemesModal(initialTab = 'themes') {
           const badge = t.tier === 'free'
             ? '<span class="tier-chip tier-free">Starter</span>'
             : tierChipHTML(t.tier);
+          const bannerStyle = t.photo
+            ? `background-color:${t.colors[0]};background-image:url('${esc(t.photo)}')`
+            : `background:linear-gradient(135deg,#f7f8f3 0%,#e4f0ce 58%,#d7f472 100%)`;
           return `<article class="theme-card ${activeTheme ? 'active-theme' : ''}">
-            <div class="theme-swatch-banner" style="background-color:${t.colors[0]};background-image:url('${esc(t.photo)}')">
+            <div class="theme-swatch-banner" style="${bannerStyle}">
               <div class="theme-swatches">${t.colors.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
               ${badge}
             </div>
             <div class="theme-card-body">
               <h4><span>${esc(t.name)}</span></h4>
               <p>${esc(t.desc)}</p>
-              <span class="theme-photo-credit"><i class="ri-hd-line"></i> Full-screen edge-to-edge · Zero blur</span>
+              <span class="theme-photo-credit">${t.photo ? '<i class="ri-hd-line"></i> Full-screen edge-to-edge · Zero blur' : '<i class="ri-sparkling-line"></i> Default Catcul warm cream &amp; lime'}</span>
               ${activeTheme
                 ? `<button class="btn secondary full" type="button" disabled>Equipped ✓</button>`
                 : unlocked
-                  ? `<button class="btn full" type="button" data-equip-theme="${t.id}">Apply full-screen</button>`
+                  ? `<button class="btn full" type="button" data-equip-theme="${t.id}">${t.photo ? 'Apply full-screen' : 'Apply default theme'}</button>`
                   : `<button class="btn secondary full" type="button" data-unlock-theme="${t.tier}">Unlock with ${esc(TIER_LABELS[t.tier])}</button>`}
             </div>
           </article>`;
@@ -6223,7 +6369,11 @@ function renderStoriesStrip() {
     </button>`;
   }).join('');
 
-  strip.innerHTML = addBtn + myViewBtn + otherBtns;
+  const nextStoriesHtml = addBtn + myViewBtn + otherBtns;
+  if (strip._rawHtml !== nextStoriesHtml) {
+    strip._rawHtml = nextStoriesHtml;
+    strip.innerHTML = nextStoriesHtml;
+  }
 }
 
 async function publishDataUrlToStory(dataUrl, mediaKind, caption = '', bgTheme = 'meadow', stickers = []) {
@@ -7085,6 +7235,8 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     const label = enabled ? 'Use the standard cursor' : 'Use the Catcul custom cursor';
     toggle.title = label; toggle.setAttribute('aria-label', label);
     toggle.querySelector('.cc-toggle-label').textContent = 'Cursor: ' + (enabled ? 'On' : 'Off');
+    const navState = document.getElementById('cursor-state');
+    if (navState) navState.textContent = enabled ? 'On' : 'Off';
     document.querySelectorAll('[data-custom-cursor-toggle]').forEach(button => {
       button.classList.toggle('on', enabled);
       button.setAttribute('aria-checked', String(enabled));
@@ -7161,7 +7313,11 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
   });
   document.addEventListener('click', event => {
-    if (event.target instanceof Element && event.target.closest('[data-custom-cursor-toggle]')) setEnabled(!enabled);
+    const btn = event.target instanceof Element ? event.target.closest('[data-custom-cursor-toggle]') : null;
+    if (btn) {
+      setEnabled(!enabled);
+      if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: btn});
+    }
   });
   function preferenceChanged() { updateToggle(); hide(); }
   pointerMedia.addEventListener('change', preferenceChanged);
@@ -7340,31 +7496,32 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     const st = document.createElement('style');
     st.id = 'catcul-dl-styles';
     st.textContent = `
-      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(14,21,16,.54);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
+      .catcul-dl-backdrop{position:fixed;inset:0;z-index:9998;background:rgba(24,33,22,.46);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:catculDlFade .16s ease}
       @keyframes catculDlFade{from{opacity:0}to{opacity:1}}
-      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#fbfcfa;color:#17241b;border:1px solid rgba(24,38,29,.12);border-radius:22px;padding:26px;box-shadow:0 24px 64px rgba(10,18,13,.24);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
-      body.dark .catcul-dl-dialog{background:#1b251e;color:#edf2ea;border-color:rgba(255,255,255,.1)}
-      .catcul-dl-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(24,38,29,.12);background:transparent;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
-      .catcul-dl-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4a6b46;margin-bottom:6px;display:block}
-      body.dark .catcul-dl-eyebrow{color:#cbe192}
-      .catcul-dl-dialog h2{font-size:23px;font-weight:750;letter-spacing:-.03em;margin:0 0 6px}
-      .catcul-dl-sub{font-size:13.5px;color:#5b695b;margin:0 0 20px;line-height:1.55}
-      body.dark .catcul-dl-sub{color:#9eb09e}
+      .catcul-dl-dialog{width:min(700px,100%);max-height:92dvh;overflow-y:auto;background:#ffffff;color:#1e281d;border:1px solid #e3e8dc;border-radius:28px;padding:28px;box-shadow:0 28px 70px rgba(24,34,22,.18);font-family:'Plus Jakarta Sans',Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative}
+      body.dark .catcul-dl-dialog,html.dark .catcul-dl-dialog{background:#1a2019;color:#eef2ea;border-color:#2c362a}
+      .catcul-dl-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid #e3e8dc;background:#f7f8f3;color:inherit;font-size:18px;cursor:pointer;display:grid;place-items:center}
+      body.dark .catcul-dl-close,html.dark .catcul-dl-close{background:#232c22;border-color:#344032}
+      .catcul-dl-eyebrow{display:inline-flex;padding:4px 11px;border-radius:999px;background:#e4f0ce;font-size:10.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#354e27;margin-bottom:10px}
+      body.dark .catcul-dl-eyebrow,html.dark .catcul-dl-eyebrow{background:#263421;color:#d7f472}
+      .catcul-dl-dialog h2{font-size:24px;font-weight:800;letter-spacing:-.03em;margin:0 0 6px}
+      .catcul-dl-sub{font-size:13.5px;color:#5a6657;margin:0 0 20px;line-height:1.58}
+      body.dark .catcul-dl-sub,html.dark .catcul-dl-sub{color:#a3b0a0}
       .catcul-dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-      .catcul-dl-card{border:1px solid rgba(24,38,29,.11);border-radius:16px;padding:18px;background:#f3f6f0;display:flex;flex-direction:column;gap:10px}
-      body.dark .catcul-dl-card{background:#222f26;border-color:rgba(255,255,255,.09)}
-      .catcul-dl-card h3{font-size:15.5px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px}
-      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#556355;margin:0}
-      body.dark .catcul-dl-card p{color:#a7b6a6}
-      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#39483b}
-      body.dark .catcul-dl-steps{color:#cdd8cc}
-      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:12px;border:0;background:#1f3a2a;color:#f6f8f3;font-size:13px;font-weight:650;cursor:pointer;text-decoration:none;margin-top:auto}
-      .catcul-dl-btn:hover{background:#294b37}
-      body.dark .catcul-dl-btn{background:#cbe192;color:#142318}
-      .catcul-dl-btn.secondary{background:#e5ece0;color:#1a2b1f}
-      body.dark .catcul-dl-btn.secondary{background:#2c3c31;color:#edf2ea}
-      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.72);padding:10px;border-radius:12px;border:1px solid rgba(24,38,29,.08)}
-      body.dark .catcul-dl-qr-row{background:rgba(15,21,17,.45);border-color:rgba(255,255,255,.08)}
+      .catcul-dl-card{border:1px solid #e3e8dc;border-radius:20px;padding:18px;background:#f7f8f3;display:flex;flex-direction:column;gap:10px}
+      body.dark .catcul-dl-card,html.dark .catcul-dl-card{background:#222a20;border-color:#313d2f}
+      .catcul-dl-card h3{font-size:15.5px;font-weight:750;margin:0;display:flex;align-items:center;gap:8px}
+      .catcul-dl-card p{font-size:12.5px;line-height:1.55;color:#586456;margin:0}
+      body.dark .catcul-dl-card p,html.dark .catcul-dl-card p{color:#a8b5a5}
+      .catcul-dl-steps{margin:2px 0 0;padding-left:18px;font-size:12px;line-height:1.6;color:#394637}
+      body.dark .catcul-dl-steps,html.dark .catcul-dl-steps{color:#ced8cb}
+      .catcul-dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:999px;border:1px solid rgba(30,42,27,.06);background:#d7f472;color:#1c261a;font-size:13px;font-weight:750;cursor:pointer;text-decoration:none;margin-top:auto;transition:transform .14s ease,background-color .14s ease}
+      .catcul-dl-btn:hover{background:#cdf059;transform:translateY(-1px)}
+      body.dark .catcul-dl-btn,html.dark .catcul-dl-btn{background:#d7f472;color:#172115}
+      .catcul-dl-btn.secondary{background:#ffffff;color:#1e281d;border:1px solid #dfe5d8}
+      body.dark .catcul-dl-btn.secondary,html.dark .catcul-dl-btn.secondary{background:#2b3629;color:#eef2ea;border-color:#3b4838}
+      .catcul-dl-qr-row{display:flex;align-items:center;gap:12px;background:#ffffff;padding:10px;border-radius:14px;border:1px solid #e3e8dc}
+      body.dark .catcul-dl-qr-row,html.dark .catcul-dl-qr-row{background:#181e17;border-color:#2e392c}
       .catcul-dl-qr-row svg{flex-shrink:0;border-radius:8px;width:96px;height:96px}
       @media(max-width:620px){.catcul-dl-grid{grid-template-columns:1fr}.catcul-dl-backdrop{align-items:flex-end;padding:0}.catcul-dl-dialog{border-radius:22px 22px 0 0;padding:22px 18px max(22px,env(safe-area-inset-bottom))}}
     `;

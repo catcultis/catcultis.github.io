@@ -419,8 +419,457 @@ body.dark .field-note.ok{color:#c9ef7b}
 }
 
 </style>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<style id="catcul-popcats-css">
+.hidden{display:none!important}
+.catcul-boot-overlay{position:fixed;inset:0;z-index:9990;background:radial-gradient(circle at 18% 18%,rgba(215,244,114,.34),transparent 42%),radial-gradient(circle at 82% 80%,rgba(228,240,206,.62),transparent 48%),var(--bg,#f7f8f3);color:var(--text,var(--ink,#151c13));font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden;transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
+#boot-overlay.catcul-boot-overlay{z-index:79}
+body.dark .catcul-boot-overlay,.dark .catcul-boot-overlay{background:radial-gradient(circle at 18% 18%,rgba(215,244,114,.12),transparent 42%),radial-gradient(circle at 82% 80%,rgba(74,110,64,.22),transparent 48%),var(--bg,#131812);color:var(--text,var(--ink,#edf2e6))}
+.catcul-boot-overlay.pop-cat-zen-mode{z-index:9995;animation:pcFadeIn .2s ease}
+.catcul-boot-overlay.is-closing{opacity:0;transform:scale(1.015);pointer-events:none}
+.pop-cat-field{position:absolute;inset:0;overflow:hidden;pointer-events:auto;user-select:none;-webkit-user-select:none}
+.boot-center-card{position:relative;z-index:3;width:min(410px,92vw);padding:28px 26px 22px;border-radius:28px;background:rgba(255,255,252,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(31,52,28,.11);box-shadow:0 22px 64px rgba(24,38,22,.1);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;pointer-events:auto;animation:pcCardIn .36s cubic-bezier(.22,1,.36,1)}
+body.dark .boot-center-card,.dark .boot-center-card{background:rgba(24,32,25,.88);border-color:rgba(215,244,114,.16);box-shadow:0 22px 64px rgba(0,0,0,.44)}
+.zen-title{font-family:Georgia,serif;font-size:26px;letter-spacing:-.7px;font-weight:400;margin:2px 0}
+.boot-cat-crest{position:relative;width:64px;height:64px;border-radius:20px;background:#152316;color:#d7f472;display:grid;place-items:center;cursor:pointer;border:0;box-shadow:0 10px 24px rgba(21,35,22,.2);transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.boot-cat-crest:hover{transform:scale(1.08) rotate(-4deg)}
+.boot-cat-crest:active{transform:scale(.93)}
+.boot-cat-crest svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.boot-crest-ring{position:absolute;inset:-5px;border-radius:24px;border:2px solid rgba(167,204,76,.5);animation:pcCrestPulse 2.1s ease-out infinite;pointer-events:none}
+.boot-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.8px;color:#5e7c3b;text-transform:uppercase;margin-top:3px}
+body.dark .boot-eyebrow,.dark .boot-eyebrow{color:#cbe677}
+.boot-message-text{font-size:13.5px;font-weight:560;line-height:1.55;margin:0;max-width:320px}
+.boot-progress-track{width:100%;max-width:230px;height:5px;border-radius:99px;background:rgba(31,52,28,.08);overflow:hidden;margin:4px 0}
+body.dark .boot-progress-track,.dark .boot-progress-track{background:rgba(255,255,255,.1)}
+.boot-progress-bar{width:46%;height:100%;border-radius:99px;background:linear-gradient(90deg,#95be49,#d7f472,#95be49);animation:pcSlideBar 1.3s ease-in-out infinite}
+.boot-pop-hud{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.boot-pop-hint{font-size:11.5px;opacity:.72;width:100%;margin-bottom:2px}
+.boot-pop-score{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;background:#e4f0ce;color:#1b3118;border:1px solid #c4dba0;font-size:11.5px;font-weight:750}
+body.dark .boot-pop-score,.dark .boot-pop-score{background:#263a23;color:#dff593;border-color:#3f5e39}
+.boot-pop-score.bump,.boot-combo-pill.bump{animation:pcPopBounce .28s cubic-bezier(.34,1.56,.64,1)}
+.boot-combo-pill,.zen-best-pill{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#fff1cc;color:#5a3c06;border:1px solid #f0d283}
+body.dark .boot-combo-pill,.dark .boot-combo-pill,body.dark .zen-best-pill,.dark .zen-best-pill{background:#3b2d10;color:#ffe28a;border-color:#694f1c}
+.boot-sound-btn{width:31px;height:31px;border-radius:50%;display:inline-grid;place-items:center;background:rgba(31,52,28,.07);border:1px solid rgba(31,52,28,.12);font-size:13px;cursor:pointer;padding:0;transition:transform .16s ease,background .16s ease}
+body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14)}
+.boot-sound-btn:hover{transform:scale(1.08)}
+.boot-enter-btn{margin-top:6px;padding:9px 18px;border-radius:999px;border:1px solid #bada54;background:#d7f472;color:#132112;font-size:12px;font-weight:750;cursor:pointer;box-shadow:0 6px 18px rgba(152,192,48,.22);transition:transform .16s cubic-bezier(.22,1,.36,1),background .16s ease}
+.boot-enter-btn:hover{background:#cde964;transform:translateY(-1px)}
+.boot-home-link{font-size:11px;opacity:.68;text-decoration:underline;text-underline-offset:3px;margin-top:2px}
+.pop-cat-bubble{position:absolute;bottom:-96px;left:var(--cat-left,50%);width:var(--cat-size,70px);height:var(--cat-size,70px);padding:0;border:0;background:transparent;cursor:pointer;pointer-events:auto;will-change:transform;animation:pcFloatUp var(--cat-dur,8.8s) linear var(--cat-delay,0s) forwards;filter:drop-shadow(0 8px 16px rgba(24,38,22,.12));touch-action:none}
+.pop-cat-bubble.is-golden-cat{filter:drop-shadow(0 0 16px rgba(255,208,56,.7)) drop-shadow(0 8px 16px rgba(24,38,22,.15))}
+.pop-cat-bubble .pop-cat-svg{width:100%;height:100%;display:block;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.pop-cat-bubble:hover .pop-cat-svg{transform:scale(1.14) rotate(-5deg)}
+.pop-cat-bubble.is-popping .pop-cat-svg{animation:pcSquishPop .16s ease-out forwards}
+.pop-cat-burst{position:absolute;z-index:6;pointer-events:none;transform:translate(-50%,-50%)}
+.pop-cat-burst>i{position:absolute;left:0;top:0;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;border:1.5px solid #1f331e;animation:pcParticle .52s cubic-bezier(.16,1,.3,1) forwards}
+.pop-cat-word{position:absolute;left:0;top:-8px;transform:translate(-50%,-50%);padding:3px 9px;border-radius:99px;background:#152316;color:#d7f472;font-size:10.5px;font-weight:800;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.2);animation:pcWordRise .58s cubic-bezier(.22,1,.36,1) forwards}
+.pop-cat-burst.is-golden .pop-cat-word{background:#3b2904;color:#ffe474;border:1px solid #f2c94c}
+@keyframes pcFloatUp{
+  0%{transform:translate3d(0,18px,0) rotate(-4deg)}
+  25%{transform:translate3d(var(--cat-sway,16px),-26dvh,0) rotate(5deg)}
+  50%{transform:translate3d(calc(var(--cat-sway,16px) * -.65),-54dvh,0) rotate(-4deg)}
+  75%{transform:translate3d(var(--cat-sway,16px),-84dvh,0) rotate(4deg)}
+  100%{transform:translate3d(0,-118dvh,0) rotate(-3deg)}
+}
+@keyframes pcSquishPop{0%{transform:scale(1.24,.82)}55%{transform:scale(1.44,1.38);opacity:.9}100%{transform:scale(.2);opacity:0}}
+@keyframes pcParticle{0%{transform:translate3d(0,0,0) scale(1);opacity:1}100%{transform:translate3d(var(--dx,24px),var(--dy,-24px),0) scale(.25);opacity:0}}
+@keyframes pcWordRise{0%{transform:translate(-50%,0) scale(.75);opacity:0}25%{transform:translate(-50%,-14px) scale(1.06);opacity:1}100%{transform:translate(-50%,-36px) scale(.94);opacity:0}}
+@keyframes pcSlideBar{0%{transform:translateX(-110%)}100%{transform:translateX(230%)}}
+@keyframes pcCrestPulse{0%{transform:scale(.95);opacity:.8}100%{transform:scale(1.22);opacity:0}}
+@keyframes pcPopBounce{0%{transform:scale(1)}45%{transform:scale(1.22)}100%{transform:scale(1)}}
+@keyframes pcCardIn{from{opacity:0;transform:translate3d(0,10px,0) scale(.97)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+@keyframes pcFadeIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  .pop-cat-bubble,.boot-progress-bar,.boot-crest-ring{animation:none!important;transition:none!important}
+  .pop-cat-bubble{bottom:24%!important}
+}
+</style><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body class="signin-page">
+<div id="catcul-splash-loader" class="catcul-boot-overlay hidden" role="status" aria-live="polite">
+  <div class="pop-cat-field" id="splash-cat-field" aria-hidden="true"></div>
+  <div class="boot-center-card">
+    <button type="button" class="boot-cat-crest" id="splash-crest-btn" title="Tap to pop a cat!">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11L7.5 4.5L11.5 8.5H12.5L16.5 4.5L19 11C20 12.6 20.4 14.8 19.7 17C18.8 19.9 15.8 21.5 12 21.5C8.2 21.5 5.2 19.9 4.3 17C3.6 14.8 4 12.6 5 11Z"/><circle cx="9.2" cy="13.8" r="1.1" fill="currentColor"/><circle cx="14.8" cy="13.8" r="1.1" fill="currentColor"/><path d="M10.6 16.5Q12 17.7 13.4 16.5"/></svg>
+      <span class="boot-crest-ring"></span>
+    </button>
+    <span class="boot-eyebrow">LESS SCROLLING · MORE US</span>
+    <p id="splash-message" class="boot-message-text">Setting up a calm sign-in…</p>
+    <div class="boot-progress-track" aria-hidden="true"><div class="boot-progress-bar"></div></div>
+    <div class="boot-pop-hud">
+      <span class="boot-pop-hint">Tap or swipe floating cats to pop while we load</span>
+      <span class="boot-pop-score">🐾 <b id="splash-pop-count">0</b> popped</span>
+      <span class="boot-combo-pill hidden" id="splash-combo-pill">🔥 ×2</span>
+      <button type="button" class="boot-sound-btn" id="splash-sound-btn" aria-label="Toggle pop chimes" title="Toggle pop chimes">🔊</button>
+    </div>
+    <button type="button" class="boot-enter-btn" id="splash-enter-btn">Continue →</button>
+  </div>
+</div>
+<script id="catcul-popcats-engine">
+(function(){
+  if(window.CatculPopCats)return;
+  const PALETTES=[
+    {fill:'#e4f0ce',ear:'#cbe2a2',cheek:'#f5b8c4',stroke:'#253827',label:'meow!'},
+    {fill:'#d7f472',ear:'#bce24b',cheek:'#f4a9b8',stroke:'#1d2d1c',label:'pop!'},
+    {fill:'#fff8e7',ear:'#f2dfc0',cheek:'#f5b5b8',stroke:'#362d20',label:'purr~'},
+    {fill:'#fbe4d8',ear:'#f3c6b1',cheek:'#ef9aa8',stroke:'#3b2620',label:'boop!'},
+    {fill:'#e8e3f8',ear:'#cfc5f0',cheek:'#f2b2cb',stroke:'#2b2540',label:'mrrp!'},
+    {fill:'#dff3ea',ear:'#bce5d3',cheek:'#f3b3c0',stroke:'#1f362e',label:'nya!'}
+  ];
+  const GOLDEN_PALETTE={fill:'#ffe88a',ear:'#f3c846',cheek:'#f59eb0',stroke:'#3a2a08',label:'✨ +3 golden!',golden:true};
+  const pageStartAt=Date.now();
+  let audioCtx=null,totalPopped=0,bestStreak=0,popSilent=false,lastGlobalPopAt=0,bootReady=false,bootTimer=null;
+  function isSoundAllowed(){
+    if(popSilent)return false;
+    try{const raw=localStorage.getItem('catcul.settings');if(raw&&JSON.parse(raw).sound===false)return false;}catch(_){}
+    return true;
+  }
+  function playPopChime(combo,golden){
+    if(!isSoundAllowed())return;
+    try{
+      const Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx)return;
+      if(!audioCtx)audioCtx=new Ctx();
+      if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});
+      const now=audioCtx.currentTime;
+      if(golden){
+        [523.25,659.25,783.99].forEach((freq,idx)=>{
+          const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+          o.type='triangle';
+          const t=now+idx*0.045;
+          o.frequency.setValueAtTime(freq,t);
+          o.frequency.exponentialRampToValueAtTime(freq*1.12,t+0.13);
+          g.gain.setValueAtTime(0.001,t);
+          g.gain.exponentialRampToValueAtTime(0.08,t+0.015);
+          g.gain.exponentialRampToValueAtTime(0.0008,t+0.18);
+          o.connect(g);g.connect(audioCtx.destination);
+          o.start(t);o.stop(t+0.19);
+        });
+        return;
+      }
+      const base=420+Math.min(combo,14)*30+(Math.random()*24-12);
+      const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+      osc.type='sine';
+      osc.frequency.setValueAtTime(base*0.76,now);
+      osc.frequency.exponentialRampToValueAtTime(base*1.58,now+0.075);
+      gain.gain.setValueAtTime(0.001,now);
+      gain.gain.exponentialRampToValueAtTime(0.085,now+0.014);
+      gain.gain.exponentialRampToValueAtTime(0.0008,now+0.13);
+      osc.connect(gain);gain.connect(audioCtx.destination);
+      osc.start(now);osc.stop(now+0.14);
+    }catch(_){}
+  }
+  function catBubbleSVG(p,expr){
+    const wink=expr===1,happy=expr===2;
+    const eyes=wink
+      ?'<circle cx="29" cy="39" r="2.7" fill="'+p.stroke+'"/><path d="M44 39.2c2-2.2 4.5-2.2 6.4 0" stroke="'+p.stroke+'" stroke-width="2.3" fill="none" stroke-linecap="round"/>'
+      :happy
+      ?'<path d="M25.8 40c1.8-2.6 4.4-2.6 6.2 0M44 40c1.8-2.6 4.4-2.6 6.2 0" stroke="'+p.stroke+'" stroke-width="2.3" fill="none" stroke-linecap="round"/>'
+      :'<circle cx="29" cy="39" r="2.8" fill="'+p.stroke+'"/><circle cx="47" cy="39" r="2.8" fill="'+p.stroke+'"/><circle cx="30" cy="38" r="0.9" fill="#fff"/><circle cx="48" cy="38" r="0.9" fill="#fff"/>';
+    const crown=p.golden
+      ?'<path d="M28 19 L31 10 L38 15 L45 10 L48 19 Z" fill="#ffd23f" stroke="'+p.stroke+'" stroke-width="1.8" stroke-linejoin="round"/>'
+      :'';
+    return '<svg viewBox="0 0 76 76" class="pop-cat-svg" aria-hidden="true">'
+      +'<path d="M17 31 L14 13 Q14 9 18 11 L31 21 Q38 19 45 21 L58 11 Q62 9 62 13 L59 31 Q65 39 64 49 C63 61 52 67 38 67 C24 67 13 61 12 49 Q11 39 17 31 Z" fill="'+p.fill+'" stroke="'+p.stroke+'" stroke-width="2.1" stroke-linejoin="round"/>'
+      +'<path d="M18.5 26 L17.5 15.8 L26.8 22.2 Z" fill="'+p.ear+'"/>'
+      +'<path d="M57.5 26 L58.5 15.8 L49.2 22.2 Z" fill="'+p.ear+'"/>'
+      +crown
+      +'<ellipse cx="23.5" cy="44.5" rx="4.3" ry="2.5" fill="'+p.cheek+'" opacity=".75"/>'
+      +'<ellipse cx="52.5" cy="44.5" rx="4.3" ry="2.5" fill="'+p.cheek+'" opacity=".75"/>'
+      +eyes
+      +'<path d="M36.3 43.2 L39.7 43.2 L38 45.3 Z" fill="#e5879a"/>'
+      +'<path d="M38 45.3 Q35 48.6 32.2 46.8 M38 45.3 Q41 48.6 43.8 46.8" stroke="'+p.stroke+'" stroke-width="1.9" fill="none" stroke-linecap="round"/>'
+      +'<path d="M15 42 L8 40.5 M15 45.5 L8.5 46.5 M61 42 L68 40.5 M61 45.5 L67.5 46.5" stroke="'+p.stroke+'" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>'
+      +'<ellipse cx="28" cy="26" rx="8.5" ry="3.8" fill="#ffffff" opacity=".46" transform="rotate(-18 28 26)"/>'
+      +'</svg>';
+  }
+  function burstAt(container,x,y,p,combo){
+    const ring=document.createElement('div');
+    ring.className='pop-cat-burst'+(p.golden?' is-golden':'');
+    ring.style.left=x+'px';ring.style.top=y+'px';
+    const count=p.golden?12:8;
+    let dots='';
+    for(let i=0;i<count;i++){
+      const ang=(Math.PI*2*i)/count+(Math.random()*0.25);
+      const dist=(p.golden?40:30)+Math.random()*28;
+      const dx=Math.round(Math.cos(ang)*dist),dy=Math.round(Math.sin(ang)*dist);
+      const col=p.golden?(i%2===0?'#ffd23f':'#fff6c2'):(i%2===0?p.fill:'#d7f472');
+      dots+='<i style="--dx:'+dx+'px;--dy:'+dy+'px;background:'+col+';border-color:'+p.stroke+'"></i>';
+    }
+    const text=p.golden?p.label:(combo>=3?'×'+combo+' '+p.label:p.label);
+    ring.innerHTML=dots+'<span class="pop-cat-word">'+text+'</span>';
+    container.appendChild(ring);
+    setTimeout(()=>ring.remove(),650);
+  }
+  function syncSoundButtons(){
+    document.querySelectorAll('.boot-sound-btn').forEach((b)=>{
+      b.textContent=popSilent?'🔇':'🔊';
+      b.setAttribute('aria-pressed',String(!popSilent));
+    });
+  }
+  function attachCatField(fieldEl,scoreNumEl,opts){
+    if(!fieldEl)return {stop(){},popRandom(){}};
+    const maxCats=(opts&&opts.maxCats)||12;
+    const comboEl=opts&&opts.comboEl;
+    const bestEl=opts&&opts.bestEl;
+    const onPopCb=opts&&opts.onPop;
+    let alive=true,combo=0,lastPopAt=0,swiping=false,comboTimer=null;
+    function updateScore(){
+      if(scoreNumEl){
+        scoreNumEl.textContent=String(totalPopped);
+        const pill=scoreNumEl.closest('.boot-pop-score,.zen-pop-score');
+        if(pill){pill.classList.remove('bump');void pill.offsetWidth;pill.classList.add('bump');}
+      }
+      const bootCnt=document.getElementById('boot-pop-count');
+      if(bootCnt&&bootCnt!==scoreNumEl)bootCnt.textContent=String(totalPopped);
+      const splashCnt=document.getElementById('splash-pop-count');
+      if(splashCnt&&splashCnt!==scoreNumEl)splashCnt.textContent=String(totalPopped);
+      if(comboEl){
+        if(combo>=2){
+          comboEl.textContent=(combo>=5?'⚡':'🔥')+' ×'+combo;
+          comboEl.classList.remove('hidden','bump');
+          void comboEl.offsetWidth;
+          comboEl.classList.add('bump');
+          clearTimeout(comboTimer);
+          comboTimer=setTimeout(()=>comboEl.classList.add('hidden'),1500);
+        }else{
+          comboEl.classList.add('hidden');
+        }
+      }
+      if(bestEl)bestEl.textContent=String(bestStreak);
+    }
+    function spawnCat(initial){
+      if(!alive)return;
+      const host=fieldEl.closest('#boot-overlay,#catcul-splash-loader,#pop-cat-zen-overlay,.spot-cat-loader');
+      if(host&&host.classList.contains('hidden'))return;
+      if(fieldEl.querySelectorAll('.pop-cat-bubble').length>=maxCats)return;
+      const isGolden=Math.random()<0.16;
+      const p=isGolden?GOLDEN_PALETTE:PALETTES[Math.floor(Math.random()*PALETTES.length)];
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='pop-cat-bubble'+(isGolden?' is-golden-cat':'');
+      btn.setAttribute('aria-label',isGolden?'Pop golden crown cat (+3)':'Pop cat bubble');
+      const size=isGolden?74:(56+Math.round(Math.random()*28));
+      const left=6+Math.random()*84;
+      const dur=isGolden?(6.8+Math.random()*3.2):(7.4+Math.random()*5.2);
+      const sway=(Math.random()>0.5?1:-1)*(12+Math.round(Math.random()*18));
+      btn.style.cssText='--cat-size:'+size+'px;--cat-left:'+left.toFixed(1)+'%;--cat-dur:'+dur.toFixed(2)+'s;--cat-sway:'+sway+'px;--cat-delay:'+(initial?(-Math.random()*dur).toFixed(2):'0')+'s';
+      btn.innerHTML=catBubbleSVG(p,Math.floor(Math.random()*3));
+      const popIt=(ev)=>{
+        if(btn.dataset.popped)return;
+        btn.dataset.popped='1';
+        if(ev)ev.stopPropagation();
+        const rect=btn.getBoundingClientRect();
+        const fRect=fieldEl.getBoundingClientRect();
+        const cx=(rect.left-fRect.left)+rect.width/2;
+        const cy=(rect.top-fRect.top)+rect.height/2;
+        const now=Date.now();
+        combo=(now-lastPopAt<1350)?combo+1:1;
+        if(combo>bestStreak)bestStreak=combo;
+        lastPopAt=now;
+        lastGlobalPopAt=now;
+        totalPopped+=(isGolden?3:1);
+        playPopChime(combo,isGolden);
+        btn.classList.add('is-popping');
+        burstAt(fieldEl,cx,cy,p,combo);
+        updateScore();
+        if(onPopCb)onPopCb();
+        setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),210);},150);
+      };
+      btn._popCat=popIt;
+      btn.addEventListener('pointerdown',popIt);
+      btn.addEventListener('click',popIt);
+      btn.addEventListener('pointerenter',()=>{if(swiping)popIt();});
+      btn.addEventListener('animationend',()=>{if(!btn.dataset.popped){btn.remove();if(alive)spawnCat(false);}});
+      fieldEl.appendChild(btn);
+    }
+    const onDown=()=>{swiping=true;};
+    const onUp=()=>{swiping=false;};
+    const onMove=(ev)=>{
+      if(!swiping||ev.pointerType==='mouse')return;
+      const hit=document.elementFromPoint(ev.clientX,ev.clientY)?.closest?.('.pop-cat-bubble');
+      if(hit&&fieldEl.contains(hit)&&hit._popCat)hit._popCat(ev);
+    };
+    fieldEl.addEventListener('pointerdown',onDown);
+    fieldEl.addEventListener('pointermove',onMove);
+    window.addEventListener('pointerup',onUp);
+    for(let i=0;i<maxCats;i++)spawnCat(true);
+    const iv=setInterval(()=>{
+      const host=fieldEl.closest('#boot-overlay,#catcul-splash-loader,#pop-cat-zen-overlay,.spot-cat-loader');
+      if(!document.body.contains(fieldEl)){clearInterval(iv);window.removeEventListener('pointerup',onUp);alive=false;return;}
+      if(host&&host.classList.contains('hidden'))return;
+      if(fieldEl.querySelectorAll('.pop-cat-bubble').length<maxCats)spawnCat(false);
+    },800);
+    return {
+      stop(){alive=false;clearInterval(iv);window.removeEventListener('pointerup',onUp);},
+      popRandom(){const b=fieldEl.querySelector('.pop-cat-bubble:not([data-popped])');if(b&&b._popCat)b._popCat();},
+      ensureSpawn(){for(let i=fieldEl.querySelectorAll('.pop-cat-bubble').length;i<maxCats;i++)spawnCat(true);}
+    };
+  }
+
+  // Wire #boot-overlay on catcul.html if present
+  const bootOverlay=document.getElementById('boot-overlay');
+  let bootCtrl=null;
+  function dismissBootNow(){
+    clearTimeout(bootTimer);
+    if(!bootOverlay||bootOverlay.classList.contains('hidden'))return;
+    if(navigator.webdriver&&!window.__forceCatBootHold){
+      bootOverlay.classList.add('hidden');
+      return;
+    }
+    bootOverlay.classList.add('is-closing');
+    setTimeout(()=>{
+      bootOverlay.classList.add('hidden');
+      bootOverlay.classList.remove('is-closing');
+    },260);
+  }
+  function scheduleBootDismiss(){
+    if(!bootReady||!bootOverlay)return;
+    if(navigator.webdriver&&!window.__forceCatBootHold){
+      bootOverlay.classList.add('hidden');
+      return;
+    }
+    clearTimeout(bootTimer);
+    const minTotal=2600;
+    const minSincePop=2100;
+    const waitBoot=Math.max(0,minTotal-(Date.now()-pageStartAt));
+    const waitPop=lastGlobalPopAt?Math.max(0,minSincePop-(Date.now()-lastGlobalPopAt)):0;
+    const wait=Math.max(waitBoot,waitPop);
+    if(wait<=20){dismissBootNow();return;}
+    bootTimer=setTimeout(scheduleBootDismiss,wait+25);
+  }
+  if(bootOverlay){
+    bootCtrl=attachCatField(
+      document.getElementById('boot-cat-field'),
+      document.getElementById('boot-pop-count'),
+      {maxCats:12,comboEl:document.getElementById('boot-combo-pill'),onPop:()=>{if(bootReady)scheduleBootDismiss();}}
+    );
+    document.getElementById('boot-crest-btn')?.addEventListener('click',()=>bootCtrl.popRandom());
+    document.getElementById('boot-sound-btn')?.addEventListener('click',()=>{popSilent=!popSilent;syncSoundButtons();});
+    document.getElementById('boot-enter-btn')?.addEventListener('click',dismissBootNow);
+  }
+
+  // Wire #catcul-splash-loader on public pages (index, signin, signup)
+  const splash=document.getElementById('catcul-splash-loader');
+  let splashCtrl=null,splashTimer=null;
+  function closeSplashNow(){
+    clearTimeout(splashTimer);
+    if(!splash||splash.classList.contains('hidden'))return;
+    splash.classList.add('is-closing');
+    setTimeout(()=>{
+      splash.classList.add('hidden');
+      splash.classList.remove('is-closing');
+    },280);
+  }
+  function scheduleSplashClose(baseMs){
+    if(!splash||splash.classList.contains('hidden'))return;
+    clearTimeout(splashTimer);
+    const waitBase=Math.max(0,(baseMs||2800)-(Date.now()-pageStartAt));
+    const waitPop=lastGlobalPopAt?Math.max(0,2200-(Date.now()-lastGlobalPopAt)):0;
+    const wait=Math.max(waitBase,waitPop);
+    if(wait<=20){closeSplashNow();return;}
+    splashTimer=setTimeout(()=>scheduleSplashClose(0),wait+30);
+  }
+  if(splash){
+    const autoShow=(!navigator.webdriver||window.__forceCatSplash===true);
+    if(autoShow){
+      splash.classList.remove('hidden');
+      splashCtrl=attachCatField(
+        document.getElementById('splash-cat-field'),
+        document.getElementById('splash-pop-count'),
+        {maxCats:12,comboEl:document.getElementById('splash-combo-pill'),onPop:()=>scheduleSplashClose(0)}
+      );
+      document.getElementById('splash-crest-btn')?.addEventListener('click',()=>splashCtrl.popRandom());
+      document.getElementById('splash-sound-btn')?.addEventListener('click',()=>{popSilent=!popSilent;syncSoundButtons();});
+      document.getElementById('splash-enter-btn')?.addEventListener('click',closeSplashNow);
+      const isLanding=document.body.dataset.catculView==='landing';
+      scheduleSplashClose(isLanding?3100:2100);
+    }
+  }
+
+  document.addEventListener('click',(e)=>{
+    if(e.target.closest?.('[data-open-pop-cats]')){
+      e.preventDefault();
+      window.CatculPopCats.openBreak();
+    }
+  });
+
+  window.CatculPopCats={
+    attach:attachCatField,
+    getCount:()=>totalPopped,
+    finishBoot(){
+      bootReady=true;
+      const enterBtn=document.getElementById('boot-enter-btn');
+      if(enterBtn)enterBtn.classList.remove('hidden');
+      const msg=document.getElementById('boot-message');
+      if(msg&&(!navigator.webdriver||window.__forceCatBootHold)){
+        msg.textContent='Spaces ready! Pop a few cats or jump right in ✨';
+      }
+      scheduleBootDismiss();
+    },
+    enterPreviewMode(){
+      clearTimeout(bootTimer);
+      bootReady=false;
+      if(bootOverlay){
+        bootOverlay.classList.remove('hidden','is-closing');
+        bootCtrl?.ensureSpawn?.();
+      }
+      const msg=document.getElementById('boot-message');
+      if(msg)msg.textContent='Interactive preview — tap or swipe floating cats to pop! (Open the live Website tab to sign in.)';
+    },
+    showTransition(messageText){
+      if(navigator.webdriver&&!window.__forceCatSplash)return;
+      if(splash){
+        const msg=document.getElementById('splash-message');
+        if(msg&&messageText)msg.textContent=messageText;
+        splash.classList.remove('hidden','is-closing');
+        if(!splashCtrl){
+          splashCtrl=attachCatField(
+            document.getElementById('splash-cat-field'),
+            document.getElementById('splash-pop-count'),
+            {maxCats:12,comboEl:document.getElementById('splash-combo-pill')}
+          );
+        }else{
+          splashCtrl.ensureSpawn();
+        }
+      }
+    },
+    openBreak(){
+      document.getElementById('pop-cat-zen-overlay')?.remove();
+      const wrap=document.createElement('div');
+      wrap.id='pop-cat-zen-overlay';
+      wrap.className='catcul-boot-overlay pop-cat-zen-mode';
+      wrap.setAttribute('role','dialog');
+      wrap.setAttribute('aria-label','Pop-a-Cat Zen Break');
+      wrap.innerHTML='<div class="pop-cat-field" id="zen-cat-field"></div>'
+        +'<div class="boot-center-card zen-center-card">'
+        +'<span class="boot-eyebrow">CATCUL · STUDY BREATHER</span>'
+        +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
+        +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
+        +'<div class="boot-pop-hud">'
+        +'<span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">'+totalPopped+'</b> popped</span>'
+        +'<span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>'
+        +'<span class="zen-best-pill">🏆 Best <b id="zen-best-streak">'+bestStreak+'</b></span>'
+        +'<button type="button" class="boot-sound-btn" id="zen-sound-btn" aria-label="Toggle pop chimes">'+(popSilent?'🔇':'🔊')+'</button>'
+        +'</div>'
+        +'<div style="display:flex;gap:8px;width:100%;margin-top:10px">'
+        +'<button type="button" class="boot-enter-btn" id="zen-burst-all" style="flex:1;margin:0;background:rgba(31,52,28,.08);border-color:rgba(31,52,28,.16);color:inherit;box-shadow:none">✨ Pop 3!</button>'
+        +'<button type="button" class="boot-enter-btn" id="zen-close-btn" style="flex:1;margin:0">Back to Catcul</button>'
+        +'</div></div>';
+      document.body.appendChild(wrap);
+      const ctrl=attachCatField(wrap.querySelector('#zen-cat-field'),wrap.querySelector('#zen-pop-count'),{
+        maxCats:14,
+        comboEl:wrap.querySelector('#zen-combo-pill'),
+        bestEl:wrap.querySelector('#zen-best-streak')
+      });
+      wrap.querySelector('#zen-sound-btn').onclick=()=>{popSilent=!popSilent;syncSoundButtons();};
+      const close=()=>{ctrl.stop();wrap.classList.add('is-closing');setTimeout(()=>wrap.remove(),200);document.removeEventListener('keydown',onKey);};
+      const onKey=(e)=>{if(e.key==='Escape')close();};
+      document.addEventListener('keydown',onKey);
+      wrap.querySelector('#zen-close-btn').onclick=close;
+      wrap.querySelector('#zen-burst-all').onclick=()=>{ctrl.popRandom();setTimeout(()=>ctrl.popRandom(),85);setTimeout(()=>ctrl.popRandom(),170);};
+    }
+  };
+})();
+</script>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
 <symbol id="i-cat" viewBox="0 0 40 40"><path d="M9 15 7 5l11 7h4L33 5l-2 10c3 3 4 6 4 10 0 8-6 12-15 12S5 33 5 25c0-4 1-7 4-10Z"/><path d="M13 23h.1M27 23h.1" stroke-width="4"/><path d="m18 28 2 2 2-2m-2 2v3M7 27l-5-1m5 5-4 2m30-6 5-1m-5 5 4 2"/></symbol>
 <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a9 9 0 0 1-9 9c-1.6 0-3.2-.4-4.5-1.1L3 21l1.6-4.5A9 9 0 1 1 21 11.5Z"/><path d="M8 11h8m-8 4h5"/></symbol>
@@ -463,6 +912,7 @@ body.dark .field-note.ok{color:#c9ef7b}
   <div class="topbar-right">
    <span class="top-prompt">New around here?</span>
    <a class="top-pill" data-route="signup.html" href="signup.html">Create an account</a>
+   <button class="top-pill" type="button" data-open-pop-cats title="Pop floating cats">🐾 Pop Cats</button>
    <button class="top-pill" type="button" data-open-download title="Download Desktop &amp; Phone App">↓ App</button>
   </div>
  </header>
@@ -1213,11 +1663,13 @@ function safeRedirectApp() {
 async function verifyAndRedirect(session) {
   if (authRedirected || verifyingSession || !session?.access_token) return;
   verifyingSession = true;
+  window.CatculPopCats?.showTransition?.('Warming up your chats — pop floating cats while we connect…');
   try {
     const check = await client.auth.getUser(session.access_token).catch(() => null);
     if (check?.error && (check.error.status === 401 || check.error.status === 403 || /invalid|expired|jwt|session_not_found|user_not_found/i.test(check.error.message || ''))) {
+      document.getElementById('catcul-splash-loader')?.classList.add('hidden');
       await client.auth.signOut({ scope: 'local' }).catch(() => {});
-      try { Object.keys(localStorage).filter((k) => k.startsWith('sb-') && k.endsWith('-auth-token')).forEach((k) => localStorage.removeItem(k)); } catch {}
+      try { Object.keys(localStorage).filter((k) => k.endsWith('-auth-token') && k.startsWith('sb-')).forEach((k) => localStorage.removeItem(k)); } catch {}
       return;
     }
     await ensureProfile(session.user).catch(() => {});

@@ -1849,9 +1849,191 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
 .chat[data-wallpaper="cyber-stickers"] .timeline{background-color:#11161e;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%2388d8b0' stroke-opacity='.13' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M32 54l6-15 11 9h14l11-9 6 15a23 23 0 1 1-48 0Z'/%3E%3Cpath d='M154 38l5 12 12 5-12 5-5 12-5-12-12-5 12-5Z'/%3E%3C/g%3E%3C/svg%3E")}
 .chat[data-wallpaper="royal-stickers"] .timeline{background-color:#edf1ea;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%239c7e2e' stroke-opacity='.16' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M36 58l6-13 9 8h14l9-8 6 13a21 21 0 1 1-44 0Z'/%3E%3Cpath d='M46 41l4-9 8 6 8-6 4 9H46Z'/%3E%3C/g%3E%3C/svg%3E")}
 .chat[data-wallpaper="starlight-stickers"] .timeline{background-color:#151827;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23aadfd3' stroke-opacity='.14' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M56 36a18 18 0 1 0 18 24 14 14 0 1 1-18-24Z'/%3E%3Cpath d='M138 56l6-14 10 9h14l10-9 6 14a22 22 0 1 1-46 0Z'/%3E%3C/g%3E%3C/svg%3E")}
+/* ---------- Friends Games Area (Squad Arcade, Offline HTML Slot & Live Lobbies) ---------- */
+.app[data-workspace=arcade]>.sidebar,
+.app[data-workspace=arcade]>.chat,
+.app[data-workspace=arcade]>.details{display:none!important}
+#arcade-view.arcade-workspace{padding:0!important;overflow:hidden;display:flex;flex-direction:column;background:var(--bg)}
+@media(max-width:650px){
+  .app[data-workspace=arcade]{display:block;height:min(100dvh,var(--chat-viewport-height,100dvh));padding:0}
+  .app[data-workspace=arcade] .rail{display:flex}
+  #arcade-view.arcade-workspace{height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - 64px - env(safe-area-inset-bottom,0px));border-radius:0;border:0}
+}
+
+.arcade-head{padding:22px 30px 18px;border-bottom:1px solid var(--line);background:var(--panel);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.arcade-head-copy h2{font-family:Georgia,serif;font-size:31px;letter-spacing:-.9px;margin:6px 0 4px}
+.arcade-head-copy p{font-size:12.5px;color:var(--muted);max-width:560px}
+.arcade-head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.arcade-head-actions .btn{padding:9px 14px;font-size:11.5px;display:inline-flex;align-items:center;gap:6px}
+.arcade-head-actions .btn svg{width:14px;height:14px}
+
+.arcade-scroll{flex:1;min-height:0;overflow-y:auto;padding:22px 30px 38px;display:flex;flex-direction:column;gap:22px}
+#arcade-view.is-playing .arcade-head{padding:12px 20px}
+#arcade-view.is-playing .arcade-head-copy p{display:none}
+#arcade-view.is-playing .arcade-head-copy h2{font-size:21px;margin:2px 0 0}
+#arcade-view.is-playing .arcade-scroll{display:none}
+
+.arcade-presence-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 16px;border-radius:16px;background:var(--panel);border:1px solid var(--line);font-size:12px}
+.arcade-presence-title{font-weight:750;color:var(--text);display:inline-flex;align-items:center;gap:7px}
+.arcade-presence-dot{width:8px;height:8px;border-radius:50%;background:#79b933;box-shadow:0 0 0 3px rgba(121,185,51,.22)}
+.arcade-presence-pill{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:11.5px;font-weight:600;cursor:pointer;transition:transform .15s ease,border-color .15s ease}
+.arcade-presence-pill:hover{transform:translateY(-1px);border-color:#9fc659}
+.arcade-presence-pill i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.arcade-presence-empty{color:var(--muted);font-size:11.5px}
+
+.arcade-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.arcade-section-head h3{font-family:Georgia,serif;font-size:21px;font-weight:400;letter-spacing:-.4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.arcade-free-pill{font-family:Inter,sans-serif;font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:#e4f0ce;color:#1d3319;border:1px solid #c3dca0}
+.dark .arcade-free-pill{background:#263b22;color:#dcf48c;border-color:#3f5e39}
+.arcade-hint{font-size:11.5px;color:var(--muted)}
+
+.arcade-games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.arcade-game-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 32px rgba(20,34,19,.05);transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,border-color .22s ease}
+.arcade-game-card:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(20,34,19,.1);border-color:#b5d17c}
+.arcade-game-art{position:relative;height:152px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;overflow:hidden}
+.arcade-game-art[data-cover="veck"]{background:radial-gradient(circle at 82% 24%,#ff6b4a 0%,transparent 48%),linear-gradient(135deg,#131b2e 0%,#233863 55%,#1b524a 100%)}
+.arcade-game-art[data-cover="poxel"]{background:radial-gradient(circle at 80% 22%,#ffd23f 0%,transparent 45%),linear-gradient(135deg,#1d2436 0%,#3c2a63 52%,#1c6458 100%)}
+.arcade-game-art[data-cover="voxel"]{background:radial-gradient(circle at 78% 20%,#d7f472 0%,transparent 46%),linear-gradient(135deg,#18301c 0%,#2d5b2b 55%,#5b4024 100%)}
+.arcade-game-art[data-cover="custom"]{background:radial-gradient(circle at 80% 22%,#a9df56 0%,transparent 46%),linear-gradient(135deg,#1a2c24 0%,#2b4a3e 60%,#3b5229 100%)}
+.arcade-art-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;opacity:.55;pointer-events:none}
+.arcade-art-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.arcade-genre-chip{padding:4px 10px;border-radius:999px;background:rgba(12,18,14,.56);backdrop-filter:blur(8px);font-size:10px;font-weight:750;letter-spacing:.5px;text-transform:uppercase;border:1px solid rgba(255,255,255,.18)}
+.arcade-live-count{padding:4px 10px;border-radius:999px;background:rgba(215,244,114,.94);color:#142212;font-size:10.5px;font-weight:800}
+.arcade-art-bottom{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.arcade-art-title{font-size:23px;font-weight:800;letter-spacing:-.5px;text-shadow:0 3px 12px rgba(0,0,0,.35)}
+.arcade-art-emblem{font-size:30px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.arcade-game-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+.arcade-game-body p{font-size:12px;line-height:1.6;color:var(--muted);flex:1}
+.arcade-slot-status{font-size:11px;padding:6px 10px;border-radius:10px;background:var(--soft);border:1px solid var(--line);color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.arcade-slot-status code{font-size:10.5px;color:var(--muted);max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arcade-card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.arcade-card-actions .btn{flex:1;justify-content:center;font-size:12px;padding:10px 12px}
+.arcade-card-actions .btn.icon-only{flex:0 0 auto;padding:10px 12px}
+
+.arcade-lobbies-section{display:flex;flex-direction:column;gap:12px}
+.arcade-lobbies-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.arcade-lobby-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px 16px;display:flex;flex-direction:column;gap:10px}
+.arcade-lobby-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.arcade-lobby-host{display:flex;align-items:center;gap:9px;min-width:0}
+.arcade-lobby-dot{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:12px;color:#172315;flex-shrink:0}
+.arcade-lobby-host strong{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arcade-lobby-host small{display:block;font-size:10.5px;color:var(--muted)}
+.arcade-code-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:10px;background:var(--soft);border:1px dashed #9fc659;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;font-weight:800;color:var(--text)}
+.arcade-lobby-note{font-size:12px;color:var(--muted);line-height:1.5}
+.arcade-lobby-actions{display:flex;gap:8px;flex-wrap:wrap}
+.arcade-lobby-actions .btn{font-size:11px;padding:7px 12px}
+
+/* ---------- Active Widescreen Game Stage + Side Squad Chat ---------- */
+.arcade-stage-wrap{flex:1;min-height:0;display:flex;flex-direction:column;background:#0f1510;color:#eef3e9}
+.arcade-stage-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;background:#162018;border-bottom:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.arcade-stage-left,.arcade-stage-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.arcade-stage-bar .btn.mini{padding:6px 11px;font-size:11px;border-radius:999px}
+.arcade-stage-bar .btn.secondary.mini{background:rgba(255,255,255,.08);color:#eef3e9;border-color:rgba(255,255,255,.15)}
+.arcade-stage-bar .btn.secondary.mini:hover{background:rgba(255,255,255,.15)}
+.arcade-active-code{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(215,244,114,.14);border:1px solid rgba(215,244,114,.35);font-size:11px;color:#e4f794}
+.arcade-active-code code{font-weight:800;color:#fff}
+.arcade-active-code button{background:#d7f472;color:#142212;border:0;border-radius:999px;padding:2px 8px;font-size:10px;font-weight:800;cursor:pointer}
+
+.arcade-stage-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 300px}
+.arcade-stage-body.chat-collapsed{grid-template-columns:minmax(0,1fr)}
+.arcade-stage-body.chat-collapsed .arcade-chat-drawer{display:none}
+.arcade-frame-box{position:relative;width:100%;height:100%;min-height:360px;background:#000}
+#arcade-iframe{width:100%;height:100%;border:0;display:block;background:#000}
+
+.arcade-chat-drawer{background:var(--panel);color:var(--text);border-left:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.arcade-chat-head{padding:10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.arcade-chat-head select{flex:1;min-width:0;padding:7px 9px;border-radius:10px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-size:11.5px;font-weight:600}
+.arcade-chat-log{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;font-size:12px}
+.arcade-chat-msg{padding:8px 10px;border-radius:12px;background:var(--soft);border:1px solid var(--line);line-height:1.45;word-break:break-word}
+.arcade-chat-msg.mine{background:#e8f0d5;border-color:#cde0a6}
+.dark .arcade-chat-msg.mine{background:#2d402b;border-color:#415c3d}
+.arcade-chat-msg strong{display:block;font-size:10.5px;color:var(--muted);margin-bottom:2px}
+.arcade-chat-form{padding:9px;border-top:1px solid var(--line);display:flex;gap:6px}
+.arcade-chat-form input{flex:1;min-width:0;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--soft);color:var(--text);font-size:12px}
+
+/* ---------- Admin Games & Offline Slot Manager ---------- */
+.admin-games-grid{display:grid;gap:14px;margin-top:16px}
+.admin-game-row{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.admin-game-row h4{font-size:14px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.admin-game-row p{font-size:11.5px;color:var(--muted);margin-bottom:5px}
+.admin-game-row code{font-size:11px;padding:3px 8px;border-radius:7px;background:var(--panel);border:1px solid var(--line);display:inline-block;max-width:460px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+@media(max-width:900px){
+  .arcade-stage-body{grid-template-columns:minmax(0,1fr)}
+  .arcade-chat-drawer{max-height:210px;border-left:0;border-top:1px solid var(--line)}
+}
+@media(max-width:650px){
+  .arcade-head{padding:16px}
+  .arcade-head-copy h2{font-size:24px}
+  .arcade-scroll{padding:16px 16px 28px}
+  .arcade-games-grid,.arcade-lobbies-list{grid-template-columns:1fr}
+}
 
 </style>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+<style id="catcul-popcats-css">
+.hidden{display:none!important}
+.catcul-boot-overlay{position:fixed;inset:0;z-index:9990;background:radial-gradient(circle at 18% 18%,rgba(215,244,114,.34),transparent 42%),radial-gradient(circle at 82% 80%,rgba(228,240,206,.62),transparent 48%),var(--bg,#f7f8f3);color:var(--text,var(--ink,#151c13));font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden;transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
+#boot-overlay.catcul-boot-overlay{z-index:79}
+body.dark .catcul-boot-overlay,.dark .catcul-boot-overlay{background:radial-gradient(circle at 18% 18%,rgba(215,244,114,.12),transparent 42%),radial-gradient(circle at 82% 80%,rgba(74,110,64,.22),transparent 48%),var(--bg,#131812);color:var(--text,var(--ink,#edf2e6))}
+.catcul-boot-overlay.pop-cat-zen-mode{z-index:9995;animation:pcFadeIn .2s ease}
+.catcul-boot-overlay.is-closing{opacity:0;transform:scale(1.015);pointer-events:none}
+.pop-cat-field{position:absolute;inset:0;overflow:hidden;pointer-events:auto;user-select:none;-webkit-user-select:none}
+.boot-center-card{position:relative;z-index:3;width:min(410px,92vw);padding:28px 26px 22px;border-radius:28px;background:rgba(255,255,252,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(31,52,28,.11);box-shadow:0 22px 64px rgba(24,38,22,.1);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;pointer-events:auto;animation:pcCardIn .36s cubic-bezier(.22,1,.36,1)}
+body.dark .boot-center-card,.dark .boot-center-card{background:rgba(24,32,25,.88);border-color:rgba(215,244,114,.16);box-shadow:0 22px 64px rgba(0,0,0,.44)}
+.zen-title{font-family:Georgia,serif;font-size:26px;letter-spacing:-.7px;font-weight:400;margin:2px 0}
+.boot-cat-crest{position:relative;width:64px;height:64px;border-radius:20px;background:#152316;color:#d7f472;display:grid;place-items:center;cursor:pointer;border:0;box-shadow:0 10px 24px rgba(21,35,22,.2);transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.boot-cat-crest:hover{transform:scale(1.08) rotate(-4deg)}
+.boot-cat-crest:active{transform:scale(.93)}
+.boot-cat-crest svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.boot-crest-ring{position:absolute;inset:-5px;border-radius:24px;border:2px solid rgba(167,204,76,.5);animation:pcCrestPulse 2.1s ease-out infinite;pointer-events:none}
+.boot-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.8px;color:#5e7c3b;text-transform:uppercase;margin-top:3px}
+body.dark .boot-eyebrow,.dark .boot-eyebrow{color:#cbe677}
+.boot-message-text{font-size:13.5px;font-weight:560;line-height:1.55;margin:0;max-width:320px}
+.boot-progress-track{width:100%;max-width:230px;height:5px;border-radius:99px;background:rgba(31,52,28,.08);overflow:hidden;margin:4px 0}
+body.dark .boot-progress-track,.dark .boot-progress-track{background:rgba(255,255,255,.1)}
+.boot-progress-bar{width:46%;height:100%;border-radius:99px;background:linear-gradient(90deg,#95be49,#d7f472,#95be49);animation:pcSlideBar 1.3s ease-in-out infinite}
+.boot-pop-hud{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.boot-pop-hint{font-size:11.5px;opacity:.72;width:100%;margin-bottom:2px}
+.boot-pop-score{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;background:#e4f0ce;color:#1b3118;border:1px solid #c4dba0;font-size:11.5px;font-weight:750}
+body.dark .boot-pop-score,.dark .boot-pop-score{background:#263a23;color:#dff593;border-color:#3f5e39}
+.boot-pop-score.bump,.boot-combo-pill.bump{animation:pcPopBounce .28s cubic-bezier(.34,1.56,.64,1)}
+.boot-combo-pill,.zen-best-pill{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800;background:#fff1cc;color:#5a3c06;border:1px solid #f0d283}
+body.dark .boot-combo-pill,.dark .boot-combo-pill,body.dark .zen-best-pill,.dark .zen-best-pill{background:#3b2d10;color:#ffe28a;border-color:#694f1c}
+.boot-sound-btn{width:31px;height:31px;border-radius:50%;display:inline-grid;place-items:center;background:rgba(31,52,28,.07);border:1px solid rgba(31,52,28,.12);font-size:13px;cursor:pointer;padding:0;transition:transform .16s ease,background .16s ease}
+body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14)}
+.boot-sound-btn:hover{transform:scale(1.08)}
+.boot-enter-btn{margin-top:6px;padding:9px 18px;border-radius:999px;border:1px solid #bada54;background:#d7f472;color:#132112;font-size:12px;font-weight:750;cursor:pointer;box-shadow:0 6px 18px rgba(152,192,48,.22);transition:transform .16s cubic-bezier(.22,1,.36,1),background .16s ease}
+.boot-enter-btn:hover{background:#cde964;transform:translateY(-1px)}
+.boot-home-link{font-size:11px;opacity:.68;text-decoration:underline;text-underline-offset:3px;margin-top:2px}
+.pop-cat-bubble{position:absolute;bottom:-96px;left:var(--cat-left,50%);width:var(--cat-size,70px);height:var(--cat-size,70px);padding:0;border:0;background:transparent;cursor:pointer;pointer-events:auto;will-change:transform;animation:pcFloatUp var(--cat-dur,8.8s) linear var(--cat-delay,0s) forwards;filter:drop-shadow(0 8px 16px rgba(24,38,22,.12));touch-action:none}
+.pop-cat-bubble.is-golden-cat{filter:drop-shadow(0 0 16px rgba(255,208,56,.7)) drop-shadow(0 8px 16px rgba(24,38,22,.15))}
+.pop-cat-bubble .pop-cat-svg{width:100%;height:100%;display:block;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.pop-cat-bubble:hover .pop-cat-svg{transform:scale(1.14) rotate(-5deg)}
+.pop-cat-bubble.is-popping .pop-cat-svg{animation:pcSquishPop .16s ease-out forwards}
+.pop-cat-burst{position:absolute;z-index:6;pointer-events:none;transform:translate(-50%,-50%)}
+.pop-cat-burst>i{position:absolute;left:0;top:0;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;border:1.5px solid #1f331e;animation:pcParticle .52s cubic-bezier(.16,1,.3,1) forwards}
+.pop-cat-word{position:absolute;left:0;top:-8px;transform:translate(-50%,-50%);padding:3px 9px;border-radius:99px;background:#152316;color:#d7f472;font-size:10.5px;font-weight:800;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.2);animation:pcWordRise .58s cubic-bezier(.22,1,.36,1) forwards}
+.pop-cat-burst.is-golden .pop-cat-word{background:#3b2904;color:#ffe474;border:1px solid #f2c94c}
+@keyframes pcFloatUp{
+  0%{transform:translate3d(0,18px,0) rotate(-4deg)}
+  25%{transform:translate3d(var(--cat-sway,16px),-26dvh,0) rotate(5deg)}
+  50%{transform:translate3d(calc(var(--cat-sway,16px) * -.65),-54dvh,0) rotate(-4deg)}
+  75%{transform:translate3d(var(--cat-sway,16px),-84dvh,0) rotate(4deg)}
+  100%{transform:translate3d(0,-118dvh,0) rotate(-3deg)}
+}
+@keyframes pcSquishPop{0%{transform:scale(1.24,.82)}55%{transform:scale(1.44,1.38);opacity:.9}100%{transform:scale(.2);opacity:0}}
+@keyframes pcParticle{0%{transform:translate3d(0,0,0) scale(1);opacity:1}100%{transform:translate3d(var(--dx,24px),var(--dy,-24px),0) scale(.25);opacity:0}}
+@keyframes pcWordRise{0%{transform:translate(-50%,0) scale(.75);opacity:0}25%{transform:translate(-50%,-14px) scale(1.06);opacity:1}100%{transform:translate(-50%,-36px) scale(.94);opacity:0}}
+@keyframes pcSlideBar{0%{transform:translateX(-110%)}100%{transform:translateX(230%)}}
+@keyframes pcCrestPulse{0%{transform:scale(.95);opacity:.8}100%{transform:scale(1.22);opacity:0}}
+@keyframes pcPopBounce{0%{transform:scale(1)}45%{transform:scale(1.22)}100%{transform:scale(1)}}
+@keyframes pcCardIn{from{opacity:0;transform:translate3d(0,10px,0) scale(.97)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+@keyframes pcFadeIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  .pop-cat-bubble,.boot-progress-bar,.boot-crest-ring{animation:none!important;transition:none!important}
+  .pop-cat-bubble{bottom:24%!important}
+}
+</style><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
 <symbol id="i-cat" viewBox="0 0 40 40"><path d="M9 15 7 5l11 7h4L33 5l-2 10c3 3 4 6 4 10 0 8-6 12-15 12S5 33 5 25c0-4 1-7 4-10Z"/><path d="M13 23h.1M27 23h.1" stroke-width="4"/><path d="m18 28 2 2 2-2m-2 2v3M7 27l-5-1m5 5-4 2m30-6 5-1m-5 5 4 2"/></symbol>
@@ -1901,29 +2083,32 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
 <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H12a2 2 0 0 1 0-4h4.5A4.5 4.5 0 0 0 21 7.5C21 4.8 16.9 3 12 3Z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/><circle cx="7.5" cy="14.5" r="1"/></symbol>
 <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 9 6 3-6 3V9Z"/></symbol>
 <symbol id="i-story" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="4 2.5"/><path d="M12 8v8m-4-4h8"/></symbol>
+<symbol id="i-gamepad" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M6.5 12.5h4M8.5 10.5v4"/><circle cx="15.5" cy="11.5" r=".9" fill="currentColor"/><circle cx="17.8" cy="13.5" r=".9" fill="currentColor"/></symbol>
 
 <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-3H4V4Zm16 0h-4a3 3 0 0 0-3 3v14a4 4 0 0 1 4-3h3V4Z"/></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 16 12-12a2 2 0 0 1 3 3L7 19l-4 1 1-4Zm10-10 3 3M4 16l3 3"/></symbol><symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol></defs></svg>
-<div id="boot-overlay" class="catcul-boot-overlay" role="status" aria-live="polite">
+<div id="boot-overlay" class="boot-overlay catcul-boot-overlay" role="status" aria-live="polite">
   <div class="pop-cat-field" id="boot-cat-field" aria-hidden="true"></div>
   <div class="boot-center-card">
-    <div class="boot-cat-crest" id="boot-crest-btn" title="Tap to pop a cat!">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cat"/></svg>
+    <button type="button" class="boot-cat-crest" id="boot-crest-btn" title="Tap to pop a cat!">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11L7.5 4.5L11.5 8.5H12.5L16.5 4.5L19 11C20 12.6 20.4 14.8 19.7 17C18.8 19.9 15.8 21.5 12 21.5C8.2 21.5 5.2 19.9 4.3 17C3.6 14.8 4 12.6 5 11Z"/><circle cx="9.2" cy="13.8" r="1.1" fill="currentColor"/><circle cx="14.8" cy="13.8" r="1.1" fill="currentColor"/><path d="M10.6 16.5Q12 17.7 13.4 16.5"/></svg>
       <span class="boot-crest-ring"></span>
-    </div>
+    </button>
     <span class="boot-eyebrow">LESS SCROLLING · MORE US</span>
-    <p id="boot-message" class="boot-message-text">Opening your conversations…</p>
+    <p id="boot-message" class="boot-message-text">Warming up your spaces…</p>
     <div class="boot-progress-track" aria-hidden="true"><div class="boot-progress-bar"></div></div>
     <div class="boot-pop-hud">
-      <span class="boot-pop-hint">Tap or swipe floating cats to pop</span>
+      <span class="boot-pop-hint">Tap or swipe floating cats to pop while we connect</span>
       <span class="boot-pop-score" id="boot-pop-score">🐾 <b id="boot-pop-count">0</b> popped</span>
       <span class="boot-combo-pill hidden" id="boot-combo-pill">🔥 ×2</span>
       <button type="button" class="boot-sound-btn" id="boot-sound-btn" aria-label="Toggle pop chimes" title="Toggle pop chimes">🔊</button>
     </div>
-    <a href="index.html" class="boot-home-link">Back to home</a>
+    <button type="button" id="boot-enter-btn" class="boot-enter-btn hidden">Open chats →</button>
+    <a class="boot-home-link" href="index.html">Back to home</a>
   </div>
 </div>
-<script>
+<script id="catcul-popcats-engine">
 (function(){
+  if(window.CatculPopCats)return;
   const PALETTES=[
     {fill:'#e4f0ce',ear:'#cbe2a2',cheek:'#f5b8c4',stroke:'#253827',label:'meow!'},
     {fill:'#d7f472',ear:'#bce24b',cheek:'#f4a9b8',stroke:'#1d2d1c',label:'pop!'},
@@ -1933,7 +2118,8 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
     {fill:'#dff3ea',ear:'#bce5d3',cheek:'#f3b3c0',stroke:'#1f362e',label:'nya!'}
   ];
   const GOLDEN_PALETTE={fill:'#ffe88a',ear:'#f3c846',cheek:'#f59eb0',stroke:'#3a2a08',label:'✨ +3 golden!',golden:true};
-  let audioCtx=null,totalPopped=0,bestStreak=0,popSilent=false;
+  const pageStartAt=Date.now();
+  let audioCtx=null,totalPopped=0,bestStreak=0,popSilent=false,lastGlobalPopAt=0,bootReady=false,bootTimer=null;
   function isSoundAllowed(){
     if(popSilent)return false;
     try{const raw=localStorage.getItem('catcul.settings');if(raw&&JSON.parse(raw).sound===false)return false;}catch(_){}
@@ -1977,26 +2163,26 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
   function catBubbleSVG(p,expr){
     const wink=expr===1,happy=expr===2;
     const eyes=wink
-      ?`<circle cx="29" cy="39" r="2.7" fill="${p.stroke}"/><path d="M44 39.2c2-2.2 4.5-2.2 6.4 0" stroke="${p.stroke}" stroke-width="2.3" fill="none" stroke-linecap="round"/>`
+      ?'<circle cx="29" cy="39" r="2.7" fill="'+p.stroke+'"/><path d="M44 39.2c2-2.2 4.5-2.2 6.4 0" stroke="'+p.stroke+'" stroke-width="2.3" fill="none" stroke-linecap="round"/>'
       :happy
-      ?`<path d="M25.8 40c1.8-2.6 4.4-2.6 6.2 0M44 40c1.8-2.6 4.4-2.6 6.2 0" stroke="${p.stroke}" stroke-width="2.3" fill="none" stroke-linecap="round"/>`
-      :`<circle cx="29" cy="39" r="2.8" fill="${p.stroke}"/><circle cx="47" cy="39" r="2.8" fill="${p.stroke}"/><circle cx="30" cy="38" r="0.9" fill="#fff"/><circle cx="48" cy="38" r="0.9" fill="#fff"/>`;
+      ?'<path d="M25.8 40c1.8-2.6 4.4-2.6 6.2 0M44 40c1.8-2.6 4.4-2.6 6.2 0" stroke="'+p.stroke+'" stroke-width="2.3" fill="none" stroke-linecap="round"/>'
+      :'<circle cx="29" cy="39" r="2.8" fill="'+p.stroke+'"/><circle cx="47" cy="39" r="2.8" fill="'+p.stroke+'"/><circle cx="30" cy="38" r="0.9" fill="#fff"/><circle cx="48" cy="38" r="0.9" fill="#fff"/>';
     const crown=p.golden
-      ?`<path d="M28 19 L31 10 L38 15 L45 10 L48 19 Z" fill="#ffd23f" stroke="${p.stroke}" stroke-width="1.8" stroke-linejoin="round"/>`
+      ?'<path d="M28 19 L31 10 L38 15 L45 10 L48 19 Z" fill="#ffd23f" stroke="'+p.stroke+'" stroke-width="1.8" stroke-linejoin="round"/>'
       :'';
-    return `<svg viewBox="0 0 76 76" class="pop-cat-svg" aria-hidden="true">
-      <path d="M17 31 L14 13 Q14 9 18 11 L31 21 Q38 19 45 21 L58 11 Q62 9 62 13 L59 31 Q65 39 64 49 C63 61 52 67 38 67 C24 67 13 61 12 49 Q11 39 17 31 Z" fill="${p.fill}" stroke="${p.stroke}" stroke-width="2.1" stroke-linejoin="round"/>
-      <path d="M18.5 26 L17.5 15.8 L26.8 22.2 Z" fill="${p.ear}"/>
-      <path d="M57.5 26 L58.5 15.8 L49.2 22.2 Z" fill="${p.ear}"/>
-      ${crown}
-      <ellipse cx="23.5" cy="44.5" rx="4.3" ry="2.5" fill="${p.cheek}" opacity=".75"/>
-      <ellipse cx="52.5" cy="44.5" rx="4.3" ry="2.5" fill="${p.cheek}" opacity=".75"/>
-      ${eyes}
-      <path d="M36.3 43.2 L39.7 43.2 L38 45.3 Z" fill="#e5879a"/>
-      <path d="M38 45.3 Q35 48.6 32.2 46.8 M38 45.3 Q41 48.6 43.8 46.8" stroke="${p.stroke}" stroke-width="1.9" fill="none" stroke-linecap="round"/>
-      <path d="M15 42 L8 40.5 M15 45.5 L8.5 46.5 M61 42 L68 40.5 M61 45.5 L67.5 46.5" stroke="${p.stroke}" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
-      <ellipse cx="28" cy="26" rx="8.5" ry="3.8" fill="#ffffff" opacity=".46" transform="rotate(-18 28 26)"/>
-    </svg>`;
+    return '<svg viewBox="0 0 76 76" class="pop-cat-svg" aria-hidden="true">'
+      +'<path d="M17 31 L14 13 Q14 9 18 11 L31 21 Q38 19 45 21 L58 11 Q62 9 62 13 L59 31 Q65 39 64 49 C63 61 52 67 38 67 C24 67 13 61 12 49 Q11 39 17 31 Z" fill="'+p.fill+'" stroke="'+p.stroke+'" stroke-width="2.1" stroke-linejoin="round"/>'
+      +'<path d="M18.5 26 L17.5 15.8 L26.8 22.2 Z" fill="'+p.ear+'"/>'
+      +'<path d="M57.5 26 L58.5 15.8 L49.2 22.2 Z" fill="'+p.ear+'"/>'
+      +crown
+      +'<ellipse cx="23.5" cy="44.5" rx="4.3" ry="2.5" fill="'+p.cheek+'" opacity=".75"/>'
+      +'<ellipse cx="52.5" cy="44.5" rx="4.3" ry="2.5" fill="'+p.cheek+'" opacity=".75"/>'
+      +eyes
+      +'<path d="M36.3 43.2 L39.7 43.2 L38 45.3 Z" fill="#e5879a"/>'
+      +'<path d="M38 45.3 Q35 48.6 32.2 46.8 M38 45.3 Q41 48.6 43.8 46.8" stroke="'+p.stroke+'" stroke-width="1.9" fill="none" stroke-linecap="round"/>'
+      +'<path d="M15 42 L8 40.5 M15 45.5 L8.5 46.5 M61 42 L68 40.5 M61 45.5 L67.5 46.5" stroke="'+p.stroke+'" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>'
+      +'<ellipse cx="28" cy="26" rx="8.5" ry="3.8" fill="#ffffff" opacity=".46" transform="rotate(-18 28 26)"/>'
+      +'</svg>';
   }
   function burstAt(container,x,y,p,combo){
     const ring=document.createElement('div');
@@ -2009,10 +2195,10 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
       const dist=(p.golden?40:30)+Math.random()*28;
       const dx=Math.round(Math.cos(ang)*dist),dy=Math.round(Math.sin(ang)*dist);
       const col=p.golden?(i%2===0?'#ffd23f':'#fff6c2'):(i%2===0?p.fill:'#d7f472');
-      dots+=`<i style="--dx:${dx}px;--dy:${dy}px;background:${col};border-color:${p.stroke}"></i>`;
+      dots+='<i style="--dx:'+dx+'px;--dy:'+dy+'px;background:'+col+';border-color:'+p.stroke+'"></i>';
     }
     const text=p.golden?p.label:(combo>=3?'×'+combo+' '+p.label:p.label);
-    ring.innerHTML=dots+`<span class="pop-cat-word">${text}</span>`;
+    ring.innerHTML=dots+'<span class="pop-cat-word">'+text+'</span>';
     container.appendChild(ring);
     setTimeout(()=>ring.remove(),650);
   }
@@ -2024,9 +2210,10 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
   }
   function attachCatField(fieldEl,scoreNumEl,opts){
     if(!fieldEl)return {stop(){},popRandom(){}};
-    const maxCats=(opts&&opts.maxCats)||10;
+    const maxCats=(opts&&opts.maxCats)||12;
     const comboEl=opts&&opts.comboEl;
     const bestEl=opts&&opts.bestEl;
+    const onPopCb=opts&&opts.onPop;
     let alive=true,combo=0,lastPopAt=0,swiping=false,comboTimer=null;
     function updateScore(){
       if(scoreNumEl){
@@ -2036,6 +2223,8 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
       }
       const bootCnt=document.getElementById('boot-pop-count');
       if(bootCnt&&bootCnt!==scoreNumEl)bootCnt.textContent=String(totalPopped);
+      const splashCnt=document.getElementById('splash-pop-count');
+      if(splashCnt&&splashCnt!==scoreNumEl)splashCnt.textContent=String(totalPopped);
       if(comboEl){
         if(combo>=2){
           comboEl.textContent=(combo>=5?'⚡':'🔥')+' ×'+combo;
@@ -2052,20 +2241,20 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
     }
     function spawnCat(initial){
       if(!alive)return;
-      const host=fieldEl.closest('#boot-overlay,#pop-cat-zen-overlay,.spot-cat-loader');
+      const host=fieldEl.closest('#boot-overlay,#catcul-splash-loader,#pop-cat-zen-overlay,.spot-cat-loader');
       if(host&&host.classList.contains('hidden'))return;
       if(fieldEl.querySelectorAll('.pop-cat-bubble').length>=maxCats)return;
-      const isGolden=Math.random()<0.15;
+      const isGolden=Math.random()<0.16;
       const p=isGolden?GOLDEN_PALETTE:PALETTES[Math.floor(Math.random()*PALETTES.length)];
       const btn=document.createElement('button');
       btn.type='button';
       btn.className='pop-cat-bubble'+(isGolden?' is-golden-cat':'');
       btn.setAttribute('aria-label',isGolden?'Pop golden crown cat (+3)':'Pop cat bubble');
-      const size=isGolden?74:(54+Math.round(Math.random()*28));
+      const size=isGolden?74:(56+Math.round(Math.random()*28));
       const left=6+Math.random()*84;
-      const dur=isGolden?(6.8+Math.random()*3.2):(7.5+Math.random()*5.5);
+      const dur=isGolden?(6.8+Math.random()*3.2):(7.4+Math.random()*5.2);
       const sway=(Math.random()>0.5?1:-1)*(12+Math.round(Math.random()*18));
-      btn.style.cssText=`--cat-size:${size}px;--cat-left:${left.toFixed(1)}%;--cat-dur:${dur.toFixed(2)}s;--cat-sway:${sway}px;--cat-delay:${initial?(-Math.random()*dur).toFixed(2):'0'}s`;
+      btn.style.cssText='--cat-size:'+size+'px;--cat-left:'+left.toFixed(1)+'%;--cat-dur:'+dur.toFixed(2)+'s;--cat-sway:'+sway+'px;--cat-delay:'+(initial?(-Math.random()*dur).toFixed(2):'0')+'s';
       btn.innerHTML=catBubbleSVG(p,Math.floor(Math.random()*3));
       const popIt=(ev)=>{
         if(btn.dataset.popped)return;
@@ -2079,12 +2268,14 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
         combo=(now-lastPopAt<1350)?combo+1:1;
         if(combo>bestStreak)bestStreak=combo;
         lastPopAt=now;
+        lastGlobalPopAt=now;
         totalPopped+=(isGolden?3:1);
         playPopChime(combo,isGolden);
         btn.classList.add('is-popping');
         burstAt(fieldEl,cx,cy,p,combo);
         updateScore();
-        setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),220);},150);
+        if(onPopCb)onPopCb();
+        setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),210);},150);
       };
       btn._popCat=popIt;
       btn.addEventListener('pointerdown',popIt);
@@ -2105,33 +2296,145 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
     window.addEventListener('pointerup',onUp);
     for(let i=0;i<maxCats;i++)spawnCat(true);
     const iv=setInterval(()=>{
-      const host=fieldEl.closest('#boot-overlay,#pop-cat-zen-overlay,.spot-cat-loader');
+      const host=fieldEl.closest('#boot-overlay,#catcul-splash-loader,#pop-cat-zen-overlay,.spot-cat-loader');
       if(!document.body.contains(fieldEl)){clearInterval(iv);window.removeEventListener('pointerup',onUp);alive=false;return;}
       if(host&&host.classList.contains('hidden'))return;
       if(fieldEl.querySelectorAll('.pop-cat-bubble').length<maxCats)spawnCat(false);
-    },850);
+    },800);
     return {
       stop(){alive=false;clearInterval(iv);window.removeEventListener('pointerup',onUp);},
       popRandom(){const b=fieldEl.querySelector('.pop-cat-bubble:not([data-popped])');if(b&&b._popCat)b._popCat();},
-      spawnGolden(){
-        const b=fieldEl.querySelector('.pop-cat-bubble.is-golden-cat:not([data-popped])');
-        if(b)return b;
-        return null;
-      }
+      ensureSpawn(){for(let i=fieldEl.querySelectorAll('.pop-cat-bubble').length;i<maxCats;i++)spawnCat(true);}
     };
   }
-  const bootField=document.getElementById('boot-cat-field');
-  const bootCnt=document.getElementById('boot-pop-count');
-  const bootCombo=document.getElementById('boot-combo-pill');
-  const bootCtrl=attachCatField(bootField,bootCnt,{maxCats:10,comboEl:bootCombo});
-  const crest=document.getElementById('boot-crest-btn');
-  if(crest)crest.addEventListener('click',()=>bootCtrl.popRandom());
-  const bootSound=document.getElementById('boot-sound-btn');
-  if(bootSound)bootSound.addEventListener('click',()=>{popSilent=!popSilent;syncSoundButtons();});
+
+  // Wire #boot-overlay on catcul.html if present
+  const bootOverlay=document.getElementById('boot-overlay');
+  let bootCtrl=null;
+  function dismissBootNow(){
+    clearTimeout(bootTimer);
+    if(!bootOverlay||bootOverlay.classList.contains('hidden'))return;
+    if(navigator.webdriver&&!window.__forceCatBootHold){
+      bootOverlay.classList.add('hidden');
+      return;
+    }
+    bootOverlay.classList.add('is-closing');
+    setTimeout(()=>{
+      bootOverlay.classList.add('hidden');
+      bootOverlay.classList.remove('is-closing');
+    },260);
+  }
+  function scheduleBootDismiss(){
+    if(!bootReady||!bootOverlay)return;
+    if(navigator.webdriver&&!window.__forceCatBootHold){
+      bootOverlay.classList.add('hidden');
+      return;
+    }
+    clearTimeout(bootTimer);
+    const minTotal=2600;
+    const minSincePop=2100;
+    const waitBoot=Math.max(0,minTotal-(Date.now()-pageStartAt));
+    const waitPop=lastGlobalPopAt?Math.max(0,minSincePop-(Date.now()-lastGlobalPopAt)):0;
+    const wait=Math.max(waitBoot,waitPop);
+    if(wait<=20){dismissBootNow();return;}
+    bootTimer=setTimeout(scheduleBootDismiss,wait+25);
+  }
+  if(bootOverlay){
+    bootCtrl=attachCatField(
+      document.getElementById('boot-cat-field'),
+      document.getElementById('boot-pop-count'),
+      {maxCats:12,comboEl:document.getElementById('boot-combo-pill'),onPop:()=>{if(bootReady)scheduleBootDismiss();}}
+    );
+    document.getElementById('boot-crest-btn')?.addEventListener('click',()=>bootCtrl.popRandom());
+    document.getElementById('boot-sound-btn')?.addEventListener('click',()=>{popSilent=!popSilent;syncSoundButtons();});
+    document.getElementById('boot-enter-btn')?.addEventListener('click',dismissBootNow);
+  }
+
+  // Wire #catcul-splash-loader on public pages (index, signin, signup)
+  const splash=document.getElementById('catcul-splash-loader');
+  let splashCtrl=null,splashTimer=null;
+  function closeSplashNow(){
+    clearTimeout(splashTimer);
+    if(!splash||splash.classList.contains('hidden'))return;
+    splash.classList.add('is-closing');
+    setTimeout(()=>{
+      splash.classList.add('hidden');
+      splash.classList.remove('is-closing');
+    },280);
+  }
+  function scheduleSplashClose(baseMs){
+    if(!splash||splash.classList.contains('hidden'))return;
+    clearTimeout(splashTimer);
+    const waitBase=Math.max(0,(baseMs||2800)-(Date.now()-pageStartAt));
+    const waitPop=lastGlobalPopAt?Math.max(0,2200-(Date.now()-lastGlobalPopAt)):0;
+    const wait=Math.max(waitBase,waitPop);
+    if(wait<=20){closeSplashNow();return;}
+    splashTimer=setTimeout(()=>scheduleSplashClose(0),wait+30);
+  }
+  if(splash){
+    const autoShow=(!navigator.webdriver||window.__forceCatSplash===true);
+    if(autoShow){
+      splash.classList.remove('hidden');
+      splashCtrl=attachCatField(
+        document.getElementById('splash-cat-field'),
+        document.getElementById('splash-pop-count'),
+        {maxCats:12,comboEl:document.getElementById('splash-combo-pill'),onPop:()=>scheduleSplashClose(0)}
+      );
+      document.getElementById('splash-crest-btn')?.addEventListener('click',()=>splashCtrl.popRandom());
+      document.getElementById('splash-sound-btn')?.addEventListener('click',()=>{popSilent=!popSilent;syncSoundButtons();});
+      document.getElementById('splash-enter-btn')?.addEventListener('click',closeSplashNow);
+      const isLanding=document.body.dataset.catculView==='landing';
+      scheduleSplashClose(isLanding?3100:2100);
+    }
+  }
+
+  document.addEventListener('click',(e)=>{
+    if(e.target.closest?.('[data-open-pop-cats]')){
+      e.preventDefault();
+      window.CatculPopCats.openBreak();
+    }
+  });
 
   window.CatculPopCats={
     attach:attachCatField,
     getCount:()=>totalPopped,
+    finishBoot(){
+      bootReady=true;
+      const enterBtn=document.getElementById('boot-enter-btn');
+      if(enterBtn)enterBtn.classList.remove('hidden');
+      const msg=document.getElementById('boot-message');
+      if(msg&&(!navigator.webdriver||window.__forceCatBootHold)){
+        msg.textContent='Spaces ready! Pop a few cats or jump right in ✨';
+      }
+      scheduleBootDismiss();
+    },
+    enterPreviewMode(){
+      clearTimeout(bootTimer);
+      bootReady=false;
+      if(bootOverlay){
+        bootOverlay.classList.remove('hidden','is-closing');
+        bootCtrl?.ensureSpawn?.();
+      }
+      const msg=document.getElementById('boot-message');
+      if(msg)msg.textContent='Interactive preview — tap or swipe floating cats to pop! (Open the live Website tab to sign in.)';
+    },
+    showTransition(messageText){
+      if(navigator.webdriver&&!window.__forceCatSplash)return;
+      if(splash){
+        const msg=document.getElementById('splash-message');
+        if(msg&&messageText)msg.textContent=messageText;
+        splash.classList.remove('hidden','is-closing');
+        if(!splashCtrl){
+          splashCtrl=attachCatField(
+            document.getElementById('splash-cat-field'),
+            document.getElementById('splash-pop-count'),
+            {maxCats:12,comboEl:document.getElementById('splash-combo-pill')}
+          );
+        }else{
+          splashCtrl.ensureSpawn();
+        }
+      }
+    },
     openBreak(){
       document.getElementById('pop-cat-zen-overlay')?.remove();
       const wrap=document.createElement('div');
@@ -2139,23 +2442,21 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
       wrap.className='catcul-boot-overlay pop-cat-zen-mode';
       wrap.setAttribute('role','dialog');
       wrap.setAttribute('aria-label','Pop-a-Cat Zen Break');
-      wrap.innerHTML=`
-        <div class="pop-cat-field" id="zen-cat-field"></div>
-        <div class="boot-center-card zen-center-card">
-          <span class="boot-eyebrow">CATCUL · STUDY BREATHER</span>
-          <h3 class="zen-title">Pop a few cats. Breathe out.</h3>
-          <p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>
-          <div class="boot-pop-hud">
-            <span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">${totalPopped}</b> popped</span>
-            <span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>
-            <span class="zen-best-pill">🏆 Best <b id="zen-best-streak">${bestStreak}</b></span>
-            <button type="button" class="boot-sound-btn" id="zen-sound-btn" aria-label="Toggle pop chimes">${popSilent?'🔇':'🔊'}</button>
-          </div>
-          <div class="row" style="gap:8px;width:100%;margin-top:10px">
-            <button type="button" class="btn secondary grow" id="zen-burst-all" style="margin:0">✨ Pop 3!</button>
-            <button type="button" class="btn grow" id="zen-close-btn" style="margin:0">Back to Catcul</button>
-          </div>
-        </div>`;
+      wrap.innerHTML='<div class="pop-cat-field" id="zen-cat-field"></div>'
+        +'<div class="boot-center-card zen-center-card">'
+        +'<span class="boot-eyebrow">CATCUL · STUDY BREATHER</span>'
+        +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
+        +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
+        +'<div class="boot-pop-hud">'
+        +'<span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">'+totalPopped+'</b> popped</span>'
+        +'<span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>'
+        +'<span class="zen-best-pill">🏆 Best <b id="zen-best-streak">'+bestStreak+'</b></span>'
+        +'<button type="button" class="boot-sound-btn" id="zen-sound-btn" aria-label="Toggle pop chimes">'+(popSilent?'🔇':'🔊')+'</button>'
+        +'</div>'
+        +'<div style="display:flex;gap:8px;width:100%;margin-top:10px">'
+        +'<button type="button" class="boot-enter-btn" id="zen-burst-all" style="flex:1;margin:0;background:rgba(31,52,28,.08);border-color:rgba(31,52,28,.16);color:inherit;box-shadow:none">✨ Pop 3!</button>'
+        +'<button type="button" class="boot-enter-btn" id="zen-close-btn" style="flex:1;margin:0">Back to Catcul</button>'
+        +'</div></div>';
       document.body.appendChild(wrap);
       const ctrl=attachCatField(wrap.querySelector('#zen-cat-field'),wrap.querySelector('#zen-pop-count'),{
         maxCats:14,
@@ -2172,11 +2473,12 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
   };
 })();
 </script>
+
 <div id="workspace-update" class="workspace-update hidden" role="status"></div>
 <div class="app" id="app" role="region" aria-label="App Workspace Dashboard" inert>
 <aside class="rail" aria-label="Navigation">
 <a class="brand" href="index.html" aria-label="Catcul home" title="Back to home"><svg><use href="#i-cat"/></svg></a>
-<nav class="rail-nav"><button class="nav-btn active" data-action="chats" data-workspace="chat" aria-pressed="true" title="Chats" aria-label="Chats"><svg><use href="#i-chat"/></svg></button><button class="nav-btn" data-action="gallery" title="Shared photos" aria-label="Shared photos"><svg><use href="#i-photo"/></svg></button><button class="nav-btn" data-action="friends" title="Friends" aria-label="Friends"><svg><use href="#i-people"/></svg><span class="hidden" id="friend-request-count"></span></button><button class="nav-btn" data-action="calls" title="Voice calls" aria-label="Voice calls"><svg><use href="#i-phone"/></svg></button><button class="nav-btn" data-workspace="spotlight" title="Campus Spotlight" aria-label="Campus Spotlight" aria-pressed="false"><svg><use href="#i-spark"/></svg></button><button class="nav-btn" data-workspace="diary" title="Diary" aria-label="Diary" aria-pressed="false"><svg><use href="#i-book"/></svg></button><button class="nav-btn hidden" data-workspace="admin" title="Admin" aria-label="Admin" aria-pressed="false"><svg><use href="#i-lock"/></svg></button></nav>
+<nav class="rail-nav"><button class="nav-btn active" data-action="chats" data-workspace="chat" aria-pressed="true" title="Chats" aria-label="Chats"><svg><use href="#i-chat"/></svg></button><button class="nav-btn" data-action="gallery" title="Shared photos" aria-label="Shared photos"><svg><use href="#i-photo"/></svg></button><button class="nav-btn" data-action="friends" title="Friends" aria-label="Friends"><svg><use href="#i-people"/></svg><span class="hidden" id="friend-request-count"></span></button><button class="nav-btn" data-action="calls" title="Voice calls" aria-label="Voice calls"><svg><use href="#i-phone"/></svg></button><button class="nav-btn" data-workspace="spotlight" title="Campus Spotlight" aria-label="Campus Spotlight" aria-pressed="false"><svg><use href="#i-spark"/></svg></button><button class="nav-btn" data-workspace="arcade" title="Friends Games" aria-label="Friends Games" aria-pressed="false"><svg><use href="#i-gamepad"/></svg></button><button class="nav-btn" data-workspace="diary" title="Diary" aria-label="Diary" aria-pressed="false"><svg><use href="#i-book"/></svg></button><button class="nav-btn hidden" data-workspace="admin" title="Admin" aria-label="Admin" aria-pressed="false"><svg><use href="#i-lock"/></svg></button></nav>
 <div class="rail-bottom"><button class="nav-btn" data-action="plans" title="Plans & Perks" aria-label="Plans & Perks"><svg><use href="#i-crown"/></svg></button><button class="nav-btn" data-action="themes" title="App Themes & Stickers" aria-label="App Themes & Stickers"><svg><use href="#i-palette"/></svg></button><button class="nav-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="nav-btn" data-open-download title="Download Desktop &amp; Phone App" aria-label="Download Desktop and Phone App"><svg><use href="#i-download"/></svg></button><button class="nav-btn" data-action="theme" title="Toggle theme" aria-label="Toggle theme" id="theme-icon"><svg><use href="#i-moon"/></svg></button><button class="nav-btn" data-action="settings" title="Settings" aria-label="Settings"><svg><use href="#i-settings"/></svg></button><button class="mini-avatar my-avatar" data-action="profile" title="Edit your profile" aria-label="Edit your profile"></button></div>
 </aside>
 <section id="spotlight-view" class="student-view spotlight-workspace hidden" aria-labelledby="spotlight-heading">
@@ -2230,6 +2532,74 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
   </div>
  </div>
 </section>
+<section id="arcade-view" class="student-view arcade-workspace hidden" aria-labelledby="arcade-heading">
+ <header class="student-view-head arcade-head">
+  <div class="arcade-head-copy">
+   <div class="spotlight-eyebrow-row">
+    <span class="eyebrow">CATCUL · FRIENDS GAMES AREA</span>
+    <span class="spotlight-pulse-chip" id="arcade-online-chip"><i></i><span id="arcade-online-label">Squad Arcade · Live</span></span>
+   </div>
+   <h2 id="arcade-heading">Squad up. Play right here.</h2>
+   <p>Jump into Veck.io, Poxel.io, or Offline Craft while staying on voice call and sharing party codes with friends.</p>
+  </div>
+  <div class="arcade-head-actions">
+   <button class="btn secondary spotlight-zen-btn" type="button" data-open-pop-cats title="Pop floating cats">🐾 Pop Cats</button>
+   <button class="btn secondary" type="button" id="arcade-voice-btn" title="Start or manage a voice call while gaming"><svg><use href="#i-phone"/></svg><span id="arcade-voice-label">Squad Voice</span></button>
+   <button class="btn secondary" type="button" id="arcade-local-html-btn" title="Load a local >25 MB offline .html or .html.gz game from your computer">📂 Play Local .html</button>
+   <button class="btn secondary hidden" type="button" id="arcade-admin-slot-btn" title="Set hosted offline HTML game link for all students">🔗 Offline HTML Slot</button>
+   <button class="btn" type="button" id="arcade-create-lobby-btn"><svg><use href="#i-gamepad"/></svg>+ Post Party Code</button>
+   <input type="file" id="arcade-local-file" accept=".html,.htm,.gz,text/html,application/gzip" hidden>
+  </div>
+ </header>
+ <div id="arcade-stage-wrap" class="arcade-stage-wrap hidden">
+  <div class="arcade-stage-bar">
+   <div class="arcade-stage-left">
+    <button type="button" class="btn secondary mini" id="arcade-close-stage">← All Games</button>
+    <strong id="arcade-active-title">Veck.io</strong>
+    <span class="arcade-active-code hidden" id="arcade-active-code-wrap">Party Code: <code id="arcade-active-code"></code> <button type="button" id="arcade-copy-active-code" title="Copy party code">Copy</button></span>
+   </div>
+   <div class="arcade-stage-right">
+    <button type="button" class="btn secondary mini" id="arcade-stage-invite-btn" title="Post party code or invite a chat room">+ Invite Friends</button>
+    <button type="button" class="btn secondary mini" id="arcade-toggle-chat-btn" aria-pressed="true" title="Toggle live squad chat sidebar">💬 Squad Chat</button>
+    <button type="button" class="btn secondary mini" id="arcade-reload-btn" title="Reload game">↻ Reload</button>
+    <a class="btn secondary mini" id="arcade-newtab-link" href="https://veck.io/" target="_blank" rel="noopener noreferrer" title="Open game in a separate browser tab">↗ Tab</a>
+    <button type="button" class="btn mini" id="arcade-fullscreen-btn" title="Fullscreen game stage (Esc to exit)">⛶ Fullscreen</button>
+   </div>
+  </div>
+  <div class="arcade-stage-body" id="arcade-stage-body">
+   <div class="arcade-frame-box" id="arcade-frame-box">
+    <iframe id="arcade-iframe" title="Catcul Friends Game Stage" allow="fullscreen; pointer-lock; autoplay; gamepad; clipboard-read; clipboard-write; accelerometer; gyroscope" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+   </div>
+   <aside class="arcade-chat-drawer" id="arcade-chat-drawer" aria-label="Squad live chat">
+    <div class="arcade-chat-head">
+     <label for="arcade-chat-room-select" class="sr-only">Squad chat room</label>
+     <select id="arcade-chat-room-select"></select>
+     <button type="button" class="btn secondary mini" id="arcade-drop-invite-btn" title="Send game invite to this room">📨 Invite</button>
+    </div>
+    <div class="arcade-chat-log" id="arcade-chat-log" aria-live="polite"></div>
+    <form class="arcade-chat-form" id="arcade-chat-form">
+     <input type="text" id="arcade-chat-input" maxlength="800" placeholder="Message squad or drop code…" autocomplete="off">
+     <button type="submit" class="btn mini">Send</button>
+    </form>
+   </aside>
+  </div>
+ </div>
+ <div class="arcade-scroll" id="arcade-scroll">
+  <div class="arcade-presence-bar" id="arcade-presence-bar"></div>
+  <div class="arcade-section-head">
+   <h3>Featured Squad Games <span class="arcade-free-pill">100% Free for Students</span></h3>
+   <span class="arcade-hint">Click any game to play instantly inside Catcul — mouse aim &amp; voice chat supported.</span>
+  </div>
+  <div class="arcade-games-grid" id="arcade-games-grid" aria-live="polite"></div>
+  <div class="arcade-lobbies-section">
+   <div class="arcade-section-head">
+    <h3>Live Friend Lobbies &amp; Party Codes</h3>
+    <button type="button" class="btn secondary mini" id="arcade-refresh-btn">↻ Refresh Lobbies</button>
+   </div>
+   <div class="arcade-lobbies-list" id="arcade-lobbies-list" aria-live="polite"></div>
+  </div>
+ </div>
+</section>
 <section id="diary-view" class="student-view hidden" aria-labelledby="diary-heading">
  <header class="student-view-head"><div><span class="eyebrow">A LITTLE SPACE, JUST FOR YOU</span><h2 id="diary-heading">Dear, today.</h2><p>Your thoughts don’t need an audience.</p></div><span class="privacy-chip"><svg><use href="#i-lock"/></svg>Only your account</span></header>
  <div class="diary-layout"><aside class="diary-sidebar"><button class="btn full" id="diary-new"><svg><use href="#i-plus"/></svg>New entry</button><label class="sr-only" for="diary-search">Find an entry by title</label><input class="field" id="diary-search" placeholder="Find a title…" maxlength="100"><div id="diary-list" class="diary-list" aria-label="Your diary entries"></div><button id="diary-more" class="btn secondary full hidden">Load more entries</button><p class="diary-privacy">Private, account-synced notes. Not end-to-end encrypted. Entries are not available in the app’s admin panel.</p></aside>
@@ -2238,7 +2608,7 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
  <form id="diary-form"><div class="diary-meta"><label for="diary-date">Entry date<input type="date" id="diary-date" required></label><label for="diary-mood">How are you feeling?<select id="diary-mood"><option value="">Choose a mood</option><option value="good">☀️ Good</option><option value="okay">🌿 Okay</option><option value="low">🌧️ Low</option><option value="focused">✨ Focused</option><option value="tired">🌙 Tired</option></select></label></div><label class="sr-only" for="diary-title">Entry title</label><input id="diary-title" maxlength="120" placeholder="Give today a title…" autocomplete="off"><label class="sr-only" for="diary-body">Your private entry</label><textarea id="diary-body" maxlength="20000" placeholder="What’s on your mind? A small win, a big feeling, or just the ordinary bits. This page is yours." spellcheck="true"></textarea><footer class="diary-paper-footer"><span id="diary-count">0 / 20,000</span><button type="submit" id="diary-save" class="btn">Save entry <svg><use href="#i-check"/></svg></button></footer></form>
  </div></div>
 </section>
-<section id="admin-view" class="student-view hidden" aria-labelledby="admin-heading"><header class="student-view-head"><div><span class="eyebrow">CATCUL · OWNER WORKSPACE</span><h2 id="admin-heading">Keep good company.</h2><p>A safer, better space for students.</p></div><span class="privacy-chip">👑 Catcul Premium · Owner access</span></header><nav class="admin-tabs" aria-label="Administration sections"><button data-admin-tab="overview" class="active">Overview</button><button data-admin-tab="billing">Billing &amp; Plans</button><button data-admin-tab="reports">Reports</button><button data-admin-tab="community">Community</button><button data-admin-tab="nearby">Nearby posts</button><button data-admin-tab="accounts">Accounts</button><button data-admin-tab="audit">Activity log</button></nav><div id="admin-content" class="admin-content" aria-live="polite"></div></section>
+<section id="admin-view" class="student-view hidden" aria-labelledby="admin-heading"><header class="student-view-head"><div><span class="eyebrow">CATCUL · OWNER WORKSPACE</span><h2 id="admin-heading">Keep good company.</h2><p>A safer, better space for students.</p></div><span class="privacy-chip">👑 Catcul Premium · Owner access</span></header><nav class="admin-tabs" aria-label="Administration sections"><button data-admin-tab="overview" class="active">Overview</button><button data-admin-tab="games">🎮 Games &amp; Slots</button><button data-admin-tab="billing">Billing &amp; Plans</button><button data-admin-tab="reports">Reports</button><button data-admin-tab="community">Community</button><button data-admin-tab="nearby">Nearby posts</button><button data-admin-tab="accounts">Accounts</button><button data-admin-tab="audit">Activity log</button></nav><div id="admin-content" class="admin-content" aria-live="polite"></div></section>
 <aside class="sidebar" aria-label="Course Chat Rooms and study groups">
 <div class="side-head"><div class="row between"><span class="sidebar-wordmark">catcul<span>.</span></span><span class="live-tag" id="live-tag"><span class="dot"></span><span id="live-label">CONNECTING</span></span></div><div class="row between side-title"><h1>Chats</h1><button class="icon-btn new-chat" data-action="new-room" title="New conversation" aria-label="New conversation"><svg><use href="#i-plus"/></svg></button><button class="icon-btn" data-action="workspace-menu" title="Workspace menu" aria-label="Workspace menu"><svg><use href="#i-more"/></svg></button></div><div class="searchbox"><svg><use href="#i-search"/></svg><input id="room-search" type="search" placeholder="Search or start a new chat" aria-label="Find a conversation"><kbd>⌘ K</kbd></div><div class="tabs"><button class="tab active" data-filter="all">All <span class="count" id="all-count"></span></button><button class="tab" data-filter="unread">Unread <span class="count" id="unread-count"></span></button><button class="tab" data-filter="private">Private</button><button class="tab" data-filter="groups">Groups</button><button class="tab" data-filter="courses">Courses</button></div></div>
 <div class="rooms" id="rooms" aria-label="Conversations"></div>
@@ -2246,9 +2616,9 @@ html[data-catcul-theme="obsidian-gold"] .composer .send{background:#f2c963;color
 <button class="self" data-action="profile"><span class="mini-avatar my-avatar"></span><span style="text-align:left"><p id="my-name">You</p><small>Account · edit</small></span><span class="icon-btn"><svg><use href="#i-more"/></svg></span></button>
 </aside>
 <main class="chat" aria-label="Chat">
-<header class="chat-head"><button class="icon-btn mobile-back" data-action="back" aria-label="Back to chats"><svg><use href="#i-back"/></svg></button><div class="room-avatar"><svg><use href="#i-cat"/></svg></div><div class="grow"><h2 id="chat-title">Your shared space</h2><div class="subtitle"><span class="dot" id="chat-dot"></span><span id="chat-status">Connecting to your space…</span></div></div><div class="head-actions"><button class="icon-btn" id="start-call-button" data-action="start-call" title="Start voice call" aria-label="Start voice call" disabled><svg><use href="#i-phone"/></svg></button><button class="icon-btn" id="start-video-button" data-action="start-video-call" title="Start video call (Catcul+)" aria-label="Start video call" disabled><svg><use href="#i-video"/></svg></button><button class="icon-btn" data-action="search-chat" title="Search this conversation" aria-label="Search this conversation"><svg><use href="#i-search"/></svg></button><button class="icon-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="icon-btn" data-action="chat-tools" title="Chat menu" aria-label="Chat menu"><svg><use href="#i-more"/></svg></button></div></header>
+<header class="chat-head"><button class="icon-btn mobile-back" data-action="back" aria-label="Back to chats"><svg><use href="#i-back"/></svg></button><div class="room-avatar"><svg><use href="#i-cat"/></svg></div><div class="grow"><h2 id="chat-title">Your shared space</h2><div class="subtitle"><span class="dot" id="chat-dot"></span><span id="chat-status">Connecting to your space…</span></div></div><div class="head-actions"><button class="icon-btn" id="start-call-button" data-action="start-call" title="Start voice call" aria-label="Start voice call" disabled><svg><use href="#i-phone"/></svg></button><button class="icon-btn" id="start-video-button" data-action="start-video-call" title="Start video call (Catcul+)" aria-label="Start video call" disabled><svg><use href="#i-video"/></svg></button><button class="icon-btn" data-action="search-chat" title="Search this conversation" aria-label="Search this conversation"><svg><use href="#i-search"/></svg></button><button class="icon-btn" data-workspace="arcade" title="Friends Games" aria-label="Friends Games"><svg><use href="#i-gamepad"/></svg></button><button class="icon-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="icon-btn" data-action="chat-tools" title="Chat menu" aria-label="Chat menu"><svg><use href="#i-more"/></svg></button></div></header>
 <div class="live-call-banner hidden" id="live-call-banner"></div><div class="connection-banner hidden" id="connection-banner" role="status"></div>
-<div class="room-life-tools"><button data-social-extra="camera"><i class="ri-camera-lens-line"></i> Camera</button><button data-social-extra="plans"><i class="ri-calendar-check-line"></i> Plans <small>← swipe</small></button><button data-social-extra="poll"><i class="ri-bar-chart-grouped-line"></i> Poll</button><button class="casual-extra" data-social-extra="nearby"><i class="ri-compass-3-line"></i> Nearby</button><button class="casual-extra" data-social-extra="vibe"><i class="ri-sun-line"></i> Vibe</button><button class="casual-extra" data-social-extra="bedroom"><i class="ri-home-smile-2-line"></i> My room</button><button data-social-extra="install"><i class="ri-notification-3-line"></i> App & alerts</button></div><div id="room-moments" class="casual-extra"></div><div id="room-presence-line"></div><div id="spark-line" class="casual-extra"></div><div id="community-notice" class="community-notice hidden">🌐 Everyone signed in can see this community conversation.</div><div class="timeline" id="timeline" aria-label="Messages" tabindex="0"></div>
+<div class="room-life-tools"><button data-social-extra="camera"><i class="ri-camera-lens-line"></i> Camera</button><button data-social-extra="arcade"><i class="ri-gamepad-line"></i> Games</button><button data-social-extra="plans"><i class="ri-calendar-check-line"></i> Plans <small>← swipe</small></button><button data-social-extra="poll"><i class="ri-bar-chart-grouped-line"></i> Poll</button><button class="casual-extra" data-social-extra="nearby"><i class="ri-compass-3-line"></i> Nearby</button><button class="casual-extra" data-social-extra="vibe"><i class="ri-sun-line"></i> Vibe</button><button class="casual-extra" data-social-extra="bedroom"><i class="ri-home-smile-2-line"></i> My room</button><button data-social-extra="install"><i class="ri-notification-3-line"></i> App & alerts</button></div><div id="room-moments" class="casual-extra"></div><div id="room-presence-line"></div><div id="spark-line" class="casual-extra"></div><div id="community-notice" class="community-notice hidden">🌐 Everyone signed in can see this community conversation.</div><div class="timeline" id="timeline" aria-label="Messages" tabindex="0"></div>
 <button class="icon-btn floating-down hidden" id="scroll-down" data-action="scroll-down" title="Latest messages" aria-label="Latest messages"><svg><use href="#i-down"/></svg></button>
 <div class="compose-area"><div class="typing" id="typing" aria-live="polite"></div><div id="reply-bar" class="reply-bar hidden"></div><div id="file-staging" class="file-staging hidden"></div><div id="emoji-picker" class="emoji-picker hidden" aria-label="Choose an emoji"></div><form class="composer" id="compose-form"><button class="icon-btn" type="button" data-action="attach" title="Send a photo" aria-label="Send a photo"><svg><use href="#i-plus"/></svg></button><textarea id="message-input" placeholder="Type a message" aria-label="Message" rows="1" maxlength="4000"></textarea><div class="recording hidden" id="recording"><span class="record-dot"></span><span>Recording</span><time id="record-time">0:00</time><button class="icon-btn" type="button" data-action="cancel-record" title="Discard recording" aria-label="Discard recording"><svg><use href="#i-close"/></svg></button></div><button class="icon-btn" type="button" data-action="emoji" title="Emoji" aria-label="Emoji"><svg><use href="#i-smile"/></svg></button><button class="icon-btn" id="mic-button" type="button" data-action="record" title="Record a voice note" aria-label="Record a voice note"><svg><use href="#i-mic"/></svg></button><button class="icon-btn send" id="send-button" type="submit" title="Send message" aria-label="Send message" disabled><svg><use href="#i-send"/></svg></button></form><div class="spark-footer casual-extra"><button class="spark-control" data-social-extra="spark" type="button"><i class="ri-flashlight-line"></i> Spark</button><small>A quiet “I’m online.” Nothing more.</small></div><div class="compose-foot"><span><svg><use href="#i-leaf"/></svg>A little less scrolling. A lot more talking.</span><span class="shortcut">Enter to send ↵</span></div></div>
 <section class="plan-drawer hidden" id="plan-drawer" aria-label="Shared planning canvas"><header><div><span class="eyebrow">THE SHARED CANVAS</span><h2>Let’s actually do it.</h2><p>One room. Everyone on the same page.</p></div><button class="icon-btn" data-social-extra="close-plans" aria-label="Close planning canvas">×</button></header><nav class="plan-toolbar" aria-label="Add to shared plans"><button data-social-extra="event">+ Event</button><button data-social-extra="checklist">+ Checklist</button><button data-social-extra="poll">+ Poll</button><button data-social-extra="pin">+ Spot</button><button data-social-extra="map">Open map</button></nav><div class="plan-scroll"><div id="shared-map-wrap" class="hidden"><div id="shared-map"></div><p>Tap the map to place a public meetup spot. Map tiles load from OpenStreetMap only when you open this map; this shares your IP and the viewed map area with that provider.</p></div><div class="plan-cards" id="plan-cards"></div></div></section></main>
@@ -2404,14 +2774,14 @@ function dbPerson(p){return{id:p.id,name:p.display_name||'Former member',usernam
 async function busy(button,fn){if(button?.disabled)return;const text=button?.textContent;if(button){button.disabled=true;button.textContent='One moment…';}try{return await fn();}catch(e){fail(e);}finally{if(button?.isConnected){button.disabled=false;button.textContent=text;}}}
 function formError(e){const el=$('#auth-error');if(el){el.textContent=errorText(e);el.classList.remove('hidden');}else fail(e);}
 let authRedirecting=false;
-function showAuth(mode='signin'){if(authRedirecting)return;if(mode==='signin'){authRedirecting=true;window.CatculRouter.landing();return;}recoveryMode=mode==='recovery';authRedirecting=true;$('#app').setAttribute('inert','');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Taking you to sign in…';const url=new URL(mode==='signup'?'signup.html':'signin.html',location.href);const keepHash=mode==='recovery'&&location.hash.includes('type=recovery')?location.hash:'';url.search='';url.hash='';if(pendingInvite)url.searchParams.set('invite',pendingInvite);if(mode==='reset'||mode==='recovery')url.searchParams.set('mode',mode);location.replace(url.href+keepHash);}
+function showAuth(mode='signin'){if(authRedirecting)return;if(window.origin==='null'){window.CatculPopCats?.enterPreviewMode?.();return;}if(mode==='signin'){authRedirecting=true;window.CatculRouter.landing();return;}recoveryMode=mode==='recovery';authRedirecting=true;$('#app').setAttribute('inert','');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Taking you to sign in…';const url=new URL(mode==='signup'?'signup.html':'signin.html',location.href);const keepHash=mode==='recovery'&&location.hash.includes('type=recovery')?location.hash:'';url.search='';url.hash='';if(pendingInvite)url.searchParams.set('invite',pendingInvite);if(mode==='reset'||mode==='recovery')url.searchParams.set('mode',mode);location.replace(url.href+keepHash);}
 async function clearAccount(){disableDevicePush(false).catch(console.warn);bootVersion++;cleanupExtras();cleanupStudent();cleanupSchool();cleanupSocial();await disconnectVoice();await client?.auth?.signOut({scope:'local'}).catch(()=>{});try{Object.keys(localStorage).filter(k=>k.startsWith('sb-')&&k.endsWith('-auth-token')).forEach(k=>localStorage.removeItem(k));}catch{}booting=false;bootedUser='';setupReady=false;user=null;session=null;if(mediaRecorder?.state==='recording')stopRecording(true);for(const ch of Object.values(channels))client?.removeChannel(ch);for(const obj of[histories,channels,states,members,typing,peopleCache,mediaCache,roomPeople,hasMore,cursors])for(const k of Object.keys(obj))delete obj[k];rooms=[];active='';reply=null;attachment=null;seenReceipts.clear();readLocks.clear();sendLocks.clear();profile={id:'',name:'Your profile',color:colors[0]};$('#message-input').value='';$('#file-staging').classList.add('hidden');$('#reply-bar').classList.add('hidden');closeModal();renderProfile();renderRooms();renderTimeline();updateConnection();showAuth();}
 async function sendBackgroundReply(roomId,text,replyToId=''){const body=String(text||'').trim().slice(0,2000);if(!user||!setupReady||!validRoomId(roomId)||!body)return false;const msgId=uid();const res=await db.from('messages').insert({id:msgId,room_id:roomId,body,kind:'text',reply_to:validRoomId(replyToId)?replyToId:null}).select().single();const row=unwrap(res);await receiveRow(roomId,row,false);toast('Reply sent.');return true;}
 async function handleSwNotificationPayload(payload){if(!payload||!user||!setupReady)return;const {kind,roomId,callId,messageId,text}=payload;if(kind==='inline-reply'&&roomId&&text){if(callId&&validRoomId(callId))declineVoiceCall(callId).catch(()=>{});await sendBackgroundReply(roomId,text,messageId).catch(fail);return;}if(kind==='decline-call'&&validRoomId(callId)){await declineVoiceCall(callId).catch(fail);return;}if(kind==='answer-call'&&validRoomId(callId)){if(validRoomId(roomId)&&rooms.some(r=>r.id===roomId)){showChatView();await setActive(roomId);}await refreshCalls();await acceptVoiceCall(callId,false).catch(fail);return;}if(kind==='open-reply'&&validRoomId(roomId)){if(rooms.some(r=>r.id===roomId)){showChatView();await setActive(roomId);if(validRoomId(messageId))setReply(messageId);$('#message-input')?.focus();}}}
 if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('message',ev=>{if(ev.data?.type==='CATCUL_SW_ACTION')handleSwNotificationPayload(ev.data).catch(console.warn);});}
-async function bootSession(s,force=false){if(!s?.user)return clearAccount();if(recoveryMode&&!force)return;if(booting||(!force&&bootedUser===s.user.id&&setupReady))return;booting=true;const epoch=++bootVersion;session=s;user=s.user;profile={id:user.id,name:user.user_metadata?.display_name||'Your profile',color:colors[0]};$('#app').removeAttribute('inert');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Opening your conversations…';try{await initStudentAccess();if(epoch!==bootVersion)return;await client.realtime.setAuth(s.access_token);const p=one(unwrap(await db.rpc('ensure_profile')));if(epoch!==bootVersion)return;profile=dbPerson(p);peopleCache[p.id]=profile;window.CatculRouter.workspace(s);await requireStudentUsername();if(epoch!==bootVersion)return;await initSchool();if(epoch!==bootVersion)return;setupReady=true;bootedUser=user.id;renderProfile();await loadRooms();await loadSocial();initSocial();if(epoch!==bootVersion)return;if(pendingInvite){try{await joinByToken(pendingInvite);pendingInvite='';try{sessionStorage.removeItem('catcul.pendingInvite');}catch{}if(location.hash.includes('invite='))history.replaceState(null,'',location.pathname+location.search);}catch(e){toast('Invitation: '+errorText(e),true);}}if(!active&&rooms.length)await setActive(rooms[0].id,false);else if(!rooms.length)setEmptyRoom();$('#boot-overlay').classList.add('hidden');const u=new URL(location.href),requested=u.searchParams;if(requested.get('mode')==='diary')await switchWorkspace('diary');const reqRoom=requested.get('room');if(reqRoom&&rooms.some(r=>r.id===reqRoom)){showChatView();await setActive(reqRoom);}const acceptCallId=requested.get('accept_call'),declineCallId=requested.get('decline_call'),replyToId=requested.get('reply_to'),autoSend=requested.get('autosend');if(acceptCallId||declineCallId||replyToId||autoSend){['accept_call','decline_call','reply_to','autosend'].forEach(k=>u.searchParams.delete(k));history.replaceState(null,'',u.pathname+(u.search||'')+(u.hash||''));if(autoSend&&reqRoom)await sendBackgroundReply(reqRoom,autoSend,replyToId||'').catch(fail);else if(replyToId&&validRoomId(replyToId)){setReply(replyToId);$('#message-input')?.focus();}if(declineCallId&&validRoomId(declineCallId)){await refreshCalls();await declineVoiceCall(declineCallId).catch(fail);}else if(acceptCallId&&validRoomId(acceptCallId)){await refreshCalls();await acceptVoiceCall(acceptCallId,false).catch(fail);}}}catch(e){if(epoch!==bootVersion)return;setupReady=false;$('#boot-overlay').classList.add('hidden');if(e.suspended)showSuspended(e.message);else showSetupFailure(e);}finally{if(epoch===bootVersion)booting=false;}}
+async function bootSession(s,force=false){if(!s?.user)return clearAccount();if(recoveryMode&&!force)return;if(booting||(!force&&bootedUser===s.user.id&&setupReady))return;booting=true;const epoch=++bootVersion;session=s;user=s.user;profile={id:user.id,name:user.user_metadata?.display_name||'Your profile',color:colors[0]};$('#app').removeAttribute('inert');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Opening your conversations…';try{await initStudentAccess();if(epoch!==bootVersion)return;await client.realtime.setAuth(s.access_token);const p=one(unwrap(await db.rpc('ensure_profile')));if(epoch!==bootVersion)return;profile=dbPerson(p);peopleCache[p.id]=profile;window.CatculRouter.workspace(s);await requireStudentUsername();if(epoch!==bootVersion)return;await initSchool();if(epoch!==bootVersion)return;setupReady=true;bootedUser=user.id;renderProfile();await loadRooms();await loadSocial();initSocial();if(epoch!==bootVersion)return;if(pendingInvite){try{await joinByToken(pendingInvite);pendingInvite='';try{sessionStorage.removeItem('catcul.pendingInvite');}catch{}if(location.hash.includes('invite='))history.replaceState(null,'',location.pathname+location.search);}catch(e){toast('Invitation: '+errorText(e),true);}}if(!active&&rooms.length)await setActive(rooms[0].id,false);else if(!rooms.length)setEmptyRoom();const u=new URL(location.href),requested=u.searchParams;const hasDeepAction=Boolean(requested.get('mode')||requested.get('room')||requested.get('accept_call')||requested.get('decline_call')||requested.get('reply_to')||requested.get('autosend'));if(hasDeepAction||!window.CatculPopCats?.finishBoot)$('#boot-overlay').classList.add('hidden');else window.CatculPopCats.finishBoot();if(requested.get('mode')==='diary')await switchWorkspace('diary');const reqRoom=requested.get('room');if(reqRoom&&rooms.some(r=>r.id===reqRoom)){showChatView();await setActive(reqRoom);}const acceptCallId=requested.get('accept_call'),declineCallId=requested.get('decline_call'),replyToId=requested.get('reply_to'),autoSend=requested.get('autosend');if(acceptCallId||declineCallId||replyToId||autoSend){['accept_call','decline_call','reply_to','autosend'].forEach(k=>u.searchParams.delete(k));history.replaceState(null,'',u.pathname+(u.search||'')+(u.hash||''));if(autoSend&&reqRoom)await sendBackgroundReply(reqRoom,autoSend,replyToId||'').catch(fail);else if(replyToId&&validRoomId(replyToId)){setReply(replyToId);$('#message-input')?.focus();}if(declineCallId&&validRoomId(declineCallId)){await refreshCalls();await declineVoiceCall(declineCallId).catch(fail);}else if(acceptCallId&&validRoomId(acceptCallId)){await refreshCalls();await acceptVoiceCall(acceptCallId,false).catch(fail);}}}catch(e){if(epoch!==bootVersion)return;setupReady=false;$('#boot-overlay').classList.add('hidden');if(e.suspended)showSuspended(e.message);else showSetupFailure(e);}finally{if(epoch===bootVersion)booting=false;}}
 function showSetupFailure(e){updateConnection();openModal(`${modalTitle('settings','Could not load your account','We signed you in, but Catcul could not reach your messages right now.')}<div class="notice"><strong>Details:</strong><br>${esc(errorText(e))}</div><p class="note">Check your internet connection and try again, or visit the <a href="help.html" style="text-decoration:underline">Help Centre</a> if the issue continues.</p><button class="btn full" data-action="retry-setup">Try again</button><button class="btn secondary full" data-action="signout">Sign out</button>`);}
-async function initClient(){if(window.CatculRouter?.isRecoveryUrl?.(location)){showAuth('recovery');return;}try{client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{db:{schema:DATABASE_SCHEMA},auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit'},realtime:{params:{eventsPerSecond:10}}});db=client.schema(DATABASE_SCHEMA);client.auth.onAuthStateChange((event,s)=>{setTimeout(()=>{if(event==='PASSWORD_RECOVERY'){session=s;user=s?.user;showAuth('recovery');return;}if(event==='SIGNED_OUT'){clearAccount();return;}if(event==='TOKEN_REFRESHED'){session=s;client.realtime.setAuth(s?.access_token);return;}if(event==='INITIAL_SESSION'||event==='USER_UPDATED')return;if(s&&!recoveryMode)bootSession(s);},0);});const result=await client.auth.getSession();unwrap(result);if(result.data.session&&!recoveryMode)await bootSession(result.data.session);else if(!recoveryMode)showAuth();}catch(e){showAuth();formError(e);}}
+async function initClient(){if(window.CatculRouter?.isRecoveryUrl?.(location)){showAuth('recovery');return;}try{client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{db:{schema:DATABASE_SCHEMA},auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit'},realtime:{params:{eventsPerSecond:10}}});db=client.schema(DATABASE_SCHEMA);client.auth.onAuthStateChange((event,s)=>{setTimeout(()=>{if(event==='PASSWORD_RECOVERY'){session=s;user=s?.user;showAuth('recovery');return;}if(event==='SIGNED_OUT'){clearAccount();return;}if(event==='TOKEN_REFRESHED'){session=s;client.realtime.setAuth(s?.access_token);return;}if(event==='INITIAL_SESSION'||event==='USER_UPDATED')return;if(s&&!recoveryMode)bootSession(s);},0);});const result=await client.auth.getSession();unwrap(result);if(result.data.session&&!recoveryMode)await bootSession(result.data.session);else if(!recoveryMode)showAuth();}catch(e){showAuth();if(window.origin!=='null')formError(e);}}
 async function signOut(){if(!confirmNotesDiscard())return;if(!studentSuspended&&(diary.dirty||diary.saving)&&!await leaveDiarySafely())return;closeModal(false);try{await disableDevicePush();await leaveVoiceCall(true);cleanupSocial();unwrap(await client.auth.signOut({scope:'local'}));await clearAccount();}catch(e){fail(e);}}
 async function loadRooms(){if(!user)return;const epoch=bootVersion;let spaceResult=await db.rpc('list_study_spaces');if(spaceResult.error&&['PGRST202','42883'].includes(spaceResult.error.code))spaceResult=await db.rpc('list_workspace_spaces');const data=unwrap(spaceResult);if(epoch!==bootVersion)return;const muted=readStore('muted.'+user.id,[]);rooms=(data||[]).map(r=>({...r,name:r.kind==='direct'?(r.peer_name||'Private chat'):r.name,muted:muted.includes(r.id),unread:Number(r.unread_count),last:r.last_message_at?{sender:{id:'',name:''},time:Date.parse(r.last_message_at),text:r.last_body,kind:r.last_kind}:null}));for(const id of Object.keys(channels)){const r=rooms.find(r=>r.id===id);if(!r||r.can_send===false){const ch=channels[id];delete channels[id];client.removeChannel(ch);members[id]={};states[id]=r?'READONLY':'CLOSED';if(!r){delete histories[id];delete roomPeople[id];}}}for(const r of rooms)if(r.can_send!==false)subscribeRoom(r.id);if(active&&!rooms.some(r=>r.id===active)){active='';setEmptyRoom();}if(voice.call&&!rooms.some(r=>r.id===voice.call.room_id))await disconnectVoice('Your access to this room ended.');syncRoomChrome();renderRooms();updateConnection();}
 function scheduleRooms(){clearTimeout(roomRefreshTimer);roomRefreshTimer=setTimeout(()=>loadRooms().catch(fail),600);}
@@ -4468,8 +4838,8 @@ document.addEventListener('change',e=>{const id=e.target.dataset.homework;if(!id
 
 /* Plain, page-memory notes. No API requests, password, auto-lock or AI. */
 let notesEpoch=0,notesOpen=false,notesDirty=false,notesFocus=null,notesTitle='',notesInert=[];
-function openNotes(){if(notesOpen||!user||studentSuspended||usernameRequired)return;notesEpoch++;notesFocus=document.activeElement;notesTitle=document.title;closeModal();closePlans();notesOpen=true;document.body.classList.add('notes-open');$('#notes-screen').classList.remove('hidden');for(const el of [...document.body.children]){if(['notes-screen','catcul-cursor','catcul-cursor-toggle'].includes(el.id)||['SCRIPT','STYLE','SVG'].includes(el.tagName))continue;notesInert.push([el,el.inert]);el.inert=true;}document.title='Notes';$('#notes-date').textContent=new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});sendTyping(false);stopRinging();if(mediaRecorder?.state==='recording')stopRecording(true);for(const el of $$('audio,video')){if(!el.closest('#voice-audio'))el.pause();}if(voice.phase!=='idle'){voice.muted=true;voice.speakerMuted=true;if(typeof stopCallVideo==='function')stopCallVideo(true).catch(console.warn);voice.track?.mute().catch(()=>disconnectVoice().catch(console.warn));for(const el of $$('#voice-audio audio'))el.muted=true;paintVoice();}if(typeof closeCatSnapCamera==='function')closeCatSnapCamera();if(typeof closeStoryViewer==='function')closeStoryViewer();if(typeof closeSpotlightTheater==='function')closeSpotlightTheater();document.getElementById('pop-cat-zen-overlay')?.remove();for(const id of Object.keys(channels))trackPresence(id);$('#notes-body').focus();}
-function closeNotes(){if(!notesOpen)return;notesOpen=false;document.body.classList.remove('notes-open');$('#notes-screen').classList.add('hidden');document.title=notesTitle||'Catcul';for(const [el,inert]of notesInert)if(el.isConnected)el.inert=inert;notesInert=[];if(notesFocus?.isConnected)notesFocus.focus();notesFocus=null;if(user&&!studentSuspended){for(const id of Object.keys(channels))trackPresence(id);renderIncoming();if(voice.phase!=='idle')toast('Call audio stayed muted. Resume it with the call controls.');}}
+function openNotes(){if(notesOpen||!user||studentSuspended||usernameRequired)return;notesEpoch++;notesFocus=document.activeElement;notesTitle=document.title;closeModal();closePlans();notesOpen=true;document.body.classList.add('notes-open');$('#notes-screen').classList.remove('hidden');for(const el of [...document.body.children]){if(['notes-screen','catcul-cursor','catcul-cursor-toggle'].includes(el.id)||['SCRIPT','STYLE','SVG'].includes(el.tagName))continue;notesInert.push([el,el.inert]);el.inert=true;}document.title='Notes';$('#notes-date').textContent=new Date().toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});sendTyping(false);stopRinging();if(mediaRecorder?.state==='recording')stopRecording(true);for(const el of $$('audio,video')){if(!el.closest('#voice-audio'))el.pause();}if(voice.phase!=='idle'){voice.muted=true;voice.speakerMuted=true;if(typeof stopCallVideo==='function')stopCallVideo(true).catch(console.warn);voice.track?.mute().catch(()=>disconnectVoice().catch(console.warn));for(const el of $$('#voice-audio audio'))el.muted=true;paintVoice();}if(typeof closeCatSnapCamera==='function')closeCatSnapCamera();if(typeof closeStoryViewer==='function')closeStoryViewer();if(typeof closeSpotlightTheater==='function')closeSpotlightTheater();if(typeof parkArcadeForNotes==='function')parkArcadeForNotes();document.getElementById('pop-cat-zen-overlay')?.remove();for(const id of Object.keys(channels))trackPresence(id);$('#notes-body').focus();}
+function closeNotes(){if(!notesOpen)return;notesOpen=false;document.body.classList.remove('notes-open');$('#notes-screen').classList.add('hidden');document.title=notesTitle||'Catcul';for(const [el,inert]of notesInert)if(el.isConnected)el.inert=inert;notesInert=[];if(notesFocus?.isConnected)notesFocus.focus();notesFocus=null;if(user&&!studentSuspended){for(const id of Object.keys(channels))trackPresence(id);if(typeof resumeArcadeAfterNotes==='function')resumeArcadeAfterNotes();renderIncoming();if(voice.phase!=='idle')toast('Call audio stayed muted. Resume it with the call controls.');}}
 function confirmNotesDiscard(){return !notesDirty||window.confirm('These notes have not been downloaded since your last edit. Leave without a copy?');}
 function cleanupNotes(){closeNotes();notesDirty=false;$('#notes-title').value='Untitled notes';$('#notes-body').value='';paintNotes();}
 function paintNotes(){const text=$('#notes-body').value.trim();$('#notes-count').textContent=(text?text.split(/\s+/).length:0).toLocaleString()+' words';$('#notes-storage-status').textContent=notesDirty?'Unsaved on this page · download to keep a copy':'On this page only · download to keep a copy';}
@@ -4583,9 +4953,9 @@ function studentSetup(){openModal(`${modalTitle('book','Diary is temporarily una
 async function initStudentAccess(){const epoch=bootVersion,result=await db.rpc('get_app_access');if(epoch!==bootVersion)return;if(result.error){if(studentMissing(result.error)){studentReady=false;studentAdmin=false;paintWorkspaceModes();return;}throw result.error;}if(typeof result.data?.active!=='boolean')throw Error('Account access response was invalid. Refresh and retry.');studentReady=true;studentAdmin=result.data.is_admin===true;studentSuspended=!result.data.active;paintWorkspaceModes();if(studentSuspended){const error=Error(result.data.reason||'Contact the Catcul administrator.');error.suspended=true;throw error;}clearInterval(studentPoll);studentPoll=setInterval(()=>refreshStudentAccess().catch(console.warn),15000);}
 async function refreshStudentAccess(){if(!user||!studentReady||document.hidden)return;const actor=user.id,epoch=bootVersion;const data=unwrap(await db.rpc('get_app_access'));if(epoch!==bootVersion||actor!==user?.id)return;if(!data.active)return showSuspended(data.reason);const before=studentAdmin;studentAdmin=data.is_admin===true;paintWorkspaceModes();if(before&&!studentAdmin){adminState.epoch++;$('#admin-content').replaceChildren();adminState.accounts=[];adminState.reports=[];if(workspaceMode==='admin')await switchWorkspace('chat');}if(workspaceMode==='diary')await loadDiaryList(false,true);}
 function showSuspended(reason){if(studentSuspended&&$('#suspension-notice'))return;studentSuspended=true;studentAdmin=false;setupReady=false;clearInterval(studentPoll);clearTimeout(diary.timer);closeNotes();cleanupSocial();disconnectVoice('Account suspended.').catch(console.warn);if(mediaRecorder?.state==='recording')stopRecording(true);for(const ch of Object.values(channels))client?.removeChannel(ch);if(schoolChannel)client?.removeChannel(schoolChannel);clearInterval(schoolPoll);if(diaryChannel)client?.removeChannel(diaryChannel);$('#app').setAttribute('inert','');$('#boot-overlay').classList.add('hidden');paintWorkspaceModes();openModal(`${modalTitle('lock','Your account is paused.','App access has been suspended by the administrator.')}<div class="notice" id="suspension-notice">${esc(reason||'Contact the administrator for help.')}</div>${diary.dirty?'<p class="note">You have an unsaved diary draft on this page. Download it before signing out.</p><button class="btn secondary full" id="paused-export">Download my draft</button>':''}<button class="btn full" data-action="signout">Sign out</button>`);$('.close-modal').hidden=true;if($('#paused-export'))$('#paused-export').onclick=exportDiary;}
-function cleanupStudent(){clearInterval(studentPoll);studentPoll=null;clearTimeout(diary.timer);if(diaryChannel)client?.removeChannel(diaryChannel);diaryChannel=null;disposePhotoEditor();studentReady=false;studentAdmin=false;studentSuspended=false;workspaceMode='chat';diary.listEpoch++;diary.entryEpoch++;diary.draft=null;diary.entries=[];diary.query='';diary.hasMore=false;diary.dirty=false;diary.conflict=false;diary.saving=null;adminState.epoch++;adminState.accounts=[];adminState.reports=[];$('#diary-list')?.replaceChildren();$('#admin-content')?.replaceChildren();$('#diary-form')?.reset();if($('#diary-search'))$('#diary-search').value='';if($('#diary-save-status'))$('#diary-save-status').textContent='Open an entry or start a new one.';if($('#diary-count'))$('#diary-count').textContent='0 / 20,000';$('#diary-conflict')?.classList.add('hidden');paintWorkspaceModes();}
-function paintWorkspaceModes(){if(!$('#app'))return;$('#app').dataset.workspace=workspaceMode;for(const b of $$('button[data-workspace]')){const mode=b.dataset.workspace;b.classList.toggle('active',mode===workspaceMode);b.setAttribute('aria-pressed',String(mode===workspaceMode));if(mode==='admin')b.classList.toggle('hidden',!studentAdmin);b.disabled=studentSuspended;}$('#spotlight-view')?.classList.toggle('hidden',workspaceMode!=='spotlight');$('#diary-view')?.classList.toggle('hidden',workspaceMode!=='diary');$('#admin-view')?.classList.toggle('hidden',workspaceMode!=='admin');}
-async function switchWorkspace(mode){if(!user||!setupReady||studentSuspended)return;if(!['chat','spotlight','diary','admin'].includes(mode)||mode===workspaceMode)return;if(mode==='admin'&&!studentAdmin)return toast('Administrator access required.',true);if(mode!=='chat'&&mode!=='spotlight'&&!studentReady)return studentSetup();if(workspaceMode==='diary'&&!await leaveDiarySafely())return;if(workspaceMode==='spotlight'){if(typeof closeSpotlightTheater==='function')closeSpotlightTheater();$$('#spotlight-view video').forEach(v=>{try{v.pause();}catch{}});}sendTyping(false);if(mediaRecorder?.state==='recording')stopRecording(true);closeModal();workspaceMode=mode;publishActivity('here');paintWorkspaceModes();if(mode==='spotlight'){if(typeof loadSpotlightFeed==='function')await loadSpotlightFeed();}else if(mode==='diary'){await loadDiaryList();if(!diary.draft)startDiaryDraft();startDiarySync();$('#diary-title').focus();}else if(mode==='admin')await loadAdmin();else{if(active)markRead(active);$('#message-input')?.focus();}}
+function cleanupStudent(){clearInterval(studentPoll);studentPoll=null;clearTimeout(diary.timer);if(diaryChannel)client?.removeChannel(diaryChannel);diaryChannel=null;disposePhotoEditor();if(typeof cleanupArcade==='function')cleanupArcade();studentReady=false;studentAdmin=false;studentSuspended=false;workspaceMode='chat';diary.listEpoch++;diary.entryEpoch++;diary.draft=null;diary.entries=[];diary.query='';diary.hasMore=false;diary.dirty=false;diary.conflict=false;diary.saving=null;adminState.epoch++;adminState.accounts=[];adminState.reports=[];$('#diary-list')?.replaceChildren();$('#admin-content')?.replaceChildren();$('#diary-form')?.reset();if($('#diary-search'))$('#diary-search').value='';if($('#diary-save-status'))$('#diary-save-status').textContent='Open an entry or start a new one.';if($('#diary-count'))$('#diary-count').textContent='0 / 20,000';$('#diary-conflict')?.classList.add('hidden');paintWorkspaceModes();}
+function paintWorkspaceModes(){if(!$('#app'))return;$('#app').dataset.workspace=workspaceMode;for(const b of $$('button[data-workspace]')){const mode=b.dataset.workspace;b.classList.toggle('active',mode===workspaceMode);b.setAttribute('aria-pressed',String(mode===workspaceMode));if(mode==='admin')b.classList.toggle('hidden',!studentAdmin);b.disabled=studentSuspended;}$('#spotlight-view')?.classList.toggle('hidden',workspaceMode!=='spotlight');$('#arcade-view')?.classList.toggle('hidden',workspaceMode!=='arcade');$('#diary-view')?.classList.toggle('hidden',workspaceMode!=='diary');$('#admin-view')?.classList.toggle('hidden',workspaceMode!=='admin');}
+async function switchWorkspace(mode){if(!user||!setupReady||studentSuspended)return;if(!['chat','spotlight','arcade','diary','admin'].includes(mode)||mode===workspaceMode)return;if(mode==='admin'&&!studentAdmin)return toast('Administrator access required.',true);if(!['chat','spotlight','arcade'].includes(mode)&&!studentReady)return studentSetup();if(workspaceMode==='diary'&&!await leaveDiarySafely())return;if(workspaceMode==='spotlight'){if(typeof closeSpotlightTheater==='function')closeSpotlightTheater();$$('#spotlight-view video').forEach(v=>{try{v.pause();}catch{}});}if(workspaceMode==='arcade'&&typeof closeArcadeStage==='function')closeArcadeStage();sendTyping(false);if(mediaRecorder?.state==='recording')stopRecording(true);closeModal();workspaceMode=mode;publishActivity('here');paintWorkspaceModes();if(mode==='spotlight'){if(typeof loadSpotlightFeed==='function')await loadSpotlightFeed();}else if(mode==='arcade'){if(typeof loadArcadeState==='function')await loadArcadeState();}else if(mode==='diary'){await loadDiaryList();if(!diary.draft)startDiaryDraft();startDiarySync();$('#diary-title').focus();}else if(mode==='admin')await loadAdmin();else{if(active)markRead(active);$('#message-input')?.focus();}}
 function confirmStudent(title,note,label='Continue'){return new Promise(resolve=>{openModal(`${modalTitle('info',title,note)}<div class="row"><button class="btn secondary" id="student-cancel">Cancel</button><button class="btn" id="student-confirm">${esc(label)}</button></div>`);modalCleanup=()=>resolve(false);$('#student-cancel').onclick=()=>closeModal();$('#student-confirm').onclick=()=>{modalCleanup=null;closeModal();resolve(true);};});}
 function diaryToday(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function startDiaryDraft(){clearTimeout(diary.timer);diary.entryEpoch++;diary.draft={id:null,user_id:user.id,title:'',body:'',mood:'',entry_date:diaryToday(),revision:null};diary.dirty=false;diary.conflict=false;diary.version++;paintDiaryDraft();paintDiaryList();}
@@ -4619,6 +4989,7 @@ function adminPager(rows){return `<div class="admin-pager"><button class="btn se
 async function loadAdmin(){
  if(!studentAdmin||!user)return;const epoch=++adminState.epoch,actor=user.id,tab=adminState.tab,root=$('#admin-content');$$('[data-admin-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.adminTab===tab);b.setAttribute('aria-current',b.dataset.adminTab===tab?'page':'false');});root.innerHTML='<p class="student-empty">Loading your owner workspace…</p>';
  try{
+  if(tab==='games'&&typeof renderAdminGamesTab==='function'){await renderAdminGamesTab(root,epoch,actor);return;}
   if(tab==='billing'&&typeof renderAdminBillingTab==='function'){await renderAdminBillingTab(root,epoch,actor);return;}
   let data;if(tab==='overview')data=unwrap(await db.rpc('admin_dashboard'));else if(tab==='accounts')data=unwrap(await db.rpc('admin_accounts',{p_query:adminState.query,p_offset:adminState.offset}));else if(tab==='reports')data=unwrap(await db.rpc('admin_reports',{p_status:adminState.status,p_offset:adminState.offset}));else if(tab==='nearby')data=unwrap(await db.rpc('admin_nearby'));else if(tab==='community')data=unwrap(await db.rpc('admin_community',{p_offset:adminState.offset}));else data=unwrap(await db.rpc('admin_audit_log'));
   if(epoch!==adminState.epoch||user?.id!==actor||!studentAdmin)return;
@@ -4694,7 +5065,7 @@ function nearbyReportForm(id){openModal(`${modalTitle('info','Report this nearby
 
 // Attach only to the currently authorized room. Every write is independently checked by SQL.
 document.addEventListener('click',async e=>{try{
- const action=e.target.closest('[data-social-extra]');if(action){const a=action.dataset.socialExtra;if(a==='plans')return await openPlans();if(a==='close-plans')return closePlans();if(a==='map')return showPlanningMap();if(a==='nearby')return showNearby();if(a==='bedroom')return await openBedroom();if(a==='vibe')return showRoomMood();if(a==='spark'){if(!socialUnlocked())return;await extraRPC('send_spark',{p_room:active});await refreshExtras();return toast('Spark sent. No sound, no push, no pressure.');}if(a==='camera'){if(!active)return;return $('#camera-input').click();}if(['poll','checklist','event','pin'].includes(a))return showPlanCreate(a);}
+ const action=e.target.closest('[data-social-extra]');if(action){const a=action.dataset.socialExtra;if(a==='arcade'){closeModal();return await switchWorkspace('arcade');}if(a==='plans')return await openPlans();if(a==='close-plans')return closePlans();if(a==='map')return showPlanningMap();if(a==='nearby')return showNearby();if(a==='bedroom')return await openBedroom();if(a==='vibe')return showRoomMood();if(a==='spark'){if(!socialUnlocked())return;await extraRPC('send_spark',{p_room:active});await refreshExtras();return toast('Spark sent. No sound, no push, no pressure.');}if(a==='camera'){if(!active)return;return $('#camera-input').click();}if(['poll','checklist','event','pin'].includes(a))return showPlanCreate(a);}
  const olderPlan=e.target.closest('[data-plan-open]');if(olderPlan){focusedPlan=olderPlan.dataset.planOpen;await openPlans();const card=$(`[data-plan-card="${focusedPlan}"]`);if(card)card.scrollIntoView({block:'center'});else toast('This plan is no longer available.');return;}
  const vote=e.target.closest('[data-plan-vote]');if(vote){await extraRPC('vote_on_plan',{p_plan:vote.dataset.planVote,p_choice:Number(vote.dataset.choice)});return await refreshExtras();}
  const pin=e.target.closest('[data-map-pin]');if(pin){showPlanningMap();const p=plans.find(p=>p.id===pin.dataset.mapPin);if(p)canvasMap.setView([p.latitude,p.longitude],17);return;}
@@ -4833,8 +5204,8 @@ document.addEventListener('click',e=>{
 setTimeout(renderDesktopAlertBar,900);
 
 
-function showWorkspaceMenu(){if(!setupReady)return showConnectionHelp();openModal(`${modalTitle('settings','More spaces','Switch views, customize your chat, or get the app.')}<div class="chat-menu-grid"><button data-action="community">${icon('globe')}<span>Campus Community<small>Open campus chat</small></span></button><button data-workspace="diary">${icon('book')}<span>Diary<small>Private to you</small></span></button><button data-action="friends">${icon('people')}<span>Friends<small>Requests &amp; directory</small></span></button><button data-social-extra="nearby">${icon('spark')}<span>Nearby 500m<small>Campus meetups</small></span></button><button data-social-extra="bedroom">${icon('cat')}<span>Digital Bedroom<small>Your profile space</small></span></button><button data-action="notes-mode">${icon('file')}<span>Quick Notes<small>Alt+N</small></span></button><button data-open-download>${icon('download')}<span>Download App<small>Desktop &amp; phone</small></span></button><button data-action="settings">${icon('settings')}<span>Settings<small>Alerts, cursor &amp; theme</small></span></button><button data-action="profile">${icon('pencil')}<span>Profile &amp; avatar<small>@${esc(profile.username||'student')}</small></span></button>${studentAdmin?`<button data-workspace="admin">${icon('shield')}<span>Admin<small>Billing &amp; moderation</small></span></button>`:''}</div>`);}
-function showChatTools(){if(!active)return showNewConversation();const r=currentRoom(),group=r.kind==='group'&&r.purpose!=='community',canCall=canCallRoom(r);openModal(`${modalTitle('chat',esc(r.name),'Tools and shared spaces for this conversation.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="room-menu">${icon('settings')}<span>Chat options<small>Pin, wallpaper, mute &amp; settings</small></span></button>${canCall?`<button data-action="start-call">${icon('phone')}<span>Voice call<small>Ring ${r.kind==='direct'?'friend':'group'}</small></span></button>`:''}<button data-action="gallery">${icon('photo')}<span>Photos<small>Shared media</small></span></button><button data-social-extra="plans">${icon('check')}<span>Plans &amp; polls<small>Events, tasks, pins</small></span></button><button data-social-extra="vibe">${icon('spark')}<span>Room vibe<small>Temporary mood</small></span></button><button data-action="people">${icon('people')}<span>Members<small>People in chat</small></span></button>${group?`<button data-action="invite">${icon('link')}<span>Invite link<small>Add classmates</small></span></button>`:''}<button data-action="search-chat">${icon('search')}<span>Search chat<small>Messages, links &amp; files</small></span></button><button data-action="mute">${icon(r.muted?'bell-off':'bell')}<span>${r.muted?'Unmute':'Mute'}<small>Notifications</small></span></button><button data-action="details">${icon('info')}<span>Chat info<small>Files &amp; details</small></span></button></div>`);}
+function showWorkspaceMenu(){if(!setupReady)return showConnectionHelp();openModal(`${modalTitle('settings','More spaces','Switch views, customize your chat, or get the app.')}<div class="chat-menu-grid"><button data-workspace="arcade">${icon('gamepad')}<span>Friends Games<small>Veck.io, Poxel.io &amp; Craft</small></span></button><button data-action="community">${icon('globe')}<span>Campus Community<small>Open campus chat</small></span></button><button data-workspace="diary">${icon('book')}<span>Diary<small>Private to you</small></span></button><button data-action="friends">${icon('people')}<span>Friends<small>Requests &amp; directory</small></span></button><button data-social-extra="nearby">${icon('spark')}<span>Nearby 500m<small>Campus meetups</small></span></button><button data-social-extra="bedroom">${icon('cat')}<span>Digital Bedroom<small>Your profile space</small></span></button><button data-action="notes-mode">${icon('file')}<span>Quick Notes<small>Alt+N</small></span></button><button data-open-download>${icon('download')}<span>Download App<small>Desktop &amp; phone</small></span></button><button data-action="settings">${icon('settings')}<span>Settings<small>Alerts, cursor &amp; theme</small></span></button><button data-action="profile">${icon('pencil')}<span>Profile &amp; avatar<small>@${esc(profile.username||'student')}</small></span></button>${studentAdmin?`<button data-workspace="admin">${icon('shield')}<span>Admin<small>Billing &amp; moderation</small></span></button>`:''}</div>`);}
+function showChatTools(){if(!active)return showNewConversation();const r=currentRoom(),group=r.kind==='group'&&r.purpose!=='community',canCall=canCallRoom(r);openModal(`${modalTitle('chat',esc(r.name),'Tools and shared spaces for this conversation.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="room-menu">${icon('settings')}<span>Chat options<small>Pin, wallpaper, mute &amp; settings</small></span></button>${canCall?`<button data-action="start-call">${icon('phone')}<span>Voice call<small>Ring ${r.kind==='direct'?'friend':'group'}</small></span></button>`:''}<button data-action="gallery">${icon('photo')}<span>Photos<small>Shared media</small></span></button><button data-social-extra="plans">${icon('check')}<span>Plans &amp; polls<small>Events, tasks, pins</small></span></button><button data-social-extra="arcade">${icon('gamepad')}<span>Friends Games<small>Play Veck.io, Poxel.io &amp; Craft</small></span></button><button data-social-extra="vibe">${icon('spark')}<span>Room vibe<small>Temporary mood</small></span></button><button data-action="people">${icon('people')}<span>Members<small>People in chat</small></span></button>${group?`<button data-action="invite">${icon('link')}<span>Invite link<small>Add classmates</small></span></button>`:''}<button data-action="search-chat">${icon('search')}<span>Search chat<small>Messages, links &amp; files</small></span></button><button data-action="mute">${icon(r.muted?'bell-off':'bell')}<span>${r.muted?'Unmute':'Mute'}<small>Notifications</small></span></button><button data-action="details">${icon('info')}<span>Chat info<small>Files &amp; details</small></span></button></div>`);}
 let lastVpH=-1,lastVpT=-1;
 function syncChatViewport(){
   const vv=window.visualViewport;
@@ -7415,22 +7786,12 @@ async function openCatSnapStudio(target = 'chat') {
 
     neuralBusy = true;
     try {
-      const targetMode = isImage ? 'IMAGE' : 'VIDEO';
       if (needsFace && (isImage ? st.cachedImgForFace !== src : (nowPerf - st.lastDetectMs > 36))) {
-        if (nar.faceMode !== targetMode) {
-          await nar.face.setOptions({ runningMode: targetMode });
-          nar.faceMode = targetMode;
-        }
-        let res;
-        if (isImage) {
-          res = nar.face.detect(src);
-          st.cachedImgForFace = src;
-        } else {
-          const ts = Math.max(nar.lastTs + 1, Math.round(nowPerf));
-          nar.lastTs = ts;
-          res = nar.face.detectForVideo(src, ts);
-          st.lastDetectMs = nowPerf;
-        }
+        const ts = Math.max(nar.lastTs + 1, Math.round(nowPerf));
+        nar.lastTs = ts;
+        const res = nar.face.detectForVideo(src, ts);
+        if (isImage) st.cachedImgForFace = src;
+        else st.lastDetectMs = nowPerf;
         st.cachedLandmarks = res?.faceLandmarks || [];
         st.cachedBlendshapes = res?.faceBlendshapes || [];
       } else if (!needsFace) {
@@ -7439,20 +7800,11 @@ async function openCatSnapStudio(target = 'chat') {
       }
 
       if (needsSeg && (isImage ? st.cachedImgForSeg !== src : (nowPerf - st.lastSegMs > 44))) {
-        if (nar.segMode !== targetMode) {
-          await nar.seg.setOptions({ runningMode: targetMode });
-          nar.segMode = targetMode;
-        }
-        let segRes;
-        if (isImage) {
-          segRes = nar.seg.segment(src);
-          st.cachedImgForSeg = src;
-        } else {
-          const ts = Math.max(nar.lastTs + 1, Math.round(performance.now()));
-          nar.lastTs = ts;
-          segRes = nar.seg.segmentForVideo(src, ts);
-          st.lastSegMs = nowPerf;
-        }
+        const ts = Math.max(nar.lastTs + 1, Math.round(performance.now()));
+        nar.lastTs = ts;
+        const segRes = nar.seg.segmentForVideo(src, ts);
+        if (isImage) st.cachedImgForSeg = src;
+        else st.lastSegMs = nowPerf;
         const cm = segRes?.confidenceMasks?.[0];
         if (cm) {
           paintConfidenceMaskToCanvas(cm.getAsFloat32Array(), cm.width, cm.height, nar.maskCanvas);
@@ -7674,7 +8026,7 @@ async function openCatSnapStudio(target = 'chat') {
           catSnapState.audioStream = aud;
           aud.getAudioTracks().forEach((t) => stream.addTrack(t));
         } catch {}
-        const preferred = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm', 'video/mp4']
+        const preferred = ['video/webm;codecs=vp8', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm']
           .find((m) => MediaRecorder.isTypeSupported(m)) || '';
         const recOpts = preferred ? { mimeType: preferred, videoBitsPerSecond: 6000000 } : { videoBitsPerSecond: 6000000 };
         const rec = new MediaRecorder(stream, recOpts);
@@ -9786,6 +10138,831 @@ document.addEventListener('play', (e) => {
     recordSpotlightViewOnce(vid.dataset.spotVideo);
   }
 }, true);
+
+
+/* Friends Games Area: Squad Arcade (Veck.io, Poxel.io, Offline Eaglercraft HTML Slot), Live Presence, Party Codes & Admin Slot Manager. */
+const ARCADE_DEFAULT_GAMES = [
+  {
+    slug: 'veck-io',
+    title: 'Veck.io',
+    subtitle: 'Fast-paced 3D arena FPS — 1v1, 2v2, Gun Game & Free-For-All right in your browser.',
+    genre: 'Arena FPS',
+    launch_url: 'https://veck.io/',
+    cover_style: 'veck',
+    supports_party_code: true,
+    enabled: true,
+    sort_order: 1,
+  },
+  {
+    slug: 'poxel-io',
+    title: 'Poxel.io',
+    subtitle: 'Blocky movement shooter — slide, dash, strafe & share private squad room codes.',
+    genre: 'Movement FPS',
+    launch_url: 'https://poxel.io/',
+    cover_style: 'poxel',
+    supports_party_code: true,
+    enabled: true,
+    sort_order: 2,
+  },
+  {
+    slug: 'eaglercraft',
+    title: 'Eaglercraft · Offline Craft',
+    subtitle: 'Voxel survival & LAN worlds — uses Admin offline HTML link or your local >25 MB .html file.',
+    genre: 'Voxel Sandbox',
+    launch_url: 'games/eaglercraft.html',
+    cover_style: 'voxel',
+    supports_party_code: true,
+    enabled: true,
+    sort_order: 3,
+  },
+];
+
+let arcadeState = {
+  games: [...ARCADE_DEFAULT_GAMES],
+  lobbies: [],
+  presence: [],
+  activeSlug: '',
+  activeTitle: '',
+  activePartyCode: '',
+  activeBlobUrl: '',
+  parkedUrl: '',
+  chatRoomId: '',
+  chatCollapsed: false,
+  channel: null,
+  chatTick: null,
+  loading: false,
+};
+
+function arcadeEmblem(cover, slug) {
+  if (cover === 'veck' || slug === 'veck-io') return '🎯';
+  if (cover === 'poxel' || slug === 'poxel-io') return '⚡';
+  if (cover === 'voxel' || slug === 'eaglercraft') return '⛏️';
+  return '🎮';
+}
+
+function arcadeTimeAgo(iso) {
+  const sec = Math.max(1, Math.floor((Date.now() - Date.parse(iso || '')) / 1000));
+  if (!Number.isFinite(sec) || sec < 60) return 'just now';
+  if (sec < 3600) return Math.floor(sec / 60) + 'm ago';
+  return Math.floor(sec / 3600) + 'h ago';
+}
+
+function syncArcadeVoiceBadge() {
+  const lbl = $('#arcade-voice-label');
+  if (!lbl) return;
+  if (typeof voice !== 'undefined' && voice.call && voice.phase !== 'idle') {
+    lbl.textContent = voice.muted ? 'In Call (Muted)' : '🟢 Voice Live';
+  } else {
+    lbl.textContent = 'Squad Voice';
+  }
+  $('#arcade-admin-slot-btn')?.classList.toggle('hidden', !studentAdmin);
+}
+
+function ensureArcadeRealtime() {
+  if (!client || !user || arcadeState.channel) return;
+  const ch = client.channel('catcul:arcade-live', {
+    config: { broadcast: { self: false }, presence: { key: user.id } },
+  });
+  arcadeState.channel = ch;
+  ch.on('presence', { event: 'sync' }, () => {
+    const map = new Map();
+    const state = ch.presenceState();
+    for (const entries of Object.values(state)) {
+      for (const raw of entries) {
+        if (!raw?.id) continue;
+        map.set(raw.id, {
+          id: String(raw.id),
+          name: String(raw.name || 'Student').slice(0, 50),
+          username: String(raw.username || '').slice(0, 30),
+          color: String(raw.color || '#cfe3a7').slice(0, 20),
+          game_slug: String(raw.game_slug || ''),
+          game_title: String(raw.game_title || ''),
+        });
+      }
+    }
+    arcadeState.presence = [...map.values()];
+    paintArcadePresence();
+    paintArcadeGames();
+  })
+  .on('broadcast', { event: 'lobby-refresh' }, () => {
+    if (workspaceMode === 'arcade') loadArcadeState(true).catch((e) => console.warn(e));
+  })
+  .subscribe(async (status) => {
+    if (status === 'SUBSCRIBED') await trackArcadePresence();
+  });
+}
+
+async function trackArcadePresence() {
+  if (!arcadeState.channel || !user) return;
+  try {
+    if (notesOpen || document.hidden || workspaceMode !== 'arcade') {
+      await arcadeState.channel.untrack();
+      return;
+    }
+    await arcadeState.channel.track({
+      id: user.id,
+      name: profile?.name || 'Student',
+      username: profile?.username || '',
+      color: profile?.color || '#cfe3a7',
+      game_slug: arcadeState.activeSlug || '',
+      game_title: arcadeState.activeTitle || '',
+    });
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
+function broadcastArcadeRefresh() {
+  if (!arcadeState.channel) return;
+  arcadeState.channel.send({ type: 'broadcast', event: 'lobby-refresh', payload: { t: Date.now() } }).catch(() => {});
+}
+
+async function loadArcadeState(quiet = false) {
+  if (!user || !db) return;
+  syncArcadeVoiceBadge();
+  ensureArcadeRealtime();
+  if (!quiet && !arcadeState.games.length) {
+    $('#arcade-games-grid').innerHTML = '<p class="student-empty">Loading Squad Arcade…</p>';
+  }
+  const res = await db.rpc('list_arcade_state');
+  if (!res.error && res.data) {
+    if (Array.isArray(res.data.games) && res.data.games.length) {
+      arcadeState.games = res.data.games.filter((g) => g.enabled !== false);
+    }
+    if (Array.isArray(res.data.lobbies)) {
+      arcadeState.lobbies = res.data.lobbies;
+    }
+  }
+  paintArcadePresence();
+  paintArcadeGames();
+  paintArcadeLobbies();
+  syncArcadeChatRooms();
+  await trackArcadePresence();
+}
+
+function paintArcadePresence() {
+  const bar = $('#arcade-presence-bar');
+  const chip = $('#arcade-online-label');
+  if (!bar) return;
+  const activeGamers = arcadeState.presence.filter((p) => p.game_slug);
+  const totalInArcade = arcadeState.presence.length;
+  if (chip) {
+    chip.textContent = activeGamers.length
+      ? `${activeGamers.length} playing now`
+      : totalInArcade > 0
+        ? `${totalInArcade} in Arcade`
+        : 'Squad Arcade · Live';
+  }
+  if (!activeGamers.length) {
+    bar.innerHTML = `<span class="arcade-presence-title"><i class="arcade-presence-dot"></i> Who’s gaming right now</span><span class="arcade-presence-empty">Launch Veck.io, Poxel.io, or Offline Craft and invite a chat room to start a squad!</span>`;
+    return;
+  }
+  bar.innerHTML = `<span class="arcade-presence-title"><i class="arcade-presence-dot"></i> Playing right now:</span>`
+    + activeGamers.map((p) => `<button type="button" class="arcade-presence-pill" data-arcade-play="${esc(p.game_slug)}" title="Jump into ${esc(p.game_title || p.game_slug)}"><i style="background:${esc(p.color)}"></i><span>@${esc(p.username || p.name)} · <strong>${esc(p.game_title || p.game_slug)}</strong></span></button>`).join('');
+}
+
+function paintArcadeGames() {
+  const grid = $('#arcade-games-grid');
+  if (!grid) return;
+  const list = arcadeState.games.filter((g) => g.enabled !== false);
+  if (!list.length) {
+    grid.innerHTML = '<div class="student-empty"><span>🎮</span><h3>No games enabled yet.</h3></div>';
+    return;
+  }
+  grid.innerHTML = list.map((g) => {
+    const playingCount = arcadeState.presence.filter((p) => p.game_slug === g.slug).length;
+    const lobbyCount = arcadeState.lobbies.filter((l) => l.game_slug === g.slug).length;
+    const isSlot = g.slug === 'eaglercraft' || (g.launch_url || '').startsWith('games/');
+    const customLinked = isSlot && g.launch_url && g.launch_url !== 'games/eaglercraft.html';
+    const badgeText = playingCount > 0
+      ? `🟢 ${playingCount} playing`
+      : lobbyCount > 0
+        ? `🔥 ${lobbyCount} squad${lobbyCount > 1 ? 's' : ''}`
+        : '⚡ Instant Web Play';
+    return `<article class="arcade-game-card" data-game-card="${esc(g.slug)}">
+      <div class="arcade-game-art" data-cover="${esc(g.cover_style || 'custom')}">
+        <div class="arcade-art-grid"></div>
+        <div class="arcade-art-top">
+          <span class="arcade-genre-chip">${esc(g.genre || 'Multiplayer')}</span>
+          <span class="arcade-live-count">${esc(badgeText)}</span>
+        </div>
+        <div class="arcade-art-bottom">
+          <div class="arcade-art-title">${esc(g.title)}</div>
+          <span class="arcade-art-emblem" aria-hidden="true">${arcadeEmblem(g.cover_style, g.slug)}</span>
+        </div>
+      </div>
+      <div class="arcade-game-body">
+        <p>${esc(g.subtitle || 'Play live with friends right inside Catcul.')}</p>
+        ${isSlot ? `<div class="arcade-slot-status">
+          <span>${customLinked ? '✅ Hosted Offline Link Active' : '📦 Offline Slot Ready (Link or Local >25 MB .html)'}</span>
+          <code>${esc(g.launch_url || 'games/eaglercraft.html')}</code>
+        </div>` : ''}
+        <div class="arcade-card-actions">
+          <button type="button" class="btn" data-arcade-play="${esc(g.slug)}">▶ Play Now</button>
+          <button type="button" class="btn secondary" data-arcade-invite-game="${esc(g.slug)}">+ Squad Code</button>
+          ${studentAdmin ? `<button type="button" class="btn secondary icon-only" data-arcade-edit-slot="${esc(g.slug)}" title="Configure game URL / offline HTML link">⚙</button>` : ''}
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function paintArcadeLobbies() {
+  const wrap = $('#arcade-lobbies-list');
+  if (!wrap) return;
+  if (!arcadeState.lobbies.length) {
+    wrap.innerHTML = `<div class="student-empty" style="grid-column:1/-1;padding:22px;border:1px dashed var(--line);border-radius:18px">
+      <h3>No active party codes posted yet</h3>
+      <p>Create a private room inside Poxel.io, Veck.io, or Eaglercraft, then click <strong>+ Post Party Code</strong> so friends can join in 1 click.</p>
+    </div>`;
+    return;
+  }
+  wrap.innerHTML = arcadeState.lobbies.map((l) => {
+    const canClose = l.host_id === user?.id || studentAdmin;
+    const initial = (l.host_name || l.host_username || 'S').slice(0, 1).toUpperCase();
+    return `<article class="arcade-lobby-card" data-lobby-id="${esc(l.id)}">
+      <div class="arcade-lobby-top">
+        <div class="arcade-lobby-host">
+          <span class="arcade-lobby-dot" style="background:${esc(l.host_color || '#cfe3a7')}">${esc(initial)}</span>
+          <div>
+            <strong>${esc(l.game_title || l.game_slug)}</strong>
+            <small>Hosted by @${esc(l.host_username || l.host_name)} · ${esc(arcadeTimeAgo(l.created_at))}</small>
+          </div>
+        </div>
+        <span class="arcade-code-badge" title="Party / Join Code">${esc(l.party_code)}</span>
+      </div>
+      ${l.note ? `<p class="arcade-lobby-note">${esc(l.note)}</p>` : ''}
+      <div class="arcade-lobby-actions">
+        <button type="button" class="btn" data-arcade-join-lobby="${esc(l.id)}">📋 Copy Code &amp; Play</button>
+        <button type="button" class="btn secondary" data-arcade-share-lobby="${esc(l.id)}">💬 Share to Chat</button>
+        ${canClose ? `<button type="button" class="btn secondary" data-arcade-close-lobby="${esc(l.id)}">✕ Close</button>` : ''}
+      </div>
+    </article>`;
+  }).join('');
+}
+
+async function decompressGzipUrlToBlobUrl(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Could not fetch compressed game (' + res.status + ').');
+  const buf = await res.arrayBuffer();
+  if (typeof DecompressionStream !== 'function') throw new Error('Browser lacks gzip DecompressionStream.');
+  const ds = new DecompressionStream('gzip');
+  const outBuf = await new Response(new Blob([buf]).stream().pipeThrough(ds)).arrayBuffer();
+  return URL.createObjectURL(new Blob([outBuf], { type: 'text/html;charset=utf-8' }));
+}
+
+async function launchArcadeGame(slug, partyCode = '', localBlobUrl = '', customTitle = '') {
+  const game = arcadeState.games.find((g) => g.slug === slug) || ARCADE_DEFAULT_GAMES.find((g) => g.slug === slug);
+  if (!game && !localBlobUrl) return toast('Game not found.', true);
+
+  const view = $('#arcade-view');
+  const stageWrap = $('#arcade-stage-wrap');
+  const iframe = $('#arcade-iframe');
+  if (!view || !stageWrap || !iframe) return;
+
+  if (arcadeState.activeBlobUrl && arcadeState.activeBlobUrl !== localBlobUrl) {
+    URL.revokeObjectURL(arcadeState.activeBlobUrl);
+    arcadeState.activeBlobUrl = '';
+  }
+
+  let targetUrl = localBlobUrl || (game?.launch_url || '').trim();
+  if (!targetUrl) targetUrl = 'games/eaglercraft.html';
+
+  arcadeState.activeSlug = game?.slug || 'local-html';
+  arcadeState.activeTitle = customTitle || game?.title || 'Local HTML Game';
+  arcadeState.activePartyCode = partyCode || '';
+  arcadeState.parkedUrl = '';
+
+  $('#arcade-active-title').textContent = arcadeState.activeTitle;
+  const codeWrap = $('#arcade-active-code-wrap');
+  if (partyCode) {
+    $('#arcade-active-code').textContent = partyCode;
+    codeWrap.classList.remove('hidden');
+  } else {
+    codeWrap.classList.add('hidden');
+  }
+
+  const newTabLink = $('#arcade-newtab-link');
+  if (newTabLink) {
+    newTabLink.href = localBlobUrl || targetUrl;
+    newTabLink.classList.toggle('hidden', Boolean(localBlobUrl));
+  }
+
+  view.classList.add('is-playing');
+  stageWrap.classList.remove('hidden');
+  syncArcadeChatRooms();
+  paintArcadeSideChat();
+  clearInterval(arcadeState.chatTick);
+  arcadeState.chatTick = setInterval(() => {
+    syncArcadeVoiceBadge();
+    paintArcadeSideChat();
+  }, 1500);
+
+  try {
+    if (!localBlobUrl && /\.gz(\?.*)?$/i.test(targetUrl)) {
+      toast('Decompressing offline HTML build…');
+      const blobUrl = await decompressGzipUrlToBlobUrl(targetUrl);
+      arcadeState.activeBlobUrl = blobUrl;
+      iframe.src = blobUrl;
+    } else {
+      if (localBlobUrl) arcadeState.activeBlobUrl = localBlobUrl;
+      iframe.src = targetUrl;
+    }
+    iframe.onload = () => {
+      try { iframe.focus(); } catch {}
+    };
+  } catch (e) {
+    fail(e);
+  }
+  await trackArcadePresence();
+}
+
+async function launchLocalHtmlFile(file) {
+  if (!file) return;
+  try {
+    let htmlBlob;
+    if (file.name.toLowerCase().endsWith('.gz') || file.type === 'application/gzip') {
+      if (typeof DecompressionStream !== 'function') throw new Error('Browser does not support .gz decompression.');
+      const buf = await file.arrayBuffer();
+      const outBuf = await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+      htmlBlob = new Blob([outBuf], { type: 'text/html;charset=utf-8' });
+    } else {
+      htmlBlob = new Blob([file], { type: 'text/html;charset=utf-8' });
+    }
+    // Also cache inside the shared IndexedDB store so games/eaglercraft.html remembers it next visit!
+    try {
+      const req = indexedDB.open('catcul_arcade_offline_v1', 1);
+      req.onupgradeneeded = () => {
+        if (!req.result.objectStoreNames.contains('roms')) req.result.createObjectStore('roms');
+      };
+      req.onsuccess = () => {
+        const tx = req.result.transaction('roms', 'readwrite');
+        tx.objectStore('roms').put({ name: file.name, size: htmlBlob.size, savedAt: Date.now(), blob: htmlBlob }, 'eaglercraft_html');
+      };
+    } catch {}
+    const blobUrl = URL.createObjectURL(htmlBlob);
+    const cleanName = file.name.replace(/\.(html?|gz)+$/gi, '') || 'Offline Craft';
+    await launchArcadeGame('eaglercraft', '', blobUrl, cleanName);
+    toast(`Loaded ${file.name} (${(htmlBlob.size / 1048576).toFixed(1)} MB) — cached on your device for 1-click replay!`);
+  } catch (e) {
+    fail(e);
+  }
+}
+
+function closeArcadeStage() {
+  const view = $('#arcade-view');
+  const stageWrap = $('#arcade-stage-wrap');
+  const iframe = $('#arcade-iframe');
+  clearInterval(arcadeState.chatTick);
+  arcadeState.chatTick = null;
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  if (iframe) iframe.src = 'about:blank';
+  if (arcadeState.activeBlobUrl) {
+    URL.revokeObjectURL(arcadeState.activeBlobUrl);
+    arcadeState.activeBlobUrl = '';
+  }
+  arcadeState.activeSlug = '';
+  arcadeState.activeTitle = '';
+  arcadeState.activePartyCode = '';
+  arcadeState.parkedUrl = '';
+  view?.classList.remove('is-playing');
+  stageWrap?.classList.add('hidden');
+  trackArcadePresence();
+}
+
+function parkArcadeForNotes() {
+  const iframe = $('#arcade-iframe');
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  if (iframe && iframe.src && iframe.src !== 'about:blank') {
+    arcadeState.parkedUrl = iframe.src;
+    iframe.src = 'about:blank';
+  }
+}
+
+function resumeArcadeAfterNotes() {
+  const iframe = $('#arcade-iframe');
+  if (arcadeState.parkedUrl && iframe && !$('#arcade-stage-wrap')?.classList.contains('hidden')) {
+    iframe.src = arcadeState.parkedUrl;
+    arcadeState.parkedUrl = '';
+  }
+  trackArcadePresence();
+}
+
+function cleanupArcade() {
+  closeArcadeStage();
+  if (arcadeState.channel && client) {
+    client.removeChannel(arcadeState.channel);
+  }
+  arcadeState.channel = null;
+  arcadeState.lobbies = [];
+  arcadeState.presence = [];
+}
+
+function syncArcadeChatRooms() {
+  const sel = $('#arcade-chat-room-select');
+  if (!sel) return;
+  const sendable = (rooms || []).filter((r) => r.can_send !== false);
+  if (!sendable.length) {
+    sel.innerHTML = '<option value="">No active chat rooms</option>';
+    arcadeState.chatRoomId = '';
+    return;
+  }
+  if (!arcadeState.chatRoomId || !sendable.some((r) => r.id === arcadeState.chatRoomId)) {
+    arcadeState.chatRoomId = (active && sendable.some((r) => r.id === active)) ? active : sendable[0].id;
+  }
+  sel.innerHTML = sendable.map((r) => `<option value="${esc(r.id)}" ${r.id === arcadeState.chatRoomId ? 'selected' : ''}>${esc(r.name)}</option>`).join('');
+}
+
+function paintArcadeSideChat() {
+  const log = $('#arcade-chat-log');
+  if (!log || $('#arcade-stage-wrap')?.classList.contains('hidden')) return;
+  const rid = arcadeState.chatRoomId;
+  if (!rid) {
+    log.innerHTML = '<p class="student-empty">Join or create a chat room to message friends while gaming.</p>';
+    return;
+  }
+  const list = roomHistory(rid).filter((m) => !m.deleted).slice(-25);
+  const sig = list.map((m) => m.id + ':' + m.text).join('|');
+  if (log._sig === sig) return;
+  log._sig = sig;
+  if (!list.length) {
+    log.innerHTML = '<p class="student-empty">No messages loaded yet — send a quick invite below!</p>';
+    return;
+  }
+  log.innerHTML = list.map((m) => `<div class="arcade-chat-msg ${m.sender?.id === user?.id ? 'mine' : ''}">
+    <strong>${esc(m.sender?.name || 'Friend')}</strong>
+    <span>${esc(m.text || (m.kind !== 'text' ? '[' + m.kind + ']' : ''))}</span>
+  </div>`).join('');
+  log.scrollTop = log.scrollHeight;
+}
+
+async function sendSquadMessageToRoom(roomId, bodyText) {
+  const clean = String(bodyText || '').trim().slice(0, 1500);
+  if (!user || !roomId || !clean) return false;
+  const msgId = uid();
+  const res = await db.from('messages').insert({
+    id: msgId,
+    room_id: roomId,
+    body: clean,
+    kind: 'text',
+    reply_to: null,
+  }).select().single();
+  const row = unwrap(res);
+  await receiveRow(roomId, row, false);
+  paintArcadeSideChat();
+  return true;
+}
+
+function openCreateLobbyModal(defaultSlug = '') {
+  const enabledGames = arcadeState.games.filter((g) => g.enabled !== false);
+  const chosenSlug = defaultSlug || arcadeState.activeSlug || enabledGames[0]?.slug || 'poxel-io';
+  const sendable = (rooms || []).filter((r) => r.can_send !== false);
+  const defaultRoom = arcadeState.chatRoomId || active || sendable[0]?.id || '';
+
+  openModal(`${modalTitle('gamepad', 'Post Squad Party Code & Invite Chat', 'Share your Poxel.io, Veck.io, or Eaglercraft room code so friends can hop right in.')}
+    <form id="arcade-lobby-form">
+      <label for="lobby-game-slug">Game</label>
+      <select class="field" id="lobby-game-slug">
+        ${enabledGames.map((g) => `<option value="${esc(g.slug)}" ${g.slug === chosenSlug ? 'selected' : ''}>${esc(g.title)}</option>`).join('')}
+      </select>
+      <label for="lobby-party-code">Party / Room / Join Code</label>
+      <input class="field" id="lobby-party-code" maxlength="80" placeholder="e.g. PX-4829, VECK-1V1, or LAN relay code" value="${esc(arcadeState.activePartyCode || '')}" required>
+      <label for="lobby-note">Squad note (optional)</label>
+      <input class="field" id="lobby-note" maxlength="140" placeholder="e.g. 2v2 Snipers only · hop on Squad Voice!">
+      <label for="lobby-share-room">Also drop invite into chat room (optional)</label>
+      <select class="field" id="lobby-share-room">
+        <option value="">Don’t post to a chat room (Arcade board only)</option>
+        ${sendable.map((r) => `<option value="${esc(r.id)}" ${r.id === defaultRoom ? 'selected' : ''}>💬 ${esc(r.name)}</option>`).join('')}
+      </select>
+      <button class="btn full" type="submit">Post Live Squad Code &amp; Launch</button>
+    </form>`);
+
+  $('#arcade-lobby-form').onsubmit = (e) => {
+    e.preventDefault();
+    const gSlug = $('#lobby-game-slug').value;
+    const code = $('#lobby-party-code').value.trim();
+    const note = $('#lobby-note').value.trim();
+    const shareRoom = $('#lobby-share-room').value || null;
+    if (!code) return toast('Enter a party or join code first.', true);
+    busy($('#arcade-lobby-form button[type="submit"]'), async () => {
+      unwrap(await db.rpc('create_arcade_lobby', {
+        p_game_slug: gSlug,
+        p_party_code: code,
+        p_note: note,
+        p_room_id: shareRoom,
+      }));
+      const gameObj = arcadeState.games.find((x) => x.slug === gSlug);
+      if (shareRoom) {
+        const inviteMsg = `🎮 Squad Game Invite — Playing ${gameObj?.title || gSlug}! Party Code: ${code}${note ? ' · "' + note + '"' : ''} (Open Friends Games in Catcul to join!)`;
+        await sendSquadMessageToRoom(shareRoom, inviteMsg);
+      }
+      closeModal();
+      broadcastArcadeRefresh();
+      await loadArcadeState(true);
+      if (workspaceMode !== 'arcade') await switchWorkspace('arcade');
+      await launchArcadeGame(gSlug, code);
+      toast('Squad lobby live!' + (shareRoom ? ' Invite sent to chat.' : ''));
+    });
+  };
+}
+
+function openSquadVoiceModal() {
+  if (typeof voice !== 'undefined' && voice.call && voice.phase !== 'idle') {
+    $('#voice-layer')?.classList.remove('hidden');
+    if (typeof paintVoice === 'function') paintVoice();
+    return;
+  }
+  const sendable = (rooms || []).filter((r) => r.can_send !== false);
+  if (!sendable.length) return toast('Create or join a chat room with friends first to start Squad Voice.', true);
+  const defRoom = arcadeState.chatRoomId || active || sendable[0].id;
+  openModal(`${modalTitle('phone', 'Start Squad Voice Call', 'Talk live on Catcul voice while playing Veck.io, Poxel.io, or Eaglercraft.')}
+    <form id="arcade-voice-form">
+      <label for="arcade-voice-room">Choose squad room to ring</label>
+      <select class="field" id="arcade-voice-room">
+        ${sendable.map((r) => `<option value="${esc(r.id)}" ${r.id === defRoom ? 'selected' : ''}>${esc(r.name)}</option>`).join('')}
+      </select>
+      <p class="note">Your voice call stays connected in the floating dock while you aim and play inside the Arcade.</p>
+      <button class="btn full" type="submit">🎙️ Start Voice Call</button>
+    </form>`);
+  $('#arcade-voice-form').onsubmit = (e) => {
+    e.preventDefault();
+    const rid = $('#arcade-voice-room').value;
+    closeModal();
+    if (rid && typeof startVoiceCall === 'function') {
+      startVoiceCall(rid, false).then(() => syncArcadeVoiceBadge()).catch(fail);
+    }
+  };
+}
+
+function openAdminGameSlotModal(slug = 'eaglercraft') {
+  if (!studentAdmin) return toast('Only the Catcul administrator can set global game URLs — use "📂 Play Local .html" to play your file right now!', true);
+  const existing = arcadeState.games.find((g) => g.slug === slug) || (slug === '__new__' ? {
+    slug: '',
+    title: '',
+    subtitle: '',
+    genre: 'Multiplayer',
+    launch_url: '',
+    cover_style: 'custom',
+    enabled: true,
+    sort_order: 10,
+  } : ARCADE_DEFAULT_GAMES.find((g) => g.slug === slug));
+  const isNew = slug === '__new__';
+
+  openModal(`${modalTitle('gamepad', isNew ? 'Add New Game to Friends Games' : 'Configure ' + (existing?.title || slug), 'Paste your hosted offline HTML link (e.g. Cloudflare R2, CDN, .html, or .html.gz) so every student can play instantly.')}
+    <form id="admin-game-slot-form">
+      <label for="ag-slug">Game ID (lowercase letters, numbers &amp; hyphens)</label>
+      <input class="field" id="ag-slug" maxlength="40" value="${esc(existing?.slug || '')}" ${isNew ? 'placeholder="e.g. classicube or krunker"' : 'readonly'} required>
+      <label for="ag-title">Display Title</label>
+      <input class="field" id="ag-title" maxlength="80" value="${esc(existing?.title || '')}" placeholder="e.g. Eaglercraft · Offline Craft" required>
+      <label for="ag-genre">Category Tag</label>
+      <input class="field" id="ag-genre" maxlength="40" value="${esc(existing?.genre || 'Multiplayer')}" placeholder="e.g. Voxel Sandbox / Arena FPS">
+      <label for="ag-url">Launch URL or Offline HTML Slot Link</label>
+      <input class="field" id="ag-url" maxlength="1000" value="${esc(existing?.launch_url || '')}" placeholder="https://pub-xxxx.r2.dev/eaglercraft.html or games/eaglercraft.html" required>
+      <label for="ag-sub">Short Description</label>
+      <input class="field" id="ag-sub" maxlength="220" value="${esc(existing?.subtitle || '')}" placeholder="Shown on the game card">
+      <div class="row" style="align-items:center;justify-content:space-between;margin:10px 0">
+        <label style="display:flex;align-items:center;gap:8px;margin:0;font-size:12px"><input type="checkbox" id="ag-enabled" ${existing?.enabled !== false ? 'checked' : ''}> Visible in Friends Games Area</label>
+        <select id="ag-cover" class="field" style="width:auto;margin:0;padding:7px 10px">
+          ${[['voxel', 'Voxel Emerald'], ['veck', 'Arena Crimson'], ['poxel', 'Gold Violet'], ['custom', 'Sage Forest']].map(([v, label]) => `<option value="${v}" ${existing?.cover_style === v ? 'selected' : ''}>${label}</option>`).join('')}
+        </select>
+      </div>
+      <div class="notice" style="font-size:11px;line-height:1.6;margin-bottom:12px">
+        <strong>Tip for >25 MB Offline Eaglercraft HTML:</strong><br>
+        • Upload your <code>.html</code> to a free <strong>Cloudflare R2</strong> public bucket (up to 10 GB free, no 25 MB single-file limit!) and paste its <code>https://...</code> link above.<br>
+        • Or compress it with 7-Zip into <code>.html.gz</code> (~10–13 MB) — Catcul automatically decompresses <code>.gz</code> game links right in the browser!
+      </div>
+      <button class="btn full" type="submit">Save Game Slot</button>
+    </form>`);
+
+  $('#admin-game-slot-form').onsubmit = (e) => {
+    e.preventDefault();
+    const p_slug = $('#ag-slug').value.trim().toLowerCase();
+    const p_title = $('#ag-title').value.trim();
+    const p_genre = $('#ag-genre').value.trim() || 'Multiplayer';
+    const p_launch_url = $('#ag-url').value.trim();
+    const p_subtitle = $('#ag-sub').value.trim();
+    const p_enabled = $('#ag-enabled').checked;
+    const p_cover_style = $('#ag-cover').value;
+    if (/drive\.google\.com\/file\/d\//i.test(p_launch_url)) {
+      return toast('Google Drive "/view" links block iframe games. Use Cloudflare R2, GitHub Pages, or games/eaglercraft.html.gz instead!', true);
+    }
+    busy($('#admin-game-slot-form button[type="submit"]'), async () => {
+      unwrap(await db.rpc('upsert_arcade_game', {
+        p_slug,
+        p_title,
+        p_subtitle,
+        p_genre,
+        p_launch_url,
+        p_cover_style,
+        p_enabled,
+        p_sort_order: existing?.sort_order ?? 10,
+      }));
+      closeModal();
+      broadcastArcadeRefresh();
+      await loadArcadeState(true);
+      if (workspaceMode === 'admin' && adminState.tab === 'games') await loadAdmin();
+      toast(`Saved ${p_title}!`);
+    });
+  };
+}
+
+async function renderAdminGamesTab(root, epoch, actor) {
+  const res = await db.rpc('list_arcade_state');
+  if (epoch !== adminState.epoch || user?.id !== actor || !studentAdmin) return;
+  const data = unwrap(res);
+  const games = data?.games || ARCADE_DEFAULT_GAMES;
+  arcadeState.games = games;
+
+  root.innerHTML = `
+    <div class="row between" style="flex-wrap:wrap;gap:12px">
+      <div>
+        <span class="eyebrow">SQUAD ARCADE · GLOBAL GAME SLOTS</span>
+        <h3 style="font:24px Georgia,serif;margin:6px 0 4px">Friends Games &amp; Offline HTML Slot</h3>
+        <p class="note">Paste your hosted Eaglercraft offline <code>.html</code> / <code>.html.gz</code> link here, toggle Veck.io &amp; Poxel.io, or add extra browser games for students.</p>
+      </div>
+      <button type="button" class="btn" id="admin-add-game-btn">+ Add Browser Game</button>
+    </div>
+    <div class="admin-games-grid">
+      ${games.map((g) => `<article class="admin-game-row" data-admin-game="${esc(g.slug)}">
+        <div>
+          <h4>${arcadeEmblem(g.cover_style, g.slug)} ${esc(g.title)} <span class="status-chip ${g.enabled === false ? 'danger' : ''}">${g.enabled === false ? 'Hidden' : 'Live'}</span></h4>
+          <p>${esc(g.subtitle || '')}</p>
+          <code>${esc(g.launch_url || 'games/eaglercraft.html')}</code>
+        </div>
+        <div class="row" style="gap:8px">
+          <button type="button" class="btn secondary" data-arcade-edit-slot="${esc(g.slug)}">🔗 Edit Link / Settings</button>
+          ${!['veck-io', 'poxel-io', 'eaglercraft'].includes(g.slug) ? `<button type="button" class="btn danger" data-arcade-delete-game="${esc(g.slug)}">Delete</button>` : ''}
+        </div>
+      </article>`).join('')}
+    </div>
+    <div class="privacy-note" style="margin-top:20px">
+      ${icon('info')}
+      <div>
+        <strong>Hosting >25 MB Offline HTML Files (Zero Backend Needed)</strong>
+        <p>Cloudflare Pages caps individual static files at 25 MiB. To serve a 35–60 MB single-file HTML game to everyone: (1) upload it to a free <strong>Cloudflare R2</strong> public bucket and paste the URL in <em>Edit Link</em> above, OR (2) compress it with 7-Zip to <code>games/eaglercraft.html.gz</code> (~10–13 MB) — Catcul decompresses <code>.gz</code> links automatically in the browser.</p>
+      </div>
+    </div>`;
+
+  $('#admin-add-game-btn').onclick = () => openAdminGameSlotModal('__new__');
+}
+
+// Wire Arcade DOM controls & delegated click actions
+$('#arcade-close-stage')?.addEventListener('click', closeArcadeStage);
+$('#arcade-create-lobby-btn')?.addEventListener('click', () => openCreateLobbyModal());
+$('#arcade-stage-invite-btn')?.addEventListener('click', () => openCreateLobbyModal(arcadeState.activeSlug));
+$('#arcade-voice-btn')?.addEventListener('click', openSquadVoiceModal);
+$('#arcade-admin-slot-btn')?.addEventListener('click', () => openAdminGameSlotModal('eaglercraft'));
+$('#arcade-refresh-btn')?.addEventListener('click', () => loadArcadeState(false).catch(fail));
+
+$('#arcade-local-html-btn')?.addEventListener('click', () => $('#arcade-local-file')?.click());
+$('#arcade-local-file')?.addEventListener('change', (e) => {
+  const f = e.target.files?.[0];
+  e.target.value = '';
+  if (f) launchLocalHtmlFile(f);
+});
+
+$('#arcade-copy-active-code')?.addEventListener('click', async () => {
+  if (!arcadeState.activePartyCode) return;
+  try { await navigator.clipboard.writeText(arcadeState.activePartyCode); } catch {}
+  toast('Copied party code: ' + arcadeState.activePartyCode);
+});
+
+$('#arcade-toggle-chat-btn')?.addEventListener('click', (e) => {
+  arcadeState.chatCollapsed = !arcadeState.chatCollapsed;
+  $('#arcade-stage-body')?.classList.toggle('chat-collapsed', arcadeState.chatCollapsed);
+  e.currentTarget.setAttribute('aria-pressed', String(!arcadeState.chatCollapsed));
+});
+
+$('#arcade-reload-btn')?.addEventListener('click', () => {
+  const iframe = $('#arcade-iframe');
+  if (iframe && iframe.src) {
+    const cur = iframe.src;
+    iframe.src = 'about:blank';
+    setTimeout(() => { iframe.src = cur; }, 40);
+  }
+});
+
+$('#arcade-fullscreen-btn')?.addEventListener('click', () => {
+  const box = $('#arcade-frame-box');
+  if (!box) return;
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  else box.requestFullscreen?.().catch(() => toast('Fullscreen blocked by browser.', true));
+});
+
+$('#arcade-chat-room-select')?.addEventListener('change', (e) => {
+  arcadeState.chatRoomId = e.target.value;
+  const log = $('#arcade-chat-log');
+  if (log) log._sig = '';
+  if (arcadeState.chatRoomId && !roomHistory(arcadeState.chatRoomId).length) {
+    loadHistory(arcadeState.chatRoomId, false, true).then(paintArcadeSideChat).catch((err) => console.warn(err));
+  } else {
+    paintArcadeSideChat();
+  }
+});
+
+$('#arcade-chat-form')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const inp = $('#arcade-chat-input');
+  const txt = inp?.value.trim();
+  if (!txt || !arcadeState.chatRoomId) return;
+  inp.value = '';
+  try {
+    await sendSquadMessageToRoom(arcadeState.chatRoomId, txt);
+  } catch (err) {
+    fail(err);
+  }
+});
+
+$('#arcade-drop-invite-btn')?.addEventListener('click', async () => {
+  if (!arcadeState.chatRoomId) return toast('Choose a chat room first.', true);
+  const title = arcadeState.activeTitle || 'Squad Arcade';
+  const codePart = arcadeState.activePartyCode ? ` · Party Code: ${arcadeState.activePartyCode}` : '';
+  try {
+    await sendSquadMessageToRoom(
+      arcadeState.chatRoomId,
+      `🎮 Squad Game Invite — Come play ${title} with me in Catcul Friends Games${codePart}!`
+    );
+    toast('Game invite sent to squad chat!');
+  } catch (err) {
+    fail(err);
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const playBtn = e.target.closest('[data-arcade-play]');
+  if (playBtn) {
+    const slug = playBtn.dataset.arcadePlay;
+    (async () => {
+      if (workspaceMode !== 'arcade') await switchWorkspace('arcade');
+      await launchArcadeGame(slug);
+    })().catch(fail);
+    return;
+  }
+  const invBtn = e.target.closest('[data-arcade-invite-game]');
+  if (invBtn) {
+    openCreateLobbyModal(invBtn.dataset.arcadeInviteGame);
+    return;
+  }
+  const editSlot = e.target.closest('[data-arcade-edit-slot]');
+  if (editSlot) {
+    openAdminGameSlotModal(editSlot.dataset.arcadeEditSlot);
+    return;
+  }
+  const delGame = e.target.closest('[data-arcade-delete-game]');
+  if (delGame && studentAdmin) {
+    const slug = delGame.dataset.arcadeDeleteGame;
+    busy(delGame, async () => {
+      unwrap(await db.rpc('delete_arcade_game', { p_slug: slug }));
+      broadcastArcadeRefresh();
+      await loadAdmin();
+      toast('Game removed.');
+    });
+    return;
+  }
+  const joinLobby = e.target.closest('[data-arcade-join-lobby]');
+  if (joinLobby) {
+    const lob = arcadeState.lobbies.find((x) => x.id === joinLobby.dataset.arcadeJoinLobby);
+    if (!lob) return;
+    (async () => {
+      try { await navigator.clipboard.writeText(lob.party_code); } catch {}
+      if (workspaceMode !== 'arcade') await switchWorkspace('arcade');
+      await launchArcadeGame(lob.game_slug, lob.party_code);
+      toast(`Copied party code ${lob.party_code} — paste in ${lob.game_title || lob.game_slug} to join!`);
+    })().catch(fail);
+    return;
+  }
+  const shareLobby = e.target.closest('[data-arcade-share-lobby]');
+  if (shareLobby) {
+    const lob = arcadeState.lobbies.find((x) => x.id === shareLobby.dataset.arcadeShareLobby);
+    if (!lob) return;
+    const targetRoom = active || arcadeState.chatRoomId || (rooms || []).find((r) => r.can_send !== false)?.id;
+    if (!targetRoom) return toast('Join a chat room first to share this lobby.', true);
+    busy(shareLobby, async () => {
+      await sendSquadMessageToRoom(
+        targetRoom,
+        `🎮 Squad Game Invite — Join @${lob.host_username || lob.host_name} on ${lob.game_title || lob.game_slug}! Party Code: ${lob.party_code}${lob.note ? ' · "' + lob.note + '"' : ''}`
+      );
+      toast('Shared squad code to chat!');
+    });
+    return;
+  }
+  const closeLob = e.target.closest('[data-arcade-close-lobby]');
+  if (closeLob) {
+    const id = closeLob.dataset.arcadeCloseLobby;
+    busy(closeLob, async () => {
+      unwrap(await db.rpc('close_arcade_lobby', { p_lobby_id: id }));
+      broadcastArcadeRefresh();
+      await loadArcadeState(true);
+      toast('Squad lobby closed.');
+    });
+  }
+});
+
+window.addEventListener('message', (ev) => {
+  if (ev.data?.type === 'CATCUL_OPEN_ARCADE_ADMIN') {
+    openAdminGameSlotModal(ev.data.slug || 'eaglercraft');
+  }
+});
 
 
 const actions={'workspace-menu':showWorkspaceMenu,'chat-tools':showChatTools,'new-study-group':showStudyGroupCreate,'join-study-group':showStudyGroupJoin,'view-chat':()=>showChatView(true),'notes':openNotes,'new-course':showCourseCreate,'join-course':()=>showNewRoom('join'),'community':openCommunity,'open-academic':openAcademic,'pin-resource':()=>showAcademicAdd('resource'),'add-homework':()=>showAcademicAdd('homework'),

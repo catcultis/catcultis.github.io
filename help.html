@@ -26,7 +26,8 @@ body.dark{
  --border:#2b3529;--border-strong:#3b4838;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background-color .2s ease,color .2s ease}
+body{background-color:var(--bg);background-image:radial-gradient(rgba(30,40,29,.075) 1px,transparent 1.15px);background-size:16px 16px;color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background-color .2s ease,color .2s ease}
+body.dark{background-image:radial-gradient(rgba(215,244,114,.065) 1px,transparent 1.15px)}
 a{color:inherit}
 .container{width:min(1080px,calc(100% - 40px));margin:0 auto}
 .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
@@ -53,7 +54,8 @@ a{color:inherit}
 .doc-hero p{color:var(--ink-soft);max-width:680px;font-size:1.01rem}
 .doc-meta{margin-top:14px;font-size:.81rem;color:var(--ink-muted)}
 .doc-body{padding:42px 0 72px;display:grid;gap:20px}
-.doc-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:28px 30px;box-shadow:0 8px 28px rgba(30,42,27,.025)}
+.doc-card{background:var(--surface);border:2px solid rgba(30,40,29,.18);border-radius:28px;padding:28px 30px;box-shadow:0 6px 0 rgba(30,40,29,.1),0 8px 28px rgba(30,42,27,.025)}
+body.dark .doc-card{border-color:rgba(215,244,114,.22);box-shadow:0 6px 0 rgba(0,0,0,.44)}
 .doc-card h2{font-size:1.32rem;margin-bottom:10px;font-weight:800;letter-spacing:-.025em}
 .doc-card h3{font-size:1rem;font-weight:750;margin:16px 0 6px}
 .doc-card p{color:var(--ink-soft);font-size:.94rem;margin-bottom:10px}
@@ -203,9 +205,9 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
           </ul>
         </article>
         <article class="doc-card" data-help-item>
-          <h2>Bitmoji studio &amp; Ultra-HD photos</h2>
-          <p>Open your profile at the bottom-left and tap <strong>Customize your Bitmoji</strong> to style skin tone, hair, eyes, expressions, glasses, headwear, and campus outfits.</p>
-          <p>Photos taken or uploaded from any phone, tablet, or laptop are processed locally at up to <strong>2560px Ultra-HD</strong> for crisp detail in chats, Stories, and Spotlight.</p>
+          <h2>3D Culji studio, Profile Effects &amp; 4K Culife</h2>
+          <p>Open your profile at the bottom-left and tap <strong>Customize your 3D Culji</strong> to style over 200 full-body clothing items, sneakers, hats, hairstyles, glasses, expressions, and Discord-style animated <strong>Profile Effects</strong>.</p>
+          <p>Photos snapped or uploaded in <strong>Culife</strong> are mastered locally at <strong>4K UHD (3840px)</strong> for ultra-crisp detail on every phone, tablet, and laptop.</p>
         </article>
         <article class="doc-card" data-help-item>
           <h2>Full-screen 4K anime &amp; Wallhaven themes</h2>

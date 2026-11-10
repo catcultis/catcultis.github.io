@@ -1465,6 +1465,469 @@ grant execute on function
   catcul.admin_set_tier_grant(text, text, text, integer)
 to authenticated, service_role;
 
+-- Advanced Campus Spotlight: comments, bookmarks/saves, sound labels, friends/saved filters & live search
+alter table catcul.spotlight_posts
+  add column if not exists sound_label text not null default '',
+  add column if not exists allow_comments boolean not null default true;
+
+create table if not exists catcul.spotlight_comments (
+  id uuid primary key default gen_random_uuid(),
+  post_id uuid not null references catcul.spotlight_posts(id) on delete cascade,
+  user_id uuid not null references catcul.profiles(id) on delete cascade,
+  body text not null check (char_length(btrim(body)) between 1 and 400),
+  created_at timestamptz not null default now(),
+  deleted_at timestamptz
+);
+
+create index if not exists spotlight_comments_post_idx
+  on catcul.spotlight_comments (post_id, created_at desc)
+  where deleted_at is null;
+
+alter table catcul.spotlight_comments enable row level security;
+
+create table if not exists catcul.spotlight_bookmarks (
+  post_id uuid not null references catcul.spotlight_posts(id) on delete cascade,
+  user_id uuid not null references catcul.profiles(id) on delete cascade,
+  created_at timestamptz not null default now(),
+  primary key (post_id, user_id)
+);
+
+create index if not exists spotlight_bookmarks_user_idx
+  on catcul.spotlight_bookmarks (user_id, created_at desc);
+
+alter table catcul.spotlight_bookmarks enable row level security;
+
+drop policy if exists spotlight_comments_select on catcul.spotlight_comments;
+create policy spotlight_comments_select on catcul.spotlight_comments
+  for select to authenticated
+  using (deleted_at is null and not catcul.blocked_with(user_id));
+
+drop policy if exists spotlight_bookmarks_own on catcul.spotlight_bookmarks;
+create policy spotlight_bookmarks_own on catcul.spotlight_bookmarks
+  for all to authenticated
+  using (user_id = auth.uid())
+  with check (user_id = auth.uid());
+
+drop function if exists catcul.create_spotlight_post(text, text, text, integer, text, text, text);
+create or replace function catcul.create_spotlight_post(
+  p_media_kind text,
+  p_object_path text,
+  p_mime_type text,
+  p_byte_size integer,
+  p_title text default ''::text,
+  p_caption text default ''::text,
+  p_theme_tag text default 'campus'::text,
+  p_sound_label text default ''::text,
+  p_allow_comments boolean default true
+)
+returns uuid language plpgsql security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+  v_id uuid;
+begin
+  perform catcul.assert_active_account();
+  if v_uid is null then raise exception 'Sign in first.' using errcode = '42501'; end if;
+  if not catcul.has_tier('premium', v_uid) then
+    raise exception 'Posting to Spotlight requires Catcul Premium.' using errcode = '42501';
+  end if;
+  perform catcul.consume_rate('create_spotlight', 20, 86400);
+  if p_media_kind not in ('video', 'photo') then
+    raise exception 'Spotlight accepts videos and snaps.';
+  end if;
+  if p_object_path is null or split_part(p_object_path, '/', 1) <> 'spotlight' or split_part(p_object_path, '/', 2) <> v_uid::text then
+    raise exception 'Invalid Spotlight media path.' using errcode = '42501';
+  end if;
+  if p_theme_tag not in ('campus', 'catsnap', 'study', 'vibes', 'funny', 'creative') then
+    p_theme_tag := 'campus';
+  end if;
+  insert into catcul.spotlight_posts(
+    user_id, media_kind, object_path, mime_type, byte_size, title, caption, theme_tag, sound_label, allow_comments
+  )
+  values (
+    v_uid, p_media_kind, p_object_path, p_mime_type, p_byte_size,
+    left(btrim(coalesce(p_title, '')), 100),
+    left(btrim(coalesce(p_caption, '')), 500),
+    p_theme_tag,
+    left(btrim(coalesce(p_sound_label, '')), 60),
+    coalesce(p_allow_comments, true)
+  )
+  returning id into v_id;
+  return v_id;
+end $$;
+
+drop function if exists catcul.list_spotlight_feed(text, integer, integer);
+create or replace function catcul.list_spotlight_feed(
+  p_filter text default 'all'::text,
+  p_limit integer default 30,
+  p_offset integer default 0,
+  p_search text default ''::text
+)
+returns jsonb language plpgsql stable security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+  v_lim integer := greatest(1, least(coalesce(p_limit, 30), 60));
+  v_off integer := greatest(0, least(coalesce(p_offset, 0), 5000));
+  v_q text := lower(btrim(coalesce(p_search, '')));
+begin
+  perform catcul.assert_active_account();
+  if v_uid is null then raise exception 'Sign in first.' using errcode = '42501'; end if;
+  return coalesce((
+    select jsonb_agg(to_jsonb(q))
+    from (
+      select
+        sp.id, sp.user_id, sp.media_kind, sp.object_path, sp.mime_type,
+        sp.title, sp.caption, sp.theme_tag, sp.sound_label, sp.allow_comments,
+        sp.views_count, sp.created_at,
+        p.display_name, p.username, p.color, p.avatar,
+        catcul.effective_tier(sp.user_id) as author_tier,
+        exists(select 1 from catcul.platform_admins a where a.user_id = sp.user_id) as author_is_admin,
+        (select count(*)::int from catcul.spotlight_likes sl where sl.post_id = sp.id) as likes_count,
+        exists(select 1 from catcul.spotlight_likes sl where sl.post_id = sp.id and sl.user_id = v_uid) as liked_by_me,
+        (select count(*)::int from catcul.spotlight_comments sc where sc.post_id = sp.id and sc.deleted_at is null) as comments_count,
+        (select count(*)::int from catcul.spotlight_bookmarks sb where sb.post_id = sp.id) as saves_count,
+        exists(select 1 from catcul.spotlight_bookmarks sb where sb.post_id = sp.id and sb.user_id = v_uid) as bookmarked_by_me
+      from catcul.spotlight_posts sp
+      join catcul.profiles p on p.id = sp.user_id
+      where sp.deleted_at is null
+        and (
+          sp.user_id = v_uid
+          or (
+            not exists(select 1 from catcul.account_controls where user_id = sp.user_id and suspended)
+            and not catcul.blocked_with(sp.user_id)
+          )
+        )
+        and (
+          coalesce(p_filter, 'all') in ('all', 'trending')
+          or (p_filter = 'video' and sp.media_kind = 'video')
+          or (p_filter = 'catsnap' and (sp.theme_tag = 'catsnap' or sp.media_kind = 'photo'))
+          or (p_filter in ('study', 'vibes', 'funny', 'creative', 'campus') and sp.theme_tag = p_filter)
+          or (p_filter = 'mine' and sp.user_id = v_uid)
+          or (p_filter = 'saved' and exists(select 1 from catcul.spotlight_bookmarks sb where sb.post_id = sp.id and sb.user_id = v_uid))
+          or (p_filter = 'friends' and (
+            sp.user_id = v_uid or exists(
+              select 1 from catcul.friendships f
+              where f.user_low = least(v_uid, sp.user_id)
+                and f.user_high = greatest(v_uid, sp.user_id)
+                and f.status = 'accepted'
+            )
+          ))
+        )
+        and (
+          v_q = ''
+          or lower(sp.title) like '%' || v_q || '%'
+          or lower(sp.caption) like '%' || v_q || '%'
+          or lower(sp.theme_tag) like '%' || v_q || '%'
+          or lower(coalesce(p.username, '')) like '%' || v_q || '%'
+          or lower(coalesce(p.display_name, '')) like '%' || v_q || '%'
+        )
+      order by
+        case when p_filter = 'trending'
+          then (select count(*) from catcul.spotlight_likes sl where sl.post_id = sp.id) * 4
+             + (select count(*) from catcul.spotlight_comments sc where sc.post_id = sp.id and sc.deleted_at is null) * 5
+             + sp.views_count
+          else 0
+        end desc,
+        sp.created_at desc, sp.id desc
+      limit v_lim offset v_off
+    ) q
+  ), '[]'::jsonb);
+end $$;
+
+create or replace function catcul.toggle_spotlight_bookmark(p_post_id uuid)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare
+  sp catcul.spotlight_posts;
+  v_saved boolean;
+begin
+  perform catcul.assert_active_account();
+  perform catcul.consume_rate('spotlight_bookmark', 180, 3600);
+  select * into sp from catcul.spotlight_posts where id = p_post_id and deleted_at is null;
+  if not found or catcul.blocked_with(sp.user_id) then
+    raise exception 'Spotlight post unavailable.' using errcode = 'P0002';
+  end if;
+  if exists(select 1 from catcul.spotlight_bookmarks where post_id = p_post_id and user_id = auth.uid()) then
+    delete from catcul.spotlight_bookmarks where post_id = p_post_id and user_id = auth.uid();
+    v_saved := false;
+  else
+    insert into catcul.spotlight_bookmarks(post_id, user_id) values (p_post_id, auth.uid()) on conflict do nothing;
+    v_saved := true;
+  end if;
+  return jsonb_build_object(
+    'saved', v_saved,
+    'saves_count', (select count(*)::int from catcul.spotlight_bookmarks where post_id = p_post_id)
+  );
+end $$;
+
+create or replace function catcul.list_spotlight_comments(p_post_id uuid)
+returns jsonb language plpgsql stable security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+begin
+  perform catcul.assert_active_account();
+  if v_uid is null then raise exception 'Sign in first.' using errcode = '42501'; end if;
+  return coalesce((
+    select jsonb_agg(to_jsonb(q))
+    from (
+      select
+        sc.id, sc.post_id, sc.user_id, sc.body, sc.created_at,
+        p.display_name, p.username, p.color, p.avatar,
+        catcul.effective_tier(sc.user_id) as author_tier,
+        exists(select 1 from catcul.platform_admins a where a.user_id = sc.user_id) as author_is_admin
+      from catcul.spotlight_comments sc
+      join catcul.profiles p on p.id = sc.user_id
+      where sc.post_id = p_post_id and sc.deleted_at is null and not catcul.blocked_with(sc.user_id)
+      order by sc.created_at asc
+      limit 120
+    ) q
+  ), '[]'::jsonb);
+end $$;
+
+create or replace function catcul.add_spotlight_comment(p_post_id uuid, p_body text)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+  sp catcul.spotlight_posts;
+  v_clean text := btrim(coalesce(p_body, ''));
+  v_cid uuid;
+  v_out jsonb;
+begin
+  perform catcul.assert_active_account();
+  if v_uid is null then raise exception 'Sign in first.' using errcode = '42501'; end if;
+  perform catcul.consume_rate('spotlight_comment', 60, 3600);
+  if char_length(v_clean) < 1 or char_length(v_clean) > 400 then
+    raise exception 'Comment must be between 1 and 400 characters.';
+  end if;
+  select * into sp from catcul.spotlight_posts where id = p_post_id and deleted_at is null;
+  if not found or catcul.blocked_with(sp.user_id) then
+    raise exception 'Spotlight post unavailable.' using errcode = 'P0002';
+  end if;
+  if not sp.allow_comments and sp.user_id <> v_uid then
+    raise exception 'Comments are turned off for this Spotlight.';
+  end if;
+  insert into catcul.spotlight_comments(post_id, user_id, body)
+  values (p_post_id, v_uid, v_clean)
+  returning id into v_cid;
+  select to_jsonb(q) into v_out
+  from (
+    select
+      sc.id, sc.post_id, sc.user_id, sc.body, sc.created_at,
+      p.display_name, p.username, p.color, p.avatar,
+      catcul.effective_tier(sc.user_id) as author_tier,
+      exists(select 1 from catcul.platform_admins a where a.user_id = sc.user_id) as author_is_admin,
+      (select count(*)::int from catcul.spotlight_comments c2 where c2.post_id = p_post_id and c2.deleted_at is null) as comments_count
+    from catcul.spotlight_comments sc
+    join catcul.profiles p on p.id = sc.user_id
+    where sc.id = v_cid
+  ) q;
+  return v_out;
+end $$;
+
+create or replace function catcul.delete_spotlight_comment(p_comment_id uuid)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+  sc catcul.spotlight_comments;
+  v_post_owner uuid;
+begin
+  perform catcul.assert_active_account();
+  select * into sc from catcul.spotlight_comments where id = p_comment_id for update;
+  if not found then return jsonb_build_object('ok', true); end if;
+  select user_id into v_post_owner from catcul.spotlight_posts where id = sc.post_id;
+  if sc.user_id is distinct from v_uid and v_post_owner is distinct from v_uid and not catcul.is_platform_admin() then
+    raise exception 'You cannot delete this comment.' using errcode = '42501';
+  end if;
+  update catcul.spotlight_comments set deleted_at = now() where id = p_comment_id and deleted_at is null;
+  return jsonb_build_object(
+    'ok', true,
+    'post_id', sc.post_id,
+    'comments_count', (select count(*)::int from catcul.spotlight_comments c2 where c2.post_id = sc.post_id and c2.deleted_at is null)
+  );
+end $$;
+
+revoke all on function
+  catcul.create_spotlight_post(text, text, text, integer, text, text, text, text, boolean),
+  catcul.list_spotlight_feed(text, integer, integer, text),
+  catcul.toggle_spotlight_bookmark(uuid),
+  catcul.list_spotlight_comments(uuid),
+  catcul.add_spotlight_comment(uuid, text),
+  catcul.delete_spotlight_comment(uuid)
+from public;
+
+grant execute on function
+  catcul.create_spotlight_post(text, text, text, integer, text, text, text, text, boolean),
+  catcul.list_spotlight_feed(text, integer, integer, text),
+  catcul.toggle_spotlight_bookmark(uuid),
+  catcul.list_spotlight_comments(uuid),
+  catcul.add_spotlight_comment(uuid, text),
+  catcul.delete_spotlight_comment(uuid)
+to authenticated, service_role;
+
+-- Phase 2 Advanced Campus Spotlight: Multi-vibe reactions, post editing & admin report dismissal
+create table if not exists catcul.spotlight_reactions (
+  post_id uuid not null references catcul.spotlight_posts(id) on delete cascade,
+  user_id uuid not null references catcul.profiles(id) on delete cascade,
+  emoji text not null check (emoji in ('🔥', '😂', '🤯', '👏')),
+  created_at timestamptz not null default now(),
+  primary key (post_id, user_id, emoji)
+);
+
+create index if not exists spotlight_reactions_post_idx
+  on catcul.spotlight_reactions (post_id);
+
+alter table catcul.spotlight_reactions enable row level security;
+
+drop policy if exists spotlight_reactions_select on catcul.spotlight_reactions;
+create policy spotlight_reactions_select on catcul.spotlight_reactions
+  for select to authenticated
+  using (not catcul.blocked_with(user_id));
+
+create or replace function catcul.toggle_spotlight_reaction(p_post_id uuid, p_emoji text)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+  sp catcul.spotlight_posts;
+  v_active boolean;
+begin
+  perform catcul.assert_active_account();
+  if v_uid is null then raise exception 'Sign in first.' using errcode = '42501'; end if;
+  perform catcul.consume_rate('spotlight_reaction', 240, 3600);
+  if p_emoji not in ('🔥', '😂', '🤯', '👏') then
+    raise exception 'Unsupported Spotlight reaction.';
+  end if;
+  select * into sp from catcul.spotlight_posts where id = p_post_id and deleted_at is null;
+  if not found or catcul.blocked_with(sp.user_id) then
+    raise exception 'Spotlight post unavailable.' using errcode = 'P0002';
+  end if;
+  if exists(select 1 from catcul.spotlight_reactions where post_id = p_post_id and user_id = v_uid and emoji = p_emoji) then
+    delete from catcul.spotlight_reactions where post_id = p_post_id and user_id = v_uid and emoji = p_emoji;
+    v_active := false;
+  else
+    insert into catcul.spotlight_reactions(post_id, user_id, emoji)
+    values (p_post_id, v_uid, p_emoji) on conflict do nothing;
+    v_active := true;
+  end if;
+  return jsonb_build_object(
+    'active', v_active,
+    'emoji', p_emoji,
+    'reactions', coalesce((
+      select jsonb_object_agg(emoji, cnt)
+      from (select emoji, count(*)::int as cnt from catcul.spotlight_reactions where post_id = p_post_id group by emoji) agg
+    ), '{}'::jsonb),
+    'my_reactions', coalesce((
+      select jsonb_agg(emoji order by emoji) from catcul.spotlight_reactions where post_id = p_post_id and user_id = v_uid
+    ), '[]'::jsonb)
+  );
+end $$;
+
+create or replace function catcul.update_spotlight_post(
+  p_post_id uuid,
+  p_title text default ''::text,
+  p_caption text default ''::text,
+  p_theme_tag text default 'campus'::text,
+  p_sound_label text default ''::text,
+  p_allow_comments boolean default true
+)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+declare
+  v_uid uuid := auth.uid();
+  sp catcul.spotlight_posts;
+  v_tag text := coalesce(p_theme_tag, 'campus');
+begin
+  perform catcul.assert_active_account();
+  if v_uid is null then raise exception 'Sign in first.' using errcode = '42501'; end if;
+  perform catcul.consume_rate('update_spotlight', 60, 3600);
+  select * into sp from catcul.spotlight_posts where id = p_post_id and deleted_at is null for update;
+  if not found then raise exception 'Spotlight post not found.' using errcode = 'P0002'; end if;
+  if sp.user_id is distinct from v_uid and not catcul.is_platform_admin() then
+    raise exception 'Only the author can edit this Spotlight post.' using errcode = '42501';
+  end if;
+  if v_tag not in ('campus', 'catsnap', 'study', 'vibes', 'funny', 'creative') then v_tag := 'campus'; end if;
+  update catcul.spotlight_posts
+  set title = left(btrim(coalesce(p_title, '')), 100),
+      caption = left(btrim(coalesce(p_caption, '')), 500),
+      theme_tag = v_tag,
+      sound_label = left(btrim(coalesce(p_sound_label, '')), 60),
+      allow_comments = coalesce(p_allow_comments, true)
+  where id = p_post_id
+  returning * into sp;
+  return jsonb_build_object(
+    'id', sp.id, 'title', sp.title, 'caption', sp.caption,
+    'theme_tag', sp.theme_tag, 'sound_label', sp.sound_label, 'allow_comments', sp.allow_comments
+  );
+end $$;
+
+create or replace function catcul.dismiss_spotlight_report(p_report_id uuid)
+returns jsonb language plpgsql security definer set search_path = '' as $$
+begin
+  perform catcul.require_platform_admin();
+  update catcul.spotlight_reports set status = 'dismissed' where id = p_report_id and status = 'open';
+  return jsonb_build_object('ok', true);
+end $$;
+
+revoke all on function
+  catcul.toggle_spotlight_reaction(uuid, text),
+  catcul.update_spotlight_post(uuid, text, text, text, text, boolean),
+  catcul.dismiss_spotlight_report(uuid)
+from public;
+
+grant execute on function
+  catcul.toggle_spotlight_reaction(uuid, text),
+  catcul.update_spotlight_post(uuid, text, text, text, text, boolean),
+  catcul.dismiss_spotlight_report(uuid)
+to authenticated, service_role;
+
+-- =====================================================================
+-- Friends Games Area (Squad Arcade, Offline HTML Slot & Party Lobbies)
+-- =====================================================================
+create table if not exists catcul.arcade_games (
+  slug text primary key check (slug ~ '^[a-z0-9-]{2,40}$'),
+  title text not null check (char_length(trim(title)) between 1 and 80),
+  subtitle text not null default '' check (char_length(subtitle) <= 220),
+  genre text not null default 'Multiplayer' check (char_length(genre) <= 40),
+  launch_url text not null default '' check (char_length(launch_url) <= 1000),
+  cover_style text not null default 'custom' check (char_length(cover_style) <= 30),
+  supports_party_code boolean not null default true,
+  enabled boolean not null default true,
+  sort_order integer not null default 10,
+  updated_at timestamptz not null default now()
+);
+
+alter table catcul.arcade_games enable row level security;
+drop policy if exists arcade_games_select on catcul.arcade_games;
+create policy arcade_games_select on catcul.arcade_games
+  for select to authenticated using (enabled = true or catcul.is_platform_admin());
+
+insert into catcul.arcade_games (slug, title, subtitle, genre, launch_url, cover_style, supports_party_code, enabled, sort_order)
+values
+  ('veck-io', 'Veck.io', 'Fast-paced 3D arena FPS — 1v1, 2v2, Gun Game & Free-For-All right in your browser.', 'Arena FPS', 'https://veck.io/', 'veck', true, true, 1),
+  ('poxel-io', 'Poxel.io', 'Blocky movement shooter — slide, dash, strafe & share private squad room codes.', 'Movement FPS', 'https://poxel.io/', 'poxel', true, true, 2),
+  ('eaglercraft-112', 'Eaglercraft 1.12.2', 'Voxel survival, PvP & LAN worlds — ready for Eaglercraft_1.12.2_u3_Offline.html.', 'Voxel 1.12.2', 'games/eaglercraft.html?slot=eaglercraft-112', 'voxel', true, true, 3),
+  ('eaglercraft-262', 'Eaglercraft 26.2', 'Latest voxel sandbox & multiplayer worlds — ready for eaglercraft-26.2-fe8f1237.html.', 'Voxel 26.2', 'games/eaglercraft.html?slot=eaglercraft-262', 'custom', true, true, 4)
+on conflict (slug) do nothing;
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('catcul-games', 'catcul-games', true, 52428800, array['application/gzip', 'application/x-gzip', 'application/octet-stream', 'application/json'])
+on conflict (id) do update set public = true, file_size_limit = 52428800, allowed_mime_types = array['application/gzip', 'application/x-gzip', 'application/octet-stream', 'application/json'];
+
+create table if not exists catcul.arcade_lobbies (
+  id uuid primary key default gen_random_uuid(),
+  host_id uuid not null references auth.users(id) on delete cascade,
+  game_slug text not null references catcul.arcade_games(slug) on delete cascade,
+  party_code text not null check (char_length(trim(party_code)) between 1 and 80),
+  note text not null default '' check (char_length(note) <= 160),
+  room_id uuid references catcul.rooms(id) on delete set null,
+  expires_at timestamptz not null default (now() + interval '3 hours'),
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_arcade_lobbies_expires on catcul.arcade_lobbies (expires_at desc);
+alter table catcul.arcade_lobbies enable row level security;
+drop policy if exists arcade_lobbies_select on catcul.arcade_lobbies;
+create policy arcade_lobbies_select on catcul.arcade_lobbies
+  for select to authenticated using (expires_at > now());
+
+grant select on catcul.arcade_games, catcul.arcade_lobbies to authenticated;
+
 notify pgrst, 'reload schema';
 commit;
 

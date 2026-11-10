@@ -610,3 +610,295 @@ revoke execute on function catcul.consume_rate(text,integer,integer) from authen
 notify pgrst,'reload schema';
 commit;
 select 'Chat tools installed: pins, archive, unread marks, notification prefs, editing, files, pinned messages, group controls, join requests, lifecycle.' as result;
+
+-- Voice & Video Calls RPC Alignment + Realtime P2P RTC Topic Guard
+CREATE OR REPLACE FUNCTION catcul.join_voice_call(p_call_id uuid)
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path TO ''
+AS $function$
+DECLARE
+  v_auth jsonb;
+BEGIN
+  PERFORM catcul.respond_voice_call(p_call_id, true);
+  v_auth := catcul.authorize_voice_join(p_call_id);
+  RETURN v_auth || jsonb_build_object(
+    'livekit_room', v_auth->>'media_room'
+  );
+END;
+$function$;
+
+REVOKE ALL ON FUNCTION catcul.join_voice_call(uuid) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION catcul.join_voice_call(uuid) TO authenticated, service_role;
+
+CREATE OR REPLACE FUNCTION catcul.my_voice_calls()
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path TO ''
+AS $function$
+DECLARE
+  u uuid := auth.uid();
+  res jsonb;
+BEGIN
+  IF u IS NULL THEN RAISE EXCEPTION 'Sign in required.'; END IF;
+  IF NOT catcul.account_is_active() THEN RAISE EXCEPTION 'Account is not active.'; END IF;
+  PERFORM catcul.expire_voice_calls();
+  SELECT coalesce(jsonb_agg(to_jsonb(q) ORDER BY q.started_at DESC), '[]'::jsonb) INTO res
+  FROM (
+    SELECT
+      c.*,
+      r.kind,
+      r.kind AS room_kind,
+      r.name AS room_name,
+      coalesce(p.state, 'available') AS my_state,
+      (SELECT count(*)::int FROM catcul.call_participants cp WHERE cp.call_id = c.id AND cp.state = 'accepted') AS joined_count,
+      sp.display_name AS caller_name,
+      sp.color AS caller_color,
+      sp.avatar AS caller_avatar,
+      CASE WHEN r.kind = 'direct' THEN peer.display_name ELSE r.name END AS title
+    FROM catcul.voice_calls c
+    JOIN catcul.rooms r ON r.id = c.room_id
+    JOIN catcul.room_members m ON m.room_id = r.id AND m.user_id = u
+    LEFT JOIN catcul.call_participants p ON p.call_id = c.id AND p.user_id = u
+    LEFT JOIN catcul.profiles sp ON sp.id = c.started_by
+    LEFT JOIN LATERAL (
+      SELECT pr.display_name
+      FROM catcul.room_members pm
+      JOIN catcul.profiles pr ON pr.id = pm.user_id
+      WHERE pm.room_id = r.id AND pm.user_id <> u
+      LIMIT 1
+    ) peer ON r.kind = 'direct'
+    WHERE catcul.can_send_to_room(r.id)
+      AND (c.ended_at IS NULL OR c.started_at > now() - interval '7 days')
+    ORDER BY c.started_at DESC
+    LIMIT 40
+  ) q;
+  RETURN res;
+END;
+$function$;
+
+REVOKE ALL ON FUNCTION catcul.my_voice_calls() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION catcul.my_voice_calls() TO authenticated, service_role;
+
+CREATE OR REPLACE FUNCTION catcul.topic_allowed(p_topic text)
+RETURNS boolean
+LANGUAGE plpgsql
+STABLE SECURITY DEFINER
+SET search_path TO ''
+AS $function$
+BEGIN
+  IF NOT catcul.account_is_active() THEN RETURN false; END IF;
+  IF p_topic IN (
+    'catcul:user:' || auth.uid()::text,
+    'catcul:school:' || auth.uid()::text,
+    'catcul:diary:' || auth.uid()::text
+  ) THEN
+    RETURN true;
+  END IF;
+  IF p_topic ~ '^catcul:rtc:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
+    RETURN EXISTS (
+      SELECT 1
+      FROM catcul.voice_calls c
+      WHERE c.id = split_part(p_topic, ':', 3)::uuid
+        AND c.ended_at IS NULL
+        AND catcul.can_send_to_room(c.room_id)
+    );
+  END IF;
+  IF p_topic !~ '^catcul:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(:extras)?$' THEN
+    RETURN false;
+  END IF;
+  RETURN catcul.can_send_to_room(split_part(p_topic, ':', 2)::uuid);
+END;
+$function$;
+
+-- Bitmoji v2 avatar validation + in-call group invites & escalation
+CREATE OR REPLACE FUNCTION catcul.valid_avatar(p_value jsonb)
+RETURNS boolean
+LANGUAGE plpgsql
+IMMUTABLE
+SET search_path TO ''
+AS $function$
+DECLARE
+  item record;
+  v_ver int;
+  allowed_v1 jsonb := '{
+    "shape":["squircle","puff","bean"],
+    "pattern":["plain","tabby","tuxedo","patches"],
+    "eyes":["bright","sleepy","wink","sparkle"],
+    "mouth":["smile","tiny","blep","grin"],
+    "cheeks":["rosy","freckles","none"],
+    "ears":["pointed","round","folded","none"],
+    "tail":["curled","fluffy","long","none"],
+    "outfit":["none","hoodie","overalls","scarf"],
+    "accessory":["none","glasses","bow","headphones","crown"],
+    "whiskers":["yes","no"]
+  }'::jsonb;
+  allowed_v2 jsonb := '{
+    "face":["oval","soft","defined","round"],
+    "hair":["short_fade","textured_crop","curls","afro","long_waves","sleek_straight","high_bun","braids","bob","side_part","messy_fringe","buzz"],
+    "brows":["natural","arched","thick","chill","raised"],
+    "eyes":["bright","chill","wink","happy","lashed","confident"],
+    "nose":["soft","button","classic","defined"],
+    "mouth":["warm_smile","grin","smirk","laugh","chill","peace"],
+    "facialHair":["none","stubble","goatee","mustache","full_beard"],
+    "blush":["none","soft","freckles","sun_kissed"],
+    "glasses":["none","clear_frames","round_wire","sunglasses","aviators"],
+    "headwear":["none","beanie","snapback","headphones","headband","bucket_hat"],
+    "outfit":["hoodie","varsity","crewneck","denim_jacket","collared","turtleneck","tee","blazer"],
+    "earring":["none","studs","hoops"]
+  }'::jsonb;
+BEGIN
+  IF p_value IS NULL OR jsonb_typeof(p_value) <> 'object' OR octet_length(p_value::text) > 3072 THEN
+    RETURN false;
+  END IF;
+  IF p_value ? 'v' THEN
+    IF jsonb_typeof(p_value->'v') <> 'number' THEN RETURN false; END IF;
+    v_ver := (p_value->>'v')::int;
+  ELSE
+    v_ver := 1;
+  END IF;
+  IF v_ver = 1 THEN
+    FOR item IN SELECT key, value FROM jsonb_each(p_value) LOOP
+      IF item.key = 'v' THEN
+        IF item.value <> '1'::jsonb THEN RETURN false; END IF;
+      ELSIF item.key IN ('fur','accent','background') THEN
+        IF jsonb_typeof(item.value) <> 'string' OR (item.value#>>'{}') !~ '^#[0-9a-fA-F]{6}$' THEN RETURN false; END IF;
+      ELSIF allowed_v1 ? item.key THEN
+        IF jsonb_typeof(item.value) <> 'string' OR NOT ((allowed_v1->item.key) ? (item.value#>>'{}')) THEN RETURN false; END IF;
+      ELSE
+        RETURN false;
+      END IF;
+    END LOOP;
+    RETURN true;
+  ELSIF v_ver = 2 THEN
+    FOR item IN SELECT key, value FROM jsonb_each(p_value) LOOP
+      IF item.key = 'v' THEN
+        IF item.value <> '2'::jsonb THEN RETURN false; END IF;
+      ELSIF item.key IN ('skin','hairColor','eyeColor','outfitColor','background') THEN
+        IF jsonb_typeof(item.value) <> 'string' OR (item.value#>>'{}') !~ '^#[0-9a-fA-F]{6}$' THEN RETURN false; END IF;
+      ELSIF allowed_v2 ? item.key THEN
+        IF jsonb_typeof(item.value) <> 'string' OR NOT ((allowed_v2->item.key) ? (item.value#>>'{}')) THEN RETURN false; END IF;
+      ELSE
+        RETURN false;
+      END IF;
+    END LOOP;
+    RETURN true;
+  END IF;
+  RETURN false;
+END;
+$function$;
+
+CREATE OR REPLACE FUNCTION catcul.invite_to_group_call(p_call_id uuid, p_friend_id uuid)
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path TO ''
+AS $function$
+DECLARE
+  v_uid uuid := auth.uid();
+  v_call catcul.voice_calls;
+  v_room catcul.rooms;
+  v_my_role text;
+  v_already_member boolean;
+  v_are_friends boolean;
+  v_blocked boolean;
+BEGIN
+  PERFORM catcul.assert_active_account();
+  IF v_uid IS NULL OR p_friend_id IS NULL OR v_uid = p_friend_id THEN
+    RAISE EXCEPTION 'Choose a friend to invite.';
+  END IF;
+  SELECT * INTO v_call FROM catcul.voice_calls WHERE id = p_call_id FOR UPDATE;
+  IF NOT FOUND OR v_call.ended_at IS NOT NULL THEN
+    RAISE EXCEPTION 'This call has already ended.';
+  END IF;
+  SELECT * INTO v_room FROM catcul.rooms WHERE id = v_call.room_id;
+  IF NOT FOUND OR v_room.kind <> 'group' OR v_room.purpose = 'community' THEN
+    RAISE EXCEPTION 'Only group calls support adding members directly.';
+  END IF;
+  SELECT role INTO v_my_role FROM catcul.room_members WHERE room_id = v_room.id AND user_id = v_uid AND removed_at IS NULL;
+  IF v_my_role IS NULL OR NOT catcul.can_send_to_room(v_room.id) THEN
+    RAISE EXCEPTION 'You must be an active group member to invite people.';
+  END IF;
+  SELECT EXISTS (
+    SELECT 1 FROM catcul.user_blocks
+    WHERE (blocker_id = v_uid AND blocked_id = p_friend_id) OR (blocker_id = p_friend_id AND blocked_id = v_uid)
+  ) INTO v_blocked;
+  IF v_blocked THEN RAISE EXCEPTION 'Cannot invite this account.'; END IF;
+  SELECT EXISTS (
+    SELECT 1 FROM catcul.room_members WHERE room_id = v_room.id AND user_id = p_friend_id AND removed_at IS NULL
+  ) INTO v_already_member;
+  IF NOT v_already_member THEN
+    IF v_room.join_approval AND v_my_role NOT IN ('owner', 'admin') THEN
+      RAISE EXCEPTION 'Only group owners or admins can add new people to this group.';
+    END IF;
+    SELECT EXISTS (
+      SELECT 1 FROM catcul.friendships
+      WHERE user_low = LEAST(v_uid, p_friend_id) AND user_high = GREATEST(v_uid, p_friend_id) AND status = 'accepted'
+    ) INTO v_are_friends;
+    IF NOT v_are_friends THEN
+      RAISE EXCEPTION 'Only accepted friends can be added directly to a group call.';
+    END IF;
+    INSERT INTO catcul.room_members (room_id, user_id, role, joined_at, removed_at, hidden)
+    VALUES (v_room.id, p_friend_id, 'member', now(), NULL, false)
+    ON CONFLICT (room_id, user_id) DO UPDATE SET removed_at = NULL, hidden = false;
+  END IF;
+  INSERT INTO catcul.call_participants (call_id, room_id, user_id, state, left_at)
+  VALUES (v_call.id, v_room.id, p_friend_id, 'invited', NULL)
+  ON CONFLICT (call_id, user_id)
+  DO UPDATE SET
+    state = CASE WHEN catcul.call_participants.state = 'accepted' THEN 'accepted' ELSE 'invited' END,
+    left_at = CASE WHEN catcul.call_participants.state = 'accepted' THEN catcul.call_participants.left_at ELSE NULL END;
+  RETURN jsonb_build_object('ok', true, 'call_id', v_call.id, 'room_id', v_room.id, 'added_to_group', NOT v_already_member);
+END;
+$function$;
+
+REVOKE ALL ON FUNCTION catcul.invite_to_group_call(uuid, uuid) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION catcul.invite_to_group_call(uuid, uuid) TO authenticated, service_role;
+
+CREATE OR REPLACE FUNCTION catcul.create_group_for_call(p_name text, p_friend_ids uuid[])
+RETURNS catcul.rooms
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path TO ''
+AS $function$
+DECLARE
+  v_uid uuid := auth.uid();
+  v_room catcul.rooms;
+  v_fid uuid;
+  v_clean_name text := btrim(coalesce(p_name, ''));
+BEGIN
+  PERFORM catcul.assert_active_account();
+  IF v_uid IS NULL THEN RAISE EXCEPTION 'Sign in required.'; END IF;
+  IF char_length(v_clean_name) < 1 THEN v_clean_name := 'Group Call'; END IF;
+  IF char_length(v_clean_name) > 40 THEN v_clean_name := left(v_clean_name, 40); END IF;
+  INSERT INTO catcul.rooms (name, created_by, kind, purpose)
+  VALUES (v_clean_name, v_uid, 'group', 'social')
+  RETURNING * INTO v_room;
+  INSERT INTO catcul.room_members (room_id, user_id, role)
+  VALUES (v_room.id, v_uid, 'owner')
+  ON CONFLICT (room_id, user_id) DO NOTHING;
+  IF p_friend_ids IS NOT NULL THEN
+    FOREACH v_fid IN ARRAY p_friend_ids LOOP
+      IF v_fid IS NOT NULL AND v_fid <> v_uid AND EXISTS (
+        SELECT 1 FROM catcul.friendships
+        WHERE user_low = LEAST(v_uid, v_fid) AND user_high = GREATEST(v_uid, v_fid) AND status = 'accepted'
+      ) AND NOT EXISTS (
+        SELECT 1 FROM catcul.user_blocks
+        WHERE (blocker_id = v_uid AND blocked_id = v_fid) OR (blocker_id = v_fid AND blocked_id = v_uid)
+      ) THEN
+        INSERT INTO catcul.room_members (room_id, user_id, role)
+        VALUES (v_room.id, v_fid, 'member')
+        ON CONFLICT (room_id, user_id) DO NOTHING;
+      END IF;
+    END LOOP;
+  END IF;
+  RETURN v_room;
+END;
+$function$;
+
+REVOKE ALL ON FUNCTION catcul.create_group_for_call(text, uuid[]) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION catcul.create_group_for_call(text, uuid[]) TO authenticated, service_role;
+
+NOTIFY pgrst, 'reload schema';

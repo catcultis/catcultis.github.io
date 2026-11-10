@@ -26,7 +26,8 @@ body.dark{
  --border:#2b3529;--border-strong:#3b4838;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background-color .2s ease,color .2s ease}
+body{background-color:var(--bg);background-image:radial-gradient(rgba(30,40,29,.075) 1px,transparent 1.15px);background-size:16px 16px;color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background-color .2s ease,color .2s ease}
+body.dark{background-image:radial-gradient(rgba(215,244,114,.065) 1px,transparent 1.15px)}
 a{color:inherit}
 .container{width:min(1080px,calc(100% - 40px));margin:0 auto}
 .site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
@@ -53,7 +54,8 @@ a{color:inherit}
 .doc-hero p{color:var(--ink-soft);max-width:680px;font-size:1.01rem}
 .doc-meta{margin-top:14px;font-size:.81rem;color:var(--ink-muted)}
 .doc-body{padding:42px 0 72px;display:grid;gap:20px}
-.doc-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:28px 30px;box-shadow:0 8px 28px rgba(30,42,27,.025)}
+.doc-card{background:var(--surface);border:2px solid rgba(30,40,29,.18);border-radius:28px;padding:28px 30px;box-shadow:0 6px 0 rgba(30,40,29,.1),0 8px 28px rgba(30,42,27,.025)}
+body.dark .doc-card{border-color:rgba(215,244,114,.22);box-shadow:0 6px 0 rgba(0,0,0,.44)}
 .doc-card h2{font-size:1.32rem;margin-bottom:10px;font-weight:800;letter-spacing:-.025em}
 .doc-card h3{font-size:1rem;font-weight:750;margin:16px 0 6px}
 .doc-card p{color:var(--ink-soft);font-size:.94rem;margin-bottom:10px}
@@ -180,7 +182,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
       </article>
       <article class="doc-card">
         <h2>3. Acceptable conduct</h2>
-        <p>We want Catcul to feel calm and welcoming. When using direct messages, group chats, Campus Community, Spotlight, Stories, or voice and video calls, you agree not to:</p>
+        <p>We want Catcul to feel calm and welcoming. When using direct messages, group chats, Campus Community, Culife, Friends Games, Stories, or voice and video calls, you agree not to:</p>
         <ul>
           <li>Harass, threaten, dox, or bully other students, or share private photos/recordings of anyone without their consent.</li>
           <li>Post unlawful, hateful, sexually explicit, or malicious content, malware, or automated spam.</li>
@@ -190,11 +192,11 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
       </article>
       <article class="doc-card">
         <h2>4. Your content</h2>
-        <p>You keep ownership of the messages, files, photos, voice notes, Diary entries, and Spotlight posts you create. By sending or posting content in a room or public feed, you grant Catcul permission only to store, transmit, and display that content to the audience you selected (for example, members of that room, or signed-in students for Campus Spotlight).</p>
+        <p>You keep ownership of the messages, files, photos, voice notes, Diary entries, and Culife posts you create. By sending or posting content in a room or public feed, you grant Catcul permission only to store, transmit, and display that content to the audience you selected (for example, members of that room, or signed-in students for Culife).</p>
       </article>
       <article class="doc-card">
         <h2>5. Paid memberships &amp; billing</h2>
-        <p>Core Catcul features are free. Optional paid tiers (<strong>Catcul+</strong>, <strong>Catcul++</strong>, and <strong>Catcul Premium</strong>) unlock cumulative features such as HD video calls, 3D camera lenses, live wallpaper search, Stories, and Spotlight posting.</p>
+        <p>Core Catcul features are free. Optional paid tiers (<strong>Catcul+</strong>, <strong>Catcul++</strong>, and <strong>Catcul Premium</strong>) unlock cumulative features such as HD video calls, 3D camera lenses, live wallpaper search, Stories, and Culife 4K posting.</p>
         <ul>
           <li>Checkout, tax calculation, invoicing, and renewals are processed securely by our authorized Merchant of Record, <strong>Paddle</strong>.</li>
           <li>Subscriptions renew automatically on a monthly or annual cycle until canceled. You can cancel anytime from <em>Plans &amp; Perks → Manage billing</em>, and your perks remain active through the end of your paid billing period.</li>

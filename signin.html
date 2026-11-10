@@ -403,6 +403,21 @@ body.dark .field-note.ok{color:#c9ef7b}
  .top-prompt{display:none}
 }
 
+.auth-card{animation:authCardReveal .38s cubic-bezier(.22,1,.36,1) both}
+.story-doodle{animation:authDoodleFloat 5.5s ease-in-out infinite}
+.submit:active:not(:disabled){transform:scale(.98)}
+@keyframes authCardReveal{
+ from{opacity:0;transform:translate3d(0,12px,0) scale(.99)}
+ to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes authDoodleFloat{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-6px)}
+}
+@media (prefers-reduced-motion:reduce){
+ .auth-card,.story-doodle{animation:none!important}
+}
+
 </style>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body class="signin-page">

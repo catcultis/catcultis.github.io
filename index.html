@@ -477,6 +477,20 @@ body.dark .step-num{color:#d7f472}
  .polaroid-card{position:relative;left:0;bottom:0;margin-top:12px;transform:rotate(-2deg)}
  .hero-stage{flex-direction:column}
 }
+
+/* Smooth organic motion */
+.hero-grid>div:first-child{animation:landReveal .46s cubic-bezier(.22,1,.36,1) both}
+.hero-stage{animation:landReveal .54s cubic-bezier(.22,1,.36,1) .06s both}
+.float-pill{animation:landFloat 5.2s ease-in-out infinite}
+.good-card,.plans-grid>*{transition:transform .24s cubic-bezier(.22,1,.36,1),box-shadow .24s ease,border-color .2s ease}
+.good-card:hover,.plans-grid>*:hover{transform:translateY(-3px)}
+.btn{transition:transform .18s cubic-bezier(.22,1,.36,1),background-color .18s ease,box-shadow .18s ease}
+.btn:active{transform:scale(.97)}
+@keyframes landReveal{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes landFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){
+ .hero-grid>div:first-child,.hero-stage,.float-pill,.good-card,.plans-grid>*{animation:none!important;transition:none!important}
+}
 </style>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
 <body data-catcul-view="landing">
@@ -610,7 +624,7 @@ body.dark .step-num{color:#d7f472}
     <article class="good-card tinted">
      <div class="good-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-4.5-4.5L9 18"/></svg></div>
      <h3>Send it as you are.</h3>
-     <p>Drop a blurry evening photo, snap with 3D cat ears, record a sleepy voice note, or dress your whole screen in crisp 4K anime art.</p>
+     <p>Share crisp Ultra-HD photos from any phone or laptop, snap with 3D lenses, record a voice note, or dress your whole screen in 4K anime art.</p>
     </article>
     <article class="good-card">
      <div class="good-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M20 8v6m-3-3h6"/></svg></div>
@@ -637,7 +651,7 @@ body.dark .step-num{color:#d7f472}
      <span class="step-num">01</span>
      <div>
       <h3>Make it yours.</h3>
-      <p>Pick a display name, `@username`, custom cat avatar, and a crisp full-screen anime theme so friends immediately know it’s you.</p>
+      <p>Pick a display name, `@username`, custom Bitmoji avatar, and a crisp full-screen anime theme so friends immediately know it’s you.</p>
      </div>
     </div>
     <div class="step-row">

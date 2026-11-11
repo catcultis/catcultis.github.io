@@ -66,7 +66,7 @@ button{font-family:inherit}
 .site-header{
  position:sticky;top:0;z-index:40;
  background:color-mix(in srgb,var(--bg) 88%,transparent);
- backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ backdrop-filter:none;-webkit-backdrop-filter:none;
  border-bottom:1px solid transparent;
 }
 .nav-inner{
@@ -184,11 +184,11 @@ body.dark .btn-outline{border-color:rgba(215,244,114,.28);box-shadow:0 4px 0 rgb
 }
 .hero-halo{
  position:absolute;width:min(440px,88%);aspect-ratio:1/1;border-radius:50%;
- background:radial-gradient(circle,rgba(215,244,114,.38) 0%,rgba(228,240,206,.24) 55%,transparent 74%);
+ background:none;
  pointer-events:none;
 }
 body.dark .hero-halo{
- background:radial-gradient(circle,rgba(215,244,114,.14) 0%,rgba(54,75,52,.18) 55%,transparent 74%);
+ background:none;
 }
 .float-pill{
  position:absolute;top:8px;right:4px;z-index:4;
@@ -579,7 +579,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
       <span class="boot-crest-ring"></span>
     </button>
     <span class="boot-eyebrow">LESS SCROLLING · MORE US</span>
-    <p id="splash-message" class="boot-message-text">Warming up your little corner of campus…</p>
+    <p id="splash-message" class="boot-message-text">Warming up your little corner of Catcul…</p>
     <div class="boot-progress-track" aria-hidden="true"><div class="boot-progress-bar"></div></div>
     <div class="boot-pop-hud">
       <span class="boot-pop-hint">Tap or swipe floating cats to pop while we load</span>
@@ -928,7 +928,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
       wrap.setAttribute('aria-label','Pop-a-Cat Zen Break');
       wrap.innerHTML='<div class="pop-cat-field" id="zen-cat-field"></div>'
         +'<div class="boot-center-card zen-center-card">'
-        +'<span class="boot-eyebrow">CATCUL · STUDY BREATHER</span>'
+        +'<span class="boot-eyebrow">CATCUL · CAT BREAK</span>'
         +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
         +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
         +'<div class="boot-pop-hud">'
@@ -1088,12 +1088,12 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
     <article class="good-card tinted">
      <div class="good-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-4.5-4.5L9 18"/></svg></div>
      <h3>Send it as you are.</h3>
-     <p>Share crisp Ultra-HD photos from any phone or laptop, snap with 3D lenses, record a voice note, or dress your whole screen in 4K anime art.</p>
+     <p>Share crisp Ultra-HD photos from any phone or laptop, snap with 2D filters, record a voice note, or dress your whole screen in 4K anime art.</p>
     </article>
     <article class="good-card">
      <div class="good-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M20 8v6m-3-3h6"/></svg></div>
      <h3>A place to pick up again.</h3>
-     <p>Your rooms, study groups, and private diary stay right where you left them — on your laptop Dock and your phone Home Screen.</p>
+     <p>Your rooms, group chats, and private diary stay right where you left them — on your laptop Dock and your phone Home Screen.</p>
     </article>
    </div>
   </div>
@@ -1122,7 +1122,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
      <span class="step-num">02</span>
      <div>
       <h3>Start a shared space.</h3>
-      <p>Open a direct chat, a room for your flatmates, a weekend trip, or a course study group — each with its own vibe and plans.</p>
+      <p>Open a direct chat, a room for your flatmates, a weekend trip, or a group chat — each with its own vibe and plans.</p>
      </div>
     </div>
     <div class="step-row">
@@ -1138,10 +1138,10 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 
  <section class="section" id="plans">
   <div class="container">
-   <span class="kicker">Simple student plans</span>
+   <span class="kicker">Simple social plans</span>
    <div class="split-head">
     <h2>Free for everyday closeness.<br>Extra magic when you want it.</h2>
-    <p>Chats, voice calls, course rooms, and starter 4K anime themes are free forever. Upgrade anytime for video calls, 3D lenses, or Stories.</p>
+    <p>Chats, voice calls, group chats, and starter 4K anime themes are free forever. Upgrade anytime for video calls, 2D filters, or Stories.</p>
    </div>
    <div class="plans-grid">
     <article class="plan-card">
@@ -1173,10 +1173,10 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
     <article class="plan-card featured">
      <span class="plan-pill">Most Popular</span>
      <h3>Catcul++</h3>
-     <p class="plan-sub">3D face filter camera, portrait blur &amp; shonen 4K art.</p>
+     <p class="plan-sub">2D face filter camera, portrait blur &amp; shonen 4K art.</p>
      <ul class="plan-perks">
       <li>Everything in Catcul+ (including Video Calls)</li>
-      <li><strong>3D face lenses</strong> &amp; portrait bokeh camera</li>
+      <li><strong>2D illustrated face filters</strong> &amp; portrait bokeh camera</li>
       <li>Solo Leveling, Edgerunners &amp; Graffiti 4K themes</li>
       <li>Catcul++ studio stickers &amp; camera stamps</li>
      </ul>
@@ -1224,7 +1224,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
    <div class="faq-list">
     <details class="faq-item" open>
      <summary><span>Who can join my conversations?</span><span class="faq-plus">+</span></summary>
-     <p>Only people you connect with as friends or invite into a group or course room can read or send messages in that space.</p>
+     <p>Only people you connect with as friends or invite into a group or group chat can read or send messages in that space.</p>
     </details>
     <details class="faq-item">
      <summary><span>Can I install Catcul on my laptop and phone?</span><span class="faq-plus">+</span></summary>
@@ -1853,7 +1853,7 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
           </div>
           <div class="catcul-dl-card">
             <h3>📱 Phone App <small style="font-weight:500;opacity:.7">iPhone &amp; Android</small></h3>
-            <p>Full-screen mobile chat, bottom tab bar, front/rear 3D camera lenses, and home-screen push alerts.</p>
+            <p>Full-screen mobile chat, bottom tab bar, front/rear 2D camera filters, and home-screen push alerts.</p>
             ${qrSvg ? `<div class="catcul-dl-qr-row">${qrSvg}<div><strong style="font-size:12px;display:block;margin-bottom:3px">Scan with your phone camera</strong><span style="font-size:11px;opacity:.78;display:block;line-height:1.45">Opens Catcul on your phone so you can add it to your Home Screen in seconds.</span></div></div>` : ''}
             <ol class="catcul-dl-steps">
               <li><strong>iPhone / iPad (Safari):</strong> tap <strong>Share (↑)</strong> → <strong>Add to Home Screen</strong>.</li>

@@ -30,7 +30,7 @@ body{background-color:var(--bg);background-image:radial-gradient(rgba(30,40,29,.
 body.dark{background-image:radial-gradient(rgba(215,244,114,.065) 1px,transparent 1.15px)}
 a{color:inherit}
 .container{width:min(1080px,calc(100% - 40px));margin:0 auto}
-.site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.site-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:none;border-bottom:1px solid var(--border)}
 .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;font-size:1.22rem;letter-spacing:-.03em}
 .brand-mark{width:38px;height:38px;border-radius:12px;background:#dcf783;color:#1d271c;border:1px solid rgba(30,40,29,.08);display:grid;place-items:center}
@@ -184,7 +184,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         <h2>2. What stays on your device</h2>
         <ul>
           <li><strong>Unsent drafts:</strong> text you are typing in the message box lives in your current browser tab’s memory only and is never saved to disk or sent until you press Send.</li>
-          <li><strong>3D camera lenses &amp; background blur:</strong> face landmark tracking and portrait blur run 100% locally in your browser using WebGL. Live camera video is never uploaded unless you capture a photo or clip and choose to send or post it.</li>
+          <li><strong>2D camera filters &amp; background blur:</strong> face landmark tracking and portrait blur run locally in your browser. Live camera video is never uploaded unless you capture a photo or clip and choose to send or post it.</li>
           <li><strong>Quick Notes (<code>Alt+N</code>):</strong> scratchpad notes stay in your local browser storage unless you copy them elsewhere.</li>
         </ul>
       </article>
@@ -212,7 +212,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 
 <footer class="site-footer">
  <div class="container footer-inner">
-  <span>© 2026 Catcul · Student Messenger</span>
+  <span>© 2026 Catcul · Messenger</span>
   <div class="footer-links">
    <a href="index.html">Home</a>
    <a href="#" data-open-download>Download App</a>
@@ -585,7 +585,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
       wrap.setAttribute('aria-label','Pop-a-Cat Zen Break');
       wrap.innerHTML='<div class="pop-cat-field" id="zen-cat-field"></div>'
         +'<div class="boot-center-card zen-center-card">'
-        +'<span class="boot-eyebrow">CATCUL · STUDY BREATHER</span>'
+        +'<span class="boot-eyebrow">CATCUL · CAT BREAK</span>'
         +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
         +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
         +'<div class="boot-pop-hud">'
@@ -1061,7 +1061,7 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
           </div>
           <div class="catcul-dl-card">
             <h3>📱 Phone App <small style="font-weight:500;opacity:.7">iPhone &amp; Android</small></h3>
-            <p>Full-screen mobile chat, bottom tab bar, front/rear 3D camera lenses, and home-screen push alerts.</p>
+            <p>Full-screen mobile chat, bottom tab bar, front/rear 2D camera filters, and home-screen push alerts.</p>
             ${qrSvg ? `<div class="catcul-dl-qr-row">${qrSvg}<div><strong style="font-size:12px;display:block;margin-bottom:3px">Scan with your phone camera</strong><span style="font-size:11px;opacity:.78;display:block;line-height:1.45">Opens Catcul on your phone so you can add it to your Home Screen in seconds.</span></div></div>` : ''}
             <ol class="catcul-dl-steps">
               <li><strong>iPhone / iPad (Safari):</strong> tap <strong>Share (↑)</strong> → <strong>Add to Home Screen</strong>.</li>

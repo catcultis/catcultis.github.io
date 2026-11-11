@@ -1,7 +1,7 @@
 {
-  "name": "Catcul — Student Messenger",
+  "name": "Catcul — Messenger",
   "short_name": "Catcul",
-  "description": "Fast, private conversations, study groups, voice & video calls, and campus plans for students.",
+  "description": "Fast, private conversations, group chats, voice & video calls, and plans with friends.",
   "start_url": "./catcul.html",
   "scope": "./",
   "display": "standalone",
@@ -9,7 +9,7 @@
   "orientation": "any",
   "background_color": "#f7f8f3",
   "theme_color": "#dcf783",
-  "categories": ["social", "education", "communication"],
+  "categories": ["social", "entertainment", "communication"],
   "icons": [
     {
       "src": "icons/catcul-192.png",

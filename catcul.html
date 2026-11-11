@@ -3087,6 +3087,8 @@ body.admin-phone-mode #app[data-workspace="admin"] .student-view#admin-view {
  .modal.avatar-editor .cat-tabs button{font-size:10px;padding:6px}.modal.avatar-editor .cat-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.modal.avatar-editor .cat-choice{min-height:92px;padding:6px 3px}.modal.avatar-editor .cat-choice span{width:54px;height:54px}.modal.avatar-editor .cat-choice svg{width:52px;height:52px}.modal.avatar-editor .cat-choice small{font-size:10px}
  .modal.avatar-editor .cat-color-row{gap:5px}.modal.avatar-editor .cat-color,.modal.avatar-editor .cat-custom-color{width:31px;height:31px}
 }
+.drawing-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}.drawing-toolbar label{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700}.drawing-toolbar input[type=color]{width:42px;height:34px;padding:2px;border:1px solid var(--line);border-radius:7px;background:var(--panel)}.drawing-toolbar select{width:auto;padding:7px}.drawing-toolbar button{margin-left:auto}.together-canvas{width:100%;height:auto;aspect-ratio:5/3;display:block;border:2px solid #283a2d;border-radius:14px;background:#fffdf4;touch-action:none;cursor:crosshair}.scheduled-list{max-height:230px;overflow:auto}.scheduled-item{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.scheduled-item>div{min-width:0}.scheduled-item p{white-space:pre-wrap;overflow-wrap:anywhere;margin:3px 0;color:var(--text)}.scheduled-item small{color:var(--muted)}#scheduled-form{display:grid;gap:8px}#scheduled-form label{font-weight:700;font-size:12px}#scheduled-form textarea{resize:vertical}@media(max-width:600px){.drawing-toolbar{gap:7px}.drawing-toolbar button{margin-left:0}.together-canvas{border-radius:10px}.scheduled-item .btn{padding:8px}}
+.quiet-tag{font-size:9px;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:1px 4px}#quiet-form{display:grid;gap:9px}#quiet-form label{font-weight:700;font-size:12px}
 
 </style>
 <style id="catcul-popcats-css">
@@ -3740,7 +3742,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 <button class="self" data-action="profile"><span class="mini-avatar my-avatar"></span><span style="text-align:left"><p id="my-name">You</p><small>Account · edit</small></span><span class="icon-btn"><svg><use href="#i-more"/></svg></span></button>
 </aside>
 <main class="chat" aria-label="Chat">
-<header class="chat-head"><button class="icon-btn mobile-back" data-action="back" aria-label="Back to chats"><svg><use href="#i-back"/></svg></button><div class="room-avatar"><svg><use href="#i-cat"/></svg></div><div class="grow"><h2 id="chat-title">Your shared space</h2><div class="subtitle"><span class="dot" id="chat-dot"></span><span id="chat-status">Connecting to your space…</span></div></div><div class="head-actions"><button class="icon-btn" id="start-call-button" data-action="start-call" title="Start voice call" aria-label="Start voice call" disabled><svg><use href="#i-phone"/></svg></button><button class="icon-btn" id="start-video-button" data-action="start-video-call" title="Start video call (Catcul+)" aria-label="Start video call" disabled><svg><use href="#i-video"/></svg></button><button class="icon-btn" data-action="search-chat" title="Search this conversation" aria-label="Search this conversation"><svg><use href="#i-search"/></svg></button><button class="icon-btn" data-workspace="arcade" title="Friends Games" aria-label="Friends Games"><svg><use href="#i-gamepad"/></svg></button><button class="icon-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="icon-btn" data-action="chat-tools" title="Chat menu" aria-label="Chat menu"><svg><use href="#i-more"/></svg></button></div></header>
+<header class="chat-head"><button class="icon-btn mobile-back" data-action="back" aria-label="Back to chats"><svg><use href="#i-back"/></svg></button><div class="room-avatar"><svg><use href="#i-cat"/></svg></div><div class="grow"><h2 id="chat-title">Your shared space</h2><div class="subtitle"><span class="dot" id="chat-dot"></span><span id="chat-status">Connecting to your space…</span></div></div><div class="head-actions"><button class="icon-btn" id="start-call-button" data-action="start-call" title="Start voice call" aria-label="Start voice call" disabled><svg><use href="#i-phone"/></svg></button><button class="icon-btn" id="start-video-button" data-action="start-video-call" title="Start video call" aria-label="Start video call" disabled><svg><use href="#i-video"/></svg></button><button class="icon-btn" data-action="search-chat" title="Search this conversation" aria-label="Search this conversation"><svg><use href="#i-search"/></svg></button><button class="icon-btn" data-workspace="arcade" title="Friends Games" aria-label="Friends Games"><svg><use href="#i-gamepad"/></svg></button><button class="icon-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="icon-btn" data-action="chat-tools" title="Chat menu" aria-label="Chat menu"><svg><use href="#i-more"/></svg></button></div></header>
 <div class="live-call-banner hidden" id="live-call-banner"></div><div class="connection-banner hidden" id="connection-banner" role="status"></div>
 <div class="room-life-tools"><button data-social-extra="camera"><i class="ri-camera-lens-line"></i> Camera</button><button data-social-extra="arcade"><i class="ri-gamepad-line"></i> Games</button><button data-social-extra="plans"><i class="ri-calendar-check-line"></i> Plans <small>← swipe</small></button><button data-social-extra="poll"><i class="ri-bar-chart-grouped-line"></i> Poll</button><button class="casual-extra" data-social-extra="nearby"><i class="ri-compass-3-line"></i> Nearby</button><button class="casual-extra" data-social-extra="vibe"><i class="ri-sun-line"></i> Vibe</button><button class="casual-extra" data-social-extra="bedroom"><i class="ri-home-smile-2-line"></i> My room</button><button data-social-extra="install"><i class="ri-notification-3-line"></i> App & alerts</button></div><div id="room-moments" class="casual-extra"></div><div id="room-presence-line"></div><div id="spark-line" class="casual-extra"></div><div id="community-notice" class="community-notice hidden">🌐 Everyone signed in can see this community conversation.</div><div class="timeline" id="timeline" aria-label="Messages" tabindex="0"></div>
 <button class="icon-btn floating-down hidden" id="scroll-down" data-action="scroll-down" title="Latest messages" aria-label="Latest messages"><svg><use href="#i-down"/></svg></button>
@@ -8060,6 +8062,15 @@ three/build/three.module.js:
   }
   if(!window.supabase)return;
   const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}});
+  // Anonymous public pricing only; leave neutral copy if the network is unavailable.
+  const pricingStatus=document.getElementById('landing-paddle-status');
+  if(pricingStatus){
+    client.schema('catcul').rpc('get_public_pricing').then(({data,error})=>{
+      if(error||!data||typeof data.checkout_ready!=='boolean')return;
+      const live=data.checkout_ready===true&&data.environment==='production';
+      pricingStatus.textContent=live?'Explore available paid options in the app.':'Paid checkout is not available yet.';
+    }).catch(()=>{});
+  }
   let routed=false;
   const bouncedRecently=()=>{
     try{
@@ -8141,7 +8152,7 @@ async function clearAccount(){disableDevicePush(false).catch(console.warn);bootV
 async function sendBackgroundReply(roomId,text,replyToId=''){const body=String(text||'').trim().slice(0,2000);if(!user||!setupReady||!validRoomId(roomId)||!body)return false;const msgId=uid();const res=await db.from('messages').insert({id:msgId,room_id:roomId,body,kind:'text',reply_to:validRoomId(replyToId)?replyToId:null}).select().single();const row=unwrap(res);await receiveRow(roomId,row,false);toast('Reply sent.');return true;}
 async function handleSwNotificationPayload(payload){if(!payload||!user||!setupReady)return;const {kind,roomId,callId,messageId,text}=payload;if(kind==='inline-reply'&&roomId&&text){if(callId&&validRoomId(callId))declineVoiceCall(callId).catch(()=>{});await sendBackgroundReply(roomId,text,messageId).catch(fail);return;}if(kind==='decline-call'&&validRoomId(callId)){await declineVoiceCall(callId).catch(fail);return;}if(kind==='answer-call'&&validRoomId(callId)){if(validRoomId(roomId)&&rooms.some(r=>r.id===roomId)){showChatView();await setActive(roomId);}await refreshCalls();await acceptVoiceCall(callId,false).catch(fail);return;}if(kind==='open-reply'&&validRoomId(roomId)){if(rooms.some(r=>r.id===roomId)){showChatView();await setActive(roomId);if(validRoomId(messageId))setReply(messageId);$('#message-input')?.focus();}}}
 if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('message',ev=>{if(ev.data?.type==='CATCUL_SW_ACTION')handleSwNotificationPayload(ev.data).catch(console.warn);});}
-async function bootSession(s,force=false){if(!s?.user)return clearAccount();if(recoveryMode&&!force)return;if(booting||(!force&&bootedUser===s.user.id&&setupReady))return;booting=true;const epoch=++bootVersion;session=s;user=s.user;profile={id:user.id,name:user.user_metadata?.display_name||'Your profile',color:colors[0]};$('#app').removeAttribute('inert');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Opening your conversations…';try{await initStudentAccess();if(epoch!==bootVersion)return;await client.realtime.setAuth(s.access_token);const p=one(unwrap(await db.rpc('ensure_profile')));if(epoch!==bootVersion)return;profile=dbPerson(p);peopleCache[p.id]=profile;window.CatculRouter.workspace(s);await requireStudentUsername();if(epoch!==bootVersion)return;await initSchool();if(epoch!==bootVersion)return;setupReady=true;bootedUser=user.id;renderProfile();await loadRooms();await loadSocial();initSocial();if(epoch!==bootVersion)return;if(pendingInvite){try{await joinByToken(pendingInvite);pendingInvite='';try{sessionStorage.removeItem('catcul.pendingInvite');}catch{}if(location.hash.includes('invite='))history.replaceState(null,'',location.pathname+location.search);}catch(e){toast('Invitation: '+errorText(e),true);}}if(!active&&rooms.length)await setActive(rooms[0].id,false);else if(!rooms.length)setEmptyRoom();const u=new URL(location.href),requested=u.searchParams;const hasDeepAction=Boolean(requested.get('mode')||requested.get('room')||requested.get('accept_call')||requested.get('decline_call')||requested.get('reply_to')||requested.get('autosend'));if(hasDeepAction||!window.CatculPopCats?.finishBoot)$('#boot-overlay').classList.add('hidden');else window.CatculPopCats.finishBoot();if(requested.get('mode')==='diary')await switchWorkspace('diary');const reqRoom=requested.get('room');if(reqRoom&&rooms.some(r=>r.id===reqRoom)){showChatView();await setActive(reqRoom);}const acceptCallId=requested.get('accept_call'),declineCallId=requested.get('decline_call'),replyToId=requested.get('reply_to'),autoSend=requested.get('autosend');if(acceptCallId||declineCallId||replyToId||autoSend){['accept_call','decline_call','reply_to','autosend'].forEach(k=>u.searchParams.delete(k));history.replaceState(null,'',u.pathname+(u.search||'')+(u.hash||''));if(autoSend&&reqRoom)await sendBackgroundReply(reqRoom,autoSend,replyToId||'').catch(fail);else if(replyToId&&validRoomId(replyToId)){setReply(replyToId);$('#message-input')?.focus();}if(declineCallId&&validRoomId(declineCallId)){await refreshCalls();await declineVoiceCall(declineCallId).catch(fail);}else if(acceptCallId&&validRoomId(acceptCallId)){await refreshCalls();await acceptVoiceCall(acceptCallId,false).catch(fail);}}}catch(e){if(epoch!==bootVersion)return;setupReady=false;$('#boot-overlay').classList.add('hidden');if(e.suspended)showSuspended(e.message);else showSetupFailure(e);}finally{if(epoch===bootVersion)booting=false;}}
+async function bootSession(s,force=false){if(!s?.user)return clearAccount();if(recoveryMode&&!force)return;if(booting||(!force&&bootedUser===s.user.id&&setupReady))return;booting=true;const epoch=++bootVersion;session=s;user=s.user;profile={id:user.id,name:user.user_metadata?.display_name||'Your profile',color:colors[0]};$('#app').removeAttribute('inert');$('#boot-overlay').classList.remove('hidden');$('#boot-message').textContent='Opening your conversations…';try{await initStudentAccess();if(epoch!==bootVersion)return;await client.realtime.setAuth(s.access_token);const p=one(unwrap(await db.rpc('ensure_profile')));if(epoch!==bootVersion)return;profile=dbPerson(p);peopleCache[p.id]=profile;window.CatculRouter.workspace(s);await requireStudentUsername();if(epoch!==bootVersion)return;await initSchool();if(epoch!==bootVersion)return;setupReady=true;bootedUser=user.id;renderProfile();await loadRooms();await loadSocial();initSocial();if(epoch!==bootVersion)return;if(pendingInvite){try{await joinByToken(pendingInvite);pendingInvite='';try{sessionStorage.removeItem('catcul.pendingInvite');}catch{}if(location.hash.includes('invite='))history.replaceState(null,'',location.pathname+location.search);}catch(e){toast('Invitation: '+errorText(e),true);}}if(!active&&rooms.length)await setActive(rooms[0].id,false);else if(!rooms.length)setEmptyRoom();const u=new URL(location.href),requested=u.searchParams;const hasDeepAction=Boolean(requested.get('mode')||requested.get('room')||requested.get('accept_call')||requested.get('decline_call')||requested.get('reply_to')||requested.get('autosend'));if(hasDeepAction||!window.CatculPopCats?.finishBoot)$('#boot-overlay').classList.add('hidden');else window.CatculPopCats.finishBoot();if(requested.get('mode')==='diary')await switchWorkspace('diary');else {let openArcade=false;try{openArcade=sessionStorage.getItem('catcul.openArcade')==='1';sessionStorage.removeItem('catcul.openArcade');}catch{}if(openArcade)await switchWorkspace('arcade');}const reqRoom=requested.get('room');if(reqRoom&&rooms.some(r=>r.id===reqRoom)){showChatView();await setActive(reqRoom);}const acceptCallId=requested.get('accept_call'),declineCallId=requested.get('decline_call'),replyToId=requested.get('reply_to'),autoSend=requested.get('autosend');if(acceptCallId||declineCallId||replyToId||autoSend){['accept_call','decline_call','reply_to','autosend'].forEach(k=>u.searchParams.delete(k));history.replaceState(null,'',u.pathname+(u.search||'')+(u.hash||''));if(autoSend&&reqRoom)await sendBackgroundReply(reqRoom,autoSend,replyToId||'').catch(fail);else if(replyToId&&validRoomId(replyToId)){setReply(replyToId);$('#message-input')?.focus();}if(declineCallId&&validRoomId(declineCallId)){await refreshCalls();await declineVoiceCall(declineCallId).catch(fail);}else if(acceptCallId&&validRoomId(acceptCallId)){await refreshCalls();await acceptVoiceCall(acceptCallId,false).catch(fail);}}}catch(e){if(epoch!==bootVersion)return;setupReady=false;$('#boot-overlay').classList.add('hidden');if(e.suspended)showSuspended(e.message);else showSetupFailure(e);}finally{if(epoch===bootVersion)booting=false;}}
 function showSetupFailure(e){updateConnection();openModal(`${modalTitle('settings','Could not load your account','We signed you in, but Catcul could not reach your messages right now.')}<div class="notice"><strong>Details:</strong><br>${esc(errorText(e))}</div><p class="note">Check your internet connection and try again, or visit the <a href="help.html" style="text-decoration:underline">Help Centre</a> if the issue continues.</p><button class="btn full" data-action="retry-setup">Try again</button><button class="btn secondary full" data-action="signout">Sign out</button>`);}
 async function initClient(){if(window.CatculRouter?.isRecoveryUrl?.(location)){showAuth('recovery');return;}try{client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{db:{schema:DATABASE_SCHEMA},auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit'},realtime:{params:{eventsPerSecond:10}}});db=client.schema(DATABASE_SCHEMA);client.auth.onAuthStateChange((event,s)=>{setTimeout(()=>{if(event==='PASSWORD_RECOVERY'){session=s;user=s?.user;showAuth('recovery');return;}if(event==='SIGNED_OUT'){clearAccount();return;}if(event==='TOKEN_REFRESHED'){session=s;client.realtime.setAuth(s?.access_token);return;}if(event==='INITIAL_SESSION'||event==='USER_UPDATED')return;if(s&&!recoveryMode)bootSession(s);},0);});const result=await client.auth.getSession();unwrap(result);if(result.data.session&&!recoveryMode)await bootSession(result.data.session);else if(!recoveryMode)showAuth();}catch(e){showAuth();if(window.origin!=='null')formError(e);}}
 async function signOut(){if(!confirmNotesDiscard())return;if(!studentSuspended&&(diary.dirty||diary.saving)&&!await leaveDiarySafely())return;closeModal(false);try{await disableDevicePush();await leaveVoiceCall(true);cleanupSocial();unwrap(await client.auth.signOut({scope:'local'}));await clearAccount();}catch(e){fail(e);}}
@@ -8149,7 +8160,7 @@ async function loadRooms(){if(!user)return;const epoch=bootVersion;let spaceResu
 function scheduleRooms(){clearTimeout(roomRefreshTimer);roomRefreshTimer=setTimeout(()=>loadRooms().catch(fail),600);}
 async function loadPeople(id,force=false){const epoch=bootVersion;const links=unwrap(await db.from('room_members').select('user_id,role').eq('room_id',id).is('removed_at',null).limit(100));const ids=links.map(x=>x.user_id);if(!ids.length)return;const sig=links.map(x=>x.user_id+':'+x.role).sort().join('|');const missing=force?ids:ids.filter(uid=>!peopleCache[uid]);if(missing.length){const people=unwrap(await db.from('profiles').select('*').in('id',missing));if(epoch!==bootVersion)return;people.forEach(p=>{peopleCache[p.id]=dbPerson(p);if(p.id===profile.id)profile=peopleCache[p.id];});}const prevSig=roomPeople[id]?._sig||'';roomPeople[id]=links.map(x=>({...peopleCache[x.user_id],role:x.role})).filter(x=>x.id);roomPeople[id]._sig=sig;if(id===active)renderPresence();if(missing.length||prevSig!==sig)refreshAvatarSurfaces();}
 async function hydrateRows(rows,id){if(!rows.length)return[];const epoch=bootVersion;const unknown=[...new Set(rows.map(m=>m.sender_id))].filter(x=>!peopleCache[x]);if(unknown.length){const people=unwrap(await db.from('profiles').select('*').in('id',unknown));if(epoch!==bootVersion)return[];people.forEach(p=>peopleCache[p.id]=dbPerson(p));}const aids=[...new Set(rows.map(m=>m.attachment_id).filter(Boolean))];let attachments=[];if(aids.length){attachments=unwrap(await db.from('attachments').select('*').in('id',aids));await Promise.all(attachments.map(async a=>{let cached=mediaCache[a.id];if(!cached||cached.expires<Date.now()){const res=await client.storage.from(MEDIA_BUCKET).createSignedUrl(a.object_path,3600);if(epoch===bootVersion)mediaCache[a.id]={...a,url:res.data?.signedUrl||null,expires:Date.now()+3300000};}}));}
-if(epoch!==bootVersion)return[];return rows.map(row=>{const old=roomHistory(id).find(m=>m.id===row.id);const parent=roomHistory(id).find(m=>m.id===row.reply_to)||rows.find(m=>m.id===row.reply_to);return{id:row.id,roomId:id,sender:peopleCache[row.sender_id]||{id:row.sender_id,name:'Former member',color:colors[0]},time:Date.parse(row.created_at),createdAt:row.created_at,kind:row.kind,text:row.body||'',attachmentId:row.attachment_id,data:row.deleted_at?null:mediaCache[row.attachment_id]?.url||null,reply:row.reply_to?{id:row.reply_to,name:parent?.sender?.name||peopleCache[parent?.sender_id]?.name||'Earlier message',text:parent?.deleted||parent?.deleted_at?'Message removed':parent?.text||parent?.body||'Reply to an earlier message'}:null,deleted:!!row.deleted_at,reactions:row.deleted_at?{}:old?.reactions||{},receivedBy:old?.receivedBy||[],readBy:old?.readBy||[],edited:!!row.edited_at&&!row.deleted_at,editedAt:!row.deleted_at?row.edited_at||null:null,approved:row.approved!==false,status:'sent'};});}
+if(epoch!==bootVersion)return[];return rows.map(row=>{const old=roomHistory(id).find(m=>m.id===row.id);const parent=roomHistory(id).find(m=>m.id===row.reply_to)||rows.find(m=>m.id===row.reply_to);return{id:row.id,roomId:id,sender:peopleCache[row.sender_id]||{id:row.sender_id,name:'Former member',color:colors[0]},time:Date.parse(row.created_at),createdAt:row.created_at,kind:row.kind,text:row.body||'',attachmentId:row.attachment_id,data:row.deleted_at?null:mediaCache[row.attachment_id]?.url||null,reply:row.reply_to?{id:row.reply_to,name:parent?.sender?.name||peopleCache[parent?.sender_id]?.name||'Earlier message',text:parent?.deleted||parent?.deleted_at?'Message removed':parent?.text||parent?.body||'Reply to an earlier message'}:null,deleted:!!row.deleted_at,reactions:row.deleted_at?{}:old?.reactions||{},receivedBy:old?.receivedBy||[],readBy:old?.readBy||[],edited:!!row.edited_at&&!row.deleted_at,editedAt:!row.deleted_at?row.edited_at||null:null,approved:row.approved!==false,quiet:row.quiet===true,status:'sent'};});}
 async function loadHistory(id,older=false,background=false){if(!setupReady||!id)return;const wasAtBottom=id===active&&atBottom();const initialIds=new Set(roomHistory(id).map(m=>m.id));const epoch=bootVersion,version=loadEpoch[id]=(loadEpoch[id]||0)+1;let q=db.from('messages').select('*').eq('room_id',id).order('created_at',{ascending:false}).order('id',{ascending:false}).limit(PAGE_SIZE);if(older&&cursors[id]){const c=cursors[id];q=q.or(`created_at.lt.${c.created_at},and(created_at.eq.${c.created_at},id.lt.${c.id})`);}const rows=unwrap(await q);if(epoch!==bootVersion||loadEpoch[id]!==version)return;if(states[id]!=='SUBSCRIBED'&&rooms.find(r=>r.id===id)?.can_send!==false){states[id]='POLLING';if(id===active)updateConnection();}const hydrated=await hydrateRows(rows,id);if(epoch!==bootVersion||loadEpoch[id]!==version)return;const known=older||background?roomHistory(id):roomHistory(id).filter(m=>m.status==='sending'||m.status==='failed'||!initialIds.has(m.id));const merged=new Map(known.map(m=>[m.id,m]));hydrated.forEach(m=>merged.set(m.id,m));histories[id]=[...merged.values()].sort((a,b)=>a.time-b.time||a.id.localeCompare(b.id));if(!background){hasMore[id]=rows.length===PAGE_SIZE;if(rows.length)cursors[id]=rows.at(-1);}const ids=rows.map(m=>m.id);if(ids.length){const [rr,rc]=await Promise.all([db.from('message_reactions').select('*').in('message_id',ids),db.from('message_receipts').select('*').in('message_id',ids)]);if(epoch!==bootVersion||loadEpoch[id]!==version)return;unwrap(rr).forEach(r=>applyReaction(id,r,false));unwrap(rc).forEach(r=>applyReceipt(id,r,false));}if(id===active){const e=$('#timeline'),height=e.scrollHeight,top=e.scrollTop;renderTimeline(!older&&(!background||wasAtBottom));if(background&&!wasAtBottom)e.scrollTop=top;if(older)requestAnimationFrame(()=>e.scrollTop=top+e.scrollHeight-height);}renderRooms();await acknowledge(id,false);markRead(id);}
 async function loadOlder(){if(loadingOlder||!active||!hasMore[active])return;loadingOlder=true;const id=active;try{await loadHistory(id,true);}catch(e){fail(e);}finally{loadingOlder=false;const b=$('[data-action="older"]');if(b)b.disabled=false;}}
 async function setActive(id,mobile=true){if(!rooms.some(r=>r.id===id))return;if(workspaceMode!=='chat'&&mobile){await switchWorkspace('chat');if(workspaceMode!=='chat')return;}if(photoEditor&&active!==id)closeModal();const changing=active!==id;if(changing){if($('.memory-player'))closeModal();closePlans();$('#room-moments').replaceChildren();sendTyping(false);if(mediaRecorder?.state==='recording')stopRecording(true);reply=null;attachment=null;$('#message-input').value='';$('#reply-bar').classList.add('hidden');$('#file-staging').classList.add('hidden');}rememberCatchup(id);if(active&&active!==id)channels[active]?.untrack().catch(console.warn);active=id;if(mobile)$('#app').classList.add('mobile-chat');$('#chat-title').textContent=currentRoom().name;$('#detail-title').textContent=currentRoom().name;$('#detail-description').textContent=currentRoom().kind==='direct'?'A private space. Just the two of you.':'Saved conversations. Just for your group.';syncRoomChrome();renderRooms();renderTimeline();renderMute();updateConnection();$('#emoji-picker').classList.add('hidden');try{await loadPeople(id);await loadHistory(id);}catch(e){fail(e);}trackPresence(id);markRead(id);loadAcademic().catch(fail);initRoomExtras().catch(console.warn);}
@@ -8168,13 +8179,14 @@ ch.on('postgres_changes',{event:'INSERT',schema:DATABASE_SCHEMA,table:'messages'
 .on('postgres_changes',{event:'UPDATE',schema:DATABASE_SCHEMA,table:'message_receipts',filter:'room_id=eq.'+id},p=>applyReceipt(id,p.new))
 .on('postgres_changes',{event:'INSERT',schema:DATABASE_SCHEMA,table:'room_members',filter:'room_id=eq.'+id},()=>loadPeople(id).catch(fail))
 .on('postgres_changes',{event:'UPDATE',schema:DATABASE_SCHEMA,table:'room_members',filter:'room_id=eq.'+id},()=>{scheduleRooms();loadPeople(id).catch(console.warn);})
+.on('broadcast',{event:'drawing-changed'},()=>{if(typeof notifyDrawingChanged==='function')notifyDrawingChanged(id);})
 .on('broadcast',{event:'typing'},({payload})=>{const p=cleanPerson(payload?.sender);if(!p||p.id===profile.id)return;typing[id]??={};if(payload.active)typing[id][p.id]={name:p.name,until:Date.now()+4000};else delete typing[id][p.id];if(id===active)renderTyping();})
 .on('presence',{event:'sync'},async()=>{try{await loadPeople(id);const map={};for(const entries of Object.values(ch.presenceState()))for(const raw of entries){const p=cleanPerson(raw);if(p&&roomPeople[id]?.some(x=>x.id===p.id))map[p.id]={...p,activity:['listening','gallery','planning','typing'].includes(raw.activity)?raw.activity:'here'};}members[id]=map;if(active===id)renderPresence();}catch(e){console.warn('Presence refresh:',e);}})
 .subscribe(async status=>{if(channels[id]!==ch)return;states[id]=['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)&&user&&setupReady&&navigator.onLine?'POLLING':status;if(status==='SUBSCRIBED'){await trackPresence(id);if(active===id)loadHistory(id,false,roomHistory(id).length>0).catch(fail);}else if(['CHANNEL_ERROR','TIMED_OUT','CLOSED'].includes(status)){members[id]={};}if(active===id)updateConnection();});if(active===id)updateConnection();}
 async function trackPresence(id){if(!isReady(id)||!channels[id]||states[id]!=='SUBSCRIBED')return;try{if(notesOpen||id!==active||workspaceMode!=='chat'||document.hidden){await channels[id].untrack();return;}await channels[id].track({id:profile.id,online_at:new Date().toISOString(),activity:settings.shareActivity&&!document.hidden&&id===active&&workspaceMode==='chat'?activity:'here'});}catch{}}
 async function broadcast(id,event,payload){if(!user||!setupReady)return false;if(event==='delete'){try{unwrap(await db.rpc('remove_message',{p_message_id:payload.id}));return true;}catch(e){fail(e);return false;}}if(event!=='typing'||!isReady(id)||states[id]!=='SUBSCRIBED')return false;try{return await channels[id].send({type:'broadcast',event:'typing',payload:{sender:{id:profile.id},active:!!payload.active}})==='ok';}catch{return false;}}
 function sendTyping(on){if(!active)return;const now=Date.now();if(on&&now-lastTyping<1400)return;if(on)lastTyping=now;broadcast(active,'typing',{active:on});}
-async function receiveRow(id,row,isInsert){if(!user||!rooms.some(r=>r.id===id))return;const epoch=bootVersion;const hydrated=await hydrateRows([row],id);if(epoch!==bootVersion||!hydrated.length)return;const m=hydrated[0],list=roomHistory(id),existing=list.findIndex(x=>x.id===m.id);const fresh=existing===-1;if(!fresh)list[existing]=m;else list.push(m);list.sort((a,b)=>a.time-b.time||a.id.localeCompare(b.id));if(id===active){delete typing[id]?.[m.sender.id];renderTyping();if(fresh&&isInsert)appendMessage(m);else replaceMessage(m);}if(fresh&&isInsert&&m.sender.id!==profile.id){if(!viewing(id)||!atBottom()){const r=rooms.find(r=>r.id===id);r.unread++;notifyMessage(id,m);}await acknowledge(id,false);markRead(id);}renderRooms();}
+async function receiveRow(id,row,isInsert){if(!user||!rooms.some(r=>r.id===id))return;const epoch=bootVersion;const hydrated=await hydrateRows([row],id);if(epoch!==bootVersion||!hydrated.length)return;const m=hydrated[0],list=roomHistory(id),existing=list.findIndex(x=>x.id===m.id);const fresh=existing===-1;if(!fresh)list[existing]=m;else list.push(m);list.sort((a,b)=>a.time-b.time||a.id.localeCompare(b.id));if(id===active){delete typing[id]?.[m.sender.id];renderTyping();if(fresh&&isInsert)appendMessage(m);else replaceMessage(m);}if(fresh&&isInsert&&m.sender.id!==profile.id){if(!viewing(id)||!atBottom()){const r=rooms.find(r=>r.id===id);r.unread++;if(!m.quiet)notifyMessage(id,m);}await acknowledge(id,false);markRead(id);}renderRooms();}
 async function sendMessage(){if(!isReady())return toast('Wait for your room to reconnect before sending.',true);if(mediaRecorder?.state==='recording')return;const input=$('#message-input'),text=input.value.trim();if(!text&&!attachment)return;const id=active,m={id:uid(),roomId:id,sender:{...profile},kind:attachment?.kind||'text',text,data:attachment?.data||null,uploadData:attachment?.data||null,fileName:attachment?.fileName||null,mime:attachment?.mime||null,size:attachment?.size||0,time:Date.now(),reply:reply?{id:reply.id,name:reply.sender.name,text:preview(reply).slice(0,100)}:null,reactions:{},receivedBy:[],readBy:[],status:'sending'};roomHistory(id).push(m);input.value='';input.style.height='36px';attachment=null;reply=null;$('#file-staging').classList.add('hidden');$('#reply-bar').classList.add('hidden');$('#emoji-picker').classList.add('hidden');sendTyping(false);updateSend();appendMessage(m);renderRooms();await transmit(id,m);input.focus();}
 async function uploadForMessage(id,m){if(!user||profile.id!==m.sender.id)throw Error('Account changed. Please sign in again.');if(m.attachmentId)return m.attachmentId;const blob=await(await fetch(m.uploadData)).blob();const mime=blob.type.split(';')[0];const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','audio/webm':'webm','audio/ogg':'ogg','audio/mp4':'m4a','audio/mpeg':'mp3','audio/wav':'wav'}[mime];if(!ext)throw Error('Unsupported media type.');const aid=m.uploadId||(m.uploadId=uid()),path=id+'/'+profile.id+'/'+aid+'.'+ext;
 if(!m.objectUploaded){const up=await client.storage.from(MEDIA_BUCKET).upload(path,blob,{contentType:mime,upsert:false,cacheControl:'3600'});if(up.error&&!['409','Duplicate'].includes(String(up.error.statusCode))&&!/already exists|duplicate/i.test(up.error.message))throw up.error;m.objectUploaded=true;}
@@ -9261,7 +9273,7 @@ function welcomeHTML(){const r=currentRoom();return `<div class="welcome messeng
 function messageHTML(m){const mine=m.sender.id===profile.id;let content='';if(m.deleted){content='Message removed';}else{if(m.reply){content+=`<div class="quote"><strong>${esc(m.reply.name)}</strong>${esc(m.reply.text)}</div>`;}if(m.kind==='photo'&&m.data){content+=`<img class="photo" loading="lazy" src="${esc(m.data)}" alt="Photo shared by ${esc(m.sender.name)}" data-open-photo="${esc(m.id)}">`;}else if(m.kind==='audio'&&m.data){content+=`<div class="audio-label">${icon('mic')}Voice note</div><audio controls preload="metadata" data-audio-id="${esc(m.id)}" src="${esc(m.data)}"></audio><div class="live-audio-reactions"><span>React Live</span>${['😂','😮','❤️'].map(e=>`<button data-live-react="${e}" data-audio-mid="${esc(m.id)}" aria-label="Pin ${e} at this time">${e}</button>`).join('')}</div><div class="audio-pins" data-audio-pins="${esc(m.id)}"></div>`;}else if(m.kind!=='text'){content+=`<span class="muted small">${m.kind==='photo'?'Photo':'Voice note'} · unavailable — try reconnecting</span>`;}if(m.text){const plan=m.text.match(/\[catcul-plan:([0-9a-f-]{36})\]/);content+=plan?`<div data-inline-plan="${esc(plan[1])}"><button data-social-extra="plans">Open shared plan</button></div>`:`<div class="body-text">${esc(m.text)}</div>`;}}
 const react=Object.entries(m.reactions||{}).filter(([e,ids])=>emojis.includes(e)&&Array.isArray(ids)&&ids.length).map(([e,ids])=>`<button class="reaction ${ids.includes(profile.id)?'own':''}" data-react="${esc(e)}" data-mid="${esc(m.id)}" aria-label="React ${esc(e)}">${e} ${ids.length}</button>`).join('');
 let status='';if(mine&&!m.deleted){let s=m.status==='failed'?'Unconfirmed':m.status==='sending'?'Sending…':m.readBy?.length?'Seen':m.receivedBy?.length?'Delivered':'Sent';status=`<div class="message-status ${m.status==='failed'?'failed':''}" data-status="${esc(m.id)}">${m.status==='failed'?`<button data-retry="${esc(m.id)}">Retry</button> · `:icon(m.readBy?.length?'checks':'check')}${s}</div>`;}
-return `<article class="message ${mine?'mine':''}" id="m-${esc(m.id)}" data-message-id="${esc(m.id)}">${avatar(m.sender)}<div class="message-body"><div class="message-head"><span>${mine?'You':esc(m.sender.name)}</span><time datetime="${new Date(m.time).toISOString()}">${formatTime(m.time)}</time></div><div class="bubble ${m.deleted?'deleted':m.kind!=='text'?'media':''}">${content}</div>${react?`<div class="reactions">${react}</div>`:''}${status}${m.deleted?'':`<div class="message-actions"><button data-react="🤍" data-mid="${esc(m.id)}" title="React with a heart">🤍</button><button data-react="😂" data-mid="${esc(m.id)}" title="React with a laugh">😂</button><button data-reply="${esc(m.id)}" title="Reply" aria-label="Reply">${icon('reply')}</button>${m.status==='sent'?`<button data-report-message="${esc(m.id)}" title="Report message" aria-label="Report message">Report</button>`:''}${mine?`<button data-delete="${esc(m.id)}" title="Remove message" aria-label="Remove message">${icon('trash')}</button>`:''}</div>`}</div></article>`;}
+return `<article class="message ${mine?'mine':''}" id="m-${esc(m.id)}" data-message-id="${esc(m.id)}">${avatar(m.sender)}<div class="message-body"><div class="message-head"><span>${mine?'You':esc(m.sender.name)}</span><time datetime="${new Date(m.time).toISOString()}">${formatTime(m.time)}</time>${m.quiet?'<span class="quiet-tag" title="Sent without a notification">Quiet</span>':''}</div><div class="bubble ${m.deleted?'deleted':m.kind!=='text'?'media':''}">${content}</div>${react?`<div class="reactions">${react}</div>`:''}${status}${m.deleted?'':`<div class="message-actions"><button data-react="🤍" data-mid="${esc(m.id)}" title="React with a heart">🤍</button><button data-react="😂" data-mid="${esc(m.id)}" title="React with a laugh">😂</button><button data-reply="${esc(m.id)}" title="Reply" aria-label="Reply">${icon('reply')}</button>${m.status==='sent'?`<button data-report-message="${esc(m.id)}" title="Report message" aria-label="Report message">Report</button>`:''}${mine?`<button data-delete="${esc(m.id)}" title="Remove message" aria-label="Remove message">${icon('trash')}</button>`:''}</div>`}</div></article>`;}
 
 function renderTimeline(scroll=true){const e=$('#timeline');const old=e.scrollTop;const history=roomHistory();let html=hasMore[active]?'<div style="text-align:center;margin:4px 0 20px"><button class="btn secondary" data-action="older" '+(loadingOlder?'disabled':'')+'>Load earlier messages</button></div>':'';let lastDate='';for(const m of history){let d=new Date(m.time).toLocaleDateString([],{month:'short',day:'numeric',year:'numeric'});if(d!==lastDate){html+=`<div class="date-line">${new Date(m.time).toDateString()===new Date().toDateString()?'TODAY':esc(d)}</div>`;lastDate=d;}html+=messageHTML(m);}const finalHtml=html||welcomeHTML();if(e._rawHtml!==finalHtml||!e.childNodes.length){e._rawHtml=finalHtml;e.innerHTML=finalHtml;}if(scroll)requestAnimationFrame(()=>scrollBottom(false));else e.scrollTop=old;renderMedia();}
 
@@ -9532,6 +9544,7 @@ let voice={
   cameraOn:false,
   facingMode:'user',
   canPublishVideo:false,
+  canPublishScreen:false,
   remoteVideos:{},
   localVideoEl:null,
   speaker:true,
@@ -9935,6 +9948,7 @@ async function connectP2PCall(info,callMeta,withVideo=false){
   voice.minimized=false;
   voice.startedAt=Date.now();
   voice.canPublishVideo=Boolean(info.can_publish_video);
+  voice.canPublishScreen=Boolean(info.can_publish_screen);
   const wantVideo=Boolean(withVideo&&voice.canPublishVideo);
   paintVoice();
 
@@ -10049,6 +10063,7 @@ async function connectLiveKit(info,callMeta,withVideo=false,forceRelay=false){
   voice.minimized=false;
   voice.startedAt=voice.startedAt||Date.now();
   voice.canPublishVideo=Boolean(info.can_publish_video);
+  voice.canPublishScreen=Boolean(info.can_publish_screen);
   paintVoice();
 
   const cellular=isMobileDataNetwork();
@@ -10192,10 +10207,6 @@ window.reconnectActiveCall=reconnectActiveCall;
 
 async function startVoiceCall(roomId=active,withVideo=false){
   if(callBusy||!roomId)return;
-  if(withVideo&&typeof hasCatculTier==='function'&&!hasCatculTier('plus')){
-    if(typeof promptTierUpgrade==='function')promptTierUpgrade('plus','Live Video Calls');
-    return;
-  }
   const r=rooms.find(x=>x.id===roomId);if(!canCallRoom(r))return toast('Only accepted friends and group members can call.',true);
   const existing=activeCallForRoom(roomId);if(existing)return acceptVoiceCall(existing.id,withVideo);
   callBusy=true;
@@ -10221,10 +10232,6 @@ async function startVideoCall(roomId=active){
 
 async function acceptVoiceCall(callId,withVideo=false){
   if(callBusy||!callId)return;
-  if(withVideo&&typeof hasCatculTier==='function'&&!hasCatculTier('plus')){
-    if(typeof promptTierUpgrade==='function')promptTierUpgrade('plus','Live Video Calls');
-    return;
-  }
   callBusy=true;
   if(typeof closeLaptopNotificationsByTag==='function')closeLaptopNotificationsByTag('catcul-call-'+callId);
   try{
@@ -10279,7 +10286,7 @@ async function disconnectVoice(reasonOrNotify=false){
   stopVoiceHeartbeat();
   const notifyServer=reasonOrNotify===true||typeof reasonOrNotify==='string';
   const current=voice.call,room=voice.room;
-  voice.call=null;voice.room=null;voice.meta=null;voice.connecting=false;voice.cameraOn=false;voice.screenOn=false;voice.pinnedVideoKey='';voice.minimized=false;voice.expanded=false;voice.inviteOpen=false;voice.inviteQuery='';voice.invitedIds=new Set();voice.peers=[];voice.speakers=[];
+  voice.call=null;voice.room=null;voice.meta=null;voice.connecting=false;voice.cameraOn=false;voice.screenOn=false;voice.canPublishVideo=false;voice.canPublishScreen=false;voice.pinnedVideoKey='';voice.minimized=false;voice.expanded=false;voice.inviteOpen=false;voice.inviteQuery='';voice.invitedIds=new Set();voice.peers=[];voice.speakers=[];
   if(current?.id&&typeof closeLaptopNotificationsByTag==='function')closeLaptopNotificationsByTag('catcul-call-'+current.id);
   await cleanupP2P();
   clearAudioSink();paintVoice();
@@ -10317,13 +10324,8 @@ async function toggleCallCam(force){
   if(!voice.room)return;
   const next=typeof force==='boolean'?force:!voice.cameraOn;
   if(next){
-    if(typeof hasCatculTier==='function'&&!hasCatculTier('plus')){
-      if(typeof promptTierUpgrade==='function')promptTierUpgrade('plus','Live Video Calls');
-      return;
-    }
     if(!voice.canPublishVideo){
-      toast('Upgrade to Catcul+ to turn on video during calls.',true);
-      if(typeof promptTierUpgrade==='function')promptTierUpgrade('plus','Live Video Calls');
+      toast('Video is not available in this call. Rejoin and try again.',true);
       return;
     }
   }
@@ -10389,12 +10391,13 @@ async function toggleCallScreen(){
   if(!voice.room||!navigator.mediaDevices?.getDisplayMedia)return toast('Screen sharing requires a desktop browser.',true);
   const next=!voice.screenOn;
   if(next){
-    if(typeof hasCatculTier==='function'&&!hasCatculTier('plus')){
-      if(typeof promptTierUpgrade==='function')promptTierUpgrade('plus','HD Screen Sharing');
+    if(!voice.canPublishScreen){
+      if(!hasCatculTier('plus')) promptTierUpgrade('plus','Screen sharing');
+      else toast('Screen sharing is unavailable for this call. Rejoin and try again.',true);
       return;
     }
     if(!voice.canPublishVideo){
-      if(typeof promptTierUpgrade==='function')promptTierUpgrade('plus','HD Screen Sharing');
+      toast('Screen sharing is unavailable in this call.',true);
       return;
     }
   }
@@ -10494,8 +10497,7 @@ function renderCallBanner(){
     videoBtn.classList.toggle('hidden',!allowed);
     videoBtn.disabled=!isReady()||!allowed;
     videoBtn.classList.toggle('starred',Boolean(c&&voice.cameraOn));
-    const unlocked=typeof hasCatculTier==='function'?hasCatculTier('plus'):false;
-    videoBtn.title=unlocked?(c?'Join call with video':'Start Catcul+ video call'):'Start video call (Catcul+)';
+    videoBtn.title=c?'Join call with video':'Start video call';
   }
   if(!bar)return;
   if(!allowed||!c||voice.call?.id===c.id){
@@ -10523,7 +10525,7 @@ function paintVoice(){
   if(inc){
     if(incoming){
       inc.classList.remove('hidden');
-      const canVid=typeof hasCatculTier==='function'&&hasCatculTier('plus');
+      const canVid=true;
       const directIncoming=isDirectCall(incoming);
       const incHtml=`<span class="eyebrow">INCOMING ${directIncoming?'PRIVATE':'GROUP'} CALL</span>
         <div class="row incoming-person" style="gap:12px;align-items:center">
@@ -11108,7 +11110,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshStu
 let focusedPlan=null;
 let extrasReady=false,extrasRoom='',extrasChannel=null,extrasTimer=null,plans=[],planTasks=[],planVotes=[],audioMoments=[],roomMoods=[],roomSparks=[],memoryRows=[],memoryPeriod='week',memoryLoadEpoch=0,canvasOpen=false,canvasMap=null,extraEpoch=0,nearbyLocation=null,activity='here';
 const catchupPainted=new Set();
-const moodLabels={studying:'📚',music:'🎧',tired:'🥱',happy:'☀️',quiet:'🌙'},catchupTimes={},catchupSeen=new Set();
+const moodLabels={studying:'🎨',music:'🎧',tired:'🥱',happy:'☀️',quiet:'🌙'},moodNames={studying:'Making things',music:'Listening',tired:'Taking it easy',happy:'Feeling good',quiet:'Quiet time'},catchupTimes={},catchupSeen=new Set();
 function extraError(e){if(studentMissing(e))throw Error('Shared room tools are temporarily unavailable. Nothing was saved.');throw e;}
 async function extraRPC(name,args){const r=await db.rpc(name,args);if(r.error)extraError(r.error);return r.data;}
 function socialUnlocked(){return !!user&&setupReady&&!studentSuspended;}
@@ -11137,12 +11139,12 @@ async function loadMemories(){const id=active,actor=user?.id,epoch=extraEpoch,re
 async function playMemories(index=0){if(currentRoom().purpose==='community'||!socialUnlocked())return;const requestedRoom=active,requestedActor=user.id;await loadMemories();if(notesOpen||requestedRoom!==active||requestedActor!==user?.id)return;if(!memoryRows.length)return toast('No available memories in this period.');const actor=user.id,room=active,rows=[...memoryRows];let timer=null,i=Math.min(index,rows.length-1);openModal(`<div class="memory-player"><span class="eyebrow">YOUR ROOM’S LITTLE MOMENTS</span><div id="memory-stage"></div><div class="row between"><button class="btn secondary" id="memory-prev">←</button><span id="memory-position"></span><button class="btn" id="memory-play">Play reel</button><button class="btn secondary" id="memory-next">→</button></div><p class="note">Generated from this room’s shared messages only. Voice notes play only when you press their play button. Nothing is published elsewhere.</p></div>`,true);const paint=()=>{if(user?.id!==actor||active!==room||!$('#memory-stage'))return closeModal();const m=rows[i];$('#memory-stage').innerHTML=`<div class="memory-slide">${m.kind==='photo'&&m.data?`<img src="${esc(m.data)}" alt="Shared photo">`:m.kind==='audio'&&m.data?`<span>🎙</span><audio controls src="${esc(m.data)}"></audio>`:`<blockquote>${esc(m.text)}</blockquote}`}<p>${esc(m.sender.name)} · ${esc(new Date(m.time).toLocaleDateString())}</p></div>`;$('#memory-position').textContent=(i+1)+' / '+rows.length;const a=$('#memory-stage audio');if(a)a.onplay=()=>{clearInterval(timer);timer=null;$('#memory-play').textContent='Play reel';};};$('#memory-prev').onclick=()=>{i=(i-1+rows.length)%rows.length;paint();};$('#memory-next').onclick=()=>{i=(i+1)%rows.length;paint();};$('#memory-play').onclick=()=>{if(timer){clearInterval(timer);timer=null;$('#memory-play').textContent='Play reel';}else{$('#memory-play').textContent='Pause';timer=setInterval(()=>{i=(i+1)%rows.length;paint();},4500);}};modalCleanup=()=>clearInterval(timer);paint();}
 function rememberCatchup(id){if(!catchupSeen.has(id)){catchupTimes[id]=rooms.find(r=>r.id===id)?.last_read_at||null;catchupSeen.add(id);}}
 function decorateCatchup(){if(!active||!catchupTimes[active]||$('#timeline .catchup-marker'))return;const time=Date.parse(catchupTimes[active]),history=roomHistory().filter(m=>m.status==='sent'),first=history.find(m=>m.time>time&&m.sender.id!==profile.id);if(!first)return;const el=document.getElementById('m-'+first.id);if(!el)return;const exact=history.some(m=>m.time<=time);const marker=document.createElement('div');marker.className='catchup-marker';marker.innerHTML=`<span>${exact?'You left off here':'Unread messages · older context above'}</span><button data-catchup-latest>Skip to latest ↓</button>`;el.before(marker);if(!catchupPainted.has(active)){catchupPainted.add(active);$('#timeline').scrollTop=Math.max(0,marker.offsetTop-$('#timeline').offsetTop-20);}}
-function showRoomMood(){if(!socialUnlocked()||!active)return;openModal(`${modalTitle('people','What’s your room vibe?','A temporary mood behind your avatar. Clears after eight hours.')}<div class="vibe-choices">${Object.entries(moodLabels).map(([key,e])=>`<button class="btn secondary" data-set-mood="${key}">${e} ${key}</button>`).join('')}<button class="btn secondary" data-set-mood="">Clear mood</button></div><label class="activity-choice"><input id="share-activity" type="checkbox" ${settings.shareActivity?'checked':''}> Share my in-room activity</label><p class="note">Optional, self-reported presence: typing, listening, gallery or planning. Never your physical location. Turning this off does not disable ordinary typing indicators.</p>`);$('#share-activity').onchange=e=>{settings.shareActivity=e.target.checked;store('settings',settings);publishActivity('here');};}
+function showRoomMood(){if(!socialUnlocked()||!active)return;openModal(`${modalTitle('people','What’s your room vibe?','A temporary mood behind your avatar. Clears after eight hours.')}<div class="vibe-choices">${Object.entries(moodLabels).map(([key,e])=>`<button class="btn secondary" data-set-mood="${key}">${e} ${moodNames[key]||key}</button>`).join('')}<button class="btn secondary" data-set-mood="">Clear mood</button></div><label class="activity-choice"><input id="share-activity" type="checkbox" ${settings.shareActivity?'checked':''}> Share my in-room activity</label><p class="note">Optional, self-reported presence: typing, listening, gallery or planning. Never your physical location. Turning this off does not disable ordinary typing indicators.</p>`);$('#share-activity').onchange=e=>{settings.shareActivity=e.target.checked;store('settings',settings);publishActivity('here');};}
 async function openBedroom(personId=profile.id){if(!socialUnlocked())return;const actor=user.id,p=peopleCache[personId]||profile;const r=await db.from('bedrooms').select('*').eq('user_id',personId).maybeSingle();if(r.error)return extraError(r.error);if(user?.id!==actor)return;const room=r.data||{theme:'mint',headline:'A room, a little personality.',cards:[]},mine=personId===actor;openModal(`<div class="bedroom bedroom-${esc(room.theme)}"><header>${avatar(p)}<span class="eyebrow">${esc(p.name)}’S DIGITAL BEDROOM</span><h2>${esc(room.headline||'Make yourself at home.')}</h2><p>Curated by ${mine?'you':'@'+esc(p.username||p.name)} · not automatic activity tracking</p></header><div class="bedroom-cards">${room.cards.map(c=>{let url='';try{const u=new URL(c.url);if(u.protocol==='https:')url=u.href;}catch{}return `<article><span>${{listening:'🎧 Listening to',watching:'📺 Watching',playing:'🎮 Playing',thinking:'💭 Thinking about'}[c.kind]}</span><h3>${esc(c.text)}</h3>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Open ${esc(new URL(url).hostname)} ↗</a>`:''}</article>`;}).join('')||'<div class="student-empty">A fresh space, waiting for a little personality.</div>'}</div>${mine?'<button class="btn" id="edit-bedroom">Make it yours</button>':''}<p class="note">Visible to friends and people who share a room with you. Linked platforms open separately.</p></div>`,true);if(mine)$('#edit-bedroom').onclick=()=>editBedroom(room);}
 function editBedroom(room){openModal(`${modalTitle('pencil','Make room for your vibe.','No accounts to connect. Just the things you want to share.')}<form id="bedroom-form"><label for="bedroom-headline">Your headline</label><input class="field" id="bedroom-headline" maxlength="160" value="${esc(room.headline)}"><label for="bedroom-theme">Room palette</label><select class="field" id="bedroom-theme">${['mint','dusk','peach','night','sky'].map(t=>`<option ${room.theme===t?'selected':''}>${t}</option>`).join('')}</select><div class="bedroom-edit-cards">${Array.from({length:6},(_,i)=>{const c=room.cards[i]||{};return `<fieldset><legend>Card ${i+1} · optional</legend><select data-bedroom-kind="${i}" class="field">${['listening','watching','playing','thinking'].map(k=>`<option ${c.kind===k?'selected':''}>${k}</option>`).join('')}</select><input class="field" data-bedroom-text="${i}" maxlength="300" value="${esc(c.text||'')}" placeholder="What are you into?" aria-label="Card ${i+1} text"><input type="url" class="field" data-bedroom-url="${i}" maxlength="2048" value="${esc(c.url||'')}" placeholder="Optional https:// link" aria-label="Card ${i+1} link"></fieldset>`;}).join('')}</div><button class="btn full">Save my room</button></form>`,true);$('#bedroom-form').onsubmit=e=>{e.preventDefault();const actor=user.id,cards=Array.from({length:6},(_,i)=>({kind:$(`[data-bedroom-kind="${i}"]`).value,text:$(`[data-bedroom-text="${i}"]`).value.trim(),url:$(`[data-bedroom-url="${i}"]`).value.trim()})).filter(c=>c.text);const args={p_theme:$('#bedroom-theme').value,p_headline:$('#bedroom-headline').value.trim(),p_cards:cards};busy($('#bedroom-form button'),async()=>{await extraRPC('save_bedroom',args);if(user?.id===actor){closeModal();await openBedroom();}});};}
 function showNearby(){if(!socialUnlocked())return;openModal(`${modalTitle('people','Good things, 500 metres away.','Opt-in discovery. Public places, not live people.')}<p class="notice">Your search coordinates are used only to look up nearby posts and are never saved by Catcul. Posts are visible to signed-in members. Exact distance varies with device accuracy.</p><div class="row"><button class="btn" id="nearby-locate">Use my location</button><button class="btn secondary" id="nearby-manual">Choose coordinates</button></div><div id="nearby-manual-form" class="hidden"><label>Latitude<input id="nearby-lat" class="field" type="number" step="any" min="-90" max="90"></label><label>Longitude<input id="nearby-lon" class="field" type="number" step="any" min="-180" max="180"></label><button class="btn secondary" id="nearby-search">Search here</button></div><div class="nearby-tools"><button class="text-btn" id="nearby-post">+ Plan a pop-up or meetup</button><button class="text-btn" id="nearby-forget">Forget search location</button></div><div id="nearby-results"><p class="student-empty">Choose where to look. We never show a map of members.</p></div><p class="note">Walking together is coordination, not a safety guarantee. Meet in public, verify who you’re meeting and tell someone you trust. For emergencies, use local emergency services.</p>`,true);$('#nearby-manual').onclick=()=>$('#nearby-manual-form').classList.toggle('hidden');$('#nearby-search').onclick=()=>{const lat=$('#nearby-lat').value,lon=$('#nearby-lon').value;if(!lat||!lon)return toast('Enter both coordinates.',true);nearbyLocation={lat:Number(lat),lon:Number(lon)};searchNearby();};$('#nearby-locate').onclick=()=>{if(!navigator.geolocation)return toast('Location is unavailable. Choose coordinates instead.',true);$('#nearby-results').textContent='Waiting for location permission…';const actor=user.id;navigator.geolocation.getCurrentPosition(p=>{if(user?.id!==actor||!$('#nearby-results'))return;nearbyLocation={lat:p.coords.latitude,lon:p.coords.longitude};searchNearby();},()=>{if($('#nearby-results'))$('#nearby-results').textContent='Location wasn’t available. You can enter coordinates instead.';},{enableHighAccuracy:false,timeout:12000,maximumAge:60000});};$('#nearby-post').onclick=publishNearbyForm;$('#nearby-forget').onclick=()=>{nearbyLocation=null;$('#nearby-results').innerHTML='<p class="student-empty">Search location cleared from this page.</p>';};if(nearbyLocation)searchNearby();}
 async function searchNearby(){if(!nearbyLocation||!$('#nearby-results'))return;const actor=user.id,location={...nearbyLocation};$('#nearby-results').textContent='Looking within 500 metres…';try{const posts=await extraRPC('discover_nearby',{p_lat:location.lat,p_lon:location.lon});if(user?.id!==actor||!$('#nearby-results')||!nearbyLocation||nearbyLocation.lat!==location.lat||nearbyLocation.lon!==location.lon)return;$('#nearby-results').innerHTML=posts.map(p=>`<article class="nearby-card"><div><span>${esc(p.category)} · ${p.distance_m} m</span><small>@${esc(p.username)}</small></div><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p><strong>📍 ${esc(p.venue)}</strong><p>${esc(new Date(p.starts_at).toLocaleString())} · expires ${esc(new Date(p.expires_at).toLocaleTimeString())}</p><div class="row"><button class="text-btn" data-nearby-person="${esc(p.username)}">Find organizer</button><a class="text-btn" href="https://www.openstreetmap.org/?mlat=${Number(p.latitude)}&mlon=${Number(p.longitude)}#map=17/${Number(p.latitude)}/${Number(p.longitude)}" target="_blank" rel="noopener noreferrer">Venue map ↗</a>${p.user_id===user.id?`<button class="text-btn" data-nearby-remove="${esc(p.id)}">Remove</button>`:`<button class="text-btn" data-nearby-report="${esc(p.id)}">Report</button>`}</div></article>`).join('')||'<p class="student-empty">Nothing posted within 500 metres right now. Start something small.</p>';}catch(e){if(user?.id===actor&&$('#nearby-results'))$('#nearby-results').textContent=errorText(e);}}
-function publishNearbyForm(){if(!socialUnlocked())return;openModal(`${modalTitle('people','Make something happen.','A public meetup spot, visible to signed-in members for up to 24 hours.')}<form id="nearby-publish"><label>Type<select class="field" id="nearby-category"><option value="event">Pop-up event</option><option value="study">Group chat</option><option value="walk">Walk together</option><option value="hangout">Hangout</option></select></label><label>Title<input class="field" id="nearby-title" minlength="3" maxlength="100" required></label><label>Details<textarea class="field" id="nearby-body" maxlength="1000" rows="2"></textarea></label><label>Public meetup venue<input class="field" id="nearby-venue" minlength="3" maxlength="100" placeholder="e.g., Main library entrance" required></label><div class="row"><label>Venue latitude<input class="field" id="post-lat" type="number" min="-90" max="90" step="any" required></label><label>Venue longitude<input class="field" id="post-lon" type="number" min="-180" max="180" step="any" required></label></div><p class="note">Use the venue’s coordinates. Your device location is not filled in or published automatically. Avoid home addresses and private contact details.</p><label>Starts · local time<input class="field" id="nearby-start" type="datetime-local" required></label><label>Expires · within 24 hours<input class="field" id="nearby-end" type="datetime-local" required></label><button class="btn full">Publish nearby post</button></form>`);$('#nearby-publish').onsubmit=e=>{e.preventDefault();const actor=user.id,args={p_category:$('#nearby-category').value,p_title:$('#nearby-title').value.trim(),p_body:$('#nearby-body').value.trim(),p_venue:$('#nearby-venue').value.trim(),p_lat:Number($('#post-lat').value),p_lon:Number($('#post-lon').value),p_start:new Date($('#nearby-start').value).toISOString(),p_end:new Date($('#nearby-end').value).toISOString()};busy($('#nearby-publish button'),async()=>{await extraRPC('publish_nearby',args);if(user?.id===actor){closeModal();toast('Your nearby post is live.');showNearby();}});};}
+function publishNearbyForm(){if(!socialUnlocked())return;openModal(`${modalTitle('people','Make something happen.','A public meetup spot, visible to signed-in members for up to 24 hours.')}<form id="nearby-publish"><label>Type<select class="field" id="nearby-category"><option value="event">Pop-up event</option><option value="study">Group chat</option><option value="walk">Walk together</option><option value="hangout">Hangout</option></select></label><label>Title<input class="field" id="nearby-title" minlength="3" maxlength="100" required></label><label>Details<textarea class="field" id="nearby-body" maxlength="1000" rows="2"></textarea></label><label>Public meetup venue<input class="field" id="nearby-venue" minlength="3" maxlength="100" placeholder="e.g., Central park entrance" required></label><div class="row"><label>Venue latitude<input class="field" id="post-lat" type="number" min="-90" max="90" step="any" required></label><label>Venue longitude<input class="field" id="post-lon" type="number" min="-180" max="180" step="any" required></label></div><p class="note">Use the venue’s coordinates. Your device location is not filled in or published automatically. Avoid home addresses and private contact details.</p><label>Starts · local time<input class="field" id="nearby-start" type="datetime-local" required></label><label>Expires · within 24 hours<input class="field" id="nearby-end" type="datetime-local" required></label><button class="btn full">Publish nearby post</button></form>`);$('#nearby-publish').onsubmit=e=>{e.preventDefault();const actor=user.id,args={p_category:$('#nearby-category').value,p_title:$('#nearby-title').value.trim(),p_body:$('#nearby-body').value.trim(),p_venue:$('#nearby-venue').value.trim(),p_lat:Number($('#post-lat').value),p_lon:Number($('#post-lon').value),p_start:new Date($('#nearby-start').value).toISOString(),p_end:new Date($('#nearby-end').value).toISOString()};busy($('#nearby-publish button'),async()=>{await extraRPC('publish_nearby',args);if(user?.id===actor){closeModal();toast('Your nearby post is live.');showNearby();}});};}
 function nearbyReportForm(id){openModal(`${modalTitle('info','Report this nearby post.','The administrator can review the public post and your reason.')}<form id="nearby-report-form"><textarea class="field" id="nearby-report-reason" minlength="3" maxlength="500" rows="3" aria-label="Reason for reporting" required></textarea><button class="btn full">Submit report</button></form>`);$('#nearby-report-form').onsubmit=e=>{e.preventDefault();const reason=$('#nearby-report-reason').value;busy($('#nearby-report-form button'),async()=>{await extraRPC('report_nearby',{p_post:id,p_reason:reason});closeModal();toast('Report submitted.');});};}
 
 // Attach only to the currently authorized room. Every write is independently checked by SQL.
@@ -11287,7 +11289,7 @@ setTimeout(renderDesktopAlertBar,900);
 
 
 function showWorkspaceMenu(){if(!setupReady)return showConnectionHelp();openModal(`${modalTitle('settings','More spaces','Switch views, customize your chat, or get the app.')}<div class="chat-menu-grid"><button data-workspace="arcade">${icon('gamepad')}<span>Friends Games<small>Veck.io, Poxel.io &amp; Craft</small></span></button><button data-action="community">${icon('globe')}<span>Community Lounge<small>Open community chat</small></span></button><button data-workspace="diary">${icon('book')}<span>Diary<small>Private to you</small></span></button><button data-action="friends">${icon('people')}<span>Friends<small>Requests &amp; directory</small></span></button><button data-social-extra="nearby">${icon('spark')}<span>Nearby 500m<small>Local meetups</small></span></button><button data-social-extra="bedroom">${icon('cat')}<span>Digital Bedroom<small>Your profile space</small></span></button><button data-action="notes-mode">${icon('file')}<span>Quick Notes<small>Alt+N</small></span></button><button data-open-download>${icon('download')}<span>Download App<small>Desktop &amp; phone</small></span></button><button data-action="settings">${icon('settings')}<span>Settings<small>Alerts, cursor &amp; theme</small></span></button><button data-action="profile">${icon('pencil')}<span>Profile &amp; avatar<small>@${esc(profile.username||'member')}</small></span></button>${studentAdmin?`<button data-workspace="admin">${icon('shield')}<span>Admin<small>Billing &amp; moderation</small></span></button>`:''}</div>`);}
-function showChatTools(){if(!active)return showNewConversation();const r=currentRoom(),group=r.kind==='group'&&r.purpose!=='community',canCall=canCallRoom(r);openModal(`${modalTitle('chat',esc(r.name),'Tools and shared spaces for this conversation.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="room-menu">${icon('settings')}<span>Chat options<small>Pin, wallpaper, mute &amp; settings</small></span></button>${canCall?`<button data-action="start-call">${icon('phone')}<span>Voice call<small>Ring ${r.kind==='direct'?'friend':'group'}</small></span></button>`:''}<button data-action="gallery">${icon('photo')}<span>Photos<small>Shared media</small></span></button><button data-social-extra="plans">${icon('check')}<span>Plans &amp; polls<small>Events, tasks, pins</small></span></button><button data-social-extra="arcade">${icon('gamepad')}<span>Friends Games<small>Play Veck.io, Poxel.io &amp; Craft</small></span></button><button data-social-extra="vibe">${icon('spark')}<span>Room vibe<small>Temporary mood</small></span></button><button data-action="people">${icon('people')}<span>Members<small>People in chat</small></span></button>${group?`<button data-action="invite">${icon('link')}<span>Invite link<small>Add friends</small></span></button>`:''}<button data-action="search-chat">${icon('search')}<span>Search chat<small>Messages, links &amp; files</small></span></button><button data-action="mute">${icon(r.muted?'bell-off':'bell')}<span>${r.muted?'Unmute':'Mute'}<small>Notifications</small></span></button><button data-action="details">${icon('info')}<span>Chat info<small>Files &amp; details</small></span></button></div>`);}
+function showChatTools(){if(!active)return showNewConversation();const r=currentRoom(),group=r.kind==='group'&&r.purpose!=='community',canCall=canCallRoom(r);openModal(`${modalTitle('chat',esc(r.name),'Tools and shared spaces for this conversation.')}<div class="chat-menu-grid chat-tools-menu"><button data-action="room-menu">${icon('settings')}<span>Chat options<small>Pin, wallpaper, mute &amp; settings</small></span></button>${canCall?`<button data-action="start-call">${icon('phone')}<span>Voice call<small>Ring ${r.kind==='direct'?'friend':'group'}</small></span></button>`:''}<button data-action="gallery">${icon('photo')}<span>Photos<small>Shared media</small></span></button><button data-social-extra="plans">${icon('check')}<span>Plans &amp; polls<small>Events, tasks, pins</small></span></button>${r.purpose!=='community'?`<button data-together="drawing">${icon('pencil')}<span>Draw together<small>Shared room board</small></span></button>`:''}<button data-together="scheduled">${icon('clock')}<span>Send later<small>Schedule a text message</small></span></button><button data-together="quiet">${icon('bell-off')}<span>Send quietly<small>Text without an alert</small></span></button><button data-social-extra="arcade">${icon('gamepad')}<span>Friends Games<small>Play Veck.io, Poxel.io &amp; Craft</small></span></button><button data-social-extra="vibe">${icon('spark')}<span>Room vibe<small>Temporary mood</small></span></button><button data-action="people">${icon('people')}<span>Members<small>People in chat</small></span></button>${group?`<button data-action="invite">${icon('link')}<span>Invite link<small>Add friends</small></span></button>`:''}<button data-action="search-chat">${icon('search')}<span>Search chat<small>Messages, links &amp; files</small></span></button><button data-action="mute">${icon(r.muted?'bell-off':'bell')}<span>${r.muted?'Unmute':'Mute'}<small>Notifications</small></span></button><button data-action="details">${icon('info')}<span>Chat info<small>Files &amp; details</small></span></button></div>`);}
 let lastVpH=-1,lastVpT=-1;
 function syncChatViewport(){
   const vv=window.visualViewport;
@@ -11516,7 +11518,7 @@ messageHTML=function(m){
   if(m.kind==='audio'&&m.data){
     html=html.replace(/(<audio[^>]*><\/audio>)/,'$1<button class="rate-btn" data-rate data-audio="'+esc(m.id)+'" title="Playback speed">1×</button>');
   }
-  if(m.edited)html=html.replace('</time></div><div class="bubble','</time><span class="edited-tag" title="Edited '+esc(new Date(m.editedAt||m.time).toLocaleString())+'">edited</span></div><div class="bubble');
+  if(m.edited)html=html.replace(/<\/time>((?:<span class="quiet-tag"[^>]*>Quiet<\/span>)?)<\/div><div class="bubble/,(_,quiet)=>'</time>'+quiet+'<span class="edited-tag" title="Edited '+esc(new Date(m.editedAt||m.time).toLocaleString())+'">edited</span></div><div class="bubble');
   if(m.text&&!m.deleted){
     const people=roomPeople[active]||[];
     const names=[...new Set(people.map(p=>(p.name||'').split(' ')[0]).filter(n=>n&&n.length>=2))];
@@ -12011,9 +12013,9 @@ document.addEventListener('click',e=>{
 /* =====================================================================
    Catcul Plans, Wallpapers, Stories, Spotlight & 2D Camera Module
    - Free (rank 0): Chats, voice calls, voice notes, files, starter wallpapers & stickers
-   - Catcul+ (rank 1): + 1:1 & group video calls + Plus wallpapers & stickers
+   - Catcul+ (rank 1): + Plus wallpapers & stickers
    - Catcul++ (rank 2): + 2D Face Filter & Portrait Camera + Plus++ wallpapers & stickers
-   - Catcul Premium (rank 3): + 24h Stories, Spotlight, Video posting & full 4K Anime / Wallhaven wallpapers
+   - Catcul Premium (rank 3): + Spotlight, Video posting & full 4K Anime / Wallhaven wallpapers
    - Platform Admins automatically receive Catcul Premium (rank 3, server-enforced).
    ===================================================================== */
 
@@ -12038,9 +12040,9 @@ let catculBilling = {
     currency: 'USD',
     checkout_ready: false,
     plans: [
-      { tier: 'plus', rank: 1, name: 'Catcul+', tagline: '1:1 & group video calls plus extra anime wallpapers and stickers.', monthly_price_display: '$3.99', yearly_price_display: '$39', monthly_ready: false, yearly_ready: false },
-      { tier: 'plusplus', rank: 2, name: 'Catcul++', tagline: '2D face filter camera, background blur, video calls, and shonen anime themes.', monthly_price_display: '$6.99', yearly_price_display: '$69', monthly_ready: false, yearly_ready: false },
-      { tier: 'premium', rank: 3, name: 'Catcul Premium', tagline: '24h Stories, Culife 4K, video posting, and full 4K Wallhaven anime wallpapers.', monthly_price_display: '$11.99', yearly_price_display: '$119', monthly_ready: false, yearly_ready: false },
+      { tier: 'plus', rank: 1, name: 'Catcul+', tagline: 'Extra anime wallpapers and stickers for your space.', monthly_price_display: '$3.99', yearly_price_display: '$39', monthly_ready: false, yearly_ready: false },
+      { tier: 'plusplus', rank: 2, name: 'Catcul++', tagline: '2D face filter camera, background blur, and extra anime themes.', monthly_price_display: '$6.99', yearly_price_display: '$69', monthly_ready: false, yearly_ready: false },
+      { tier: 'premium', rank: 3, name: 'Catcul Premium', tagline: 'Culife posting, video posts, and the full wallpaper gallery.', monthly_price_display: '$11.99', yearly_price_display: '$119', monthly_ready: false, yearly_ready: false },
     ],
   },
   userTiers: {},
@@ -12560,7 +12562,7 @@ function paintPlanChrome() {
 function promptTierUpgrade(requiredTier, featureTitle) {
   const label = TIER_LABELS[requiredTier] || 'Catcul+';
   openModal(`${modalTitle('crown', `Unlock ${featureTitle}`, `Included with ${label} and higher plans.`)}
-    <div class="notice"><strong>${esc(label)}</strong> unlocks <strong>${esc(featureTitle)}</strong>${requiredTier === 'plus' ? ' plus Demon Slayer, Naruto & Emerald Sanctuary anime wallpapers and the Catcul+ sticker pack.' : requiredTier === 'plusplus' ? ', the 2D face filter camera, video calls, Solo Leveling, Edgerunners & Graffiti Vigilante anime themes, and the Catcul++ pack.' : ', 24h Stories, Culife 4K, video posting, 2D camera filters, video calls, and the full 4K Wallhaven anime wallpaper gallery.'}</div>
+    <div class="notice"><strong>${esc(label)}</strong> unlocks <strong>${esc(featureTitle)}</strong>${requiredTier === 'plus' ? ' plus Demon Slayer, Naruto & Emerald Sanctuary anime wallpapers and the Catcul+ sticker pack.' : requiredTier === 'plusplus' ? ', the 2D face filter camera and additional themes and stickers.' : ', Culife posting, chat video posts, camera filters, and the full wallpaper gallery.'}</div>
     <div class="row" style="margin-top:16px;gap:10px">
       <button class="btn secondary grow" type="button" data-action="close-modal">Maybe later</button>
       <button class="btn grow" type="button" id="prompt-open-plans">${icon('crown')}See ${esc(label)} plans</button>
@@ -12584,9 +12586,10 @@ function showPlansModal(highlight = '') {
       tagline: 'Everyday messaging for friends and group chats.',
       perks: [
         '1:1 & group chats, voice notes & 25 MB docs',
-        '1:1 & group voice calls',
+        '1:1 & group voice and video calls',
+        'Post 24-hour Stories',
         'Ghibli Meadow, Shinkai Sky & Jujutsu Kaisen 4K themes',
-        'Watch Stories & browse Culife 4K',
+        'Browse Culife 4K',
         'Private Diary & Quick Notes (Alt+N)',
       ],
     },
@@ -12596,10 +12599,10 @@ function showPlansModal(highlight = '') {
       name: byTier('plus').name || 'Catcul+',
       price: cyc === 'year' ? (byTier('plus').yearly_price_display || '$39') : (byTier('plus').monthly_price_display || '$3.99'),
       sub: cyc === 'year' ? '/ year' : '/ month',
-      tagline: byTier('plus').tagline || '1:1 & group video calls + extra anime wallpapers.',
+      tagline: byTier('plus').tagline || 'Extra themes and stickers.',
       perks: [
         'Everything in Free',
-        '1:1 & group Video Calls (camera + flip)',
+        'Screen sharing, extra themes and illustrated stickers',
         'Demon Slayer, Naruto & Spirit Shrine anime themes',
         'Catcul+ Sticker Pack (Espresso, Boba, On Cam, Love)',
       ],
@@ -12612,7 +12615,7 @@ function showPlansModal(highlight = '') {
       sub: cyc === 'year' ? '/ year' : '/ month',
       tagline: '2D face filter camera, background blur & shonen anime themes.',
       perks: [
-        'Everything in Catcul+ (including Video Calls)',
+        'Everything in Catcul+',
         '2D Face Filter Camera & Portrait Blur',
         'Anime studio backdrops & 35mm film color tones',
         'Solo Leveling, Edgerunners & Graffiti Vigilante 4K themes',
@@ -12626,10 +12629,9 @@ function showPlansModal(highlight = '') {
       name: byTier('premium').name || 'Catcul Premium',
       price: cyc === 'year' ? (byTier('premium').yearly_price_display || '$119') : (byTier('premium').monthly_price_display || '$11.99'),
       sub: cyc === 'year' ? '/ year' : '/ month',
-      tagline: byTier('premium').tagline || 'Stories, Culife 4K, video posting & full 4K Wallhaven anime gallery.',
+      tagline: byTier('premium').tagline || 'Culife 4K, video posting & the full wallpaper gallery.',
       perks: [
         'Everything in Catcul+ and Catcul++',
-        'Post 24-hour Stories (videos, camera snaps & notes)',
         'Publish 4K UHD snaps & reels to Culife',
         'Send MP4 / WebM videos directly in chats',
         'One Piece 8K, AoT, Dragon Ball, live Wallhaven search & link paste',
@@ -12642,7 +12644,7 @@ function showPlansModal(highlight = '') {
     ? `<div><strong><i class="ri-vip-crown-2-line"></i> Catcul Premium · Owner Access</strong><p style="font-size:11px;color:var(--muted);margin:2px 0 0">Platform owners automatically receive full Catcul Premium access at no charge.</p></div>`
     : `<div><strong>Current plan: ${esc(TIER_LABELS[catculBilling.tier])}</strong><p style="font-size:11px;color:var(--muted);margin:2px 0 0">${catculBilling.currentPeriodEnd ? `${catculBilling.cancelAtPeriodEnd ? 'Ends' : 'Renews'} ${new Date(catculBilling.currentPeriodEnd).toLocaleDateString()}` : 'Upgrade or cancel anytime via Paddle Billing.'}</p></div>`;
 
-  openModal(`${modalTitle('crown', 'Catcul Plans', 'Video calls, 2D camera filters, 24h Stories, and full-screen 4K anime wallpapers.')}
+  openModal(`${modalTitle('crown', 'Catcul Plans', 'Calls and Stories are free. Optional extras include screen sharing, 2D filters and wallpapers.')}
     <div class="billing-cycle-bar">
       ${statusNote}
       <div class="row" style="gap:8px;flex-wrap:wrap">
@@ -12670,11 +12672,13 @@ function showPlansModal(highlight = '') {
               ? `<button class="btn secondary full" type="button" disabled>${catculBilling.isAdmin ? 'Active (Owner)' : 'Current plan'}</button>`
               : included
                 ? `<button class="btn secondary full" type="button" disabled>Included in your tier</button>`
-                : `<button class="btn full" type="button" data-checkout-tier="${c.tier}">Get ${esc(c.name)}</button>`}
+                : (!catculBilling.pricing.checkout_ready || !byTier(c.tier)[cyc === 'year' ? 'yearly_ready' : 'monthly_ready'])
+                  ? `<button class="btn secondary full" type="button" disabled>Checkout not available yet</button>`
+                  : `<button class="btn full" type="button" data-checkout-tier="${c.tier}">Get ${esc(c.name)}</button>`}
         </article>`;
       }).join('')}
     </div>
-    <p class="note" style="margin-top:14px">Payments and subscriptions are securely handled by Paddle (Merchant of Record). Taxes and local currencies are calculated automatically at checkout.</p>`, true);
+    <p class="note" style="margin-top:14px">${catculBilling.pricing.checkout_ready ? 'Payments and subscriptions are handled by Paddle (Merchant of Record). Taxes and local currencies are calculated at checkout.' : 'Paid checkout is not available yet. Prices shown are previews; free features are ready to use.'}</p>`, true);
   $('.modal')?.classList.add('plans-modal');
 
   $$('[data-cycle]').forEach((b) => {
@@ -13768,7 +13772,6 @@ async function openCatSnapStudio(target = 'chat') {
   };
 
   $('#catsnap-post-story').onclick = () => socialTask($('#catsnap-post-story'), async () => {
-    if (!hasCatculTier('premium')) return promptTierUpgrade('premium', 'Posting 24-hour Stories');
     const cap = $('#catsnap-caption').value.trim();
     if (catSnapState?.recordedVideoDataUrl) {
       await publishDataUrlToStory(catSnapState.recordedVideoDataUrl, 'video', cap);
@@ -13794,7 +13797,7 @@ async function openCatSnapStudio(target = 'chat') {
 /* ---------- Video Posting in Chats (Catcul Premium) ---------- */
 function chooseVideoClip() {
   if (!hasCatculTier('premium')) {
-    promptTierUpgrade('premium', 'Posting videos in chats, Stories & Culife');
+    promptTierUpgrade('premium', 'Posting videos in chats');
     return;
   }
   const input = document.createElement('input');
@@ -13831,7 +13834,7 @@ uploadForMessage = async function (id, m) {
   const aid = m.uploadId || (m.uploadId = uid());
   const path = `${id}/${profile.id}/vid-${aid}.${ext}`;
   if (!m.objectUploaded) {
-    const up = await client.storage.from(MEDIA_BUCKET).upload(path, blob, { contentType: mime, upsert: false, cacheControl: '3600' });
+    const up = await client.storage.from(MEDIA_BUCKET).upload(path, new Uint8Array(await blob.arrayBuffer()), { contentType: mime, upsert: false, cacheControl: '3600' });
     if (up.error && !['409', 'Duplicate'].includes(String(up.error.statusCode)) && !/already exists|duplicate/i.test(up.error.message)) throw up.error;
     m.objectUploaded = true;
   }
@@ -13918,11 +13921,11 @@ showAttach = function () {
   menu.insertAdjacentHTML('beforeend', `
     <button data-monetize="cat-snap"><span class="att-ico" style="background:#f3e3e9;color:#682440">${icon('camera')}</span><span>2D Face Camera<small class="muted" style="display:block;font-size:9px">${canSnap ? '2D filters & portrait blur · Ready' : 'Catcul++ · 2D face filters'}</small></span></button>
     <button data-monetize="attach-video"><span class="att-ico" style="background:#f3e6c2;color:#422f05">${icon('film')}</span><span>Video clip<small class="muted" style="display:block;font-size:9px">${canPrem ? 'MP4 / WebM · up to 25 MB' : 'Catcul Premium · Share videos'}</small></span></button>
-    <button data-monetize="new-story"><span class="att-ico" style="background:#e2efe3;color:#1d4528">${icon('story')}</span><span>24h Story<small class="muted" style="display:block;font-size:9px">${canPrem ? 'Share with friends & rooms' : 'Catcul Premium · 24h moments'}</small></span></button>
+    <button data-monetize="new-story"><span class="att-ico" style="background:#e2efe3;color:#1d4528">${icon('story')}</span><span>24h Story<small class="muted" style="display:block;font-size:9px">Share with friends &amp; rooms · Free</small></span></button>
   `);
 };
 
-/* ---------- 24-Hour Stories (Catcul Premium & Admin) ---------- */
+/* ---------- 24-Hour Stories (free for signed-in accounts) ---------- */
 async function ensureStoryUrl(path) {
   if (!path) return null;
   const cached = storySignedUrls[path];
@@ -13978,12 +13981,10 @@ function renderStoriesStrip() {
   const groups = groupStoriesByAuthor();
   const mineGroup = groups.find((g) => g.user_id === profile.id);
   const others = groups.filter((g) => g.user_id !== profile.id);
-  const canPost = hasCatculTier('premium');
-
-  const addBtn = `<button type="button" class="story-ring-btn" data-monetize="new-story" title="${canPost ? 'Add to your 24h Story' : 'Post Stories with Catcul Premium'}">
+  const addBtn = `<button type="button" class="story-ring-btn" data-monetize="new-story" title="Add to your 24h Story">
     <span class="story-ring-wrap ${mineGroup ? 'premium-ring' : 'add-ring'}">
       <span class="story-ring-inner">${avatar(profile)}</span>
-      <span class="story-plus-dot">${canPost ? '+' : '👑'}</span>
+      <span class="story-plus-dot">+</span>
     </span>
     <span class="story-lbl">${mineGroup ? 'Add Story' : 'My Story'}</span>
   </button>`;
@@ -14019,7 +14020,7 @@ async function publishDataUrlToStory(dataUrl, mediaKind, caption = '', bgTheme =
   const ext = VIDEO_MIMES[mime] || ({ 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' }[mime]) || 'jpg';
   const id = uid();
   const path = `stories/${profile.id}/${id}.${ext}`;
-  const up = await client.storage.from(MEDIA_BUCKET).upload(path, blob, { contentType: mime, upsert: false, cacheControl: '3600' });
+  const up = await client.storage.from(MEDIA_BUCKET).upload(path, new Uint8Array(await blob.arrayBuffer()), { contentType: mime, upsert: false, cacheControl: '3600' });
   if (up.error) throw up.error;
   unwrap(await db.rpc('create_story', {
     p_media_kind: mediaKind,
@@ -14035,10 +14036,6 @@ async function publishDataUrlToStory(dataUrl, mediaKind, caption = '', bgTheme =
 }
 
 function openStoryComposer() {
-  if (!hasCatculTier('premium')) {
-    promptTierUpgrade('premium', 'Posting 24-hour Stories');
-    return;
-  }
   openModal(`${modalTitle('story', 'Share a 24-Hour Story', 'Visible for 24 hours to your friends and shared group friends.')}
     <div class="segmented" id="story-kind-tabs" style="margin-bottom:14px">
       <button type="button" data-skind="text" aria-pressed="true">✨ Text Card</button>
@@ -14063,7 +14060,7 @@ function openStoryComposer() {
       <div style="margin-top:10px">
         <span class="eyebrow">Add a Catcul Sticker</span>
         <div class="row" style="gap:6px;flex-wrap:wrap;margin-top:6px" id="story-sticker-picks">
-          ${['crown-cat', 'starlight-orbit', 'laser-shades', 'boba-sip', 'heart-paws', 'wave-kitty'].map((sid) => `<button type="button" class="btn secondary" style="padding:4px 8px" data-story-st="${sid}"><span style="display:inline-block;width:28px;height:28px;vertical-align:middle">${catStickerSVG(sid)}</span></button>`).join('')}
+          ${CATCUL_STICKERS.filter((st) => hasCatculTier(st.tier)).map((st) => st.id).map((sid) => `<button type="button" class="btn secondary" style="padding:4px 8px" data-story-st="${sid}"><span style="display:inline-block;width:28px;height:28px;vertical-align:middle">${catStickerSVG(sid)}</span></button>`).join('')}
         </div>
       </div>
       <button class="btn full" type="submit" style="margin-top:16px">Share to Story (24h)</button>
@@ -15507,7 +15504,7 @@ showChatTools = function () {
   const grid = $('.modal .chat-tools-menu');
   if (!grid) return;
   grid.insertAdjacentHTML('afterbegin', `
-    <button data-action="start-video-call">${icon('video')}<span>Video call<small>Catcul+ live camera</small></span></button>
+    <button data-action="start-video-call">${icon('video')}<span>Video call<small>Free live camera</small></span></button>
     <button data-monetize="cat-snap">${icon('camera')}<span>2D Face Camera<small>2D filters &amp; blur</small></span></button>
     <button data-action="themes">${icon('palette')}<span>Wallpapers &amp; Themes</span></button>
     <button data-action="plans">${icon('crown')}<span>Catcul Plans</span></button>
@@ -17410,9 +17407,6 @@ window.addEventListener('message', (ev) => {
       a.click();
     };
     $('#culife-4k-story-btn').onclick = () => socialTask($('#culife-4k-story-btn'), async () => {
-      if (typeof hasCatculTier === 'function' && !hasCatculTier('premium')) {
-        return promptTierUpgrade('premium', 'Publishing 24-hour Stories');
-      }
       if (typeof publishDataUrlToStory === 'function') {
         await publishDataUrlToStory(dataUrl, $('#culife-4k-caption')?.value.trim() || '');
         closeModal();
@@ -17965,6 +17959,80 @@ window.addEventListener('message', (ev) => {
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!drawer.hidden){set(false);toggle.focus()}});
  document.addEventListener('click',e=>{if(!drawer.hidden&&!drawer.contains(e.target)&&!toggle.contains(e.target))set(false)});
 })();
+
+
+/* Shared drawing and scheduled text messages. All writes are authorized in SQL. */
+let drawingSession=null;
+function drawingSignal(room){
+  if(states[room]==='SUBSCRIBED'&&channels[room])channels[room].send({type:'broadcast',event:'drawing-changed',payload:{}}).catch(()=>{});
+}
+function notifyDrawingChanged(room){
+  const d=drawingSession;if(!d||d.room!==room||!d.canvas?.isConnected)return;
+  clearTimeout(d.refreshTimer);d.refreshTimer=setTimeout(()=>reloadDrawing(d).catch(console.warn),250);
+}
+async function reloadDrawing(d){
+  if(d!==drawingSession||d.pending||d.points||!d.canvas?.isConnected)return;
+  const seq=++d.sequence;
+  const rows=unwrap(await db.rpc('get_room_drawing',{p_room:d.room}));
+  if(d!==drawingSession||d.sequence!==seq||d.pending||d.points||active!==d.room)return;
+  d.strokes=Array.isArray(rows)?rows:[];paintDrawing(d);
+  const status=$('#drawing-status');if(status)status.textContent=d.strokes.length+' / 600 strokes · saved to this room';
+}
+function paintDrawing(d){
+  const ctx=d.canvas.getContext('2d');ctx.clearRect(0,0,1000,600);ctx.fillStyle='#fffdf4';ctx.fillRect(0,0,1000,600);
+  for(const stroke of [...d.strokes,...(d.points?[{points:d.points,color:d.color,width:d.width}]:[])]){
+    if(!Array.isArray(stroke.points)||!stroke.points.length||!/^#[0-9a-f]{6}$/i.test(stroke.color))continue;
+    ctx.strokeStyle=stroke.color;ctx.fillStyle=stroke.color;ctx.lineWidth=Math.max(2,Math.min(18,Number(stroke.width)||4));ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();
+    for(let i=0;i<stroke.points.length;i++){const p=stroke.points[i];if(!Array.isArray(p)||p.length!==2)continue;const x=Number(p[0])*1000,y=Number(p[1])*600;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
+    if(stroke.points.length===1){const p=stroke.points[0];ctx.arc(Number(p[0])*1000,Number(p[1])*600,ctx.lineWidth/2,0,Math.PI*2);ctx.fill();}else ctx.stroke();
+  }
+}
+async function openRoomDrawing(){
+  if(!active||!setupReady)return toast('Open a chat first.',true);
+  if(currentRoom().purpose==='community')return toast('Drawing boards are for private and group chats.',true);
+  if(currentRoom().can_send===false)return toast('This chat is read-only.',true);
+  const room=active,actor=user.id;
+  openModal(`${modalTitle('pencil','Draw together','A shared, saved board for members of this conversation. Everyone in the chat can clear it.')}
+  <div class="drawing-toolbar"><label>Ink <input type="color" id="drawing-color" value="#23402d" aria-label="Ink color"></label><label>Size <select id="drawing-width" class="field" aria-label="Ink size"><option value="3">Fine</option><option value="6" selected>Medium</option><option value="12">Bold</option></select></label><button class="btn secondary" type="button" id="drawing-clear">Clear board</button></div>
+  <canvas id="together-canvas" class="together-canvas" width="1000" height="600" aria-label="Shared drawing board; draw using touch, mouse, or stylus"></canvas>
+  <div id="drawing-status" class="note" role="status">Loading saved drawing…</div><p class="note">Strokes sync after you lift your finger or mouse. If realtime is unavailable, the board refreshes periodically.</p>`,true);
+  const canvas=$('#together-canvas'),d={room,actor,canvas,strokes:[],points:null,color:'#23402d',width:6,pending:0,sequence:0,refreshTimer:null,poll:null};drawingSession=d;
+  const previous=modalCleanup;modalCleanup=()=>{previous?.();clearTimeout(d.refreshTimer);clearInterval(d.poll);if(drawingSession===d)drawingSession=null;};
+  $('#drawing-color').oninput=e=>d.color=e.target.value;$('#drawing-width').onchange=e=>d.width=Number(e.target.value);
+  const point=e=>{const r=canvas.getBoundingClientRect();return [Math.round(Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*10000)/10000,Math.round(Math.max(0,Math.min(1,(e.clientY-r.top)/r.height))*10000)/10000];};
+  canvas.addEventListener('pointerdown',e=>{if(d.pending||active!==room||user?.id!==actor)return;e.preventDefault();canvas.setPointerCapture(e.pointerId);d.pointer=e.pointerId;d.points=[point(e)];paintDrawing(d);});
+  canvas.addEventListener('pointermove',e=>{if(!d.points||e.pointerId!==d.pointer)return;e.preventDefault();const p=point(e),last=d.points.at(-1);if(d.points.length<160&&Math.hypot(p[0]-last[0],p[1]-last[1])>.001){d.points.push(p);paintDrawing(d);}});
+  const finish=async e=>{if(!d.points||e.pointerId!==d.pointer)return;const points=d.points,color=d.color,width=d.width;d.points=null;d.pending++;const status=$('#drawing-status');if(status)status.textContent='Saving stroke…';try{const id=unwrap(await db.rpc('add_room_drawing_stroke',{p_room:room,p_color:color,p_width:width,p_points:points}));if(d===drawingSession){d.strokes.push({id,color,width,points});paintDrawing(d);}drawingSignal(room);}catch(err){if(d===drawingSession)toast('Stroke not saved: '+errorText(err),true);}finally{d.pending--;if(d===drawingSession)reloadDrawing(d).catch(fail);}};
+  canvas.addEventListener('pointerup',finish);canvas.addEventListener('pointercancel',()=>{d.points=null;paintDrawing(d);});
+  $('#drawing-clear').onclick=async()=>{if(!window.confirm('Clear this drawing for everyone in the chat?'))return;d.pending++;try{unwrap(await db.rpc('clear_room_drawing',{p_room:room}));drawingSignal(room);toast('Board cleared for everyone.');}catch(err){fail(err);}finally{d.pending--;if(d===drawingSession)reloadDrawing(d).catch(fail);}};
+  d.poll=setInterval(()=>{if(!document.hidden&&active===room)reloadDrawing(d).catch(console.warn);},5000);
+  try{await reloadDrawing(d);}catch(err){if(d===drawingSession){$('#drawing-status').textContent='Could not load the board. Close and try again.';fail(err);}}
+}
+function localDateTime(date){const d=new Date(date.getTime()-date.getTimezoneOffset()*60000);return d.toISOString().slice(0,16);}
+async function openScheduledTexts(){
+ if(!active||!setupReady)return toast('Open a chat first.',true);
+ const room=active,actor=user.id,original=$('#message-input').value,now=new Date();
+ openModal(`${modalTitle('clock','Send later','Text messages are saved privately until their scheduled time. They send even if you close Catcul.')}
+ <form id="scheduled-form"><label for="scheduled-body">Message</label><textarea class="field" id="scheduled-body" maxlength="2000" rows="3" required></textarea><label for="scheduled-when">Send at · your local time</label><input class="field" type="datetime-local" id="scheduled-when" required><p class="note">Choose 1 minute to 30 days ahead. Delivery runs about once a minute and may be delayed if the service is unavailable. Room access is checked again at send time.</p><button type="submit" class="btn full">Schedule message</button></form>
+ <h3 style="margin:20px 0 8px">Your scheduled messages</h3><div id="scheduled-list" aria-live="polite" class="scheduled-list">Loading…</div>`,true);
+ const body=$('#scheduled-body'),when=$('#scheduled-when');body.value=original.slice(0,2000);when.min=localDateTime(new Date(now.getTime()+120000));when.max=localDateTime(new Date(now.getTime()+30*86400000));when.value=localDateTime(new Date(now.getTime()+3600000));
+ async function refresh(){const rows=unwrap(await db.rpc('my_scheduled_texts',{p_room:room}));const el=$('#scheduled-list');if(!el||active!==room||user?.id!==actor)return;el.innerHTML=(rows||[]).map(item=>`<div class="scheduled-item"><div><strong>${esc(new Date(item.send_at).toLocaleString())}</strong><p>${esc(item.body)}</p><small>${item.state==='failed'?'Not sent · check room access': 'Waiting to send'}</small></div><button type="button" class="btn secondary" data-cancel-scheduled="${esc(item.id)}">${item.state==='failed'?'Dismiss':'Cancel'}</button></div>`).join('')||'<p class="note">Nothing scheduled in this chat.</p>';}
+ $('#scheduled-form').onsubmit=e=>{e.preventDefault();socialTask($('#scheduled-form button[type=submit]'),async()=>{const text=body.value.trim(),date=new Date(when.value);if(!text||!Number.isFinite(date.getTime()))throw Error('Enter a message and valid time.');if(date.getTime()<Date.now()+60000||date.getTime()>Date.now()+30*86400000)throw Error('Choose a time between 1 minute and 30 days from now.');unwrap(await db.rpc('schedule_text',{p_room:room,p_body:text,p_send_at:date.toISOString()}));if(user?.id!==actor)return;if(active===room&&$('#message-input').value===original&&original.trim()===text){$('#message-input').value='';$('#message-input').dispatchEvent(new Event('input',{bubbles:true}));updateSend();}body.value='';toast('Message scheduled.');await refresh();});};
+ $('#scheduled-list').onclick=e=>{const btn=e.target.closest('[data-cancel-scheduled]');if(!btn)return;socialTask(btn,async()=>{const done=unwrap(await db.rpc('cancel_scheduled_text',{p_id:btn.dataset.cancelScheduled}));toast(done?'Scheduled message removed.':'It was already sent or removed.');await refresh();});};
+ try{await refresh();}catch(e){if($('#scheduled-list'))$('#scheduled-list').textContent='Could not load scheduled messages.';fail(e);}
+}
+async function openQuietText(){
+ if(!active||!setupReady)return toast('Open a chat first.',true);
+ if(!isReady())return toast('Wait for your room to reconnect.',true);
+ const room=active,actor=user.id,original=$('#message-input').value;let attemptId=uid(),attemptText=null;
+ openModal(`${modalTitle('bell-off','Send quietly','Your text appears in the chat and unread count, without a push notification or sound on updated Catcul devices.')}<form id="quiet-form"><label for="quiet-body">Message</label><textarea class="field" id="quiet-body" rows="4" maxlength="4000" required></textarea><p class="note">Text only. Staged attachments and replies are not included. Older Catcul versions may still make a sound while open.</p><button class="btn full" type="submit">Send quietly</button></form>`);
+ const input=$('#quiet-body');input.value=original;
+ $('#quiet-form').onsubmit=e=>{e.preventDefault();socialTask($('#quiet-form button'),async()=>{const text=input.value.trim();if(!text)throw Error('Write a message first.');if(user?.id!==actor||active!==room)throw Error('The active chat changed.');if(attemptText!==null&&attemptText!==text)attemptId=uid();attemptText=text;const res=await db.from('messages').insert({id:attemptId,room_id:room,body:text,kind:'text',quiet:true}).select().single();let row;if(res.error?.code==='23505')row=unwrap(await db.from('messages').select('*').eq('id',attemptId).single());else row=unwrap(res);if(user?.id!==actor)return;if(active===room&&$('#message-input').value===original&&original.trim()===text){$('#message-input').value='';$('#message-input').dispatchEvent(new Event('input',{bubbles:true}));updateSend();}await receiveRow(room,row,true);closeModal();toast('Sent quietly.');});};
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-together]');if(!b)return;e.preventDefault();const task=b.dataset.together==='drawing'?openRoomDrawing():b.dataset.together==='scheduled'?openScheduledTexts():b.dataset.together==='quiet'?openQuietText():null;task?.catch(fail);});
+
+const togetherBaseSetActive=setActive;
+setActive=async function(id,mobile=true){if(id!==active&&($('#together-canvas')||$('#scheduled-form')||$('#quiet-form')))closeModal();return togetherBaseSetActive(id,mobile);};
 
 
 const actions={'workspace-menu':showWorkspaceMenu,'chat-tools':showChatTools,'view-chat':()=>showChatView(true),'notes':openNotes,'community':openCommunity,

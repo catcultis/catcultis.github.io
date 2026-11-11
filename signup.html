@@ -1116,6 +1116,15 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
   if(!window.supabase)return;
   const client=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,flowType:'implicit'}});
+  // Anonymous public pricing only; leave neutral copy if the network is unavailable.
+  const pricingStatus=document.getElementById('landing-paddle-status');
+  if(pricingStatus){
+    client.schema('catcul').rpc('get_public_pricing').then(({data,error})=>{
+      if(error||!data||typeof data.checkout_ready!=='boolean')return;
+      const live=data.checkout_ready===true&&data.environment==='production';
+      pricingStatus.textContent=live?'Explore available paid options in the app.':'Paid checkout is not available yet.';
+    }).catch(()=>{});
+  }
   let routed=false;
   const bouncedRecently=()=>{
     try{

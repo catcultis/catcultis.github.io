@@ -1,0 +1,20 @@
+CATCUL — TOGETHER UPDATE (v26)
+
+PUT THIS VERSION ON YOUR WEBSITE
+Upload and overwrite the contents of catcul-web-only.zip on your static website host, preserving the folders. The connected database and call function have already been updated; the website files have NOT been uploaded for you. No Node.js or Python server is needed to run the site. Allow time for host/CDN caches and the Catcul service worker to refresh. If needed, close and reopen Catcul after updating.
+
+WHAT'S NEW
+• Draw together: open a private or group chat, then its chat menu and choose Draw together. Members share a saved board, with up to 600 strokes; any member can clear it. Strokes refresh by room signal with a five-second polling fallback. The public community room does not have a board.
+• Send later: choose Send later in the chat menu to schedule a text from 1 minute to 30 days ahead. You can cancel pending texts, and failed texts appear for dismissal. Delivery is processed approximately once a minute and can be delayed by outages; permissions are checked again at delivery. Failed deliveries are not automatically retried. Scheduled texts are normal messages, not quiet messages.
+• Send quietly: choose Send quietly in the chat menu. The saved message appears in chat and the unread count, but does not create a push notification and does not play an in-app notification on updated clients. Older open clients may still make a sound. Quiet send is text-only and does not include staged attachments or replies.
+• Existing features include optional room presence, moods, room plans, Sparks and the signed-in Friends Games area. Catcul itself is ad-free. Third-party games can show their own ads; Eaglercraft slots require a suitable community-provided game build. The landing demo is local-only and is not the real messenger.
+• Voice and video calls and 24-hour Stories remain free. Screen sharing remains a paid-tier control, but the P2P fallback is client-controlled and a modified client can present screen content as camera video; this restriction is not a foolproof security boundary.
+
+PAYMENTS AND UNFINISHED EXTRAS
+Paddle is in sandbox and its client token and price IDs are not configured. Checkout is disabled until configuration is complete. Gifting, bigger uploads, and any other proposed extras not present in the application have not been implemented and should not be advertised as available. Existing paid account entitlements are retained.
+
+DATABASE STATUS
+The drawing, scheduled-message, quiet-message and free-basics changes are already applied to the connected Catcul project. The scheduled-delivery job is active in the database. The full archive includes a historical reference SQL file for drawing and scheduling, NOT a complete fresh-install migration; it omits the quiet webhook migration and extension setup. Do not rerun it or older monetization/free-basics SQL on the existing project. The separate full archive includes Edge Function sources for reference; do not upload those sources or SQL to a public website host.
+
+CHECKS AND LIMITATIONS
+Automated browser tests exercised drawing, scheduling/cancellation, quiet messages, phone layout, landing, free calls/Stories UI, arcade, composer, avatar and PWA flows with mocked services. Live database transaction tests checked drawing access, scheduled delivery/permission checks, and quiet push suppression; the scheduler job's latest run succeeded. The call handler was tested in isolation with signed JWTs and the live endpoint had a basic unauthenticated smoke test. Real two-account drawing and calls, actual timed delivery and push notifications, actual Story publishing, and physical-device testing have not been independently verified. Please test these on your own devices and accounts after uploading. Legal pages are templates and should be reviewed before launch.

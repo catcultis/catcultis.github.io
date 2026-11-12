@@ -1,0 +1,13 @@
+CATCUL V31 — RESPONSIVE REFERENCE LAYOUT
+
+Phone, compact phone and tablet chat lists now follow the supplied mockups: warm cream background, green Catcul wordmark, Chats heading and lime add button, search, All/Unread/Groups, spacious real conversation rows with initials, and a floating four-button bottom bar. Chat content, names, unread state and group membership remain real app data. Desktop avatars and Culji remain available on profiles and in chats; touch-list initials are a visual presentation choice.
+
+Bottom navigation: Chats, Stories, Culife, More. More contains friends, calls, private/archived chats, games, Diary, plans, wallpapers, settings, profile and Admin for eligible accounts. Chat-specific actions remain in the conversation's three-dot menu. Calls on phone/tablet are in that menu. Stories can be viewed or created through the Stories button. Phone/tablet selection opens a full conversation; back returns to the list. Responsive layout applies at widths up to 1200px, including small browser windows. Wider desktop windows retain the original desktop shell.
+
+Previous wallpaper/cursor fixes and the admin layout sketchpad remain included. Draft sketches are browser-local sample layouts; they do not publish changes. Reduced-motion, dark mode, keyboard-safe composer, PWA and custom cursor controls remain.
+
+DEPLOYMENT
+Extract this archive and upload its contents to the root of your GitHub Pages main branch, including the folders and hidden .nojekyll. Do not upload the ZIP itself. Wait for GitHub Actions to successfully build and deploy. This archive cannot fix a GitHub Actions startup error. Reload after deployment for the updated v31 service worker.
+
+TESTING AND LIMITATIONS
+Automated browser tests with mocked account and backend responses verified multiple widths (320 through 1180px, including landscape), list filtering/search, Stories composer entry, More-menu destinations, admin access, opening and backing out of a conversation, desktop shell, and 27 composer/keyboard viewport checks. These tests do not establish real two-person communication, live data sync, performance or appearance on every physical device. Paddle checkout remains unconfigured and purchased gifting remains unimplemented. Third-party games may show ads.

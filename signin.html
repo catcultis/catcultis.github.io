@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="referrer" content="no-referrer">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sign in to Catcul — Good to have you back.</title>
@@ -677,6 +678,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         burstAt(fieldEl,cx,cy,p,combo);
         updateScore();
         if(onPopCb)onPopCb();
+        if(fieldEl.id==='zen-cat-field')window.dispatchEvent(new CustomEvent('catcul:zen-pop'));
         setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),210);},150);
       };
       btn._popCat=popIt;
@@ -849,6 +851,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         +'<span class="boot-eyebrow">CATCUL · CAT BREAK</span>'
         +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
         +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
+        +'<p class="boot-message-text" id="yarn-pop-hint">Signed in? 5 pops earn 1 Yarn, up to 20 Yarn per UTC day.</p>'
         +'<div class="boot-pop-hud">'
         +'<span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">'+totalPopped+'</b> popped</span>'
         +'<span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>'
@@ -1200,6 +1203,11 @@ $('#theme-button')?.addEventListener('click', () => {
 
 const params = new URLSearchParams(location.search);
 const hashParams = new URLSearchParams(location.hash.replace(/^#/, ''));
+const referralParam = params.get('ref') || '';
+if (PAGE_TYPE === 'signup' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(referralParam)) {
+  try { sessionStorage.setItem('catcul.pendingReferral',referralParam); const u=new URL(location.href);u.searchParams.delete('ref');history.replaceState(null,'',u.pathname+u.search+u.hash); } catch {}
+}
+
 const invite = params.get('invite') || sessionStorage.getItem('catcul.pendingInvite') || '';
 if (params.get('invite')) {
   try { sessionStorage.setItem('catcul.pendingInvite', params.get('invite')); } catch {}

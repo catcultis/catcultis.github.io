@@ -416,6 +416,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         burstAt(fieldEl,cx,cy,p,combo);
         updateScore();
         if(onPopCb)onPopCb();
+        if(fieldEl.id==='zen-cat-field')window.dispatchEvent(new CustomEvent('catcul:zen-pop'));
         setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),210);},150);
       };
       btn._popCat=popIt;
@@ -588,6 +589,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         +'<span class="boot-eyebrow">CATCUL · CAT BREAK</span>'
         +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
         +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
+        +'<p class="boot-message-text" id="yarn-pop-hint">Signed in? 5 pops earn 1 Yarn, up to 20 Yarn per UTC day.</p>'
         +'<div class="boot-pop-hud">'
         +'<span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">'+totalPopped+'</b> popped</span>'
         +'<span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>'

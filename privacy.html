@@ -178,6 +178,11 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
           <li><strong>Profile GIF:</strong> if you upload a GIF effect, its image is publicly accessible to anyone who has its link, even if it is no longer selected. Avoid uploading private or sensitive content.</li>
           <li><strong>Account profile:</strong> your email address, encrypted password hash, display name, <code>@username</code>, cat avatar settings, and chosen theme.</li>
           <li><strong>Messages &amp; rooms:</strong> messages, reactions, polls, room drawing strokes, shared files/photos/voice notes, and call metadata in the rooms you join so your history syncs across your laptop and phone.</li>
+          <li><strong>Room extras:</strong> shared music link IDs and optional labels, room-cat outfits, participants and game progress are stored for the room. Trivia answers are hidden until rounds end; the drawing word is hidden from guessers until the round ends; Color Cards hands are restricted to their owner. Drawing strokes and guesses are visible to room members. The memory board is assembled from room messages and reactions; live soundboard reactions are not saved. Activity is optional presence information sent to room members while connected.</li>
+          <li><strong>Watch together:</strong> the video URL, host, room timeline and play/pause state are stored for room members. The complete URL, including any query tokens, is shared with room members. After a person chooses Join video, the third-party video host receives their IP address and may redirect or collect information. Sessions expire after four hours; expired links are scheduled for deletion every five minutes. Reactions are not saved.</li>
+          <li><strong>Referrals:</strong> your referral link and the account IDs and time of successful referrals are stored to deliver rewards and enforce limits. Your invite link identifies you to the service; only share it with people you intend to invite.</li>
+          <li><strong>Yarn rewards:</strong> your balance, earned reward history, capsule inventory and selected capsule wallpaper are saved to your account. The daily chat reward checks whether you sent a message to an accepted friend; it does not need to read the message body.</li>
+          <li><strong>Group check-ins:</strong> answers you submit are stored on the server and revealed to current group members who answer the same UTC-day prompt. They can be changed that day. Answers older than 30 days are removed on a later check-in submission in that group, or when the group or account is deleted. Like room messages they are not end-to-end encrypted.</li>
           <li><strong>Scheduled messages:</strong> a message you deliberately schedule is stored on the server, visible to your account until delivery, and then sent to the selected room. Failed messages can be dismissed; pending ones can be cancelled.</li>
           <li><strong>Personal Diary:</strong> entries saved in Diary Mode are synced privately to your account for convenience across devices (they are access-restricted to your login, not end-to-end encrypted).</li>
         </ul>
@@ -418,6 +423,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         burstAt(fieldEl,cx,cy,p,combo);
         updateScore();
         if(onPopCb)onPopCb();
+        if(fieldEl.id==='zen-cat-field')window.dispatchEvent(new CustomEvent('catcul:zen-pop'));
         setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),210);},150);
       };
       btn._popCat=popIt;
@@ -590,6 +596,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         +'<span class="boot-eyebrow">CATCUL · CAT BREAK</span>'
         +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
         +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
+        +'<p class="boot-message-text" id="yarn-pop-hint">Signed in? 5 pops earn 1 Yarn, up to 20 Yarn per UTC day.</p>'
         +'<div class="boot-pop-hud">'
         +'<span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">'+totalPopped+'</b> popped</span>'
         +'<span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>'

@@ -1,0 +1,20 @@
+CATCUL V30 — PHONE, TABLET & LAYOUT DESIGNER
+
+PHONE AND TABLET
+- More spacious phone chat rows, header, bubbles and message bar; gently animated chat entry and touch feedback (disabled for reduced motion). Phones still show the selected chat rather than the list behind it.
+- On phones, voice and video calls are in the conversation's three-dot menu. On tablets they remain in the chat header.
+- Tablet chat uses a more balanced two-column layout. Keyboard-aware sizing and the existing swipe-back gesture are retained.
+
+ADMIN LAYOUT DESIGNER
+1. Sign in as an administrator; open Admin > Layout designer.
+2. Choose Phone, Compact or Tablet, and Chat list or Conversation.
+3. Drag blocks or select an element and use the move/resize controls. Hide/show blocks, write optional notes, and choose Download image.
+4. Attach the PNG to your message when asking for layout changes. The exported image contains sample content and your notes, not actual messages. Do not put sensitive information in notes.
+
+This is a block-based illustrative mockup tool, not an editor for every individual live control. It does NOT modify or publish the live website. Drafts are stored locally per admin account, device and screen on this browser, may be deleted if browser data is cleared, and do not sync between devices. It is designed to communicate proposed changes.
+
+DEPLOY
+Extract the ZIP; upload its contents into the GitHub Pages repository root on main, preserving folders (icons, models, wallpapers, games). Include the hidden .nojekyll file; if your system hides it, create an empty file named .nojekyll in the repo. Wait for GitHub Actions to successfully build and deploy. The package cannot repair an unrelated GitHub Actions startup failure. Refresh the deployed site for the new service worker version (v30). No server, Node.js or Python is needed to run this static frontend.
+
+VALIDATION & LIMITS
+Automated browser tests used mocked login and database responses. Verified admin tab, drag, resize controls, per-device drafts, hide/show, PNG download, refresh persistence and non-admin guard; checked compact phone and tablet sizing and 27 composer/keyboard viewport scenarios. Real device handling, two-person calls and production deployment were not independently verified. Existing v29 wallpaper/cursor fixes remain. Paddle checkout and purchased gifting remain unconfigured/unimplemented.

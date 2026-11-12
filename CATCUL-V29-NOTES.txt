@@ -1,0 +1,20 @@
+CATCUL V29 — GITHUB PAGES PACKAGE
+
+Wallpaper
+- The all-chats selection is painted directly on the chat column, including the fixed phone chat view. It overrides earlier per-room wallpapers on this browser without deleting the saved room settings; choosing a room wallpaper later can override it for that room.
+- Images are tested before applying. If a new image cannot be loaded, Catcul reports the error and keeps the previous choice. If a saved image becomes unavailable on a later visit, Catcul falls back to its normal background.
+- All-chats settings are local to this browser. Per-room settings are synced for signed-in users. Wallhaven is a third-party service; its images may be unavailable or change, and live search and link lookup depend on the configured backend and network.
+- Removed the Studio Anime themes, bundled generated anime gallery/background art, and the Full Crisp 4K / Solid Color display choices. Wallhaven gallery remains available, with existing access tiers.
+
+Cursor packs
+- Settings > Appearance > Cursor packs offers eight original vector designs and three sizes. Choosing a pack enables the cursor; the floating on/off switch and Settings switch remain available. Preferences are saved in this browser and apply to Catcul pages, not other websites or cross-origin embedded games. Mouse only; touch and forced-colors modes keep native behavior.
+- The artwork is original and only the collection concept is inspired by the third-party cursor extension.
+
+Deploying
+- Extract the ZIP. Upload its contents and folders to the root of your GitHub Pages main branch, not the ZIP itself. Include the hidden .nojekyll file (create it in the repository if your computer hides it). Keep index.html and catcul.html at the root. Keep icons, models, games and wallpapers as folders.
+- Uploading these files does not delete older files in your repository. Delete old wallpapers/anime-*.jpg from the repository if no longer wanted. Existing private/admin setup and SQL files in a public repo are publicly readable; review and remove them, noting that Git history can retain earlier copies.
+- Check Actions for successful Pages deployment. This package cannot fix an unrelated GitHub Actions startup failure. Open the updated live site and reload so the new v29 service worker takes over.
+
+Validation and limits
+- Browser tests used mocked authentication and backend responses for wallpaper selection, room precedence, image failure, mobile chat rendering, cursor selections, size and persistence. Two sample Wallhaven images were also loaded from Wallhaven directly during testing. No real account sync or end-to-end production deployment was tested.
+- Paddle checkout remains unconfigured and purchased gifting remains unimplemented; other pre-existing features retain their previous limitations.

@@ -698,6 +698,17 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   #catcul-cursor, #catcul-cursor-toggle { display: none !important; }
   html.catcul-cursor-active, html.catcul-cursor-active * { cursor: revert !important; }
 }
+
+/* Small original vector packs — no extension assets or external requests. */
+#catcul-cursor .cc-pack-art { display:none; position:absolute; left:-3px; top:-3px; width:28px; height:28px; transform-origin:3px 3px; transform:scale(var(--cc-scale,1)); filter:drop-shadow(0 1px 1px #10201466); }
+#catcul-cursor .cc-pack-art svg {display:block;width:100%;height:100%;}
+#catcul-cursor[data-pack]:not([data-pack="classic"]):not(.cc-text):not(.cc-disabled) :is(.cc-halo,.cc-dot,.cc-symbol) {opacity:0;}
+#catcul-cursor[data-pack]:not([data-pack="classic"]):not(.cc-text):not(.cc-disabled) .cc-pack-art {display:block;}
+#catcul-cursor.cc-control .cc-pack-art { filter:drop-shadow(0 0 3px #d7f472) drop-shadow(0 1px 1px #10201466); }
+#catcul-cursor[data-size="small"] {--cc-scale:.8}
+#catcul-cursor[data-size="large"] {--cc-scale:1.25}
+#catcul-cursor[data-size="small"] .cc-halo {scale:.82}
+#catcul-cursor[data-size="large"] .cc-halo {scale:1.2}
 </style>
 <script id="catcul-cursor-script">
 (() => {
@@ -708,6 +719,20 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   const pointerMedia = matchMedia('(any-hover: hover) and (any-pointer: fine)');
   const contrastMedia = matchMedia('(forced-colors: active)');
   const storageKey = 'catcul.customCursor';
+  const packKey = 'catcul.cursorPack', sizeKey = 'catcul.cursorSize';
+  const packs = {
+    arrow: '<path d="M4 2 5 22l5-5 3 6 4-2-3-6 7-1z" fill="#d7f472" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/>',
+    cat: '<path d="M3 4 5 19l4-4 3 6 3-2-3-6 7-1z" fill="#f7f5e8" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="m13 4 2-3 2 2 3-2 1 4c0 3-2 5-4 5s-4-2-4-6Z" fill="#d7f472" stroke="#25392c" stroke-width="1.6"/><path d="M15 6h.1M19 6h.1" stroke="#25392c" stroke-width="2" stroke-linecap="round"/>',
+    paw: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#d7f472" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><g fill="#25392c"><circle cx="15" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="21" cy="8" r="1.5"/><path d="M15 10q2-4 4 0 2 3-2 3t-2-3"/></g>',
+    star: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#f4ebbc" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="m18 1 1.6 3.6 3.8.4-2.9 2.5.8 3.8-3.3-2-3.2 2 .7-3.8L13 5l3.5-.4Z" fill="#d7f472" stroke="#25392c" stroke-width="1.3" stroke-linejoin="round"/>',
+    heart: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#f7f5e8" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="M18 11c-8-5-4-10-1-7l1 1 1-1c3-3 7 2-1 7Z" fill="#ef9f9d" stroke="#25392c" stroke-width="1.4"/>',
+    leaf: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#f7f5e8" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="M13 10c0-5 4-8 9-8 0 6-3 9-9 8Zm0 0 7-6" fill="#92bd73" stroke="#25392c" stroke-width="1.5"/>',
+    moon: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#e8e6f4" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="M21 2a5 5 0 1 0 2 9c-4 0-5-5-2-9Z" fill="#d7f472" stroke="#25392c" stroke-width="1.4"/>'
+  };
+  let pack = 'classic', size = 'normal';
+  try { pack = localStorage.getItem(packKey) || 'classic'; size = localStorage.getItem(sizeKey) || 'normal'; } catch (_) {}
+  if (pack !== 'classic' && !packs[pack]) pack = 'classic';
+  if (!['small','normal','large'].includes(size)) size = 'normal';
   let enabled = true;
   try { enabled = localStorage.getItem(storageKey) !== 'off'; } catch (_) {}
   let visible = false, dragging = false, x = 0, y = 0, frame = 0;
@@ -715,6 +740,15 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   cursor.id = 'catcul-cursor';
   cursor.setAttribute('aria-hidden', 'true');
   cursor.innerHTML = '<span class="cc-halo"></span><span class="cc-dot"></span><span class="cc-symbol cc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="cc-symbol cc-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><span class="cc-symbol cc-stop"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m6.5 6.5 11 11"/></svg></span><span class="cc-caret"></span>';
+  const art = document.createElement('span'); art.className = 'cc-pack-art'; cursor.append(art);
+  function updatePack() {
+    cursor.dataset.pack = pack; cursor.dataset.size = size;
+    art.innerHTML = pack === 'classic' ? '' : '<svg viewBox="0 0 26 26" aria-hidden="true">' + packs[pack] + '</svg>';
+    document.querySelectorAll('[data-cursor-pack]').forEach(b => { const selected = b.dataset.cursorPack === pack; b.classList.toggle('selected', selected); b.setAttribute('aria-pressed', String(selected)); const t=b.querySelector('small'); if(t)t.textContent=selected?'Selected':'Select pack'; });
+    document.querySelectorAll('[data-cursor-size]').forEach(b => { const selected = b.dataset.cursorSize === size; b.classList.toggle('selected', selected); b.setAttribute('aria-pressed', String(selected)); });
+  }
+  function setPack(value) { if (value !== 'classic' && !packs[value]) return; pack=value; try {localStorage.setItem(packKey,pack)} catch(_) {} updatePack(); }
+  function setSize(value) { if (!['small','normal','large'].includes(value)) return; size=value; try {localStorage.setItem(sizeKey,size)} catch(_) {} updatePack(); }
   const toggle = document.createElement('button');
   toggle.type = 'button'; toggle.id = 'catcul-cursor-toggle';
   toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 10-6 1-3 6L5 3Z"/><path d="m15 16 4 5"/></svg><span class="cc-toggle-label"></span>';
@@ -799,12 +833,16 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     hide();
   }
   // Shared by the chat Settings switch and the button on all four pages.
-  window.CatculCursor = Object.freeze({isEnabled: () => enabled, isSupported: supported, setEnabled});
+  window.CatculCursor = Object.freeze({isEnabled: () => enabled, isSupported: supported, setEnabled, getPack: () => pack, setPack, getSize: () => size, setSize, getPreview: value => value === 'classic' ? '<svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="8" fill="none" stroke="#789b53"/><circle cx="13" cy="13" r="3" fill="#25392c"/></svg>' : (packs[value] ? '<svg viewBox="0 0 26 26">' + packs[value] + '</svg>' : '')});
   toggle.addEventListener('click', event => {
     setEnabled(!enabled);
     if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
   });
   document.addEventListener('click', event => {
+    const packButton = event.target instanceof Element ? event.target.closest('[data-cursor-pack]') : null;
+    if (packButton) { setPack(packButton.dataset.cursorPack); setEnabled(true); }
+    const sizeButton = event.target instanceof Element ? event.target.closest('[data-cursor-size]') : null;
+    if (sizeButton) setSize(sizeButton.dataset.cursorSize);
     const btn = event.target instanceof Element ? event.target.closest('[data-custom-cursor-toggle]') : null;
     if (btn) {
       setEnabled(!enabled);
@@ -815,9 +853,11 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   pointerMedia.addEventListener('change', preferenceChanged);
   contrastMedia.addEventListener('change', preferenceChanged);
   window.addEventListener('storage', event => {
-    if (event.key === storageKey || event.key === null) { enabled = event.newValue !== 'off'; updateToggle(); hide(); }
+    if (event.key === storageKey || event.key === null) { try {enabled=localStorage.getItem(storageKey)!=='off'}catch(_){} updateToggle(); hide(); }
+    if (event.key === packKey || event.key === null) { let value='classic'; try {value=localStorage.getItem(packKey)||'classic'}catch(_){} if(value==='classic'||packs[value]) {pack=value;updatePack()} }
+    if (event.key === sizeKey || event.key === null) { let value='normal';try{value=localStorage.getItem(sizeKey)||'normal'}catch(_){} if(['small','normal','large'].includes(value)){size=value;updatePack()} }
   });
-  updateToggle();
+  updatePack(); updateToggle();
 })();
 
 </script>

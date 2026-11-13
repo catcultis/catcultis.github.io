@@ -12245,8 +12245,8 @@ let catculBilling = {
     currency: 'USD',
     checkout_ready: false,
     plans: [
-      { tier: 'plus', rank: 1, name: 'Catcul+', tagline: 'Extra anime wallpapers and stickers for your space.', monthly_price_display: '$3.99', yearly_price_display: '$39', monthly_ready: false, yearly_ready: false },
-      { tier: 'plusplus', rank: 2, name: 'Catcul++', tagline: '2D face filter camera, background blur, and extra anime themes.', monthly_price_display: '$6.99', yearly_price_display: '$69', monthly_ready: false, yearly_ready: false },
+      { tier: 'plus', rank: 1, name: 'Catcul+', tagline: 'Extra customization and stickers for your space.', monthly_price_display: '$3.99', yearly_price_display: '$39', monthly_ready: false, yearly_ready: false },
+      { tier: 'plusplus', rank: 2, name: 'Catcul++', tagline: '2D face filters, background blur, and more customization.', monthly_price_display: '$6.99', yearly_price_display: '$69', monthly_ready: false, yearly_ready: false },
       { tier: 'premium', rank: 3, name: 'Catcul Premium', tagline: 'Culife posting, video posts, and the full wallpaper gallery.', monthly_price_display: '$11.99', yearly_price_display: '$119', monthly_ready: false, yearly_ready: false },
     ],
   },
@@ -12671,9 +12671,8 @@ async function startPaddleCheckout(tier, interval = catculBilling.intervalChoice
   const prep = await billingApi('prepare_checkout', { tier, interval });
   const Paddle = await loadPaddleJs(prep.environment, prep.client_token);
   Paddle.Checkout.open({
-    items: [{ priceId: prep.price_id, quantity: 1 }],
+    transactionId: prep.transaction_id,
     customer: prep.customer_email ? { email: prep.customer_email } : undefined,
-    customData: prep.custom_data,
     settings: { displayMode: 'overlay', theme: settings.dark ? 'dark' : 'light', locale: 'en' },
   });
 }
@@ -12774,7 +12773,7 @@ function paintPlanChrome() {
 function promptTierUpgrade(requiredTier, featureTitle) {
   const label = TIER_LABELS[requiredTier] || 'Catcul+';
   openModal(`${modalTitle('crown', `Unlock ${featureTitle}`, `Included with ${label} and higher plans.`)}
-    <div class="notice"><strong>${esc(label)}</strong> unlocks <strong>${esc(featureTitle)}</strong>${requiredTier === 'plus' ? ' plus Demon Slayer and Naruto anime wallpapers and the Catcul+ sticker pack.' : requiredTier === 'plusplus' ? ', the 2D face filter camera and additional themes and stickers.' : ', Culife posting, chat video posts, camera filters, and the full wallpaper gallery.'}</div>
+    <div class="notice"><strong>${esc(label)}</strong> unlocks <strong>${esc(featureTitle)}</strong>${requiredTier === 'plus' ? ' plus additional customization and the Catcul+ sticker pack.' : requiredTier === 'plusplus' ? ', the 2D face filter camera and additional themes and stickers.' : ', Culife posting, chat video posts, camera filters, and the full wallpaper gallery.'}</div>
     <div class="row" style="margin-top:16px;gap:10px">
       <button class="btn secondary grow" type="button" data-action="close-modal">Maybe later</button>
       <button class="btn grow" type="button" id="prompt-open-plans">${icon('crown')}See ${esc(label)} plans</button>
@@ -12800,7 +12799,7 @@ function showPlansModal(highlight = '') {
         '1:1 & group chats, voice notes & 25 MiB docs',
         '1:1 & group voice and video calls',
         'Post 24-hour Stories',
-        'Ghibli Meadow, Shinkai Sky & Jujutsu Kaisen 4K themes',
+        'Personalize chats with wallpapers and cursors',
         'Browse Culife 4K',
         'Private Diary & Quick Notes (Alt+N)',
       ],
@@ -12816,7 +12815,7 @@ function showPlansModal(highlight = '') {
         'Everything in Free',
         'Screen sharing, extra themes and illustrated stickers',
         'Supported documents up to 50 MiB (Free: 25 MiB)',
-        'Demon Slayer, Naruto & Spirit Shrine anime themes',
+        'Additional customization options',
         'Catcul+ Sticker Pack (Espresso, Boba, On Cam, Love)',
       ],
     },
@@ -12826,12 +12825,12 @@ function showPlansModal(highlight = '') {
       name: byTier('plusplus').name || 'Catcul++',
       price: cyc === 'year' ? (byTier('plusplus').yearly_price_display || '$69') : (byTier('plusplus').monthly_price_display || '$6.99'),
       sub: cyc === 'year' ? '/ year' : '/ month',
-      tagline: '2D face filter camera, background blur & shonen anime themes.',
+      tagline: '2D face filters, camera effects and more.',
       perks: [
         'Everything in Catcul+',
         '2D Face Filter Camera & Portrait Blur',
-        'Anime studio backdrops & 35mm film color tones',
-        'Solo Leveling, Edgerunners & Graffiti Vigilante 4K themes',
+        'Camera effects and color tones',
+        'More profile customization',
         'Catcul++ Sticker Pack',
       ],
     },
@@ -12847,7 +12846,7 @@ function showPlansModal(highlight = '') {
         'Everything in Catcul+ and Catcul++',
         'Publish 4K UHD snaps & reels to Culife',
         'Send MP4 / WebM videos directly in chats',
-        'One Piece 8K, AoT, Dragon Ball, live Wallhaven search & link paste',
+        'Wallhaven search and wallpaper link paste',
         'Full 16-sticker Vault + Premium profile badge',
       ],
     },
@@ -12863,6 +12862,7 @@ function showPlansModal(highlight = '') {
       <div class="row" style="gap:8px;flex-wrap:wrap">
         <button class="btn secondary" type="button" data-monetize="open-themes"><i class="ri-image-line"></i> Wallpapers &amp; Themes</button>
         ${catculBilling.hasPortal ? `<button class="btn secondary" type="button" id="open-paddle-portal">Manage billing</button>` : ''}
+        ${catculBilling.pricing.checkout_ready && !['active', 'trialing', 'past_due', 'paused'].includes(catculBilling.status) ? `<button class="btn secondary" type="button" id="discard-paddle-checkout">Discard unfinished checkout</button>` : ''}
         <div class="cycle-switch" role="group" aria-label="Billing interval">
           <button type="button" data-cycle="month" class="${cyc === 'month' ? 'active' : ''}">Monthly</button>
           <button type="button" data-cycle="year" class="${cyc === 'year' ? 'active' : ''}">Yearly · Save ~18%</button>
@@ -12873,6 +12873,7 @@ function showPlansModal(highlight = '') {
       ${cards.map((c) => {
         const isCurrent = catculBilling.tier === c.tier;
         const included = curRank > c.rank;
+        const hasExistingSubscription = catculBilling.hasPortal && ['active', 'trialing', 'past_due', 'paused'].includes(catculBilling.status);
         return `<article class="plan-card ${c.featured ? 'featured' : ''} ${isCurrent || highlight === c.tier ? 'current-plan' : ''}">
           ${c.featured ? '<span class="plan-ribbon">All-Access</span>' : ''}
           <h3>${esc(c.name)}</h3>
@@ -12885,6 +12886,8 @@ function showPlansModal(highlight = '') {
               ? `<button class="btn secondary full" type="button" disabled>${catculBilling.isAdmin ? 'Active (Owner)' : 'Current plan'}</button>`
               : included
                 ? `<button class="btn secondary full" type="button" disabled>Included in your tier</button>`
+                : hasExistingSubscription
+                  ? `<button class="btn secondary full" type="button" data-manage-existing>Manage existing subscription</button>`
                 : (!catculBilling.pricing.checkout_ready || !byTier(c.tier)[cyc === 'year' ? 'yearly_ready' : 'monthly_ready'])
                   ? `<button class="btn secondary full" type="button" disabled>Checkout not available yet</button>`
                   : `<button class="btn full" type="button" data-checkout-tier="${c.tier}">Get ${esc(c.name)}</button>`}
@@ -12906,6 +12909,16 @@ function showPlansModal(highlight = '') {
   if ($('#open-paddle-portal')) {
     $('#open-paddle-portal').onclick = () => openCustomerPortal($('#open-paddle-portal'));
   }
+  if ($('#discard-paddle-checkout')) {
+    $('#discard-paddle-checkout').onclick = () => {
+      if (!window.confirm('Discard your unfinished checkout? This does not cancel an existing subscription.')) return;
+      socialTask($('#discard-paddle-checkout'), async () => {
+        await billingApi('cancel_pending_checkout');
+        toast('Unfinished checkout discarded. You can choose a plan again.');
+      });
+    };
+  }
+  $$('[data-manage-existing]').forEach((b) => { b.onclick = () => openCustomerPortal(b); });
 
   // Official Paddle.PricePreview country-localized currency display when Price IDs are configured
   const pubToken = (catculBilling.pricing.client_token || '').trim();

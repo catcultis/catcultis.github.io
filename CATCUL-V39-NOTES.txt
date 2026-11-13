@@ -1,0 +1,13 @@
+CATCUL V39 — SANDBOX BILLING TEST BUILD
+
+This build keeps Catcul's existing social features and updates the Plans screen to open a server-created Paddle transaction. It also offers “Discard unfinished checkout”: the backend checks and cancels the exact unpaid Paddle transaction before allowing another checkout. Closing the overlay alone does not cancel it. Existing subscribers are routed to Manage billing rather than starting another subscription. Plan descriptions no longer advertise removed Studio anime themes.
+
+SANDBOX ONLY. Checkout remains disabled until this frontend is installed and checked. The connected billing function is ACTIVE v17 and contains the prototype the user supplied; signature rejection and an obsolete-intent webhook were checked, but full deployed-code parity and the real checkout lifecycle have not yet been established. Service-only database intent coordination and webhook functions are installed. No real-money/live checkout is enabled or ready. Never enable live payment using sandbox keys or prices.
+
+INSTALL: Extract the zip and upload all files and folders, including .nojekyll, to the root of the catcultis.github.io GitHub Pages repository, replacing existing files. Do not upload Supabase Edge Function source, SQL or secrets. Wait for the GitHub deployment to complete. The PWA cache version is catcul-shell-v39; fully reload and reopen the app if needed.
+
+After upload, tell the assistant so it can verify the live frontend and only then enable sandbox checkout for the designated tester. The sandbox tests must cover opening and discarding an unfinished checkout, retrying, paying, duplicate attempts, subscription activation, and cancellation. An indeterminate checkout may remain locked and require reconciliation; never clear it just because the checkout overlay was closed.
+
+TESTS TO DATE: frontend build/JavaScript syntax; mocked billing concurrency, recovery, cancellation and webhook ordering; rollback-only database transition and privilege tests; a real Paddle sandbox draft transaction created and verified canceled; guest and responsive/browser regression suites; mocked Plans screen opening a transaction and routing existing subscriptions to the portal. These are not a completed real purchase or end-to-end test of deployed v17.
+
+Inherited limitations: guest rooms are isolated temporary bearer-link text rooms; saved chat is a private snapshot. YouTube and Spotify are independent links; direct-video co-watch is approximate. Text reactions play sounds locally and are not injected into call audio. Yarn/game rewards are not cheat-proof. Third-party games may display ads.

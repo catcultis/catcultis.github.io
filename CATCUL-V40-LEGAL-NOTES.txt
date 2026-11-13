@@ -1,0 +1,13 @@
+CATCUL V40 — PUBLIC LEGAL & MARKETING PATCH
+
+This is a SMALL PATCH for the existing v39 GitHub Pages deployment, not a full website archive. Extract the ZIP and upload its included files to the repository root, replacing the existing files; do not delete the other existing files or folders. Include .nojekyll. Wait for the GitHub Pages deployment to complete.
+
+Changes: removes the Eaglercraft card and footnote from the marketing page; replaces named franchise themes in the Catcul++ description with generic existing customization language; adds a public Refund Policy page and links to it from the landing and support/legal pages; bumps the service-worker cache to v40.
+
+The live v39 Terms and Privacy URLs returned HTTP 200 without a login, while refund.html returned 404. In the local v40 build, Terms, Privacy, and Refund pages all return HTTP 200 without cookies or authentication and the landing footer links to each. Live availability of the new refund page cannot be confirmed until this patch is uploaded. Browser-level tests were not run in this workspace because Playwright was unavailable.
+
+The Refund Policy explains how to request refunds via Paddle, links to Paddle's policy, and preserves applicable statutory rights. Review all policies with a qualified lawyer and for accuracy before launch.
+
+IMPORTANT: Marketing-copy changes do not establish rights to third-party artworks, games, names, or other content. The existing signed-in app still contains third-party wallpaper references and Eaglercraft integration. Review/remove or license third-party content before submitting for Paddle approval or making claims of rights clearance.
+
+Paddle approval remains pending. This patch does not enable live billing, change backend configuration, or alter paid checkout.

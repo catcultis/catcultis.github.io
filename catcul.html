@@ -12657,13 +12657,13 @@ async function loadPaddleJs(environment, clientToken) {
 }
 
 async function handleCheckoutCompleted(txnId) {
-  toast('Payment received! Activating your Catcul perks…');
+  toast('Checkout completed. Waiting for subscription confirmation…');
   if (txnId) {
     try { await billingApi('sync', { transaction_id: txnId }); } catch (e) { console.warn('Sync pending webhook:', e); }
   }
   await refreshEntitlements();
   closeModal();
-  toast(`Welcome to ${TIER_LABELS[catculBilling.tier] || 'your new plan'}!`);
+  toast('Subscription confirmation may take a moment. Check Plans for your current access.');
 }
 
 async function startPaddleCheckout(tier, interval = catculBilling.intervalChoice) {

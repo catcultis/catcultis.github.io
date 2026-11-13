@@ -1,0 +1,11 @@
+CATCUL V38 — PADDLE SANDBOX TEST PREPARATION
+
+This frontend builds on v37 and improves the message shown after a Paddle checkout: it no longer assumes that checkout completion immediately activated the plan. It tells the user to check their access while the subscription is confirmed.
+
+The backend billing Edge Function and atomic webhook database routine were deployed separately to the connected Supabase project. A signed synthetic webhook reached the new handler and duplicates were safely acknowledged. Paddle's earlier sandbox customer and sample subscription simulations were delivered to the previous handler; a real sandbox checkout and lifecycle tests are still outstanding. The checkout client token is not yet enabled. Sandbox checkout is restricted to the chosen non-admin test account by the backend and by the public-pricing UI.
+
+Install: extract the entire zip and upload the files and folders, including .nojekyll, to the GitHub Pages repository root. Do not upload the backend SQL, Edge Function source, or secrets to a public repository. GitHub Pages must complete deployment before checkout testing. The PWA cache is catcul-shell-v38.
+
+Local tests: JavaScript syntax check, mock webhook handler/signature checks, database rollback tests for webhook idempotency/order and cancellation, tester UI-isolation rollback check, mock guest browsers and guest host flow, social-feature and responsive regression suite. These tests do not establish a real purchase, renewal, cancellation, portal, or multi-device production correctness. Live payments are not configured.
+
+Inherited limitations: guest rooms are separate, temporary, bearer-link text rooms; saved chat is a private snapshot. YouTube and Spotify are independent links, direct-video co-watch is approximate. Soundboard reactions play locally and are not injected into call audio. Yarn/game rewards are not cheat-proof. Third-party games can show ads.

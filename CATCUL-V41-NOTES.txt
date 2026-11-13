@@ -1,0 +1,9 @@
+CATCUL V41 — COMPLETE WEBSITE RECOVERY
+
+Extract this ZIP. Upload every included file and folder to the root of your existing catcultis.github.io GitHub repository, replacing matching files and preserving games/, wallpapers/, icons/ and models/. Do not upload the ZIP itself as a website file. Leave unrelated repository files in place. .nojekyll can be hidden on your computer; preserve it if it is already in the repository.
+
+Commit the changes and wait for the GitHub Pages deployment to complete. Then tell the assistant, who will compare live files and test the public pages. Reopen installed apps or reload after deployment to pick up service worker v41.
+
+This package merges the complete v39 frontend with all v41 changes. The Eaglercraft launcher is an unavailable page and the two legacy covers are harmless replacement images. The retired cloud games were already disabled and removed from Supabase Storage. Old repository history, browser caches and copies can still exist.
+
+Support and privacy contact: newgruman@outlook.com. Legal review and verification of the remaining third-party rights are still needed. Paddle live approval and configuration remain pending; this frontend package does not enable or approve live billing.

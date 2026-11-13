@@ -154,6 +154,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
    <a href="help.html" class="active">Help Centre</a>
    <a href="terms.html" class="">Terms</a>
    <a href="privacy.html" class="">Privacy</a>
+   <a href="refund.html" class="">Refunds</a>
   </nav>
   <div class="nav-actions">
    <button class="icon-toggle" id="theme-button" type="button" aria-label="Toggle color theme">☾</button>
@@ -168,7 +169,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
   <span class="eyebrow">Catcul Help Centre</span>
   <h1>How can we help?</h1>
   <p>Practical answers on installing the app, getting call alerts on your laptop, replying from notifications, customizing room wallpapers, and managing your account.</p>
-  <div class="doc-meta">Support Guide · Updated November 2026</div>
+  <div class="doc-meta">Support Guide · Catcul</div>
  </section>
  <section class="doc-body">
   
@@ -216,7 +217,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
           <ul>
             <li>Open the <strong>Palette</strong> icon in the left rail (or <em>Chat Tools → Wallpapers &amp; Themes</em>).</li>
             <li>Choose <strong>All chats</strong> to set your default full-screen theme, or <strong>This chat</strong> to customize only the room you currently have open.</li>
-            <li>Catcul Premium unlocks all 10 Studio Anime themes, live 4K Wallhaven anime search, and pasting any <code>wallhaven.cc/w/…</code> link directly.</li>
+            <li>Catcul Premium unlocks live Wallhaven anime search and pasting a <code>wallhaven.cc/w/…</code> link directly.</li>
           </ul>
         </article>
         <article class="doc-card" data-help-item>
@@ -228,6 +229,20 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
           <h2>Draw together, send later &amp; send quietly</h2>
           <p>In a private or group chat, open the <strong>chat menu (⋯)</strong> to find these tools.</p>
           <ul>
+            <li><strong>Group corner:</strong> see your group cat’s level, unlock shared outfits and tricks, and answer the daily UTC check-in. Levels reflect approved text and voice messages plus qualifying completed room games; deleted messages no longer count. Other current members’ answers appear after you answer. Refresh the corner to see new answers or a changed outfit. Try /roll, /8ball followed by a question, /pet, or /throwyarn in chat; rolls and 8-ball replies are device-generated and not verified.</li>
+            <li><strong>Memory board:</strong> find recent pinned messages, top-reacted photos and voice notes in the chat menu. Refresh the board to update it. Only current room members may open it.</li>
+            <li><strong>Typing Race:</strong> start a round from the chat menu and ask other room members to join. It has a 15-second countdown and 60-second race; claim 5 Yarn when at least two people finish (up to four rewards per UTC day). Claim before the next race starts. Typing can be copied or automated, so rankings are for fun, not verified competition.</li>
+            <li><strong>Room Trivia:</strong> join a five-question game. Each round lasts 20 seconds; answers and scores for that round are revealed after it closes. Two people must each answer at least three rounds to claim 5 Yarn, up to four trivia rewards per UTC day.</li>
+            <li><strong>Draw &amp; Guess:</strong> the starter draws a secret word for 90 seconds while others guess. Strokes sync after the drawer lifts their pointer. The drawer and first correct guesser can each claim 5 Yarn after a solve, up to four drawing rewards per UTC day.</li>
+            <li><strong>Color Cards:</strong> two to four players match the top card’s color or number. Drawing one card automatically passes the turn. First to empty their hand wins. This simplified game has number cards only—no special cards. Each participant may claim 5 Yarn after a completed game, up to four card-game rewards per UTC day. The host or room moderator can cancel a game; games expire after 20 minutes.</li>
+            <li><strong>Room-game rewards:</strong> claim before a new match of the same game starts. These games are designed for fun and their rewards are not cheat-proof; people may coordinate, look up answers or automate play.</li>
+            <li><strong>Live reactions and activity:</strong> send ephemeral room reactions over a live connection. Sound is opt-in and plays locally on each listener’s device, not into the call microphone. Activity status sharing is optional and visible to connected room members.</li>
+            <li><strong>Room music links:</strong> add YouTube videos and Spotify tracks to a shared room queue; each member opens a link independently on its original service. This is not synchronized playback or streaming.</li>
+            <li><strong>Guest rooms:</strong> signed-in hosts can create a separate temporary chat from More → Guest rooms or the chat menu. Anyone with the link can join without signup and see that guest room’s history; it does not expose an existing private chat. Rooms expire after 24 hours or when the host closes them; there can be 20 guest sessions and 250 text messages. Updates are polled about every three seconds while the page is open. Guests can open third-party arcade links independently. Before the room closes, choose Save chat &amp; Culji and sign in or sign up in the same tab to keep a private snapshot and the guest look. In More → Guest rooms → My saved guest chats, apply the look or delete the snapshot. The snapshot does not grant room membership or receive later messages. Guest access tokens remain in that tab’s session storage; losing the tab can lose access. Only share links with people you trust.</li>
+            <li><strong>Guest rooms:</strong> the host, guest names, selected Culji look and guest-room messages are stored for the temporary room. A guest’s session capability is held in browser session storage; the database stores hashes of invitation and session capabilities, not the capabilities themselves. Anyone with the invitation can join and see the guest-room history. Rooms stop accepting access when closed or expired; an hourly job is scheduled to delete their data seven days later. Guests who claim a chat save a separate private snapshot to their account until they delete it. Participants can also make their own copies; closing a room cannot erase those copies. Guest chats are not end-to-end encrypted.</li>
+          <li><strong>Watch together:</strong> open a room video using a direct HTTPS MP4 or WebM link you have permission to share. Everyone must choose Join video before their browser contacts the video host. The host controls play, pause and seeking; other people stream individually and synchronization is approximate. A host or room moderator may stop it. Sessions expire after four hours. Floating reactions are ephemeral and need realtime. YouTube, Spotify, streaming pages and DRM are not supported in this player.</li>
+            <li><strong>Invite friends:</strong> in More → Invite friends, share your signup link. A new account that uses it within 24 hours of signup unlocks the animated Friendship Glow skin for both accounts. One referral per new account and 20 successful signups per link per rolling 24 hours; existing accounts and self-referrals are ineligible. This is a cosmetic reward, not Catcul+. Accounts are not identity-verified, so abuse is possible.</li>
+            <li><strong>Yarn &amp; capsules:</strong> open More → Yarn &amp; capsules or use the chat menu. Signed-in Pop Cats breaks earn 1 Yarn per 5 pops, capped at 20 Yarn per UTC day; wait for server confirmation. Send a text or voice note to an accepted friend, then claim daily Yarn to build a UTC-day streak. A 15-Yarn capsule unlocks one random unowned wallpaper, Culji hat, scarf or animated profile frame; wallpapers can be turned off to restore earlier settings. The Friendship Glow skin is an invite reward, not a capsule prize. Pop rewards are client-reported and rate-limited, not cheat-proof.</li>
             <li><strong>Draw together:</strong> draw on a room board saved for its members. Strokes sync after you lift your finger or mouse; any member can clear the board. The board is not available in the public community room.</li>
             <li><strong>Send later:</strong> intentionally save a text and select a time from one minute to 30 days ahead. It sends even if Catcul is closed; the server checks room access again. The scheduler runs about once a minute, and delivery can be delayed by service interruptions. Cancel pending messages in the same panel.</li>
             <li><strong>Send quietly:</strong> send a text without a push alert or sound on updated Catcul devices. It still appears in the chat and unread count; older versions may make a sound while open.</li>
@@ -264,8 +279,10 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
    <a href="index.html">Home</a>
    <a href="#" data-open-download>Download App</a>
    <a href="help.html">Help Centre</a>
+   <a href="mailto:newgruman@outlook.com">Email support</a>
    <a href="terms.html">Terms of Service</a>
    <a href="privacy.html">Privacy Policy</a>
+   <a href="refund.html">Refund Policy</a>
    <a href="signin.html">Sign in</a>
   </div>
  </div>
@@ -463,6 +480,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         burstAt(fieldEl,cx,cy,p,combo);
         updateScore();
         if(onPopCb)onPopCb();
+        if(fieldEl.id==='zen-cat-field')window.dispatchEvent(new CustomEvent('catcul:zen-pop'));
         setTimeout(()=>{btn.remove();if(alive)setTimeout(()=>spawnCat(false),210);},150);
       };
       btn._popCat=popIt;
@@ -635,6 +653,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
         +'<span class="boot-eyebrow">CATCUL · CAT BREAK</span>'
         +'<h3 class="zen-title">Pop a few cats. Breathe out.</h3>'
         +'<p class="boot-message-text">Tap or swipe across floating cats — watch for rare ✨ Golden Crown Cats (+3)!</p>'
+        +'<p class="boot-message-text" id="yarn-pop-hint">Signed in? 5 pops earn 1 Yarn, up to 20 Yarn per UTC day.</p>'
         +'<div class="boot-pop-hud">'
         +'<span class="zen-pop-score boot-pop-score">🐾 <b id="zen-pop-count">'+totalPopped+'</b> popped</span>'
         +'<span class="boot-combo-pill hidden" id="zen-combo-pill">🔥 ×2</span>'
@@ -745,6 +764,17 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   #catcul-cursor, #catcul-cursor-toggle { display: none !important; }
   html.catcul-cursor-active, html.catcul-cursor-active * { cursor: revert !important; }
 }
+
+/* Small original vector packs — no extension assets or external requests. */
+#catcul-cursor .cc-pack-art { display:none; position:absolute; left:-3px; top:-3px; width:28px; height:28px; transform-origin:3px 3px; transform:scale(var(--cc-scale,1)); filter:drop-shadow(0 1px 1px #10201466); }
+#catcul-cursor .cc-pack-art svg {display:block;width:100%;height:100%;}
+#catcul-cursor[data-pack]:not([data-pack="classic"]):not(.cc-text):not(.cc-disabled) :is(.cc-halo,.cc-dot,.cc-symbol) {opacity:0;}
+#catcul-cursor[data-pack]:not([data-pack="classic"]):not(.cc-text):not(.cc-disabled) .cc-pack-art {display:block;}
+#catcul-cursor.cc-control .cc-pack-art { filter:drop-shadow(0 0 3px #d7f472) drop-shadow(0 1px 1px #10201466); }
+#catcul-cursor[data-size="small"] {--cc-scale:.8}
+#catcul-cursor[data-size="large"] {--cc-scale:1.25}
+#catcul-cursor[data-size="small"] .cc-halo {scale:.82}
+#catcul-cursor[data-size="large"] .cc-halo {scale:1.2}
 </style>
 <script id="catcul-cursor-script">
 (() => {
@@ -755,6 +785,20 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   const pointerMedia = matchMedia('(any-hover: hover) and (any-pointer: fine)');
   const contrastMedia = matchMedia('(forced-colors: active)');
   const storageKey = 'catcul.customCursor';
+  const packKey = 'catcul.cursorPack', sizeKey = 'catcul.cursorSize';
+  const packs = {
+    arrow: '<path d="M4 2 5 22l5-5 3 6 4-2-3-6 7-1z" fill="#d7f472" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/>',
+    cat: '<path d="M3 4 5 19l4-4 3 6 3-2-3-6 7-1z" fill="#f7f5e8" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="m13 4 2-3 2 2 3-2 1 4c0 3-2 5-4 5s-4-2-4-6Z" fill="#d7f472" stroke="#25392c" stroke-width="1.6"/><path d="M15 6h.1M19 6h.1" stroke="#25392c" stroke-width="2" stroke-linecap="round"/>',
+    paw: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#d7f472" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><g fill="#25392c"><circle cx="15" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="21" cy="8" r="1.5"/><path d="M15 10q2-4 4 0 2 3-2 3t-2-3"/></g>',
+    star: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#f4ebbc" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="m18 1 1.6 3.6 3.8.4-2.9 2.5.8 3.8-3.3-2-3.2 2 .7-3.8L13 5l3.5-.4Z" fill="#d7f472" stroke="#25392c" stroke-width="1.3" stroke-linejoin="round"/>',
+    heart: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#f7f5e8" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="M18 11c-8-5-4-10-1-7l1 1 1-1c3-3 7 2-1 7Z" fill="#ef9f9d" stroke="#25392c" stroke-width="1.4"/>',
+    leaf: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#f7f5e8" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="M13 10c0-5 4-8 9-8 0 6-3 9-9 8Zm0 0 7-6" fill="#92bd73" stroke="#25392c" stroke-width="1.5"/>',
+    moon: '<path d="M3 3 5 22l5-5 3 6 3-2-3-6 7-1z" fill="#e8e6f4" stroke="#25392c" stroke-width="2" stroke-linejoin="round"/><path d="M21 2a5 5 0 1 0 2 9c-4 0-5-5-2-9Z" fill="#d7f472" stroke="#25392c" stroke-width="1.4"/>'
+  };
+  let pack = 'classic', size = 'normal';
+  try { pack = localStorage.getItem(packKey) || 'classic'; size = localStorage.getItem(sizeKey) || 'normal'; } catch (_) {}
+  if (pack !== 'classic' && !packs[pack]) pack = 'classic';
+  if (!['small','normal','large'].includes(size)) size = 'normal';
   let enabled = true;
   try { enabled = localStorage.getItem(storageKey) !== 'off'; } catch (_) {}
   let visible = false, dragging = false, x = 0, y = 0, frame = 0;
@@ -762,6 +806,15 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   cursor.id = 'catcul-cursor';
   cursor.setAttribute('aria-hidden', 'true');
   cursor.innerHTML = '<span class="cc-halo"></span><span class="cc-dot"></span><span class="cc-symbol cc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="cc-symbol cc-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><span class="cc-symbol cc-stop"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m6.5 6.5 11 11"/></svg></span><span class="cc-caret"></span>';
+  const art = document.createElement('span'); art.className = 'cc-pack-art'; cursor.append(art);
+  function updatePack() {
+    cursor.dataset.pack = pack; cursor.dataset.size = size;
+    art.innerHTML = pack === 'classic' ? '' : '<svg viewBox="0 0 26 26" aria-hidden="true">' + packs[pack] + '</svg>';
+    document.querySelectorAll('[data-cursor-pack]').forEach(b => { const selected = b.dataset.cursorPack === pack; b.classList.toggle('selected', selected); b.setAttribute('aria-pressed', String(selected)); const t=b.querySelector('small'); if(t)t.textContent=selected?'Selected':'Select pack'; });
+    document.querySelectorAll('[data-cursor-size]').forEach(b => { const selected = b.dataset.cursorSize === size; b.classList.toggle('selected', selected); b.setAttribute('aria-pressed', String(selected)); });
+  }
+  function setPack(value) { if (value !== 'classic' && !packs[value]) return; pack=value; try {localStorage.setItem(packKey,pack)} catch(_) {} updatePack(); }
+  function setSize(value) { if (!['small','normal','large'].includes(value)) return; size=value; try {localStorage.setItem(sizeKey,size)} catch(_) {} updatePack(); }
   const toggle = document.createElement('button');
   toggle.type = 'button'; toggle.id = 'catcul-cursor-toggle';
   toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 10-6 1-3 6L5 3Z"/><path d="m15 16 4 5"/></svg><span class="cc-toggle-label"></span>';
@@ -846,12 +899,16 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     hide();
   }
   // Shared by the chat Settings switch and the button on all four pages.
-  window.CatculCursor = Object.freeze({isEnabled: () => enabled, isSupported: supported, setEnabled});
+  window.CatculCursor = Object.freeze({isEnabled: () => enabled, isSupported: supported, setEnabled, getPack: () => pack, setPack, getSize: () => size, setSize, getPreview: value => value === 'classic' ? '<svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="8" fill="none" stroke="#789b53"/><circle cx="13" cy="13" r="3" fill="#25392c"/></svg>' : (packs[value] ? '<svg viewBox="0 0 26 26">' + packs[value] + '</svg>' : '')});
   toggle.addEventListener('click', event => {
     setEnabled(!enabled);
     if (enabled && event.detail > 0) paint({clientX: event.clientX, clientY: event.clientY, pointerType: 'mouse', target: toggle});
   });
   document.addEventListener('click', event => {
+    const packButton = event.target instanceof Element ? event.target.closest('[data-cursor-pack]') : null;
+    if (packButton) { setPack(packButton.dataset.cursorPack); setEnabled(true); }
+    const sizeButton = event.target instanceof Element ? event.target.closest('[data-cursor-size]') : null;
+    if (sizeButton) setSize(sizeButton.dataset.cursorSize);
     const btn = event.target instanceof Element ? event.target.closest('[data-custom-cursor-toggle]') : null;
     if (btn) {
       setEnabled(!enabled);
@@ -862,9 +919,11 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   pointerMedia.addEventListener('change', preferenceChanged);
   contrastMedia.addEventListener('change', preferenceChanged);
   window.addEventListener('storage', event => {
-    if (event.key === storageKey || event.key === null) { enabled = event.newValue !== 'off'; updateToggle(); hide(); }
+    if (event.key === storageKey || event.key === null) { try {enabled=localStorage.getItem(storageKey)!=='off'}catch(_){} updateToggle(); hide(); }
+    if (event.key === packKey || event.key === null) { let value='classic'; try {value=localStorage.getItem(packKey)||'classic'}catch(_){} if(value==='classic'||packs[value]) {pack=value;updatePack()} }
+    if (event.key === sizeKey || event.key === null) { let value='normal';try{value=localStorage.getItem(sizeKey)||'normal'}catch(_){} if(['small','normal','large'].includes(value)){size=value;updatePack()} }
   });
-  updateToggle();
+  updatePack(); updateToggle();
 })();
 
 </script>

@@ -424,6 +424,13 @@ body.dark .field-note.ok{color:#c9ef7b}
  .auth-card,.story-doodle{animation:none!important}
 }
 
+/* hCaptcha: keep the compact security check usable on narrow phones. */
+.captcha-area{margin:14px 0 16px;max-width:100%;}
+.captcha-area .field-note{margin:0 0 8px;}
+.captcha-area .captcha-status{margin-top:6px;}
+.captcha-area iframe{max-width:100%;}
+.captcha-area .secondary-btn{margin:4px 0 0;}
+
 </style>
 <style id="catcul-popcats-css">
 .hidden{display:none!important}
@@ -1022,6 +1029,12 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
        </div>
        <p class="field-note hidden" id="confirm-match-note"></p>
       </div>
+      <div class="captcha-area" id="auth-captcha-area">
+       <p class="field-note">Please complete the security check before continuing.</p>
+       <div id="auth-captcha-widget"></div>
+       <p class="field-note captcha-status" id="auth-captcha-status" role="status" aria-live="polite">Loading security check…</p>
+       <button type="button" class="secondary-btn hidden" id="auth-captcha-retry">Retry security check</button>
+      </div>
       <button class="submit" id="submit-button" type="submit">Make yourself at home →</button>
       <button class="secondary-btn hidden" id="resend-inline" type="button">Resend confirmation email</button>
      </form>
@@ -1049,6 +1062,12 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 
      <div id="recovery-verify-msg" class="auth-message hidden" role="status"></div>
 
+     <div class="captcha-area hidden" id="resend-captcha-area">
+      <p class="field-note">Complete the security check to resend an email.</p>
+      <div id="resend-captcha-widget"></div>
+      <p class="field-note captcha-status" id="resend-captcha-status" role="status" aria-live="polite">Loading security check…</p>
+      <button type="button" class="secondary-btn hidden" id="resend-captcha-retry">Retry security check</button>
+     </div>
      <div class="success-actions">
       <button class="secondary-btn hidden" id="resend-button" type="button">Resend email</button>
       <button class="secondary-btn hidden" id="change-reset-email" type="button">← Try a different email</button>
@@ -1179,6 +1198,79 @@ let pendingEmail = '';
 let pendingKind = ''; // 'confirm' | 'recovery'
 let resendTimer = null;
 let resendSecondsLeft = 0;
+
+// This site key is public. Verification is performed by Supabase using its own secret.
+const HCAPTCHA_SITE_KEY = 'a2ee4d02-4908-458e-865e-3af6f0dad4b4';
+const captchaWidgets = { auth: null, resend: null };
+let captchaScriptLoading = false;
+let captchaLoadTimeout = null;
+function captchaStatus(which, message, retry = false) {
+  const status = $(`#${which}-captcha-status`);
+  if (status) status.textContent = message;
+  $(`#${which}-captcha-retry`)?.classList.toggle('hidden', !retry);
+}
+function renderCaptcha(which) {
+  if (!window.hcaptcha || captchaWidgets[which] !== null) return;
+  const target = $(`#${which}-captcha-widget`);
+  if (!target) return;
+  try {
+    captchaWidgets[which] = window.hcaptcha.render(target, {
+      sitekey: HCAPTCHA_SITE_KEY,
+      size: 'compact',
+      callback: () => captchaStatus(which, 'Security check complete.'),
+      'expired-callback': () => captchaStatus(which, 'Security check expired. Please complete it again.'),
+      'error-callback': () => captchaStatus(which, 'Security check could not load. Please retry.', true),
+    });
+    captchaStatus(which, 'Complete the security check above.');
+  } catch {
+    captchaStatus(which, 'Security check could not load. Please retry.', true);
+  }
+}
+function loadCaptcha() {
+  if (window.hcaptcha) { renderCaptcha('auth'); if (pendingKind) renderCaptcha('resend'); return; }
+  if (captchaScriptLoading) return;
+  captchaScriptLoading = true;
+  document.getElementById('catcul-hcaptcha-script')?.remove();
+  const script = document.createElement('script');
+  script.id = 'catcul-hcaptcha-script';
+  const fail = () => {
+    if (!captchaScriptLoading) return;
+    captchaScriptLoading = false;
+    clearTimeout(captchaLoadTimeout);
+    captchaStatus('auth', 'Security check could not load. Check your connection or content blocker, then retry.', true);
+    captchaStatus('resend', 'Security check could not load. Check your connection or content blocker, then retry.', true);
+  };
+  window.catculCaptchaReady = () => {
+    captchaScriptLoading = false;
+    clearTimeout(captchaLoadTimeout);
+    renderCaptcha('auth');
+    if (pendingKind) renderCaptcha('resend');
+  };
+  script.src = 'https://js.hcaptcha.com/1/api.js?render=explicit&onload=catculCaptchaReady';
+  script.async = true;
+  script.onerror = fail;
+  captchaLoadTimeout = setTimeout(fail, 15000);
+  document.head.appendChild(script);
+}
+function captchaToken(which) {
+  const id = captchaWidgets[which];
+  if (id === null || !window.hcaptcha) return '';
+  try { return window.hcaptcha.getResponse(id) || ''; } catch { return ''; }
+}
+function resetCaptcha(which) {
+  const id = captchaWidgets[which];
+  if (id !== null && window.hcaptcha) {
+    try { window.hcaptcha.reset(id); } catch {}
+    captchaStatus(which, 'Complete the security check above.');
+  }
+}
+for (const which of ['auth', 'resend']) {
+  $(`#${which}-captcha-retry`)?.addEventListener('click', () => {
+    if (window.hcaptcha && captchaWidgets[which] !== null) resetCaptcha(which);
+    else { captchaStatus(which, 'Loading security check…'); loadCaptcha(); }
+  });
+}
+loadCaptcha();
 
 function readStore(key, fallback) {
   try { return JSON.parse(localStorage.getItem('catcul.' + key)) ?? fallback; } catch { return fallback; }
@@ -1388,6 +1480,8 @@ function showSuccess(heading, copy, kind = '') {
   $('#recovery-verify-box')?.classList.toggle('hidden', !isRec);
   $('#change-reset-email')?.classList.toggle('hidden', !isRec);
   $('#resend-button')?.classList.toggle('hidden', !(kind === 'confirm' || isRec));
+  $('#resend-captcha-area')?.classList.toggle('hidden', !(kind === 'confirm' || isRec));
+  if (kind === 'confirm' || isRec) { loadCaptcha(); renderCaptcha('resend'); }
 
   if (isRec) {
     highlightMailShortcut(pendingEmail);
@@ -1409,6 +1503,8 @@ function setMode(next) {
   const isReset = mode === 'reset';
   const isRecovery = mode === 'recovery';
 
+  $('#auth-captcha-area')?.classList.toggle('hidden', isRecovery);
+  resetCaptcha('auth');
   setRecoveryStep(isReset ? 1 : (isRecovery ? 3 : 0));
 
   $('#name-wrap').classList.toggle('hidden', !isSignup);
@@ -1640,12 +1736,20 @@ async function resolveUsernameHint(handle) {
 
 async function resendPendingEmail(button, statusEl) {
   if (!pendingEmail) return;
+  const which = statusEl ? 'resend' : 'auth';
+  const token = captchaToken(which);
+  if (!token) {
+    const message = 'Please complete the security check before resending.';
+    if (statusEl) statusEl.textContent = message; else showMessage(message);
+    loadCaptcha();
+    return;
+  }
   button.disabled = true;
   if (statusEl) statusEl.textContent = 'Sending…';
   try {
     if (pendingKind === 'recovery') {
       const { error } = await client.auth.resetPasswordForEmail(pendingEmail, {
-        redirectTo: recoveryRedirect(),
+        redirectTo: recoveryRedirect(), captchaToken: token,
       });
       if (error) throw error;
       if (statusEl) statusEl.textContent = `Fresh recovery email sent to ${pendingEmail}. Check your inbox and spam folder.`;
@@ -1654,7 +1758,7 @@ async function resendPendingEmail(button, statusEl) {
       const { error } = await client.auth.resend({
         type: 'signup',
         email: pendingEmail,
-        options: { emailRedirectTo: redirectBase('signin.html') || undefined },
+        options: { emailRedirectTo: redirectBase('signin.html') || undefined, captchaToken: token },
       });
       if (error) throw error;
       if (statusEl) statusEl.textContent = `Confirmation email sent again to ${pendingEmail}.`;
@@ -1664,6 +1768,8 @@ async function resendPendingEmail(button, statusEl) {
     if (statusEl) statusEl.textContent = cleanMessage(err);
     else showMessage(cleanMessage(err));
     button.disabled = false;
+  } finally {
+    resetCaptcha(which);
   }
 }
 
@@ -1817,6 +1923,12 @@ $('#auth-form').addEventListener('submit', async (e) => {
   if ((mode === 'signup' || mode === 'recovery') && password !== confirm) return showMessage('Those two passwords don’t match yet.');
   if (mode === 'signin' && !password) return showMessage('Enter your password.');
 
+  const token = mode === 'recovery' ? '' : captchaToken('auth');
+  if (mode !== 'recovery' && !token) {
+    loadCaptcha();
+    return showMessage('Please complete the security check before continuing.');
+  }
+  let sentCaptcha = false;
   const previousLabel = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'Just a moment…';
@@ -1831,10 +1943,12 @@ $('#auth-form').addEventListener('submit', async (e) => {
       }
       savePendingProfile({ email, name, username });
       const emailRedirectTo = redirectBase('signin.html');
+      sentCaptcha = true;
       const { data, error } = await client.auth.signUp({
         email,
         password,
         options: {
+          captchaToken: token,
           data: { display_name: name, username },
           ...(emailRedirectTo ? { emailRedirectTo } : {}),
         },
@@ -1851,7 +1965,8 @@ $('#auth-form').addEventListener('submit', async (e) => {
     }
 
     if (mode === 'signin') {
-      const { data, error } = await client.auth.signInWithPassword({ email, password });
+      sentCaptcha = true;
+      const { data, error } = await client.auth.signInWithPassword({ email, password, options: { captchaToken: token } });
       if (error) {
         if (/email not confirmed/i.test(error.message || '')) {
           pendingEmail = email;
@@ -1866,8 +1981,9 @@ $('#auth-form').addEventListener('submit', async (e) => {
     }
 
     if (mode === 'reset') {
+      sentCaptcha = true;
       const { error } = await client.auth.resetPasswordForEmail(email, {
-        redirectTo: recoveryRedirect(),
+        redirectTo: recoveryRedirect(), captchaToken: token,
       });
       if (error) throw error;
       pendingEmail = email;
@@ -1893,6 +2009,7 @@ $('#auth-form').addEventListener('submit', async (e) => {
   } catch (err) {
     showMessage(cleanMessage(err));
   } finally {
+    if (sentCaptcha) resetCaptcha('auth');
     authSubmitting = false;
     if (!authRedirected) {
       btn.disabled = false;
@@ -1968,13 +2085,13 @@ body.dark #catcul-cursor .cc-caret { background: #dcf783; box-shadow: 0 0 0 1px 
   display: none; align-items: center; justify-content: center;
   width: auto; min-width: 106px; height: 32px; padding: 0 10px; margin: 0; gap: 7px; font: 500 11px/1.2 system-ui, sans-serif; white-space: nowrap;
   border: 1px solid #d6dfc6; border-radius: 10px;
-  background: #f8fbeeeb; color: #799252;
-  box-shadow: 0 2px 9px #273b1810; opacity: .94;
+  background: #f8fbee; color: #38542d;
+  box-shadow: 0 2px 9px #273b1810; opacity: 1;
 }
 #catcul-cursor-toggle:hover, #catcul-cursor-toggle:focus-visible { opacity: 1; background: #e8f5c9; }
 #catcul-cursor-toggle:focus-visible { outline: 3px solid #91a953; outline-offset: 3px; }
 #catcul-cursor-toggle svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-#catcul-cursor-toggle[aria-pressed="false"] { color: #8b9383; background: #f1f3ec; }
+#catcul-cursor-toggle[aria-pressed="false"] { color: #465743; background: #f1f3ec; }
 body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-color: #4a5b35; }
 @media (any-hover: hover) and (any-pointer: fine) {
   #catcul-cursor-toggle.cc-toggle-ready { display: flex; }
@@ -2053,7 +2170,11 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     if (navState) navState.textContent = enabled ? 'On' : 'Off';
     document.querySelectorAll('[data-custom-cursor-toggle]').forEach(button => {
       button.classList.toggle('on', enabled);
-      button.setAttribute('aria-checked', String(enabled));
+      if (button.getAttribute('role') === 'switch') {
+        button.setAttribute('aria-checked', String(enabled));
+      } else {
+        button.setAttribute('aria-pressed', String(enabled));
+      }
     });
   }
   function hide() {

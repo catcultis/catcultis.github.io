@@ -1,0 +1,26 @@
+CATCUL V43 — HCAPTCHA + V42 ACCESSIBILITY IMPROVEMENTS
+
+IMPORTANT: hCaptcha is already enabled in the connected Supabase Auth settings, so the old public sign-in/sign-up/reset forms may fail until this patch is deployed. Do not turn off the protection as a shortcut without considering the security tradeoff.
+
+DEPLOYMENT — this is an incremental patch that also includes the earlier v42 improvements.
+1. Extract catcul-v43-hcaptcha-patch.zip.
+2. Upload the 10 HTML files and sw.js to the ROOT of your existing catcultis.github.io repository, replacing files with the same names. The notes file need not be uploaded. Do not delete or replace existing icons/, models/, wallpapers/, or games/ folders.
+3. Commit and wait for GitHub Pages to finish. Ask the assistant to verify the live assets. Reopen installed apps or reload if an old version remains; service worker cache is v43.
+4. On the live catcultis.github.io domain, complete an actual hCaptcha and try your normal sign-in. The assistant's browser tests used a mock challenge; they did not validate your site key against hCaptcha or prove a real challenge passes. If the challenge is blocked, check connectivity/content blockers and any domain allowlist in your hCaptcha dashboard. Do not put your hCaptcha secret into the frontend or chat.
+
+WHAT CHANGED
+- The public hCaptcha site key is embedded in the sign-in/sign-up page. Visible compact challenges produce a fresh token for signup, sign-in, password-reset emails and confirmation/reset resend requests. They reset after use; load failure and retry are displayed. Password updates and verified recovery links continue without an extra captcha. Supabase remains responsible for verifying tokens using its server-side secret.
+- Privacy notice now identifies hCaptcha as a provider, and prior v42 privacy/contrast/cursor accessibility improvements are included. Core app/social/billing logic is unchanged; Paddle live remains guarded.
+
+RECOVERY EMAIL NOTE
+Supabase currently reports the recovery email template as the default link-only template. The frontend can accept either a recovery code or link, but the current template doesn't include a visible code. If you want both, in Supabase Dashboard > Authentication > Email Templates > Reset Password, include both {{ .Token }} and {{ .ConfirmationURL }} in the template, then save. For example:
+<h2>Reset your Catcul password</h2>
+<p>Your recovery code is: <strong>{{ .Token }}</strong></p>
+<p>Or <a href="{{ .ConfirmationURL }}">reset your password using this link</a>.</p>
+<p>If you did not request this, you can ignore this email.</p>
+This template change is not included in the frontend ZIP and has not been made by the assistant. Link and code delivery, rate limits, and recovery should be verified on the real configured project.
+
+TESTS
+Mocked Chromium tests: signup/sign-in/reset requests are blocked until challenge completion, correct Supabase request token is sent, challenges reset after use, reset-email resend uses a fresh token, and network failures show retry. Desktop/mobile legal pages, responsive layout, arcade/guest regression, and frontend billing test passed with mocks. No real hCaptcha verification, real sign-in, real email or full end-to-end recovery was tested, and no sandbox payment tests were run.
+
+Legal/privacy and third-party licensing review remains open; the policy is not certified. Other browsers or content blockers may affect hCaptcha availability. The public site key is not the secret key.

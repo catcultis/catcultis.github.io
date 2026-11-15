@@ -1,5 +1,5 @@
 /* Catcul Service Worker — offline shell cache, background call & message push, and laptop inline notification replies. */
-const CACHE = 'catcul-shell-v41';
+const CACHE = 'catcul-shell-v42';
 const SHELL = [
   './',
   './index.html',
@@ -14,7 +14,11 @@ const SHELL = [
   './refund.html',
   './manifest.json',
   './icons/catcul-192.png',
-  './icons/catcul-512.png'
+  './icons/catcul-512.png',
+  './vendor/supabase-js.min.js',
+  './vendor/livekit-client.js',
+  './vendor/leaflet-1.9.4.js',
+  './vendor/culji3d.bundle.js'
 ];
 
 self.addEventListener('install', event => {
@@ -46,7 +50,7 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
-  if (url.pathname.includes('/wallpapers/')) {
+  if (url.pathname.includes('/wallpapers/') || url.pathname.includes('/vendor/')) {
     event.respondWith(
       caches.match(req).then(cached => cached || fetch(req).then(res => {
         if (res.ok) {

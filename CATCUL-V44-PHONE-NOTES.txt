@@ -1,0 +1,9 @@
+CATCUL v44 — phone reference layout
+
+Upload catcul.html and sw.js to the root of your Catcul GitHub Pages site, replacing the existing files. Keep your other files and asset folders. Wait for the deployment to finish, then refresh/reopen Catcul; an installed PWA may need to be closed and reopened to pick up the new service worker.
+
+At phone widths up to 650px: compact blue chats/friends list with search and filters; a full-screen camera using the existing Catcul camera, lenses and capture; a purple Discover header and two-column grid populated by real Spotlight posts; and a More button for existing spaces and settings. The camera is requested when its button is tapped, and its media tracks stop on exit or when the page is hidden. The screenshot .work/phone-friends.png is an automated local test with fictitious names, not a live account. Discover can be empty when there are no posts. The existing camera may request permission and require HTTPS on an actual phone. This is based on the supplied visual reference, not an assertion of pixel-perfect matching on every device.
+
+At wider tablet and desktop widths the previous layout remains. Automated checks used a fake Supabase service, sample accounts, and a fake camera, on three phone widths; they do not verify real-device permissions, lenses, publishing, calls or live sign-in.
+
+Signup domain restrictions, five-month cooldown/appeals, optional email change and verification codes are NOT included in this release and are not active. Brevo/email delivery must be set up before enabling mandatory signup verification. Do not enable it prematurely or assume Outlook/abc.sch.ng accounts can access an old mailbox. The existing authentication configuration was not changed by this phone update.

@@ -3182,6 +3182,49 @@ body.dark .yarn-actions>div,body.dark .yarn-capsule{background:#253027;border-co
 #draw-game-root [hidden]{display:none!important}.draw-game-word{font-weight:800;font-size:18px;margin:10px 0;letter-spacing:.02em}.draw-game-guess-row{display:flex;gap:8px;margin:8px 0}.draw-game-guess-row input{flex:1;min-width:0}.draw-game-guesses{max-height:140px;overflow:auto;display:grid;gap:4px;margin:10px 0;overflow-wrap:anywhere}#draw-game-canvas-wrap .drawing-toolbar{margin:8px 0}
 #color-cards-root [hidden]{display:none!important}.color-card-table{display:flex;align-items:center;gap:16px;border-radius:18px;padding:14px;background:#e9f2df}.color-card-table small{color:#627760;font-weight:700}.color-card-hand{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.color-card{width:62px;height:88px;border:2px solid #233c2c;border-radius:13px;display:grid;place-items:center;font-size:29px;font-weight:900;color:#193120;box-shadow:0 4px 0 #233c2c;cursor:default}.color-card-hand button{cursor:pointer}.color-card-hand button:not(:disabled):hover{transform:translateY(-4px)}.color-card-hand button:disabled{opacity:.45;box-shadow:none}.card-lime{background:#cce978}.card-coral{background:#f3a69c}.card-sky{background:#9cd6ec}.card-gold{background:#f6d879}body.dark .color-card-table{background:#2d3b2a}body.dark .color-card-table small{color:#d3e1c9}@media(max-width:420px){.color-card{width:54px;height:76px;font-size:24px}.color-card-table{gap:10px}}
 #cowatch-root [hidden]{display:none!important}.cowatch-url{display:grid;gap:3px;padding:10px 12px;background:#e9f1e3;border-radius:12px;overflow-wrap:anywhere;font-size:.83rem}.cowatch-stage{position:relative;aspect-ratio:16/9;background:#17251b;border-radius:16px;overflow:hidden;margin:12px 0}.cowatch-stage video{display:block;width:100%;height:100%;object-fit:contain}.cowatch-reactions{position:absolute;bottom:9px;right:9px;display:flex;gap:5px}.cowatch-reactions button{border:1px solid #d5e4c9;border-radius:50%;background:#fffdf2dd;font-size:18px;width:38px;height:38px;cursor:pointer}.cowatch-float{position:absolute;left:55%;bottom:50px;font-size:35px;pointer-events:none;animation:cowatch-float 1.9s ease-out forwards;text-shadow:0 2px 6px #0008}@keyframes cowatch-float{0%{opacity:0;transform:translateY(0) scale(.7)}15%{opacity:1}100%{opacity:0;transform:translateY(-110px) rotate(12deg) scale(1.2)}}.cowatch-local,.cowatch-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}.cowatch-controls label{flex:1;min-width:130px}.cowatch-controls input{width:100%}.cowatch-local label{display:flex;align-items:center;gap:8px}.cowatch-local input{width:90px}body.dark .cowatch-url{background:#2b3c2d}@media(prefers-reduced-motion:reduce){.cowatch-float{animation-duration:.1s}}
+/* Phone reference: compact friends, camera stage, and real Discover grid. */
+.phone-reference-nav{display:none}
+@media(max-width:650px){
+ .app>.rail{left:0!important;right:0!important;bottom:0!important;height:58px!important;padding-bottom:env(safe-area-inset-bottom)!important;border:0!important;border-radius:0!important;background:rgba(255,255,255,.97)!important;box-shadow:0 -1px 6px #0002!important;z-index:35!important}
+ .touch-reference-nav{display:none!important}.phone-reference-nav{width:100%;height:100%;display:flex;align-items:center;justify-content:space-around}
+ .phone-reference-nav button{display:flex;align-items:center;justify-content:center;min-width:48px;min-height:44px;color:#8794a0;font-size:21px;line-height:1}
+ .phone-reference-nav button.active{color:#3d9bd8}.phone-reference-nav button:focus-visible{outline:3px solid #184f74;outline-offset:-3px}
+ .phone-reference-nav .phone-capture-nav span{width:38px;height:38px;border:2px solid #aab8bf;border-radius:50%;display:block}
+ .phone-reference-nav .phone-capture-nav.active span{border-color:#419bd3}
+ .app[data-workspace="chat"]>.sidebar{background:#fff!important}
+ .app[data-workspace="chat"] .side-head{padding:0!important;background:#47a7de!important;color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:0;min-height:48px}
+ .app[data-workspace="chat"] .side-head>.row:first-child{display:none!important}
+ .app[data-workspace="chat"] .side-title{margin:0!important;padding:0 8px 0 12px!important;gap:5px;flex:0 0 auto;order:1}
+ .app[data-workspace="chat"] .side-title h1{font-size:16px!important;letter-spacing:0!important;color:#fff!important}
+ .app[data-workspace="chat"] .side-title .new-chat{width:38px!important;height:42px!important;background:transparent!important;color:#fff!important}
+ .app[data-workspace="chat"] .searchbox{order:2;flex:1 1 100px;min-width:80px;height:40px!important;background:transparent!important;border:0!important;padding:0 10px!important;border-radius:0!important}
+ .app[data-workspace="chat"] .searchbox input{color:white!important;font-size:13px!important}.app[data-workspace="chat"] .searchbox input::placeholder{color:#eaf8ff!important}.app[data-workspace="chat"] .searchbox svg{color:#fff!important}.app[data-workspace="chat"] .searchbox kbd{display:none}
+ .app[data-workspace="chat"] .tabs{order:3;flex-basis:100%;background:#f8fbfd!important;margin:0!important;padding:0 8px!important;border-bottom:1px solid #edf0f2}
+ .app[data-workspace="chat"] .tabs button{min-height:34px!important;font-size:11px!important}.app[data-workspace="chat"] .tabs button.active{background:transparent!important;color:#278dcc!important;border-radius:0!important;border-bottom:2px solid #389ddd!important}
+ .app[data-workspace="chat"] .rooms{padding:0 12px calc(66px + env(safe-area-inset-bottom))!important;background:#fff!important}
+ .app[data-workspace="chat"] .room{min-height:60px!important;gap:10px!important;padding:7px 0!important;border-radius:0!important;border-bottom:1px solid #f2f3f4!important}
+ .app[data-workspace="chat"] .room .room-avatar{width:42px!important;height:42px!important;min-width:42px!important}.app[data-workspace="chat"] .room .touch-room-initial{font-size:19px!important}
+ .app[data-workspace="chat"] .room h3{font-size:13px!important;margin-bottom:3px!important}.app[data-workspace="chat"] .room .preview{font-size:11px!important}.app[data-workspace="chat"] .room .time{font-size:10px!important}
+ .app[data-workspace="spotlight"]>#spotlight-view:not(.hidden){height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - 58px - env(safe-area-inset-bottom))!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head{background:#8351a6!important;color:white!important;padding:8px 12px!important;min-height:48px!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2{font-size:18px!important;line-height:1.2!important;letter-spacing:0!important;margin:0!important;color:white!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2{font-size:0!important}.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2::after{content:'Discover';font-size:18px}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy p,.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-eyebrow-row,.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-actions{display:none!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] #culife-snap-dock,.app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-hero{display:none!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-toolbar{padding:6px 8px!important}.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-search-wrap{min-height:36px!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-feed{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:4px!important;padding:4px!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-card{min-width:0!important;border-radius:2px!important;overflow:hidden!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media{height:190px!important;min-height:0!important}.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-body{padding:8px!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-body h3{font-size:13px!important}.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-actions{flex-wrap:wrap!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] .spotlight-head,.app[data-workspace="spotlight"][data-phone-page="camera"] .spotlight-toolbar,.app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-hero,.app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-feed,.app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-more-wrap,.app[data-workspace="spotlight"][data-phone-page="camera"] .culife-culji-companion{display:none!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-scroll{padding:0!important;background:#242a2b!important;overflow:hidden!important;flex:1!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] #culife-snap-dock,.app[data-workspace="spotlight"][data-phone-page="camera"] .culife-snap-stage-inner{display:block!important;width:100%!important;height:100%!important;padding:0!important;margin:0!important;border:0!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] #culife-snap-card{width:100%!important;height:100%!important;min-height:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-cam-live-layer,.app[data-workspace="spotlight"][data-phone-page="camera"] #culife-inline-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-lens-bar{position:absolute!important;bottom:64px!important;left:0!important;right:0!important;z-index:5!important;display:flex!important;justify-content:center!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-card-foot{position:absolute!important;bottom:10px!important;left:10px!important;z-index:5!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-4k-badge{z-index:4!important}
+}
 
 </style>
 <meta name="referrer" content="no-referrer"><style id="catcul-popcats-css">
@@ -3696,7 +3739,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 <a class="brand" href="index.html" aria-label="Catcul home" title="Back to home"><svg><use href="#i-cat"/></svg></a>
 <nav class="rail-nav"><button class="nav-btn active" data-action="chats" data-workspace="chat" aria-pressed="true" title="Chats" aria-label="Chats"><svg><use href="#i-chat"/></svg></button><button class="nav-btn" data-action="gallery" title="Shared photos" aria-label="Shared photos"><svg><use href="#i-photo"/></svg></button><button class="nav-btn" data-action="friends" title="Friends" aria-label="Friends"><svg><use href="#i-people"/></svg><span class="hidden" id="friend-request-count"></span></button><button class="nav-btn" data-action="calls" title="Voice calls" aria-label="Voice calls"><svg><use href="#i-phone"/></svg></button><button class="nav-btn" data-workspace="spotlight" title="Culife" aria-label="Culife" aria-pressed="false"><svg><use href="#i-spark"/></svg></button><button class="nav-btn" data-workspace="arcade" title="Friends Games" aria-label="Friends Games" aria-pressed="false"><svg><use href="#i-gamepad"/></svg></button><button class="nav-btn" data-workspace="diary" title="Diary" aria-label="Diary" aria-pressed="false"><svg><use href="#i-book"/></svg></button><button class="nav-btn hidden" data-workspace="admin" title="Admin" aria-label="Admin" aria-pressed="false"><svg><use href="#i-lock"/></svg></button></nav>
 <div class="rail-bottom"><button class="nav-btn" data-action="plans" title="Plans & Perks" aria-label="Plans & Perks"><svg><use href="#i-crown"/></svg></button><button class="nav-btn" data-action="themes" title="App Themes & Stickers" aria-label="App Themes & Stickers"><svg><use href="#i-palette"/></svg></button><button class="nav-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="nav-btn" data-open-download title="Download Desktop &amp; Phone App" aria-label="Download Desktop and Phone App"><svg><use href="#i-download"/></svg></button><button class="nav-btn" data-action="theme" title="Toggle theme" aria-label="Toggle theme" id="theme-icon"><svg><use href="#i-moon"/></svg></button><button class="nav-btn" data-action="settings" title="Settings" aria-label="Settings"><svg><use href="#i-settings"/></svg></button><button class="mini-avatar my-avatar" data-action="profile" title="Edit your profile" aria-label="Edit your profile"></button></div>
-<nav class="touch-reference-nav" aria-label="Main navigation"><button type="button" class="touch-nav-btn" data-action="chats" data-workspace="chat" aria-label="Chats" title="Chats"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="stories-hub" aria-label="Stories" title="Stories"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h8"/></svg></span></button><button type="button" class="touch-nav-btn" data-workspace="spotlight" aria-label="Culife" title="Culife"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.3 5.2 3 6.8 8 10-5 2-6.7 4.2-8 10-1.3-5.8-3-8-8-10 5-3.2 6.7-4.8 8-10Z" fill="currentColor" stroke="none"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="workspace-menu" aria-label="More spaces and settings" title="More"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 14c1.2 2 4.8 2 6 0"/></svg></span></button></nav></aside>
+<nav class="touch-reference-nav" aria-label="Main navigation"><button type="button" class="touch-nav-btn" data-action="chats" data-workspace="chat" aria-label="Chats" title="Chats"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="stories-hub" aria-label="Stories" title="Stories"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h8"/></svg></span></button><button type="button" class="touch-nav-btn" data-workspace="spotlight" aria-label="Culife" title="Culife"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.3 5.2 3 6.8 8 10-5 2-6.7 4.2-8 10-1.3-5.8-3-8-8-10 5-3.2 6.7-4.8 8-10Z" fill="currentColor" stroke="none"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="workspace-menu" aria-label="More spaces and settings" title="More"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 14c1.2 2 4.8 2 6 0"/></svg></span></button></nav><nav id="phone-reference-nav" class="phone-reference-nav" aria-label="Phone pages"><button type="button" data-phone-page="friends" aria-label="Friends and chats" aria-pressed="true" class="active">☰</button><button type="button" data-phone-page="camera" class="phone-capture-nav" aria-label="Open camera" aria-pressed="false"><span></span></button><button type="button" data-phone-page="discover" aria-label="Discover" aria-pressed="false">▦</button><button type="button" id="phone-reference-more" aria-label="More spaces and settings">•••</button></nav></aside>
 <section id="spotlight-view" class="student-view spotlight-workspace hidden" aria-labelledby="spotlight-heading">
  <header class="student-view-head spotlight-head">
   <div class="spotlight-head-copy">
@@ -17401,7 +17444,10 @@ window.addEventListener('message', (ev) => {
   let culifeSelectedLens = 'none';
   let culifeCuljiRot = 0;
 
+  let culifeCameraGeneration = 0;
+  let culifeCameraStarting = false;
   function stopCulifeInlineCam() {
+    culifeCameraGeneration++;
     if (culifeInlineStream) {
       try { culifeInlineStream.getTracks().forEach((t) => t.stop()); } catch {}
       culifeInlineStream = null;
@@ -17495,10 +17541,13 @@ window.addEventListener('message', (ev) => {
   window.syncCulifeSnapDockAvatar = syncCulifeSnapDockAvatar;
 
   async function startCulifeInlineCamera() {
+    if (culifeInlineStream || culifeCameraStarting) return;
     if (!navigator.mediaDevices?.getUserMedia) {
       if (typeof openCatSnapStudio === 'function') return openCatSnapStudio('spotlight');
       return toast('Camera requires HTTPS or localhost.', true);
     }
+    const generation = culifeCameraGeneration;
+    culifeCameraStarting = true;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
@@ -17508,6 +17557,10 @@ window.addEventListener('message', (ev) => {
         },
         audio: false,
       });
+      if (generation !== culifeCameraGeneration || document.hidden || workspaceMode !== 'spotlight') {
+        stream.getTracks().forEach(t => t.stop());
+        return;
+      }
       culifeInlineStream = stream;
       const vid = $('#culife-inline-video');
       if (vid) {
@@ -17516,8 +17569,12 @@ window.addEventListener('message', (ev) => {
       }
       $('#culife-snap-card')?.classList.add('cam-live');
     } catch {
-      if (typeof openCatSnapStudio === 'function') openCatSnapStudio('spotlight');
-      else toast('Allow camera access or upload a 4K photo below.', true);
+      if (generation === culifeCameraGeneration && workspaceMode === 'spotlight' && !document.hidden) {
+        if (typeof openCatSnapStudio === 'function') openCatSnapStudio('spotlight');
+        else toast('Allow camera access or upload a 4K photo below.', true);
+      }
+    } finally {
+      culifeCameraStarting = false;
     }
   }
 
@@ -18590,6 +18647,52 @@ window.addEventListener('pageshow',e=>{if(e.persisted&&user)reconnect().catch(fa
 document.addEventListener('click',e=>{const b=e.target.closest('[data-auth-mode]');if(b){e.preventDefault();showAuth(b.dataset.authMode);}});
 setInterval(renderTyping,900);
 renderProfile();applyTheme();setEmptyRoom();$('#boot-overlay').classList.remove('hidden');initClient();
+
+
+/* Three-page phone navigation; uses the existing live chat, camera and Spotlight. */
+(() => {
+  const phone = () => matchMedia('(max-width:650px)').matches;
+  const app = () => document.getElementById('app');
+  const bar = () => document.getElementById('phone-reference-nav');
+  function mark(page) {
+    const a=app(); if(!a)return; a.dataset.phonePage=page;
+    bar()?.querySelectorAll('[data-phone-page]').forEach(b=>{
+      const selected=b.dataset.phonePage===page;
+      b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));
+    });
+  }
+  async function choose(page) {
+    if(!phone()||!user||!setupReady)return;
+    if(page!=='camera') window.stopCulifeInlineCam?.();
+    if(page==='friends') {
+      await switchWorkspace('chat');if(workspaceMode!=='chat')return;
+      app()?.classList.remove('mobile-chat');mark('friends');
+    } else {
+      await switchWorkspace('spotlight');if(workspaceMode!=='spotlight')return;
+      mark(page);
+      if(page==='camera') document.getElementById('culife-cam-idle')?.click();
+    }
+  }
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('#phone-reference-nav [data-phone-page]');
+    if(b){choose(b.dataset.phonePage).catch(fail);return;}
+    if(e.target.closest('#phone-reference-more')) {
+      window.stopCulifeInlineCam?.();
+      if(typeof actions==='object') actions['workspace-menu']?.();
+    }
+  });
+  // If other existing controls switch workspaces, do not keep a hidden camera running.
+  const previous=paintWorkspaceModes;
+  paintWorkspaceModes=function(){
+    previous();
+    if(phone() && workspaceMode!=='spotlight') {
+      window.stopCulifeInlineCam?.();
+      mark(workspaceMode==='chat'?'friends':'');
+    }
+  };
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)window.stopCulifeInlineCam?.();});
+  window.addEventListener('resize',()=>{if(!phone())window.stopCulifeInlineCam?.();});
+})();
 
 </script>
 

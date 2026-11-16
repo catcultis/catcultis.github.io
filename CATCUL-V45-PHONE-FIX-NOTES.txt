@@ -1,0 +1,9 @@
+CATCUL V45 — PHONE LAYOUT AND SCROLL FIX
+
+DEPLOY: Extract catcul-v45-phone-fix.zip, then replace catcul.html and sw.js at the root of the existing GitHub Pages site. Keep all other files and folders. Wait for GitHub Pages to finish deploying, then refresh or fully close and reopen the installed app so the new service worker takes over.
+
+This changes the actual narrow-phone layout AND the owner's desktop Admin Phone Mode. The phone uses a compact blue chats header, a scrolling list, bottom Chats / Camera / Discover / More navigation, the existing full-screen camera/lenses, and a two-column Discover grid with real Culife posts. Tapping a tile opens its full post and controls. More contains the other existing spaces and settings. The chat list is deliberately solid white for readability, even when a full-screen wallpaper is selected; wallpaper settings and chat background features are not removed.
+
+The included phone screenshot is from a browser simulation with fictional friends, not live data. Automated tests verified scrolling to the last of 40 simulated chats at 320, 360, 390 and 430 pixels, navigation, the fake camera, selected chat/back, the admin phone frame, Discover tile opening, desktop restoration, and mocked existing auth/arcade/guest/billing flows. Physical phone browsers, actual camera/lens performance, real posts and live account sign-in were not verified.
+
+The email verification, email domain restriction and five-month signup/appeal feature remain unfinished and inactive. V45 does not change Supabase authentication.

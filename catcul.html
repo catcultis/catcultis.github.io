@@ -3183,7 +3183,7 @@ body.dark .yarn-actions>div,body.dark .yarn-capsule{background:#253027;border-co
 #color-cards-root [hidden]{display:none!important}.color-card-table{display:flex;align-items:center;gap:16px;border-radius:18px;padding:14px;background:#e9f2df}.color-card-table small{color:#627760;font-weight:700}.color-card-hand{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.color-card{width:62px;height:88px;border:2px solid #233c2c;border-radius:13px;display:grid;place-items:center;font-size:29px;font-weight:900;color:#193120;box-shadow:0 4px 0 #233c2c;cursor:default}.color-card-hand button{cursor:pointer}.color-card-hand button:not(:disabled):hover{transform:translateY(-4px)}.color-card-hand button:disabled{opacity:.45;box-shadow:none}.card-lime{background:#cce978}.card-coral{background:#f3a69c}.card-sky{background:#9cd6ec}.card-gold{background:#f6d879}body.dark .color-card-table{background:#2d3b2a}body.dark .color-card-table small{color:#d3e1c9}@media(max-width:420px){.color-card{width:54px;height:76px;font-size:24px}.color-card-table{gap:10px}}
 #cowatch-root [hidden]{display:none!important}.cowatch-url{display:grid;gap:3px;padding:10px 12px;background:#e9f1e3;border-radius:12px;overflow-wrap:anywhere;font-size:.83rem}.cowatch-stage{position:relative;aspect-ratio:16/9;background:#17251b;border-radius:16px;overflow:hidden;margin:12px 0}.cowatch-stage video{display:block;width:100%;height:100%;object-fit:contain}.cowatch-reactions{position:absolute;bottom:9px;right:9px;display:flex;gap:5px}.cowatch-reactions button{border:1px solid #d5e4c9;border-radius:50%;background:#fffdf2dd;font-size:18px;width:38px;height:38px;cursor:pointer}.cowatch-float{position:absolute;left:55%;bottom:50px;font-size:35px;pointer-events:none;animation:cowatch-float 1.9s ease-out forwards;text-shadow:0 2px 6px #0008}@keyframes cowatch-float{0%{opacity:0;transform:translateY(0) scale(.7)}15%{opacity:1}100%{opacity:0;transform:translateY(-110px) rotate(12deg) scale(1.2)}}.cowatch-local,.cowatch-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}.cowatch-controls label{flex:1;min-width:130px}.cowatch-controls input{width:100%}.cowatch-local label{display:flex;align-items:center;gap:8px}.cowatch-local input{width:90px}body.dark .cowatch-url{background:#2b3c2d}@media(prefers-reduced-motion:reduce){.cowatch-float{animation-duration:.1s}}
 /* Phone reference: compact friends, camera stage, and real Discover grid. */
-.phone-reference-nav{display:none}
+.phone-reference-nav,.phone-profile{display:none}
 @media(max-width:650px){
  .app>.rail{left:0!important;right:0!important;bottom:0!important;height:58px!important;padding-bottom:env(safe-area-inset-bottom)!important;border:0!important;border-radius:0!important;background:rgba(255,255,255,.97)!important;box-shadow:0 -1px 6px #0002!important;z-index:35!important}
  .touch-reference-nav{display:none!important}.phone-reference-nav{width:100%;height:100%;display:flex;align-items:center;justify-content:space-around}
@@ -3193,7 +3193,7 @@ body.dark .yarn-actions>div,body.dark .yarn-capsule{background:#253027;border-co
  .phone-reference-nav .phone-capture-nav.active span{border-color:#419bd3}
  .app[data-workspace="chat"]>.sidebar{background:#fff!important}
  .app[data-workspace="chat"] .side-head{padding:0!important;background:#47a7de!important;color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:0;min-height:48px}
- .app[data-workspace="chat"] .side-head>.row:first-child{display:none!important}
+ .app[data-workspace="chat"] .side-head>.row:not(.side-title){display:none!important}
  .app[data-workspace="chat"] .side-title{margin:0!important;padding:0 8px 0 12px!important;gap:5px;flex:0 0 auto;order:1}
  .app[data-workspace="chat"] .side-title h1{font-size:16px!important;letter-spacing:0!important;color:#fff!important}
  .app[data-workspace="chat"] .side-title .new-chat{width:38px!important;height:42px!important;background:transparent!important;color:#fff!important}
@@ -3225,6 +3225,245 @@ body.dark .yarn-actions>div,body.dark .yarn-capsule{background:#253027;border-co
  .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-card-foot{position:absolute!important;bottom:10px!important;left:10px!important;z-index:5!important}
  .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-4k-badge{z-index:4!important}
 }
+@media(max-width:650px){
+ /* A solid page instead of the active chat wallpaper. Only the list scrolls. */
+ .app[data-workspace="chat"]>.sidebar{display:flex!important;flex-direction:column!important;height:100%!important;min-height:0!important;overflow:hidden!important;background:#fff!important;background-image:none!important}
+ .app[data-workspace="chat"] .side-head{flex:0 0 auto!important;background:#3d9eda!important;background-image:none!important}
+ .app[data-workspace="chat"] .rooms{display:block!important;flex:1 1 0!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain!important;background:#fff!important;background-image:none!important}
+ .app[data-workspace="chat"] .tabs [data-filter="private"]{display:block!important}
+ .app[data-workspace="chat"] .tabs button.active{flex:1 1 0!important}
+ .app[data-workspace="chat"] .room .room-avatar>:not(.touch-room-initial){display:flex!important}
+ .app[data-workspace="chat"] .room .room-avatar .touch-room-initial{display:none!important}
+ .app[data-workspace="chat"] .room .room-avatar>.mini-avatar{width:100%!important;height:100%!important;border-radius:50%!important}
+ .app[data-workspace="chat"] .room .room-avatar>svg{width:60%;height:60%}
+ .app[data-workspace="chat"] .room h3{color:#242a2c!important}.app[data-workspace="chat"] .room .preview,.app[data-workspace="chat"] .room .time{color:#788892!important}
+ .app[data-workspace="chat"] .tabs button{color:#60717e!important}.app[data-workspace="chat"] .tabs button.active{color:#1686c5!important}
+ .app>.rail{height:64px!important;box-sizing:content-box!important;padding-bottom:env(safe-area-inset-bottom)!important}
+ .phone-reference-nav button{position:relative;flex-direction:column;gap:2px;color:#82909a!important;min-width:55px;padding:2px 4px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+ .phone-reference-nav button:after,.phone-reference-nav button:before{display:none!important}
+ .phone-reference-nav button.active{color:#278ec8!important}
+ .phone-reference-nav svg{display:block!important;width:22px;height:22px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+ .phone-reference-nav small{font-size:9px;font-weight:700;line-height:1}
+ .phone-reference-nav .phone-capture-nav span{width:35px;height:35px;border:2.5px solid #aab7bd;background:#fff!important}
+ .phone-reference-nav .phone-capture-nav.active span{border-color:#ffda2b!important;box-shadow:inset 0 0 0 3px #fff, inset 0 0 0 18px #ffda2b}
+ .app[data-workspace="spotlight"]>#spotlight-view:not(.hidden){height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - 64px - env(safe-area-inset-bottom))!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-scroll{min-height:0!important;flex:1 1 auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head{background:#8652aa!important;background-image:none!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-feed{background:#fff!important}
+ .app[data-workspace="spotlight"][data-phone-page="camera"] .culife-cam-idle{color:#fff!important}
+}
+
+@media(max-width:650px){
+ .app[data-workspace="chat"] .phone-profile{order:0;display:grid!important;place-items:center;width:42px;height:44px;padding:5px;margin-left:3px;flex:0 0 auto}
+ .app[data-workspace="chat"] .phone-profile .my-avatar{display:flex!important;width:32px!important;height:32px!important;border-radius:50%!important;overflow:hidden;background:#fff!important}
+ .app[data-workspace="chat"] .side-title{padding-left:2px!important}
+ .app[data-workspace="chat"] .side-title h1{font-size:14px!important}
+ .app[data-workspace="chat"] .side-title .new-chat{width:34px!important}
+ .app[data-workspace="chat"] .searchbox input{font-size:12px!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"] .sidebar{background:#fff!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"] .side-head .searchbox{background:transparent!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"] .tabs button:not(.active){background:transparent!important}
+ html[data-anime-canvas="1"] .app>.rail{background:#fff!important}
+}
+.phone-discover-open{display:none}
+@media(max-width:650px){
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-card{height:235px!important;position:relative!important;border:0!important;box-shadow:none!important;background:#364044!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media{height:100%!important;width:100%!important;aspect-ratio:auto!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-body,.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media-top,.app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media-bottom{display:none!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open{position:absolute;inset:0;display:flex!important;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:12px;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 65%);color:white!important;z-index:5;border:0;border-radius:0}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open span{font-size:10px;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open strong{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;line-height:1.2;margin-top:4px;text-shadow:0 1px 4px #000}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open:focus-visible{outline:3px solid #ffe500;outline-offset:-3px}
+}
+.phone-discover-add{display:none}
+@media(max-width:650px){
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-add{display:grid!important;place-items:center;color:#fff!important;width:42px;height:42px;flex:none;border:1px solid #fff8;border-radius:50%;font-size:22px;line-height:1}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-toolbar{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:6px!important;padding:7px 8px!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-search-wrap{flex:0 0 36px!important;min-width:0!important;max-width:none!important;width:100%!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-tabs{flex:0 0 auto!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;touch-action:pan-x!important}
+}
+/* Generated from phone responsive rules: framed admin phone at desktop viewport. */
+body.admin-phone-mode #app>.rail{position:fixed!important;left:clamp(16px,5.5vw,50px)!important;right:clamp(16px,5.5vw,50px)!important;bottom:max(16px,env(safe-area-inset-bottom))!important;top:auto!important;width:auto!important;height:clamp(56px,7.6dvh,72px)!important;max-height:none!important;padding:0!important;display:flex!important;z-index:35!important;border:1px solid #dfe8d9!important;border-radius:20px!important;background:#f4f8ef!important;box-shadow:none!important;overflow:visible!important;backdrop-filter:none!important}
+body.admin-phone-mode #app>.rail>.brand,body.admin-phone-mode #app>.rail>.rail-nav,body.admin-phone-mode #app>.rail>.rail-bottom,body.admin-phone-mode #app>.rail>#admin-viewport-rail-btn{display:none!important}
+body.admin-phone-mode .touch-reference-nav{width:100%;height:100%;display:flex;align-items:center;justify-content:space-around;padding:0 clamp(8px,2vw,18px)}
+body.admin-phone-mode .touch-reference-nav .touch-nav-btn{width:56px;height:100%;min-height:44px;display:grid;place-items:center;border-radius:16px;color:#293e2e;padding:0;flex:0 0 auto;touch-action:manipulation}
+body.admin-phone-mode .touch-reference-nav .touch-nav-disc{width:clamp(36px,5.1dvh,48px);height:clamp(36px,5.1dvh,48px);display:grid;place-items:center;background:#e6eee1;border-radius:50%;transition:background-color .18s ease,transform .18s ease}
+body.admin-phone-mode .touch-reference-nav .touch-nav-btn.active .touch-nav-disc{background:#d7f472}
+body.admin-phone-mode .touch-reference-nav svg{width:20px;height:20px;stroke-width:1.9;stroke:currentColor;fill:none}
+body.admin-phone-mode .touch-reference-nav .touch-nav-btn:active .touch-nav-disc{transform:scale(.92)}
+body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{width:100%!important;max-width:none!important;height:100%!important;max-height:none!important;border:0!important;border-radius:0!important;background:#f7f8f2!important;display:flex!important;box-shadow:none!important;overflow:hidden!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-head{flex:0 0 auto!important;padding:clamp(18px,2.7dvh,30px) clamp(22px,5.5vw,52px) 0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-head>.row:first-child{margin:0!important;min-height:20px}
+body.admin-phone-mode #app[data-workspace="chat"] .sidebar-wordmark{font-size:clamp(16px,2.4vw,22px)!important;line-height:1.1!important;font-weight:850!important;color:#5d854d!important;letter-spacing:-.7px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .sidebar-wordmark span{color:inherit!important}
+body.admin-phone-mode #app[data-workspace="chat"] #live-tag,body.admin-phone-mode #app[data-workspace="chat"] #sidebar-plan-pill{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title{margin:clamp(14px,2.3dvh,25px) 0 clamp(14px,2.1dvh,24px)!important;gap:8px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title h1{font-size:clamp(24px,4.2vw,37px)!important;line-height:1.05!important;font-weight:800!important;letter-spacing:-1px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title [data-action="workspace-menu"]{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title .new-chat{display:grid!important;place-items:center!important;width:clamp(42px,5.4dvh,52px)!important;height:clamp(42px,5.4dvh,52px)!important;border-radius:50%!important;background:#d7f472!important;color:#263a2b!important;box-shadow:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title .new-chat svg{width:20px!important;height:20px!important;stroke-width:2.2!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox{height:clamp(48px,6.2dvh,62px)!important;padding:0 15px!important;margin:0!important;border:1px solid #d9e3d4!important;border-radius:17px!important;background:#edf2e8!important;box-shadow:none!important;gap:10px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox input{font-size:clamp(14px,1.9vw,17px)!important;min-width:0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox input::placeholder{color:#83927e;opacity:1}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:0!important;margin:clamp(11px,1.6dvh,17px) 0 0!important;padding:0!important;overflow:visible!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs [data-filter="archived"]:not(.active),body.admin-phone-mode #app[data-workspace="chat"] .tabs [data-filter="private"]{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs [data-filter="private"].active{display:block!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button{flex:1 1 0!important;min-width:0!important;min-height:clamp(40px,4.9dvh,49px)!important;margin:0!important;border:0!important;background:transparent!important;color:#72816e!important;font-size:clamp(12px,1.8vw,15px)!important;font-weight:700!important;text-align:center!important;padding:0!important;border-radius:14px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button.active{color:#273b2b!important;background:#d7f472!important;flex:0 0 19%!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs .count{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .sidebar #stories-strip,body.admin-phone-mode #app[data-workspace="chat"] .best-friends-strip,body.admin-phone-mode #app[data-workspace="chat"] .room-foot,body.admin-phone-mode #app[data-workspace="chat"] .self{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .rooms{flex:1 1 auto!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:thin!important;padding:clamp(5px,.8dvh,9px) clamp(22px,5.5vw,52px) calc(clamp(56px,7.6dvh,72px) + 35px + env(safe-area-inset-bottom))!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room{width:100%!important;min-height:clamp(76px,11.3dvh,120px)!important;margin:0!important;padding:8px 0!important;display:flex!important;gap:clamp(12px,2.4vw,18px)!important;border:0!important;border-radius:16px!important;box-shadow:none!important;background:transparent!important;text-align:left!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room:hover{background:#eef3e8!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room:focus-visible{outline:3px solid #8cab62;outline-offset:-3px}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar{width:clamp(48px,6.2dvh,66px)!important;height:clamp(48px,6.2dvh,66px)!important;min-width:clamp(48px,6.2dvh,66px)!important;border-radius:50%!important;background:#dfecc8!important;border:0!important;box-shadow:none!important;overflow:hidden}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar>:not(.touch-room-initial){display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .touch-room-initial{display:grid!important;place-items:center;width:100%;height:100%;font-weight:800;color:#25392c;font-size:clamp(21px,2.8vw,29px);line-height:1}
+body.admin-phone-mode #app[data-workspace="chat"] .room:nth-child(4n + 2) .room-avatar{background:#f0dfd9!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room:nth-child(4n + 3) .room-avatar{background:#d8e9d9!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room:nth-child(4n) .room-avatar{background:#e5dff0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room h3{max-width:none!important;font-size:clamp(14px,2vw,19px)!important;line-height:1.2!important;font-weight:800!important;margin:0 0 5px!important;color:#263a2d!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .preview{max-width:none!important;color:#7b8a75!important;font-size:clamp(12px,1.7vw,16px)!important;line-height:1.3!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.admin-phone-mode #app[data-workspace="chat"] .room .time{align-self:center!important;flex:0 0 auto!important;color:#899a83!important;font-size:clamp(10px,1.5vw,13px)!important;white-space:nowrap}
+body.admin-phone-mode #app[data-workspace="chat"] .room .unread{position:static!important;align-self:center!important;margin:0 4px!important;background:#d7f472!important;color:#273b2b!important}
+body.admin-phone-mode #app[data-workspace="chat"]:not(.mobile-chat)>.chat{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"].mobile-chat>.sidebar,body.admin-phone-mode #app[data-workspace="chat"].mobile-chat>.rail{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"].mobile-chat>.chat{display:flex!important;position:fixed!important;left:0!important;right:0!important;top:var(--chat-viewport-top,0px)!important;bottom:auto!important;width:100%!important;height:min(100dvh,var(--chat-viewport-height,100dvh))!important;max-height:none!important;border-radius:0!important;z-index:40!important}
+body.admin-phone-mode #app[data-workspace="chat"] .mobile-back{display:flex!important;min-width:42px!important;width:42px!important;height:44px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .chat-head{min-height:72px!important;height:72px!important;padding:10px clamp(12px,3vw,24px)!important;gap:9px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .head-actions #start-call-button,body.admin-phone-mode #app[data-workspace="chat"] .head-actions #start-video-button{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .head-actions [data-action="chat-tools"]{display:flex!important;width:44px!important;height:44px!important;border-radius:15px;background:var(--soft)}
+body.admin-phone-mode #app[data-workspace="chat"] .timeline{padding:20px clamp(14px,3vw,30px)!important;min-height:0!important;overflow:auto!important}
+body.admin-phone-mode #app[data-workspace="chat"] .compose-area{padding:10px clamp(12px,3vw,24px) max(12px,env(safe-area-inset-bottom))!important;flex-shrink:0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .composer{min-height:56px!important;border-radius:24px!important;gap:2px!important;padding:6px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .composer textarea{font-size:16px!important;min-width:0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .composer .icon-btn{width:40px!important;height:40px!important;flex:0 0 40px}
+body.admin-phone-mode #app[data-workspace="chat"] .composer .send{border-radius:50%!important}
+body.admin-phone-mode #app[data-workspace]:not([data-workspace="chat"])>.student-view:not(.hidden){display:flex!important;width:100%!important;height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - clamp(56px,7.6dvh,72px) - 35px - env(safe-area-inset-bottom))!important;max-height:none!important;min-width:0!important;border-radius:0!important;border:0!important}
+body.admin-phone-mode #app[data-workspace]:not([data-workspace="chat"])>.rail{display:flex!important}
+body.admin-phone-mode .touch-stories-strip{display:flex;gap:15px;overflow:auto;padding:14px 0;min-height:110px}
+body.admin-phone-mode .touch-stories-strip .story-ring-btn{flex:0 0 auto}
+body.admin-phone-mode.dark #app[data-workspace="chat"]>.sidebar{background:#151c16!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .sidebar-wordmark{color:#b9d792!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .searchbox{background:#253127!important;border-color:#364a36!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .tabs button{color:#aabca5!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .tabs button.active{background:#c8e97d!important;color:#1a2a1b!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .room h3{color:#eef5e9!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .room .preview{color:#a5b59f!important}
+body.admin-phone-mode.dark #app[data-workspace="chat"] .room:hover{background:#243427!important}
+body.admin-phone-mode.dark #app>.rail{background:#1e2b20!important;border-color:#394d37!important}
+body.admin-phone-mode.dark .touch-reference-nav .touch-nav-disc{background:#344634;color:#deebd7}
+body.admin-phone-mode.dark .touch-reference-nav .touch-nav-btn.active .touch-nav-disc{background:#c8e97d;color:#1a2a1b}
+body.admin-phone-mode #app>.rail{left:0!important;right:0!important;bottom:0!important;height:58px!important;padding-bottom:env(safe-area-inset-bottom)!important;border:0!important;border-radius:0!important;background:rgba(255,255,255,.97)!important;box-shadow:0 -1px 6px #0002!important;z-index:35!important}
+body.admin-phone-mode .touch-reference-nav{display:none!important}
+body.admin-phone-mode .phone-reference-nav{width:100%;height:100%;display:flex;align-items:center;justify-content:space-around}
+body.admin-phone-mode .phone-reference-nav button{display:flex;align-items:center;justify-content:center;min-width:48px;min-height:44px;color:#8794a0;font-size:21px;line-height:1}
+body.admin-phone-mode .phone-reference-nav button.active{color:#3d9bd8}
+body.admin-phone-mode .phone-reference-nav button:focus-visible{outline:3px solid #184f74;outline-offset:-3px}
+body.admin-phone-mode .phone-reference-nav .phone-capture-nav span{width:38px;height:38px;border:2px solid #aab8bf;border-radius:50%;display:block}
+body.admin-phone-mode .phone-reference-nav .phone-capture-nav.active span{border-color:#419bd3}
+body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{background:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-head{padding:0!important;background:#47a7de!important;color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:0;min-height:48px}
+body.admin-phone-mode #app[data-workspace="chat"] .side-head>.row:not(.side-title){display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title{margin:0!important;padding:0 8px 0 12px!important;gap:5px;flex:0 0 auto;order:1}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title h1{font-size:16px!important;letter-spacing:0!important;color:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title .new-chat{width:38px!important;height:42px!important;background:transparent!important;color:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox{order:2;flex:1 1 100px;min-width:80px;height:40px!important;background:transparent!important;border:0!important;padding:0 10px!important;border-radius:0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox input{color:white!important;font-size:13px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox input::placeholder{color:#eaf8ff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox svg{color:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox kbd{display:none}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs{order:3;flex-basis:100%;background:#f8fbfd!important;margin:0!important;padding:0 8px!important;border-bottom:1px solid #edf0f2}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button{min-height:34px!important;font-size:11px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button.active{background:transparent!important;color:#278dcc!important;border-radius:0!important;border-bottom:2px solid #389ddd!important}
+body.admin-phone-mode #app[data-workspace="chat"] .rooms{padding:0 12px calc(66px + env(safe-area-inset-bottom))!important;background:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room{min-height:60px!important;gap:10px!important;padding:7px 0!important;border-radius:0!important;border-bottom:1px solid #f2f3f4!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar{width:42px!important;height:42px!important;min-width:42px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .touch-room-initial{font-size:19px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room h3{font-size:13px!important;margin-bottom:3px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .preview{font-size:11px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .time{font-size:10px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"]>#spotlight-view:not(.hidden){height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - 58px - env(safe-area-inset-bottom))!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head{background:#8351a6!important;color:white!important;padding:8px 12px!important;min-height:48px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2{font-size:18px!important;line-height:1.2!important;letter-spacing:0!important;margin:0!important;color:white!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2{font-size:0!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2::after{content:"Discover";font-size:18px}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy p,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-eyebrow-row,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-actions{display:none!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] #culife-snap-dock,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-hero{display:none!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-toolbar{padding:6px 8px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-search-wrap{min-height:36px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-feed{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:4px!important;padding:4px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-card{min-width:0!important;border-radius:2px!important;overflow:hidden!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media{height:190px!important;min-height:0!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-body{padding:8px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-body h3{font-size:13px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-actions{flex-wrap:wrap!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .spotlight-head,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .spotlight-toolbar,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-hero,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-feed,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-more-wrap,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-culji-companion{display:none!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #spotlight-scroll{padding:0!important;background:#242a2b!important;overflow:hidden!important;flex:1!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #culife-snap-dock,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-snap-stage-inner{display:block!important;width:100%!important;height:100%!important;padding:0!important;margin:0!important;border:0!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #culife-snap-card{width:100%!important;height:100%!important;min-height:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-cam-live-layer,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] #culife-inline-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-lens-bar{position:absolute!important;bottom:64px!important;left:0!important;right:0!important;z-index:5!important;display:flex!important;justify-content:center!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-card-foot{position:absolute!important;bottom:10px!important;left:10px!important;z-index:5!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-4k-badge{z-index:4!important}
+body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{display:flex!important;flex-direction:column!important;height:100%!important;min-height:0!important;overflow:hidden!important;background:#fff!important;background-image:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-head{flex:0 0 auto!important;background:#3d9eda!important;background-image:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .rooms{display:block!important;flex:1 1 0!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain!important;background:#fff!important;background-image:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs [data-filter="private"]{display:block!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button.active{flex:1 1 0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar>:not(.touch-room-initial){display:flex!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar .touch-room-initial{display:none!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar>.mini-avatar{width:100%!important;height:100%!important;border-radius:50%!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar>svg{width:60%;height:60%}
+body.admin-phone-mode #app[data-workspace="chat"] .room h3{color:#242a2c!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .preview,body.admin-phone-mode #app[data-workspace="chat"] .room .time{color:#788892!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button{color:#60717e!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button.active{color:#1686c5!important}
+body.admin-phone-mode #app>.rail{height:64px!important;box-sizing:content-box!important;padding-bottom:env(safe-area-inset-bottom)!important}
+body.admin-phone-mode .phone-reference-nav button{position:relative;flex-direction:column;gap:2px;color:#82909a!important;min-width:55px;padding:2px 4px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+body.admin-phone-mode .phone-reference-nav button:after,body.admin-phone-mode .phone-reference-nav button:before{display:none!important}
+body.admin-phone-mode .phone-reference-nav button.active{color:#278ec8!important}
+body.admin-phone-mode .phone-reference-nav svg{display:block!important;width:22px;height:22px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+body.admin-phone-mode .phone-reference-nav small{font-size:9px;font-weight:700;line-height:1}
+body.admin-phone-mode .phone-reference-nav .phone-capture-nav span{width:35px;height:35px;border:2.5px solid #aab7bd;background:#fff!important}
+body.admin-phone-mode .phone-reference-nav .phone-capture-nav.active span{border-color:#ffda2b!important;box-shadow:inset 0 0 0 3px #fff, inset 0 0 0 18px #ffda2b}
+body.admin-phone-mode #app[data-workspace="spotlight"]>#spotlight-view:not(.hidden){height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - 64px - env(safe-area-inset-bottom))!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-scroll{min-height:0!important;flex:1 1 auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head{background:#8652aa!important;background-image:none!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-feed{background:#fff!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="camera"] .culife-cam-idle{color:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .phone-profile{order:0;display:grid!important;place-items:center;width:42px;height:44px;padding:5px;margin-left:3px;flex:0 0 auto}
+body.admin-phone-mode #app[data-workspace="chat"] .phone-profile .my-avatar{display:flex!important;width:32px!important;height:32px!important;border-radius:50%!important;overflow:hidden;background:#fff!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title{padding-left:2px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title h1{font-size:14px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title .new-chat{width:34px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox input{font-size:12px!important}
+body.admin-phone-mode html[data-anime-canvas="1"] #app[data-workspace="chat"] .sidebar{background:#fff!important}
+body.admin-phone-mode html[data-anime-canvas="1"] #app[data-workspace="chat"] .side-head .searchbox{background:transparent!important}
+body.admin-phone-mode html[data-anime-canvas="1"] #app[data-workspace="chat"] .tabs button:not(.active){background:transparent!important}
+body.admin-phone-mode html[data-anime-canvas="1"] #app>.rail{background:#fff!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-card{height:235px!important;position:relative!important;border:0!important;box-shadow:none!important;background:#364044!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media{height:100%!important;width:100%!important;aspect-ratio:auto!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-body,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media-top,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-media-bottom{display:none!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open{position:absolute;inset:0;display:flex!important;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:12px;background:linear-gradient(0deg,rgba(0,0,0,.82),transparent 65%);color:white!important;z-index:5;border:0;border-radius:0}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open span{font-size:10px;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open strong{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;line-height:1.2;margin-top:4px;text-shadow:0 1px 4px #000}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-open:focus-visible{outline:3px solid #ffe500;outline-offset:-3px}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-add{display:grid!important;place-items:center;color:#fff!important;width:42px;height:42px;flex:none;border:1px solid #fff8;border-radius:50%;font-size:22px;line-height:1}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-toolbar{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:6px!important;padding:7px 8px!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-search-wrap{flex:0 0 36px!important;min-width:0!important;max-width:none!important;width:100%!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-tabs{flex:0 0 auto!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;touch-action:pan-x!important}
+
+body.admin-phone-mode #app>.rail{position:absolute!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:auto!important;height:64px!important;padding:0!important;border:0!important;border-radius:0!important;z-index:50!important;background:white!important}
+body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{height:100%!important;min-height:0!important}
+body.admin-phone-mode #app[data-workspace="chat"].mobile-chat>.chat{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:60!important}
+body.admin-phone-mode #app[data-workspace="spotlight"] #spotlight-view:not(.hidden),body.admin-phone-mode #app[data-workspace="arcade"] #arcade-view:not(.hidden),body.admin-phone-mode #app[data-workspace="diary"] #diary-view:not(.hidden),body.admin-phone-mode #app[data-workspace="admin"] #admin-view:not(.hidden){position:absolute!important;inset:0 0 64px 0!important;width:100%!important;height:auto!important;min-height:0!important;z-index:45!important}
+body.admin-phone-mode #app .phone-reference-nav{display:flex!important}
+body.admin-phone-mode #app .touch-reference-nav,body.admin-phone-mode #app>.rail>.rail-nav,body.admin-phone-mode #app>.rail>.rail-bottom{display:none!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .sidebar{background:#fff!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .side-head .searchbox{background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .tabs button:not(.active){background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app>.rail{background:#fff!important}
 
 </style>
 <meta name="referrer" content="no-referrer"><style id="catcul-popcats-css">
@@ -3739,7 +3978,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 <a class="brand" href="index.html" aria-label="Catcul home" title="Back to home"><svg><use href="#i-cat"/></svg></a>
 <nav class="rail-nav"><button class="nav-btn active" data-action="chats" data-workspace="chat" aria-pressed="true" title="Chats" aria-label="Chats"><svg><use href="#i-chat"/></svg></button><button class="nav-btn" data-action="gallery" title="Shared photos" aria-label="Shared photos"><svg><use href="#i-photo"/></svg></button><button class="nav-btn" data-action="friends" title="Friends" aria-label="Friends"><svg><use href="#i-people"/></svg><span class="hidden" id="friend-request-count"></span></button><button class="nav-btn" data-action="calls" title="Voice calls" aria-label="Voice calls"><svg><use href="#i-phone"/></svg></button><button class="nav-btn" data-workspace="spotlight" title="Culife" aria-label="Culife" aria-pressed="false"><svg><use href="#i-spark"/></svg></button><button class="nav-btn" data-workspace="arcade" title="Friends Games" aria-label="Friends Games" aria-pressed="false"><svg><use href="#i-gamepad"/></svg></button><button class="nav-btn" data-workspace="diary" title="Diary" aria-label="Diary" aria-pressed="false"><svg><use href="#i-book"/></svg></button><button class="nav-btn hidden" data-workspace="admin" title="Admin" aria-label="Admin" aria-pressed="false"><svg><use href="#i-lock"/></svg></button></nav>
 <div class="rail-bottom"><button class="nav-btn" data-action="plans" title="Plans & Perks" aria-label="Plans & Perks"><svg><use href="#i-crown"/></svg></button><button class="nav-btn" data-action="themes" title="App Themes & Stickers" aria-label="App Themes & Stickers"><svg><use href="#i-palette"/></svg></button><button class="nav-btn" data-action="notes" title="Quick notes · Alt+N" aria-label="Quick notes"><svg><use href="#i-pencil"/></svg></button><button class="nav-btn" data-open-download title="Download Desktop &amp; Phone App" aria-label="Download Desktop and Phone App"><svg><use href="#i-download"/></svg></button><button class="nav-btn" data-action="theme" title="Toggle theme" aria-label="Toggle theme" id="theme-icon"><svg><use href="#i-moon"/></svg></button><button class="nav-btn" data-action="settings" title="Settings" aria-label="Settings"><svg><use href="#i-settings"/></svg></button><button class="mini-avatar my-avatar" data-action="profile" title="Edit your profile" aria-label="Edit your profile"></button></div>
-<nav class="touch-reference-nav" aria-label="Main navigation"><button type="button" class="touch-nav-btn" data-action="chats" data-workspace="chat" aria-label="Chats" title="Chats"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="stories-hub" aria-label="Stories" title="Stories"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h8"/></svg></span></button><button type="button" class="touch-nav-btn" data-workspace="spotlight" aria-label="Culife" title="Culife"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.3 5.2 3 6.8 8 10-5 2-6.7 4.2-8 10-1.3-5.8-3-8-8-10 5-3.2 6.7-4.8 8-10Z" fill="currentColor" stroke="none"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="workspace-menu" aria-label="More spaces and settings" title="More"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 14c1.2 2 4.8 2 6 0"/></svg></span></button></nav><nav id="phone-reference-nav" class="phone-reference-nav" aria-label="Phone pages"><button type="button" data-phone-page="friends" aria-label="Friends and chats" aria-pressed="true" class="active">☰</button><button type="button" data-phone-page="camera" class="phone-capture-nav" aria-label="Open camera" aria-pressed="false"><span></span></button><button type="button" data-phone-page="discover" aria-label="Discover" aria-pressed="false">▦</button><button type="button" id="phone-reference-more" aria-label="More spaces and settings">•••</button></nav></aside>
+<nav class="touch-reference-nav" aria-label="Main navigation"><button type="button" class="touch-nav-btn" data-action="chats" data-workspace="chat" aria-label="Chats" title="Chats"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="stories-hub" aria-label="Stories" title="Stories"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h8"/></svg></span></button><button type="button" class="touch-nav-btn" data-workspace="spotlight" aria-label="Culife" title="Culife"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1.3 5.2 3 6.8 8 10-5 2-6.7 4.2-8 10-1.3-5.8-3-8-8-10 5-3.2 6.7-4.8 8-10Z" fill="currentColor" stroke="none"/></svg></span></button><button type="button" class="touch-nav-btn" data-action="workspace-menu" aria-label="More spaces and settings" title="More"><span class="touch-nav-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 14c1.2 2 4.8 2 6 0"/></svg></span></button></nav><nav id="phone-reference-nav" class="phone-reference-nav" aria-label="Phone pages"><button type="button" data-phone-page="friends" aria-label="Friends and chats" aria-pressed="true" class="active"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v11H9l-5 3v-14Z"/><path d="M8 9h8M8 12h6"/></svg><small>Chats</small></button><button type="button" data-phone-page="camera" class="phone-capture-nav" aria-label="Open camera" aria-pressed="false"><span></span><small>Camera</small></button><button type="button" data-phone-page="discover" aria-label="Discover" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg><small>Discover</small></button><button type="button" id="phone-reference-more" aria-label="More spaces and settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><small>More</small></button></nav></aside>
 <section id="spotlight-view" class="student-view spotlight-workspace hidden" aria-labelledby="spotlight-heading">
  <header class="student-view-head spotlight-head">
   <div class="spotlight-head-copy">
@@ -3750,6 +3989,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
    <h2 id="spotlight-heading">Culife · Moments in 4K.</h2>
    <p>Snap with your Culji, share 4K UHD photos &amp; community reels — less scrolling, more us.</p>
   </div>
+  <button type="button" class="phone-discover-add" data-monetize="new-spotlight" aria-label="Create a Culife post">＋</button>
   <div class="spotlight-head-actions">
    <button class="btn secondary spotlight-zen-btn" type="button" id="spotlight-pop-cats-btn" title="Take a 10-second cat bubble pop break">🐾 Pop Cats</button>
    <div class="spotlight-mode-toggle" role="group" aria-label="Culife layout">
@@ -3874,7 +4114,7 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
 </section>
 <section id="admin-view" class="student-view hidden" aria-labelledby="admin-heading"><header class="student-view-head"><div><span class="eyebrow">CATCUL · OWNER WORKSPACE</span><h2 id="admin-heading">Keep good company.</h2><p>A safer, better space for members.</p></div><span class="privacy-chip">👑 Catcul Premium · Owner access</span></header><nav class="admin-tabs" aria-label="Administration sections"><button data-admin-tab="overview" class="active">Overview</button><button data-admin-tab="layout">Layout designer</button><button data-admin-tab="games">🎮 Games &amp; Slots</button><button data-admin-tab="billing">Billing &amp; Plans</button><button data-admin-tab="reports">Reports</button><button data-admin-tab="community">Community</button><button data-admin-tab="nearby">Nearby posts</button><button data-admin-tab="accounts">Accounts</button><button data-admin-tab="audit">Activity log</button></nav><div id="admin-content" class="admin-content" aria-live="polite"></div></section>
 <aside class="sidebar" aria-label="Chat rooms">
-<div class="side-head"><div class="row between"><span class="sidebar-wordmark">catcul<span>.</span></span><span class="live-tag" id="live-tag"><span class="dot"></span><span id="live-label">CONNECTING</span></span></div><div class="row between side-title"><h1>Chats</h1><button class="icon-btn new-chat" data-action="new-room" title="New conversation" aria-label="New conversation"><svg><use href="#i-plus"/></svg></button><button class="icon-btn" data-action="workspace-menu" title="Workspace menu" aria-label="Workspace menu"><svg><use href="#i-more"/></svg></button></div><div class="searchbox"><svg><use href="#i-search"/></svg><input id="room-search" type="search" placeholder="Search your chats" aria-label="Find a conversation"><kbd>⌘ K</kbd></div><div class="tabs"><button class="tab active" data-filter="all">All <span class="count" id="all-count"></span></button><button class="tab" data-filter="unread">Unread <span class="count" id="unread-count"></span></button><button class="tab" data-filter="private">Private</button><button class="tab" data-filter="groups">Groups</button></div></div>
+<div class="side-head"><button type="button" class="phone-profile" data-action="profile" aria-label="Open your profile"><span class="mini-avatar my-avatar"></span></button><div class="row between"><span class="sidebar-wordmark">catcul<span>.</span></span><span class="live-tag" id="live-tag"><span class="dot"></span><span id="live-label">CONNECTING</span></span></div><div class="row between side-title"><h1>Chats</h1><button class="icon-btn new-chat" data-action="new-room" title="New conversation" aria-label="New conversation"><svg><use href="#i-plus"/></svg></button><button class="icon-btn" data-action="workspace-menu" title="Workspace menu" aria-label="Workspace menu"><svg><use href="#i-more"/></svg></button></div><div class="searchbox"><svg><use href="#i-search"/></svg><input id="room-search" type="search" placeholder="Search your chats" aria-label="Find a conversation"><kbd>⌘ K</kbd></div><div class="tabs"><button class="tab active" data-filter="all">All <span class="count" id="all-count"></span></button><button class="tab" data-filter="unread">Unread <span class="count" id="unread-count"></span></button><button class="tab" data-filter="private">Private</button><button class="tab" data-filter="groups">Groups</button></div></div>
 <div class="rooms" id="rooms" aria-label="Conversations"></div>
 <div class="best-friends-strip" id="best-friends-strip"></div><div class="room-foot"><svg style="color:#8a9f68"><use href="#i-spark"/></svg><h3>Good chats start with a hello.</h3><p>A little space for your favorite people.<br>Bring someone along.</p><button class="text-btn" data-action="find-friends">Find a friend <svg><use href="#i-arrow"/></svg></button></div>
 <button class="self" data-action="profile"><span class="mini-avatar my-avatar"></span><span style="text-align:left"><p id="my-name">You</p><small>Account · edit</small></span><span class="icon-btn"><svg><use href="#i-more"/></svg></span></button>
@@ -14959,6 +15199,7 @@ function paintSpotlightFeed() {
           ${soundText ? `<span class="spot-sound-pill">🎵 ${esc(soundText)}</span>` : `<span></span>`}
           <span class="spot-dbltap-hint">Double-tap ❤️</span>
         </div>
+        <button type="button" class="phone-discover-open" data-spot-open-theater="${esc(sp.id)}" aria-label="Open ${esc(sp.title || 'Culife moment')} by ${esc(person.name)}"><span>${esc(person.name)}</span><strong>${esc(sp.title || sp.caption || 'View moment')}</strong></button>
       </div>
       <div class="spotlight-body">
         <div class="spotlight-author">
@@ -18651,7 +18892,7 @@ renderProfile();applyTheme();setEmptyRoom();$('#boot-overlay').classList.remove(
 
 /* Three-page phone navigation; uses the existing live chat, camera and Spotlight. */
 (() => {
-  const phone = () => matchMedia('(max-width:650px)').matches;
+  const phone = () => document.body.classList.contains('admin-phone-mode') || matchMedia('(max-width:650px)').matches;
   const app = () => document.getElementById('app');
   const bar = () => document.getElementById('phone-reference-nav');
   function mark(page) {
@@ -18688,8 +18929,19 @@ renderProfile();applyTheme();setEmptyRoom();$('#boot-overlay').classList.remove(
     if(phone() && workspaceMode!=='spotlight') {
       window.stopCulifeInlineCam?.();
       mark(workspaceMode==='chat'?'friends':'');
+    } else if (phone() && !['camera','discover'].includes(app()?.dataset.phonePage)) {
+      mark('discover');
     }
   };
+  new MutationObserver(() => {
+    if (phone() && user && setupReady) {
+      if (workspaceMode==='spotlight') mark(['camera','discover'].includes(app()?.dataset.phonePage) ? app().dataset.phonePage : 'discover');
+      else mark(workspaceMode==='chat'?'friends':'');
+    } else if (!phone() && app()?.dataset.phonePage === 'camera') {
+      window.stopCulifeInlineCam?.();
+      mark('discover');
+    }
+  }).observe(document.body,{attributes:true,attributeFilter:['class']});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)window.stopCulifeInlineCam?.();});
   window.addEventListener('resize',()=>{if(!phone())window.stopCulifeInlineCam?.();});
 })();

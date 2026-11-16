@@ -3464,6 +3464,178 @@ html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .s
 html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .side-head .searchbox{background:transparent!important}
 html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .tabs button:not(.active){background:transparent!important}
 html[data-anime-canvas="1"] body.admin-phone-mode #app>.rail{background:#fff!important}
+body.admin-tablet-mode #app>.rail{position:fixed!important;left:clamp(16px,5.5vw,50px)!important;right:clamp(16px,5.5vw,50px)!important;bottom:max(16px,env(safe-area-inset-bottom))!important;top:auto!important;width:auto!important;height:clamp(56px,7.6dvh,72px)!important;max-height:none!important;padding:0!important;display:flex!important;z-index:35!important;border:1px solid #dfe8d9!important;border-radius:20px!important;background:#f4f8ef!important;box-shadow:none!important;overflow:visible!important;backdrop-filter:none!important}
+body.admin-tablet-mode #app>.rail>.brand,body.admin-tablet-mode #app>.rail>.rail-nav,body.admin-tablet-mode #app>.rail>.rail-bottom,body.admin-tablet-mode #app>.rail>#admin-viewport-rail-btn{display:none!important}
+body.admin-tablet-mode .touch-reference-nav{width:100%;height:100%;display:flex;align-items:center;justify-content:space-around;padding:0 clamp(8px,2vw,18px)}
+body.admin-tablet-mode .touch-reference-nav .touch-nav-btn{width:56px;height:100%;min-height:44px;display:grid;place-items:center;border-radius:16px;color:#293e2e;padding:0;flex:0 0 auto;touch-action:manipulation}
+body.admin-tablet-mode .touch-reference-nav .touch-nav-disc{width:clamp(36px,5.1dvh,48px);height:clamp(36px,5.1dvh,48px);display:grid;place-items:center;background:#e6eee1;border-radius:50%;transition:background-color .18s ease,transform .18s ease}
+body.admin-tablet-mode .touch-reference-nav .touch-nav-btn.active .touch-nav-disc{background:#d7f472}
+body.admin-tablet-mode .touch-reference-nav svg{width:20px;height:20px;stroke-width:1.9;stroke:currentColor;fill:none}
+body.admin-tablet-mode .touch-reference-nav .touch-nav-btn:active .touch-nav-disc{transform:scale(.92)}
+body.admin-tablet-mode #app[data-workspace="chat"]>.sidebar{width:100%!important;max-width:none!important;height:100%!important;max-height:none!important;border:0!important;border-radius:0!important;background:#f7f8f2!important;display:flex!important;box-shadow:none!important;overflow:hidden!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-head{flex:0 0 auto!important;padding:clamp(18px,2.7dvh,30px) clamp(22px,5.5vw,52px) 0!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-head>.row:first-child{margin:0!important;min-height:20px}
+body.admin-tablet-mode #app[data-workspace="chat"] .sidebar-wordmark{font-size:clamp(16px,2.4vw,22px)!important;line-height:1.1!important;font-weight:850!important;color:#5d854d!important;letter-spacing:-.7px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .sidebar-wordmark span{color:inherit!important}
+body.admin-tablet-mode #app[data-workspace="chat"] #live-tag,body.admin-tablet-mode #app[data-workspace="chat"] #sidebar-plan-pill{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-title{margin:clamp(14px,2.3dvh,25px) 0 clamp(14px,2.1dvh,24px)!important;gap:8px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-title h1{font-size:clamp(24px,4.2vw,37px)!important;line-height:1.05!important;font-weight:800!important;letter-spacing:-1px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-title [data-action="workspace-menu"]{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-title .new-chat{display:grid!important;place-items:center!important;width:clamp(42px,5.4dvh,52px)!important;height:clamp(42px,5.4dvh,52px)!important;border-radius:50%!important;background:#d7f472!important;color:#263a2b!important;box-shadow:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-title .new-chat svg{width:20px!important;height:20px!important;stroke-width:2.2!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .searchbox{height:clamp(48px,6.2dvh,62px)!important;padding:0 15px!important;margin:0!important;border:1px solid #d9e3d4!important;border-radius:17px!important;background:#edf2e8!important;box-shadow:none!important;gap:10px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .searchbox input{font-size:clamp(14px,1.9vw,17px)!important;min-width:0!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .searchbox input::placeholder{color:#83927e;opacity:1}
+body.admin-tablet-mode #app[data-workspace="chat"] .tabs{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:0!important;margin:clamp(11px,1.6dvh,17px) 0 0!important;padding:0!important;overflow:visible!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .tabs [data-filter="archived"]:not(.active),body.admin-tablet-mode #app[data-workspace="chat"] .tabs [data-filter="private"]{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .tabs [data-filter="private"].active{display:block!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .tabs button{flex:1 1 0!important;min-width:0!important;min-height:clamp(40px,4.9dvh,49px)!important;margin:0!important;border:0!important;background:transparent!important;color:#72816e!important;font-size:clamp(12px,1.8vw,15px)!important;font-weight:700!important;text-align:center!important;padding:0!important;border-radius:14px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .tabs button.active{color:#273b2b!important;background:#d7f472!important;flex:0 0 19%!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .tabs .count{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .sidebar #stories-strip,body.admin-tablet-mode #app[data-workspace="chat"] .best-friends-strip,body.admin-tablet-mode #app[data-workspace="chat"] .room-foot,body.admin-tablet-mode #app[data-workspace="chat"] .self{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .rooms{flex:1 1 auto!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:thin!important;padding:clamp(5px,.8dvh,9px) clamp(22px,5.5vw,52px) calc(clamp(56px,7.6dvh,72px) + 35px + env(safe-area-inset-bottom))!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room{width:100%!important;min-height:clamp(76px,11.3dvh,120px)!important;margin:0!important;padding:8px 0!important;display:flex!important;gap:clamp(12px,2.4vw,18px)!important;border:0!important;border-radius:16px!important;box-shadow:none!important;background:transparent!important;text-align:left!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room:hover{background:#eef3e8!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room:focus-visible{outline:3px solid #8cab62;outline-offset:-3px}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .room-avatar{width:clamp(48px,6.2dvh,66px)!important;height:clamp(48px,6.2dvh,66px)!important;min-width:clamp(48px,6.2dvh,66px)!important;border-radius:50%!important;background:#dfecc8!important;border:0!important;box-shadow:none!important;overflow:hidden}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .room-avatar>:not(.touch-room-initial){display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .touch-room-initial{display:grid!important;place-items:center;width:100%;height:100%;font-weight:800;color:#25392c;font-size:clamp(21px,2.8vw,29px);line-height:1}
+body.admin-tablet-mode #app[data-workspace="chat"] .room:nth-child(4n + 2) .room-avatar{background:#f0dfd9!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room:nth-child(4n + 3) .room-avatar{background:#d8e9d9!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room:nth-child(4n) .room-avatar{background:#e5dff0!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room h3{max-width:none!important;font-size:clamp(14px,2vw,19px)!important;line-height:1.2!important;font-weight:800!important;margin:0 0 5px!important;color:#263a2d!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .preview{max-width:none!important;color:#7b8a75!important;font-size:clamp(12px,1.7vw,16px)!important;line-height:1.3!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .time{align-self:center!important;flex:0 0 auto!important;color:#899a83!important;font-size:clamp(10px,1.5vw,13px)!important;white-space:nowrap}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .unread{position:static!important;align-self:center!important;margin:0 4px!important;background:#d7f472!important;color:#273b2b!important}
+body.admin-tablet-mode #app[data-workspace="chat"]:not(.mobile-chat)>.chat{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"].mobile-chat>.sidebar,body.admin-tablet-mode #app[data-workspace="chat"].mobile-chat>.rail{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"].mobile-chat>.chat{display:flex!important;position:fixed!important;left:0!important;right:0!important;top:var(--chat-viewport-top,0px)!important;bottom:auto!important;width:100%!important;height:min(100dvh,var(--chat-viewport-height,100dvh))!important;max-height:none!important;border-radius:0!important;z-index:40!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .mobile-back{display:flex!important;min-width:42px!important;width:42px!important;height:44px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .chat-head{min-height:72px!important;height:72px!important;padding:10px clamp(12px,3vw,24px)!important;gap:9px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .head-actions #start-call-button,body.admin-tablet-mode #app[data-workspace="chat"] .head-actions #start-video-button{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .head-actions [data-action="chat-tools"]{display:flex!important;width:44px!important;height:44px!important;border-radius:15px;background:var(--soft)}
+body.admin-tablet-mode #app[data-workspace="chat"] .timeline{padding:20px clamp(14px,3vw,30px)!important;min-height:0!important;overflow:auto!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .compose-area{padding:10px clamp(12px,3vw,24px) max(12px,env(safe-area-inset-bottom))!important;flex-shrink:0!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .composer{min-height:56px!important;border-radius:24px!important;gap:2px!important;padding:6px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .composer textarea{font-size:16px!important;min-width:0!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .composer .icon-btn{width:40px!important;height:40px!important;flex:0 0 40px}
+body.admin-tablet-mode #app[data-workspace="chat"] .composer .send{border-radius:50%!important}
+body.admin-tablet-mode #app[data-workspace]:not([data-workspace="chat"])>.student-view:not(.hidden){display:flex!important;width:100%!important;height:calc(min(100dvh,var(--chat-viewport-height,100dvh)) - clamp(56px,7.6dvh,72px) - 35px - env(safe-area-inset-bottom))!important;max-height:none!important;min-width:0!important;border-radius:0!important;border:0!important}
+body.admin-tablet-mode #app[data-workspace]:not([data-workspace="chat"])>.rail{display:flex!important}
+body.admin-tablet-mode .touch-stories-strip{display:flex;gap:15px;overflow:auto;padding:14px 0;min-height:110px}
+body.admin-tablet-mode .touch-stories-strip .story-ring-btn{flex:0 0 auto}
+body.admin-tablet-mode.dark #app[data-workspace="chat"]>.sidebar{background:#151c16!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .sidebar-wordmark{color:#b9d792!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .searchbox{background:#253127!important;border-color:#364a36!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .tabs button{color:#aabca5!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .tabs button.active{background:#c8e97d!important;color:#1a2a1b!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .room h3{color:#eef5e9!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .room .preview{color:#a5b59f!important}
+body.admin-tablet-mode.dark #app[data-workspace="chat"] .room:hover{background:#243427!important}
+body.admin-tablet-mode.dark #app>.rail{background:#1e2b20!important;border-color:#394d37!important}
+body.admin-tablet-mode.dark .touch-reference-nav .touch-nav-disc{background:#344634;color:#deebd7}
+body.admin-tablet-mode.dark .touch-reference-nav .touch-nav-btn.active .touch-nav-disc{background:#c8e97d;color:#1a2a1b}
+body.admin-tablet-mode #app>.rail{position:absolute!important;left:clamp(16px,5.5vw,50px)!important;right:clamp(16px,5.5vw,50px)!important;bottom:16px!important;top:auto!important;z-index:50!important}
+body.admin-tablet-mode #app[data-workspace="chat"]>.sidebar{height:100%!important}
+body.admin-tablet-mode #app[data-workspace="chat"].mobile-chat>.chat{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:60!important}
+body.admin-tablet-mode #app[data-workspace]:not([data-workspace="chat"])>.student-view:not(.hidden){position:absolute!important;inset:0 0 90px 0!important;height:auto!important;min-height:0!important}
+body.admin-tablet-mode #app .touch-reference-nav{display:flex!important}
+body.admin-tablet-mode #app .phone-reference-nav,body.admin-tablet-mode #app>.rail>.rail-nav,body.admin-tablet-mode #app>.rail>.rail-bottom{display:none!important}
+body.admin-tablet-mode #app{display:block!important;padding:0!important;position:relative!important;min-height:0!important}
+/* Catcul's playful touch shell. Wallpaper remains visible behind the list, while
+   opaque text surfaces preserve readability over unpredictable user images. */
+@media(max-width:650px){
+ .app[data-workspace="chat"]>.sidebar{background:#f8f9ed!important}
+ .app[data-workspace="chat"] .side-head{background:#c7e785!important;color:#223b29!important;border-radius:0 0 20px 20px!important;box-shadow:0 3px 0 #a9c886!important;padding:4px 5px 0!important}
+ .app[data-workspace="chat"] .side-title h1,.app[data-workspace="chat"] .side-title .new-chat,.app[data-workspace="chat"] .searchbox input,.app[data-workspace="chat"] .searchbox svg{color:#223b29!important}
+ .app[data-workspace="chat"] .searchbox input::placeholder{color:#526d50!important}
+ .app[data-workspace="chat"] .searchbox{background:#f4f9e9!important;border:1px solid #9cbb7f!important;border-radius:18px!important;height:38px!important}
+ .app[data-workspace="chat"] .tabs{border:0!important;background:transparent!important;padding:3px 0 5px!important;gap:3px!important}
+ .app[data-workspace="chat"] .tabs button{border:1px solid transparent!important;border-radius:14px!important;color:#465f43!important;font-weight:800!important}
+ .app[data-workspace="chat"] .tabs button.active{background:#fff9dc!important;border-color:#9fba83!important;color:#2c482a!important;box-shadow:0 2px 0 #9fba83!important}
+ .app[data-workspace="chat"] .rooms{background:transparent!important;padding:10px 10px calc(75px + env(safe-area-inset-bottom))!important}
+ .app[data-workspace="chat"] .room{margin:0 0 7px!important;padding:7px 10px!important;border:1px solid #d5e3c5!important;border-radius:19px!important;background:rgba(255,255,247,.95)!important;box-shadow:0 2px 0 #cadbbf!important}
+ .app[data-workspace="chat"] .room:hover,.app[data-workspace="chat"] .room.selected{background:#f0f8d8!important}
+ .app[data-workspace="chat"] .room .room-avatar{border:2px solid #233f2e!important}
+ .app>.rail{background:#f7fbf0!important;border-top:1px solid #c6d9b9!important;box-shadow:0 -3px 0 #deead3!important}
+ .phone-reference-nav button.active{color:#3c7145!important}.phone-reference-nav .phone-capture-nav span{border-color:#7fa578!important}
+ .phone-reference-nav .phone-capture-nav.active span{border-color:#a8d75c!important;box-shadow:inset 0 0 0 3px #fff, inset 0 0 0 18px #d7f472!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head{background:#a3c99d!important;border-radius:0 0 18px 18px!important;box-shadow:0 3px 0 #86b082!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2,.app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-add{color:#183c27!important;font-family:inherit!important;font-weight:800!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-card{border-radius:15px!important;border:2px solid #304d35!important}
+ .app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-feed{background:transparent!important;gap:7px!important;padding:8px!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"]>.sidebar{background:transparent!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"] .rooms{background:transparent!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"] .side-head .searchbox{background:#f4f9e9!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"] .tabs button:not(.active){background:transparent!important}
+ html[data-anime-canvas="1"] .app>.rail{background:#f7fbf0!important}
+}
+/* Slide the selected chat in on tablet. The lists keep their native vertical scroll. */
+@media(min-width:651px) and (max-width:1200px){
+ .app[data-workspace="chat"].mobile-chat>.chat{animation:catcul-tablet-slide-in .26s cubic-bezier(.2,.8,.2,1) both!important}
+ .app[data-workspace="chat"]:not(.mobile-chat)>.sidebar{animation:catcul-tablet-slide-back .23s cubic-bezier(.2,.8,.2,1) both}
+}
+body.admin-tablet-mode #app[data-workspace="chat"].mobile-chat>.chat{animation:catcul-tablet-slide-in .26s cubic-bezier(.2,.8,.2,1) both!important}
+body.admin-tablet-mode #app[data-workspace="chat"]:not(.mobile-chat)>.sidebar{animation:catcul-tablet-slide-back .23s cubic-bezier(.2,.8,.2,1) both}
+@keyframes catcul-tablet-slide-in{from{opacity:.75;transform:translateX(9%)}to{opacity:1;transform:translateX(0)}}
+@keyframes catcul-tablet-slide-back{from{opacity:.75;transform:translateX(-6%)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.app[data-workspace="chat"]>.chat,.app[data-workspace="chat"]>.sidebar{animation:none!important}}
+.pref-reduced-motion .app[data-workspace="chat"]>.chat,.pref-reduced-motion .app[data-workspace="chat"]>.sidebar{animation:none!important}
+@media(max-width:650px){
+ html .app[data-workspace="chat"] .tabs button.active{border-radius:14px!important}
+}
+@media(min-width:651px) and (max-width:1200px){
+ .app[data-workspace="chat"] .side-title h1{color:#263a2d!important}
+}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-title h1{color:#263a2d!important}
+@media(prefers-reduced-motion:reduce){body.admin-tablet-mode #app[data-workspace="chat"]>.chat,body.admin-tablet-mode #app[data-workspace="chat"]>.sidebar{animation:none!important}}
+.social-tabs{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.social-tabs button{flex:1 0 auto;min-height:44px}
+@media(max-width:650px){.social-person-actions{gap:4px!important}.social-person-actions .icon-btn,.social-person-actions .btn.mini{min-width:44px;min-height:44px}}
+body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{background:#f8f9ed!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-head{background:#c7e785!important;color:#223b29!important;border-radius:0 0 20px 20px!important;box-shadow:0 3px 0 #a9c886!important;padding:4px 5px 0!important}
+body.admin-phone-mode #app[data-workspace="chat"] .side-title h1,body.admin-phone-mode #app[data-workspace="chat"] .side-title .new-chat,body.admin-phone-mode #app[data-workspace="chat"] .searchbox input,body.admin-phone-mode #app[data-workspace="chat"] .searchbox svg{color:#223b29!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox input::placeholder{color:#526d50!important}
+body.admin-phone-mode #app[data-workspace="chat"] .searchbox{background:#f4f9e9!important;border:1px solid #9cbb7f!important;border-radius:18px!important;height:38px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs{border:0!important;background:transparent!important;padding:3px 0 5px!important;gap:3px!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button{border:1px solid transparent!important;border-radius:14px!important;color:#465f43!important;font-weight:800!important}
+body.admin-phone-mode #app[data-workspace="chat"] .tabs button.active{background:#fff9dc!important;border-color:#9fba83!important;color:#2c482a!important;box-shadow:0 2px 0 #9fba83!important}
+body.admin-phone-mode #app[data-workspace="chat"] .rooms{background:transparent!important;padding:10px 10px calc(75px + env(safe-area-inset-bottom))!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room{margin:0 0 7px!important;padding:7px 10px!important;border:1px solid #d5e3c5!important;border-radius:19px!important;background:rgba(255,255,247,.95)!important;box-shadow:0 2px 0 #cadbbf!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room:hover,body.admin-phone-mode #app[data-workspace="chat"] .room.selected{background:#f0f8d8!important}
+body.admin-phone-mode #app[data-workspace="chat"] .room .room-avatar{border:2px solid #233f2e!important}
+body.admin-phone-mode #app>.rail{background:#f7fbf0!important;border-top:1px solid #c6d9b9!important;box-shadow:0 -3px 0 #deead3!important}
+body.admin-phone-mode .phone-reference-nav button.active{color:#3c7145!important}
+body.admin-phone-mode .phone-reference-nav .phone-capture-nav span{border-color:#7fa578!important}
+body.admin-phone-mode .phone-reference-nav .phone-capture-nav.active span{border-color:#a8d75c!important;box-shadow:inset 0 0 0 3px #fff, inset 0 0 0 18px #d7f472!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head{background:#a3c99d!important;border-radius:0 0 18px 18px!important;box-shadow:0 3px 0 #86b082!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-head-copy h2,body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .phone-discover-add{color:#183c27!important;font-family:inherit!important;font-weight:800!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] .spotlight-card{border-radius:15px!important;border:2px solid #304d35!important}
+body.admin-phone-mode #app[data-workspace="spotlight"][data-phone-page="discover"] #spotlight-feed{background:transparent!important;gap:7px!important;padding:8px!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .rooms{background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .side-head .searchbox{background:#f4f9e9!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .tabs button:not(.active){background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app>.rail{background:#f7fbf0!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"]>.sidebar{background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .rooms{background:transparent!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app[data-workspace="chat"] .side-head .searchbox{background:#f4f9e9!important}
+html[data-anime-canvas="1"] body.admin-phone-mode #app>.rail{background:#f7fbf0!important}
+html body.admin-phone-mode #app[data-workspace="chat"] .tabs button.active{border-radius:14px!important}
+@media(min-width:651px) and (max-width:1200px){
+ .app[data-workspace="chat"] .side-head{background:rgba(249,252,240,.96)!important;border-radius:0 0 24px 24px!important;padding-bottom:8px!important}
+ .app[data-workspace="chat"] .room{background:rgba(255,255,248,.94)!important;border:1px solid #d3e4c6!important;border-radius:20px!important;margin:0 0 8px!important;padding:10px 14px!important;box-shadow:0 3px 0 #bdcfb3!important}
+ .app[data-workspace="chat"] .room .room-avatar>:not(.touch-room-initial){display:flex!important}
+ .app[data-workspace="chat"] .room .room-avatar .touch-room-initial{display:none!important}
+ .app[data-workspace="chat"] .room .room-avatar .mini-avatar{width:100%!important;height:100%!important;border-radius:50%!important}
+ html[data-anime-canvas="1"] .app[data-workspace="chat"]>.sidebar,html[data-anime-canvas="1"] .app[data-workspace="chat"] .rooms{background:transparent!important}
+}
+body.admin-tablet-mode #app[data-workspace="chat"] .side-head{background:rgba(249,252,240,.96)!important;border-radius:0 0 24px 24px!important;padding-bottom:8px!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room{background:rgba(255,255,248,.94)!important;border:1px solid #d3e4c6!important;border-radius:20px!important;margin:0 0 8px!important;padding:10px 14px!important;box-shadow:0 3px 0 #bdcfb3!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .room-avatar>:not(.touch-room-initial){display:flex!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .room-avatar .touch-room-initial{display:none!important}
+body.admin-tablet-mode #app[data-workspace="chat"] .room .room-avatar .mini-avatar{width:100%!important;height:100%!important;border-radius:50%!important}
+html[data-anime-canvas="1"] body.admin-tablet-mode #app[data-workspace="chat"]>.sidebar,html[data-anime-canvas="1"] body.admin-tablet-mode #app[data-workspace="chat"] .rooms{background:transparent!important}
 
 </style>
 <meta name="referrer" content="no-referrer"><style id="catcul-popcats-css">
@@ -3529,7 +3701,40 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
   .pop-cat-bubble,.boot-progress-bar,.boot-crest-ring{animation:none!important;transition:none!important}
   .pop-cat-bubble{bottom:24%!important}
 }
-</style><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+</style><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"><style>/* Local system font choices. No font files are downloaded and icon fonts are untouched. */
+html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,textarea,select,h1,h2,h3,h4,h5,h6,p,span,a,label,li,small,strong,em,blockquote):not(:is(code,pre,code *,pre *,[class*="icon"],[class*="icon"] *,[class*="ri-"],[class*="ri-"] *,[class*="material-"] *)){font-family:var(--catcul-ui-font)!important}
+#catcul-font-quick{position:fixed;left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));z-index:1800;font:14px system-ui,sans-serif;color:#20352a}
+#catcul-font-quick summary{list-style:none;cursor:pointer;background:#f8fbef;color:#20352a;border:1px solid #a6bc99;box-shadow:0 4px 12px #1b321e28;border-radius:999px;padding:9px 14px;font-weight:800;min-height:44px;display:flex;align-items:center;gap:7px}
+#catcul-font-quick summary::-webkit-details-marker{display:none}
+#catcul-font-quick .font-quick-panel{width:min(260px,calc(100vw - 24px));padding:15px;border-radius:18px;background:#fffef5;border:1px solid #b7cba7;box-shadow:0 12px 30px #17271833;margin-bottom:8px}
+#catcul-font-quick[open]{display:flex;flex-direction:column-reverse;align-items:flex-start}
+#catcul-font-quick label{display:block;font-weight:800;color:#20352a;margin:0 0 8px}
+#catcul-font-quick select{display:block;width:100%;min-height:44px;border:1px solid #9eb691;border-radius:12px;padding:8px;color:#20352a;background:#fff}
+#catcul-font-quick p{color:#50654e;font-size:12px;line-height:1.4;margin:8px 0 0}
+#catcul-font-quick :focus-visible{outline:3px solid #3a7b4d;outline-offset:2px}
+#settings-font-v47{min-height:44px;max-width:min(220px,48vw);padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text)}
+</style><script>(() => {
+  const key='catcul.font.v1';
+  const fonts=Object.freeze({default:'',round:'"Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif',modern:'Verdana, Geneva, sans-serif',classic:'Georgia, "Times New Roman", serif',mono:'ui-monospace, Menlo, Consolas, monospace'});
+  let current='default',persistent=true;
+  try {const saved=localStorage.getItem(key);if(Object.prototype.hasOwnProperty.call(fonts,saved))current=saved;} catch {persistent=false;}
+  function apply(value,save=true){
+    if(!Object.prototype.hasOwnProperty.call(fonts,value))return;
+    current=value;document.documentElement.dataset.catculFont=value;
+    if(fonts[value])document.documentElement.style.setProperty('--catcul-ui-font',fonts[value]);
+    else document.documentElement.style.removeProperty('--catcul-ui-font');
+    if(save){try{localStorage.setItem(key,value);persistent=true;}catch{persistent=false;}}
+    document.querySelectorAll('[data-catcul-font-picker]').forEach(x=>{x.value=value});
+    document.querySelectorAll('[data-catcul-font-note]').forEach(x=>{x.textContent=persistent?'Saved in this browser on this device.':'Storage is blocked; this choice lasts only on this page.'});
+    window.dispatchEvent(new CustomEvent('catcul:font-change',{detail:{font:value}}));
+  }
+  window.CatculFont=Object.freeze({get:()=>current,set:value=>apply(value),isPersistent:()=>persistent});
+  apply(current,false);
+  document.addEventListener('change',e=>{if(e.target.matches?.('[data-catcul-font-picker]'))apply(e.target.value);});
+  document.addEventListener('DOMContentLoaded',()=>apply(current,false));
+  window.addEventListener('storage',e=>{if(e.key===key)apply(Object.prototype.hasOwnProperty.call(fonts,e.newValue)?e.newValue:'default',false);});
+})();
+</script></head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
 <symbol id="i-cat" viewBox="0 0 40 40"><path d="M9 15 7 5l11 7h4L33 5l-2 10c3 3 4 6 4 10 0 8-6 12-15 12S5 33 5 25c0-4 1-7 4-10Z"/><path d="M13 23h.1M27 23h.1" stroke-width="4"/><path d="m18 28 2 2 2-2m-2 2v3M7 27l-5-1m5 5-4 2m30-6 5-1m-5 5 4 2"/></symbol>
@@ -9931,10 +10136,12 @@ function showRoomMenu(){if(currentRoom().purpose==='community'){openModal(modalT
 
 /* Social features — authenticated RPCs only; no simulated contacts. */
 let social={friends:[],incoming:[],outgoing:[],blocked:[]},socialChannel=null,socialTimer=null,socialRefreshTimer=null,socialTab='friends',socialBestOnly=false,findEpoch=0;
+let followingV46=[];
+async function refreshFollowingV46(){if(!user||!setupReady)return;const actor=user.id;const result=await db.rpc('list_following_v46');if(result.error)throw result.error;if(user?.id!==actor)return;followingV46=Array.isArray(result.data)?result.data:[];if($('#friend-list')&&socialTab==='following')paintFriendList();}
 function friendPerson(p){return{id:p.id,name:p.display_name||p.name||'Friend',color:p.color||colors[0],username:p.username,avatar:cleanAvatar(p.avatar,p),best:!!p.best};}
 function isBest(id){return social.friends.some(p=>p.id===id&&p.best);}
 async function socialTask(button,fn){if(button?.disabled)return;button&&(button.disabled=true);try{return await fn();}catch(e){fail(e);}finally{if(button?.isConnected)button.disabled=false;}}
-async function loadSocial(){if(!user||!setupReady)return;const epoch=bootVersion;const data=unwrap(await db.rpc('social_state'));if(epoch!==bootVersion)return;social={friends:data.friends||[],incoming:data.incoming||[],outgoing:data.outgoing||[],blocked:data.blocked||[]};for(const p of [...social.friends,...social.incoming,...social.outgoing])peopleCache[p.id]=friendPerson(p);renderSocialBits();refreshAvatarSurfaces();if($('#friends-root')&&socialTab!=='find')paintFriendList();}
+async function loadSocial(){if(!user||!setupReady)return;const epoch=bootVersion;const data=unwrap(await db.rpc('social_state'));if(epoch!==bootVersion)return;social={friends:data.friends||[],incoming:data.incoming||[],outgoing:data.outgoing||[],blocked:data.blocked||[]};for(const p of [...social.friends,...social.incoming,...social.outgoing])peopleCache[p.id]=friendPerson(p);renderSocialBits();refreshAvatarSurfaces();if($('#friends-root')&&socialTab!=='find')paintFriendList();refreshFollowingV46().catch(console.warn);}
 function renderSocialBits(){const badge=$('#friend-request-count');if(badge){badge.textContent=social.incoming.length||'';badge.classList.toggle('hidden',!social.incoming.length);}const area=$('#best-friends-strip');if(area){const best=social.friends.filter(p=>p.best);const nextBestHtml=`<div class="row between best-title"><span class="eyebrow">Your closest people</span><button class="subtle-link" data-action="best-friends">${best.length?'View all':'Pin a friend'}</button></div>${best.length?`<div class="best-row">${best.slice(0,5).map(p=>`<button class="best-person" data-social="chat" data-uid="${esc(p.id)}" title="Message ${esc(p.display_name)}">${avatar(friendPerson(p))}<span class="best-star">★</span><span class="best-name">${esc(p.display_name.split(' ')[0])}</span></button>`).join('')}</div>`:'<button class="best-empty" data-action="friends">'+icon('people')+'Good company starts with a friend.</button>'}`;if(area._rawHtml!==nextBestHtml){area._rawHtml=nextBestHtml;area.innerHTML=nextBestHtml;}}renderRooms();}
 function scheduleSocial(){clearTimeout(socialRefreshTimer);socialRefreshTimer=setTimeout(async()=>{try{await loadSocial();await loadRooms();await refreshCalls();if(voice.call&&voice.meta?.kind==='direct'&&!rooms.find(r=>r.id===voice.call.room_id)?.can_send)await leaveVoiceCall(true);}catch(e){console.warn('Social refresh:',e);}},350);}
 function initSocial(){if(!user||!setupReady)return;cleanupSocial(false);const me=profile.id;socialChannel=client.channel('catcul:user:'+me,{config:{private:true}})
@@ -9953,14 +10160,15 @@ function initSocial(){if(!user||!setupReady)return;cleanupSocial(false);const me
 socialTimer=setInterval(()=>{if(user&&setupReady&&!document.hidden){loadSocial().catch(console.warn);loadRooms().catch(console.warn);if(active)loadPeople(active).catch(console.warn);if(voice.call&&voice.call.room_id!==active)loadPeople(voice.call.room_id).catch(console.warn);refreshCalls().catch(console.warn);}},15000);
 loadSocial().catch(fail);refreshCalls().catch(console.warn);
 }
-function cleanupSocial(clear=true){clearInterval(socialTimer);clearTimeout(socialRefreshTimer);if(socialChannel){client?.removeChannel(socialChannel);socialChannel=null;}if(clear){social={friends:[],incoming:[],outgoing:[],blocked:[]};callList=[];dismissedCalls.clear();renderSocialBits();}}
-function showFriends(tab='friends',bestOnly=false){if(!setupReady)return showConnectionHelp();socialTab=tab;socialBestOnly=bestOnly;openModal(`${modalTitle('people',bestOnly?'Your inner circle.':'Your people.','A real connection starts with a little hello.')}<div id="friends-root"><div class="my-handle"><span>Your username</span><button id="copy-my-handle" title="Copy your username">@${esc(profile.username||'Set a username in your profile')}${icon('copy')}</button></div><div class="social-tabs"><button data-social-tab="friends">Friends <span>${social.friends.length}</span></button><button data-social-tab="requests">Requests <span>${social.incoming.length}</span></button><button data-social-tab="find">Find people</button><button data-social-tab="blocked">Blocked</button></div><div id="friend-list"></div></div>`,true);$('#copy-my-handle').onclick=async()=>{if(profile.username)toast(await copyText('@'+profile.username)?'Username copied.':'Copy your username manually.');else showProfile();};paintFriendList();loadSocial().catch(fail);}
+function cleanupSocial(clear=true){if(clear)followingV46=[];clearInterval(socialTimer);clearTimeout(socialRefreshTimer);if(socialChannel){client?.removeChannel(socialChannel);socialChannel=null;}if(clear){social={friends:[],incoming:[],outgoing:[],blocked:[]};callList=[];dismissedCalls.clear();renderSocialBits();}}
+function showFriends(tab='friends',bestOnly=false){if(!setupReady)return showConnectionHelp();socialTab=tab;socialBestOnly=bestOnly;openModal(`${modalTitle('people',bestOnly?'Your inner circle.':'Your people.','A real connection starts with a little hello.')}<div id="friends-root"><div class="my-handle"><span>Your username</span><button id="copy-my-handle" title="Copy your username">@${esc(profile.username||'Set a username in your profile')}${icon('copy')}</button></div><div class="social-tabs"><button data-social-tab="friends">Friends <span>${social.friends.length}</span></button><button data-social-tab="requests">Requests <span>${social.incoming.length}</span></button><button data-social-tab="following">Following</button><button data-social-tab="find">Find people</button><button data-social-tab="blocked">Blocked</button></div><div id="friend-list"></div></div>`,true);$('#copy-my-handle').onclick=async()=>{if(profile.username)toast(await copyText('@'+profile.username)?'Username copied.':'Copy your username manually.');else showProfile();};paintFriendList();loadSocial().catch(fail);refreshFollowingV46().catch(console.warn);}
 function personRow(p,buttons,sub=''){const person=friendPerson(p);return `<div class="social-person">${avatar(person)}<div class="grow"><h3>${esc(person.name)}${p.best?'<span class="friend-star">★</span>':''}</h3><p>${esc(sub||'@'+(p.username||''))}</p></div><div class="social-person-actions">${buttons}</div></div>`;}
 function socialBtn(action,id,label,symbol,extra=''){return `<button class="${symbol?'icon-btn':'btn mini'} ${extra}" data-social="${action}" data-uid="${esc(id)}" title="${esc(label)}" aria-label="${esc(label)}">${symbol?icon(symbol):esc(label)}</button>`;}
 function paintFriendList(){const root=$('#friend-list');if(!root)return;$$('[data-social-tab]').forEach(b=>b.classList.toggle('active',b.dataset.socialTab===socialTab));if(socialTab==='friends'){const list=social.friends.filter(p=>!socialBestOnly||p.best);root.innerHTML=`<div class="row between social-list-head"><span>${socialBestOnly?'Best friends · private to you':'Friends · '+social.friends.length}</span><button class="subtle-link" data-social="best-filter">${socialBestOnly?'Show all friends':'Best friends only'}</button></div>`+(list.length?list.map(p=>personRow(p,socialBtn('chat',p.id,'Message','chat')+socialBtn('call',p.id,'Voice call','phone')+socialBtn('best',p.id,p.best?'Unpin best friend':'Pin best friend','star',p.best?'starred':'')+socialBtn('more',p.id,'Friend options','more'))).join(''):`<div class="social-empty">${icon('people')}<h3>${socialBestOnly?'A little room for your favorites.':'Good company starts here.'}</h3><p>${socialBestOnly?'Use the star next to a friend to pin them. Your best-friend list is only visible to you.':'Find someone by their username and send a friend request.'}</p><button class="btn" data-social-tab="find">Find a friend ${icon('arrow')}</button></div>`);}
 else if(socialTab==='requests'){root.innerHTML=`<div class="social-list-head">Incoming · ${social.incoming.length}</div>`+(social.incoming.length?social.incoming.map(p=>personRow(p,socialBtn('accept',p.id,'Accept',null)+socialBtn('decline',p.id,'Decline','close'))).join(''):'<p class="empty-small">No requests waiting for you.</p>')+`<div class="social-list-head">Sent · ${social.outgoing.length}</div>`+(social.outgoing.length?social.outgoing.map(p=>personRow(p,socialBtn('cancel',p.id,'Cancel request','close'),'Request sent · @'+p.username)).join(''):'<p class="empty-small">No pending outgoing requests.</p>');}
+else if(socialTab==='following'){root.innerHTML='<div class="social-list-head">People you follow · '+followingV46.length+'</div>'+(followingV46.length?followingV46.map(p=>personRow(p,socialBtn('unfollow',p.id,'Unfollow',null,'secondary'))).join(''):'<p class="empty-small">You are not following anyone yet. Find people by username.</p>');}
 else if(socialTab==='blocked'){root.innerHTML=social.blocked.length?social.blocked.map(p=>personRow(p,socialBtn('unblock',p.id,'Unblock',null,'secondary'))).join(''):'<div class="empty-small">No blocked accounts.</div>';root.insertAdjacentHTML('beforeend','<p class="note">Blocking prevents new private messages, calls and friend requests. People you block can still be present in groups you both belong to.</p>');}
-else{root.innerHTML=`<label for="find-friend">Find by username</label><div class="searchbox">${icon('search')}<input id="find-friend" type="search" placeholder="Type at least 3 characters…" maxlength="41" autocomplete="off" aria-label="Search usernames"></div><div id="friend-results"><p class="empty-small">Ask your friend for their @username.<br>Emails are not searchable or shown.</p></div>`;let timer;$('#find-friend').oninput=()=>{clearTimeout(timer);const q=$('#find-friend').value.trim().replace(/^@/,'').toLowerCase(),epoch=++findEpoch;if(q.length<3){$('#friend-results').innerHTML='<p class="empty-small">Type at least 3 username characters.</p>';return;}timer=setTimeout(async()=>{try{const list=unwrap(await db.rpc('find_people_with_avatars',{p_query:q}));if(epoch!==findEpoch||!$('#friend-results'))return;$('#friend-results').innerHTML=list.length?list.map(p=>{peopleCache[p.id]=friendPerson(p);const friend=social.friends.find(f=>f.id===p.id),pending=social.incoming.some(f=>f.id===p.id)||social.outgoing.some(f=>f.id===p.id);return personRow(p,friend?socialBtn('chat',p.id,'Message','chat'):pending?'<span class="pill-label">Request pending</span>':socialBtn('request',p.id,'Add friend','user-plus'));}).join(''):'<p class="empty-small">No matching people. Check the username.</p>';}catch(e){if($('#friend-results'))$('#friend-results').innerHTML=`<p class="error-text">${esc(errorText(e))}</p>`;}},300);};setTimeout(()=>$('#find-friend')?.focus(),50);}}
+else{root.innerHTML=`<label for="find-friend">Find by username</label><div class="searchbox">${icon('search')}<input id="find-friend" type="search" placeholder="Type at least 3 characters…" maxlength="41" autocomplete="off" aria-label="Search usernames"></div><div id="friend-results"><p class="empty-small">Ask your friend for their @username.<br>Emails are not searchable or shown.</p></div>`;let timer;$('#find-friend').oninput=()=>{clearTimeout(timer);const q=$('#find-friend').value.trim().replace(/^@/,'').toLowerCase(),epoch=++findEpoch;if(q.length<3){$('#friend-results').innerHTML='<p class="empty-small">Type at least 3 username characters.</p>';return;}timer=setTimeout(async()=>{try{const list=unwrap(await db.rpc('find_people_with_avatars',{p_query:q}));if(epoch!==findEpoch||!$('#friend-results'))return;$('#friend-results').innerHTML=list.length?list.map(p=>{peopleCache[p.id]=friendPerson(p);const friend=social.friends.find(f=>f.id===p.id),pending=social.incoming.some(f=>f.id===p.id)||social.outgoing.some(f=>f.id===p.id);return personRow(p,(friend?socialBtn('chat',p.id,'Message','chat'):pending?'<span class="pill-label">Request pending</span>':socialBtn('request',p.id,'Add friend','user-plus'))+socialBtn(followingV46.some(x=>x.id===p.id)?'unfollow':'follow',p.id,followingV46.some(x=>x.id===p.id)?'Following':'Follow',null,'secondary'));}).join(''):'<p class="empty-small">No matching people. Check the username.</p>';}catch(e){if($('#friend-results'))$('#friend-results').innerHTML=`<p class="error-text">${esc(errorText(e))}</p>`;}},300);};setTimeout(()=>$('#find-friend')?.focus(),50);}}
 async function openDirectChat(id){const r=one(unwrap(await db.rpc('start_direct_chat',{p_friend:id})));await loadRooms();closeModal();await setActive(r.id);return r;}
 function showFriendOptions(id){const p=social.friends.find(p=>p.id===id)||peopleCache[id];if(!p)return;openModal(`${modalTitle('people',esc(p.display_name||p.name),'@'+esc(p.username||''))}<div class="comic-profile-hero">${typeof window.buildComicProfilePreview === 'function' ? window.buildComicProfilePreview(p, p.avatar?.profileEffect || 'none', p.avatar?.statusText || '', false) : avatar(p)}</div><button class="btn full" data-social="chat" data-uid="${id}">${icon('chat')}Open private chat</button><button class="btn secondary full" data-social="remove" data-uid="${id}">Remove friend</button><button class="btn secondary full" data-social="block" data-uid="${id}" style="color:#b5755f">Block this account</button><p class="note">Unfriending stops new private messages and calls. Existing chat history is kept. Blocking also prevents new friend requests; shared group spaces are not hidden.</p>`);const svg=$('.comic-profile-hero .cul-pfx-standing-mini > svg');if(svg&&window.Culji3D){const stage=document.createElement('div');stage.className='profile-model-stage';svg.replaceWith(stage);if(!window.Culji3D.draw(stage,cleanAvatar(p.avatar,p),false))stage.replaceWith(svg);modalCleanup=()=>window.Culji3D?.destroy();}}
 function confirmSocial(action,id){const p=peopleCache[id]||{name:'this person'};openModal(`${modalTitle(action==='block'?'block':'people',action==='block'?'A little more distance?':'Remove this friend?',`${action==='block'?'Block':'Unfriend'} ${esc(p.name)}? Your existing messages will remain, but new private messages and calls will stop.`)}<button class="btn full" id="confirm-social">${action==='block'?'Block account':'Remove friend'}</button><button class="btn secondary full" data-action="close-modal">Cancel</button>`);$('#confirm-social').onclick=()=>socialTask($('#confirm-social'),async()=>{const dm=rooms.find(r=>r.kind==='direct'&&r.peer_id===id),hadCalls=dm&&callList.some(c=>c.room_id===dm.id);unwrap(await db.rpc(action==='block'?'set_block':'remove_friend',action==='block'?{p_other:id,p_block:true}:{p_other:id}));if(dm&&voice.call?.room_id===dm.id)await disconnectVoice();await loadSocial();await loadRooms();await refreshCalls();closeModal();toast(action==='block'?'Account blocked.':'Friend removed.');if(hadCalls)await cleanupPrivateCalls(id);});}
@@ -9969,7 +10177,7 @@ function showCallSetup(){openModal(`${modalTitle('phone','Voice & video calls','
 async function showMembers(){if(!active)return showNewRoom();await loadPeople(active);const room=currentRoom();const list=roomPeople[active]||[];openModal(`${modalTitle('people',room.kind==='direct'?'Just the two of you.':'Your shared space.',esc(room.name)+' · '+list.length+' member'+(list.length===1?'':'s'))}<div class="dialog-people">${list.map(p=>personRow({id:p.id,display_name:p.name,username:p.username,color:p.color,avatar:p.avatar},p.id===profile.id?'<span class="pill-label">You</span>':room.kind==='group'&&room.role==='owner'?`<button class="icon-btn" data-kick="${esc(p.id)}" data-room-id="${esc(room.id)}" title="Remove member" aria-label="Remove member">${icon('user-minus')}</button>`:'',p.role==='owner'?'Group owner':'@'+(p.username||'member'))).join('')}</div>${room.kind==='group'?'<button class="btn full" data-action="invite">'+icon('link')+'Invite to group</button>':'<p class="note">Private chats always have exactly two participants. Only accepted friends can send new messages and start calls.</p>'}`);}
 async function kickMember(roomId,id){const p=peopleCache[id]||{name:'this member'};openModal(`${modalTitle('user-minus','Remove this member?',esc(p.name)+' will lose access to this group and be disconnected from its current call. All outstanding group invitations will also be revoked; create fresh links for anyone you still want to invite.')}<button class="btn full" id="confirm-kick">Remove member</button><button class="btn secondary full" data-action="close-modal">Cancel</button>`);$('#confirm-kick').onclick=()=>socialTask($('#confirm-kick'),async()=>{const result=await callApi('kick-member',{room_id:roomId,user_id:id});await loadPeople(roomId);if(result.media_cleanup_pending){toast('Chat access removed. Audio removal needs a retry.',true);$('#confirm-kick').textContent='Retry audio removal';return;}closeModal();toast('Member removed.');});}
 function renameGroup(){if(!active||currentRoom().kind!=='group'||currentRoom().role!=='owner')return;const id=active;openModal(`${modalTitle('chat','A name that feels like you.','Rename this group for everyone.')}<form id="rename-form"><label for="group-name">Group name</label><input class="field" id="group-name" value="${esc(currentRoom().name)}" maxlength="40" required><button class="btn full" type="submit">Save group name</button></form>`);$('#rename-form').onsubmit=e=>{e.preventDefault();const name=$('#group-name').value.trim();socialTask($('#rename-form button'),async()=>{unwrap(await db.rpc('rename_group',{p_room_id:id,p_name:name}));await loadRooms();await setActive(id);closeModal();toast('Group renamed.');});};}
-document.addEventListener('click',async e=>{const tab=e.target.closest('[data-social-tab]');if(tab){socialTab=tab.dataset.socialTab;socialBestOnly=false;paintFriendList();return;}const kick=e.target.closest('[data-kick]');if(kick){kickMember(kick.dataset.roomId,kick.dataset.kick).catch(fail);return;}const b=e.target.closest('[data-social]');if(!b)return;const id=b.dataset.uid,a=b.dataset.social;if(a==='best-filter'){socialBestOnly=!socialBestOnly;paintFriendList();return;}if(a==='more')return showFriendOptions(id);if(a==='remove'||a==='block')return confirmSocial(a,id);await socialTask(b,async()=>{if(a==='chat'){await openDirectChat(id);return;}if(a==='call'){const r=await openDirectChat(id);await startVoiceCall(r.id);return;}if(a==='request'){unwrap(await db.rpc('send_friend_request',{p_to:id}));toast('Friend request sent.');b.outerHTML='<span class="pill-label">Request sent</span>';}if(a==='accept'||a==='decline')unwrap(await db.rpc('respond_friend_request',{p_from:id,p_accept:a==='accept'}));if(a==='cancel')unwrap(await db.rpc('remove_friend',{p_other:id}));if(a==='best')unwrap(await db.rpc('set_best_friend',{p_friend:id,p_best:!isBest(id)}));if(a==='unblock')unwrap(await db.rpc('set_block',{p_other:id,p_block:false}));await loadSocial();await loadRooms();});});
+document.addEventListener('click',async e=>{const tab=e.target.closest('[data-social-tab]');if(tab){socialTab=tab.dataset.socialTab;socialBestOnly=false;paintFriendList();return;}const kick=e.target.closest('[data-kick]');if(kick){kickMember(kick.dataset.roomId,kick.dataset.kick).catch(fail);return;}const b=e.target.closest('[data-social]');if(!b)return;const id=b.dataset.uid,a=b.dataset.social;if(a==='best-filter'){socialBestOnly=!socialBestOnly;paintFriendList();return;}if(a==='more')return showFriendOptions(id);if(a==='remove'||a==='block')return confirmSocial(a,id);await socialTask(b,async()=>{if(a==='chat'){await openDirectChat(id);return;}if(a==='call'){const r=await openDirectChat(id);await startVoiceCall(r.id);return;}if(a==='follow'||a==='unfollow'){unwrap(await db.rpc('set_follow_v46',{p_person:id,p_follow:a==='follow'}));await refreshFollowingV46();if(b.isConnected&&socialTab==='find'){b.dataset.social=a==='follow'?'unfollow':'follow';b.textContent=a==='follow'?'Following':'Follow';b.setAttribute('aria-label',b.textContent);b.title=b.textContent;}toast(a==='follow'?'Following.':'Unfollowed.');return;}if(a==='request'){unwrap(await db.rpc('send_friend_request',{p_to:id}));toast('Friend request sent.');b.outerHTML='<span class="pill-label">Request sent</span>';}if(a==='accept'||a==='decline')unwrap(await db.rpc('respond_friend_request',{p_from:id,p_accept:a==='accept'}));if(a==='cancel')unwrap(await db.rpc('remove_friend',{p_other:id}));if(a==='best')unwrap(await db.rpc('set_best_friend',{p_friend:id,p_best:!isBest(id)}));if(a==='unblock')unwrap(await db.rpc('set_block',{p_other:id,p_block:false}));await loadSocial();await loadRooms();});});
 function syncRoomChrome(){if(!active)return;const r=currentRoom();$('#chat-title').textContent=r.name;$('#detail-title').textContent=r.name;$('#detail-description').textContent=r.purpose==='community'?'Visible to every signed-in account.':r.kind==='direct'?'A private space. Just the two of you.':'A shared group for your kind of people.';const head=$('.chat-head .room-avatar'),avHtml=r.kind==='direct'?avatar({id:r.peer_id,name:r.name,color:r.peer_color}):icon('people');if(head&&head._rawHtml!==avHtml){head._rawHtml=avHtml;head.innerHTML=avHtml;}const big=$('.big-room');if(big&&big._rawHtml!==avHtml){big._rawHtml=avHtml;big.innerHTML=avHtml;}$$('.chat-head [data-action="invite"],.details [data-action="invite"]').forEach(el=>el.classList.toggle('hidden',r.kind==='direct'||r.purpose==='community'));const notice=$('#community-notice');if(notice)notice.classList.toggle('hidden',r.purpose!=='community');renderCallBanner();}
 function showNewConversation(){if(!setupReady)return showConnectionHelp();openModal(`${modalTitle('chat','Who’s on your mind?','One person, your whole group, or a new shared space.')}<button class="new-conversation-choice" data-action="friends"><span>${icon('chat')}</span><span><h3>Private conversation</h3><p>Find a friend and start a chat, just the two of you.</p></span>${icon('arrow')}</button><button class="new-conversation-choice" data-action="new-group"><span>${icon('people')}</span><span><h3>Create a group</h3><p>Make a space for your favorite people.</p></span>${icon('arrow')}</button><button class="new-conversation-choice" data-action="join-group"><span>${icon('link')}</span><span><h3>Join with an invitation</h3><p>Someone saved you a space? Come on in.</p></span>${icon('arrow')}</button>`);}
 
@@ -18159,6 +18367,12 @@ window.addEventListener('message', (ev) => {
         </div>
 
         <div class="setting" data-sec-group="all appearance">
+          <div><h3>Font style</h3><p data-catcul-font-note>Saved in this browser on this device.</p></div>
+          <label class="sr-only" for="settings-font-v47">Font style</label>
+          <select id="settings-font-v47" data-catcul-font-picker><option value="default">Catcul default</option><option value="round">Round &amp; friendly</option><option value="modern">Clean &amp; modern</option><option value="classic">Classic serif</option><option value="mono">Typewriter</option></select>
+        </div>
+
+        <div class="setting" data-sec-group="all appearance">
           <div>
             <h3>Text size</h3>
             <p>Scale chat bubbles and menus for comfortable reading.</p>
@@ -18243,6 +18457,11 @@ window.addEventListener('message', (ev) => {
         <div id="push-settings-slot" data-sec-group="all calls"></div>
 
         <div class="setting" data-sec-group="all privacy">
+          <div><h3>Allow friend requests</h3><p id="friend-request-pref-status" aria-live="polite">Loading your privacy setting…</p></div>
+          <button type="button" class="switch" id="friend-request-pref" role="switch" aria-label="Allow friend requests" aria-checked="false" disabled></button>
+        </div>
+
+        <div class="setting" data-sec-group="all privacy">
           <div>
             <h3>Share live typing indicator</h3>
             <p>Let room members see when you’re actively typing a reply.</p>
@@ -18288,6 +18507,24 @@ window.addEventListener('message', (ev) => {
       btn.onclick = () => applySecFilter(btn.dataset.setSec);
     });
 
+    const fontSelector=$('#settings-font-v47');
+    if(fontSelector && window.CatculFont){fontSelector.value=window.CatculFont.get();const note=fontSelector.parentElement.querySelector('[data-catcul-font-note]');if(note&&!window.CatculFont.isPersistent())note.textContent='Storage is blocked; this choice lasts only on this page.';}
+    const requestSwitch=$('#friend-request-pref'), requestStatus=$('#friend-request-pref-status'), requestActor=user?.id;
+    (async()=>{
+      try {
+        const current=unwrap(await db.rpc('friend_requests_allowed_v46'));
+        if(!requestSwitch?.isConnected||user?.id!==requestActor)return;
+        if(typeof current!=='boolean')throw Error('Privacy setting unavailable.');
+        const paint=value=>{requestSwitch.classList.toggle('on',value);requestSwitch.setAttribute('aria-checked',String(value));requestStatus.textContent=value?'People can send you new friend requests.':'New friend requests are off. Existing requests stay available.';};
+        paint(current);requestSwitch.disabled=false;
+        requestSwitch.onclick=()=>socialTask(requestSwitch,async()=>{
+          const next=requestSwitch.getAttribute('aria-checked')!=='true';
+          const saved=unwrap(await db.rpc('set_friend_requests_allowed_v46',{p_allowed:next}));
+          if(!requestSwitch.isConnected||user?.id!==requestActor)return;
+          paint(saved);toast(saved?'Friend requests are on.':'Friend requests are off.');
+        });
+      }catch(e){if(requestSwitch?.isConnected){requestStatus.textContent='Could not load this setting. Close Settings and try again.';requestSwitch.disabled=true;}}
+    })();
     $('#settings-open-pfx').onclick = () => openProfileEffectsModal();
     $('#settings-pfx-btn').onclick = () => openProfileEffectsModal();
     $('#settings-open-themes')?.addEventListener('click', () => {
@@ -18944,6 +19181,29 @@ renderProfile();applyTheme();setEmptyRoom();$('#boot-overlay').classList.remove(
   }).observe(document.body,{attributes:true,attributeFilter:['class']});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)window.stopCulifeInlineCam?.();});
   window.addEventListener('resize',()=>{if(!phone())window.stopCulifeInlineCam?.();});
+})();
+
+
+/* Horizontal swipes navigate tablet chat without blocking vertical scrolling. */
+(() => {
+ let start=null;
+ const tablet=()=>document.body.classList.contains('admin-tablet-mode')||(!document.body.classList.contains('admin-phone-mode')&&matchMedia('(min-width:651px) and (max-width:1200px)').matches);
+ const app=document.getElementById('app'); if(!app)return;
+ app.addEventListener('touchstart',e=>{
+  if(!tablet()||workspaceMode!=='chat'||e.touches.length!==1||e.target.closest('input,textarea,select,[contenteditable="true"],.composer,.tabs,.touch-reference-nav,.modal-backdrop')){start=null;return;}
+  // In a message timeline, reserve only a narrow left-edge gesture so ordinary
+  // vertical scrolling and interacting with messages remain uninterrupted.
+  if(e.target.closest('.timeline') && e.touches[0].clientX-app.getBoundingClientRect().left>40){start=null;return;}
+  start={x:e.touches[0].clientX,y:e.touches[0].clientY,t:Date.now()};
+ },{passive:true});
+ app.addEventListener('touchend',e=>{
+  if(!start||e.changedTouches.length!==1)return;
+  const dx=e.changedTouches[0].clientX-start.x,dy=e.changedTouches[0].clientY-start.y;
+  const ok=Date.now()-start.t<750&&Math.abs(dx)>85&&Math.abs(dx)>Math.abs(dy)*1.6;start=null;
+  if(!ok)return;
+  if(dx>0&&app.classList.contains('mobile-chat')){actions.back();}
+  else if(dx<0&&!app.classList.contains('mobile-chat')&&active){setActive(active).catch(fail);}
+ },{passive:true});
 })();
 
 </script>

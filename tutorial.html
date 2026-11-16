@@ -136,7 +136,40 @@ body.dark .boot-sound-btn,.dark .boot-sound-btn{background:rgba(255,255,255,.08)
   .pop-cat-bubble,.boot-progress-bar,.boot-crest-ring{animation:none!important;transition:none!important}
   .pop-cat-bubble{bottom:24%!important}
 }
-</style><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"></head>
+</style><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preconnect" href="https://w.wallhaven.cc" crossorigin><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f7f8f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Catcul"><link rel="apple-touch-icon" href="icons/catcul-192.png"><style>/* Local system font choices. No font files are downloaded and icon fonts are untouched. */
+html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,textarea,select,h1,h2,h3,h4,h5,h6,p,span,a,label,li,small,strong,em,blockquote):not(:is(code,pre,code *,pre *,[class*="icon"],[class*="icon"] *,[class*="ri-"],[class*="ri-"] *,[class*="material-"] *)){font-family:var(--catcul-ui-font)!important}
+#catcul-font-quick{position:fixed;left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));z-index:1800;font:14px system-ui,sans-serif;color:#20352a}
+#catcul-font-quick summary{list-style:none;cursor:pointer;background:#f8fbef;color:#20352a;border:1px solid #a6bc99;box-shadow:0 4px 12px #1b321e28;border-radius:999px;padding:9px 14px;font-weight:800;min-height:44px;display:flex;align-items:center;gap:7px}
+#catcul-font-quick summary::-webkit-details-marker{display:none}
+#catcul-font-quick .font-quick-panel{width:min(260px,calc(100vw - 24px));padding:15px;border-radius:18px;background:#fffef5;border:1px solid #b7cba7;box-shadow:0 12px 30px #17271833;margin-bottom:8px}
+#catcul-font-quick[open]{display:flex;flex-direction:column-reverse;align-items:flex-start}
+#catcul-font-quick label{display:block;font-weight:800;color:#20352a;margin:0 0 8px}
+#catcul-font-quick select{display:block;width:100%;min-height:44px;border:1px solid #9eb691;border-radius:12px;padding:8px;color:#20352a;background:#fff}
+#catcul-font-quick p{color:#50654e;font-size:12px;line-height:1.4;margin:8px 0 0}
+#catcul-font-quick :focus-visible{outline:3px solid #3a7b4d;outline-offset:2px}
+#settings-font-v47{min-height:44px;max-width:min(220px,48vw);padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text)}
+</style><script>(() => {
+  const key='catcul.font.v1';
+  const fonts=Object.freeze({default:'',round:'"Trebuchet MS", "Arial Rounded MT Bold", system-ui, sans-serif',modern:'Verdana, Geneva, sans-serif',classic:'Georgia, "Times New Roman", serif',mono:'ui-monospace, Menlo, Consolas, monospace'});
+  let current='default',persistent=true;
+  try {const saved=localStorage.getItem(key);if(Object.prototype.hasOwnProperty.call(fonts,saved))current=saved;} catch {persistent=false;}
+  function apply(value,save=true){
+    if(!Object.prototype.hasOwnProperty.call(fonts,value))return;
+    current=value;document.documentElement.dataset.catculFont=value;
+    if(fonts[value])document.documentElement.style.setProperty('--catcul-ui-font',fonts[value]);
+    else document.documentElement.style.removeProperty('--catcul-ui-font');
+    if(save){try{localStorage.setItem(key,value);persistent=true;}catch{persistent=false;}}
+    document.querySelectorAll('[data-catcul-font-picker]').forEach(x=>{x.value=value});
+    document.querySelectorAll('[data-catcul-font-note]').forEach(x=>{x.textContent=persistent?'Saved in this browser on this device.':'Storage is blocked; this choice lasts only on this page.'});
+    window.dispatchEvent(new CustomEvent('catcul:font-change',{detail:{font:value}}));
+  }
+  window.CatculFont=Object.freeze({get:()=>current,set:value=>apply(value),isPersistent:()=>persistent});
+  apply(current,false);
+  document.addEventListener('change',e=>{if(e.target.matches?.('[data-catcul-font-picker]'))apply(e.target.value);});
+  document.addEventListener('DOMContentLoaded',()=>apply(current,false));
+  window.addEventListener('storage',e=>{if(e.key===key)apply(Object.prototype.hasOwnProperty.call(fonts,e.newValue)?e.newValue:'default',false);});
+})();
+</script></head>
 <body>
 <header class="site-header">
  <div class="container nav-inner">
@@ -1144,5 +1177,5 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     });
   }
 })();
-</script></body>
+</script><details id="catcul-font-quick"><summary aria-label="Change font style">Aa <span>Font</span></summary><div class="font-quick-panel"><label for="catcul-public-font">Font style</label><select id="catcul-public-font" data-catcul-font-picker><option value="default">Catcul default</option><option value="round">Round &amp; friendly</option><option value="modern">Clean &amp; modern</option><option value="classic">Classic serif</option><option value="mono">Typewriter</option></select><p data-catcul-font-note>Saved in this browser on this device.</p></div></details></body>
 </html>

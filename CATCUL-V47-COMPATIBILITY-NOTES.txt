@@ -1,0 +1,15 @@
+CATCUL v47 — web-app compatibility and font update
+
+INSTALL
+Upload ALL the included HTML files and sw.js to the same website directory, replacing existing versions. Keep the existing icons, models, wallpapers, games, manifest and other files. This update includes v46's frontend changes, so it can be installed even if v46's frontend ZIP was not installed. No database migration or Node/Python server is required.
+
+FONT SWITCHER
+On public pages and the guest page, use the floating Aa Font control. In the signed-in app, open Settings > Appearance > Font style. The selection is saved in browser storage for that origin/device and applies to Catcul pages on the same origin; it does not automatically sync across devices or separate app/browser storage. If storage is blocked it lasts only on the current page. System fonts vary by device. Third-party embedded content is not restyled.
+
+WEB-TO-APP / SIGN-IN
+This update guards an initialization failure when sessionStorage is blocked, warns when persistent storage is blocked, shows an actionable fallback if the auth form script fails to initialize, and provides feedback when sign-in takes a long time. CAPTCHA remains required. A non-HTTP(S) origin displays guidance to use the hosted site. This cannot fix a wrapper that blocks all JavaScript or network access, and no specific wrapper has yet been diagnosed or verified.
+
+For iPhone/iPad, configure the platform to load the hosted HTTPS site https://catcultis.github.io/ rather than packaged local HTML or a file/custom URL, enable JavaScript and persistent web storage/cookies, and allow necessary navigation, network requests and hCaptcha frames to load. Some platforms or policies may still prevent CAPTCHA or authentication. After deployment compare sign-in in ordinary Safari with the wrapper. If it still fails, report the platform name and any visible error. Never send your password or CAPTCHA token.
+
+TESTING
+Playwright Chromium and WebKit ran locally, including simulated denied storage, mocked CAPTCHA/Auth requests, mocked sign-in failure, font persistence and app Settings, and prior phone/tablet and other regressions. This is not a real iOS device or the chosen wrapper; a real completed hCaptcha challenge and real account sign-in in the wrapper have not been verified. Sign-up domain restrictions, code verification, cooldowns and appeals remain a separate unfinished project and are NOT included here.

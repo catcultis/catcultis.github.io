@@ -3173,6 +3173,8 @@ body.admin-phone-mode #app[data-workspace="admin"] .student-view#admin-view {
 body.dark .gf-pet-options{border-color:#42533c}
 
 .gf-streak{display:grid;gap:7px;border:1px solid #dce5cb;border-radius:20px;padding:16px;margin:12px 0;background:#f7f9e8}.gf-streak strong{font-size:1.15rem;overflow-wrap:anywhere}.gf-streak p{margin:0}.gf-streak small{color:#697663;line-height:1.5}body.dark .gf-streak{background:#26372a;border-color:#42533c}body.dark .gf-streak small{color:#c4d2bc}
+/* Room-cat card: visual companion and accessible level progress. */
+.gf-cat{gap:18px;align-items:center}.gf-cat-face{background:linear-gradient(145deg,#dcf3b7,#b9e28d);box-shadow:inset 0 1px 0 #fff9,0 5px 0 #a9ce81;overflow:visible}.gf-cat-art{display:block;width:86%;height:auto}.gf-cat-copy{min-width:0;flex:1}.gf-cat-copy>strong{display:block;font-size:1.16rem}.gf-cat-eyebrow{display:block;font-size:.62rem;letter-spacing:.08em;font-weight:800;color:#52703d;margin-bottom:4px}.gf-level-track{height:8px;border-radius:999px;overflow:hidden;background:#cfdfbf;margin:9px 0}.gf-level-track>span{display:block;height:100%;width:0;background:#598a4e;border-radius:inherit;transition:width .25s ease}.gf-cat-face[data-look="scarf"]:after{right:2px;bottom:-5px}.gf-cat-face[data-look="party_hat"]:before{right:2px;top:-13px}body.dark .gf-cat-eyebrow{color:#c2dba9}body.dark .gf-level-track{background:#1b2e20}body.dark .gf-level-track>span{background:#a6d68b}@media(max-width:420px){.gf-cat{gap:12px}.gf-cat-face{flex:0 0 75px;min-height:75px}.gf-cat-copy>strong{font-size:1rem}}@media(prefers-reduced-motion:reduce){.gf-level-track>span{transition:none}}
 #ritual-root [hidden]{display:none!important}.ritual-card{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:16px;margin:12px 0;min-width:0}.ritual-card h3{overflow-wrap:anywhere;white-space:pre-wrap;margin:10px 0}.ritual-card .note{line-height:1.6}.ritual-card form{display:grid;gap:9px}.ritual-card input{min-width:0;min-height:44px}.ritual-actions{display:flex;flex-wrap:wrap;gap:8px}.ritual-actions button,#ritual-reload,#ritual-form button,[data-group-ritual]{min-height:44px}.ritual-card :focus-visible,#ritual-reload:focus-visible{outline:3px solid #6d9d53;outline-offset:3px}@media(max-width:370px){.ritual-actions{flex-direction:column}.ritual-actions button{width:100%}}
 #likely-root [hidden]{display:none!important}.likely-choices{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.likely-choices button{min-height:44px}.likely-choices button:focus-visible,#likely-start button:focus-visible,#likely-close:focus-visible{outline:3px solid #6d9d53;outline-offset:3px}#likely-start{display:grid;gap:.6rem;margin-top:1.25rem}#likely-start[hidden]{display:none}#likely-start input{max-width:100%;min-height:44px}#likely-result{display:grid;gap:.4rem;margin:.7rem 0}#likely-question{overflow-wrap:anywhere}
 #focus-root [hidden]{display:none!important}.focus-card{border:1px solid var(--line);border-radius:22px;padding:20px;text-align:center;background:var(--panel)}.focus-time{font-size:clamp(2.4rem,8vw,4rem);font-weight:850;font-variant-numeric:tabular-nums;letter-spacing:.02em;margin:.4rem 0}.focus-card .note{margin-bottom:0}#focus-form{display:grid;gap:8px;margin:18px 0}#focus-form input{min-height:44px}.focus-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.focus-buttons button{min-height:44px}.focus-buttons button:focus-visible{outline:3px solid #6d9d53;outline-offset:3px}
@@ -3730,6 +3732,15 @@ body.dark .app[data-workspace="chat"] .side-head{background:linear-gradient(125d
 body.dark .app[data-workspace="chat"] .chat-head{background:linear-gradient(110deg,#26372a,#2b3b2c 68%,#3b352f)}
 body.dark .app[data-workspace="chat"] .composer{border-color:#70926d!important;box-shadow:0 3px 0 #1b2c1f}
 @media(prefers-reduced-motion:reduce){.modal-backdrop>.modal{animation:none!important}}
+/* Page Visibility pauses CSS animations without changing their progress. */
+html.catcul-page-hidden *,html.catcul-page-hidden *::before,html.catcul-page-hidden *::after{animation-play-state:paused!important}
+/* Lite mode is reversible and does not overwrite cursor/profile preferences. */
+html.catcul-lite *,html.catcul-lite *::before,html.catcul-lite *::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.catcul-lite .cul-pfx-overlay{display:none!important}
+html.catcul-lite .cul-pfx-card *,html.catcul-lite .cul-pfx-card *::before,html.catcul-lite .cul-pfx-card *::after{animation:none!important}
+html.catcul-lite #catcul-cursor,html.catcul-lite #catcul-cursor-toggle{display:none!important}
+/* Large translucent modal blurs are expensive over photographic wallpaper. */
+html[data-anime-canvas="1"] .modal-backdrop,html[data-anime-canvas="1"] .spot-theater-backdrop{-webkit-backdrop-filter:none;backdrop-filter:none}
 
 </style>
 <meta name="referrer" content="no-referrer"><style id="catcul-popcats-css">
@@ -4009,12 +4020,13 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     const comboEl=opts&&opts.comboEl;
     const bestEl=opts&&opts.bestEl;
     const onPopCb=opts&&opts.onPop;
-    let alive=true,combo=0,lastPopAt=0,swiping=false,comboTimer=null;
+    let alive=true,combo=0,lastPopAt=0,swiping=false,comboTimer=null,moveFrame=0,movePoint=null;
+    function bump(pill){if(!pill)return;pill.classList.remove('bump');requestAnimationFrame(()=>requestAnimationFrame(()=>{if(pill.isConnected)pill.classList.add('bump');}));}
     function updateScore(){
       if(scoreNumEl){
         scoreNumEl.textContent=String(totalPopped);
         const pill=scoreNumEl.closest('.boot-pop-score,.zen-pop-score');
-        if(pill){pill.classList.remove('bump');void pill.offsetWidth;pill.classList.add('bump');}
+        bump(pill);
       }
       const bootCnt=document.getElementById('boot-pop-count');
       if(bootCnt&&bootCnt!==scoreNumEl)bootCnt.textContent=String(totalPopped);
@@ -4023,9 +4035,8 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
       if(comboEl){
         if(combo>=2){
           comboEl.textContent=(combo>=5?'⚡':'🔥')+' ×'+combo;
-          comboEl.classList.remove('hidden','bump');
-          void comboEl.offsetWidth;
-          comboEl.classList.add('bump');
+          comboEl.classList.remove('hidden');
+          bump(comboEl);
           clearTimeout(comboTimer);
           comboTimer=setTimeout(()=>comboEl.classList.add('hidden'),1500);
         }else{
@@ -4035,7 +4046,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
       if(bestEl)bestEl.textContent=String(bestStreak);
     }
     function spawnCat(initial){
-      if(!alive)return;
+      if(!alive||document.hidden)return;
       const host=fieldEl.closest('#boot-overlay,#catcul-splash-loader,#pop-cat-zen-overlay,.spot-cat-loader');
       if(host&&host.classList.contains('hidden'))return;
       if(fieldEl.querySelectorAll('.pop-cat-bubble').length>=maxCats)return;
@@ -4081,11 +4092,17 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
       fieldEl.appendChild(btn);
     }
     const onDown=()=>{swiping=true;};
-    const onUp=()=>{swiping=false;};
+    const onUp=()=>{swiping=false;movePoint=null;if(moveFrame)cancelAnimationFrame(moveFrame);moveFrame=0;};
     const onMove=(ev)=>{
-      if(!swiping||ev.pointerType==='mouse')return;
-      const hit=document.elementFromPoint(ev.clientX,ev.clientY)?.closest?.('.pop-cat-bubble');
-      if(hit&&fieldEl.contains(hit)&&hit._popCat)hit._popCat(ev);
+      if(!swiping||ev.pointerType==='mouse'||document.hidden)return;
+      movePoint={x:ev.clientX,y:ev.clientY};
+      if(moveFrame)return;
+      moveFrame=requestAnimationFrame(()=>{
+        moveFrame=0;const p=movePoint;movePoint=null;
+        if(!p||!swiping||!alive||document.hidden)return;
+        const hit=document.elementFromPoint(p.x,p.y)?.closest?.('.pop-cat-bubble');
+        if(hit&&fieldEl.contains(hit)&&hit._popCat)hit._popCat();
+      });
     };
     fieldEl.addEventListener('pointerdown',onDown);
     fieldEl.addEventListener('pointermove',onMove);
@@ -4094,11 +4111,11 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     const iv=setInterval(()=>{
       const host=fieldEl.closest('#boot-overlay,#catcul-splash-loader,#pop-cat-zen-overlay,.spot-cat-loader');
       if(!document.body.contains(fieldEl)){clearInterval(iv);window.removeEventListener('pointerup',onUp);alive=false;return;}
-      if(host&&host.classList.contains('hidden'))return;
+      if(document.hidden||(host&&host.classList.contains('hidden')))return;
       if(fieldEl.querySelectorAll('.pop-cat-bubble').length<maxCats)spawnCat(false);
     },800);
     return {
-      stop(){alive=false;clearInterval(iv);window.removeEventListener('pointerup',onUp);},
+      stop(){alive=false;onUp();clearInterval(iv);window.removeEventListener('pointerup',onUp);},
       popRandom(){const b=fieldEl.querySelector('.pop-cat-bubble:not([data-popped])');if(b&&b._popCat)b._popCat();},
       ensureSpawn(){for(let i=fieldEl.querySelectorAll('.pop-cat-bubble').length;i<maxCats;i++)spawnCat(true);}
     };
@@ -4371,7 +4388,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
   </div>
   <div class="arcade-stage-body" id="arcade-stage-body">
    <div class="arcade-frame-box" id="arcade-frame-box">
-    <iframe id="arcade-iframe" title="Catcul Friends Game Stage" allow="fullscreen; pointer-lock; autoplay; gamepad; clipboard-read; clipboard-write; accelerometer; gyroscope" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
    </div>
    <aside class="arcade-chat-drawer" id="arcade-chat-drawer" aria-label="Squad live chat">
     <div class="arcade-chat-head">
@@ -8707,6 +8724,31 @@ three/build/three.module.js:
 
 </script>
 <script>
+/* Browser-local, reversible performance preference; no backend or message data. */
+(function(){
+  'use strict';
+  const root=document.documentElement,key='catcul.liteMode';
+  function apply(on,save){
+    root.classList.toggle('catcul-lite',!!on);
+    if(save)try{localStorage.setItem(key,on?'on':'off');}catch(_){}
+    document.querySelectorAll('[data-catcul-lite-toggle]').forEach(b=>{
+      b.classList.toggle('on',!!on);b.setAttribute('aria-checked',String(!!on));
+    });
+    window.dispatchEvent(new CustomEvent('catcul:lite-mode',{detail:{enabled:!!on}}));
+  }
+  let initial=false;try{initial=localStorage.getItem(key)==='on';}catch(_){}
+  window.CatculPerformance=Object.freeze({isLite:()=>root.classList.contains('catcul-lite'),setLite:on=>apply(!!on,true)});
+  apply(initial,false);
+  function visibility(){root.classList.toggle('catcul-page-hidden',document.hidden);}
+  document.addEventListener('visibilitychange',visibility);visibility();
+  document.addEventListener('click',e=>{
+    const button=e.target.closest?.('[data-catcul-lite-toggle]');
+    if(button)apply(!root.classList.contains('catcul-lite'),true);
+  });
+  window.addEventListener('storage',e=>{if(e.key===key||e.key===null){let on=false;try{on=localStorage.getItem(key)==='on';}catch(_){}apply(on,false);}});
+})();
+
+
 // Central session router. Full-document navigation unmounts the previous view;
 // authenticated workspace markup is never mounted in the public landing page.
 (() => {
@@ -10059,7 +10101,7 @@ function personHTML(p){return `<div class="row person">${avatar(p)}<div class="g
 
 function onlinePeople(id=active){return Object.values(members[id]||{});}
 
-function renderMedia(){const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);const mediaEl=$('#shared-media'),nextMediaHtml=photos.length?`<div class="media-grid">${photos.slice(-6).map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open shared photo"><img src="${esc(m.data)}" alt="Shared photo"></button>`).join('')}</div>`:`<div class="media-empty">${icon('photo')}<p>Your little moments<br>will find a home here.</p></div>`;if(mediaEl&&mediaEl._rawHtml!==nextMediaHtml){mediaEl._rawHtml=nextMediaHtml;mediaEl.innerHTML=nextMediaHtml;}}
+function renderMedia(){const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);const mediaEl=$('#shared-media'),nextMediaHtml=photos.length?`<div class="media-grid">${photos.slice(-6).map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open shared photo"><img loading="lazy" decoding="async" src="${esc(m.data)}" alt="Shared photo"></button>`).join('')}</div>`:`<div class="media-empty">${icon('photo')}<p>Your little moments<br>will find a home here.</p></div>`;if(mediaEl&&mediaEl._rawHtml!==nextMediaHtml){mediaEl._rawHtml=nextMediaHtml;mediaEl.innerHTML=nextMediaHtml;}}
 
 function updateSend(){$('#send-button').disabled=!isReady()||(!$('#message-input').value.trim()&&!attachment)||!!mediaRecorder&&mediaRecorder.state==='recording';}
 
@@ -10140,7 +10182,7 @@ async function copyText(text){try{await navigator.clipboard.writeText(text);retu
 
 function applyTheme(){const isDark=!!settings.dark;document.documentElement.classList.toggle('dark',isDark);document.body.classList.toggle('dark',isDark);$('#theme-icon').innerHTML=icon(isDark?'sun':'moon');store('settings',settings);}
 
-function showGallery(){publishActivity('gallery');const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);openModal(`${modalTitle('photo','The little moments.',esc(currentRoom().name)+' · saved photos in the loaded conversation')}<div class="media-modal-grid">${photos.map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open photo from ${esc(m.sender.name)}"><img src="${esc(m.data)}" alt="Photo from ${esc(m.sender.name)}"></button>`).join('')}</div>${photos.length?'':`<div class="media-empty" style="padding:35px">${icon('camera')}<p>No photos yet.<br>The ordinary moments are worth sharing, too.</p></div><button class="btn full" data-action="photo">${icon('photo')}Share a photo</button>`}`,true);}
+function showGallery(){publishActivity('gallery');const photos=roomHistory().filter(m=>m.kind==='photo'&&m.data&&!m.deleted);openModal(`${modalTitle('photo','The little moments.',esc(currentRoom().name)+' · saved photos in the loaded conversation')}<div class="media-modal-grid">${photos.map(m=>`<button data-open-photo="${esc(m.id)}" aria-label="Open photo from ${esc(m.sender.name)}"><img loading="lazy" decoding="async" src="${esc(m.data)}" alt="Photo from ${esc(m.sender.name)}"></button>`).join('')}</div>${photos.length?'':`<div class="media-empty" style="padding:35px">${icon('camera')}<p>No photos yet.<br>The ordinary moments are worth sharing, too.</p></div><button class="btn full" data-action="photo">${icon('photo')}Share a photo</button>`}`,true);}
 
 function showAttach(){openModal(`${modalTitle('camera','Send a photo','Choose from your gallery or take a picture.')}<button class="btn full" data-action="photo">${icon('photo')}Choose a photo</button><button class="btn secondary full" data-action="camera">${icon('camera')}Take a photo</button><p class="note">Photos are compressed before upload and stored privately for room members.</p>`);}
 
@@ -12969,7 +13011,7 @@ function resolveWallpaperImageUrl(wallKey) {
   if (dyn) {
     const id = dyn[1].toLowerCase();
     const ext = dyn[2].toLowerCase();
-    return `https://w.wallhaven.cc/full/${id.slice(0, 2)}/wallhaven-${id}.${ext}`;
+    return document.documentElement.classList.contains('catcul-lite') ? wallhavenPaths(id,ext).thumb_url : wallhavenPaths(id,ext).full_url;
   }
   // Retired curated selections are no longer resolved automatically.
   if (/^wh:/i.test(k)) return '';
@@ -13126,6 +13168,7 @@ function applyCatculAppTheme(themeId, persistLocal = true) {
 }
 
 syncAnimeWallpaperPrefs();
+window.addEventListener('catcul:lite-mode',()=>syncAnimeWallpaperPrefs());
 
 const __monPrevSyncChatChrome = typeof syncChatChrome === 'function' ? syncChatChrome : null;
 if (__monPrevSyncChatChrome) {
@@ -16812,7 +16855,7 @@ function paintArcadeGames() {
     const coverImg = ARCADE_COVER_IMAGES[g.slug] || (coverKey ? ARCADE_COVER_IMAGES[coverKey] : '');
     return `<article class="arcade-game-card" data-game-card="${esc(g.slug)}">
       <div class="arcade-game-art ${coverImg ? 'has-cover-img' : ''}" data-cover="${esc(g.cover_style || 'custom')}">
-        ${coverImg ? `<img class="arcade-cover-img" src="${esc(coverImg)}" data-cover-key="${esc(coverKey)}" alt="${esc(g.title)} cover art" decoding="async">` : ''}
+        ${coverImg ? `<img class="arcade-cover-img" loading="lazy" src="${esc(coverImg)}" data-cover-key="${esc(coverKey)}" alt="${esc(g.title)} cover art" decoding="async">` : ''}
         <div class="arcade-art-scrim"></div>
         <div class="arcade-art-grid"></div>
         <div class="arcade-art-top">
@@ -17011,6 +17054,14 @@ async function loadCloudOrGzipGameToBlobUrl(url) {
   return URL.createObjectURL(htmlBlob);
 }
 
+let arcadeLaunchVersion=0;
+function createArcadeFrame() {
+  const box=$('#arcade-frame-box'); if(!box)return null;
+  let frame=$('#arcade-iframe'); if(frame)return frame;
+  frame=document.createElement('iframe');frame.id='arcade-iframe';frame.title='Catcul Friends Game Stage';
+  frame.setAttribute('allow','fullscreen; pointer-lock; autoplay; gamepad; clipboard-read; clipboard-write; accelerometer; gyroscope');
+  frame.setAttribute('allowfullscreen','');frame.setAttribute('referrerpolicy','no-referrer-when-downgrade');box.appendChild(frame);return frame;
+}
 async function launchArcadeGame(slug, partyCode = '', localBlobUrl = '', customTitle = '') {
   const resolvedSlug = slug;
   if (isRetiredArcadeGame({slug, title: customTitle})) return toast('This game is no longer available.', true);
@@ -17021,8 +17072,10 @@ async function launchArcadeGame(slug, partyCode = '', localBlobUrl = '', customT
 
   const view = $('#arcade-view');
   const stageWrap = $('#arcade-stage-wrap');
-  const iframe = $('#arcade-iframe');
-  if (!view || !stageWrap || !iframe) return;
+  if (!view || !stageWrap) return;
+  const launchVersion=++arcadeLaunchVersion;
+  const iframe = createArcadeFrame();
+  if (!iframe) return;
 
   if (arcadeState.activeBlobUrl && arcadeState.activeBlobUrl !== localBlobUrl) {
     URL.revokeObjectURL(arcadeState.activeBlobUrl);
@@ -17072,6 +17125,7 @@ async function launchArcadeGame(slug, partyCode = '', localBlobUrl = '', customT
     if (isCloudPack) {
       toast('Loading ' + arcadeState.activeTitle + '…');
       const blobUrl = await loadCloudOrGzipGameToBlobUrl(targetUrl);
+      if (launchVersion!==arcadeLaunchVersion || !iframe.isConnected) { URL.revokeObjectURL(blobUrl); return; }
       arcadeState.activeBlobUrl = blobUrl;
       iframe.src = blobUrl;
     } else {
@@ -17113,13 +17167,14 @@ async function launchLocalHtmlFile(file) {
 }
 
 function closeArcadeStage() {
+  ++arcadeLaunchVersion;
   const view = $('#arcade-view');
   const stageWrap = $('#arcade-stage-wrap');
   const iframe = $('#arcade-iframe');
   clearInterval(arcadeState.chatTick);
   arcadeState.chatTick = null;
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-  if (iframe) iframe.src = 'about:blank';
+  if (iframe) { iframe.onload=null; iframe.remove(); }
   if (arcadeState.activeBlobUrl) {
     URL.revokeObjectURL(arcadeState.activeBlobUrl);
     arcadeState.activeBlobUrl = '';
@@ -18482,6 +18537,10 @@ window.addEventListener('message', (ev) => {
         </div>
 
         <div class="setting" data-sec-group="all appearance">
+          <div><h3>Performance / Lite Mode</h3><p>Reduces blur and effects, uses the system cursor and smaller Wallhaven images on this device.</p></div>
+          <button class="switch ${window.CatculPerformance?.isLite() ? 'on' : ''}" data-catcul-lite-toggle role="switch" aria-checked="${!!window.CatculPerformance?.isLite()}" aria-label="Performance / Lite Mode"></button>
+        </div>
+        <div class="setting" data-sec-group="all appearance">
           <div>
             <h3>Custom cursor</h3>
             <p>Turn off for your system pointer. Saved in this browser; mouse only.</p>
@@ -18916,10 +18975,10 @@ function notifyGroupCatChanged(room){if(groupFunSession?.room===room)groupFunSes
 async function openGroupFun(){
  if(!active||!setupReady||currentRoom().kind!=='group'||currentRoom().purpose==='community')return toast('Open an active group chat first.',true);
  const room=active,actor=user.id;
- openModal(`${modalTitle('spark','Group corner','A little more life for your group chat.')}<section class="gf-cat"><div class="gf-cat-face" id="gf-cat-face" aria-hidden="true">ฅ^•ﻌ•^ฅ</div><div><strong>Our room cat</strong><p id="gf-cat-status" class="note">Loading activity…</p><small>Levels reflect saved, approved messages and completed multiplayer typing races. Deleted messages no longer count.</small></div></section><section class="gf-pet-options"><strong>Shared outfits</strong><div id="gf-outfits" class="gf-pet-buttons"></div><strong>Tricks</strong><div id="gf-tricks" class="gf-pet-buttons"></div><p class="note">Members who can post in this group can change the outfit. Tricks appear to members currently in this chat when realtime is connected.</p></section><section class="gf-ritual-link"><button type="button" class="btn secondary" data-group-ritual>Explore a group ritual</button><p class="note">A small shared idea, always optional.</p></section><section class="gf-streak"><span class="gf-label">OUR CHECK-IN STREAK · UTC</span><strong id="gf-streak-value">Loading…</strong><p id="gf-streak-detail" class="note"></p><small>Optional and pressure-free. A day counts when at least two current members answer the daily check-in. The count is visible to group members, even before they answer. Recent streaks are shown up to 31+ days; removing members or old answers can change the count.</small></section><section class="gf-check"><span class="gf-label">DAILY CHECK-IN · UTC</span><h3 id="gf-question">Loading today’s prompt…</h3><p class="note">Everyone’s answers stay hidden from you until you reply. Room members can change their answer today.</p><form id="gf-form"><label for="gf-answer">Your answer</label><textarea id="gf-answer" class="field" maxlength="500" rows="3" required placeholder="Share a little thought…"></textarea><button class="btn" type="submit">Share &amp; reveal</button></form><div id="gf-answers" aria-live="polite"></div></section><section class="gf-help"><strong>Try a chat command</strong><p><code>/roll</code> · <code>/8ball your question</code> · <code>/pet</code> · <code>/throwyarn</code></p><small>These send playful messages to the room. Rolls and answers are generated by the sender’s device, not verified for competitions.</small></section>`,true);
+ openModal(`${modalTitle('spark','Group corner','A little more life for your group chat.')}<section class="gf-cat"><div class="gf-cat-face" id="gf-cat-face" aria-hidden="true"><svg viewBox="0 0 100 90" class="gf-cat-art" focusable="false"><path d="M19 38 17 11 38 22 Q50 16 62 22 L83 11 81 38 Q88 48 85 61 Q81 78 50 80 Q19 78 15 61 Q12 48 19 38Z" fill="#f5e5c7" stroke="#543f35" stroke-width="3" stroke-linejoin="round"/><path d="M21 21 23 35 32 27ZM79 21 77 35 68 27Z" fill="#e6a5a1"/><ellipse cx="34" cy="50" rx="3.5" ry="4.5" fill="#543f35"/><ellipse cx="66" cy="50" rx="3.5" ry="4.5" fill="#543f35"/><path d="M47 57 Q50 54 53 57 L50 61Z" fill="#c37d7c"/><path d="M50 61 Q46 67 41 62 M50 61 Q54 67 59 62 M24 57 10 54 M24 63 10 65 M76 57 90 54 M76 63 90 65" fill="none" stroke="#543f35" stroke-width="2" stroke-linecap="round"/><circle cx="28" cy="59" r="5" fill="#eeb2a8" opacity=".7"/><circle cx="72" cy="59" r="5" fill="#eeb2a8" opacity=".7"/></svg></div><div class="gf-cat-copy"><span class="gf-cat-eyebrow">YOUR GROUP’S LITTLE FRIEND</span><strong>Our room cat</strong><p id="gf-cat-status" class="note" role="status">Loading activity…</p><div class="gf-level-track" id="gf-level-track" role="progressbar" aria-label="Progress toward the next cat level" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><span id="gf-level-fill"></span></div><small>Levels reflect saved, approved messages and completed multiplayer typing races. Deleted messages no longer count.</small></div></section><section class="gf-pet-options"><strong>Shared outfits</strong><div id="gf-outfits" class="gf-pet-buttons"></div><strong>Tricks</strong><div id="gf-tricks" class="gf-pet-buttons"></div><p class="note">Members who can post in this group can change the outfit. Tricks appear to members currently in this chat when realtime is connected.</p></section><section class="gf-ritual-link"><button type="button" class="btn secondary" data-group-ritual>Explore a group ritual</button><p class="note">A small shared idea, always optional.</p></section><section class="gf-streak"><span class="gf-label">OUR CHECK-IN STREAK · UTC</span><strong id="gf-streak-value">Loading…</strong><p id="gf-streak-detail" class="note"></p><small>Optional and pressure-free. A day counts when at least two current members answer the daily check-in. The count is visible to group members, even before they answer. Recent streaks are shown up to 31+ days; removing members or old answers can change the count.</small></section><section class="gf-check"><span class="gf-label">DAILY CHECK-IN · UTC</span><h3 id="gf-question">Loading today’s prompt…</h3><p class="note">Everyone’s answers stay hidden from you until you reply. Room members can change their answer today.</p><form id="gf-form"><label for="gf-answer">Your answer</label><textarea id="gf-answer" class="field" maxlength="500" rows="3" required placeholder="Share a little thought…"></textarea><button class="btn" type="submit">Share &amp; reveal</button></form><div id="gf-answers" aria-live="polite"></div></section><section class="gf-help"><strong>Try a chat command</strong><p><code>/roll</code> · <code>/8ball your question</code> · <code>/pet</code> · <code>/throwyarn</code></p><small>These send playful messages to the room. Rolls and answers are generated by the sender’s device, not verified for competitions.</small></section>`,true);
  const form=$('#gf-form'),answer=$('#gf-answer'),list=$('#gf-answers'),question=$('#gf-question'),cat=$('#gf-cat-status');
  let petLevel=1,streakVersion=0,checkVersion=0,catVersion=0,catSaving=false;
- function presentCat(pet){if(!form.isConnected||active!==room||user?.id!==actor)return;petLevel=Number(pet.level)||1;cat.textContent=`Level ${petLevel} · ${pet.activity} activity points${petLevel<100?' · next level at '+pet.next_at:''} · ${pet.games||0} games together`;const face=$('#gf-cat-face');face.dataset.look=['none','scarf','party_hat'].includes(pet.outfit)?pet.outfit:'none';const opts=[['none','No outfit',1],['scarf','Cozy scarf',2],['party_hat','Party hat',3]];$('#gf-outfits').innerHTML=opts.map(([id,label,level])=>`<button type="button" class="btn secondary" data-cat-outfit="${id}" ${petLevel<level?'disabled':''}>${label}${pet.outfit===id?' ✓':petLevel<level?' · Lv '+level:''}</button>`).join('');$('#gf-tricks').innerHTML=[['wave','Wave',2],['spin','Spin',3]].map(([id,label,level])=>`<button type="button" class="btn secondary" data-cat-trick="${id}" ${petLevel<level?'disabled':''}>${label}${petLevel<level?' · Lv '+level:''}</button>`).join('');}
+ function presentCat(pet){if(!form.isConnected||active!==room||user?.id!==actor)return;petLevel=Number(pet.level)||1;cat.textContent=`Level ${petLevel} · ${pet.activity} activity points${petLevel<100?' · next level at '+pet.next_at:''} · ${pet.games||0} games together`;const activity=Math.max(0,Number(pet.activity)||0),atMax=petLevel>=100,within=atMax?20:Math.min(20,activity%20);const track=$('#gf-level-track'),fill=$('#gf-level-fill');track.setAttribute('aria-valuenow',String(within));track.setAttribute('aria-valuetext',atMax?'Maximum level':`${within} of 20 points toward the next level`);fill.style.width=(within/20*100)+'%';const face=$('#gf-cat-face');face.dataset.look=['none','scarf','party_hat'].includes(pet.outfit)?pet.outfit:'none';const opts=[['none','No outfit',1],['scarf','Cozy scarf',2],['party_hat','Party hat',3]];$('#gf-outfits').innerHTML=opts.map(([id,label,level])=>`<button type="button" class="btn secondary" data-cat-outfit="${id}" ${petLevel<level?'disabled':''}>${label}${pet.outfit===id?' ✓':petLevel<level?' · Lv '+level:''}</button>`).join('');$('#gf-tricks').innerHTML=[['wave','Wave',2],['spin','Spin',3]].map(([id,label,level])=>`<button type="button" class="btn secondary" data-cat-trick="${id}" ${petLevel<level?'disabled':''}>${label}${petLevel<level?' · Lv '+level:''}</button>`).join('');}
  const catRefresh=async()=>{if(catSaving)return;const version=++catVersion;const pet=unwrap(await db.rpc('get_group_cat',{p_room:room}));if(version===catVersion&&!catSaving)presentCat(pet);};
  const streakRefresh=async()=>{const version=++streakVersion;try{const info=unwrap(await db.rpc('group_checkin_streak',{p_room:room}));if(version!==streakVersion||!form.isConnected||active!==room||user?.id!==actor)return;const days=Math.max(0,Number(info.days)||0),people=Math.max(0,Number(info.today_members)||0);$('#gf-streak-value').textContent=days?`${info.capped?'31+':days} ${days===1?'day':'days'} together`:'Start whenever you like';$('#gf-streak-detail').textContent=`${people} ${people===1?'member has':'members have'} checked in today${info.today_met?' · Today counts!':''}`;}catch(e){if(version===streakVersion&&form.isConnected&&active===room&&user?.id===actor)$('#gf-streak-value').textContent='Streak unavailable';console.warn(e);}};
  const groupSession={room,refresh:catRefresh};groupFunSession=groupSession;const priorCleanup=modalCleanup;const catPoll=setInterval(()=>{if(form.isConnected&&active===room&&user?.id===actor&&!document.hidden){catRefresh().catch(console.warn);streakRefresh();}},10000);streakRefresh();modalCleanup=()=>{priorCleanup?.();clearInterval(catPoll);if(groupFunSession===groupSession)groupFunSession=null;};
@@ -19544,7 +19603,8 @@ const actions={'stories-hub':showTouchStories,'private-chats':showPrivateChats,'
 document.addEventListener('click',async e=>{const action=e.target.closest('[data-action]');if(action){e.preventDefault();try{await actions[action.dataset.action]?.();}catch(err){fail(err);}return;}const room=e.target.closest('[data-room]');if(room){showChatView();return setActive(room.dataset.room);}const tab=e.target.closest('[data-filter]');if(tab){filter=tab.dataset.filter;renderRooms();return;}const emoji=e.target.closest('[data-emoji]');if(emoji){const input=$('#message-input');const start=input.selectionStart||input.value.length,end=input.selectionEnd||start;input.value=(input.value.slice(0,start)+emoji.dataset.emoji+input.value.slice(end)).slice(0,4000);input.focus();const pos=start+emoji.dataset.emoji.length;input.setSelectionRange(pos,pos);updateSend();return;}const react=e.target.closest('[data-react]');if(react)return reactTo(react.dataset.mid,react.dataset.react);const rep=e.target.closest('[data-reply]');if(rep)return setReply(rep.dataset.reply);const del=e.target.closest('[data-delete]');if(del){const roomId=active,mid=del.dataset.delete;const m=roomHistory(roomId).find(x=>x.id===mid&&x.sender.id===profile.id);if(!m)return;openModal(`${modalTitle('trash','Remove this message?','The saved message will be removed for room members. Downloads, screenshots and still-valid media links cannot be recalled.')}<button class="btn full" id="confirm-delete">Remove message</button><button class="btn secondary full" data-action="close-modal">Keep it</button>`);$('#confirm-delete').onclick=async()=>{if(!await broadcast(roomId,'delete',{id:mid,senderId:profile.id}))return toast('Connect to remove the message.',true);m.deleted=true;m.text='';delete m.data;m.reactions={};if(active===roomId)replaceMessage(m);renderRooms();persist();closeModal();};return;}const retry=e.target.closest('[data-retry]');if(retry){const m=roomHistory().find(m=>m.id===retry.dataset.retry);if(m)transmit(active,m);return;}const photo=e.target.closest('[data-open-photo]');if(photo)return openPhoto(photo.dataset.openPhoto);const jump=e.target.closest('[data-jump]');if(jump){const id=jump.dataset.jump;closeModal();showChatView();$('#app').classList.add('mobile-chat');const el=document.getElementById('m-'+id);el?.scrollIntoView({behavior:'smooth',block:'center'});el?.classList.add('flash');setTimeout(()=>el?.classList.remove('flash'),2200);return;}if(e.target.classList.contains('modal-backdrop'))closeModal();if(!e.target.closest('.emoji-picker')&&!e.target.closest('[data-action="emoji"]'))$('#emoji-picker').classList.add('hidden');});
 document.addEventListener('keydown',e=>{if(notesOpen)return;if(e.key==='Escape'){closeModal();$('#emoji-picker').classList.add('hidden');$('#details').classList.remove('drawer');}if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();$('#room-search').focus();if(innerWidth<=650)$('#app').classList.remove('mobile-chat');}if(e.key==='Tab'&&$('.modal')){const focusable=$$('button:not(:disabled),input:not(:disabled),textarea:not(:disabled),select:not(:disabled),a[href],[tabindex="0"]', $('.modal')).filter(el=>el.offsetParent!==null);const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}});
 $('#compose-form').onsubmit=e=>{e.preventDefault();sendMessage();};
-$('#message-input').oninput=()=>{const input=$('#message-input');input.style.height='36px';input.style.height=Math.min(116,input.scrollHeight)+'px';updateSend();if(input.value.trim())sendTyping(true);clearTimeout(typingTimer);typingTimer=setTimeout(()=>sendTyping(false),1800);};
+let composerResizeFrame=0;
+$('#message-input').oninput=()=>{const input=$('#message-input');if(!composerResizeFrame)composerResizeFrame=requestAnimationFrame(()=>{composerResizeFrame=0;input.style.height='36px';input.style.height=Math.min(116,input.scrollHeight)+'px';});updateSend();if(input.value.trim())sendTyping(true);clearTimeout(typingTimer);typingTimer=setTimeout(()=>sendTyping(false),1800);};
 $('#message-input').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing&&innerWidth>650){e.preventDefault();sendMessage();}};
 $('#message-input').addEventListener('paste',e=>{const f=[...e.clipboardData.items].find(i=>i.type.startsWith('image/'));if(f){e.preventDefault();choosePhoto(f.getAsFile());}});
 $('#room-search').oninput=renderRooms;
@@ -19787,7 +19847,7 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   toggle.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 10-6 1-3 6L5 3Z"/><path d="m15 16 4 5"/></svg><span class="cc-toggle-label"></span>';
   document.body.append(cursor, toggle);
   const supported = () => pointerMedia.matches && !contrastMedia.matches;
-  const allowed = () => supported() && enabled && !dragging;
+  const allowed = () => supported() && enabled && !dragging && !document.hidden && !root.classList.contains('catcul-lite');
   function updateToggle() {
     toggle.classList.toggle('cc-toggle-ready', supported());
     toggle.setAttribute('aria-pressed', String(enabled));
@@ -19839,7 +19899,14 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     root.classList.add('catcul-cursor-active');
     state(event.target);
   }
-  document.addEventListener('pointermove', paint, {passive: true});
+  let moveFrame=0, pendingMove=null;
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType && event.pointerType !== 'mouse') { pendingMove=null; hide(); return; }
+    if (!allowed()) { pendingMove=null; hide(); return; }
+    pendingMove={clientX:event.clientX,clientY:event.clientY,pointerType:event.pointerType,target:event.target};
+    if (!moveFrame) moveFrame=requestAnimationFrame(()=>{moveFrame=0;const next=pendingMove;pendingMove=null;if(next)paint(next);});
+  }, {passive: true});
+  window.addEventListener('catcul:lite-mode',()=>{pendingMove=null;if(moveFrame)cancelAnimationFrame(moveFrame);moveFrame=0;hide();});
   document.addEventListener('pointerover', event => {
     if (!visible || (event.pointerType && event.pointerType !== 'mouse')) return;
     if (!allowed()) { hide(); return; }
@@ -19855,7 +19922,7 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
   document.documentElement.addEventListener('pointerleave', hide, {passive: true});
   window.addEventListener('blur', hide);
   window.addEventListener('pagehide', hide);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { pendingMove=null; if(moveFrame)cancelAnimationFrame(moveFrame);moveFrame=0;hide(); } });
   document.addEventListener('keydown', event => { if (event.key === 'Tab') hide(); });
   document.addEventListener('dragstart', () => { dragging = true; hide(); });
   document.addEventListener('dragend', () => { dragging = false; });

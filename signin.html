@@ -1037,6 +1037,11 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
        <div class="username-input"><span aria-hidden="true">@</span><input class="field" id="username" name="username" autocomplete="username" minlength="3" maxlength="15" pattern="[A-Za-z0-9_]{3,15}" placeholder="alex_rivera" aria-describedby="username-note" ></div>
        <p class="field-note" id="username-note">3–15 letters, numbers, or underscores. Friends use this handle to find you.</p>
       </div>
+      <div id="gender-wrap" class="hidden">
+       <label for="gender">Gender <span class="field-note">(optional)</span></label>
+       <select class="field" id="gender" name="gender" aria-describedby="gender-note"><option value="">Prefer not to say</option><option value="girl">Girl</option><option value="boy">Boy</option><option value="other">Other</option></select>
+       <p class="field-note" id="gender-note">Optional. Stored with your account, not shown on your public profile.</p>
+      </div>
       <div id="email-wrap">
        <label for="email" id="email-label">Email address</label>
        <input class="field" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
@@ -1568,6 +1573,7 @@ function setMode(next) {
 
   $('#name-wrap').classList.toggle('hidden', !isSignup);
   $('#username-wrap').classList.toggle('hidden', !isSignup);
+  $('#gender-wrap')?.classList.toggle('hidden', !isSignup);
   $('#name').required = isSignup;
   $('#username').required = isSignup;
   $('#email-wrap').classList.toggle('hidden', isRecovery);
@@ -1657,6 +1663,20 @@ function cleanUsernameInput(raw) {
 function normalizeUsername(raw) {
   return cleanUsernameInput(raw).toLowerCase();
 }
+
+// A homepage preview is applied only during creation of a new account. It is
+// never applied during sign-in or to an existing profile.
+function readSignupCuljiPreview() {
+  try {
+    const v = JSON.parse(sessionStorage.getItem('catcul.signupCuljiPreview') || 'null');
+    if (!v || !['#eab38b','#f8d9c4','#c68252','#8a4f2a','#512b15'].includes(v.skin)
+      || !['curls','buzz','braids','long_waves','short_fade','wolf_cut'].includes(v.hair)
+      || !['hoodie','track_jacket','varsity','cardigan','tee'].includes(v.outfit)
+      || !['#3c6e58','#18181b','#d7f472','#6b4c9a','#b85d38'].includes(v.outfitColor)) return null;
+    return { v:2, skin:v.skin, hair:v.hair, outfit:v.outfit, outfitColor:v.outfitColor };
+  } catch { return null; }
+}
+function clearSignupCuljiPreview() { try { sessionStorage.removeItem('catcul.signupCuljiPreview'); } catch {} }
 
 function readPendingProfile() {
   try { return JSON.parse(localStorage.getItem('catcul.pendingProfile')) || null; } catch { return null; }
@@ -2007,17 +2027,19 @@ $('#auth-form').addEventListener('submit', async (e) => {
       }
       savePendingProfile({ email, name, username });
       const emailRedirectTo = redirectBase('signin.html');
+      const culjiPreview = readSignupCuljiPreview();
       sentCaptcha = true;
       const { data, error } = await client.auth.signUp({
         email,
         password,
         options: {
           captchaToken: token,
-          data: { display_name: name, username },
+          data: { display_name: name, username, ...(culjiPreview ? { culji_preview: culjiPreview } : {}), ...(['girl','boy','other'].includes($('#gender')?.value) ? { gender: $('#gender').value } : {}) },
           ...(emailRedirectTo ? { emailRedirectTo } : {}),
         },
       });
       if (error) throw error;
+      clearSignupCuljiPreview();
       if (data.session) {
         await ensureProfile(data.session.user, name, username);
         safeRedirectApp();

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catcul — Talk together. Play together.</title>
+<title>Catcul — Your group chat, upgraded.</title>
 <meta name="description" content="The everyday photos. The long voice notes. The friends who just get it. A calm, real-time space to stay close on desktop and phone.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2215%22%20fill%3D%22%23dcf783%22%2F%3E%3Cpath%20d%3D%22M12%2020%2010%208l12%208h4l12-8-2%2012c7%2014-1%2021-12%2021S5%2034%2012%2020Z%22%20fill%3D%22none%22%20stroke%3D%22%2320261e%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2227%22%20r%3D%222%22%2F%3E%3C%2Fsvg%3E">
 <style>
@@ -619,7 +619,9 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
   document.addEventListener('DOMContentLoaded',()=>apply(current,false));
   window.addEventListener('storage',e=>{if(e.key===key)apply(Object.prototype.hasOwnProperty.call(fonts,e.newValue)?e.newValue:'default',false);});
 })();
-</script></head>
+</script><style>.culji-try{background:#edf4dc;border:2px solid #283b2b;border-radius:32px;padding:28px;margin:22px auto;display:grid;grid-template-columns:minmax(170px,270px) 1fr;gap:32px;align-items:center;box-shadow:8px 8px 0 #d1dfb8}.culji-stage{border:2px solid #263a29;background:#dcefc0;border-radius:27px;min-height:270px;display:grid;place-items:center;overflow:hidden}.culji-stage svg{width:82%;height:270px}.culji-tools h2{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:8px 0}.culji-tools p{line-height:1.6;color:#506150}.culji-pickers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}.culji-pickers label{font-size:12px;font-weight:800;display:grid;gap:6px}.culji-pickers select{width:100%;min-height:44px;border:1.5px solid #90a584;background:#fffef5;border-radius:12px;padding:8px;font:inherit;color:#263a29}.culji-note{font-size:12px}.games-links-v48{margin:24px 0 0;display:flex;flex-wrap:wrap;gap:8px}.games-links-v48 a{padding:10px 15px;background:#f7f9ed;border:1.5px solid #cad7bd;border-radius:999px;color:#263a29;font-weight:800;text-decoration:none}.games-links-v48 a:focus-visible,.culji-pickers select:focus-visible{outline:3px solid #397752;outline-offset:2px}@media(max-width:650px){.culji-try{grid-template-columns:1fr;gap:18px;padding:18px}.culji-stage{min-height:195px}.culji-stage svg{height:195px}.culji-tools h2{font-size:30px}}.dark .culji-try{background:#273528;border-color:#849a7a}.dark .culji-tools p{color:#d8e5d1}.dark .games-links-v48 a{background:#273528;color:#e6f3dc;border-color:#6f846a}
+.compare-wrap{width:100%;overflow-x:auto;margin:22px 0 10px;border:1px solid #bdcfb3;border-radius:20px;background:#fffef8}.compare-table{border-collapse:collapse;min-width:700px;width:100%;font-size:14px;color:#263a29}.compare-table th,.compare-table td{text-align:left;vertical-align:top;padding:15px;border-bottom:1px solid #e3eadd;line-height:1.5}.compare-table th{font-weight:800}.compare-table th:first-child{min-width:155px}.compare-table thead{background:#e4f1cd}.compare-table tbody tr:last-child>*{border-bottom:0}.compare-source{font-size:12px;line-height:1.7}.compare-source a{text-decoration:underline}.dark .compare-wrap{background:#243227;border-color:#65795e}.dark .compare-table{color:#e5efe1}.dark .compare-table thead{background:#354b30}.dark .compare-table th,.dark .compare-table td{border-color:#53674d}
+</style></head>
 <body data-catcul-view="landing">
 <div id="catcul-splash-loader" class="catcul-boot-overlay hidden" role="status" aria-live="polite">
   <div class="pop-cat-field" id="splash-cat-field" aria-hidden="true"></div>
@@ -1038,14 +1040,14 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
    <div>
     <div class="hero-badge"><i></i> YOUR PEOPLE. ONE TAB.</div>
     <h1>
-     Talk together.<br>
-     <span class="hero-underline">Play together.
+     Your group chat,<br>
+     <span class="hero-underline">upgraded.
       <svg viewBox="0 0 280 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
        <path d="M4 10.5C72 3.2 198 2.4 276 9.5" stroke="#c8ea59" stroke-width="6" stroke-linecap="round"/>
       </svg>
      </span>
     </h1>
-    <p class="hero-lead">Your group chat’s cozy corner: messages, free voice and video calls, and browser games—all in one place. Catcul is ad-free.</p>
+    <p class="hero-lead">Your people, your style: chat, free voice and video calls, and browser games in one cozy place. No ads in Catcul. Third-party games may show ads.</p>
     <div class="hero-cta">
      <a href="signup.html" class="btn btn-lime btn-lg">Create your space →</a>
      <button type="button" class="btn btn-outline btn-lg" data-open-download>Download App</button>
@@ -1116,6 +1118,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
  </section>
 
 
+ <section class="section" id="make-culji"><div class="container"><div class="culji-try"><div id="culji-public-preview" class="culji-stage" role="img" aria-label="Your Culji character preview"></div><div class="culji-tools"><span class="kicker">Meet your Culji</span><h2>A little you, with a lot of character.</h2><p>Try the same illustrated Culji styles used inside Catcul. Mix your look before you join.</p><div class="culji-pickers"><label>Skin tone<select data-preview-part="skin"><option value="#eab38b">Golden</option><option value="#f8d9c4">Light</option><option value="#c68252">Warm</option><option value="#8a4f2a">Deep</option><option value="#512b15">Rich</option></select></label><label>Hair<select data-preview-part="hair"><option value="curls">Curls</option><option value="buzz">Buzz</option><option value="braids">Braids</option><option value="long_waves">Long waves</option><option value="short_fade">Short fade</option><option value="wolf_cut">Wolf cut</option></select></label><label>Outfit<select data-preview-part="outfit"><option value="hoodie">Hoodie</option><option value="track_jacket">Track jacket</option><option value="varsity">Varsity</option><option value="cardigan">Cardigan</option><option value="tee">Tee</option></select></label><label>Outfit color<select data-preview-part="outfitColor"><option value="#3c6e58">Sage</option><option value="#18181b">Ink</option><option value="#d7f472">Lime</option><option value="#6b4c9a">Lilac</option><option value="#b85d38">Terracotta</option></select></label></div><p class="culji-note">Choose Join to bring this look into a new account; you can keep customizing it afterward. Your browser must allow session storage.</p><a id="culji-join-preview" class="btn btn-lime" href="signup.html">Join and make your Culji →</a></div></div></div></section>
  <section class="arcade-intro" id="arcade">
   <div class="container">
    <div class="arcade-intro-head"><div><span class="kicker">Instant browser arcade</span><h2>Get the gang in the game.</h2><p>Pick a game, share a squad code, and keep the conversation going. The arcade is free for Catcul members.</p></div><a href="signup.html" class="btn btn-lime arcade-cta" data-open-arcade>Join Catcul to play →</a></div>
@@ -1123,11 +1126,11 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     <article class="arcade-public-card"><img src="wallpapers/game-fortzone-net.jpg" alt="Fortzone game artwork" loading="lazy"><div><strong>Fortzone</strong><small>Battle royale</small></div></article>
     <article class="arcade-public-card"><img src="wallpapers/game-poxel-io.jpg" alt="Poxel.io game artwork" loading="lazy"><div><strong>Poxel.io</strong><small>Multiplayer arena</small></div></article>
     <article class="arcade-public-card"><img src="wallpapers/game-veck-io.jpg" alt="Veck.io game artwork" loading="lazy"><div><strong>Veck.io</strong><small>Fast-paced arena</small></div></article>
-   </div><p class="arcade-footnote">A Catcul account is required. Games are operated by third parties and may have their own content or ads.</p>
+   </div><p class="arcade-footnote">Catcul’s arcade tools require an account. A member can invite friends to a separate temporary guest chat without signup. Games are operated by third parties and may have their own accounts, content or ads.</p><div class="games-links-v48" aria-label="More games on other websites"><a href="https://bloxd.io/" target="_blank" rel="noopener noreferrer">Bloxd.io ↗</a><a href="https://vectaria.io/" target="_blank" rel="noopener noreferrer">Vectaria.io ↗</a><a href="https://mope.io/" target="_blank" rel="noopener noreferrer">Mope.io ↗</a><a href="https://smashkarts.io/" target="_blank" rel="noopener noreferrer">Smash Karts ↗</a><a href="https://basketbros.io/" target="_blank" rel="noopener noreferrer">BasketBros ↗</a><a href="https://soccerbros.io/" target="_blank" rel="noopener noreferrer">SoccerBros ↗</a><a href="https://gidd.io/" target="_blank" rel="noopener noreferrer">Gidd.io ↗</a></div><p class="arcade-footnote">These links open independent websites, not Catcul-hosted games. Availability, multiplayer features and ads are controlled by each game.</p>
   </div>
  </section>
  <section class="demo-section" id="try-demo">
-  <div class="container demo-grid"><div class="demo-head"><span class="kicker">A little test drive</span><h2>Make yourself at home.<br>Try a chat first.</h2><p>Type a message, drop a cat sticker, and switch the scenery. No account needed to try this little preview.</p><p class="demo-note">This is a local sandbox—not a real conversation. Nothing you type is sent or saved.</p></div>
+  <div class="container demo-grid"><div class="demo-head"><span class="kicker">A little test drive</span><h2>Make yourself at home.<br>Try a chat first.</h2><p>Type a message, drop a cat sticker, and switch the scenery. No account needed to try this little preview.</p><p class="demo-note">This preview stays in this tab. To make it a real 24-hour guest room, sign in as host and confirm the transfer; friends can join without an account. Your sent demo messages and theme will be shared with everyone who has the invite.</p><button type="button" class="btn btn-outline" id="demo-make-room">Make a real guest room →</button><p class="demo-note" id="demo-transfer-status" role="status"></p></div>
    <div class="demo-panel" aria-label="Interactive local chat demo"><div class="demo-bar"><div><strong>The cozy corner</strong><small>Just a demo · only you can see this</small></div><div class="demo-theme-buttons" role="group" aria-label="Demo background"><button type="button" data-demo-theme="meadow" aria-pressed="true">Meadow</button><button type="button" data-demo-theme="night" aria-pressed="false">Night</button></div></div>
     <div class="demo-messages" id="demo-messages" data-theme="meadow" aria-live="polite"><div class="demo-message">hey, are we playing tonight? 🎮</div><div class="demo-message mine">always. save me a spot ✨</div></div>
     <form class="demo-compose" id="demo-form"><button type="button" class="demo-sticker" id="demo-sticker" aria-label="Add a cat sticker">🐱</button><input id="demo-input" maxlength="280" aria-label="Type a demo message" placeholder="Try a message…" autocomplete="off"><button type="submit">Send</button></form>
@@ -1160,7 +1163,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     <article class="good-card tinted">
      <div class="good-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-4.5-4.5L9 18"/></svg></div>
      <h3>Send it as you are.</h3>
-     <p>Share crisp Ultra-HD photos from any phone or laptop, snap with 2D filters, record a voice note, or dress your whole screen in 4K anime art.</p>
+     <p>Share photos, try 2D filters, record a voice note, and make your chats feel like yours with wallpapers. Photo quality depends on your device and upload.</p>
     </article>
     <article class="good-card">
      <div class="good-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M20 8v6m-3-3h6"/></svg></div>
@@ -1213,7 +1216,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
    <span class="kicker">Simple social plans</span>
    <div class="split-head">
     <h2>Free for everyday closeness.<br>Extra magic when you want it.</h2>
-    <p>Chats, voice and video calls, 24-hour Stories, and the arcade are free. Optional upgrades add extra themes, stickers, camera filters and more. <span id="landing-paddle-status">Check paid-plan availability in the app.</span></p>
+    <p>Chats, voice and video calls, 24-hour Stories, and the arcade are free. 2D face filters are free. Optional upgrades add extra themes, stickers and more. <span id="landing-paddle-status">Check paid-plan availability in the app.</span></p>
    </div>
    <div class="plans-grid">
     <article class="plan-card">
@@ -1222,8 +1225,8 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
      <p class="plan-sub">Chats, calls, Stories and games with your people.</p>
      <ul class="plan-perks">
       <li>1:1 &amp; group chats, voice notes &amp; 25 MB files</li>
-      <li>1:1 &amp; group voice and video calls</li>
-      <li>24-hour Stories &amp; starter themes</li>
+      <li>1:1 &amp; group calls and screen sharing</li>
+      <li>24-hour Stories, 2D filters &amp; chat video clips</li>
       <li>Custom cat avatar, Diary &amp; Quick Notes</li>
      </ul>
      <a href="signup.html" class="btn btn-outline">Start for free</a>
@@ -1235,7 +1238,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
      <p class="plan-sub">More ways to dress up your space.</p>
      <ul class="plan-perks">
       <li>Everything in Catcul Free</li>
-      <li>Screen sharing, extra themes and stickers</li>
+      <li>Extra themes and stickers</li>
       <li>Extra scenic and night themes</li>
       <li>Catcul+ illustrated cat sticker pack</li>
      </ul>
@@ -1245,10 +1248,10 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     <article class="plan-card featured">
      <span class="plan-pill">More to explore</span>
      <h3>Catcul++</h3>
-     <p class="plan-sub">2D face filters, portrait blur &amp; more ways to make your profile yours.</p>
+     <p class="plan-sub">More ways to make your profile and space yours.</p>
      <ul class="plan-perks">
       <li>Everything in Catcul+</li>
-      <li><strong>2D illustrated face filters</strong> &amp; portrait bokeh camera</li>
+      <li>Extra themes and customization</li>
       <li>More profile effects and customization</li>
       <li>Catcul++ studio stickers &amp; camera stamps</li>
      </ul>
@@ -1258,11 +1261,11 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     <article class="plan-card">
      <span class="plan-pill">All-Access</span>
      <h3>Catcul Premium</h3>
-     <p class="plan-sub">Culife 4K, chat video posts &amp; wallpaper search.</p>
+     <p class="plan-sub">Culife posting &amp; wallpaper search.</p>
      <ul class="plan-perks">
       <li>Everything in Catcul++</li>
       <li><strong>Culife 4K Snaps</strong> and reels</li>
-      <li><strong>Direct MP4 / WebM video posts</strong> in chats</li>
+      <li>Premium profile badge and extra stickers</li>
       <li><strong>Live Wallhaven 4K search</strong> &amp; custom links</li>
      </ul>
      <a href="signup.html" class="btn btn-outline">Explore Premium</a>
@@ -1286,6 +1289,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
   </section>
  </div>
 
+ <section class="section" id="compare"><div class="container"><span class="kicker">Choose what matters</span><h2>Compare the little things.</h2><p>Different apps make different trade-offs. Features and availability can change.</p><div class="compare-wrap"><table class="compare-table"><caption class="sr-only">Catcul, WhatsApp and Snapchat at a glance</caption><thead><tr><th scope="col">Feature</th><th scope="col">Catcul</th><th scope="col">WhatsApp</th><th scope="col">Snapchat</th></tr></thead><tbody><tr><th scope="row">Ads</th><td>No ads in Catcul; outside games may have ads</td><td>Ads in the Updates tab, not personal chats</td><td>Ads, including some in the chat feed</td></tr><tr><th scope="row">Private chat encryption</th><td>Access-restricted; not end-to-end encrypted</td><td>Personal chats are end-to-end encrypted</td><td>Varies by feature</td></tr><tr><th scope="row">Media quality</th><td>Depends on device, upload and feature</td><td>Depends on format and settings</td><td>Depends on device and feature</td></tr><tr><th scope="row">Games</th><td>Arcade links to independent browser games</td><td>See WhatsApp for current features</td><td>See Snapchat for current features</td></tr><tr><th scope="row">Laptop &amp; phone</th><td>Browser and installable web app</td><td>Web/desktop can work when phone is offline after linking</td><td>See Snapchat for supported devices</td></tr></tbody></table></div><p class="compare-source">Sources: <a href="https://about.fb.com/news/2025/06/helping-you-find-more-channels-businesses-on-whatsapp/" target="_blank" rel="noopener noreferrer">WhatsApp ads and encryption</a> · <a href="https://faq.whatsapp.com/5155925751185676" target="_blank" rel="noopener noreferrer">WhatsApp linked devices</a> · <a href="https://help.snapchat.com/hc/en-us/articles/31709629111060-What-are-the-ads-I-m-seeing-in-my-Chat-feed" target="_blank" rel="noopener noreferrer">Snapchat ads</a></p></div></section>
  <section class="section" id="details">
   <div class="container faq-wrap">
    <div class="faq-left">
@@ -1299,6 +1303,10 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
      <p>Only people you connect with as friends or invite into a group or group chat can read or send messages in that space.</p>
     </details>
     <details class="faq-item">
+     <summary><span>How private is Catcul?</span><span class="faq-plus">+</span></summary>
+     <p>Connections to Catcul use HTTPS. Messages and diary entries are stored on the server with access controls; they are <strong>not end-to-end encrypted</strong>, so do not treat them as zero-knowledge. Calls use encrypted transport, but are not advertised as end-to-end encrypted. Temporary guest-room links let anyone with the link join; share them carefully. <a href="privacy.html">Read our privacy policy</a>.</p>
+    </details>
+    <details class="faq-item">
      <summary><span>Can I install Catcul on my laptop and phone?</span><span class="faq-plus">+</span></summary>
      <p>Yes — click <strong>Download App</strong> above to install Catcul directly to your Mac Dock, Windows taskbar, iPhone Home Screen, or Android launcher, with desktop incoming-call notifications and quick replies.</p>
     </details>
@@ -1308,7 +1316,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
     </details>
     <details class="faq-item">
      <summary><span>What if I forget my password?</span><span class="faq-plus">+</span></summary>
-     <p>Open <a href="signin.html?mode=reset" style="text-decoration:underline">Forgot password</a>, enter your email or `@username`, and verify with either the recovery code or the one-click reset link from your inbox.</p>
+     <p>You can request a recovery email through <a href="signin.html?mode=reset" style="text-decoration:underline">Forgot password</a>. Email delivery for all members is not yet configured, so recovery emails may not arrive. Contact <a href="mailto:newgruman@outlook.com">Catcul support</a> if you need help. Never share your password or a recovery code.</p>
     </details>
    </div>
   </div>
@@ -1395,7 +1403,7 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
 })();
 </script>
 <script>
-(()=>{const form=document.getElementById('demo-form'),input=document.getElementById('demo-input'),messages=document.getElementById('demo-messages');if(!form||!input||!messages)return;function append(text){const node=document.createElement('div');node.className='demo-message mine';node.textContent=text;messages.appendChild(node);while(messages.children.length>20)messages.firstElementChild.remove();messages.scrollTop=messages.scrollHeight}form.addEventListener('submit',e=>{e.preventDefault();const text=input.value.trim();if(!text)return;append(text);input.value='';input.focus()});document.getElementById('demo-sticker').addEventListener('click',()=>append('🐱  ✨'));document.querySelectorAll('[data-demo-theme]').forEach(btn=>btn.addEventListener('click',()=>{messages.dataset.theme=btn.dataset.demoTheme;document.querySelectorAll('[data-demo-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)))}));document.querySelectorAll('[data-open-arcade]').forEach(btn=>btn.addEventListener('click',()=>{try{sessionStorage.setItem('catcul.openArcade','1')}catch{}}));})();
+(()=>{const form=document.getElementById('demo-form'),input=document.getElementById('demo-input'),messages=document.getElementById('demo-messages');if(!form||!input||!messages)return;function append(text){const node=document.createElement('div');node.className='demo-message mine';node.dataset.demoUser='1';node.textContent=text;messages.appendChild(node);while(messages.children.length>20)messages.firstElementChild.remove();messages.scrollTop=messages.scrollHeight}form.addEventListener('submit',e=>{e.preventDefault();const text=input.value.trim();if(!text)return;append(text);input.value='';input.focus()});document.getElementById('demo-sticker').addEventListener('click',()=>append('🐱  ✨'));document.querySelectorAll('[data-demo-theme]').forEach(btn=>btn.addEventListener('click',()=>{messages.dataset.theme=btn.dataset.demoTheme;document.querySelectorAll('[data-demo-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)))}));document.querySelectorAll('[data-open-arcade]').forEach(btn=>btn.addEventListener('click',()=>{try{sessionStorage.setItem('catcul.openArcade','1')}catch{}}));document.getElementById('demo-make-room')?.addEventListener('click',()=>{try{if(sessionStorage.getItem('catcul.pendingDemoRoom')&&!confirm('Replace the previous pending room transfer in this tab? If it already created a room, its invitation may be lost.'))return;if(!window.crypto?.getRandomValues)throw Error('Secure randomness unavailable.');const bytes=new Uint8Array(32);crypto.getRandomValues(bytes);const invite=[...bytes].map(x=>x.toString(16).padStart(2,'0')).join('');const random=new Uint8Array(16);crypto.getRandomValues(random);random[6]=(random[6]&15)|64;random[8]=(random[8]&63)|128;const hex=[...random].map(x=>x.toString(16).padStart(2,'0')).join('');const request=hex.slice(0,8)+'-'+hex.slice(8,12)+'-'+hex.slice(12,16)+'-'+hex.slice(16,20)+'-'+hex.slice(20);const selected=[...messages.querySelectorAll('[data-demo-user]')].map(n=>n.textContent).slice(-20);sessionStorage.setItem('catcul.pendingDemoRoom',JSON.stringify({request,invite,theme:messages.dataset.theme,messages:selected,created:Date.now()}));location.href='signin.html';}catch{document.getElementById('demo-transfer-status').textContent='Could not prepare the transfer. Please allow session storage and use a secure browser.';}});})();
 </script>
 <script>
 /* Catcul Realtime Client Runtime */
@@ -2041,5 +2049,757 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     });
   }
 })();
-</script><details id="catcul-font-quick"><summary aria-label="Change font style">Aa <span>Font</span></summary><div class="font-quick-panel"><label for="catcul-public-font">Font style</label><select id="catcul-public-font" data-catcul-font-picker><option value="default">Catcul default</option><option value="round">Round &amp; friendly</option><option value="modern">Clean &amp; modern</option><option value="classic">Classic serif</option><option value="mono">Typewriter</option></select><p data-catcul-font-note>Saved in this browser on this device.</p></div></details></body>
+</script><details id="catcul-font-quick"><summary aria-label="Change font style">Aa <span>Font</span></summary><div class="font-quick-panel"><label for="catcul-public-font">Font style</label><select id="catcul-public-font" data-catcul-font-picker><option value="default">Catcul default</option><option value="round">Round &amp; friendly</option><option value="modern">Clean &amp; modern</option><option value="classic">Classic serif</option><option value="mono">Typewriter</option></select><p data-catcul-font-note>Saved in this browser on this device.</p></div></details><script>(()=>{
+/* Catcul 2D Cartoon Culji Character Studio — 200+ flat 2D cartoon features (v2), zero raw user HTML/SVG. */
+const CULJI_PROFILE_EFFECTS = [
+  'none',
+  'custom_gif',
+  'yarn_frame_sparkle', 'yarn_frame_orbit',
+  'bam_comic_burst',
+  'katana_slash',
+  'supernova_boom',
+  'cyber_glitch',
+  'hydro_blast',
+  'lime_slime',
+  'sakura_drift',
+  'pixel_arcade',
+  'neon_sparks',
+  'emerald_flame',
+  'golden_halo',
+  'manga_rush',
+  'heart_pulse',
+  'thunder_volt',
+  'fire_embers',
+  'cosmic_vortex',
+  'toast_jam',
+  'aurora_crown',
+  'shadow_monarch',
+];
+
+const BITMOJI_OPTIONS = {
+  face: ['oval', 'soft', 'defined', 'round', 'heart_jaw', 'chiseled'],
+  hair: [
+    'short_fade', 'textured_crop', 'messy_layered', 'curls', 'afro', 'long_waves',
+    'sleek_straight', 'high_bun', 'space_buns', 'braids', 'dreadlocks', 'cornrows',
+    'twists', 'bob', 'wolf_cut', 'curtain_bangs', 'side_part', 'messy_fringe',
+    'ponytail', 'buzz',
+  ],
+  brows: ['natural', 'arched', 'thick', 'chill', 'raised', 'sharp_slit', 'soft_straight'],
+  eyes: ['bright', 'chill', 'wink', 'happy', 'lashed', 'confident', 'starry', 'fox_tilt', 'sleepy_cool', 'anime_spark'],
+  nose: ['soft', 'button', 'classic', 'defined', 'aquiline'],
+  mouth: ['warm_smile', 'grin', 'smirk', 'laugh', 'chill', 'peace', 'cat_grin', 'whistle', 'pout', 'tooth_beam'],
+  facialHair: ['none', 'stubble', 'goatee', 'mustache', 'full_beard', 'boxed_beard', 'anchor_beard', 'soul_patch'],
+  blush: ['none', 'soft', 'freckles', 'sun_kissed', 'star_stickers', 'bandaid_cute'],
+  glasses: [
+    'none', 'aviator_double', 'clear_frames', 'round_wire', 'sunglasses', 'aviators',
+    'cat_eye', 'cyber_visor', 'pixel_shades', 'sport_shield', 'heart_frames', 'thick_wayfarer',
+  ],
+  headwear: [
+    'none', 'yarn_hat_sprout', 'yarn_hat_star', 'frog_bucket', 'goggle_beanie', 'flame_cap', 'beanie', 'snapback', 'backwards_cap', 'trucker_hat', 'bucket_hat',
+    'headphones', 'cat_headphones', 'headband', 'beret', 'bandana', 'crown', 'visor', 'hood_up',
+  ],
+  outfit: [
+    'box_hype_hoodie', 'shark_camo_zip', 'workwear_jacket', 'club_tracktop', 'contrast_puffer', 'track_jacket', 'hoodie', 'varsity', 'puffer_jacket', 'puffer_vest', 'crewneck',
+    'denim_jacket', 'leather_biker', 'windbreaker', 'bomber', 'basketball_jersey', 'football_kit',
+    'oversized_tee', 'graphic_tee', 'crop_hoodie', 'cardigan', 'knit_sweater', 'flannel_shirt',
+    'collared', 'polo_shirt', 'turtleneck', 'blazer', 'trench_coat', 'techwear_shell',
+    'zip_hoodie', 'rugby_shirt', 'hawaiian_shirt', 'tee',
+  ],
+  outfitTrim: [
+    'box_ink', 'shark_jaw', 'cross_patch', 'hazard_lines',
+    'triple_stripe', 'solid_clean', 'varsity_patch', 'chest_logo', 'checker_trim', 'camo_print',
+    'star_graphic', 'flame_hem', 'pinstripe', 'colorblock', 'heart_emblem', 'lightning_bolt',
+  ],
+  bottom: [
+    'double_knee', 'stacked_cross', 'cargo_pants', 'baggy_jeans', 'ripped_jeans', 'slim_chinos', 'track_pants', 'joggers',
+    'sweatpants', 'basketball_shorts', 'cargo_shorts', 'denim_shorts', 'pleated_skirt', 'tennis_skirt',
+    'maxi_skirt', 'corduroy_pants', 'carpenter_jeans', 'parachute_pants', 'tailored_slacks', 'flared_pants',
+    'biker_shorts', 'overalls_bottom',
+  ],
+  shoes: [
+    'court_colorblock', 'checker_skate', 'gum_toe', 'wave_runner', 'retro_runners', 'high_top_jordans', 'skate_lows', 'canvas_chucks', 'chunky_dads', 'combat_boots',
+    'chelsea_boots', 'timber_boots', 'sport_slides', 'foam_clogs', 'loafers', 'mary_janes',
+    'platform_sneaks', 'running_knit', 'basketball_kicks', 'hiking_treks', 'clean_whites', 'neon_trainers',
+  ],
+  accessory: [
+    'none', 'mini_backpack', 'plush_bag', 'trunk_sling', 'crossbody_bag', 'backpack_straps', 'silver_chain', 'gold_pendant', 'pearl_necklace',
+    'scarf', 'yarn_scarf_mint', 'yarn_scarf_peach', 'smartwatch', 'skateboard', 'coffee_cup', 'gaming_controller', 'camera_strap',
+  ],
+  earring: ['none', 'neck_headphones', 'studs', 'hoops', 'pearl_drops', 'cross_dangle', 'ear_cuff'],
+  pose: ['crossed_arms', 'chill_stand', 'peace_sign', 'wave_hello', 'hands_on_hips', 'pockets_lean', 'hype_jump', 'selfie_tilt'],
+  profileEffect: CULJI_PROFILE_EFFECTS,
+};
+const CULJI_OPTIONS = BITMOJI_OPTIONS;
+
+const BITMOJI_SKINS = ['#f8f7f0', '#fbe4d5', '#f8d9c4', '#f3c6a5', '#eab38b', '#dc9a6c', '#c68252', '#a86639', '#8a4f2a', '#69391c', '#512b15'];
+const BITMOJI_HAIR_COLORS = ['#1c1917', '#33241b', '#563927', '#835432', '#b97a45', '#dfc17a', '#9f2f2a', '#4a3267', '#24596b', '#d9dce2', '#e14b7b', '#4ba35b'];
+const BITMOJI_EYE_COLORS = ['#3b2a1e', '#5c4028', '#2e5f46', '#2f5984', '#697254', '#1f1e24', '#7b5233', '#6b4c9a'];
+const BITMOJI_OUTFIT_COLORS = ['#18181b', '#233d2c', '#1f2937', '#7c2d36', '#2a4b7c', '#6b4c9a', '#b85d38', '#3c6e58', '#d7f472', '#e8e4dc', '#0e7490', '#be185d'];
+const CULJI_BOTTOM_COLORS = ['#3f4782', '#1e293b', '#27272a', '#3f3cbb', '#4b5563', '#57534e', '#78553a', '#233d2c', '#d6d3c9', '#7c2d36'];
+const CULJI_SHOE_COLORS = ['#f4f4f0', '#18181b', '#dc2626', '#2563eb', '#d7f472', '#d97706', '#7c3aed', '#059669'];
+const BITMOJI_BACKDROPS = ['#e4f0ce', '#f2f0e7', '#dce9f7', '#ece3f6', '#fbe4d8', '#d9f2ea', '#fef3c7', '#232c22'];
+
+const BITMOJI_DEFAULT = {
+  v: 2,
+  skin: '#eab38b',
+  hairColor: '#1c1917',
+  eyeColor: '#3b2a1e',
+  outfitColor: '#18181b',
+  bottomColor: '#3f4782',
+  shoeColor: '#f4f4f0',
+  background: '#e4f0ce',
+  face: 'oval',
+  hair: 'messy_layered',
+  brows: 'natural',
+  eyes: 'bright',
+  nose: 'classic',
+  mouth: 'grin',
+  facialHair: 'none',
+  blush: 'none',
+  glasses: 'none',
+  headwear: 'none',
+  outfit: 'track_jacket',
+  outfitTrim: 'triple_stripe',
+  bottom: 'cargo_pants',
+  shoes: 'retro_runners',
+  accessory: 'none',
+  earring: 'none',
+  pose: 'crossed_arms',
+  profileEffect: 'none',
+  statusText: '',
+};
+
+const BITMOJI_LABELS = { yarn_hat_sprout:'Sprout Beanie', yarn_hat_star:'Star Beanie', yarn_scarf_mint:'Mint Scarf', yarn_scarf_peach:'Peach Scarf', neck_headphones:'Neck headphones', frog_bucket:'Frog bucket hat', goggle_beanie:'Goggle beanie', flame_cap:'Flame trucker', box_hype_hoodie:'Box Hype hoodie', shark_camo_zip:'Shark camo zip', workwear_jacket:'Duck work jacket', club_tracktop:'Terrace club tracktop', contrast_puffer:'Two-tone puffer', mini_backpack:'Mini backpack', plush_bag:'Plush charm bag', trunk_sling:'Trunk sling', double_knee:'Double-knee work pants', stacked_cross:'Cross-patch denim', court_colorblock:'Colorblock court highs', checker_skate:'Checker skate lows', gum_toe:'Gum T-toe lows', wave_runner:'Wave runners', box_ink:'Box graphic', shark_jaw:'Shark jaw graphic', cross_patch:'Cross patch', hazard_lines:'Diagonal hazard',
+  // Faces
+  oval: 'Classic oval', soft: 'Soft contour', defined: 'Sculpted jaw', round: 'Warm round', heart_jaw: 'Heart taper', chiseled: 'Sharp hero',
+  // Hair
+  short_fade: 'Short fade', textured_crop: 'Textured crop', messy_layered: 'Swept layers', curls: 'Curly top', afro: 'Cloud afro',
+  long_waves: 'Long waves', sleek_straight: 'Sleek long', high_bun: 'High bun', space_buns: 'Space buns', braids: 'Box braids',
+  dreadlocks: 'Shoulder locs', cornrows: 'Clean rows', twists: 'Two-strand twists', bob: 'Layered bob', wolf_cut: 'Wolf cut',
+  curtain_bangs: 'Curtain bangs', side_part: 'Side part', messy_fringe: 'Messy fringe', ponytail: 'High ponytail', buzz: 'Clean buzz',
+  // Brows & Eyes
+  natural: 'Natural', arched: 'Arched', thick: 'Bold', chill: 'Relaxed', raised: 'Raised brow', sharp_slit: 'Eyebrow slit', soft_straight: 'Straight',
+  bright: 'Bright eyes', wink: 'Wink', happy: 'Happy arcs', lashed: 'Full lashes', confident: 'Focused', starry: 'Starlight', fox_tilt: 'Sharp tilt', sleepy_cool: 'Half-lid', anime_spark: 'Starry pop',
+  // Nose, Mouth, Beard, Blush
+  button: 'Button', classic: 'Classic', aquiline: 'Sculpted bridge',
+  warm_smile: 'Warm smile', grin: 'Big grin', smirk: 'Side smirk', laugh: 'Big laugh', peace: 'Tongue wink', cat_grin: 'Cat :3 grin', whistle: 'Chill ooh', pout: 'Soft pout', tooth_beam: 'Bright beam',
+  none: 'None', stubble: 'Light stubble', goatee: 'Goatee', mustache: 'Mustache', full_beard: 'Full beard', boxed_beard: 'Boxed beard', anchor_beard: 'Anchor trim', soul_patch: 'Soul patch',
+  freckles: 'Freckles', sun_kissed: 'Sun-kissed', star_stickers: 'Star stickers', bandaid_cute: 'Nose bandaid',
+  // Eyewear & Headwear
+  aviator_double: 'Double-bridge', clear_frames: 'Clear frames', round_wire: 'Round gold', sunglasses: 'Dark shades', aviators: 'Gold aviators',
+  cat_eye: 'Cat-eye', cyber_visor: 'Cyber visor', pixel_shades: '8-Bit pixel', sport_shield: 'Pro shield', heart_frames: 'Heart tint', thick_wayfarer: 'Bold frames',
+  beanie: 'Knit beanie', snapback: 'Snapback', backwards_cap: 'Backwards cap', trucker_hat: 'Mesh trucker', bucket_hat: 'Bucket hat',
+  headphones: 'Studio cans', cat_headphones: 'Cat-ear headset', headband: 'Sport band', beret: 'Artist beret', bandana: 'Street bandana', crown: 'Gold crown', visor: 'Sun visor', hood_up: 'Cozy hood',
+  // 28 Tops
+  track_jacket: '3-Stripe Track', hoodie: 'Pullover Hoodie', varsity: 'Varsity Jacket', puffer_jacket: 'Puffer Coat', puffer_vest: 'Layered Vest', crewneck: 'Heavy Crewneck',
+  denim_jacket: 'Denim Trucker', leather_biker: 'Moto Jacket', windbreaker: 'Retro Windbreak', bomber: 'Flight Bomber', basketball_jersey: 'Hoops Jersey', football_kit: 'Club Kit',
+  oversized_tee: 'Boxy Skate Tee', graphic_tee: 'Graphic Tee', crop_hoodie: 'Cropped Hoodie', cardigan: 'Knit Cardigan', knit_sweater: 'Cable Sweater', flannel_shirt: 'Plaid Flannel',
+  collared: 'Oxford Layered', polo_shirt: 'Preppy Polo', turtleneck: 'Sleek Turtleneck', blazer: 'Tailored Blazer', trench_coat: 'Long Trench', techwear_shell: 'Techwear Rig',
+  zip_hoodie: 'Zip-Up Hoodie', rugby_shirt: 'Striped Rugby', hawaiian_shirt: 'Resort Shirt', tee: 'Classic Tee',
+  // 12 Trims
+  triple_stripe: '3-Stripe Sleeve', solid_clean: 'Clean Minimal', varsity_patch: 'Letterman C', chest_logo: 'Mini Crest', checker_trim: 'Checker Accent', camo_print: 'Street Camo',
+  star_graphic: 'Center Star', flame_hem: 'Flame Graphic', pinstripe: 'Fine Pinstripe', colorblock: 'Two-Tone Split', heart_emblem: 'Heart Badge', lightning_bolt: 'Volt Graphic',
+  // 20 Bottoms
+  cargo_pants: 'Cargo Pants', baggy_jeans: '90s Baggy Jeans', ripped_jeans: 'Distressed Denim', slim_chinos: 'Clean Chinos', track_pants: 'Stripe Trackies', joggers: 'Tech Joggers',
+  sweatpants: 'Cozy Sweats', basketball_shorts: 'Mesh Shorts', cargo_shorts: 'Utility Shorts', denim_shorts: 'Jorts', pleated_skirt: 'Pleated Skirt', tennis_skirt: 'Sport Skirt',
+  maxi_skirt: 'Flow Skirt', corduroy_pants: 'Wide Corduroy', carpenter_jeans: 'Carpenter Fit', parachute_pants: 'Parachute Nylon', tailored_slacks: 'Smart Trousers', flared_pants: 'Retro Flare',
+  biker_shorts: 'Athleisure Short', overalls_bottom: 'Denim Straps',
+  // 18 Shoes
+  retro_runners: 'Retro Runners', high_top_jordans: 'Court High-Tops', skate_lows: 'Vulc Skate Lows', canvas_chucks: 'Canvas Classics', chunky_dads: 'Chunky Trainers', combat_boots: 'Lace Boots',
+  chelsea_boots: 'Sleek Chelseas', timber_boots: 'Wheat Workboots', sport_slides: ' Socks & Slides', foam_clogs: 'Cloud Clogs', loafers: 'Penny Loafers', mary_janes: 'Buckle Platforms',
+  platform_sneaks: 'Triple Platform', running_knit: 'Aero Knit Run', basketball_kicks: 'Pro Signatures', hiking_treks: 'Trail Grips', clean_whites: 'Crisp Whites', neon_trainers: 'Volt Runners',
+  // Accessories, Earrings & Poses
+  crossbody_bag: 'Street Sling Bag', backpack_straps: 'Everyday Pack', silver_chain: 'Cuban Chain', gold_pendant: 'Gold Medallion', pearl_necklace: 'Pearl Strand',
+  scarf: 'Cozy Scarf', smartwatch: 'Smart Watch', skateboard: 'Pro Deck', coffee_cup: 'Iced Matcha', gaming_controller: 'Pro Gamepad', camera_strap: '4K Cam Strap',
+  studs: 'Diamond Studs', hoops: 'Gold Hoops', pearl_drops: 'Pearl Drops', cross_dangle: 'Silver Drop', ear_cuff: 'Helix Cuff',
+  crossed_arms: 'Crossed Arms', chill_stand: 'Chill Stand', peace_sign: 'Peace Vibe', wave_hello: 'Friendly Wave', hands_on_hips: 'Power Stance', pockets_lean: 'Hands in Pockets', hype_jump: 'Hype Float', selfie_tilt: 'Snap Lean',
+};
+
+const BITMOJI_TABS = [
+  ['skin', 'Face', 'smile'],
+  ['hair', 'Hair', 'spark'],
+  ['eyes', 'Eyes', 'eye'],
+  ['mouth', 'Beard & Lip', 'heart'],
+  ['outfit', 'Tops', 'star'],
+  ['bottom', 'Bottoms', 'people'],
+  ['shoes', 'Kicks', 'check'],
+  ['gear', 'Gear & Pose', 'photo'],
+];
+
+const BITMOJI_PRESETS = [
+  ['Frog Street', { skin:'#f8f7f0',face:'round',hair:'buzz',headwear:'frog_bucket',outfit:'hoodie',outfitTrim:'solid_clean',outfitColor:'#ad83c9',bottom:'joggers',bottomColor:'#aa83c7',shoes:'wave_runner',shoeColor:'#168fc4',accessory:'mini_backpack',earring:'neck_headphones',brows:'natural',nose:'soft',mouth:'chill',eyeColor:'#1f1e24',eyes:'bright',pose:'chill_stand'}],
+  ['Box Hype', {outfit:'hoodie',outfitTrim:'box_ink',outfitColor:'#18181b',bottom:'baggy_jeans',shoes:'court_colorblock',shoeColor:'#f4f4f0'}],
+  ['Shark Zip', {outfit:'zip_hoodie',outfitTrim:'shark_jaw',outfitColor:'#233d2c',bottom:'cargo_pants',shoes:'wave_runner'}],
+  ['Workwear', {outfit:'denim_jacket',outfitTrim:'solid_clean',outfitColor:'#78553a',bottom:'double_knee',bottomColor:'#78553a',shoes:'timber_boots',shoeColor:'#d97706'}],
+  ['Cross & Skate', {outfit:'zip_hoodie',outfitTrim:'cross_patch',bottom:'stacked_cross',bottomColor:'#27272a',shoes:'checker_skate'}],
+  ['Terrace Kit', {outfit:'track_jacket',outfitTrim:'triple_stripe',bottom:'track_pants',shoes:'gum_toe'}],
+  ['Snap Track Star', { hair: 'messy_layered', hairColor: '#1c1917', facialHair: 'boxed_beard', glasses: 'aviator_double', outfit: 'track_jacket', outfitTrim: 'triple_stripe', outfitColor: '#18181b', bottom: 'cargo_pants', bottomColor: '#3f4782', shoes: 'retro_runners', shoeColor: '#f4f4f0', pose: 'crossed_arms', mouth: 'grin', eyes: 'bright' }],
+  ['Street Hoodie', { hair: 'textured_crop', outfit: 'hoodie', outfitTrim: 'chest_logo', outfitColor: '#233d2c', bottom: 'baggy_jeans', bottomColor: '#1e293b', shoes: 'high_top_jordans', glasses: 'none', headwear: 'headphones', mouth: 'warm_smile', eyes: 'bright', pose: 'pockets_lean' }],
+  ['Soft Aesthetic', { hair: 'wolf_cut', outfit: 'cardigan', outfitTrim: 'heart_emblem', outfitColor: '#6b4c9a', bottom: 'pleated_skirt', bottomColor: '#27272a', shoes: 'platform_sneaks', blush: 'soft', glasses: 'round_wire', headwear: 'beret', mouth: 'warm_smile', eyes: 'lashed', earring: 'hoops', pose: 'peace_sign' }],
+  ['Streetwear Pro', { hair: 'braids', outfit: 'denim_jacket', outfitTrim: 'star_graphic', outfitColor: '#1f2937', bottom: 'parachute_pants', bottomColor: '#57534e', shoes: 'chunky_dads', glasses: 'sunglasses', headwear: 'beanie', accessory: 'crossbody_bag', mouth: 'smirk', eyes: 'chill', earring: 'studs', pose: 'crossed_arms' }],
+  ['Hoops Legend', { hair: 'short_fade', outfit: 'basketball_jersey', outfitTrim: 'varsity_patch', outfitColor: '#7c2d36', bottom: 'basketball_shorts', bottomColor: '#18181b', shoes: 'basketball_kicks', shoeColor: '#dc2626', headwear: 'headband', accessory: 'silver_chain', mouth: 'grin', eyes: 'confident', pose: 'hands_on_hips' }],
+  ['Cyber Gamer', { hair: 'curtain_bangs', hairColor: '#4a3267', outfit: 'techwear_shell', outfitTrim: 'lightning_bolt', outfitColor: '#18181b', bottom: 'track_pants', bottomColor: '#27272a', shoes: 'neon_trainers', shoeColor: '#d7f472', glasses: 'cyber_visor', headwear: 'cat_headphones', accessory: 'gaming_controller', mouth: 'cat_grin', eyes: 'anime_spark', pose: 'wave_hello' }],
+];
+
+// 100 fully wearable outfit combinations, built from distinct supported 3D pieces and colorways.
+const CULJI_LOOK_BASES = [
+  ['Hoodie','hoodie','solid_clean'], ['Box hoodie','box_hype_hoodie','box_ink'], ['Shark zip','shark_camo_zip','shark_jaw'],
+  ['Work jacket','workwear_jacket','solid_clean'], ['Club track','club_tracktop','triple_stripe'], ['Color puffer','contrast_puffer','solid_clean'],
+  ['Track jacket','track_jacket','triple_stripe'], ['Zip hoodie','zip_hoodie','cross_patch'], ['Varsity','varsity','solid_clean'], ['Denim','denim_jacket','checker_trim']
+];
+const CULJI_LOOK_PALETTES = [
+  ['Matcha','#42684a','#d6d3c9','#f4f4f0'],['Ink','#18181b','#27272a','#f4f4f0'],['Berry','#873b54','#27272a','#f4f4f0'],
+  ['Sky','#5188a5','#1e293b','#f4f4f0'],['Lime','#a6c957','#233d2c','#18181b'],['Cocoa','#78553a','#d6d3c9','#d97706'],
+  ['Lilac','#8165a1','#27272a','#f4f4f0'],['Coral','#b85d38','#1e293b','#f4f4f0'],['Cream','#e8e4dc','#233d2c','#18181b'],['Ocean','#2a4b7c','#57534e','#f4f4f0']
+];
+const CULJI_LOOKS = CULJI_LOOK_BASES.flatMap(([name,outfit,outfitTrim],i) => CULJI_LOOK_PALETTES.map(([color,outfitColor,bottomColor,shoeColor],j) => ({
+  name: color + ' ' + name, outfit,outfitTrim,outfitColor,bottomColor,shoeColor,
+  bottom: ['joggers','cargo_pants','double_knee','track_pants','basketball_shorts'][((i*3)+j)%5],
+  shoes: ['wave_runner','court_colorblock','checker_skate','timber_boots'][((i*2)+j)%4]
+})));
+
+function countCuljiFeatures() {
+  return Object.entries(BITMOJI_OPTIONS)
+    .filter(([k]) => k !== 'profileEffect')
+    .reduce((sum, [, arr]) => sum + arr.length, 0);
+}
+
+function shadeHex(hex, delta) {
+  const clean = /^#[0-9a-f]{6}$/i.test(hex || '') ? hex.slice(1) : '888888';
+  const n = parseInt(clean, 16);
+  const clamp = (v) => Math.max(0, Math.min(255, Math.round(v)));
+  const r = clamp(((n >> 16) & 255) + delta);
+  const g = clamp(((n >> 8) & 255) + delta);
+  const b = clamp((n & 255) + delta);
+  return '#' + [r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('');
+}
+
+function seedHash(str) {
+  let h = 2166136261;
+  const s = String(str || 'catcul');
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function seededDefaultAvatar(person = {}) {
+  const seed = seedHash(person.id || person.username || person.name || 'member');
+  const a = { ...BITMOJI_DEFAULT };
+  a.skin = BITMOJI_SKINS[(seed % 8) + 1];
+  a.hair = ['short_fade', 'textured_crop', 'messy_layered', 'curls', 'long_waves', 'braids', 'wolf_cut', 'bob'][(seed >>> 3) % 8];
+  a.hairColor = BITMOJI_HAIR_COLORS[(seed >>> 6) % 6];
+  a.outfit = ['track_jacket', 'hoodie', 'varsity', 'puffer_jacket', 'denim_jacket', 'oversized_tee'][(seed >>> 9) % 6];
+  a.outfitColor = BITMOJI_OUTFIT_COLORS[(seed >>> 12) % 8];
+  a.bottom = ['cargo_pants', 'baggy_jeans', 'joggers', 'track_pants', 'corduroy_pants'][(seed >>> 14) % 5];
+  a.bottomColor = CULJI_BOTTOM_COLORS[(seed >>> 16) % 6];
+  a.shoes = ['retro_runners', 'high_top_jordans', 'skate_lows', 'chunky_dads'][(seed >>> 18) % 4];
+  a.mouth = ['warm_smile', 'grin', 'smirk'][(seed >>> 15) % 3];
+  a.pose = ['crossed_arms', 'chill_stand', 'pockets_lean', 'peace_sign'][(seed >>> 20) % 4];
+  if (typeof colors !== 'undefined' && Array.isArray(colors) && colors.includes(person.color)) {
+    a.background = person.color;
+  } else {
+    a.background = BITMOJI_BACKDROPS[(seed >>> 17) % 7];
+  }
+  return a;
+}
+
+function cleanAvatar(value, person = {}) {
+  const base = seededDefaultAvatar(person);
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return base;
+  if (value.v !== 2) {
+    if (typeof value.background === 'string' && /^#[0-9a-f]{6}$/i.test(value.background)) {
+      base.background = value.background.toLowerCase();
+    }
+    if (typeof value.accent === 'string' && /^#[0-9a-f]{6}$/i.test(value.accent)) {
+      base.outfitColor = value.accent.toLowerCase();
+    }
+    if (value.accessory === 'glasses') base.glasses = 'clear_frames';
+    if (value.accessory === 'headphones') base.headwear = 'headphones';
+    return base;
+  }
+  const a = { ...base, v: 2 };
+  for (const key of ['skin', 'hairColor', 'eyeColor', 'outfitColor', 'bottomColor', 'shoeColor', 'background']) {
+    if (typeof value[key] === 'string' && /^#[0-9a-f]{6}$/i.test(value[key])) {
+      a[key] = value[key].toLowerCase();
+    }
+  }
+  for (const [key, list] of Object.entries(BITMOJI_OPTIONS)) {
+    if (list.includes(value[key])) a[key] = value[key];
+  }
+  if (typeof value.statusText === 'string') {
+    a.statusText = value.statusText.replace(/[<>\u0000-\u001f\u007f]/g, '').trim().slice(0, 60);
+  }
+  if (typeof value.bio === 'string') a.bio = value.bio.replace(/[<>\u0000-\u001f\u007f]/g, '').trim().slice(0, 160);
+  if (typeof value.bannerColor === 'string' && /^#[0-9a-f]{6}$/i.test(value.bannerColor)) a.bannerColor = value.bannerColor.toLowerCase();
+  if (['solid','halftone','stripes','rays'].includes(value.bannerStyle)) a.bannerStyle = value.bannerStyle;
+  if (typeof value.hypeBadge === 'string' && /^(none|badge_[0-9]{2})$/.test(value.hypeBadge)) a.hypeBadge=value.hypeBadge;
+  if (['none','referral_skin_glow'].includes(value.brandFilter)) a.brandFilter=value.brandFilter;
+  if (typeof value.cardTheme === 'string' && /^gif[0-2]_[0-9]{10,16}$/.test(value.cardTheme)) a.cardTheme = value.cardTheme;
+  return a;
+}
+
+/* Shared 2D Head + Upper Torso Layer Builder (used in both 240x240 bust & 260x440 full-body 2D Culji!) */
+function renderCuljiHeadLayers(a, uidPrefix) {
+  const skin = a.skin;
+  const skinHi = shadeHex(skin, 22);
+  const skinMid = shadeHex(skin, -12);
+  const skinShad = shadeHex(skin, -28);
+  const lipTone = shadeHex(skin, -36);
+  const hair = a.hairColor;
+  const hairHi = shadeHex(hair, 32);
+  const hairShad = shadeHex(hair, -22);
+  const fit = a.outfitColor;
+  const fitHi = shadeHex(fit, 26);
+  const fitShad = shadeHex(fit, -24);
+  const iris = a.eyeColor;
+  const ink = '#1a1816';
+
+  const defs = '';
+
+  const facePaths = {
+    oval: 'M72 96 C72 58 94 46 120 46 C146 46 168 58 168 96 C168 135 149 166 120 168 C91 166 72 135 72 96 Z',
+    soft: 'M70 98 C70 59 93 47 120 47 C147 47 170 59 170 98 C170 138 153 167 120 169 C87 167 70 138 70 98 Z',
+    defined: 'M73 94 C73 57 94 46 120 46 C146 46 167 57 167 94 L164 134 C162 151 141 168 120 169 C99 168 78 151 76 134 Z',
+    round: 'M68 102 C68 61 91 48 120 48 C149 48 172 61 172 102 C172 142 152 167 120 167 C88 167 68 142 68 102 Z',
+    heart_jaw: 'M70 92 C70 56 93 45 120 45 C147 45 170 56 170 92 C170 128 145 164 120 170 C95 164 70 128 70 92 Z',
+    chiseled: 'M74 92 C74 56 94 46 120 46 C146 46 166 56 166 92 L163 138 L138 168 H102 L77 138 Z',
+  };
+
+  const backHairMap = {
+    long_waves: `<path d="M58 96 C52 136 54 176 66 204 C84 212 156 212 174 204 C186 176 188 136 182 96 C178 54 152 34 120 34 C88 34 62 54 58 96 Z" fill="${hairShad}"/>`,
+    sleek_straight: `<path d="M62 88 L56 204 H184 L178 88 C175 50 151 35 120 35 C89 35 65 50 62 88 Z" fill="${hairShad}"/>`,
+    afro: `<circle cx="120" cy="84" r="64" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/><circle cx="74" cy="78" r="26" fill="${hair}"/><circle cx="166" cy="78" r="26" fill="${hair}"/><circle cx="96" cy="42" r="26" fill="${hair}"/><circle cx="144" cy="42" r="26" fill="${hair}"/>`,
+    high_bun: `<circle cx="120" cy="26" r="24" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    space_buns: `<circle cx="78" cy="36" r="21" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/><circle cx="162" cy="36" r="21" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    ponytail: `<path d="M148 48 C184 54 194 98 182 152 C172 136 168 104 156 76 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    braids: `<g fill="${hairShad}"><rect x="57" y="92" width="13" height="106" rx="6.5"/><rect x="69" y="98" width="12" height="104" rx="6"/><rect x="170" y="92" width="13" height="106" rx="6.5"/><rect x="159" y="98" width="12" height="104" rx="6"/></g>`,
+    dreadlocks: `<g fill="${hair}" stroke="${hairShad}" stroke-width="1.5"><rect x="54" y="84" width="14" height="112" rx="7"/><rect x="67" y="92" width="13" height="108" rx="6.5"/><rect x="172" y="84" width="14" height="112" rx="7"/><rect x="160" y="92" width="13" height="108" rx="6.5"/></g>`,
+    twists: `<g fill="${hairShad}"><rect x="60" y="90" width="11" height="86" rx="5.5"/><rect x="71" y="96" width="10" height="82" rx="5"/><rect x="169" y="90" width="11" height="86" rx="5.5"/><rect x="159" y="96" width="10" height="82" rx="5"/></g>`,
+    wolf_cut: `<path d="M56 96 L48 168 L68 158 L62 184 L84 172 H156 L178 184 L172 158 L192 168 L184 96 C178 52 152 34 120 34 C88 34 62 52 56 96 Z" fill="${hairShad}"/>`,
+    bob: `<path d="M60 96 C57 132 61 162 76 174 H164 C179 162 183 132 180 96 C177 54 152 36 120 36 C88 36 63 54 60 96 Z" fill="${hairShad}"/>`,
+  };
+  const hoodBack = a.headwear === 'hood_up'
+    ? `<path d="M50 116 C50 40 82 22 120 22 C158 22 190 40 190 116 C190 162 174 184 160 190 H80 C66 184 50 162 50 116 Z" fill="${fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round" stroke="${ink}" stroke-width="2.2"/>`
+    : '';
+  const backHair = hoodBack + (backHairMap[a.hair] || '');
+
+  const earsSvg = `<ellipse cx="69" cy="112" rx="9.5" ry="14.5" fill="${skinMid}" stroke="${ink}" stroke-opacity="1" stroke-width="1.6"/><ellipse cx="171" cy="112" rx="9.5" ry="14.5" fill="${skinMid}" stroke="${ink}" stroke-opacity="1" stroke-width="1.6"/><path d="M67 107 Q71 112 68 118 M173 107 Q169 112 172 118" stroke="${skinShad}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`;
+
+  const earrings = {
+    none: '',
+    studs: `<circle cx="67" cy="124" r="3.2" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/><circle cx="173" cy="124" r="3.2" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>`,
+    hoops: `<circle cx="66" cy="128" r="6.2" fill="none" stroke="#eab308" stroke-width="2.8"/><circle cx="174" cy="128" r="6.2" fill="none" stroke="#eab308" stroke-width="2.8"/>`,
+    pearl_drops: `<circle cx="67" cy="128" r="4.2" fill="#fffbeb" stroke="#d6d3d1" stroke-width="1.2"/><circle cx="173" cy="128" r="4.2" fill="#fffbeb" stroke="#d6d3d1" stroke-width="1.2"/>`,
+    cross_dangle: `<path d="M66 124 V137 M62 129 H70 M174 124 V137 M170 129 H178" stroke="#cbd5e1" stroke-width="2.4" stroke-linecap="round"/>`,
+    ear_cuff: `<rect x="61" y="103" width="6" height="4" rx="2" fill="#eab308"/><rect x="173" y="103" width="6" height="4" rx="2" fill="#eab308"/>`,
+  }[a.earring] || '';
+
+  const faceHighlight = '';
+
+  const blushSvg = {
+    none: '',
+    soft: `<ellipse cx="89" cy="125" rx="12" ry="6.5" fill="#e87c7c" opacity=".3"/><ellipse cx="151" cy="125" rx="12" ry="6.5" fill="#e87c7c" opacity=".3"/>`,
+    sun_kissed: `<path d="M82 123 Q120 117 158 123" stroke="#e57866" stroke-width="9" stroke-linecap="round" opacity=".24" fill="none"/>`,
+    freckles: `<g fill="${skinShad}" opacity=".68"><circle cx="86" cy="123" r="1.6"/><circle cx="93" cy="126" r="1.5"/><circle cx="90" cy="119" r="1.4"/><circle cx="154" cy="123" r="1.6"/><circle cx="147" cy="126" r="1.5"/><circle cx="150" cy="119" r="1.4"/><circle cx="117" cy="121" r="1.3"/><circle cx="123" cy="122" r="1.3"/></g>`,
+    star_stickers: `<text x="84" y="128" font-size="11" fill="#eab308">★</text><text x="148" y="128" font-size="11" fill="#ec4899">★</text>`,
+    bandaid_cute: `<rect x="108" y="114" width="24" height="8" rx="3.5" fill="#f5cba7" stroke="#c8966e" stroke-width="1.2" transform="rotate(-6 120 118)"/>`,
+  }[a.blush] || '';
+
+  const renderEye = (cx, opts = {}) => `
+    <g>
+      <ellipse cx="${cx}" cy="105" rx="12" ry="${opts.tall ? 9.8 : 8.6}" fill="#ffffff" stroke="${ink}" stroke-opacity=".15" stroke-width="1"/>
+      <circle cx="${cx}" cy="105.5" r="${opts.tall ? 6.8 : 6.2}" fill="${iris}"/>
+      <circle cx="${cx}" cy="105.5" r="3.1" fill="#121316"/>
+      <circle cx="${cx + 2.4}" cy="102.8" r="${opts.spark ? 2.8 : 2.1}" fill="#ffffff"/>
+      <circle cx="${cx - 2.1}" cy="107.6" r="1.2" fill="#ffffff" opacity=".88"/>
+      ${opts.star ? `<text x="${cx - 3.5}" y="108.5" font-size="7.5" fill="#fff">✦</text>` : ''}
+      ${opts.halfLid ? `<path d="M${cx - 12.5} 102 Q${cx} 97 ${cx + 12.5} 102 L${cx + 12.5} 94 H${cx - 12.5} Z" fill="${skinMid}"/>` : ''}
+      <path d="M${cx - 12.5} ${opts.tilt ? 106 : 104} Q${cx} ${opts.halfLid ? 99 : 93.5} ${cx + 12.5} ${opts.tilt ? 101 : 104}" fill="none" stroke="${ink}" stroke-width="${opts.lashed ? 3.5 : 2.7}" stroke-linecap="round"/>
+      ${opts.lashed ? `<path d="M${cx - 12} 104 L${cx - 15.5} 99.5 M${cx + 12} 104 L${cx + 15.5} 99.5" stroke="${ink}" stroke-width="2.2" stroke-linecap="round"/>` : ''}
+    </g>`;
+
+  const eyesSvg = {
+    bright: renderEye(97) + renderEye(143),
+    lashed: renderEye(97, { lashed: true }) + renderEye(143, { lashed: true }),
+    chill: renderEye(97, { halfLid: true }) + renderEye(143, { halfLid: true }),
+    confident: renderEye(97, { lashed: true, halfLid: true }) + renderEye(143, { lashed: true, halfLid: true }),
+    wink: renderEye(97, { lashed: true }) + `<path d="M132 106 Q143 97 154 106" fill="none" stroke="${ink}" stroke-width="3.4" stroke-linecap="round"/>`,
+    happy: `<path d="M86 107 Q97 95 108 107 M132 107 Q143 95 154 107" fill="none" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`,
+    starry: renderEye(97, { tall: true, star: true, spark: true }) + renderEye(143, { tall: true, star: true, spark: true }),
+    fox_tilt: renderEye(97, { lashed: true, tilt: true }) + renderEye(143, { lashed: true, tilt: true }),
+    sleepy_cool: renderEye(97, { halfLid: true }) + renderEye(143, { halfLid: true }),
+    anime_spark: renderEye(97, { tall: true, lashed: true, spark: true }) + renderEye(143, { tall: true, lashed: true, spark: true }),
+  }[a.eyes] || (renderEye(97) + renderEye(143));
+
+  const browColor = shadeHex(hair, -10);
+  const browsSvg = {
+    natural: `<path d="M84 90 Q97 84 109 89 M131 89 Q143 84 156 90" fill="none" stroke="${browColor}" stroke-width="4.4" stroke-linecap="round"/>`,
+    arched: `<path d="M84 91 Q96 80 109 88 M131 88 Q144 80 156 91" fill="none" stroke="${browColor}" stroke-width="4" stroke-linecap="round"/>`,
+    thick: `<path d="M83 89 Q97 82 110 88 M130 88 Q143 82 157 89" fill="none" stroke="${browColor}" stroke-width="6.2" stroke-linecap="round"/>`,
+    chill: `<path d="M84 89 L109 88 M131 88 L156 89" fill="none" stroke="${browColor}" stroke-width="4.2" stroke-linecap="round"/>`,
+    raised: `<path d="M84 91 Q97 86 109 90 M131 85 Q143 77 156 85" fill="none" stroke="${browColor}" stroke-width="4.4" stroke-linecap="round"/>`,
+    sharp_slit: `<path d="M84 90 Q97 84 109 89 M131 89 L147 85 M151 86 L157 89" fill="none" stroke="${browColor}" stroke-width="4.6" stroke-linecap="round"/>`,
+    soft_straight: `<path d="M85 88 H108 M132 88 H155" fill="none" stroke="${browColor}" stroke-width="3.8" stroke-linecap="round"/>`,
+  }[a.brows] || '';
+
+  const noseSvg = {
+    soft: `<path d="M116 123 Q120 127 124 123" fill="none" stroke="${skinShad}" stroke-width="2.6" stroke-linecap="round"/>`,
+    button: `<path d="M115 123 Q120 127.5 125 123" fill="none" stroke="${skinShad}" stroke-width="2.4" stroke-linecap="round"/>`,
+    classic: `<path d="M119 106 L116 121 Q120 126.5 125 122" fill="none" stroke="${skinShad}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>`,
+    defined: `<path d="M120 104 V121 M114 123 Q120 128 126 123" fill="none" stroke="${skinShad}" stroke-width="2.6" stroke-linecap="round"/>`,
+    aquiline: `<path d="M120 102 C117 112 115 118 117 123 Q121 127 126 122" fill="none" stroke="${skinShad}" stroke-width="2.7" stroke-linecap="round"/>`,
+  }[a.nose] || '';
+
+  const beardSvg = {
+    none: '',
+    stubble: `<path d="M76 126 C78 154 98 167 120 168 C142 167 162 154 164 126 C154 146 138 154 120 154 C102 154 86 146 76 126 Z" fill="${hairShad}" opacity=".26"/>`,
+    goatee: `<path d="M104 134 Q120 129 136 134" fill="none" stroke="${hair}" stroke-width="4.2" stroke-linecap="round"/><path d="M106 154 C108 165 114 169 120 169 C126 169 132 165 134 154 Q120 158 106 154 Z" fill="${hair}"/>`,
+    mustache: `<path d="M100 134 C108 127 116 129 120 132 C124 129 132 127 140 134" fill="none" stroke="${hair}" stroke-width="5.4" stroke-linecap="round"/>`,
+    full_beard: `<path d="M73 118 C74 155 95 171 120 172 C145 171 166 155 167 118 C158 134 146 134 138 132 C131 130 125 130 120 131 C115 130 109 130 102 132 C94 134 82 134 73 118 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/><ellipse cx="120" cy="143" rx="18" ry="10" fill="${skin}"/>`,
+    boxed_beard: `<path d="M74 120 C76 152 95 168 120 169 C145 168 164 152 166 120 L158 126 C150 138 140 133 120 132 C100 133 90 138 82 126 Z" fill="${hair}" opacity=".86"/><ellipse cx="120" cy="143" rx="18" ry="9.5" fill="${skin}"/>`,
+    anchor_beard: `<path d="M103 134 Q120 129 137 134 M120 149 V166 M98 156 Q120 170 142 156" fill="none" stroke="${hair}" stroke-width="4.4" stroke-linecap="round"/>`,
+    soul_patch: `<ellipse cx="120" cy="155" rx="4.5" ry="5.5" fill="${hair}"/>`,
+  }[a.facialHair] || '';
+
+  const mouthSvg = {
+    warm_smile: `<path d="M104 139 Q120 151 136 139" fill="none" stroke="${lipTone}" stroke-width="3.6" stroke-linecap="round"/>`,
+    grin: `<path d="M102 137 H138 C136 150 129 154 120 154 C111 154 104 150 102 137 Z" fill="#6b2525"/><path d="M104 138 H136 V145 H104 Z" fill="#ffffff"/><path d="M111 150 Q120 155 129 150" fill="#e06d70"/>`,
+    tooth_beam: `<path d="M100 136 Q120 141 140 136 C138 151 129 155 120 155 C111 155 102 151 100 136 Z" fill="#ffffff" stroke="${lipTone}" stroke-width="2.4"/>`,
+    smirk: `<path d="M106 142 Q122 145 137 136" fill="none" stroke="${lipTone}" stroke-width="3.6" stroke-linecap="round"/>`,
+    laugh: `<path d="M100 136 Q120 140 140 136 C138 154 129 159 120 159 C111 159 102 154 100 136 Z" fill="#682022"/><path d="M103 137 Q120 140 137 137 V143 H103 Z" fill="#ffffff"/><ellipse cx="120" cy="153" rx="10" ry="5" fill="#e57373"/>`,
+    chill: `<path d="M109 142 Q120 145 131 142" fill="none" stroke="${lipTone}" stroke-width="3.4" stroke-linecap="round"/>`,
+    peace: `<path d="M105 139 Q120 149 135 139" fill="none" stroke="${lipTone}" stroke-width="3.4" stroke-linecap="round"/><path d="M116 144 V151 C116 156 126 156 126 151 V144 Z" fill="#f0757e"/>`,
+    cat_grin: `<path d="M105 141 Q112.5 149 120 141 Q127.5 149 135 141" fill="none" stroke="${lipTone}" stroke-width="3.4" stroke-linecap="round"/>`,
+    whistle: `<circle cx="122" cy="143" r="5" fill="#5b2222" stroke="${lipTone}" stroke-width="2.2"/>`,
+    pout: `<ellipse cx="120" cy="143" rx="9" ry="5.5" fill="${shadeHex(skin, -24)}"/><line x1="112" y1="143" x2="128" y2="143" stroke="${lipTone}" stroke-width="2"/>`,
+  }[a.mouth] || '';
+
+  const frontHairMap = {
+    short_fade: `<path d="M71 92 C71 54 92 38 120 38 C148 38 169 54 169 92 C164 73 148 63 120 63 C92 63 76 73 71 92 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    textured_crop: `<path d="M69 94 C68 52 91 35 120 35 C149 35 172 52 171 94 C164 76 154 68 143 72 L136 64 L123 73 L112 63 L98 73 L87 66 C78 72 73 82 69 94 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    messy_layered: `<path d="M67 98 C65 50 89 32 120 32 C152 32 175 50 173 98 C168 78 158 68 146 73 L138 61 L122 73 L111 59 L95 74 L84 64 C75 72 71 84 67 98 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    curls: `<g fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"><circle cx="82" cy="64" r="19"/><circle cx="104" cy="52" r="21"/><circle cx="128" cy="50" r="22"/><circle cx="152" cy="62" r="20"/><circle cx="72" cy="82" r="14"/><circle cx="168" cy="82" r="14"/></g>`,
+    afro: `<path d="M72 86 C78 66 97 58 120 58 C143 58 162 66 168 86 C165 62 145 48 120 48 C95 48 75 62 72 86 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    long_waves: `<path d="M68 98 C68 54 92 36 120 36 C148 36 172 54 172 98 C163 74 144 62 122 60 C98 62 78 76 68 98 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    sleek_straight: `<path d="M68 96 C68 52 92 36 120 36 C148 36 172 52 172 96 C165 70 144 58 120 56 C96 58 75 70 68 96 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    high_bun: `<path d="M71 94 C71 56 92 41 120 41 C148 41 169 56 169 94 C162 73 144 62 120 62 C96 62 78 73 71 94 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    space_buns: `<path d="M70 94 C70 55 92 40 120 40 C148 40 170 55 170 94 C162 72 142 61 120 61 C98 61 78 72 70 94 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    ponytail: `<path d="M70 94 C70 55 92 39 120 39 C148 39 170 55 170 94 C161 72 142 61 120 61 C98 61 79 72 70 94 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    braids: `<path d="M69 94 C70 53 92 38 120 38 C148 38 170 53 171 94 C163 72 144 61 120 60 C96 61 77 72 69 94 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    dreadlocks: `<path d="M68 92 C70 50 92 36 120 36 C148 36 170 50 172 92 C162 72 142 62 120 62 C98 62 78 72 68 92 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    cornrows: `<g stroke="${hair}" stroke-width="6.5" stroke-linecap="round"><path d="M82 78 Q86 44 96 40"/><path d="M98 72 Q102 40 110 38"/><path d="M120 70 V37"/><path d="M142 72 Q138 40 130 38"/><path d="M158 78 Q154 44 144 40"/></g>`,
+    twists: `<path d="M69 94 C70 52 92 37 120 37 C148 37 170 52 171 94 L156 76 L140 82 L120 70 L100 82 L84 76 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    bob: `<path d="M67 98 C67 52 91 36 120 36 C149 36 173 52 173 98 C164 72 142 61 114 61 C91 64 76 77 67 98 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    wolf_cut: `<path d="M66 98 C66 50 90 34 120 34 C150 34 174 50 174 98 L158 74 L142 86 L120 66 L98 86 L82 74 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    curtain_bangs: `<path d="M68 98 C68 50 91 35 120 35 C149 35 172 50 172 98 C156 84 134 68 120 56 C106 68 84 84 68 98 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    side_part: `<path d="M70 94 C70 53 92 37 120 37 C149 37 170 53 170 94 C163 74 148 64 132 61 C112 69 88 75 70 94 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    messy_fringe: `<path d="M69 95 C69 51 91 35 120 35 C149 35 171 51 171 95 L158 76 L146 86 L133 72 L119 87 L105 73 L91 86 L79 76 Z" fill="${hair}" stroke="${ink}" stroke-width="2.2" stroke-linejoin="round"/>`,
+    buzz: `<path d="M73 92 C73 57 94 43 120 43 C146 43 167 57 167 92 C161 74 144 65 120 65 C96 65 79 74 73 92 Z" fill="${hair}" opacity=".84"/>`,
+  };
+  const frontHair = frontHairMap[a.hair] || frontHairMap.textured_crop;
+
+  const glassesSvg = {
+    none: '',
+    aviator_double: `<g><path d="M74 94 H114 C114 115 104 123 93 123 C81 123 74 112 74 94 Z M126 94 H166 C166 112 159 123 147 123 C136 123 126 115 126 94 Z" fill="rgba(220,235,255,.22)" stroke="#1e2229" stroke-width="3.4"/><path d="M112 94 H128 M114 101 H126 M69 98 L74 99 M166 99 L171 98" stroke="#1e2229" stroke-width="3"/></g>`,
+    clear_frames: `<g fill="rgba(255,255,255,.18)" stroke="#2b3038" stroke-width="3.2"><rect x="78" y="92" width="36" height="26" rx="8"/><rect x="126" y="92" width="36" height="26" rx="8"/><path d="M114 103 H126 M72 101 L78 103 M162 103 L168 101" fill="none"/></g>`,
+    round_wire: `<g fill="rgba(255,255,255,.12)" stroke="#b58d3d" stroke-width="2.6"><circle cx="96" cy="105" r="17"/><circle cx="144" cy="105" r="17"/><path d="M113 105 H127 M72 102 L79 104 M161 104 L168 102" fill="none"/></g>`,
+    sunglasses: `<g><rect x="76" y="92" width="39" height="26" rx="7" fill="#181b20" stroke="#111317" stroke-width="3"/><rect x="125" y="92" width="39" height="26" rx="7" fill="#181b20" stroke="#111317" stroke-width="3"/><path d="M115 101 H125 M71 100 L76 101 M164 101 L169 100" stroke="#111317" stroke-width="3.2"/><path d="M83 97 L95 113 M132 97 L144 113" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity=".32"/></g>`,
+    aviators: `<g><path d="M76 95 H114 C114 114 105 121 95 121 C83 121 76 111 76 95 Z M126 95 H164 C164 111 157 121 145 121 C135 121 126 114 126 95 Z" fill="#22303c" fill-opacity=".88" stroke="#d4af37" stroke-width="2.6"/><path d="M112 96 H128 M114 102 H126" stroke="#d4af37" stroke-width="2.2"/></g>`,
+    cat_eye: `<g fill="rgba(236,72,153,.2)" stroke="#1f1924" stroke-width="3.2"><path d="M73 92 L114 96 C112 114 102 119 92 119 C80 119 74 110 73 92 Z"/><path d="M167 92 L126 96 C128 114 138 119 148 119 C160 119 166 110 167 92 Z"/><line x1="114" y1="100" x2="126" y2="100"/></g>`,
+    cyber_visor: `<path d="M70 92 H170 L164 118 H126 L120 111 L114 118 H76 Z" fill="#06b6d4" fill-opacity=".76" stroke="#0e7490" stroke-width="2.8"/><line x1="78" y1="98" x2="162" y2="98" stroke="#ffffff" stroke-width="2.5" opacity=".7"/>`,
+    pixel_shades: `<g fill="#111"><rect x="74" y="95" width="40" height="8"/><rect x="80" y="103" width="30" height="8"/><rect x="86" y="111" width="18" height="6"/><rect x="126" y="95" width="40" height="8"/><rect x="130" y="103" width="30" height="8"/><rect x="136" y="111" width="18" height="6"/><rect x="114" y="96" width="12" height="5"/><rect x="82" y="98" width="6" height="5" fill="#fff"/><rect x="134" y="98" width="6" height="5" fill="#fff"/></g>`,
+    sport_shield: `<path d="M71 91 Q120 85 169 91 L165 117 Q142 122 120 112 Q98 122 75 117 Z" fill="#f97316" fill-opacity=".78" stroke="#18181b" stroke-width="3"/>`,
+    heart_frames: `<g fill="rgba(244,63,94,.32)" stroke="#e11d48" stroke-width="2.8"><path d="M96 118 C80 108 77 94 87 91 C92 89 96 94 96 96 C96 94 100 89 105 91 C115 94 112 108 96 118 Z"/><path d="M144 118 C128 108 125 94 135 91 C140 89 144 94 144 96 C144 94 148 89 153 91 C163 94 160 108 144 118 Z"/><line x1="112" y1="101" x2="128" y2="101"/></g>`,
+    thick_wayfarer: `<g fill="rgba(255,255,255,.12)" stroke="#111317" stroke-width="5"><rect x="76" y="92" width="38" height="25" rx="5"/><rect x="126" y="92" width="38" height="25" rx="5"/><line x1="114" y1="99" x2="126" y2="99"/></g>`,
+  }[a.glasses] || '';
+
+  const headwearSvg = {
+    none: '',
+    yarn_hat_sprout: `<path d="M67 78 Q70 29 120 29 Q170 29 173 78 Z" fill="#b6d995" stroke="${ink}" stroke-width="3"/><rect x="65" y="68" width="110" height="15" rx="7" fill="#6d9c69"/><path d="M120 32 Q118 9 103 13 Q105 26 120 28 Q126 12 140 14 Q138 26 120 32" fill="#5c9b65" stroke="${ink}" stroke-width="2"/>`,
+    yarn_hat_star: `<path d="M70 76 Q70 31 120 31 Q170 31 170 76 Z" fill="#748ab4" stroke="${ink}" stroke-width="3"/><rect x="65" y="68" width="110" height="15" rx="7" fill="#536a95"/><path d="M120 34l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z" fill="#ffe486" stroke="${ink}" stroke-width="1.5"/>`,
+    frog_bucket: `<path d="M71 70 Q74 28 120 28 Q166 28 169 70 Z" fill="#63aa50" stroke="${ink}" stroke-width="2"/><ellipse cx="120" cy="71" rx="64" ry="11" fill="#5c9a48" stroke="${ink}" stroke-width="2"/><circle cx="91" cy="32" r="12" fill="#ffffff" stroke="${ink}" stroke-width="2"/><circle cx="149" cy="32" r="12" fill="#ffffff" stroke="${ink}" stroke-width="2"/><circle cx="91" cy="32" r="5" fill="#161b16"/><circle cx="149" cy="32" r="5" fill="#161b16"/>`,
+    goggle_beanie: `<path d="M68 78 Q70 28 120 28 Q170 28 172 78 Z" fill="${fit}" stroke="${ink}" stroke-width="2"/><circle cx="98" cy="65" r="12" fill="#d7f472" stroke="${ink}" stroke-width="3"/><circle cx="142" cy="65" r="12" fill="#d7f472" stroke="${ink}" stroke-width="3"/>`,
+    flame_cap: `<path d="M68 76 Q70 28 120 28 Q170 28 172 76 Z" fill="${fit}" stroke="${ink}" stroke-width="2"/><path d="M70 75 Q120 65 180 77" stroke="${ink}" stroke-width="6"/><path d="M102 69l10-25 8 11 9-18 10 32z" fill="#f97316" stroke="${ink}" stroke-width="1"/>`,
+    beanie: `<path d="M67 80 C69 42 91 26 120 26 C149 26 171 42 173 80 Z" fill="${fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/><rect x="64" y="68" width="112" height="17" rx="8.5" fill="${fitShad}"/>`,
+    snapback: `<path d="M68 76 C70 42 92 28 120 28 C148 28 170 42 172 76 Z" fill="${fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/><path d="M62 74 Q120 64 184 77 Q152 84 62 78 Z" fill="${fitShad}"/>`,
+    backwards_cap: `<path d="M68 76 C70 42 92 28 120 28 C148 28 170 42 172 76 Z" fill="${fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/><rect x="102" y="65" width="36" height="9" rx="4.5" fill="#1e2229"/><path d="M168 73 L192 78 L168 81 Z" fill="${fitShad}"/>`,
+    trucker_hat: `<path d="M68 76 C70 42 92 28 120 28 C148 28 170 42 172 76 Z" fill="#f8fafc" stroke="${fit}" stroke-width="3"/><path d="M62 74 Q120 64 182 76 Q146 83 62 78 Z" fill="${fit}"/>`,
+    bucket_hat: `<path d="M74 68 L82 34 H158 L166 68 Z" fill="${fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/><path d="M52 74 Q120 58 188 74 Q120 84 52 74 Z" fill="${fitShad}"/>`,
+    headphones: `<path d="M60 112 V96 C60 40 180 40 180 96 V112" fill="none" stroke="#262a30" stroke-width="9" stroke-linecap="round"/><rect x="50" y="96" width="17" height="36" rx="8.5" fill="${fit}" stroke="#1f2328" stroke-width="2"/><rect x="173" y="96" width="17" height="36" rx="8.5" fill="${fit}" stroke="#1f2328" stroke-width="2"/>`,
+    cat_headphones: `<path d="M60 112 V96 C60 40 180 40 180 96 V112" fill="none" stroke="#262a30" stroke-width="8" stroke-linecap="round"/><polygon points="74,56 84,30 98,50" fill="#262a30"/><polygon points="78,53 84,36 93,49" fill="#d7f472"/><polygon points="166,56 156,30 142,50" fill="#262a30"/><polygon points="162,53 156,36 147,49" fill="#d7f472"/><rect x="50" y="96" width="17" height="36" rx="8.5" fill="#d7f472" stroke="#1f2328" stroke-width="2"/><rect x="173" y="96" width="17" height="36" rx="8.5" fill="#d7f472" stroke="#1f2328" stroke-width="2"/>`,
+    headband: `<path d="M69 75 Q120 62 171 75 L170 86 Q120 73 70 86 Z" fill="${fit}"/><path d="M74 79 Q120 68 166 79" stroke="#ffffff" stroke-width="2" opacity=".6" fill="none"/>`,
+    beret: `<ellipse cx="124" cy="48" rx="54" ry="22" transform="rotate(-8 124 48)" fill="${fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/><line x1="122" y1="24" x2="125" y2="30" stroke="${fitShad}" stroke-width="4" stroke-linecap="round"/>`,
+    bandana: `<path d="M68 72 Q120 58 172 72 L170 86 Q120 74 70 86 Z" fill="${fit}"/><path d="M170 78 L188 72 M170 82 L186 88" stroke="${fit}" stroke-width="5" stroke-linecap="round"/>`,
+    crown: `<polygon points="82,62 88,30 106,48 120,24 134,48 152,30 158,62" fill="#facc15" stroke="#b45309" stroke-width="2.5"/><circle cx="120" cy="46" r="4" fill="#ef4444"/>`,
+    visor: `<path d="M66 74 Q120 62 180 76 Q146 86 66 78 Z" fill="${fit}" stroke="#ffffff" stroke-width="1.5"/>`,
+    hood_up: `<path d="M64 98 C64 46 88 28 120 28 C152 28 176 46 176 98" fill="none" stroke="${fitHi}" stroke-width="7" stroke-linecap="round"/>`,
+  }[a.headwear] || '';
+
+  return { defs, facePath: facePaths[a.face] || facePaths.oval, backHair, earsSvg, earrings, faceHighlight, blushSvg, browsSvg, eyesSvg, noseSvg, beardSvg, mouthSvg, frontHair, glassesSvg, headwearSvg, skinMid, skinShad, fit, fitHi, fitShad, ink };
+}
+
+/* 2D Bust Avatar SVG (240x240) — crisp in 36px chat circles, sidebars, call tiles & headers */
+function culjiDeterministicUid(prefix, a) {
+  const key = `${a.skin}|${a.hairColor}|${a.eyeColor}|${a.outfitColor}|${a.bottomColor}|${a.shoeColor}`;
+  let h = 2166136261;
+  for (let i = 0; i < key.length; i++) {
+    h ^= key.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return prefix + (h >>> 0).toString(36);
+}
+function bitmojiSVG(value, person = {}) {
+  const a = cleanAvatar(value, person);
+  if(a.brandFilter==='referral_skin_glow')a.skin='#b6e7a2';
+  const uid = culjiDeterministicUid('cb', a);
+  const h = renderCuljiHeadLayers(a, uid);
+  const baseShoulders = `<path d="M38 240 C40 192 68 176 120 176 C172 176 200 192 202 240 Z" fill="${h.fit}" stroke="${h.ink}" stroke-opacity="1" stroke-width="2"/>`;
+  let bustTop = baseShoulders;
+  if (a.outfit === 'track_jacket' || a.outfit === 'zip_hoodie') {
+    bustTop = `${baseShoulders}<path d="M98 176 L120 210 L142 176 Z" fill="#ffffff"/><line x1="120" y1="208" x2="120" y2="240" stroke="#e2e8f0" stroke-width="3"/><path d="M48 238 C52 204 68 188 86 182 M192 238 C188 204 172 188 154 182" stroke="#ffffff" stroke-width="3" fill="none" opacity="${a.outfitTrim === 'triple_stripe' ? '.92' : '0'}"/>`;
+  } else if (a.outfit === 'varsity' || a.outfit === 'bomber') {
+    bustTop = `${baseShoulders}<path d="M40 240 C42 198 58 184 78 180 L88 240 Z M200 240 C198 198 182 184 162 180 L152 240 Z" fill="#f5f6f0"/><path d="M95 178 L120 206 L145 178" fill="none" stroke="#f5f6f0" stroke-width="5.5" stroke-linejoin="round"/>`;
+  } else if (a.outfit === 'hoodie' || a.outfit === 'crop_hoodie') {
+    bustTop = `${baseShoulders}<path d="M74 181 C86 168 102 166 120 166 C138 166 154 168 166 181 C154 198 136 205 120 205 C104 205 86 198 74 181 Z" fill="${h.fitShad}"/><path d="M106 199 V232 M134 199 V232" stroke="#f8faf5" stroke-width="3.2" stroke-linecap="round"/>`;
+  } else if (a.outfit === 'collared' || a.outfit === 'polo_shirt' || a.outfit === 'flannel_shirt') {
+    bustTop = `${baseShoulders}<path d="M95 176 L120 202 L145 176 L136 172 L120 190 L104 172 Z" fill="#ffffff"/>`;
+  } else if (a.outfit === 'blazer' || a.outfit === 'trench_coat' || a.outfit === 'cardigan') {
+    bustTop = `<path d="M40 240 C42 194 68 177 120 177 C172 177 198 194 200 240 Z" fill="#f7f8f4"/>${baseShoulders}<polygon points="102,176 120,236 138,176" fill="#ffffff"/>`;
+  } else if (a.outfit === 'turtleneck') {
+    bustTop = `${baseShoulders}<rect x="96" y="160" width="48" height="24" rx="9" fill="${h.fitShad}"/>`;
+  }
+
+  const neck = a.outfit === 'turtleneck'
+    ? ''
+    : `<rect x="102" y="152" width="36" height="34" rx="14" fill="${h.skinMid}"/><path d="M102 154 Q120 174 138 154 V168 Q120 180 102 168 Z" fill="${h.skinShad}" opacity=".6"/>`;
+
+  const yarnBustScarf = ['yarn_scarf_mint','yarn_scarf_peach'].includes(a.accessory) ? `<path d="M91 174 Q120 186 149 174 L148 192 Q120 202 92 192 Z" fill="${a.accessory==='yarn_scarf_mint'?'#83c5ab':'#eeaa9c'}" stroke="${h.ink}" stroke-width="2"/><path d="M128 188 H142 V224 H128Z" fill="${a.accessory==='yarn_scarf_mint'?'#83c5ab':'#eeaa9c'}" stroke="${h.ink}" stroke-width="2"/>` : '';
+  return `<svg class="cat-character bitmoji-character culji-character ${a.brandFilter==='referral_skin_glow'?'referral-skin':''}" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>${h.defs}</defs>${h.backHair}${bustTop}${a.hypeBadge&&a.hypeBadge!=='none'?`<image href="${culjiBadgeImg(a.hypeBadge)}" x="145" y="203" width="24" height="24"/>`:''}${neck}${yarnBustScarf}${h.earsSvg}${h.earrings}<path d="${h.facePath}" fill="${a.skin}" stroke="${h.ink}" stroke-opacity="1" stroke-width="2.2"/>${h.faceHighlight}${h.blushSvg}${h.browsSvg}${h.eyesSvg}${h.noseSvg}${h.beardSvg}${h.mouthSvg}${h.frontHair}${h.glassesSvg}${h.headwearSvg}</svg>`;
+}
+const catSVG = bitmojiSVG;
+
+/* 2D Full-Body Standing Culji Renderer (240x430) — matching Screenshot 1's standing 2D look! */
+function culjiFullBodySVG(value, person = {}, viewBoxOverride = '0 0 240 430') {
+  const a = cleanAvatar(value, person);
+  if(a.brandFilter==='referral_skin_glow')a.skin='#b6e7a2';
+  const uid = culjiDeterministicUid('cf', a);
+  const h = renderCuljiHeadLayers(a, uid);
+  const bot = a.bottomColor || '#3f4782';
+  const botHi = shadeHex(bot, 24);
+  const botShad = shadeHex(bot, -26);
+  const shoe = a.shoeColor || '#f4f4f0';
+  const shoeShad = shadeHex(shoe, -28);
+  const ink = '#1a1816';
+
+  const bodyDefs = '';
+
+  // 1. 2D Ground Shadow
+  const floorShadow = `<ellipse cx="120" cy="410" rx="52" ry="9" fill="rgba(26,24,22,0.13)"/>`;
+
+  // 2. Legs / Bottoms (20 styles!)
+  const isShorts = ['basketball_shorts', 'cargo_shorts', 'denim_shorts', 'biker_shorts'].includes(a.bottom);
+  const isSkirt = ['pleated_skirt', 'tennis_skirt', 'maxi_skirt'].includes(a.bottom);
+  const isWide = ['cargo_pants', 'baggy_jeans', 'parachute_pants', 'carpenter_jeans', 'double_knee', 'stacked_cross', 'corduroy_pants', 'flared_pants'].includes(a.bottom);
+
+  let bottomSvg = '';
+  if (isSkirt) {
+    const longSkirt = a.bottom === 'maxi_skirt';
+    bottomSvg = `
+      <rect x="92" y="295" width="20" height="88" rx="9" fill="${a.skin}" stroke="${ink}" stroke-opacity="1" stroke-width="2"/>
+      <rect x="128" y="295" width="20" height="88" rx="9" fill="${a.skin}" stroke="${ink}" stroke-opacity="1" stroke-width="2"/>
+      <path d="M80 268 H160 L${longSkirt ? 172 : 168} ${longSkirt ? 378 : 326} H${longSkirt ? 68 : 72} Z" fill="${bot}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/>
+      ${a.bottom !== 'maxi_skirt' ? `<path d="M98 272 L92 325 M120 272 V325 M142 272 L148 325" stroke="${botShad}" stroke-width="2.2"/>` : ''}`;
+  } else if (isShorts) {
+    bottomSvg = `
+      <rect x="92" y="314" width="21" height="70" rx="9" fill="${a.skin}" stroke="${ink}" stroke-opacity="1" stroke-width="2"/>
+      <rect x="127" y="314" width="21" height="70" rx="9" fill="${a.skin}" stroke="${ink}" stroke-opacity="1" stroke-width="2"/>
+      <path d="M82 268 H158 L162 328 H125 L120 306 L115 328 H78 Z" fill="${bot}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/>
+      ${a.bottom === 'basketball_shorts' ? `<path d="M80 322 H115 M125 322 H160" stroke="#ffffff" stroke-width="3.2"/>` : ''}`;
+  } else {
+    const lw = isWide ? 31 : 25;
+    bottomSvg = `
+      <path d="M82 268 H158 L${124 + lw} 384 H125 L120 308 L115 384 H${116 - lw} Z" fill="${bot}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M120 272 V306" stroke="${botShad}" stroke-width="2.2"/>
+      ${a.bottom === 'cargo_pants' || a.bottom === 'carpenter_jeans'
+        ? `<rect x="${114 - lw}" y="312" width="11" height="26" rx="3.5" fill="${botShad}" stroke="${ink}" stroke-width="1.8"/><rect x="${115 + lw - 10}" y="312" width="11" height="26" rx="3.5" fill="${botShad}" stroke="${ink}" stroke-width="1.8"/>`
+        : ''}
+      ${a.bottom === 'ripped_jeans'
+        ? `<ellipse cx="101" cy="328" rx="7" ry="3.5" fill="${a.skin}" stroke="#e2e8f0" stroke-width="1.6"/><ellipse cx="139" cy="334" rx="7" ry="3.5" fill="${a.skin}" stroke="#e2e8f0" stroke-width="1.6"/>`
+        : ''}
+      ${a.bottom === 'track_pants'
+        ? `<path d="M84 274 L${118 - lw} 381 M156 274 L${122 + lw} 381" stroke="#ffffff" stroke-width="2.8"/>`
+        : ''}`;
+  }
+
+  if (a.bottom === 'double_knee') bottomSvg += `<path d="M88 320h22v28H88z M130 320h22v28h-22z" fill="none" stroke="${ink}" stroke-width="2"/>`;
+  if (a.bottom === 'stacked_cross') bottomSvg += `<path d="M98 315v18m-9-9h18 M141 340v18m-9-9h18" stroke="#f5f2e9" stroke-width="4"/>`;
+
+  // 3. Footwear (18 styles!)
+  const isBoot = ['combat_boots', 'chelsea_boots', 'timber_boots', 'hiking_treks'].includes(a.shoes);
+  const isHighTop = ['court_colorblock', 'high_top_jordans', 'canvas_chucks', 'basketball_kicks'].includes(a.shoes);
+  const shoeTopY = isBoot ? 368 : isHighTop ? 373 : 380;
+  const accentLace = a.shoes === 'retro_runners' ? '#eab308' : a.shoes === 'neon_trainers' ? '#d7f472' : '#ffffff';
+  const shoesSvg = `
+    <g stroke="${ink}" stroke-width="2.2" stroke-linejoin="round">
+      <path d="M85 ${shoeTopY} H114 V401 C114 405 74 407 72 399 C71 391 81 387 85 ${shoeTopY} Z" fill="${shoe}"/>
+      <path d="M126 ${shoeTopY} H155 C159 387 169 391 168 399 C166 407 126 405 126 401 Z" fill="${shoe}"/>
+      <path d="M72 400 H114 M126 400 H168" stroke="#e5e7eb" stroke-width="4" stroke-linecap="round"/>
+      ${a.shoes === 'checker_skate' ? `<path d="M77 395h31 M132 395h31" stroke="#151515" stroke-width="4" stroke-dasharray="4 4"/>` : ''}
+      ${a.shoes === 'court_colorblock' ? `<path d="M84 378h30 M126 378h30" stroke="#c92d32" stroke-width="6"/>` : ''}
+      ${a.shoes === 'gum_toe' ? `<path d="M74 399h40 M126 399h40" stroke="#b88040" stroke-width="5"/>` : ''}
+      ${a.shoes === 'wave_runner' ? `<path d="M76 392q8-7 18 0t18 0 M128 392q8-7 18 0t18 0" fill="none" stroke="#76ad7f" stroke-width="3"/>` : ''}
+      <circle cx="94" cy="392" r="2.6" fill="${accentLace}" stroke="none"/>
+      <circle cx="146" cy="392" r="2.6" fill="${accentLace}" stroke="none"/>
+    </g>`;
+
+  // 4. 2D Jacket / Top + Trim + Pose Arms (28 Tops x 12 Trims x 8 Poses!)
+  const hasWhiteTeeInner = ['track_jacket', 'denim_jacket', 'leather_biker', 'cardigan', 'flannel_shirt', 'blazer', 'trench_coat', 'zip_hoodie', 'puffer_vest', 'hawaiian_shirt'].includes(a.outfit);
+  const stripeAttr = a.outfitTrim === 'triple_stripe' ? 1 : 0;
+  const trimGraphic = {
+    box_ink: `<rect x="99" y="203" width="42" height="18" rx="2" fill="#cf3333" stroke="${ink}" stroke-width="1.5"/><text x="120" y="216" text-anchor="middle" fill="white" font-size="8" font-weight="900">CATCUL</text>`,
+    shark_jaw: `<path d="M91 208l8 9 7-9 7 9 7-9 7 9 7-9 7 9 8-9" fill="none" stroke="#fff" stroke-width="4"/>`,
+    cross_patch: `<path d="M131 198v22m-11-11h22" stroke="#f6f4ed" stroke-width="7"/>`,
+    hazard_lines: `<path d="M89 221l24-24m-20 36l34-34m-25 39l34-34" stroke="#f4d65c" stroke-width="5"/>`,
+    solid_clean: '',
+    triple_stripe: '',
+    varsity_patch: `<text x="136" y="218" font-family="Georgia,serif" font-weight="900" font-size="18" fill="#ffffff" stroke="${ink}" stroke-width=".8">C</text>`,
+    chest_logo: `<circle cx="139" cy="209" r="5" fill="#d7f472" stroke="${ink}" stroke-width="1.2"/>`,
+    star_graphic: `<text x="110" y="226" font-size="22" fill="#facc15">★</text>`,
+    heart_emblem: `<text x="134" y="216" font-size="14" fill="#fb7185">♥</text>`,
+    lightning_bolt: `<polygon points="123,196 112,216 121,216 116,236 131,212 121,212" fill="#facc15"/>`,
+    checker_trim: `<path d="M84 264 H156" stroke="#ffffff" stroke-width="5" stroke-dasharray="6 6"/>`,
+    flame_hem: `<path d="M84 268 Q92 252 100 268 Q110 248 120 268 Q130 248 140 268 Q148 252 156 268" fill="#f97316" opacity=".85"/>`,
+    pinstripe: `<path d="M96 184 V268 M112 184 V268 M128 184 V268 M144 184 V268" stroke="#ffffff" stroke-opacity=".25" stroke-width="1.6"/>`,
+    colorblock: `<path d="M120 180 H158 L160 270 H120 Z" fill="#ffffff" opacity=".16"/>`,
+    camo_print: `<circle cx="98" cy="212" r="9" fill="${h.fitShad}" opacity=".55"/><circle cx="140" cy="236" r="11" fill="${h.fitHi}" opacity=".35"/>`,
+  }[a.outfitTrim] || '';
+
+  const torsoShell = `
+    <path d="M78 182 C92 173 148 173 162 182 L159 271 H81 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/>
+    ${hasWhiteTeeInner ? `<polygon points="105,179 120,256 135,179" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/><path d="M107 183 Q120 191 133 183" fill="none" stroke="#dc2626" stroke-width="2.5"/>` : ''}
+    ${a.outfit === 'hoodie' || a.outfit === 'crop_hoodie' || a.outfit === 'zip_hoodie'
+      ? `<path d="M90 180 Q120 198 150 180" fill="none" stroke="${h.fitShad}" stroke-width="6" stroke-linecap="round"/><path d="M111 192 V224 M129 192 V224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>`
+      : ''}
+    ${a.outfit === 'contrast_puffer' ? `<path d="M81 184H159V218H81z" fill="#242824" stroke="${ink}" stroke-width="2"/>` : ''}
+    ${a.outfit === 'box_hype_hoodie' ? `<rect x="100" y="203" width="40" height="17" rx="2" fill="#cf3333"/><text x="120" y="215" text-anchor="middle" font-weight="bold" font-size="8" fill="white">HYPE</text>` : ''}
+    ${a.outfit === 'shark_camo_zip' ? `<path d="M92 211l8 8 7-8 7 8 7-8 7 8 7-8 7 8 7-8" stroke="#fff" stroke-width="4" fill="none"/>` : ''}
+    ${a.outfit === 'club_tracktop' ? `<path d="M90 203h60 M90 211h60 M90 219h60" stroke="#fff" stroke-width="2"/>` : ''}
+    ${a.outfit === 'workwear_jacket' ? `<path d="M89 184l15 15 16-15 16 15 15-15" stroke="#a67443" stroke-width="6" fill="none"/>` : ''}
+    ${a.outfit === 'puffer_jacket'
+      ? `<path d="M81 206 H159 M81 230 H159 M81 252 H159" stroke="${h.fitShad}" stroke-width="3"/>`
+      : ''}
+    <path d="M82 269 H158" stroke="#ffffff" stroke-width="${a.outfit === 'track_jacket' ? 3.5 : 0}" stroke-linecap="round"/>
+    ${trimGraphic}`;
+
+  // Arms by Pose (matching Screenshot 1's signature 2D crossed_arms + 7 dynamic poses!)
+  let armsSvg = '';
+  if (a.pose === 'crossed_arms') {
+    armsSvg = `
+      <path d="M80 184 C62 194 58 224 68 242 L144 238 C152 238 154 222 142 220 L84 222" fill="${h.fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M160 184 C178 194 182 224 172 242 L94 246 C84 246 84 230 96 228 L156 224" fill="${h.fit}" stroke="${ink}" stroke-width="2.4" stroke-linejoin="round"/>
+      ${stripeAttr ? `<path d="M72 190 C63 204 63 222 71 234 M168 190 C177 204 177 222 169 234" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/><path d="M76 192 C68 205 68 221 75 232 M164 192 C172 205 172 221 165 232" fill="none" stroke="${h.fit}" stroke-width="1.5"/>` : ''}
+      <ellipse cx="147" cy="228" rx="9" ry="7" fill="${a.skin}" stroke="${ink}" stroke-width="1.8"/>
+      <ellipse cx="92" cy="237" rx="9" ry="7" fill="${a.skin}" stroke="${ink}" stroke-width="1.8"/>`;
+  } else if (a.pose === 'wave_hello' || a.pose === 'peace_sign') {
+    armsSvg = `
+      <path d="M80 184 C64 202 62 236 68 268 L82 266 C78 238 80 212 86 196 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.3"/>
+      <circle cx="74" cy="273" r="8.5" fill="${a.skin}" stroke="${ink}" stroke-width="2"/>
+      <path d="M160 184 C180 182 194 162 192 136 L178 136 C178 156 168 170 154 176 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.3"/>
+      <circle cx="185" cy="129" r="9.5" fill="${a.skin}" stroke="${ink}" stroke-width="2"/>
+      ${a.pose === 'peace_sign' ? `<path d="M181 122 L178 109 M188 122 L192 109" stroke="${a.skin}" stroke-width="4.5" stroke-linecap="round"/>` : ''}`;
+  } else if (a.pose === 'hands_on_hips') {
+    armsSvg = `
+      <path d="M80 184 L54 224 L80 258 L87 248 L70 224 L86 198 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.3" stroke-linejoin="round"/>
+      <path d="M160 184 L186 224 L160 258 L153 248 L170 224 L154 198 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.3" stroke-linejoin="round"/>
+      <circle cx="82" cy="256" r="7.5" fill="${a.skin}" stroke="${ink}" stroke-width="1.8"/>
+      <circle cx="158" cy="256" r="7.5" fill="${a.skin}" stroke="${ink}" stroke-width="1.8"/>`;
+  } else {
+    // chill_stand / pockets_lean / hype_jump / selfie_tilt
+    const inPockets = a.pose === 'pockets_lean';
+    armsSvg = `
+      <path d="M80 184 C65 204 64 238 ${inPockets ? 82 : 68} 268 L${inPockets ? 92 : 82} 266 C78 238 79 212 86 196 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.3"/>
+      <path d="M160 184 C175 204 176 238 ${inPockets ? 158 : 172} 268 L${inPockets ? 148 : 158} 266 C162 238 161 212 154 196 Z" fill="${h.fit}" stroke="${ink}" stroke-width="2.3"/>
+      ${stripeAttr ? `<path d="M72 194 L${inPockets ? 82 : 69} 258 M168 194 L${inPockets ? 158 : 171} 258" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>` : ''}
+      ${!inPockets ? `<circle cx="74" cy="273" r="8" fill="${a.skin}" stroke="${ink}" stroke-width="1.8"/><circle cx="166" cy="273" r="8" fill="${a.skin}" stroke="${ink}" stroke-width="1.8"/>` : ''}`;
+  }
+
+  // 5. Accessories (12 styles!)
+  const accSvg = {
+    none: '',
+    mini_backpack: `<path d="M90 180 V250 M150 180 V250" stroke="#222" stroke-width="7"/><rect x="138" y="222" width="30" height="32" rx="9" fill="#70b7d6" stroke="${ink}" stroke-width="2"/>`,
+    plush_bag: `<path d="M90 180 L156 250" stroke="#222" stroke-width="5"/><circle cx="150" cy="252" r="14" fill="#f4c1cf" stroke="${ink}" stroke-width="2"/><circle cx="145" cy="250" r="2"/><circle cx="155" cy="250" r="2"/>`,
+    trunk_sling: `<path d="M90 180 L156 250" stroke="#222" stroke-width="6"/><rect x="134" y="238" width="32" height="23" rx="5" fill="#aa7746" stroke="${ink}" stroke-width="2"/><path d="M135 246 H165 M145 239 V260 M155 239 V260" stroke="#efd59c" stroke-width="1.5"/>`,
+    crossbody_bag: `<path d="M90 180 L156 264" stroke="#18181b" stroke-width="7" stroke-linecap="round"/><rect x="132" y="242" width="28" height="20" rx="6" fill="#27272a" stroke="#d7f472" stroke-width="2"/>`,
+    backpack_straps: `<path d="M90 180 V254 M150 180 V254" stroke="#27272a" stroke-width="7" stroke-linecap="round"/>`,
+    silver_chain: `<path d="M103 178 Q120 206 137 178" fill="none" stroke="#e2e8f0" stroke-width="3.6"/>`,
+    gold_pendant: `<path d="M103 178 Q120 206 137 178" fill="none" stroke="#facc15" stroke-width="3.2"/><circle cx="120" cy="202" r="5" fill="#facc15" stroke="#b45309" stroke-width="1.2"/>`,
+    pearl_necklace: `<path d="M102 178 Q120 198 138 178" fill="none" stroke="#fffbeb" stroke-width="4.5" stroke-dasharray="1 5" stroke-linecap="round"/>`,
+    yarn_scarf_mint: `<path d="M90 168 Q120 184 150 168 L146 188 Q120 198 94 188 Z" fill="#83c5ab" stroke="${ink}" stroke-width="2"/><rect x="128" y="180" width="14" height="38" rx="5" fill="#83c5ab" stroke="${ink}" stroke-width="2"/><path d="M129 205h12M129 211h12" stroke="#e9ffeb" stroke-width="2"/>`,
+    yarn_scarf_peach: `<path d="M90 168 Q120 184 150 168 L146 188 Q120 198 94 188 Z" fill="#eeaa9c" stroke="${ink}" stroke-width="2"/><rect x="128" y="180" width="14" height="38" rx="5" fill="#eeaa9c" stroke="${ink}" stroke-width="2"/><circle cx="135" cy="205" r="3" fill="#fff4d7"/>`,
+    scarf: `<path d="M90 168 Q120 184 150 168 L146 188 Q120 198 94 188 Z" fill="#dc2626" stroke="${ink}" stroke-width="2"/><rect x="128" y="180" width="14" height="38" rx="5" fill="#dc2626" stroke="${ink}" stroke-width="2"/>`,
+    smartwatch: `<rect x="66" y="258" width="13" height="9" rx="3" fill="#0ea5e9" stroke="#18181b" stroke-width="1.5"/>`,
+    skateboard: `<g transform="translate(170,285) rotate(10)"><rect x="0" y="0" width="24" height="104" rx="12" fill="#f97316" stroke="${ink}" stroke-width="2.4"/><circle cx="0" cy="24" r="5" fill="#18181b"/><circle cx="0" cy="80" r="5" fill="#18181b"/></g>`,
+    coffee_cup: `<g transform="translate(56,246)"><rect x="0" y="6" width="18" height="24" rx="4" fill="#d7f472" stroke="${ink}" stroke-width="2"/><path d="M-2 6 H20" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/><line x1="9" y1="-4" x2="11" y2="6" stroke="#16a34a" stroke-width="2.5"/></g>`,
+    gaming_controller: `<g transform="translate(104,242)"><rect x="0" y="0" width="32" height="18" rx="8" fill="#f8fafc" stroke="${ink}" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#18181b"/><circle cx="23" cy="9" r="2.5" fill="#ef4444"/></g>`,
+    camera_strap: `<path d="M98 178 L104 244 M142 178 L136 244" stroke="#27272a" stroke-width="3.2"/><rect x="104" y="238" width="32" height="22" rx="5" fill="#18181b" stroke="#94a3b8" stroke-width="2"/><circle cx="120" cy="249" r="6.5" fill="#38bdf8"/>`,
+  }[a.accessory] || '';
+
+  const neck = `<rect x="104" y="154" width="32" height="30" rx="12" fill="${h.skinMid}" stroke="${ink}" stroke-opacity="1" stroke-width="1.8"/>`;
+  const headTilt = a.pose === 'selfie_tilt' ? 'transform="rotate(-5 120 112)"' : a.pose === 'hype_jump' ? 'transform="translate(0,-6)"' : '';
+
+  return `<svg class="cat-character bitmoji-character culji-character culji-fullbody ${a.brandFilter==='referral_skin_glow'?'referral-skin':''}" viewBox="${viewBoxOverride}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>${bodyDefs}</defs>
+    ${floorShadow}
+    <g ${a.pose === 'hype_jump' ? 'transform="translate(0,-8)"' : ''}>
+      ${bottomSvg}
+      ${shoesSvg}
+      ${torsoShell}
+      ${a.hypeBadge&&a.hypeBadge!=='none'?`<image href="${culjiBadgeImg(a.hypeBadge)}" x="130" y="197" width="22" height="22"/>`:''}
+      ${armsSvg}
+      ${accSvg}
+      ${neck}
+      <g ${headTilt}>
+        ${h.backHair}
+        ${h.earsSvg}
+        ${h.earrings}
+        <path d="${h.facePath}" fill="${a.skin}" stroke="${ink}" stroke-opacity="1" stroke-width="2.3"/>
+        ${h.faceHighlight}
+        ${h.blushSvg}
+        ${h.browsSvg}
+        ${h.eyesSvg}
+        ${h.noseSvg}
+        ${h.beardSvg}
+        ${h.mouthSvg}
+        ${h.frontHair}
+        ${h.glassesSvg}
+        ${h.headwearSvg}
+      </g>
+    </g>
+  </svg>`;
+}
+
+(()=>{
+ const root=document.getElementById('culji-public-preview');if(!root)return;
+ const values={v:2,skin:'#eab38b',hair:'curls',outfit:'hoodie',outfitColor:'#3c6e58',hypeBadge:'none'};
+ let touched=false;
+ function paint(){root.innerHTML=culjiFullBodySVG(values,{name:'preview'});}
+ for(const el of document.querySelectorAll('[data-preview-part]'))el.addEventListener('change',()=>{touched=true;const key=el.dataset.previewPart;if(key==='skin'&&BITMOJI_SKINS.includes(el.value))values.skin=el.value;if(key==='hair'&&BITMOJI_OPTIONS.hair.includes(el.value))values.hair=el.value;if(key==='outfit'&&BITMOJI_OPTIONS.outfit.includes(el.value))values.outfit=el.value;if(key==='outfitColor'&&BITMOJI_OUTFIT_COLORS.includes(el.value))values.outfitColor=el.value;paint();});
+ paint();
+ // Fetch only the public starting look. A slow response never overwrites a visitor's edits.
+ (async()=>{try{
+  if(!window.supabase?.createClient)return;
+  const publicClient=window.supabase.createClient('https://qrepissmmytfhwyxzfgk.supabase.co','sb_publishable_kbQ4tA24CMtyLHvDsVO2VQ_c_JgH8E6',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+  const {data,error}=await publicClient.schema('catcul').rpc('public_culji_default_get');
+  if(error||!data||touched)return;
+  for(const el of document.querySelectorAll('[data-preview-part]')){const key=el.dataset.previewPart;if([...el.options].some(o=>o.value===data[key])){el.value=data[key];values[key]=el.value;}}
+  paint();
+ }catch{ /* Static look remains usable when offline. */ }})();
+ document.getElementById('culji-join-preview')?.addEventListener('click',()=>{
+  try{sessionStorage.setItem('catcul.signupCuljiPreview',JSON.stringify({v:2,skin:values.skin,hair:values.hair,outfit:values.outfit,outfitColor:values.outfitColor}));}catch{}
+ });
+})();
+
+})();</script></body>
 </html>

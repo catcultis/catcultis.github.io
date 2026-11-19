@@ -289,3 +289,12 @@ Source: https://sketchfab.com/3d-models/mini-plushie-body-base-d02532e300f541ec8
 License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/
 Changes: mesh split into parts, resized, recolored, repositioned and combined with Culji artwork.
+
+
+Culji 3D cat head adaptation
+----------------------------
+“Black Cat Head Plush” by dro (@drolavellan)
+Source: https://sketchfab.com/3d-models/black-cat-head-plush-0a81d050ac2c4f2c9adce8b640af1eeb
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+Changes: geometry converted, resized and repositioned, combined directly with the Culji body and animated as a rigid part. Texture embedded and fur recoloured with the original eyes and nose retained.

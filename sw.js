@@ -1,5 +1,5 @@
 /* Catcul Service Worker — offline shell cache, background call & message push, and laptop inline notification replies. */
-const CACHE = 'catcul-shell-v86-streetwear';
+const CACHE = 'catcul-shell-v87-caps';
 const SHELL = [
   './',
   './index.html',

@@ -1,5 +1,5 @@
 /* Catcul Service Worker — offline shell cache, background call & message push, and laptop inline notification replies. */
-const CACHE = 'catcul-shell-v90-catnotes';
+const CACHE = 'catcul-shell-v91-catnap';
 const SHELL = [
   './',
   './index.html',

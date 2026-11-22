@@ -3902,6 +3902,20 @@ html[data-catcul-font]:not([data-catcul-font="default"]) :is(body,button,input,t
 @media(prefers-reduced-motion:reduce){.room-cat-dock.room-cat-trick .room-cat-icon{animation:none!important}}
 
 </style>
+<style>
+.catsnap-modal.modal{width:min(1050px,96vw);max-width:1050px}
+.catsnap-lenses,.catsnap-looks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:240px;overflow:auto;overscroll-behavior:contain;padding:2px}
+.catsnap-lens-btn,.catsnap-look-btn{min-height:54px;padding:9px 10px;border-radius:13px;border:1px solid var(--line);background:var(--soft);color:var(--text);text-align:left;font-weight:700;font-size:12px;display:flex;gap:9px;align-items:center;cursor:pointer}
+.catsnap-look-btn small{display:block;font-size:10px;font-weight:500;opacity:.72}.catsnap-lens-btn small{font-size:10px}.catsnap-lens-btn i{font-size:20px!important}.catsnap-look-btn.active{background:var(--dark);color:#f6f8f1;border-color:var(--dark)}.dark .catsnap-look-btn.active{background:var(--accent);color:#182414}
+.catsnap-filter-label{display:block;margin:15px 0 6px}.catsnap-filter-help{font-size:11px;color:var(--muted);line-height:1.4;margin:4px 0 8px}.catsnap-effect-slider{display:flex;flex-direction:column;gap:5px;font-size:12px;margin-top:10px}.catsnap-effect-slider input{accent-color:#748f45}
+.catsnap-lens-btn:focus-visible,.catsnap-look-btn:focus-visible{outline:3px solid #a5be64;outline-offset:2px}
+@media(max-width:740px){.catsnap-modal.modal{padding:14px}.catsnap-lenses,.catsnap-looks{max-height:180px}.catsnap-lens-btn,.catsnap-look-btn{min-height:50px}}
+@media(max-width:740px){.catsnap-stage{position:sticky;top:0;align-self:start;z-index:6;box-shadow:0 8px 18px rgba(0,0,0,.18)}}
+@media(max-width:740px){.catsnap-grid>div:first-child{position:sticky;top:0;align-self:start;z-index:6}.catsnap-stage{position:relative;top:auto}}
+.jeeliz-frame-wrap{width:min(100%,560px);aspect-ratio:1;margin:10px auto;background:#111814;border-radius:16px;overflow:hidden;display:grid;place-items:center;color:#dde8d8;text-align:center}.jeeliz-frame-wrap iframe{display:block;width:100%;height:100%;border:0}.jeeliz-picker{display:flex;gap:8px;flex-wrap:wrap}.jeeliz-picker .active{background:var(--dark);color:#fff}.dark .jeeliz-picker .active{background:var(--accent);color:#182414}
+.culife-card-foot{gap:6px;flex-wrap:wrap}.culife-foot-pill{min-height:40px}.jeeliz-picker .btn.active{background:#243823!important;color:#fff!important;border-color:#243823!important}.dark .jeeliz-picker .btn.active{background:#d7f472!important;color:#182414!important}
+
+</style>
 </head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
@@ -13999,12 +14013,33 @@ async function sendCatSticker(stickerId, reqTier) {
 
 /* ---------- Client-Side 2D canvas + MediaPipe Face & Portrait Camera ---------- */
 const CAT_SNAP_LENSES = [
-  { id: 'lion-ink', name: 'Big Cat Ink', sub: 'Cartoon ears & whiskers', icon: 'ri-focus-3-line', filter: 'contrast(1.04) saturate(1.06)' },
-  { id: 'aviators-ink', name: 'Aviator Ink', sub: 'Cartoon eyewear', icon: 'ri-glasses-2-line', filter: 'contrast(1.08) saturate(1.04)' },
-  { id: 'royal-crown', name: 'Koala Ink', sub: 'Cartoon ears', icon: 'ri-emotion-happy-line', filter: 'brightness(1.03) contrast(1.03) sepia(0.07) saturate(1.08)' },
-  { id: 'dalmatian-ink', name: 'Spotted Ink', sub: 'Cartoon puppy ears', icon: 'ri-sparkling-2-line', filter: 'brightness(1.03) contrast(1.05)' },
-  { id: 'portrait-bokeh', name: 'Portrait f/1.4', sub: 'Depth Background Blur', icon: 'ri-camera-lens-line', mode: 'blur', filter: 'brightness(1.02) contrast(0.99) saturate(1.04)' },
-  { id: 'ilford-mono', name: 'Ilford HP5 B&W', sub: '35mm Monochrome', icon: 'ri-contrast-2-line', mode: 'none', filter: 'grayscale(1) contrast(1.16) brightness(1.02)' },
+  {id:'none',name:'No face effect',sub:'Just your photo look',icon:'ri-close-circle-line',filter:'none'},
+  {id:'cat-plush',name:'Plush Cat',sub:'Big soft ears & whiskers',icon:'ri-emotion-happy-line',filter:'none',face:true},
+  {id:'neon-cat',name:'Neon Kitty',sub:'Glowing cat ears',icon:'ri-flashlight-line',filter:'none',face:true},
+  {id:'moon-crown',name:'Moon Crown',sub:'Golden crown & stars',icon:'ri-vip-crown-line',filter:'none',face:true},
+  {id:'heart-glasses',name:'Heart Glasses',sub:'Pink heart frames',icon:'ri-heart-line',filter:'none',face:true},
+  {id:'sunset-shades',name:'Sunset Shades',sub:'Warm oversized frames',icon:'ri-sun-line',filter:'none',face:true},
+  {id:'angel-halo',name:'Golden Halo',sub:'A little shine',icon:'ri-sparkling-2-line',filter:'none',face:true},
+  {id:'blush-stars',name:'Star Blush',sub:'Cheeks & tiny stars',icon:'ri-star-line',filter:'none',face:true},
+  {id:'floating-hearts',name:'Sweet Hearts',sub:'Hearts around your face',icon:'ri-hearts-line',filter:'none',face:true},
+  {id:'butterfly',name:'Butterfly',sub:'Lilac butterflies',icon:'ri-flower-line',filter:'none',face:true},
+  {id:'lion-ink',name:'Big Cat Ink',sub:'Cartoon ears & whiskers',icon:'ri-focus-3-line',filter:'none',face:true},
+  {id:'aviators-ink',name:'Aviator Ink',sub:'Cartoon eyewear',icon:'ri-glasses-2-line',filter:'none',face:true},
+  {id:'royal-crown',name:'Koala Ink',sub:'Cartoon ears',icon:'ri-emotion-happy-line',filter:'none',face:true},
+  {id:'dalmatian-ink',name:'Spotted Ink',sub:'Cartoon puppy ears',icon:'ri-sparkling-2-line',filter:'none',face:true},
+  {id:'portrait-bokeh',name:'Portrait Blur',sub:'Soft background',icon:'ri-camera-lens-line',mode:'blur',filter:'none'},
+];
+const CAT_SNAP_LOOKS = [
+ {id:'natural',name:'Natural',sub:'True to you',filter:'none',icon:'◌'},
+ {id:'golden',name:'Golden Hour',sub:'Warm sunlight',filter:'sepia(.17) saturate(1.23) contrast(1.04) brightness(1.05)',icon:'☀️'},
+ {id:'soft',name:'Soft Glow',sub:'Gentle pastel',filter:'saturate(.88) contrast(.91) brightness(1.09)',icon:'🌸'},
+ {id:'cinema',name:'Cinema',sub:'Rich and moody',filter:'saturate(.82) contrast(1.20) brightness(.96)',icon:'🎞️'},
+ {id:'berry',name:'Berry Pop',sub:'Bright and colourful',filter:'saturate(1.42) contrast(1.06) hue-rotate(-8deg)',icon:'🍓'},
+ {id:'vintage',name:'Vintage',sub:'Warm film feel',filter:'sepia(.3) saturate(.84) contrast(.92) brightness(1.05)',icon:'📷'},
+ {id:'mono',name:'Mono',sub:'Classic black & white',filter:'grayscale(1) contrast(1.16)',icon:'◐'},
+ {id:'cool',name:'Cool Blue',sub:'Fresh cool tones',filter:'sepia(.10) hue-rotate(165deg) saturate(1.20) contrast(1.05)',icon:'❄️'},
+ {id:'dream',name:'Dream',sub:'Light and airy',filter:'saturate(.85) contrast(.85) brightness(1.15)',icon:'☁️'},
+ {id:'vivid',name:'Vivid',sub:'Extra colour',filter:'saturate(1.55) contrast(1.12)',icon:'🌈'},
 ];
 
 const MP_VISION_CDN = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18';
@@ -14050,7 +14085,7 @@ function loadKeylessNeuralAR() {
     });
     const [face, seg] = await Promise.all([
       createFace(MP_FACE_MODEL_LOCAL).catch(() => createFace(MP_FACE_MODEL_FALLBACK)),
-      createSeg(MP_SEG_MODEL_LOCAL).catch(() => createSeg(MP_SEG_MODEL_FALLBACK)),
+      createSeg(MP_SEG_MODEL_LOCAL).catch(() => createSeg(MP_SEG_MODEL_FALLBACK)).catch(() => null),
     ]);
     return {
       face,
@@ -14069,8 +14104,8 @@ function loadKeylessNeuralAR() {
   return keylessARPromise;
 }
 
-function drawCoverSource(targetCtx, src, sw, sh, cw, ch, mirror = false) {
-  const ratio = Math.max(cw / sw, ch / sh);
+function drawCoverSource(targetCtx, src, sw, sh, cw, ch, mirror = false, fit = false) {
+  const ratio = fit ? Math.min(cw / sw, ch / sh) : Math.max(cw / sw, ch / sh);
   const dw = sw * ratio, dh = sh * ratio;
   const ox = (cw - dw) / 2, oy = (ch - dh) / 2;
   targetCtx.save();
@@ -14098,28 +14133,61 @@ function paintConfidenceMaskToCanvas(maskFloat, mw, mh, maskCanvas) {
   mctx.putImageData(imgData, 0, 0);
 }
 
-function drawTrackedFaceOverlay(ctx, faces, cw, ch, sw, sh, mirror, lensId) {
-  if (!Array.isArray(faces)) return;
-  const scale = Math.max(cw / sw, ch / sh), dx=(cw-sw*scale)/2, dy=(ch-sh*scale)/2;
-  const point=(face,i)=>({x:dx+(mirror ? 1-face[i].x : face[i].x)*sw*scale,y:dy+face[i].y*sh*scale});
-  for (const face of faces) {
-    if (!face || face.length < 400) continue;
-    const a=point(face,33), b=point(face,263), left=a.x<b.x?a:b, right=a.x<b.x?b:a;
-    const width=Math.hypot(right.x-left.x,right.y-left.y), nose=point(face,4), center={x:(left.x+right.x)/2,y:(left.y+right.y)/2};
-    ctx.save(); ctx.translate(center.x,center.y); ctx.rotate(Math.atan2(right.y-left.y,right.x-left.x));
-    ctx.lineWidth=Math.max(2,width*.025); ctx.strokeStyle='#201c19'; ctx.lineJoin='round'; ctx.lineCap='round';
-    const ellipse=(x,y,rx,ry,color)=>{ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();ctx.stroke();};
-    if(lensId==='aviators-ink') {
-      ellipse(-width*.49,0,width*.26,width*.20,'#d7f472'); ellipse(width*.49,0,width*.26,width*.20,'#d7f472');
-      ctx.beginPath();ctx.moveTo(-width*.23,0);ctx.lineTo(width*.23,0);ctx.stroke();
-    } else if(['lion-ink','royal-crown','dalmatian-ink'].includes(lensId)) {
-      const ear= lensId==='lion-ink'?'#e8ad69':lensId==='royal-crown'?'#a2aaa6':'#fff9ef';
-      for(const sign of [-1,1]) {ctx.beginPath();ctx.moveTo(sign*width*.65,-width*.65);ctx.lineTo(sign*width*.8,-width*1.25);ctx.lineTo(sign*width*.25,-width*.78);ctx.closePath();ctx.fillStyle=ear;ctx.fill();ctx.stroke();}
-      ellipse(0,width*.43,width*.11,width*.075,'#392b27');
-      for(const sign of [-1,1]) for(let k=0;k<2;k++){ctx.beginPath();ctx.moveTo(sign*width*.18,width*(.45+k*.08));ctx.lineTo(sign*width*.63,width*(.38+k*.16));ctx.stroke();}
+function drawTrackedFaceOverlay(ctx, faces, cw, ch, sw, sh, mirror, lensId, effectSize=1, fit=false) {
+  if (!Array.isArray(faces) || !sw || !sh) return;
+  const scale=(fit?Math.min(cw/sw,ch/sh):Math.max(cw/sw,ch/sh)),dx=(cw-sw*scale)/2,dy=(ch-sh*scale)/2;
+  const point=(f,i)=>({x:dx+(mirror?1-f[i].x:f[i].x)*sw*scale,y:dy+f[i].y*sh*scale});
+  for(const face of faces){
+    if(!face || face.length<400 || !face[33] || !face[263]) continue;
+    const a=point(face,33),b=point(face,263),left=a.x<b.x?a:b,right=a.x<b.x?b:a;
+    const w=Math.hypot(right.x-left.x,right.y-left.y);if(!Number.isFinite(w)||w<2)continue;
+    ctx.save();ctx.translate((left.x+right.x)/2,(left.y+right.y)/2);ctx.rotate(Math.atan2(right.y-left.y,right.x-left.x));
+    ctx.scale(Math.max(.65,Math.min(1.6,Number(effectSize)||1)),Math.max(.65,Math.min(1.6,Number(effectSize)||1)));
+    ctx.lineJoin='round';ctx.lineCap='round';ctx.lineWidth=w*.035;ctx.strokeStyle='#3f313c';
+    const oval=(x,y,rx,ry,fill,outline=true)=>{ctx.beginPath();ctx.ellipse(x*w,y*w,rx*w,ry*w,0,0,Math.PI*2);ctx.fillStyle=fill;ctx.fill();if(outline)ctx.stroke()};
+    const poly=(pts,fill)=>{ctx.beginPath();pts.forEach(([x,y],i)=>i?ctx.lineTo(x*w,y*w):ctx.moveTo(x*w,y*w));ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.stroke()};
+    const line=(pts,color='#493442',width=.035)=>{ctx.beginPath();pts.forEach(([x,y],i)=>i?ctx.lineTo(x*w,y*w):ctx.moveTo(x*w,y*w));ctx.strokeStyle=color;ctx.lineWidth=w*width;ctx.stroke();ctx.strokeStyle='#3f313c';ctx.lineWidth=w*.035};
+    const star=(x,y,r,color)=>{const p=[];for(let i=0;i<10;i++){const t=-Math.PI/2+i*Math.PI/5,rr=(i%2?.44:1)*r;p.push([x+Math.cos(t)*rr,y+Math.sin(t)*rr])}poly(p,color)};
+    const heart=(x,y,size,fill)=>{ctx.beginPath();ctx.moveTo(x*w,(y+size*.34)*w);ctx.bezierCurveTo((x-size*.85)*w,(y-size*.25)*w,(x-size*.48)*w,(y-size*.65)*w,x*w,(y-size*.26)*w);ctx.bezierCurveTo((x+size*.48)*w,(y-size*.65)*w,(x+size*.85)*w,(y-size*.25)*w,x*w,(y+size*.34)*w);ctx.fillStyle=fill;ctx.fill();ctx.stroke()};
+    const ears=(outer,inner)=>{for(const s of [-1,1]){poly([[s*.31,-.68],[s*.70,-1.53],[s*1.02,-.49]],outer);poly([[s*.48,-.73],[s*.69,-1.28],[s*.88,-.57]],inner)}};
+    if(['lion-ink','royal-crown','dalmatian-ink','cat-plush','neon-cat'].includes(lensId)){
+      const tones=lensId==='royal-crown'?['#a2aaa6','#f1c4c0']:lensId==='dalmatian-ink'?['#fff9ef','#c89db1']:lensId==='neon-cat'?['#433c65','#70f0d3']:lensId==='cat-plush'?['#674e5c','#f4aebd']:['#e8ad69','#f5c9a5'];ears(...tones);
+      if(lensId==='dalmatian-ink'){oval(-.75,-.85,.08,.16,'#493d44',false);oval(.76,-.92,.09,.14,'#493d44',false)}
+      oval(0,.43,.105,.075,lensId==='cat-plush'?'#ef9bb1':'#503640');
+      for(const s of [-1,1]){line([[s*.18,.45],[s*.83,.34]]);line([[s*.18,.54],[s*.81,.62]])}
+      if(lensId==='neon-cat'){star(-.95,-1.34,.12,'#f6dd6c');star(.98,-1.15,.09,'#f6dd6c')}
+    }else if(['aviators-ink','sunset-shades','heart-glasses'].includes(lensId)){
+      const fill=lensId==='sunset-shades'?'#f8a379':lensId==='heart-glasses'?'#f692ad':'#b8d889';
+      if(lensId==='heart-glasses'){heart(-.48,0,.49,fill);heart(.48,0,.49,fill)}else{oval(-.48,0,.39,.29,fill);oval(.48,0,.39,.29,fill);line([[-.75,-.13],[-.53,-.22]],'#fff7d7',.04);line([[.20,-.13],[.42,-.22]],'#fff7d7',.04)}
+      line([[-.11,0],[.11,0]]);line([[-.86,-.06],[-1.03,-.15]]);line([[.86,-.06],[1.03,-.15]]);
+    }else if(lensId==='moon-crown'){
+      poly([[-.91,-.72],[-.86,-1.28],[-.49,-1.08],[0,-1.60],[.49,-1.08],[.86,-1.28],[.91,-.72]],'#efc96f');
+      oval(0,-1.08,.105,.12,'#f9f2cb');star(-.59,-1.46,.10,'#fff0a2');star(.64,-1.5,.08,'#fff0a2');
+    }else if(lensId==='angel-halo'){
+      oval(0,-1.23,.76,.15,'#ffe69c');oval(0,-1.23,.54,.065,'#fff5d4',false);star(-.96,-.92,.11,'#fff2ac');star(.99,-1.03,.08,'#fff2ac');
+    }else if(lensId==='blush-stars'){
+      oval(-.83,.49,.29,.14,'#f5a3b0',false);oval(.83,.49,.29,.14,'#f5a3b0',false);star(-.98,.22,.105,'#ffd975');star(.98,.22,.105,'#ffd975');star(-.64,.46,.07,'#fff4c4');star(.64,.46,.07,'#fff4c4');
+    }else if(lensId==='floating-hearts'){
+      heart(-1.0,-.72,.24,'#f28ea8');heart(.94,-.87,.28,'#f28ea8');heart(-.68,-1.29,.17,'#ffc0ca');heart(.56,-1.41,.18,'#ffc0ca');
+    }else if(lensId==='butterfly'){
+      for(const s of [-1,1]){ctx.save();ctx.translate(s*.82*w,-.85*w);ctx.rotate(s*.25);ctx.beginPath();ctx.ellipse(-.11*w,-.13*w,.22*w,.28*w,-.5,0,Math.PI*2);ctx.ellipse(.12*w,-.13*w,.22*w,.28*w,.5,0,Math.PI*2);ctx.fillStyle='#cdb3eb';ctx.fill();ctx.stroke();ctx.restore();}star(0,-1.45,.09,'#f7d77e');
     }
     ctx.restore();
   }
+}
+
+/* Simple CPU colour fallback for browsers without CanvasRenderingContext2D.filter. */
+function applyCatSnapCpuLook(ctx,w,h,look,exposure){
+ const profiles={natural:[1,1,1,1,1],golden:[1.12,1.04,.90,1.04,1.20],soft:[1.09,1.07,1.08,.91,.88],cinema:[.97,.98,1,1.20,.82],berry:[1.10,.95,1.06,1.06,1.42],vintage:[1.10,1.04,.87,.92,.84],mono:[1,1,1,1.16,0],cool:[.93,1.01,1.12,1.05,1.20],dream:[1.14,1.14,1.15,.85,.85],vivid:[1,1,1,1.12,1.55]};
+ const [rr,gg,bb,contrast,sat]=profiles[look]||profiles.natural, exp=Number(exposure)||1;
+ if(look==='natural'&&Math.abs(exp-1)<.001)return;
+ const img=ctx.getImageData(0,0,w,h),d=img.data;
+ for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2],l=.2126*r+.7152*g+.0722*b;
+  d[i]=((l+(r-l)*sat)*rr*exp-128)*contrast+128;
+  d[i+1]=((l+(g-l)*sat)*gg*exp-128)*contrast+128;
+  d[i+2]=((l+(b-l)*sat)*bb*exp-128)*contrast+128;
+ }
+ ctx.putImageData(img,0,0);
 }
 
 function applyOpticalGrade(ctx, w, h, exposure = 1, vignette = 0.18, stamps = []) {
@@ -14161,7 +14229,7 @@ function closeCatSnapCamera() {
   catSnapState = null;
 }
 
-async function openCatSnapStudio(target = 'chat') {
+async function openCatSnapStudio(target = 'chat', initialLens = 'none') {
   closeCatSnapCamera();
   loadCdnjsCompressor();
   CAT_SNAP_LENSES.forEach((l) => { if (l.backdrop) getBackdropImage(l.backdrop); });
@@ -14187,19 +14255,22 @@ async function openCatSnapStudio(target = 'chat') {
     videoEl: document.createElement('video'),
     sourceImg: null,
     capturedDataUrl: null,
-    lens: 'lion-ink',
+    lens: CAT_SNAP_LENSES.some(l=>l.id===initialLens) ? initialLens : 'none',
+    look: 'natural',
+    effectSize: 1,
     scale: 1,
     offsetY: 18,
     facingMode: 'user',
     stamps: [],
     raf: 0,
   };
+  const studioSession=catSnapState;
   catSnapState.videoEl.playsInline = true;
   catSnapState.videoEl.muted = true;
 
   const canVideo = true;
 
-  openModal(`${modalTitle('camera', '2D Face Filter Camera', 'Real-time 2D illustrated face filters, portrait background blur, and 35mm film color tones — processed privately on your device.')}
+  openModal(`${modalTitle('camera', '2D Face Filter Camera', 'Choose a face effect and a photo look. Tracking and edits run on your device; camera access is optional.')}
     <div class="catsnap-grid">
       <div>
         <div class="catsnap-stage">
@@ -14230,13 +14301,16 @@ async function openCatSnapStudio(target = 'chat') {
         <input id="catsnap-file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
       </div>
       <div>
-        <span class="eyebrow">2D FILTERS &amp; FILM PROFILES</span>
+        <span class="eyebrow">FACE EFFECTS</span><p class="catsnap-filter-help">Effects follow your face when tracking is available. Choose No face effect for colour only.</p>
         <div class="catsnap-lenses" id="catsnap-lenses" style="margin-top:8px">
-          ${CAT_SNAP_LENSES.map((l, i) => `<button type="button" class="catsnap-lens-btn ${i === 0 ? 'active' : ''}" data-cat-lens="${l.id}">
+          ${CAT_SNAP_LENSES.map((l) => `<button type="button" class="catsnap-lens-btn ${l.id === catSnapState.lens ? 'active' : ''}" aria-pressed="${l.id === catSnapState.lens}" data-cat-lens="${l.id}">
             <i class="${l.icon.toLowerCase()}" style="font-size:15px"></i>
             <span>${esc(l.name)}<small>${esc(l.sub)}</small></span>
           </button>`).join('')}
         </div>
+        <label class="catsnap-effect-slider">Face effect size <input type="range" id="catsnap-effect-size" min="70" max="160" step="5" value="100" aria-label="Face effect size"></label>
+        <span class="eyebrow catsnap-filter-label">PHOTO LOOKS</span><p class="catsnap-filter-help">Mix a colour look with any face effect.</p>
+        <div class="catsnap-looks" id="catsnap-looks" role="group" aria-label="Photo looks">${CAT_SNAP_LOOKS.map(l=>`<button type="button" class="catsnap-look-btn ${l.id==='natural'?'active':''}" aria-pressed="${l.id==='natural'}" data-cat-look="${l.id}"><span aria-hidden="true">${l.icon}</span><span>${esc(l.name)}<small>${esc(l.sub)}</small></span></button>`).join('')}</div>
         <div class="catsnap-sliders">
           <label>Bokeh / Exposure <input type="range" id="catsnap-scale" min="70" max="135" value="100"></label>
           <label>Optical Vignette <input type="range" id="catsnap-offset" min="0" max="45" value="18"></label>
@@ -14260,6 +14334,8 @@ async function openCatSnapStudio(target = 'chat') {
   const canvas = $('#catsnap-canvas');
   const vidPrev = $('#catsnap-video-preview');
   const ctx = canvas.getContext('2d');
+  const hasNativeFilter='filter' in ctx;
+  if(!hasNativeFilter){canvas.width=720;canvas.height=540;const blur=$('[data-cat-lens="portrait-bokeh"]');if(blur){blur.disabled=true;blur.title='Background blur is not supported in this browser.';}const help=document.createElement('p');help.className='catsnap-filter-help';help.textContent='Colour looks use a compatible mode at lower resolution. Background blur is unavailable in this browser.';$('#catsnap-looks')?.before(help);}
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
 
@@ -14287,7 +14363,7 @@ async function openCatSnapStudio(target = 'chat') {
         } catch {}
       }
       if (!stream) return;
-      if (!catSnapState) { stream.getTracks().forEach((t) => t.stop()); return; }
+      if (catSnapState !== studioSession) { stream.getTracks().forEach((t) => t.stop()); return; }
       catSnapState.stream = stream;
       catSnapState.sourceImg = null;
       catSnapState.cachedImgForFace = null;
@@ -14299,11 +14375,12 @@ async function openCatSnapStudio(target = 'chat') {
 
 
   await startDeviceCamera();
+  if (catSnapState !== studioSession) return;
   loadKeylessNeuralAR().then((nar) => {
-    if (!catSnapState) return;
+    if (catSnapState !== studioSession) return;
     catSnapState.neuralAR = nar;
     if (nar) setEngineStatus('2D face tracking · Live', true);
-    else setEngineStatus('28mm f/1.4 · Optical', false);
+    else setEngineStatus('Face tracking unavailable · colour looks ready', false);
   });
 
   let neuralBusy = false;
@@ -14311,7 +14388,7 @@ async function openCatSnapStudio(target = 'chat') {
     const st = catSnapState;
     const nar = st?.neuralAR;
     if (!st || !nar || neuralBusy) return;
-    const needsFace = ['lion-ink', 'aviators-ink', 'royal-crown', 'dalmatian-ink'].includes(lensObj.id);
+    const needsFace = !!lensObj.face;
     const needsSeg = lensObj.mode === 'blur' || lensObj.mode === 'backdrop';
     const nowPerf = performance.now();
 
@@ -14330,7 +14407,7 @@ async function openCatSnapStudio(target = 'chat') {
         st.cachedBlendshapes = [];
       }
 
-      if (needsSeg && (isImage ? st.cachedImgForSeg !== src : (nowPerf - st.lastSegMs > 44))) {
+      if (needsSeg && nar.seg && (isImage ? st.cachedImgForSeg !== src : (nowPerf - st.lastSegMs > 44))) {
         const ts = Math.max(nar.lastTs + 1, Math.round(performance.now()));
         nar.lastTs = ts;
         const segRes = nar.seg.segmentForVideo(src, ts);
@@ -14357,11 +14434,14 @@ async function openCatSnapStudio(target = 'chat') {
       const st = catSnapState;
       const lensObj = CAT_SNAP_LENSES.find((l) => l.id === st.lens) || CAT_SNAP_LENSES[0];
       const exp = (st.scale || 1).toFixed(2);
+      const look = CAT_SNAP_LOOKS.find(x=>x.id===st.look) || CAT_SNAP_LOOKS[0];
+      const grade = [lensObj.filter,look.filter].filter(x=>x && x!=='none').join(' ');
       const isImg = !!st.sourceImg;
       const src = isImg ? st.sourceImg : (st.videoEl.readyState >= 2 ? st.videoEl : null);
 
       ctx.save();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle='#141a16';ctx.fillRect(0,0,canvas.width,canvas.height);
 
       if (src) {
         const sw = isImg ? (src.naturalWidth || src.width) : (src.videoWidth || 640);
@@ -14369,7 +14449,7 @@ async function openCatSnapStudio(target = 'chat') {
         const mirror = !isImg && st.facingMode === 'user';
         updateKeylessDetections(src, isImg, lensObj);
 
-        const needsSeg = (lensObj.mode === 'blur' || lensObj.mode === 'backdrop') && st.neuralAR && st.hasMask;
+        const needsSeg = (lensObj.mode === 'blur' || lensObj.mode === 'backdrop') && st.neuralAR?.seg && st.hasMask;
         if (needsSeg) {
           const nar = st.neuralAR;
           const pc = nar.personCanvas;
@@ -14380,21 +14460,21 @@ async function openCatSnapStudio(target = 'chat') {
           const pctx = pc.getContext('2d');
           pctx.clearRect(0, 0, pc.width, pc.height);
           pctx.save();
-          pctx.filter = `${lensObj.filter} brightness(${exp})`;
-          drawCoverSource(pctx, src, sw, sh, pc.width, pc.height, mirror);
+          pctx.filter = `${grade} brightness(${exp})`;
+          drawCoverSource(pctx, src, sw, sh, pc.width, pc.height, mirror, isImg);
           pctx.restore();
 
           pctx.save();
           pctx.globalCompositeOperation = 'destination-in';
           pctx.filter = 'blur(2.5px)';
-          drawCoverSource(pctx, nar.maskCanvas, nar.maskCanvas.width, nar.maskCanvas.height, pc.width, pc.height, mirror);
+          drawCoverSource(pctx, nar.maskCanvas, nar.maskCanvas.width, nar.maskCanvas.height, pc.width, pc.height, mirror, isImg);
           pctx.restore();
 
           ctx.save();
           if (lensObj.mode === 'blur') {
             const blurPx = Math.max(6, Math.round((st.scale || 1) * 13));
             ctx.filter = `blur(${blurPx}px) brightness(0.95)`;
-            drawCoverSource(ctx, src, sw, sh, canvas.width, canvas.height, mirror);
+            drawCoverSource(ctx, src, sw, sh, canvas.width, canvas.height, mirror, isImg);
           } else {
             const bgImg = getBackdropImage(lensObj.backdrop);
             if (bgImg && bgImg.complete && bgImg.naturalWidth) {
@@ -14408,13 +14488,14 @@ async function openCatSnapStudio(target = 'chat') {
           ctx.drawImage(pc, 0, 0);
         } else {
           ctx.save();
-          ctx.filter = `${lensObj.filter} brightness(${exp})`;
-          drawCoverSource(ctx, src, sw, sh, canvas.width, canvas.height, mirror);
+          ctx.filter = `${grade} brightness(${exp})`;
+          drawCoverSource(ctx, src, sw, sh, canvas.width, canvas.height, mirror, isImg);
           ctx.restore();
         }
 
+        if (!hasNativeFilter) applyCatSnapCpuLook(ctx,canvas.width,canvas.height,st.look,st.scale);
         if (st.cachedLandmarks?.length) {
-          drawTrackedFaceOverlay(ctx, st.cachedLandmarks, canvas.width, canvas.height, sw, sh, mirror, lensObj.id);
+          drawTrackedFaceOverlay(ctx, st.cachedLandmarks, canvas.width, canvas.height, sw, sh, mirror, lensObj.id, st.effectSize, isImg);
         }
       } else {
         ctx.fillStyle = '#141a16';
@@ -14459,10 +14540,12 @@ async function openCatSnapStudio(target = 'chat') {
       catSnapState.cachedImgForFace = null;
       catSnapState.cachedImgForSeg = null;
       resetToLiveView();
-      $$('[data-cat-lens]').forEach((x) => x.classList.toggle('active', x === b));
+      $$('[data-cat-lens]').forEach((x) => {x.classList.toggle('active', x === b);x.setAttribute('aria-pressed',String(x===b));});
     };
   });
 
+  $$('[data-cat-look]').forEach(b=>{b.onclick=()=>{if(!catSnapState)return;catSnapState.look=b.dataset.catLook;resetToLiveView();$$('[data-cat-look]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});};});
+  $('#catsnap-effect-size').oninput=e=>{if(catSnapState)catSnapState.effectSize=Number(e.target.value)/100;};
   $('#catsnap-scale').oninput = (e) => {
     if (catSnapState) catSnapState.scale = Number(e.target.value) / 100;
   };
@@ -18150,7 +18233,7 @@ window.addEventListener('message', (ev) => {
               <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-camera"/></svg>
             </div>
             <h3>Click the Camera<br>to send Snaps</h3>
-            <p>Photos &amp; live AR filters</p>
+            <p>Photos &amp; face effects in Lens Studio</p>
           </div>
 
           <div class="culife-cam-live-layer" id="culife-cam-live-layer">
@@ -18159,7 +18242,7 @@ window.addEventListener('message', (ev) => {
             <button type="button" class="culife-cam-close" id="culife-cam-close" title="Close live preview">✕</button>
           </div>
 
-          <div class="culife-lens-bar" aria-label="Quick Snap Lenses">
+          <div class="culife-lens-bar" aria-label="Open face effects in Lens Studio">
             <button type="button" class="culife-lens-dot" data-culife-lens="cat_ears" title="Cat Ears Lens">🐾</button>
             <button type="button" class="culife-lens-dot" data-culife-lens="cyber_shades" title="Cyber Shades">🕶️</button>
             <button type="button" class="culife-shutter-ring" id="culife-shutter-btn" title="Take photo or start camera" aria-label="Take photo"><span></span></button>
@@ -18168,7 +18251,7 @@ window.addEventListener('message', (ev) => {
           </div>
 
           <div class="culife-card-foot">
-            <button type="button" class="culife-foot-pill" id="culife-upload-4k-btn">📤 Upload photo</button>
+            <button type="button" class="culife-foot-pill" id="culife-upload-4k-btn">📤 Upload photo</button> <button type="button" class="culife-foot-pill" id="culife-jeeliz-btn">✨ 3D face filters</button>
             <input type="file" id="culife-4k-file" accept="image/jpeg,image/png,image/webp" hidden>
           </div>
         </div>
@@ -18295,6 +18378,44 @@ window.addEventListener('message', (ev) => {
     openCulife4KSnapReviewModal(dataUrl, outW, outH);
   }
 
+  function openJeelizCamera(){
+    stopCulifeInlineCam();
+    openModal(`${modalTitle('camera','3D Face Filters','Jeeliz live effects. Your camera stays on your device; a photo is only shared if you choose to post it.')}
+      <div class="jeeliz-picker" role="group" aria-label="Choose a 3D filter">
+       <button type="button" class="btn secondary" data-jeeliz-filter="butterflies" aria-pressed="false">🦋 Butterflies</button>
+       <button type="button" class="btn secondary" data-jeeliz-filter="tiger" aria-pressed="false">🐯 Tiger</button>
+       <button type="button" class="btn secondary" data-jeeliz-filter="cloud" aria-pressed="false">☁️ Cloud</button>
+       <button type="button" class="btn secondary" data-jeeliz-filter="fireworks" aria-pressed="false">🎆 Fireworks</button>
+      </div>
+      <p class="note" id="jeeliz-status" role="status">Choose a filter to start the camera.</p>
+      <div class="jeeliz-frame-wrap" id="jeeliz-frame-wrap"><span>Choose an effect above to begin.</span></div>
+      <div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap"><button type="button" class="btn" id="jeeliz-capture" disabled>📷 Take photo</button><button type="button" class="btn secondary" id="jeeliz-open-looks">2D effects &amp; photo looks</button></div>
+      <p class="note">Uses Jeeliz FaceFilter 3D demos. Camera and WebGL support are required; live 3D filters currently save photos, not video.</p>`,true);
+    let frame=null,timer=null;
+    const status=$('#jeeliz-status'),host=$('#jeeliz-frame-wrap'),capture=$('#jeeliz-capture');
+    const stop=()=>{clearTimeout(timer);if(frame){try{frame.contentWindow?.postMessage({source:'catcul-parent',action:'stop'},location.origin)}catch{}frame.remove();frame=null;}capture.disabled=true;};
+    const receive=e=>{
+      if(e.origin!==location.origin || !frame || e.source!==frame.contentWindow || e.data?.source!=='catcul-jeeliz')return;
+      const d=e.data;
+      if(d.type==='ready'){clearTimeout(timer);status.textContent='Camera ready. Face the camera to see the effect.';capture.disabled=false;}
+      else if(d.type==='error'){clearTimeout(timer);status.textContent='Filter unavailable: '+String(d.code||'camera error').slice(0,100);capture.disabled=true;}
+      else if(d.type==='photo' && typeof d.data==='string' && /^data:image\/jpeg;base64,/.test(d.data) && d.data.length<12000000 && Number.isInteger(d.width) && Number.isInteger(d.height) && d.width>0 && d.height>0 && d.width<=4096 && d.height<=4096){
+        clearTimeout(timer);openCulife4KSnapReviewModal(d.data,d.width,d.height);
+      }
+    };
+    window.addEventListener('message',receive);
+    const onHidden=()=>{if(document.hidden && $('#jeeliz-frame-wrap')===host)closeModal();};document.addEventListener('visibilitychange',onHidden);
+    modalCleanup=()=>{stop();window.removeEventListener('message',receive);document.removeEventListener('visibilitychange',onHidden);};
+    $$('[data-jeeliz-filter]').forEach(button=>button.onclick=()=>{
+      const selected=button.dataset.jeelizFilter;if(!['tiger','butterflies','cloud','fireworks'].includes(selected))return;
+      stop();$$('[data-jeeliz-filter]').forEach(b=>{b.setAttribute('aria-pressed',String(b===button));b.classList.toggle('active',b===button)});
+      host.textContent='';status.textContent='Starting camera and loading the 3D effect…';
+      timer=setTimeout(()=>{if(!host.isConnected)return;frame=document.createElement('iframe');frame.title='Jeeliz '+selected+' camera';frame.allow='camera';frame.onerror=()=>{if(!host.isConnected)return;status.textContent='Could not load this filter.';capture.disabled=true};frame.src='./jeeliz-filters/demos/threejs/'+selected+'/index.html';host.append(frame);timer=setTimeout(()=>{if(frame && host.isConnected){status.textContent='Still loading. Check camera permission, connection and WebGL support.';}},30000)},300);
+    });
+    capture.onclick=()=>{if(!frame)return;capture.disabled=true;status.textContent='Taking photo…';frame.contentWindow.postMessage({source:'catcul-parent',action:'capture'},location.origin);timer=setTimeout(()=>{if(frame && host.isConnected){status.textContent='Could not capture; please try again.';capture.disabled=false;}},8000);};
+    $('#jeeliz-open-looks').onclick=()=>{closeModal();openCatSnapStudio('spotlight');};
+  }
+
   function openCulife4KSnapReviewModal(dataUrl, w, h) {
     openModal(`
       ${modalTitle('camera', 'Culife Snap Ready', `Photo resolution: ${w}×${h}. Detail depends on the camera or original.`)}
@@ -18346,16 +18467,15 @@ window.addEventListener('message', (ev) => {
       stopCulifeInlineCam();
       if (typeof openCatSnapStudio === 'function') openCatSnapStudio('spotlight');
     });
+    $('#culife-jeeliz-btn')?.addEventListener('click', () => openJeelizCamera());
     $('#culife-fx-btn')?.addEventListener('click', () => openProfileEffectsModal());
 
     $$('[data-culife-lens]').forEach((btn) => {
       btn.addEventListener('click', async () => {
-        const lens = btn.dataset.culifeLens;
-        culifeSelectedLens = culifeSelectedLens === lens ? 'none' : lens;
-        $$('[data-culife-lens]').forEach((b) => b.classList.toggle('active', b.dataset.culifeLens === culifeSelectedLens));
-        const hud = $('#culife-lens-hud');
-        if (hud) hud.textContent = culifeSelectedLens === 'none' ? '' : `${btn.textContent} lens active`;
-        if (!culifeInlineStream) await startCulifeInlineCamera();
+        const choices={cat_ears:'cat-plush',cyber_shades:'sunset-shades',gold_crown:'moon-crown',sakura_glow:'blush-stars'};
+        const lens=choices[btn.dataset.culifeLens] || 'none';
+        stopCulifeInlineCam();
+        if(typeof openCatSnapStudio==='function') openCatSnapStudio('spotlight',lens);
       });
     });
 

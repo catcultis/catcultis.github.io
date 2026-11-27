@@ -12516,14 +12516,15 @@ async function festiveSyncNotice(){
   if(r.error)throw r.error;
   if(seq!==festiveNoticeSeq||user?.id!==actor)return;
   const info=r.data;
-  if(!info||typeof info.maintenance!=='boolean'||typeof info.preview_allowed!=='boolean')return;
+  if(!info||typeof info.maintenance!=='boolean'||typeof info.preview_allowed!=='boolean'){catculPreviewAllowed=false;return;}
+  catculPreviewAllowed=info.preview_allowed;
   let el=document.getElementById('festive-release-notice');
   if(!info.maintenance||info.preview_allowed||festiveNoticeDismissed){el?.remove();return;}
   if(!el){el=document.createElement('aside');el.id='festive-release-notice';el.setAttribute('role','status');el.innerHTML='<span>We’re preparing a festive update. Your chats still work and are saved as usual.</span><button type="button" aria-label="Dismiss update notice">×</button>';el.querySelector('button').onclick=()=>{festiveNoticeDismissed=true;el.remove()};document.body.append(el);}
- }catch(e){console.warn('Update notice unavailable:',e?.message||'offline');}
+ }catch(e){if(seq===festiveNoticeSeq)catculPreviewAllowed=false;console.warn('Update notice unavailable:',e?.message||'offline');}
 }
 function festiveStartNotice(){festiveNoticeDismissed=false;festiveSyncNotice();clearInterval(festiveNoticePoll);festiveNoticePoll=setInterval(festiveSyncNotice,30000)}
-function festiveStopNotice(){clearInterval(festiveNoticePoll);festiveNoticePoll=null;festiveNoticeSeq++;festiveNoticeDismissed=false;document.getElementById('festive-release-notice')?.remove()}
+function festiveStopNotice(){catculPreviewAllowed=false;clearInterval(festiveNoticePoll);festiveNoticePoll=null;festiveNoticeSeq++;festiveNoticeDismissed=false;document.getElementById('festive-release-notice')?.remove()}
 async function festiveAdminControls(root,epoch,actor){
  const response=await db.rpc('admin_release_status');if(response.error)throw response.error;
  if(!root.isConnected||adminState.epoch!==epoch||user?.id!==actor||!studentAdmin)return;
@@ -12534,6 +12535,44 @@ async function festiveAdminControls(root,epoch,actor){
  btn.onclick=()=>run(btn,'admin_set_release_maintenance',{p_enabled:!on});
  const form=root.querySelector('#festive-tester-form');form.onsubmit=e=>{e.preventDefault();const name=root.querySelector('#festive-tester-name').value.trim();if(name)run(form.querySelector('button'),'admin_set_release_tester',{p_username:name,p_allowed:true})};
  root.querySelectorAll('[data-festive-remove]').forEach(b=>{b.onclick=()=>run(b,'admin_set_release_tester',{p_username:b.dataset.festiveRemove,p_allowed:false})});
+}
+
+let catculPreviewAllowed=false;
+/* Preview loader, to be integrated only when the authorized backend and encrypted asset exist. */
+let catculPreviewBusy=false;
+async function catculOpenFestivePreview(){
+ if(catculPreviewBusy||!user?.id||!setupReady)return;
+ const actor=user.id;let tab;
+ try{tab=window.open('about:blank','_blank');if(!tab)throw Error('Allow pop-ups to open the test workspace.');tab.opener=null;tab.document.title='Opening Catcul preview';tab.document.body.textContent='Checking access to the festive test workspace…';}
+ catch(e){toast(e?.message||'Allow pop-ups to open the test workspace.',true);return}
+ catculPreviewBusy=true;
+ try{
+  const auth=await client.auth.getSession();const session=auth.data?.session;
+  if(auth.error||!session?.access_token||session.user?.id!==actor||user?.id!==actor||!setupReady)throw Error('Account changed. Open the preview again.');
+  // Inspect the actual gateway response before using the key. Fetch never logs
+  // or displays the response body. A missing private/no-store header fails closed.
+  const response=await fetch(SUPABASE_URL+'/rest/v1/rpc/get_festive_preview_key',{
+   method:'POST',cache:'no-store',headers:{'apikey':SUPABASE_PUBLISHABLE_KEY,'Authorization':'Bearer '+session.access_token,'Content-Type':'application/json','Content-Profile':DATABASE_SCHEMA},body:'{}'
+  });
+  if(!response.ok)throw Error(response.status===401||response.status===403?'Preview access required.':'Preview is not ready.');
+  const directives=(response.headers.get('cache-control')||'').toLowerCase().split(',').map(x=>x.trim());
+  if(!directives.includes('private')||!directives.includes('no-store'))throw Error('Preview security check failed. Please try again later.');
+  if(user?.id!==actor||!setupReady)throw Error('Account changed. Open the preview again.');
+  const m=await response.json();if(!m||!Number.isSafeInteger(m.version)||m.version<1||!/^[a-f0-9]{64}$/.test(m.key)||!/^[a-f0-9]{64}$/.test(m.sha256))throw Error('Preview is not ready.');
+  const url=new URL('festive-preview.bin',document.baseURI);if(url.origin!==location.origin)throw Error('Invalid preview location.');
+  const asset=await fetch(url.href,{cache:'no-store',credentials:'same-origin',redirect:'error'});if(!asset.ok)throw Error('Preview file is unavailable.');
+  const buf=await asset.arrayBuffer();if(buf.byteLength<30||buf.byteLength>12000000)throw Error('Invalid preview file.');
+  const hex=a=>Array.from(new Uint8Array(a),v=>v.toString(16).padStart(2,'0')).join('');if(hex(await crypto.subtle.digest('SHA-256',buf))!==m.sha256)throw Error('Preview changed. Please try again later.');
+  const bytes=new Uint8Array(buf);if(bytes[0]!==1)throw Error('Unsupported preview version.');
+  const raw=Uint8Array.from(m.key.match(/../g),x=>parseInt(x,16)),key=await crypto.subtle.importKey('raw',raw,{name:'AES-GCM'},false,['decrypt']);raw.fill(0);
+  const clear=await crypto.subtle.decrypt({name:'AES-GCM',iv:bytes.slice(1,13),additionalData:new TextEncoder().encode('catcul-festive-preview-v1')},key,bytes.slice(13));
+  if(user?.id!==actor||!setupReady)throw Error('Account changed. Open the preview again.');
+  const gate=await db.rpc('get_release_access');if(gate.error||!gate.data?.preview_allowed||user?.id!==actor)throw Error('Preview access has changed.');
+  let html=new TextDecoder('utf-8',{fatal:true}).decode(clear);if(!html.includes('<head>'))throw Error('Invalid preview content.');
+  const base=new URL('./',document.baseURI).href;const baseAttr=base.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+  html=html.replace('<head>','<head><base href="'+baseAttr+'"><script>window.__catculPreviewExpectedUser='+JSON.stringify(actor).replace(/</g,'\\u003c')+';<\/script>');
+  const objectURL=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));html='';tab.location.replace(objectURL);setTimeout(()=>URL.revokeObjectURL(objectURL),60000);
+ }catch(e){try{tab.close()}catch{}toast(e?.message||'Could not open the preview. Check your connection.',true)}finally{catculPreviewBusy=false}
 }
 
 function diaryToday(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
@@ -20543,6 +20582,8 @@ function showDemoRoomReady(p,actor){if(user?.id!==actor)return;const link=guestR
 (()=>{if(!readDemoRoomPending())return;let attempts=0;const timer=setInterval(()=>{if(++attempts>240){clearInterval(timer);return;}if(user?.id&&setupReady&&!$('#modal-root')?.children.length&&$('#boot-overlay')?.classList.contains('hidden')){clearInterval(timer);openDemoRoomHandoff().catch(fail);}},500);})();
 
 
+const catculPreviewBaseMore=showWorkspaceMenu;
+showWorkspaceMenu=function(){catculPreviewBaseMore();const grid=document.querySelector('.modal .chat-menu-grid');if(!grid||!catculPreviewAllowed)return;const btn=document.createElement('button');btn.type='button';btn.id='catcul-preview-launch';btn.innerHTML=icon('spark')+'<span>Festive test workspace<small>Approved testers only · chats remain shared</small></span>';btn.onclick=catculOpenFestivePreview;grid.prepend(btn);};
 const actions={'stories-hub':showTouchStories,'private-chats':showPrivateChats,'archived-chats':showArchivedChats,'workspace-menu':showWorkspaceMenu,'chat-tools':showChatTools,'view-chat':()=>showChatView(true),'notes':openNotes,'community':openCommunity,
 'older':loadOlder,'signout':signOut,'retry-setup':()=>{closeModal();return user?bootSession(session,true):showAuth();},'friends':()=>showFriends(),'best-friends':()=>showFriends('friends',true),'find-friends':()=>showFriends('find'),'new-group':()=>showNewRoom('create'),'join-group':()=>showNewRoom('join'),'rename-group':renameGroup,'calls':showCallHistory,'calling-setup':showCallSetup,'start-call':()=>startVoiceCall(active),'minimize-call':()=>{voice.minimized=true;paintVoice();},'restore-call':()=>{voice.minimized=false;paintVoice();},'expand-call':toggleExpandCall,'invite-to-call':openCallInviteDrawer,'close-call-invite':closeCallInviteDrawer,'toggle-call-screen':toggleCallScreen,'toggle-call-mic':toggleCallMic,'toggle-call-speaker':toggleCallSpeaker,'hangup-call':()=>leaveVoiceCall(),'end-call-everyone':()=>leaveVoiceCall(false,true),'enable-audio':async()=>{await voice.room?.startAudio();paintVoice();},'about':showAbout,'profile':showProfile,'avatar-editor':showAvatarEditor,'invite':showInvite,'new-room':showNewConversation,'settings':showSettings,'people':showMembers,'gallery':showGallery,'search-chat':showSearch,'details':toggleDetails,'room-menu':showRoomMenu,'attach':showAttach,'connection-help':showConnectionHelp,'reconnect':reconnect,
 'close-modal':()=>closeModal(),'back':()=>{$('#app').classList.remove('mobile-chat');sendTyping(false);},'chats':async()=>{await switchWorkspace('chat');$('#app').classList.remove('mobile-chat');closeModal();},
@@ -21214,4 +21255,4 @@ body.dark #catcul-cursor-toggle { color: #bed58c; background: #28331feb; border-
     });
   }
 })();
-</script></body></html>
+</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61003374ff458f4',t:'MTc5NTc3MDc2MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61003374ff458f4',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>
